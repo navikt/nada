@@ -6,12 +6,7 @@
 package no.nav.kafka;
 
 public class KafkaConfig {
-data class Environment(val bootstrapServers: String = getEnvVar("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092"),
-                       val schemaRegistryUrl: String = getEnvVar("KAFKA_SCHEMAREGISTRY_SERVERS", "http://localhost:8081"),
-                       val username: String = getEnvVar("USERNAME", "username"),
-                       val password: String = getEnvVar("PASSWORD", "password"),
-                       val groupId: String = getEnvVar("GROUP_ID", "ditt_gruppenavn_her")
-)
+    
     public static Properties getKafkaProps() {
         Properties kafkaProps = new Properties();
         kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, getEnvVar("KAFKA_BOOTSTRAP_SERVERS"));
