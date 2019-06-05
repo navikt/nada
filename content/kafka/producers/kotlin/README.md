@@ -22,7 +22,7 @@ object Config {
             put(KafkaAvroSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, env.schemaRegistryUrl)
             put(ProducerConfig.CLIENT_ID_CONFIG, env.groupId + InetSocketAddress(0).hostString)
             put(ProducerConfig.ACKS_CONFIG, "1")
-            put(ProdcuerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongDeserializer::class.java)
+            put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongDeserializer::class.java)
             put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroDeserializerConfig::class.java)
             putAll(credentialProps(env))
 
@@ -58,8 +58,8 @@ import org.apache.kafka.clients.producer.ProducerRecord
 
 object LeesahProducer {
 
-    fun produserMelding(topic: String, key: Long, value: MittAvroObject) {
-        KafkaProducer(KafkaConfig.getKafkaProps()).use { producer ->
+    fun produserMelding(topic: String, key: Long, value: MittAvroObject, env: Environment = Environment()) {
+        KafkaProducer(KafkaConfig.getKafkaProps(env)).use { producer ->
             producer.send(new ProducerRecord(topic, key, value));
         }
     }

@@ -109,7 +109,7 @@ object LeesahConsumer : CoroutineScope() {
     this.kafkaProps = kafkaProps
   }
 
-  fun run() {
+  fun run(gjorNoeMedMeldingen : (ConsumerRecord<Long, MittAvroObject>) -> Unit = { println(it.value) }) {
     launch {
       KafkaConsumer<Long, MittAvroObjekt>(kafkaProps).use { consumer -> //Bruker use for å sørge for å lukke consumeren skikkelig ved terminering
         consumer.subscribe(listOf("aapen.leesah.hendelse"))
@@ -119,7 +119,7 @@ object LeesahConsumer : CoroutineScope() {
             records.forEach { record ->
               //record.value() har nå meldingen fra Leesah
               //record.key() har nøkkelen til meldingen
-              gjorNoeMedMeldingen(record.value())
+              gjorNoeMedMeldingen(record)
             }
             //Ferdig med denne batchen, si fra til Kafka at vi har lest, vent på bekreftelse fra Kafka
             consumer.commitSync()
