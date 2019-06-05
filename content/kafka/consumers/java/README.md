@@ -20,10 +20,10 @@ public class KafkaConfig {
 
     public static Properties getKafkaProps() {
         Properties kafkaProps = new Properties();
-        kafkaProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, env.bootstrapServers);
-        kafkaProps.put(KafkaAvroDeserializerConfig.SCHEMA_REGISTRY_URL_CONFIG, env.schemaRegistryUrl);
-        kafkaProps.put(ConsumerConfig.GROUP_ID_CONFIG, env.groupId);
-        kafkaProps.put(ConsumerConfig.CLIENT_ID_CONFIG, env.groupId + InetSocketAddress(0).getHostString());
+        kafkaProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, getEnvVar("KAFKA_BOOTSTRAP_SERVERS"));
+        kafkaProps.put(KafkaAvroDeserializerConfig.SCHEMA_REGISTRY_URL_CONFIG, getEnvVar("KAFKA_SCHEMAREGISTRY_SERVERS"));
+        kafkaProps.put(ConsumerConfig.GROUP_ID_CONFIG, getEnvVar("GROUP_ID"));
+        kafkaProps.put(ConsumerConfig.CLIENT_ID_CONFIG, getEnvVar("GROUP_ID") + InetSocketAddress(0).getHostString());
         kafkaProps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false); /*Hvis man har denne satt til false, så må man selv sørge for å gjøre                                                                                 consumer.commitSync() eller consumer.commitAsync() */
         kafkaProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, LongDeserializer.class);
         kafkaProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializerConfig.class);
@@ -37,7 +37,7 @@ public class KafkaConfig {
         Properties credProps = new Properties();
         credProps.put(SaslConfigs.SASL_MECHANISM, "PLAIN")
         credProps.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT")
-        credProps.put(SaslConfigs.SASL_JAAS_CONFIG, "org.apache.kafka.common.security.plain.PlainLoginModule required username=" +$env.username+ "password=" +env.password +";");
+        credProps.put(SaslConfigs.SASL_JAAS_CONFIG, "org.apache.kafka.common.security.plain.PlainLoginModule required username=" +getEnvVar("USERNAME")+ "password=" +getEnvVar("PASSWORD") +";");
         if (System.getenv("NAV_TRUSTSTORE_PATH") != null) {
             credProps.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
             credProps.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, new File(it).getAbsolutePath());
