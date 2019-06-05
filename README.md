@@ -1,11 +1,11 @@
 
 ---
 
-NADA documentation
+NADA dokumentasjon
 
 ---
 
-* [About](/content/about/README.md)
+* [Om NADA](/content/about/README.md)
 
 # Services
 

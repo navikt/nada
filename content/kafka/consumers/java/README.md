@@ -8,6 +8,7 @@ package no.nav.config;
 import java.io.File;
 import java.net.InetSocketAddress;
 import java.util.Properties;
+import java.util.Optional;
 
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -42,6 +43,10 @@ public class KafkaConfig {
             credProps.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, new File(it).getAbsolutePath());
             credProps.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, System.getenv("NAV_TRUSTSTORE_PASSWORD"));
         }
+    }
+
+    private static String getEnvVar(String varName) {
+        return Optional.ofNullable(System.getenv(varName)).filter(l -> l.length > 0).orElseThrow(new IllegalArgumentException("Kunne ikke finne miljøvariablen " + varName));
     }
 }
 ```
