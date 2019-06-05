@@ -7,12 +7,12 @@ NADA dokumentasjon
 
 * [Om NADA](/content/about/README.md)
 
-# Services
+# Tjenester
 
 * [Kafka](/content/kafka/README.md)
 
-# Schema
+# Skjema
 
-# Security
+# Sikkerhet
 
 
