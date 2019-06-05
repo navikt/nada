@@ -8,6 +8,16 @@ Det er to måter å starte en consumer i Kotlin på, den ene ser veldig lik ut s
 Til felles for begge måtene er at vi trenger en måte å generere nødvendig konfigurasjon for Consumeren.
 
 ```Kotlin
+import java.io.File
+import java.net.InetSocketAddress
+import java.util.Properties
+
+import org.apache.kafka.clients.CommonClientConfigs
+import org.apache.kafka.clients.consumer.ConsumerConfig
+import org.apache.kafka.common.config.SaslConfigs
+import org.apache.kafka.common.config.SslConfigs
+import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig
+
 
 fun getEnvVar(varName: String, defaultValue: String? = null): String {
     return System.getenv(varName) ?: defaultValue
@@ -27,7 +37,7 @@ object Config {
             put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, env.bootstrapServers)
             put(KafkaAvroDeserializerConfig.SCHEMA_REGISTRY_URL_CONFIG, env.schemaRegistryUrl)
             put(ConsumerConfig.GROUP_ID_CONFIG, env.groupId)
-            put(ConsumerConfig.CLIENT_ID_CONFIG, env.groupId + getHostname(InetSocketAddress(0)))
+            put(ConsumerConfig.CLIENT_ID_CONFIG, env.groupId + InetSocketAddress(0).getHostString())
             put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false) /*Hvis man har denne satt til false, så må man selv sørge for å gjøre consumer.commitSync()                                                           eller consumer.commitAsync()*/
             put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, LongDeserializer::class.java)
             put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializerConfig::class.java)
@@ -69,6 +79,7 @@ Når konfigurasjonen nå er på plass, kan vi lage oss en Coroutine som prosesse
 ```Kotlin
 import java.time.Duration
 import java.time.temporal.ChronoUnit
+import java.util.Properties
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -78,7 +89,6 @@ import kotlin.coroutines.CoroutineContext
 
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.errors.RetriableException
-import org.apache.kafka.common.serialization.Deserializer
 
 
 object LeesahConsumer : CoroutineScope() {
@@ -173,6 +183,6 @@ class LeesahConsumer(val kafkaProps: Properties) {
 ```Kotlin
 fun main(args: Array<String>) {
   val consumer = LeesahConsumer(Config.kafkaProps(Environment()))
-  consumer.pollKafka() //Dette kallet vil blokke
+  consumer.pollKafka() //Dette kallet vil blokke, wrap det i en runnable hvis du vil kjøre i bakgrunnen
 }
 ```
