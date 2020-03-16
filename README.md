@@ -30,10 +30,11 @@ Felleskomponenter:
 * [Applikasjon](https://behandlingskatalog.nais.adeo.no). Behandlingskatalogen
 * [Applikasjon Test](https://behandlingskatalog.nais.preprod.local). Behandlingskatalogen (Test)
 
-* [API](https://behandlingskatalog.nais.adeo.no). Swagger API
-* [API Test](https://behandlingskatalog.nais.preprod.local). Swagger API (Test)
+* [API](https://polly.nais.adeo.no/swagger-ui.html). Swagger API
+* [API Test](https://polly.nais.preprod.local/swagger-ui.html). Swagger API (Test)
 
-* [Repo Backend](https://github.com/navikt/data-catalog-backend). Backend Repo
+* [Repo Backend](https://github.com/navikt/polly). Backend Repo
+* [Repo Frontend](https://github.com/navikt/data-catalog-editor). Frontend Repo
 
 ## Kafka
 
