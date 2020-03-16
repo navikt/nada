@@ -5,10 +5,10 @@
 Anonymization as a Service er resultatet av en bacheloroppgave, og senere et sommerstudentprosjekt, 
 gjennomført av bachelorstudenter fra Institutt for informasjonsteknologi ved OsloMet, i samarbeid med NAV IT. 
 Prosjektgruppen har utviklet en løsning som forenkler arbeidet med formell anonymisering og tallfesting av 
-re-identifiseringsrisiko. Løsningen bygger videre på et etablert anonymiseringsverktøy fra 
-[ARX](https://arx.deidentifier.org/) prosjektet, ARX er populær blant institusjoner som driver med deling av forskningsdata, men har gjort verktøyet tilgjengelig for et bredere publikum ved å gjøre kjernefunksjonalitet tilgjengelig som en mikrotjeneste med klienter/programpakker tilpasset for ulike brukergrupper. 
+re-identifiseringsrisiko. Løsningen bygger videre på det etablerte anonymiseringsverktøyet 
+[ARX](https://arx.deidentifier.org/), ARX er populær blant institusjoner som driver med deling av forskningsdata. **Anonymization as a Service** prosjetet har siktet på å gjøre ARX tilgjengelig for et bredere publikum ved å gjøre kjernefunksjonalitet tilgjengelig som en mikrotjeneste med klienter/programpakker tilpasset for ulike brukergrupper. 
 Prosjektet har særlig vektlagt behovene som oppstår i arbeidsprosessen til data scientister i NAV IT, 
-og gjør således etablert anonymiseringsmetodikk lettere tilgjengelig i Python og Jupiter Notebooks.
+og gjør således etablert anonymiseringsmetodikk lettere tilgjengelig i Python og Jupiter Notebooks, se [PyARXaaS](https://github.com/navikt/PyARXaaS).
 Koden og prosjektrapporten er åpent tilgjengelig under MIT lisens.
 
 - [ARXaaS](https://github.com/navikt/ARXaaS)
