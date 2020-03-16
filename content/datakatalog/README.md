@@ -8,7 +8,7 @@ Datakatalogen har to hovedformål:
 
 ## Brukergrupper og ønskemål
 
-![Brukergrupper](/brukergrupper.png)
+![Brukergrupper](brukergrupper.png)
 
 ## Arkitektur
 
