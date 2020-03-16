@@ -11,7 +11,7 @@ Prosjektet har særlig vektlagt behovene som oppstår i arbeidsprosessen til dat
 og gjør således etablert anonymiseringsmetodikk lettere tilgjengelig i Python og Jupiter Notebooks.
 Koden og prosjektrapporten er åpent tilgjengelig under MIT lisens.
 
-- [ARXaas](https://github.com/navikt/ARXaaS)
+- [ARXaaS](https://github.com/navikt/ARXaaS)
   Kjernetjenesten. En "Anonymisering mikrotjeneste" som tilgjengeliggjør funksjonalitet for anonymiering som HTTP REST APIer.
 - [PyARXaaS](https://github.com/navikt/PyARXaaS)
   Python bibliotek for enkel integrasjon med ARXaaS APIene. 
@@ -25,11 +25,11 @@ ARXaaS/PyARXaaS/WebARX tilbyr re-identifikasjons risikovurdering av tabulære da
 #### Hvordan komme i gang?
 For å komme i gang med å bruke **Anonymizaiton as a Service**:
 1. Bekreft at datasettet som skal anonymiseres støttes av ARX (her mener vi ikke filtypen med datamodellen til datasettet. Ta kontakt om usikker [Kontaktinformasjon](#kontaktinformasjon))
-2. ARXaaS tjenesten er tilgjengelig i dev-fss og prod-ffs. Ta kontakt for link.
+2. ARXaaS tjenesten er tilgjengelig i dev-fss og prod-ffs. Ta kontakt for link. ARXaaS kan også settes opp lokalt, enten ved å kjøre applikasjonen som en Java JAR eller ved å bruke Docker image. Se [ARXaaS](https://github.com/navikt/ARXaaS) for dokumentasjon av oppsett.
 3. Utnytt en av klient/programpakke løsningene eller gjør direkte kall mot ARXaaS.
     - **Bruk WebARX** WebARX er tilgjengelig på prod-fss og dev-fss. Ta kontakt for link.
     - **Bruk PyARXaaS** Se dokumentasjon for bruk av PyARXaaS her: [PyARXaaS](https://github.com/navikt/PyARXaaS). For å bruke PyARXaaS må du ha en fungerende URL til ARXaaS. for å nå instansen på dev-fss eller prod-fss må du derfor bruke *Utvikler image* om du skal scripte en Jupyter notebook eller lignende. NAIS applikasjoner når ARXaaS som vanlig.
-    - **Direkte kall mot ARXaaS** ARXaaS er en vanlig mikrotjeneste med REST APIer. Se dokumentasjonen på [ARXaas](https://github.com/navikt/ARXaaS) for beskrivelse av APIene.
+    - **Direkte kall mot ARXaaS** ARXaaS er en vanlig mikrotjeneste med REST APIer. Se dokumentasjonen på [ARXaaS](https://github.com/navikt/ARXaaS) for beskrivelse av APIene.
 
 
 #### Kontaktinformasjon
