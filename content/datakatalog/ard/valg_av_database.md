@@ -8,9 +8,11 @@ Vi har i dag en graf datamodell implementert i Postgres
 
 Det er krevende å utvikle et gode spørringer. Det er krevende å drifte databasen og garantere oppetid. 
 
+Azure og AWS tilbyr begge grafdatabaser med Apache TinkerPop modell.  
+
 ## Decision
 
-What is the change that we're proposing and/or doing?
+Vi har valgt å bruke en skybasert dataserver. Da NAV har avtale med Azure velger vi å bruke denne.
 
 ## Consequences
 
