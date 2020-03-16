@@ -4,9 +4,9 @@
 
 Vi har i dag en graf datamodell implementert i Postgres
 
-## Context
+## Kontekst
 
-What is the issue that we're seeing that is motivating this decision or change?
+Det er krevende å utvikle et gode spørringer. Det er krevende å drifte databasen og garantere oppetid. 
 
 ## Decision
 
