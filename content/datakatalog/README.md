@@ -2,9 +2,9 @@
 
 Datakatalogen har to hovedformål: 
 
-* Gjøre data fra NAV tilgjengelig for eksterne brukere på en brukervennlig måte. Dette gjør vi gjennom http://data.nav.no samt ved å gjøre metadata om datasettene tilgjengelig i [Felles datakatalog](https://fellesdatakatalog.digdir.no/)
+* Gjøre data fra NAV tilgjengelig for interne og eksterne brukere på en brukervennlig måte. Dette gjør vi gjennom https://data.nav.no samt ved å gjøre metadata om data og dataprokter tilgjengelig i [Felles datakatalog](https://fellesdatakatalog.digdir.no/)
 
-* Øke produktivitetet til analytikere og data scientister i NAV. Dette gjør vi ved å berike og indeksere data ressurser (begreper, tabell, strømmer, data visualiseringer og andre dataprodukter) og å gjøre disse lett å finne i et søkegrensesnitt 
+* Øke produktivitetet til analytikere og data scientister i NAV. Dette gjør vi ved å berike og indeksere data ressurser (begreper, tabell, strømmer, data visualiseringer og andre dataprodukter) og å gjøre disse lett å finne i et søkegrensesnitt i en intern datakatalog: data.adeo.no
 
 ### Brukergrupper og ønskemål
 
@@ -12,10 +12,16 @@ Datakatalogen har to hovedformål:
 
 ## Arkitektur
 
-Overordnet arkitektur
+Data leses fra kilder (pull) med tjenester som samtidig oppdaterer en søkeindeks (ElasticSearch) og et metadatalager (graf modell). 
+Tjenestene som henter og lagrer metadata kan f.eks implementeres i en notebook. Tjenestene kan kjøres automatisk ved gitte tidspunkter i Kubeflow.
 
-Data leses fra kilder (pull) med tjenester som samtidig populerer søkeindeks (ElasticSearch) og metadatalageret (graf modell).
-Tjenestene kan implementeres i en notebook og skeduleres med Kubeflow.
+Alternativt kan en ekstern tjenste levere data (push) som en strøm, via et REST kall eller på annen måte.
+
+Metadata fra datakatalogen kan presenters i en 'viewer' applikasjon som er skreddersydd for metadata typen. Vi har utviklet viewere for databasetabeller, Kafka topics, begreper, datapakker. Viewer applikasjonene bygger på felleskomponenter for å gjøre det enkelt både å videreutikle disse og å lage nye 'viewere' for nye typer metadata.
+
+Metadata kan også presenteres på andre måter. One-off og add-hoc visninger kan f.eks. presentere som datapakker. Metadata kan også benyttes som datakilde i andre applikasjoner.
+
+Overordnet arkitektur
 
 ![Hovedkomponenter](overordnet_arkitektur.png)
 
@@ -27,7 +33,6 @@ Datamodell
 ### Arkitekturbeslutninger
 
  * [Valg av hovedarkitektur](arkitektur/valg_av_hovedarkitektur.md)
- * [Valg av databasemodell](arkitektur/valg_av_databasemodell.md)
  * [Valg av database](arkitektur/valg_av_database.md)
 
 ### Applikasjoner
