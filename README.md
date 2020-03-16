@@ -30,7 +30,7 @@ Felleskomponenter:
   [https://dv-resource-rw-api.nais.adeo.no/dcat](https://dv-resource-rw-api.nais.adeo.no/dcat). Elastic search index for datakatalogen
   
   Repo:
-  * [Cosmos DB API (tinkerPop) basert graf database)](https://github.com/navikt/data-catalog-api). Cosmos DB API
+  * [Cosmos DB API. Apache TinkerPop basert graf database)](https://github.com/navikt/data-catalog-api). Cosmos DB API. Cosmos DB benyttes som lager for metadata for datakatalogen
   * [RDF API](https://github.com/navikt/data-catalog-rdf). API som Felles datakalog bruker for å laste data
   
 ### Repoer
