@@ -1,5 +1,11 @@
 ## Datakatalog
 
+Datakatalogen har to hovedformål: 
+
+* Gjøre data fra NAV lett tilgjengelige for eksterne brukere. Dette gjør vi gjennom http://data.nav.no
+
+* Øke produktivitetet til analytikere og data scientister i NAV. Dette gjør vi ved å indeksere data ressurser (begreper, tabell, strømmer, data visualiseringer og andre dataprodukter) og å gjøre disse lett å finne i et søkegrensesnitt 
+
 ### Applikasjoner
 
 * [Ekstern datakatalog: Beta](https://dataverk.nav.no)
