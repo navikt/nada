@@ -10,7 +10,7 @@ NADA dokumentasjon
 
 ## Frontend: Felles komponenter
 
-Frontend applikasjonene er bygget i React med [https://baseweb.design/](Base Web React UI Framework)
+Frontend applikasjonene er bygget i React med [Base Web React UI Framework](https://baseweb.design/)
 
 * [React komponenter](https://github.com/navikt/data-catalog-components)
   * [Storybook](https://navikt.github.io/data-catalog-components). Visuell presentasjon og dokumentasjon av komponentene 
