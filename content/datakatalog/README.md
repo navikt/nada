@@ -23,9 +23,9 @@ Datamodell
 
 ### Arkitekturbesluttninger
 
- * [Valg av hovedarkitektur](/ard/valg_av_hovedarkitektur.md)
- * [Valg av databasemodell](/ard/valg_av_databasemodell.md)
- * [Valg av database](/ard/valg_av_database.md)
+ * [Valg av hovedarkitektur](/arkitektur/valg_av_hovedarkitektur.md)
+ * [Valg av databasemodell](/arkitektur/valg_av_databasemodell.md)
+ * [Valg av database](/arkitektur/valg_av_database.md)
 
 ### Applikasjoner
 
