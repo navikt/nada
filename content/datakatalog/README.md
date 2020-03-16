@@ -12,7 +12,16 @@ Datakatalogen har to hovedformål:
 
 ## Arkitektur
 
-![Hovedkomponenter](komponenter.png)
+Overordnet arkitektur
+
+![Hovedkomponenter](overordnet_arkitektur.png)
+
+
+Datamodell
+
+![Datamodell](databasemodell_konseptuell.png)
+
+
 
 ### Applikasjoner
 
