@@ -8,7 +8,9 @@ NADA dokumentasjon
 
 * [Om NADA på Confluence](https://confluence.adeo.no/pages/viewpage.action?pageId=338181121)
 
-## Felles komponenter
+## Frontend: Felles komponenter
+
+Frontend applikasjonene er bygget i React med [https://baseweb.design/](Base Web React UI Framework)
 
 * [React komponenter](https://github.com/navikt/data-catalog-components)
   * [Storybook](https://navikt.github.io/data-catalog-components). Visuell presentasjon og dokumentasjon av komponentene 
