@@ -2,9 +2,17 @@
 
 Datakatalogen har to hovedformål: 
 
-* Gjøre data fra NAV lett tilgjengelige for eksterne brukere. Dette gjør vi gjennom http://data.nav.no
+* Gjøre data fra NAV tilgjengelig for eksterne brukere på en brukervennlig måte. Dette gjør vi gjennom http://data.nav.no samt ved å gjøre metadata om datasettene tilgjengelig i [Felles datakatalog](https://fellesdatakatalog.digdir.no/)
 
 * Øke produktivitetet til analytikere og data scientister i NAV. Dette gjør vi ved å indeksere data ressurser (begreper, tabell, strømmer, data visualiseringer og andre dataprodukter) og å gjøre disse lett å finne i et søkegrensesnitt 
+
+## Brukergrupper og ønskemål
+
+![Brukergrupper](/brukergrupper.png)
+
+## Arkitektur
+
+
 
 ### Applikasjoner
 
@@ -41,7 +49,6 @@ Datakatalogen har to hovedformål:
 
 ### Utvikling
 * [Trello](https://trello.com/b/kd4dRGH9/data-catalog)
-* [Arkitektur]
 * [Brukerhistorier](./stories.md)
 * [Møtereferater](https://github.com/navikt/data-catalog-notes)
 
