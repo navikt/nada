@@ -28,6 +28,7 @@ Koden og prosjektrapporten er åpent tilgjengelig under MIT lisens.
 ### Link til ROS
 
 ### Arkitektur
+![AaaS arkitetur diagram](resources/AaaS-arkitektur.png)
 
 ### Roadmap
 Det er for øyeblikket ikke planlagt videreutvikling av AaaS, bortsett fra oppdateringer avhengigheter og andre 
