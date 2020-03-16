@@ -8,7 +8,7 @@ Prosjektgruppen har utviklet en løsning som forenkler arbeidet med formell anon
 re-identifiseringsrisiko. Løsningen bygger videre på det etablerte anonymiseringsverktøyet 
 [ARX](https://arx.deidentifier.org/), ARX er populær blant institusjoner som driver med deling av forskningsdata. **Anonymization as a Service** prosjektet har siktet på å gjøre ARX tilgjengelig for et bredere publikum ved å gjøre kjernefunksjonalitet tilgjengelig som en mikrotjeneste med klienter/programpakker tilpasset for ulike brukergrupper. 
 Prosjektet har særlig vektlagt behovene som oppstår i arbeidsprosessen til data scientister i NAV IT, 
-og gjør således etablert anonymiseringsmetodikk lettere tilgjengelig i Python og Jupiter Notebooks, se [PyARXaaS](https://github.com/navikt/PyARXaaS).
+og gjør således etablert anonymiseringsmetodikk lettere tilgjengelig i Python og Jupiter Notebooks(se [PyARXaaS](https://github.com/navikt/PyARXaaS)).
 Koden og prosjektrapporten er åpent tilgjengelig under MIT lisens.
 
 - [ARXaaS](https://github.com/navikt/ARXaaS)
