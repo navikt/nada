@@ -6,13 +6,13 @@ Datakatalogen har to hovedformål:
 
 * Øke produktivitetet til analytikere og data scientister i NAV. Dette gjør vi ved å indeksere data ressurser (begreper, tabell, strømmer, data visualiseringer og andre dataprodukter) og å gjøre disse lett å finne i et søkegrensesnitt 
 
-## Brukergrupper og ønskemål
+### Brukergrupper og ønskemål
 
 ![Brukergrupper](brukergrupper.png)
 
 ## Arkitektur
 
-
+![Hovedkomponenter](komponenter.png)
 
 ### Applikasjoner
 
