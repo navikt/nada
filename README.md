@@ -28,8 +28,11 @@ Felleskomponenter:
 
 ### API'er
   [https://dv-resource-rw-api.nais.adeo.no/dcat](https://dv-resource-rw-api.nais.adeo.no/dcat). Elastic search index for datakatalogen
-
-
+  
+  Repo:
+  [Cosmos DB API (tinkerPop) basert graf database)](https://github.com/navikt/data-catalog-api). Cosmos DB API
+  [RDF API](https://github.com/navikt/data-catalog-rdf). API som Felles datakalog bruker for å laste data
+  
 ### Repoer
 * [Tekster (markdown](https://github.com/navikt/data-catalog-markdown). 'About' tekster som brukes i viewer applikasjonene.
 * [Tabell viewer](https://github.com/navikt/data-catalog-table-viewer). Visning av databasetabeller inkl dataprofilering
