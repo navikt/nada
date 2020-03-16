@@ -12,19 +12,19 @@ og gjør således etablert anonymiseringsmetodikk lettere tilgjengelig i Python 
 Koden og prosjektrapporten er åpent tilgjengelig under MIT lisens.
 
 - [ARXaaS](https://github.com/navikt/ARXaaS)
-  Kjernetjenesten. En "Anonymisering mikrotjeneste" som tilgjengeliggjør funksjonalitet for anonymiering som HTTP REST APIer.
+  Kjernetjenesten. En "Anonymisering mikrotjeneste" som tilgjengeliggjør funksjonalitet for anonymisering som HTTP REST APIer.
 - [PyARXaaS](https://github.com/navikt/PyARXaaS)
   Python bibliotek for enkel integrasjon med ARXaaS APIene. 
 - [WebARX](https://github.com/navikt/webarx-poc)
-  En Wepapplikajson som leverer et forenklet GUI for anonymisering til bruker. Applikasjonen utnytter APIene til ARXaaS.
+  En Wepapplikajson som leverer et forenklet GUI for anonymisering. Applikasjonen utnytter APIene til ARXaaS.
 
 #### Hva kan man bruke det til?
 Se [ARX dokumentasjonen som AaaS bygger på for mer informasjon](https://arx.deidentifier.org/overview/)
-ARXaaS/PyARXaaS/WebARX tilbyr re-identifikasjons risikovurdering av tabulære datasett samt effektiv anonymisering av datasettet med en rekke ulike anonymiseringsmetodikker. Dette gir altså bruker mulighet til å få en objektiv vurdering av risikometrikker forbundet med datasettet, samt funksjonalitet for å redusere denne risikoen. Anonymiseringen prosessen er del-automatiserer og baserer seg på brukerdefinerte krav, i tillegg til å anonymisere så prøver ARXaaS alltid å minimerere informasjonstapet. Bruker slipper derfor å bruke unødvendig tid på prøving og feiling. 
+ARXaaS/PyARXaaS/WebARX tilbyr re-identifikasjons risikovurdering av tabulære datasett samt effektiv anonymisering av datasettet med en rekke ulike anonymiseringsmetodikker. Dette gir altså bruker mulighet til å få en objektiv vurdering av risikometrikker forbundet med datasettet, samt funksjonalitet for å redusere denne risikoen. Anonymiseringen prosessen er del-automatiserer og baserer seg på brukerdefinerte krav, i tillegg til å anonymisere så prøver ARXaaS(gjennom ARX) alltid å minimerere informasjonstapet. Bruker slipper derfor å bruke unødvendig tid på prøving og feiling.
 
 #### Hvordan komme i gang?
 For å komme i gang med å bruke **Anonymizaiton as a Service**:
-1. Bekreft at datasettet som skal anonymiseres støttes av ARX (her mener vi ikke filtypen med datamodellen til datasettet. Ta kontakt om usikker [Kontaktinformasjon](#kontaktinformasjon))
+1. Bekreft at datasettet som skal anonymiseres støttes av ARX (En rad er en entitet, bare en rad pr entitet osv. Ta kontakt om usikker [Kontaktinformasjon](#kontaktinformasjon))
 2. ARXaaS tjenesten er tilgjengelig i dev-fss og prod-ffs. Ta kontakt for link. ARXaaS kan også settes opp lokalt, enten ved å kjøre applikasjonen som en Java JAR eller ved å bruke Docker image. Se [ARXaaS](https://github.com/navikt/ARXaaS) for dokumentasjon av oppsett.
 3. Utnytt en av klient/programpakke løsningene eller gjør direkte kall mot ARXaaS.
     - **Bruk WebARX** WebARX er tilgjengelig på prod-fss og dev-fss. Ta kontakt for link.
