@@ -2,7 +2,8 @@
 
 ## Status
 
-Vi har i dag en graf datamodell implementert i Postgres
+For lagring av metadata bruker datakatalogen i dag en graf datamodell implementert i PostgreSQL.
+Databasen oppdateres via et [API implementert i Python](https://github.com/navikt/data-catalog-graph)
 
 ## Kontekst
 
