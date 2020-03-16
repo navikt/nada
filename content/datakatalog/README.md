@@ -21,7 +21,11 @@ Datamodell
 
 ![Datamodell](databasemodell_konseptuell.png)
 
+### Arkitekturbesluttninger
 
+ * [Valg av hovedarkitektur](/ard/valg_av_hovedarkitektur.md)
+ * [Valg av databasemodell](/ard/valg_av_databasemodell.md)
+ * [Valg av database](/ard/valg_av_database.md)
 
 ### Applikasjoner
 
