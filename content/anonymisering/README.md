@@ -43,7 +43,7 @@ Epost: Anonymisering@nav.no
 #### Arkitektur
 ![AaaS arkitektur diagram](resources/AaaS-arkitektur.png)
 
-### Annen dokumentasjon
+#### Annen dokumentasjon
 - Publikasjons siden til ARX inneholder mange interessante artikler ang anonymisering: https://arx.deidentifier.org/publications/
 - Bachelorrapporten for ARXaaS prosjektet: https://oslomet-arx-as-a-service.github.io/resources/Anonymization_as_a_Service_Thesis.pdf
 
