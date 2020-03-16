@@ -44,4 +44,7 @@ Felleskomponenter:
 
 [Dataverk](./DATAVERK.md)
 
+## Anonymisering
+* [Anonymisering](/content/anonymisering/README.md)
+
 
