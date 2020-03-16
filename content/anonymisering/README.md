@@ -27,16 +27,18 @@ For å komme i gang med å bruke AaaS:
 1. Bekreft at datasettet som skal anonymiseres støttes av ARX (her mener vi ikke filtypen med datamodelen til datasettet. Ta kontakt om usikker [Kontaktinformasjon](#kontaktinformasjon))
 2. ARXaaS tjenesten er tilgjengelig i dev-fss og prod-ffs. Ta kontakt for link.
 3. Unytt en av klient/programpakke løsningene eller gjør direkte kall mot ARXaaS.
-3a. **Bruk WebARX** WebARX er tilgjengelig på prod-fss og dev-fss. Ta kontakt for link.
-3b. **Bruk PyARXaaS** Se dokumentasjon for bruk av PyARXaaS her: [PyARXaaS](https://github.com/navikt/PyARXaaS). For å bruke PyARXaaS må du ha en fungerende URL til ARXaaS. for å nå instansen på dev-fss eller prod-fss må du derfor bruke *Utvikler image* om du skal scripte en Jupiter notebook eller lignende. NAIS applikasjoner når ARXaaS som vanlig.
-3c. **Direkte kall mot ARXaaS** ARXaaS er en vanlig mikrotjeneste med REST APIer. Se dokumentasjonen på [ARXaas](https://github.com/navikt/ARXaaS) for beskrivelse av APIene.
+    - **Bruk WebARX** WebARX er tilgjengelig på prod-fss og dev-fss. Ta kontakt for link.
+    - **Bruk PyARXaaS** Se dokumentasjon for bruk av PyARXaaS her: [PyARXaaS](https://github.com/navikt/PyARXaaS). For å bruke PyARXaaS må du ha en fungerende URL til ARXaaS. for å nå instansen på dev-fss eller prod-fss må du derfor bruke *Utvikler image* om du skal scripte en Jupiter notebook eller lignende. NAIS applikasjoner når ARXaaS som vanlig.
+    - **Direkte kall mot ARXaaS** ARXaaS er en vanlig mikrotjeneste med REST APIer. Se dokumentasjonen på [ARXaas](https://github.com/navikt/ARXaaS) for beskrivelse av APIene.
 
 
 #### Kontaktinformasjon
 Slack: #anonymisering
+
 Epost: Anonymisering@nav.no
 
 #### Link til ROS
+[ROS for Anonymization as a Service](https://apps.powerapps.com/play/f8517640-ea01-46e2-9c09-be6b05013566?ID=126)
 
 #### Arkitektur
 ![AaaS arkitetur diagram](resources/AaaS-arkitektur.png)
