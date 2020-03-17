@@ -21,9 +21,9 @@ Felleskomponenter:
 
 * [Om datakatalogen](/content/datakatalog/README.md)
 
-## Analyseplattform
+## Plattform for analyse og maskinlæring
 
-* [Om analyseplattform](/content/analyseplattform/README.md)
+* [Om analyseplattformen](/content/analyseplattform/README.md)
 
 ## Behandlingskatalog
 
