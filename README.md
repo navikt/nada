@@ -26,15 +26,11 @@ Felleskomponenter:
 * [Om analyseplattformen](/content/analyseplattform/README.md)
 
 ## Behandlingskatalog
+* [Om behandlingskatalogen](/behandlingskatalog.md)
 
 * [Applikasjon](https://behandlingskatalog.nais.adeo.no). Behandlingskatalogen
 * [Applikasjon Test](https://behandlingskatalog.nais.preprod.local). Behandlingskatalogen (Test)
 
-* [API](https://polly.nais.adeo.no/swagger-ui.html). Swagger API
-* [API Test](https://polly.nais.preprod.local/swagger-ui.html). Swagger API (Test)
-
-* [Repo Backend](https://github.com/navikt/polly). Backend Repo
-* [Repo Frontend](https://github.com/navikt/data-catalog-editor). Frontend Repo
 
 ## Kafka
 
