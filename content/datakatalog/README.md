@@ -21,14 +21,22 @@ Metadata fra datakatalogen kan presenters i en 'viewer' applikasjon som er skred
 
 Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan f.eks. presentere som datapakker. Metadata kan også benyttes som datakilde i andre applikasjoner.
 
-Overordnet arkitektur
+### Overordnet arkitektur
+
 
 ![Hovedkomponenter](overordnet_arkitektur.png)
 
 
-Datamodell
+### Datamodell
+
 
 ![Datamodell](databasemodell_konseptuell.png)
+
+
+### Kobling mot andre domener
+
+
+![Graf databasel](datakatalog_domene_graf.png)
 
 ### Arkitekturbeslutninger
 
