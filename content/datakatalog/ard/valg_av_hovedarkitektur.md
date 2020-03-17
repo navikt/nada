@@ -10,12 +10,15 @@ Denne ADRen er fortsatt under utarbeidelse.
 
 NAV er en sammensatt virksomhet med et stort antall av alle typer entiteter: mange teams, folk og roller; mange systemer, applikasjoner og APIer; mange prosesser, behandlinger og hjemler osv. Informasjon om disse entitetene er ofte knyttet sammen via forskjellige type relasjoner (et team består av et knippe medlemmer, og har ofte ansvar for et/flere system som igjen består av en håndfull mindre applikasjoner, osv). 
 
-Forskjellige behov i virksomheten behøver forskjellige uttrekk av disse entitene og deres sammenhenger. Det er også viktig for virksomheten at vi vet om vi snakker om samme entitet eller ikke i forskjellige sammenhenger. Et eksempel kan være at "Team Dagpenger" refereres til på en forutsigbar måte i forskjellige kontekster:
-- Hvilke systemer og applikasjoner et team har ansvar for
-- Knyttet til github repoer og rettighet til å merge PR inn i master og deploye nye versjoner av applikasjonene
-- Hvilke medlemmer som er i teamet og som kontaktes når når applikasjonene opplever feil og ustabilitet
-- Hvilke kanaler teamet kan nåes på, hvilke dashboards og logger de eier/har tilgang til, og hvor man finner mer informasjon 
-- Hvilke data som ligger i systemene, hvilke behandlinger som gjøres mot disse dataene og hvilke hjemler behandlingene er knyttet til
+Forskjellige behov i virksomheten behøver forskjellige uttrekk av disse entitene og deres sammenhenger. Det er også viktig for virksomheten at vi vet om vi snakker om samme entitet eller ikke i forskjellige sammenhenger. 
+
+Et eksempel på sammenhenger som mange til stadighet har nytte av å kjenne til:
+- Hva heter Teamet og hvem er dets medlemmer
+- Hvilke systemer og applikasjoner teamet ansvar for
+- Hvilke github-repoer styrer de, for å merge PR inn i master og deploye nye versjoner av applikasjonene
+- Hvordan kan man best kontakte team/folk når applikasjonene deres opplever feil og ustabilitet
+- Hvilke dashboards og logger finnes for applikasjonene, og hvor finner man evt mer informasjon 
+- Hvilke data ligger i systemene, hvilke behandlinger gjøres mot disse dataene og hvilke hjemler er behandlingene knyttet til
 - Osv
 
 Tilsvarende gjelder for alle de andre entitetstypene - de brukes og refereres til i mange forskjellige kontekster.
