@@ -46,6 +46,12 @@ Team datajegerne har utviklet og forvalter løsningen. Du kan nå oss på slack 
 ## Litt om arkitektur
 TODO
 
+### Lenker til API og repo
+* [API](https://polly.nais.adeo.no/swagger-ui.html). Swagger API
+* [API Test](https://polly.nais.preprod.local/swagger-ui.html). Swagger API (Test)
+
+* [Repo Backend](https://github.com/navikt/polly). Backend Repo
+* [Repo Frontend](https://github.com/navikt/data-catalog-editor). Frontend Repo
 
 ## Overordnet roadmap - hva kommer før sommeren?
 * Løsningen skal utvides til å støtte PVK del 1 (nå kalt _Grunnleggende personvernavklaringer_) slik at behandlinger og rettslig grunnlag for bruken av personopplysninger bare dokumenteres ett sted, og ikke i både en behandlingsoversikt og i en PVK del 1. Ambisjonen er å erstatte hele PVK del 1.
