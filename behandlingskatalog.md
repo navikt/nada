@@ -44,14 +44,23 @@ Team datajegerne har utviklet og forvalter løsningen. Du kan nå oss på slack 
 
 
 ## Litt om arkitektur
-TODO
+Behandlingskatalogen består av backend Polly (fra "Policy Catalog") og en frontend (github repo data-catalog-editor).
+All data er åpent tilgjengelig i NAV uten innlogging, brukere med skrivetilgang kan endre data. Innlogging skjer via Single sign-on via Azure AD, brukere i frontend vil få en session cookie som varer i 14 dager. APIet støtter innlogging via Authorization header med Bearer token (access token fra Azure).
+
+Løsningen bruker postgresql som datakilde men de fleste felter er lagret i JSONB kolonner.
+Eksterne kilder til data inkluderer nora (nais-team oversikt) og begrepskatalogen.
+En kafka topic blir oppdatert med behandlinger og dens opplysningstyper, tanken er at denne kan tilpasses til å bli brukt i tilgangskontroll i fremtiden, men det er en stund siden denne er gjennomgått.
+
+### Administratorer (per nå datajegerne) kan aksessere noen få admin tjenester
+* Versjonshistorikk som inkludert timestamp , hvem som har endret noe, samt et snapshot av hele dataobjektet når det ble endret.
+* Administrering av kodelister, for å sikre datakvalitet er en rekke felter i løsningen basert på internt kontrollerte kodeverk. (Om noen av disse skal flyttes ut og bli NAV-kodeverk er en pågående diskusjon)
 
 ### Lenker til API og repo
-* [API](https://polly.nais.adeo.no/swagger-ui.html). Swagger API
-* [API Test](https://polly.nais.preprod.local/swagger-ui.html). Swagger API (Test)
+* [Swagger API](https://polly.nais.adeo.no/swagger-ui.html)
+* [Swagger API (Test)](https://polly.nais.preprod.local/swagger-ui.html)
 
-* [Repo Backend](https://github.com/navikt/polly). Backend Repo
-* [Repo Frontend](https://github.com/navikt/data-catalog-editor). Frontend Repo
+* [Repo Backend](https://github.com/navikt/polly)
+* [Repo Frontend](https://github.com/navikt/data-catalog-editor)
 
 ## Overordnet roadmap - hva kommer før sommeren?
 * Løsningen skal utvides til å støtte PVK del 1 (nå kalt _Grunnleggende personvernavklaringer_) slik at behandlinger og rettslig grunnlag for bruken av personopplysninger bare dokumenteres ett sted, og ikke i både en behandlingsoversikt og i en PVK del 1. Ambisjonen er å erstatte hele PVK del 1.
