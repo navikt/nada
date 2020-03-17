@@ -1,3 +1,12 @@
+# Dataverk: Python pakke for dataaksess, ETL og publisering av datapakker
+
+* [Github Repo](https://github.com/navikt/dataverk).
+
+* [Dataverk Vault Repo](https://github.com/navikt/dataverk-vault). Bibliotek med api mot vault for secrets handling og database credential generering for dataverk
+
+* [Dataverk API Repo](https://github.com/navikt/dataverk-api). Dataverk web-API for å lese ressursfiler fra ceph bucket storage og metadata fra elastic search index.
+
+
 ## Brukergrupper
 
 ![Brukergrupper](./docs/brukergrupper.svg)
