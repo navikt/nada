@@ -8,7 +8,7 @@ Kom igang: https://kubeflow.adeo.no
 
 Brukerstøtte: #naisflow
 
-[Om Kubeflow](kubeflow/README.md)
+[Om Kubeflow på NAIS](kubeflow/README.md)
 
 ## Dataverk
 
