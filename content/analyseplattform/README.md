@@ -16,7 +16,7 @@ Kom igang: pip install dataverk
 
 Brukerstøtte: #datakatalog-intern
 
-[Brukerdokumentasjon](https://dataverk.readthedocs.io/en/latest/
+[Brukerdokumentasjon](https://dataverk.readthedocs.io/en/latest)
 
 [Om dataverk](dataverk/README.md)
 
