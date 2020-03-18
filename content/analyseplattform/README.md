@@ -2,7 +2,7 @@
 
 ![Hovedkomponenter](Analyseplattform.png)
 
-## Kubeflow
+## Kubeflow på NAIS
 
 Kom igang: https://kubeflow.adeo.no
 
