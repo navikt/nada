@@ -11,7 +11,7 @@ Alle behandlinger beskriver:
 * hvor i organisasjonen behandlingen utføres, eies og tilhørende IT-løsninger forvaltes
 * lagringstid, automatisk behandling, bruk av databehandlere mm.
 
-Den primære **hensikten** med Behandlingskatalogen er å ivareta Personopplysningslovens artikkel 30, krav til en behandlingsoversikt (en protokoll over alle behandlinger en virksomhet utfører på personopplysninger). Informasjonen i katalogen er nyttig utover å dokumentere compliance til Personopplysningsloven da det kan være et godt oppslagsverk for mange spørsmål som vist under.
+Den primære **hensikten** med Behandlingskatalogen er å ivareta [Personopplysningslovens artikkel 30](https://lovdata.no/lov/2018-06-15-38/gdpr/a30), krav til en behandlingsoversikt (en protokoll over alle behandlinger en virksomhet utfører på personopplysninger). Informasjonen i katalogen er nyttig utover å dokumentere compliance til Personopplysningsloven da det kan være et godt oppslagsverk for mange spørsmål som vist under.
 
 ## Hva kan man bruke det til?
 Behandlingskatalogen skal først og fremst gi en komplett oversikt over alle behandlinger etaten utfører på personopplysninger. Løsningen kan også gi svar på spørsmål som:
@@ -30,6 +30,13 @@ Behandlingskatalogen skal først og fremst gi en komplett oversikt over alle beh
 
 ## Hvordan komme i gang?
 Løsningen krever foreløpig at du må åpne en nettleser som kan åpne interne applikasjoner. Gå inn på Start/NavApplikasjoner og åpne en nettleser der. Deretter kan du lime in lenkene under til løsningen. (Vi jobber med å åpne opp så løsningen er lettere tilgjengelig)
+
+Det meste av løsningens skal være selvforklarende. 
+
+For de av dere som skal dokumentere en hel behandling, velg _behandling_ i venstremenyen, og dertter _+ Opprett ny_. Fyll så ut skjemaet. Til slutt skal du knytte opplysningstyper til behandlingen, og dette kan gjøres på to måter:
+1. Legg til en og en opplysningstype ved å klikke på _+ Opplysningstyper_
+2. Legg til et eksisterende dokument (en samling av opplysningstyper) ved å klikke på _+ Dokument_
+Et godt tips her er å gå inn på _+ Dokument_ og deretter velge _Standard opplysningstyper_, som da vil legge til noen titalls standard opplysningstyper på en gang. 
 
 **Produksjon**
 Alle i NAV har leserettigheter til løsningen: [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no)
