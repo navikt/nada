@@ -27,7 +27,7 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 ![Hovedkomponenter](overordnet_arkitektur.png)
 
 
-### Datamodell
+### Domenemodell. Kun ment som illustrasjon. Grafen inneholder også andre typer noder og forbindelser   
 
 
 ![Datamodell](databasemodell_konseptuell.png)
