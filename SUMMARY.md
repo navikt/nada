@@ -1,8 +1,14 @@
 # Summary
 
+* [Amplitude](amplitude.md)
 * [Kafka](content/kafka/README.md)
 * [Kataloger](kataloger.md)
     * [Behandlingskatalog](behandlingskatalog.md)
     * [Datakatalog](content/datakatalog/README.md)
+    * [Begrepskatalog](begrepskatalog.md)
+    * [Teamkatalog](teamkatalog.md)
 * [Analyseplattform](content/analyseplattform/README.md)
-* [Anonymisering](contend/anonymisering/README.md)
+    * [Kubeflow](content/analyseplattform/kubeflow/README.md)
+    * [Dataverk](content/analyseplattform/dataverk/README.md)
+* [Anonymisering](content/anonymisering/README.md)
+* [Åpne data](apnedata.md)
