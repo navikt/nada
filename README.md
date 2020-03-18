@@ -26,7 +26,7 @@ Felleskomponenter:
 * [Om analyseplattformen](/content/analyseplattform/README.md)
 
 ## Behandlingskatalog
-* [Om behandlingskatalogen](/behandlingskatalog.md)
+* [Om behandlingskatalogen](/content/datajegerne/behandlingskatalog.md)
 
 * [Applikasjon](https://behandlingskatalog.nais.adeo.no). Behandlingskatalogen
 * [Applikasjon Test](https://behandlingskatalog.nais.preprod.local). Behandlingskatalogen (Test)
