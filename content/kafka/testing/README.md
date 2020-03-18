@@ -7,7 +7,7 @@ Dette gjør at det blir ganske greit å lage integrasjonstester mot ett ekte Kaf
 ## Gradle
 ```gradle
 dependencies {
-    testImplementation("no.nav:kafka-embedded-env:2.1.1")
+    testImplementation("no.nav:kafka-embedded-env:2.4.0")
 }
 ```
 ## Maven
@@ -16,7 +16,7 @@ dependencies {
     <dependency>
         <groupId>no.nav</groupId>
         <artifactId>kafka-embedded-env</artifactId>
-        <version>2.1.1</version>
+        <version>2.4.0</version>
         <scope>test</scope>
     </dependency>
 </dependencies>
