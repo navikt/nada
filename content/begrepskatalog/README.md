@@ -20,3 +20,18 @@ I den eksterne versjon av datakatalogen vil kun de begrepene med godkjent status
 I den interne versjon av datakatalogen vil alle begrepene bli vist men vil kun vise inneholde til de godkjente begrepene.
 
 Begrepene innhentet fra Jira er lagt inn i en liste og sortert etter «sist oppdatert». Hvis det eksisterer duplikater for et begrep, vil kun det sist oppdaterte begrepet bli hentet.
+
+## Hva kan man bruke det til?
+Begrepskatalogen skal først og fremst gi en komplett oversikt over alle godkjente begrep.
+
+## Hvordan komme i gang?
+Begrepskatalogen er tilgjengelig som et view i datakatalogen.
+
+* For internt bruk gå til: https://data.adeo.no/
+* For eksternt bruk gå til: https://dataverk.nav.no/
+
+## Kontaktinformasjon
+
+Ta kontakt med #datakatalog-intern på Slack
+
+
