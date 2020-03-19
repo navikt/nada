@@ -24,7 +24,7 @@ Datakatalogen har to hovedformål:
 
 ### Hvordan komme i gang?
 
-Som bruker av data: Gå til en av [søkesiden](data.adeo.no) 
+Som bruker av data: Gå til [søkesiden](data.adeo.no) 
 
 Som produsent av data:
 
