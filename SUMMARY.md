@@ -9,7 +9,7 @@
 * [Kataloger](kataloger.md)
     * [Behandlingskatalog](content/datajegerne/behandlingskatalog.md)
     * [Datakatalog](content/datakatalog/README.md)
-    * [Begrepskatalog](begrepskatalog.md)
+    * [Begrepskatalog](content/begrepskatalog/README.md)
     * [Teamkatalog](content/datajegerne/teamkatalog.md)
 * [Analyseplattform](content/analyseplattform/README.md)
     * [Kubeflow](content/analyseplattform/kubeflow/README.md)
