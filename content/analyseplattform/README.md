@@ -8,7 +8,7 @@ Produktet består av infrastruktur og en verktøykasse for å jobbe jobbe med an
 
 Infrastrukturen består før øyeblikket av [Kubeflow](https://www.kubeflow.org) på NAIS.
 
-Vi har som mål å tilby bedre støttte for sammenstilling av store datasett gjennom å tilgjengeligjøre et dask cluster på NAIS og en database for sammenstilling av data med SQL.
+Vi har som mål å tilby bedre støttte for sammenstilling av store datasett gjennom å tilby [dask](https://dask.org) på NAIS samt en kraftig database (datalab serveren) for sammenstilling av data med SQL.
 
 Vi har også som mål å tilby GPU aksellert ETL og maskinlæring gjennom blant annet [Rapids](https://developer.nvidia.com/rapids)
 
