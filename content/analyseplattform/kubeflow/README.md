@@ -10,3 +10,5 @@
 * [Repo for docker images for kubeflow](https://github.com/navikt/kubeflow-dataverk-base)
 
 * [Test ML på Kubeflow](https://github.com/navikt/kubeflow-ml-test). Eksempelprosjekt med åpne data
+
+* [Getting started guide](KUBEFLOW_GETTING_STARTED.md). Instruksjoner for å komme i gang med kubeflow
