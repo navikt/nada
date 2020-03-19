@@ -17,6 +17,8 @@ Prosjektet Åpne data er gjort i samarbeid med Kunnskapsavdelingen.
 
 **Interne brukere:** Lage datapakkene ved hjelp av pythonpakken [Dataverk](https://github.com/navikt/nada/blob/master/content/analyseplattform/dataverk/README.md) i plattformen [Kubeflow](https://github.com/navikt/nada/tree/master/content/analyseplattform/kubeflow).
 
+Kode for datapakker under arbeid: [github opendata](https://github.com/navikt/opendata)
+
 ### Kontaktinformasjon
 **For å følge med på prosjektet Åpne data:** Slack: #åpne-data
 
