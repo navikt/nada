@@ -11,13 +11,21 @@ Plattformen bygger på Kubeflow. Kubeflow er tilgjengelig på NAIS.
 
 #### Analytisk arbeid: 
 
-Hente data: Python biblioteket dataverk inneholder metoder som gjør det enekelt å lese data fra ulike typer interne datakilder til en pandas dataframe.  
+Hente data: 
 
-Bearbeide og sammenstille data: Jupyter notebooks på Kubeflow 
+- Python biblioteket dataverk inneholder metoder som gjør det enekelt å lese data fra ulike typer interne datakilder til en pandas dataframe.  
 
-Analysere data: Jupyter notebooks på Kubeflow  
+Bearbeide og sammenstille data: 
 
-Presentere resultatene: Produsere og publisere data 
+- Jupyter notebooks på Kubeflow 
+
+Analysere data: 
+
+- Jupyter notebooks på Kubeflow  
+
+Presentere resultatene: Produsere og publisere data
+
+- Dataverk biblioteket understøtter sammenstilling og publisering av datapakker.
 
 #### Maskinlæring: Utvikling, trening og produksjonssetting av modeller
 
