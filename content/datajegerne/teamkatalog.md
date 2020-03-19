@@ -35,9 +35,13 @@ Team datajegerne har utviklet og forvalter løsningen. Du kan nå oss på slack 
 
 
 ## Litt om arkitektur
-TODO
+Team katalog repository er bygget på toppen av en postgres tabell som lagrer json i en 'document-db'.
+Integrasjon mot NOM for henting av personer, Nora for henting av nais teams.
+Siste versjon av et team vil bli publisert på en compacted kafka topic.
+All data er åpent tilgjengelig i NAV uten innlogging, brukere med skrivetilgang kan endre data. Innlogging skjer via Single sign-on via Azure AD, brukere i frontend vil få en session cookie som varer i 14 dager. APIet støtter innlogging via Authorization header med Bearer token (access token fra Azure).
 
-
+### Administratorer (per nå datajegerne) kan aksessere noen få admin tjenester
+* Versjonshistorikk som inkludert timestamp , hvem som har endret noe, samt et snapshot av hele dataobjektet når det ble endret.
 
 ### Lenker til API og repo
 * [Swagger API (Test)](https://teamkatalog-api.nais.preprod.local/swagger-ui.html)
