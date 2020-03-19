@@ -3,7 +3,7 @@
 
 ## Hva er produktet?
 
-Datakatalogen gir oversikt over informasjon om data og dataprodukter i NAV. Det er tre ulike innganger til katalogen:
+Datakatalogen gir oversikt over og informasjon om data og dataprodukter i NAV. Det er tre ulike innganger til katalogen:
 
 * [Åpne data](https://data.nav.no). Dette er et utsnitt av data og dataprodukter som er offentlig tilgjengelige.
 
