@@ -25,7 +25,9 @@ Kubeflow Pipelines kan brukes til bygge maskinlæringspipelines.
 
 Vi har som mål å gjøre Tensorflow Extended (TFX) tilgjengelig på plattformen.
 
-#### Automatisert publisering av data og statistikk:
+#### Ad-hoc og automatisert publisering av data og statistikk:
+
+Dataverk biblioteket understøtter sammenstilling og publisering av datapakker.
 
 Pipelines på Kubeflow kan brukes til å sette opp jobber som publiserer data og statistikk periodisk eller ved trigget av en hendelse
 
