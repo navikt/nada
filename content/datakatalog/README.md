@@ -32,6 +32,8 @@ Som produsent av data:
 
 * Jeg har en kafka topic og ønsker at den skal skal bli tilgjengelig i katalogen: Ta kontakt med #datakatalog-intern på Slack så finner vi sammen ut av hvordan det kan løses 
 
+* Jeg har et API og ønsker at det skal skal bli tilgjengelig i katalogen: Ta kontakt med #datakatalog-intern på Slack så hjelper vi deg i gang.
+
 * Jeg har ønsker å publisere et datasett eller en datapakke: Ta kontakt med #datakatalog-intern på Slack så hjelper vi deg i gang.
 
 
