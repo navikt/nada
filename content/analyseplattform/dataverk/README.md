@@ -1,44 +1,77 @@
-# Dataverk: Python pakke for dataaksess, ETL og publisering av datapakker
+# Dataverk
 
-* [Github Repo](https://github.com/navikt/dataverk).
+## Hva er produktet? 
+[Dataverk](https://pypi.org/project/dataverk) er et python bibliotek for datatilgang, 
+samt lagring og publisering av data. Hensikten er å
+forenkle hverdagen til analytikere, data scientists og andre som jobber kodebasert
+med data i NAV gjennom å standardisere lesing fra ulike kilder og lagring av resultater. På den måten 
+kan brukerne konsentrere seg om å analysere og eksperimentere fremfor å måtte 
+slite med ***hvordan*** man får hentet data fra kilder og skrevet til datalagre (datasinks).
 
-* [Dataverk Vault Repo](https://github.com/navikt/dataverk-vault). Bibliotek med api mot vault for secrets handling og database credential generering for dataverk
+#### Tilgang til datakilder
+Biblioteket tilbyr konnektorer mot ulike typer datakilder, eksempelvis oracle, postgreSQL og kafka. Felles 
+for konnektorene er at de alle returnerer data på det samme formatet - som en [pandas](https://pandas.pydata.org/docs) dataframe. 
+Dette gjør at man kan benytte seg av alt pandas tilbyr av funksjonalitet for å 
+utføre transformasjoner og mutasjoner på datasett, samt kombinere data fra ulike kilder.  
 
-* [Dataverk API Repo](https://github.com/navikt/dataverk-api). Dataverk web-API for å lese ressursfiler fra ceph bucket storage og metadata fra elastic search index.
+![Les kilder](dv_les_kilde.PNG)
 
+#### Lagring og publisering av resultater
+For lagring av resultater tilbys det konnektorer mot ulike typer datalagre, f.eks. nais S3
+og google cloud storage. Disse kan enten brukes direkte, eller
+så kan man benytte seg av publiseringsmekanismen som kommer med dataverk biblioteket.
 
-## Brukergrupper
+Å publisere med dataverk innebærer følgende:
+1. Bearbeidede datasett, visualiseringer og annen metadata pakketeres til et
+standardisert "datapakke" format.
+2. Datasett og visualiseringer lagres så i valgte datalager
+3. Metadata skrives til en elastic search index
 
-![Brukergrupper](./docs/brukergrupper.svg)
+Når man har publisert en "datapakke" vil denne være tilgjengelig 
+enten i den [interne](https://data.adeo.no) eller den [eksterne](https://dataverk.nav.no)
+datakatalogen.
 
-## Mulige plattformkomponenter for analyse & ML
+#### Anonymisering og prikking
+Biblioteket har også metoder for å utføre enkel anonymisering og prikking av
+datasett.
 
-![Komponenter](./docs/plattform.svg)
+## Hva kan man bruke det til?
+- Analyse av data
+- Eksperimentering med data
+- Publisering av data internt eller eksternt
+- Jobbe kodebasert med ett verktøy hele veien fra rådata til ferdig produkt 
 
+## Hvordan komme i gang?
 
-## Serverless ETL, ML og produksjon av dataprodukter med Python, Dask og Jupyter Notebooks
+### Fra kubeflow
+Det anbefales å jobbe i jupyter notebook i kubeflow for at det skal
+være enklest å komme i gang. Dette fordi:
+1. Dataverk har en del eksterne avhengigheter som må være installert i det miljøet man 
+jobber (oracle client, postgres driver etc.). Disse avhengighetene vil være installert 
+i dockerimaget som notebook serveren bruker i kubeflow.
+3. Enklere og sikrere håndtering av secrets. Ved bruk av kubeflow håndteres dette likt 
+som appliksjoner på nais, dvs. secrets (f.eks. database credentials) mountes inn
+i containermiljøet og trenger ikke være lagret lokalt.
 
-### Hovedkomponenter
+Se [kubeflow getting started](../kubeflow/KUBEFLOW_GETTING_STARTED.md) eller ta kontakt i #naisflow for hjelp til å 
+komme i gang med kubeflow.
 
-ETL koden utvikles i en Jupyter Notebook. Koden kan kjøres enten ved at notebook'en konverteres til python (notebook2script) eller direkte med Papermill (excute_notebook)
+### Uten kubeflow
+Så lenge man har en python distribusjon >=python36 installert kan biblioteket
+installeres med:
+````bash
+pip install dataverk
+````
 
-Altentive måter å kjøre koden:
-- kjøre lokalt i Jupyter
-- konvertere notebook til Python og kjøre i Python
-- kjøre lokalt med Papermill
-- pakke kode og ressurfiler i et dockerimage som kan skeduleres med kubernetes jobs eller Airflow
-- kjøre med Papermill i Airflow (hente ressursfiler fra github repo, S3/Ceph eller GCS) 
+## Kontaktinformasjon
+Kontakt oss i slackkanalen #dataverk
 
+## Roadmap
+- Jobbes med konnektor mot ibm db2 databaser
 
-![Hovedkomponenter](./docs/komponenter.svg)
+## Link til ROS
+[ROS for dataverk](https://apps.powerapps.com/play/f8517640-ea01-46e2-9c09-be6b05013566?ID=209)
 
-### Høynivå arkitektur på NAIS/Kubernetes
-
-![Høynivå arkitektur](./docs/dataverk.svg)
-
-
-### Design docs & Brukerreiser
-[Design docs](https://docs.google.com/presentation/d/1f6BO91pCkE_TryQyWelxbUWoU16Qi3IaX_Kx1w7qG04/edit?usp=sharing)
-
-
-
+### Lenker
+* [PyPI](https://pypi.org/project/dataverk)
+* [Repo](https://github.com/navikt/dataverk)
