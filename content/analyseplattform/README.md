@@ -10,7 +10,7 @@ Infrastrukturen består før øyeblikket av [Kubeflow](https://www.kubeflow.org)
 
 Vi har som mål å tilby bedre støttte for sammenstilling av store datasett gjennom å tilby [dask](https://dask.org) på NAIS samt en kraftig database (datalab serveren) for sammenstilling av data med SQL.
 
-Vi har også som mål å tilby GPU akselerert ETL og maskinlæring gjennom blant annet [Rapids](https://developer.nvidia.com/rapids)
+Vi har også som mål å tilby GPU akselerert ETL og maskinlæring på NAIS gjennom ny maskinvare og støtte for [Rapids](https://developer.nvidia.com/rapids)
 
 
 ## Hva kan det brukes til?
