@@ -18,6 +18,9 @@ Lag pull request til https://github.com/navikt/kubeflow-yaml der man legger til 
 - ${team} erstattes med teamnavnet valgt i forrige steg 
 - ${image} erstattes med siste versjon av ønsket kubeflow base image (finnes ved å gå til https://github.com/navikt/kubeflow-dataverk-base)
 
+## (optional) Opprett ad gruppe for teamet
+Lag nytt team på https://navno.sharepoint.com/sites/Bestillinger/Lists/Nytt%20Team/AllItems.aspx
+
 ## (optional) Opprett vault område for kubeflow teamet
 Er eget Vault-oppsett for Kubeflow, da vi må ha muligheten til at en serviceAccount skal ha tilgang til flere path.
 
