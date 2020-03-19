@@ -1,7 +1,10 @@
 # Plattform for analyse og maskinlæring
 
+
+
 ## Hva er produktet?
 
+Plattformen bygger på Kubeflow. Kubeflow er tilgjengelig på NAIS. 
 
 
 ## Hva kan det brukes til?
@@ -27,7 +30,7 @@ Pipelines på Kubeflow kan brukes til å sette opp jobber som publiserer data og
 
 ### Kubeflow på NAIS
 
-Kom igang: https://kubeflow.adeo.no
+Logg inn her: https://kubeflow.adeo.no
 
 Brukerstøtte: #naisflow
 
