@@ -7,7 +7,7 @@ Datakatalogen gir oversikt over og informasjon om data og dataprodukter i NAV. D
 
 * [Åpne data](https://data.nav.no). Dette er et utsnitt av data og dataprodukter som er offentlig tilgjengelige.
 
-* [Intern datakatalog](https://data.adeo.no). Inneholder i tillegg til data og dataprodukter som er offentlig tilgjengelige også data og dataprodukter som kun er tilgjengelige internt i NAV
+* [Intern datakatalog](https://data.adeo.no). Inneholder i tillegg til offentlig tilgjengelige data og dataprodukter også data og dataprodukter som kun er tilgjengelige internt i NAV
 
 * [Felles datakatalog](https://fellesdatakatalog.digdir.no). Metadata om data og dataprodukter 
 
