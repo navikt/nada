@@ -20,9 +20,10 @@ Kafka tilbyr både muligheten til å lese meldinger som har skjedd i fortid, og 
 * [Java](producers/java/README.md)
 * [Kotlin](producers/kotlin/README.md)
 
-
+### Annen informasjon
 * [AURA sine kafka sider](https://confluence.adeo.no/display/AURA/Kafka) - har dokumentert en del ting relatert til sikkerhet for Kafka i NAV
 * [ATOM server oversikt](https://confluence.adeo.no/pages/viewpage.action?pageId=239339073) - miljøene er dokumentert her
+
 
 ### Hva må jeg tenke på når jeg lager ett topic på kafka?
 
