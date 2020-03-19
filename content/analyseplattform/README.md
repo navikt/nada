@@ -9,7 +9,7 @@ Plattformen bygger på Kubeflow. Kubeflow er tilgjengelig på NAIS.
 
 ## Hva kan det brukes til?
 
-### Analytisk arbeid: 
+#### Analytisk arbeid: 
 
 Hente data: Python biblioteket dataverk inneholder metoder som gjør det enekelt å lese data fra ulike typer interne datakilder til en pandas dataframe.  
 
@@ -19,13 +19,13 @@ Analysere data: Jupyter notebooks på Kubeflow
 
 Presentere resultatene: Produsere og publisere data 
 
-## Maskinlæring: Utvikling, trening og produksjonssetting av modeller
+#### Maskinlæring: Utvikling, trening og produksjonssetting av modeller
 
 Kubeflow Pipelines kan brukes til bygge maskinlæringspipelines.
 
 Vi har som mål å gjøre Tensorflow Extended (TFX) tilgjengelig på plattformen.
 
-## Automatisert publisering av data og statistikk:
+#### Automatisert publisering av data og statistikk:
 
 Pipelines på Kubeflow kan brukes til å sette opp jobber som publiserer data og statistikk periodisk eller ved trigget av en hendelse
 
