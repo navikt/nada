@@ -1,7 +1,7 @@
 # Begrepskatalog
 
 ## Hva er produktet?
-Begrepskatalogen gir oversikt over alle godkjente begrepene hentet fra Jira, tilgjengelig både internt og eksternt. Metadata om begrepene blir visualisert. 
+Begrepskatalogen gir oversikt over alle godkjente begrepene hentet fra Jira, tilgjengelig både internt og eksternt. Katalogen er **read** versjon av Jira, for å gjøre endringer på begrepene må dette gjøres i [Jira](https://jira.adeo.no/projects/BEGREP/issues/BEGREP-2220?filter=allissues). Katalogen visualiserer metadata om begrepene.
 
 Disse metadataene er:
 
