@@ -1,8 +1,12 @@
 ---
 
 # Kafka
+## Hva er produktet?
 [Kafka](https://kafka.apache.org) er en tjeneste som tilbyr mulighet for å publisere og abonnere på  hendelsesstrømmer. 
 Kafka tilbyr både muligheten til å lese meldinger som har skjedd i fortid, og å abonnere på en fortløpende strøm av hendelser.
+
+## Hva kan man bruke det til?
+
 
 ---
 ## Kom i gang
