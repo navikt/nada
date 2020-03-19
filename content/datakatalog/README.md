@@ -1,6 +1,7 @@
-## Datakatalog
+# Datakatalog
 
-### Hva er produktet?
+
+## Hva er produktet?
 
 Datakatalogen gir oversikt over informasjon om data og dataprodukter i NAV. Det er tre ulike innganger til katalogen:
 
@@ -17,12 +18,12 @@ Datakatalogen har to hovedformål:
 * Øke produktivitetet til analytikere og data scientister i NAV. Dette gjør vi ved å berike og indeksere data ressurser (begreper, tabell, strømmer, data visualiseringer og andre dataprodukter) og å gjøre disse lett å finne i et søkegrensesnitt.
 
 
-### Hvem er dette laget for?
+## Hvem er dette laget for?
 
 ![Brukergrupper](brukergrupper.png)
 
 
-### Hvordan komme i gang?
+## Hvordan komme i gang?
 
 Som bruker av data: Gå til [søkesiden](data.adeo.no) 
 
@@ -37,8 +38,12 @@ Som produsent av data:
 * Jeg har ønsker å publisere et datasett eller en datapakke: Ta kontakt med #datakatalog-intern på Slack så hjelper vi deg i gang.
 
 
+## Kontaktinformasjon
 
-## Arkitektur
+Ta kontakt med #datakatalog-intern på Slack
+
+
+## Litt om arkitektur
 
 Data leses fra kilder (pull) med tjenester som samtidig oppdaterer en søkeindeks (ElasticSearch) og et metadatalager (graf modell). 
 Tjenestene som henter og lagrer metadata kan f.eks implementeres i en notebook. Tjenestene kan kjøres automatisk ved gitte tidspunkter i Kubeflow.
@@ -66,10 +71,12 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 
 ![Graf databasel](datakatalog_domene_graf.png)
 
+
 ### Arkitekturbeslutninger
 
  * [Valg av hovedarkitektur](arkitektur/valg_av_hovedarkitektur.md)
  * [Valg av database](arkitektur/valg_av_database.md)
+
 
 ### Applikasjoner
 
@@ -91,7 +98,7 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 * [Kafka viewer](https://github.com/navikt/data-catalog-kafka-viewer)
 * [Begrep viewer](https://github.com/navikt/data-catalog-term-viewer)
 * [Datasett viewer](https://github.com/deetly/datapackage-viewer)
- * [Datasett NAV theming](https://github.com/navikt/dataverk-tools). Python bibliotek for NAV theming av grafiske fremstillinger av data.
+* [Theming](https://github.com/navikt/dataverk-tools). Python bibliotek for NAV theming av grafiske fremstillinger av data.
 
 * [Viewer template](https://github.com/navikt/data-catalog-api-viewer). Template for utvikling av nye viewer applikasjoner
 
