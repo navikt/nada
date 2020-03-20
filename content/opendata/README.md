@@ -21,7 +21,7 @@ Prosjektet Åpne data gjøres i samarbeid med Kunnskapsavdelingen.
 ### Kontaktinformasjon
 Følg med eller gi tilbakemeldinger på Åpne data i slackkanalen #åpne-data.
 
-Ta kontakt for spørsmål om datapakker i slackkanalen #datacatalog-intern
+Ta kontakt for spørsmål om datapakker i slackkanalen #datacatalog-intern.
 
 ### Lenker
 Repo for datapakker under arbeid: [opendata](https://github.com/navikt/opendata)
