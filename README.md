@@ -37,10 +37,6 @@ Felleskomponenter:
 * [Kafka](/content/kafka/README.md)
 
 
-## Dataverk: Serverless ETL, ML og produksjon av dataprodukter med Python, Dask og Jupyter Notebooks
-
-[Dataverk](./DATAVERK.md)
-
 ## Anonymisering
 * [Anonymisering](/content/anonymisering/README.md)
 
