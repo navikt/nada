@@ -13,14 +13,14 @@ NADA dokumentasjon
 
 * [Om datakatalogen](/content/datakatalog/README.md)
 
-* [data.adeo.no](https://data.adeo.no). Intern datakatalog
-* [dataverk.nav.no](https://dataverk.nav.no). Åpne data
+* Intern datakatalog. Tilgjengelig kun for NAV ansatte: [data.adeo.no](https://data.adeo.no).
+* Åpne data. Offentlig tilgjengelig: [dataverk.nav.no](https://dataverk.nav.no).
 
 ## Plattform for analyse og maskinlæring
 
 * [Om analyseplattformen](/content/analyseplattform/README.md)
 
-* [kubeflow.adeo.no](https://kubeflow.adeo.no). Login analyseplattformen
+* Login analyseplattformen: [kubeflow.adeo.no](https://kubeflow.adeo.no). 
 
 ## Behandlingskatalog
 * [Om behandlingskatalogen](/content/datajegerne/behandlingskatalog.md)
