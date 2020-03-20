@@ -55,6 +55,7 @@ Der finner man ett `/oneshot` endepunkt som tar i mot en json blob som ser slik 
    * `PRODUCER` - Får lov til å skrive meldinger til topicet
    * `MANAGER` - Får lov til å endre konfigurajson for topicet, og lov til å endre til nye `members`
    * Hvis man ønsker å gi flere roller til samme bruker, så lager man ett member objekt for hver rolle.
+* `numPartitions` - Antall partisjoner - [Confluent artikkel om partisjonsstrategi](https://www.confluent.io/blog/how-choose-number-topics-partitions-kafka-cluster/)
    
 ### Gode råd
 * Lagre json blob'en du poster enten i ett dedikert private iac repo for teamet ditt. (A la [nada-iac](https://github.com/navikt/nada-iac))
