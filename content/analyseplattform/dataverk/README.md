@@ -50,7 +50,7 @@ være enklest å komme i gang. Dette fordi:
 jobber (oracle client, postgres driver etc.). Disse avhengighetene vil være installert 
 i dockerimaget som notebook serveren bruker i kubeflow.
 3. Enklere og sikrere håndtering av secrets. Ved bruk av kubeflow håndteres dette likt 
-som appliksjoner på nais, dvs. secrets (f.eks. database credentials) mountes inn
+som applikasjoner på nais, dvs. secrets (f.eks. database credentials) mountes inn
 i containermiljøet og trenger ikke være lagret lokalt.
 
 Se [kubeflow getting started](../kubeflow/KUBEFLOW_GETTING_STARTED.md) eller ta kontakt i #naisflow for hjelp til å 
@@ -64,7 +64,7 @@ pip install dataverk
 ````
 
 ## Kontaktinformasjon
-Kontakt oss i slackkanalen #dataverk
+Kontakt oss i slackkanalen [#dataverk](https://nav-it.slack.com/archives/CCY2V3N4E)
 
 ## Roadmap
 - Jobbes med konnektor mot ibm db2 databaser
