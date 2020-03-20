@@ -14,7 +14,7 @@ Prosjektet Åpne data gjøres i samarbeid med Kunnskapsavdelingen.
 **Interne brukere:**  Tilgjengeliggjøre offentlige data fra NAV.
 
 ### Hvordan komme i gang?
-**Eksterne og interne brukere:** Besøke data.nav.no. Alle datapakker finnes ved å filtrere/velge "Datasett" og "Åpne data". Det er også mulig å søke etter datapakker med et bestemt tema.
+**Eksterne og interne brukere:** Besøke [data.nav.no](data.nav.no). Alle datapakker finnes ved å filtrere/velge "Datasett" og "Åpne data". Det er også mulig å søke etter datapakker med et bestemt tema.
 
 **Interne brukere:** Lage og publisere datapakker ved hjelp av pythonpakken [Dataverk](https://github.com/navikt/nada/blob/master/content/analyseplattform/dataverk/README.md). Det anbefales å gjøre dette i plattformen [Kubeflow](https://github.com/navikt/nada/tree/master/content/analyseplattform/kubeflow).
 
