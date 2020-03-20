@@ -20,6 +20,10 @@ Kafka tilbyr både muligheten til å lese meldinger som har skjedd i fortid, og 
 
 [Viktig informasjon](producers/README.md)
 
+### Hvordan lager jeg ett topic?
+
+[Hvordan lage/konfigurere topic](adminrest/README.md)
+
 #### Eksempel produsenter
 * [Java](producers/java/README.md)
 * [Kotlin](producers/kotlin/README.md)
