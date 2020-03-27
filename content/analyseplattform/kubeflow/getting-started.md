@@ -76,10 +76,9 @@ i modulen for kubeflow teamet i https://github.com/navikt/vault-iac/blob/master/
    ```
 
 ## Dockerimage
-Dockerimaget som skal kjøres på 
 
 #### Generelt image
-[navikt/dataverk](https://hub.docker.com/r/navikt/naisflow/tags) er
+[navikt/dataverk](https://hub.docker.com/r/navikt/dataverk/tags) er
 et generelt image som inneholder det grunnleggende for å komme
 i gang og teste kubeflow.
 
