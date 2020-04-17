@@ -43,32 +43,15 @@ PS: Hvis denne filen ikke finnes, kan du kopiere den først fra
 Lag nytt team via [navikt/teams](https://github.com/navikt/teams)
 
 ## (valgfritt) Opprett Vault område for Kubeflow teamet
-Er eget Vault-oppsett for Kubeflow, da vi må ha muligheten til at en serviceAccount skal ha tilgang til flere path.
 
-1. Lag en ny module i terraform/kubeflow.tf
-```
-module "kubeflow-${team}" {
-  namespace = "${team}"
-  source = "./modules/kubeflow"
-}
-```
-
-2. Legg til ny policy under `extra_policies` i `terraform/teams/${team}.yml`
-```
-extra_policies:
-  - kubeflow_${team}_sudo
-```
-
-For å få tilgang til postgres databaser tilhørende teamet i kubeflow må følgende settes
-```
-extra_policies = ["postgresql_<sone>_<db-navn>_admin"]
-```
-i modulen for kubeflow teamet i https://github.com/navikt/vault-iac/blob/master/terraform/kubeflow.tf
+Dokumentasjonen for Vault ligger i
+[vault-iac](https://github.com/navikt/vault-iac/blob/master/doc/kubeflow.md)-repoet. Det skilles mellom vanlige teams,
+og individuelle brukere.
 
 ## (valgfritt) Legg inn hemmeligheter i Vault
 1. Gå til https://vault.adeo.no
 2. Gå til pathen `kv/prod/kubeflow`
-3. Trykk "Create secret" og under "Path for this secret" skriv `<teamnavn>/<teamnavn>`
+3. Trykk "Create secret" og under "Path for this secret" skriv `<namespace>`
 4. Legg inn key-value secrets her, f.eks.
    ```
       key: DVH_CONNECTION_STRING
