@@ -62,12 +62,23 @@ En kafka topic blir oppdatert med behandlinger og dens opplysningstyper, tanken 
 * Versjonshistorikk som inkludert timestamp , hvem som har endret noe, samt et snapshot av hele dataobjektet når det ble endret.
 * Administrering av kodelister, for å sikre datakvalitet er en rekke felter i løsningen basert på internt kontrollerte kodeverk. (Om noen av disse skal flyttes ut og bli NAV-kodeverk er en pågående diskusjon)
 
-### Lenker til API og repo
+### API
+
+#### Lenker til API og repo
 * [Swagger API](https://polly.nais.adeo.no/swagger-ui.html)
 * [Swagger API (Test)](https://polly.nais.preprod.local/swagger-ui.html)
 
 * [Repo Backend](https://github.com/navikt/polly)
 * [Repo Frontend](https://github.com/navikt/data-catalog-editor)
+
+#### Tilgang og headers
+Api er åpent for lesing uten innlogging. Enkelte funksjoner (som ikke er naturlig at andre system ikke skal ha tilgang til) er begrenset, samt skriving. Kontakt #datajegerne for mer info.
+
+Headers
+* Authorizaion - Systemer kan sende med Azure access token som Bearer token
+* Nav-Call-Id - optional callId/correlation id to set for log tracing
+* Nav-Consumer-Id - optional but strongly suggested to trace source of requests
+
 
 ## Overordnet roadmap - hva kommer før sommeren?
 * Løsningen skal utvides til å støtte PVK del 1 (nå kalt _Grunnleggende personvernavklaringer_) slik at behandlinger og rettslig grunnlag for bruken av personopplysninger bare dokumenteres ett sted, og ikke i både en behandlingsoversikt og i en PVK del 1. Ambisjonen er å erstatte hele PVK del 1.
