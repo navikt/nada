@@ -1,16 +1,49 @@
-## Datakatalog
+# Datakatalog
+
+
+## Hva er produktet?
+
+Datakatalogen gir oversikt over og informasjon om data og dataprodukter i NAV. Det er tre ulike innganger til katalogen:
+
+* [Åpne data](https://data.nav.no). Dette er et utsnitt av data og dataprodukter som er offentlig tilgjengelige.
+
+* [Intern datakatalog](https://data.adeo.no). Inneholder i tillegg til offentlig tilgjengelige data og dataprodukter også data og dataprodukter som kun er tilgjengelige internt i NAV
+
+* [Felles datakatalog](https://fellesdatakatalog.digdir.no). Metadata om data og dataprodukter 
 
 Datakatalogen har to hovedformål: 
 
-* Gjøre data fra NAV tilgjengelig for interne og eksterne brukere på en brukervennlig måte. Dette gjør vi gjennom https://data.nav.no samt ved å gjøre metadata om data og dataprokter tilgjengelig i [Felles datakatalog](https://fellesdatakatalog.digdir.no/)
+* Gjøre data fra NAV tilgjengelig for interne og eksterne brukere på en brukervennlig måte. 
 
-* Øke produktivitetet til analytikere og data scientister i NAV. Dette gjør vi ved å berike og indeksere data ressurser (begreper, tabell, strømmer, data visualiseringer og andre dataprodukter) og å gjøre disse lett å finne i et søkegrensesnitt i en intern datakatalog: data.adeo.no
+* Øke produktivitetet til analytikere og data scientister i NAV. Dette gjør vi ved å berike og indeksere data ressurser (begreper, tabell, strømmer, data visualiseringer og andre dataprodukter) og å gjøre disse lett å finne i et søkegrensesnitt.
 
-### Brukergrupper og ønskemål
+
+## Hvem er dette laget for?
 
 ![Brukergrupper](brukergrupper.png)
 
-## Arkitektur
+
+## Hvordan komme i gang?
+
+Som bruker av data: Gå til [søkesiden](data.adeo.no) 
+
+Som produsent av data:
+
+* Jeg har en database og ønsker at deler av innholdet skal bli tilgjengelig i katalogen: Ta kontakt med #datakatalog-intern på Slack så hjelper vi deg i gang.
+
+* Jeg har en kafka topic og ønsker at den skal skal bli tilgjengelig i katalogen: Ta kontakt med #datakatalog-intern på Slack så finner vi sammen ut av hvordan det kan løses 
+
+* Jeg har et API og ønsker at det skal skal bli tilgjengelig i katalogen: Ta kontakt med #datakatalog-intern på Slack så hjelper vi deg i gang.
+
+* Jeg har ønsker å publisere et datasett eller en datapakke: Ta kontakt med #datakatalog-intern på Slack så hjelper vi deg i gang.
+
+
+## Kontaktinformasjon
+
+Ta kontakt med #datakatalog-intern på Slack
+
+
+## Litt om arkitektur
 
 Data leses fra kilder (pull) med tjenester som samtidig oppdaterer en søkeindeks (ElasticSearch) og et metadatalager (graf modell). 
 Tjenestene som henter og lagrer metadata kan f.eks implementeres i en notebook. Tjenestene kan kjøres automatisk ved gitte tidspunkter i Kubeflow.
@@ -21,19 +54,29 @@ Metadata fra datakatalogen kan presenters i en 'viewer' applikasjon som er skred
 
 Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan f.eks. presentere som datapakker. Metadata kan også benyttes som datakilde i andre applikasjoner.
 
-Overordnet arkitektur
+### Overordnet arkitektur
+
 
 ![Hovedkomponenter](overordnet_arkitektur.png)
 
 
-Datamodell
+### Domenemodell. Kun ment som illustrasjon. Grafen inneholder også andre typer noder og forbindelser   
+
 
 ![Datamodell](databasemodell_konseptuell.png)
+
+
+### Kobling mot andre domener
+
+
+![Graf databasel](datakatalog_domene_graf.png)
+
 
 ### Arkitekturbeslutninger
 
  * [Valg av hovedarkitektur](arkitektur/valg_av_hovedarkitektur.md)
  * [Valg av database](arkitektur/valg_av_database.md)
+
 
 ### Applikasjoner
 
@@ -55,7 +98,7 @@ Datamodell
 * [Kafka viewer](https://github.com/navikt/data-catalog-kafka-viewer)
 * [Begrep viewer](https://github.com/navikt/data-catalog-term-viewer)
 * [Datasett viewer](https://github.com/deetly/datapackage-viewer)
- * [Datasett NAV theming](https://github.com/navikt/dataverk-tools). Python bibliotek for NAV theming av grafiske fremstillinger av data.
+* [Theming](https://github.com/navikt/dataverk-tools). Python bibliotek for NAV theming av grafiske fremstillinger av data.
 
 * [Viewer template](https://github.com/navikt/data-catalog-api-viewer). Template for utvikling av nye viewer applikasjoner
 
