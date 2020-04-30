@@ -69,7 +69,7 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 ### Kobling mot andre domener
 
 
-![Graf databasel](datakatalog_domene_graf.png)
+![Graf database](datakatalog_domene_graf.png)
 
 
 ### Arkitekturbeslutninger

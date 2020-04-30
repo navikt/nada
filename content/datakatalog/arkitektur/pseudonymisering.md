@@ -14,7 +14,7 @@ I arbeid med analyse, rapportering og statistikk produksjon på tvers av domener
 ### 1) Pseudonymisering ved import
 
 
-![Image description](../adr_koblingsnøkkel_utenfor_domenet.png)
+![pseudonymisering utenfor domenet](adr_koblingsnøkkel_utenfor_domenet.png)
 
 Eksempel 
 
@@ -44,7 +44,7 @@ Fordeler:
 ### 2) Pseudonymisering i domenet
 
 
-![Image description](../adr_koblingsnøkkel_i_domenet.png)
+![pseudonymisering i domenet](adr_koblingsnøkkel_i_domenet.png)
 
 Eksempel 
 
