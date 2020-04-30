@@ -76,6 +76,7 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 
  * [Valg av hovedarkitektur](arkitektur/valg_av_hovedarkitektur.md)
  * [Valg av database](arkitektur/valg_av_database.md)
+ * [Pseudonymisering](arkitektur/pseudonymisering.md)
 
 
 ### Applikasjoner
