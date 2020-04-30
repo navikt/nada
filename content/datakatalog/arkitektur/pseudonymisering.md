@@ -57,6 +57,7 @@ join arbeidssted from c.tabell on a.id = c.id as c
 #### Fordeler:
 
 * Enkelt å koble data på tvers av domener
+* Personummer ikke tilgjengelig for analytikere
 
 #### Ulemper:
 
@@ -64,13 +65,14 @@ join arbeidssted from c.tabell on a.id = c.id as c
 * Ressurskrevende: Alle domener må levere 'data on the outside' i pseudonymisert format.
 
 
-### 3) Eget miljø for analyse med pseudonymiserte kopier av data
+### 3) Eget miljø for analyse/rapportering/statistikk med pseudonymiserte kopier av data
 
 Data gjøres tilgjengelig i et datavarehus/datalake
 
 #### Fordeler:
 
 * Enkelt å koble data på tvers av domener
+* Personummer ikke tilgjengelig for analytikere
 
 #### Ulemper:
 
