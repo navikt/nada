@@ -18,11 +18,11 @@ Kafka tilbyr både muligheten til å lese meldinger som har skjedd i fortid, og 
 
 ### Hvordan produserer jeg meldinger?
 
-[Viktig informasjon](producers)
+[Viktig informasjon](producers/README.md)
 
 #### Eksempel produsenter
-* [Java](producers/java/README.md)
-* [Kotlin](producers/kotlin/README.md)
+* [Java](producers/java)
+* [Kotlin](producers/kotlin)
 
 ### Hvordan lager jeg ett topic?
 
