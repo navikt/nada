@@ -12,7 +12,7 @@ public class KafkaConfig {
         kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, getEnvVar("KAFKA_BOOTSTRAP_SERVERS"));
         kafkaProps.put(KafkaAvroSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, getEnvVar("KAFKA_SCHEMAREGISTRY_SERVERS"));
         kafkaProps.put(ProducerConfig.CLIENT_ID_CONFIG, InetSocketAddress(0).getHostString());
-        kafkaProps.put(ProducerConfig.ACKS_CONFIG, "1"); /* Les [her]("/content/kafka/README.md") */
+        kafkaProps.put(ProducerConfig.ACKS_CONFIG, "1"); /* Les [her]("/kafka/README.md") */
         kafkaProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongDeserializer.class);
         kafkaProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroDeserializerConfig.class);
         kafkaProps.putAll(credentialProps());

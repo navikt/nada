@@ -16,7 +16,7 @@ Metadata og eventuelle beskrivelser og visualiseringer er ment til å ytterliger
 ### Hvordan komme i gang?
 **Eksterne og interne brukere:** Alle datapakker finnes ved å filtrere/velge "Datasett". Det er også mulig å søke etter datapakker med et bestemt tema.
 
-**Interne brukere:** Lage og publisere datapakker ved hjelp av pythonbiblioteket [Dataverk](https://github.com/navikt/nada/blob/master/content/analyseplattform/dataverk/README.md). Det anbefales å gjøre dette i plattformen [Kubeflow](https://github.com/navikt/nada/tree/master/content/analyseplattform/kubeflow).
+**Interne brukere:** Lage og publisere datapakker ved hjelp av pythonbiblioteket [Dataverk](../analyseplattform/dataverk/README.md). Det anbefales å gjøre dette i plattformen [Kubeflow](../analyseplattform/kubeflow).
 
 ### Kontaktinformasjon
 Følg med eller gi tilbakemeldinger på Åpne data i slackkanalen #åpne-data

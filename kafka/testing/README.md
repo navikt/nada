@@ -10,6 +10,7 @@ dependencies {
     testImplementation("no.nav:kafka-embedded-env:2.4.0")
 }
 ```
+
 ## Maven
 ```xml
 <dependencies>
@@ -23,10 +24,9 @@ dependencies {
 ```
 
 ## Eksempeltest
-Hvis vi forutsetter at vi har en [Consumer](/content/kafka/consumers/kotlin/README.md) og en [Producer](/content/kafka/producers/kotlin/README.md) tilgjengelig så blir en mulig integrasjons test.
+Hvis vi forutsetter at vi har en [Consumer](../consumers/kotlin/README.md) og en [Producer](../producers/kotlin/README.md) tilgjengelig så blir en mulig integrasjons test.
 
 ```kotlin
-
 package no.nav.kafka
 
 import no.nav.common.JAASCredential
@@ -83,3 +83,4 @@ class KafkaIntegrationTest {
         }
     }
 }
+```

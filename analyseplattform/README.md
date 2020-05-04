@@ -8,9 +8,11 @@ Produktet består av infrastruktur og en verktøykasse for å jobbe jobbe med an
 
 Infrastrukturen består før øyeblikket av [Kubeflow](https://www.kubeflow.org) på NAIS.
 
-Vi har som mål å tilby bedre støttte for sammenstilling av store datasett gjennom å tilby [dask](https://dask.org) på NAIS samt en kraftig database (datalab serveren) for sammenstilling av data med SQL.
+Vi har som mål å tilby bedre støttte for sammenstilling av store datasett gjennom å tilby [dask](https://dask.org) på
+NAIS samt en kraftig database (datalab serveren) for sammenstilling av data med SQL.
 
-Vi har også som mål å tilby GPU akselerert ETL og maskinlæring på NAIS gjennom ny maskinvare og støtte for [Rapids](https://developer.nvidia.com/rapids)
+Vi har også som mål å tilby GPU akselerert ETL og maskinlæring på NAIS gjennom ny maskinvare og støtte for
+[Rapids](https://developer.nvidia.com/rapids).
 
 
 ## Hva kan det brukes til?
@@ -19,7 +21,7 @@ Vi har også som mål å tilby GPU akselerert ETL og maskinlæring på NAIS gjen
 
 Hente data: 
 
-- Python biblioteket dataverk inneholder metoder som gjør det enekelt å lese data fra ulike typer interne datakilder til en pandas dataframe.  
+- Python biblioteket dataverk inneholder metoder som gjør det enekelt å lese data fra ulike typer interne datakilder til en pandas dataframe.
 
 Bearbeide og sammenstille data: 
 
@@ -27,7 +29,7 @@ Bearbeide og sammenstille data:
 
 Analysere data: 
 
-- Jupyter notebooks på Kubeflow  
+- Jupyter notebooks på Kubeflow
 
 Presentere resultatene: Produsere og publisere data
 
@@ -52,7 +54,7 @@ Pipelines på Kubeflow kan brukes til å sette opp jobber som publiserer data og
 
 Logg inn her: https://kubeflow.adeo.no
 
-Brukerstøtte: #naisflow
+Brukerstøtte: [#naisflow](https://nav-it.slack.com/archives/CGRMQHT50)
 
 [Om Kubeflow på NAIS](kubeflow/README.md)
 
