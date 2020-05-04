@@ -1,8 +1,11 @@
 # Summary
 
 * [NADA](README.md)
-* [Amplitude](amplitude.md)
-* [Kafka](kafka/README.md)
+* [Analyseplattform](analyseplattform/README.md)
+    * [Kubeflow](analyseplattform/kubeflow/README.md)
+      * [Getting started](analyseplattform/kubeflow/getting-started.md)
+    * [Dataverk](analyseplattform/dataverk/README.md)
+* [Anonymisering](anonymisering/README.md)* [Kafka](kafka/README.md)
    * [Kafka Connect](kafka/connect/README.md)
    * [Kafka Admin Rest](kafka/adminrest/README.md)
    * [Kafka Reader](kafka/reader/README.md)
@@ -11,9 +14,4 @@
     * [Datakatalog](datakatalog/README.md)
     * [Begrepskatalog](begrepskatalog/README.md)
     * [Teamkatalog](datajegerne/teamkatalog.md)
-* [Analyseplattform](analyseplattform/README.md)
-    * [Kubeflow](analyseplattform/kubeflow/README.md)
-      * [Getting started](analyseplattform/kubeflow/getting-started.md)
-    * [Dataverk](analyseplattform/dataverk/README.md)
-* [Anonymisering](anonymisering/README.md)
 * [Åpne data](opendata/README.md)
