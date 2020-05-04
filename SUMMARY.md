@@ -13,7 +13,7 @@
     * [Teamkatalog](content/datajegerne/teamkatalog.md)
 * [Analyseplattform](content/analyseplattform/README.md)
     * [Kubeflow](content/analyseplattform/kubeflow/README.md)
-      * [Kom i gang](content/analyseplattform/kubeflow/getting-started.md)
+      * [Getting started](content/analyseplattform/kubeflow/getting-started.md)
     * [Dataverk](content/analyseplattform/dataverk/README.md)
 * [Anonymisering](content/anonymisering/README.md)
 * [Åpne data](content/opendata/README.md)
