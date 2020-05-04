@@ -93,5 +93,4 @@ public class Application {
         produsent.sendMelding(..);
     }
 }
-
-
+```
