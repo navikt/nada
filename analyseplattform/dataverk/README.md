@@ -43,8 +43,8 @@ datasett.
 
 ## Hvordan komme i gang?
 
-### Fra kubeflow
-Det anbefales å jobbe i jupyter notebook i kubeflow for at det skal
+### Fra Kubeflow
+Det anbefales å jobbe i jupyter notebook i Kubeflow for at det skal
 være enklest å komme i gang. Dette fordi:
 1. Dataverk har en del eksterne avhengigheter som må være installert i det miljøet man 
 jobber (oracle client, postgres driver etc.). Disse avhengighetene vil være installert 
@@ -53,8 +53,8 @@ i dockerimaget som notebook serveren bruker i kubeflow.
 som applikasjoner på nais, dvs. secrets (f.eks. database credentials) mountes inn
 i containermiljøet og trenger ikke være lagret lokalt.
 
-Se [kubeflow getting started](../kubeflow/getting_started.md) eller ta kontakt i #naisflow for hjelp til å 
-komme i gang med kubeflow.
+Se [getting started](../kubeflow/getting_started.md) eller ta kontakt i [#naisflow](https://nav-it.slack.com/archives/CGRMQHT50) for hjelp til å komme i gang
+med kubeflow.
 
 ### Uten kubeflow
 Så lenge man har en python distribusjon >=python36 installert kan biblioteket
@@ -64,7 +64,7 @@ pip install dataverk
 ````
 
 ## Kontaktinformasjon
-Kontakt oss i slackkanalen [#dataverk](https://nav-it.slack.com/archives/CCY2V3N4E)
+Kontakt oss i slackkanalen [#dataverk](https://nav-it.slack.com/archives/CCY2V3N4E).
 
 ## Roadmap
 - Jobbes med konnektor mot ibm db2 databaser
