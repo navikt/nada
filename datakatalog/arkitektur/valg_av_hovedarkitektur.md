@@ -29,7 +29,7 @@ DDD tilsier at et domene skal eie både sine applikasjoner og sin data. Dette be
 
 Det er f.eks naturlig at medarbeidere enten mastres i Agresso eller i Azure AD(for å få med eksterne). Andre entiteter kan mastres i andre løsninger. Noen entiteter, som f.eks "Teams" har vi i dag ingen god løsning for(men det jobbes med det).
 
-For å kunne realisere det fulle potensialet i katalogtjenestene, så trenger vi et løsning som kan knytte alle entiteter og deres relasjon sammen i én [graf](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)), samtidig som vi muliggjør at enkelte entitetstyper mastres i eget domene.
+For å kunne realisere det fulle potensialet i katalogtjenestene, så trenger vi et løsning som kan knytte alle entiteter og deres relasjon sammen i én [graf][1], samtidig som vi muliggjør at enkelte entitetstyper mastres i eget domene.
 
 ## Løsingsalternativer
 
@@ -50,3 +50,5 @@ What is the change that we're proposing and/or doing?
 ## Konsekvenser
 
 What becomes easier or more difficult to do because of this change?
+
+[1]: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
