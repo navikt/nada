@@ -11,4 +11,4 @@
 
 * [Test ML på Kubeflow](https://github.com/navikt/kubeflow-ml-test). Eksempelprosjekt med åpne data
 
-* [Getting started guide](getting-started.md). Instruksjoner for å komme i gang med Kubeflow
+* [Getting started](getting-started.md). Instruksjoner for å komme i gang med Kubeflow
