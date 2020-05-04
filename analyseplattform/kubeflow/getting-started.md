@@ -81,8 +81,8 @@ Se [instruks for å bygge custom image](build-custom-image.md)
 3. Klikk "+ NEW SERVER"
 4. Huk av for "Custom image" og skriv inn image navn, enten 
     - Seneste versjon av [navikt/dataverk](https://hub.docker.com/r/navikt/naisflow/tags), f.eks.
-    ![Valgfritt Jupyter Docker Image](custom-jupyter-image.PNG)
-    - Eller navn på [custom image](build-custom-image.md) 
+    ![Valgfritt Jupyter Docker Image](custom-jupyter-image.png)
+    - Eller navn på [custom image](build-custom-image.md)
 5. Antall CPU'er og minne for notebook-serveren kan spesifiseres. Oppfordrer til å bruke default-oppsettet her (0.5 cpu, 1.0Gi), dette kan også endres senere ved behov.
 6. Trykk launch
 

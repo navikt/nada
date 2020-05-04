@@ -4,6 +4,7 @@
 * [Analyseplattform](analyseplattform/README.md)
     * [Kubeflow](analyseplattform/kubeflow/README.md)
       * [Getting started](analyseplattform/kubeflow/getting-started.md)
+	  * [Custom image](analyseplattform/kubeflow/build-custom-image.md)
     * [Dataverk](analyseplattform/dataverk/README.md)
 * [Anonymisering](anonymisering/README.md)* [Kafka](kafka/README.md)
    * [Kafka Connect](kafka/connect/README.md)
