@@ -16,4 +16,4 @@
       * [Kom i gang](content/analyseplattform/kubeflow/getting-started.md)
     * [Dataverk](content/analyseplattform/dataverk/README.md)
 * [Anonymisering](content/anonymisering/README.md)
-* [Åpne data](apnedata.md)
+* [Åpne data](content/opendata/README.md)
