@@ -25,22 +25,22 @@ Datakatalogen har to hovedformål:
 
 ## Hvordan komme i gang?
 
-Som bruker av data: Gå til [søkesiden](data.adeo.no) 
+Som bruker av data: Gå til [søkesiden](https://data.adeo.no)
 
 Som produsent av data:
 
-* Jeg har en database og ønsker at deler av innholdet skal bli tilgjengelig i katalogen: Ta kontakt med #datakatalog-intern på Slack så hjelper vi deg i gang.
+* Jeg har en database og ønsker at deler av innholdet skal bli tilgjengelig i katalogen: Ta kontakt med #data-catalog-intern på Slack så hjelper vi deg i gang.
 
-* Jeg har en kafka topic og ønsker at den skal skal bli tilgjengelig i katalogen: Ta kontakt med #datakatalog-intern på Slack så finner vi sammen ut av hvordan det kan løses 
+* Jeg har en kafka topic og ønsker at den skal skal bli tilgjengelig i katalogen: Ta kontakt med #data-catalog-intern på Slack så finner vi sammen ut av hvordan det kan løses 
 
-* Jeg har et API og ønsker at det skal skal bli tilgjengelig i katalogen: Ta kontakt med #datakatalog-intern på Slack så hjelper vi deg i gang.
+* Jeg har et API og ønsker at det skal skal bli tilgjengelig i katalogen: Ta kontakt med #data-catalog-intern på Slack så hjelper vi deg i gang.
 
-* Jeg har ønsker å publisere et datasett eller en datapakke: Ta kontakt med #datakatalog-intern på Slack så hjelper vi deg i gang.
+* Jeg har ønsker å publisere et datasett eller en datapakke: Ta kontakt med #data-catalog-intern på Slack så hjelper vi deg i gang.
 
 
 ## Kontaktinformasjon
 
-Ta kontakt med #datakatalog-intern på Slack
+Ta kontakt med [#data-catalog-intern](https://nav-it.slack.com/archives/CQ9SV9DNE) på Slack.
 
 
 ## Litt om arkitektur
@@ -60,7 +60,7 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 ![Hovedkomponenter](overordnet_arkitektur.png)
 
 
-### Domenemodell. Kun ment som illustrasjon. Grafen inneholder også andre typer noder og forbindelser   
+### Domenemodell. Kun ment som illustrasjon. Grafen inneholder også andre typer noder og forbindelser
 
 
 ![Datamodell](databasemodell_konseptuell.png)
@@ -107,13 +107,13 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
   * [API Test](https://data-catalog-graph.nais.preprod.local)
   * [API Prod](https://data-catalog-graph.nais.adeo.no)
   
-* [Python script for å hente, laste og indeksere data](navikt/data-catalog-indexers). Skedulerte skript for å hente data fra ulike kilder, laste til graf databasen og indeksere i Elastic Search
+* [Python script for å hente, laste og indeksere data](https://github.com/navikt/data-catalog-indexers). Skedulerte skript for å hente data fra ulike kilder, laste til graf databasen og indeksere i Elastic Search
 
 * [API Proxy](https://github.com/navikt/dataverk-proxy)
 
 
 ### Utvikling
 * [Trello](https://trello.com/b/kd4dRGH9/data-catalog)
-* [Brukerhistorier](./stories.md)
+* [Brukerhistorier](stories.md)
 * [Møtereferater](https://github.com/navikt/data-catalog-notes)
 
