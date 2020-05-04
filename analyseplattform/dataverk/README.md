@@ -53,7 +53,7 @@ i dockerimaget som notebook serveren bruker i kubeflow.
 som applikasjoner på nais, dvs. secrets (f.eks. database credentials) mountes inn
 i containermiljøet og trenger ikke være lagret lokalt.
 
-Se [getting started](../kubeflow/getting_started.md) eller ta kontakt i [#naisflow](https://nav-it.slack.com/archives/CGRMQHT50) for hjelp til å komme i gang
+Se [getting started](kubeflow/getting_started.md) eller ta kontakt i [#naisflow](https://nav-it.slack.com/archives/CGRMQHT50) for hjelp til å komme i gang
 med kubeflow.
 
 ### Uten kubeflow
