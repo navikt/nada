@@ -18,7 +18,7 @@ Kafka tilbyr både muligheten til å lese meldinger som har skjedd i fortid, og 
 
 ### Hvordan produserer jeg meldinger?
 
-[Viktig informasjon](producers/README.md)
+[Viktig informasjon](producers)
 
 #### Eksempel produsenter
 * [Java](producers/java/README.md)
