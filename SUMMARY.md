@@ -14,7 +14,7 @@
     * [Java](kafka/producers/java/README.md)
     * [Kotlin](kafka/producers/kotlin/README.md)
   * [Consumers](kafka/Consumers/README.md)
-    * [Java](kafka/consumers/kotlin/README.md)
+    * [Java](kafka/consumers/java/README.md)
     * [Kotlin](kafka/consumers/kotlin/README.md)
   * [Testing](kafka/testing/README.md)
 * [Kataloger](kataloger.md)
