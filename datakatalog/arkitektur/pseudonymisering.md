@@ -6,17 +6,20 @@ Mange systemer bruker personummer som nøkkel for personrelatert informasjon. An
 
 ## Kontekst
 
-I arbeid med analyse, rapportering og statistikk produksjon på tvers av domener er det behov for en felles koblingsnøkkel eller en annen form for mekanisme som gjør det mulig å koble data på tvers av nøkkler/domener  
+I arbeid med analyse, rapportering og statistikk produksjon så ønsker vi at analytikere skal være så selvhjulpne som mulig, og ikke være avhengig av tredjeparter for å kunne utføre sine analyser. Når data må sammenstilles på tvers av domener er det behov for en felles koblingsnøkkel eller en annen form for mekanisme som gjør det mulig å koble data på tvers av nøkler/domener. Hvis datasettene inneholder informasjon om personer, så er det naturlig å benytte personnummer/personident som koblingsnøkkel. 
+
+Koblingnøkkelen i seg selv er ikke nyttig for analytikerne etter at koblingen er utført. Et personvernfremmende tiltak kan derfor være å innføre hashing av personidenter under kobling av datakilder. Denne teksten presenterer flere alternativer som adresserer denne utfordringen.
 
 ## Løsningsalternativer
 
 
 ### 1) Pseudonymisering ved import/load
 
+"Import" i denne konteksten er når data hentes ut av et fagsystem og/eller datavarehus og inn i det analytiske verktøyet som analysen skal utføres i.
 
 ![pseudonymisering utenfor domenet](adr_koblingsnøkkel_utenfor_domenet.png)
 
-Eksempel 
+Eksempel på uttrekk fra datakilde som ikke har pseudonøkler i datasettet:
 
 select hash(a.personummer), a.yrke, b.bosted, c.arbeidssted 
 from a.tabell a
@@ -30,19 +33,20 @@ join c.koblingstabell on c.id = k.id)
 
 Fordeler:
 
-* Lite ressurskrevende
+* Lite ressurskrevende: NAV behøver ikke å utvikle en ny, felles tilnærming for å hashe PII som fungerer på tvers av alle domener.
 
 #### Ulemper:
 
-* Det er mulig for analytikeren å se personummer med mindre import steget utføres av en tredjeperson
+* Analytiker må få tilgang til rådata i datakilden, og vil ha tilgang til ukrypterte personidenter. Analytikeren vil ha ansvar for å selv hashe personidenter når uttrekket gjøres (som i eksemplet over). 
 
-* Analytikeren har tilgang til hashing funksjon og kan dermed finne ut hvilken hashverdi som er knyttet til et kjent personnummer
+* I tillegg vil analytiker også ha tilgang til selve hashing-funksjonen og kan dermed finne ut hvilken hashverdi som er knyttet til et kjent personnummer
 
-* Kilder som idag bruker pseudonøkkler, eksempelvis datavarehuset må eksponere personummer.
+* Kilder som idag bruker pseudonøkler internt, eksempelvis datavarehuset, må eksponere personummer uhashet for at analytiker skal kunne gjøre koblinger på denne måten.
 
 
 ### 2) Pseudonymisering i domenet / ved eksport
 
+Dette løsningsforslaget forutsetter at hvert domene tilbyr å hente ut data ferdig hashet. For å realisere dette må hvert domene enten implementere logikk for å tilby dette, eller ta i bruk felleskomponenter som gjør dette der det er mulig.
 
 ![pseudonymisering i domenet](adr_koblingsnøkkel_i_domenet.png)
 
@@ -56,13 +60,13 @@ join arbeidssted from c.tabell on a.id = c.id as c
 
 #### Fordeler:
 
-* Enkelt å koble data på tvers av domener
-* Personummer ikke tilgjengelig for analytikere
+* Enkelt for en analytiker å koble data på tvers av domener, da data er hashet på en konsekvent måte
+* Sterkere personvern da personummer ikke tilgjengelig for analytikere
 
 #### Ulemper:
 
-* Alle domener må bruke den samme hashing/pseudonymisering funksjonen
-* Ressurskrevende: Alle domener må levere 'data on the outside' i pseudonymisert format.
+* Alle domener må bruke den samme hashing/pseudonymisering funksjonen/tilnærmingen. Dersom hashe-funksjonen blir kompromittert i ett domene, så er alle domener kompromittert.
+* Ressurskrevende: Alle domener må levere 'data on the outside' i pseudonymisert format. Dette vil både kreve koordinering og oppfølging på tvers. Mange domener/team kan antas å ikke ha budsjett/handlingsrom for å prioritere dette.
 
 
 ### 3) Eget miljø for analyse/rapportering/statistikk med pseudonymiserte kopier av data
