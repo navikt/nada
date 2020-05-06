@@ -11,7 +11,7 @@ I arbeid med analyse, rapportering og statistikk produksjon på tvers av domener
 ## Løsningsalternativer
 
 
-### 1) Pseudonymisering ved import
+### 1) Pseudonymisering ved import/load
 
 
 ![pseudonymisering utenfor domenet](adr_koblingsnøkkel_utenfor_domenet.png)
@@ -41,7 +41,7 @@ Fordeler:
 * Kilder som idag bruker pseudonøkkler, eksempelvis datavarehuset må eksponere personummer.
 
 
-### 2) Pseudonymisering i domenet
+### 2) Pseudonymisering i domenet / ved eksport
 
 
 ![pseudonymisering i domenet](adr_koblingsnøkkel_i_domenet.png)
@@ -81,7 +81,11 @@ Data gjøres tilgjengelig i et datavarehus/datalake
 
 ## Beslutning
 
+Alternativ 1 ble valgt.
+Alternativ 2 og 3 er vurdert som for ressurskrevende på kort sikt.
 
 
 ## Konsekvenser
 
+Avgivende systemer og databaser må tillate bruk av personummer som koblingsnøkkel.
+Analytikere blir ansvarlige for pseudonymisering.
