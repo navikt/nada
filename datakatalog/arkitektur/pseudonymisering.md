@@ -82,6 +82,37 @@ Data gjøres tilgjengelig i et datavarehus/datalake
 
 * Ressurskrevende
 
+### 4) Eget analysesystem der alle variabler er tilgjengelige kombinert med databearbeidingsfunkjonalitet som sikrer konfidensialitet
+
+Ref. microdata.no
+
+#### Fordeler:
+
+* Innebygget strekt personvern 
+* Brukevennlig for analytikere
+
+#### Ulemper:
+
+* Ressurskrevende å implementere
+
+
+### 5) Spørringer mot databaser og andre datakilder går gjennom en komponent (dataverk) som automatisk pseudonymiserer alle personnummer/personidenter
+
+Datasett med PII blir kun tilgjengelig for analytikere gjennom dataverk. Autentisering mot datakilder utføres av dataverk med en systembruker med passord lagret i Vault. Dataverk transformerer resultatsettet til en dataframe. Dataverk identifiserer automatisk kolonner som innholder personnummer (https://github.com/microsoft/presidio e.l) og hasher verdiene i disse kolonnene før datasettet returneres.   
+
+
+#### Fordeler:
+
+* Analytiker har ingen tilgang til personummer 
+* Brukevennlig for analytikere
+* Enkelt å sku av og på ytterligere beskyttelse av andre former for PII (epost, telefonnummer, navn osv)
+* Kan håndtere alle typer datakilder & databaser
+
+#### Ulemper:
+
+* Ressurskrevende runtime da hele datasett må lastes før join. Forderer distribuert prosessesering med Dask e.l.
+* Krever noe utvikling om dataverk skal autentisere brukere og logge spørringer.
+
 
 ## Beslutning
 
