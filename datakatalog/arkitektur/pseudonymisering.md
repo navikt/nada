@@ -113,6 +113,10 @@ Datasett med PII blir kun tilgjengelig for analytikere gjennom dataverk. Autenti
 * Ressurskrevende runtime da hele datasett må lastes før join. Forderer distribuert prosessesering med Dask e.l.
 * Krever noe utvikling om dataverk skal autentisere brukere og logge spørringer.
 
+### 6. Datavirtualisering (TDV)
+
+TODO: Manger beskrivelse
+
 
 ## Beslutning
 
