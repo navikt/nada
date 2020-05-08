@@ -14,7 +14,7 @@ Der finner man ett `/oneshot` endepunkt som tar i mot en json blob som ser slik 
  "topics": [
    {
       "topicName": "nada-connect-configs",
-      "configs": {
+      "configEntries": {
         "retention.ms": "86400000",
         "cleanup.policy": "compact"
       },
