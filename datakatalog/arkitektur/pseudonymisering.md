@@ -120,8 +120,8 @@ TODO: Manger beskrivelse
 
 ## Beslutning
 
-Alternativ 1 ble valgt.
-Alternativ 2 og 3 er vurdert som for ressurskrevende på kort sikt.
+Alternativ 1 ble valgt som kortsiktig løsning.
+Alternativ 2 - 6 vurderes videre.
 
 
 ## Konsekvenser
