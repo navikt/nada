@@ -98,7 +98,7 @@ Ref. microdata.no
 
 ### 5) Spørringer mot databaser og andre datakilder går gjennom en komponent (dataverk) som automatisk pseudonymiserer alle personnummer/personidenter
 
-Datasett med PII blir kun tilgjengelig for analytikere gjennom dataverk. Autentisering mot datakilder utføres av dataverk med en systembruker med passord lagret i Vault. Dataverk transformerer resultatsettet til en dataframe. Dataverk identifiserer automatisk kolonner som innholder personnummer (https://github.com/microsoft/presidio e.l) og hasher verdiene i disse kolonnene før datasettet returneres.   
+Datasett med PII blir kun tilgjengelig for analytikere gjennom dataverk. Autentisering mot datakilder utføres av dataverk med en systembruker med passord lagret i Vault. Dataverk transformerer resultatsettet til en dataframe. Dataverk identifiserer automatisk kolonner som innholder personnummer (med https://github.com/microsoft/presidio e.l) og hasher verdiene i disse kolonnene før datasettet returneres.   
 
 
 #### Fordeler:
