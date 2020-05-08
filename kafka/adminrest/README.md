@@ -28,7 +28,7 @@ Der finner man ett `/oneshot` endepunkt som tar i mot en json blob som ser slik 
 
 ### Attributter
 * `topicName` - Navnet på topic
-* `configs` - Tar i mot en map med konfigurasjonsvariabler for ett topic. [Les mer på Kafka sine sider](http://kafka.apache.org/documentation/#topicconfigs)
+* `configEntries` - Tar i mot en map med konfigurasjonsvariabler for ett topic. [Les mer på Kafka sine sider](http://kafka.apache.org/documentation/#topicconfigs)
    * De viktigste som er greie å være klar over
       * `retention.ms` - antall millisekunder Kafka tar vare på meldingen din, standard er `604800000` (1 uke)
       * `cleanup.policy`
