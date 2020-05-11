@@ -110,7 +110,7 @@ Datasett med PII blir kun tilgjengelig for analytikere gjennom dataverk. Autenti
 
 #### Ulemper:
 
-* Ressurskrevende runtime da hele datasett må lastes før join. Forderer distribuert prosessesering med Dask e.l.
+* Ressurskrevende runtime da hele datasett må lastes før join. Fordrer distribuert prosessesering med Dask e.l.
 * Krever noe utvikling om dataverk skal autentisere brukere og logge spørringer.
 
 ### 6. Datavirtualisering (TDV)
