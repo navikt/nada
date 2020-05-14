@@ -120,8 +120,8 @@ TODO: Manger beskrivelse
 
 ## Beslutning
 
-Alternativ 1 ble valgt som kortsiktig løsning.
-Alternativ 2 - 6 vurderes videre.
+Alternativ 3 ble valgt som kortsiktig løsning.
+Øvrige alternativer vurderes videre.
 
 
 ## Konsekvenser
