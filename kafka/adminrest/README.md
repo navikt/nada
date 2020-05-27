@@ -2,6 +2,12 @@
 
 For å lage ett nytt topic i NAV må man bruke adminrest interfacet vårt. 
 
+### Før man bruker AdminRest må gjøre
+* lage servicebruker vha basta.adeo.no / custom credential
+* lage app i vault-iac, og knytte servicebrukeren til appen i vault-iac
+* kafka-adminrest -> oneshot
+
+
 ### URLer (Du trenger utviklingsimage)
 * [Kafka Admin Rest - Preprod](https://kafka-adminrest.nais.preprod.local)
 * [Kafka Admin Rest - Prod](https://kafka-adminrest.nais.adeo.no) 
