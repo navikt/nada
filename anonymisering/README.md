@@ -31,9 +31,9 @@ Epost: Dataplattform@nav.no
 #### Hvordan komme i gang?
 For å komme i gang med å bruke **Anonymization as a Service**:
 1. Bekreft at datasettet som skal anonymiseres støttes av ARX (En rad er en entitet, bare en rad pr entitet osv. Ta kontakt om usikker [Kontaktinformasjon](#kontaktinformasjon))
-2. ARXaaS tjenesten er tilgjengelig i prod-fss og dev-fss  https://anonymiserer.(nais.adeo.no, nais.preprod.local). Ta kontakt for link. ARXaaS kan også settes opp lokalt, enten ved å kjøre applikasjonen som en Java JAR eller ved å bruke Docker image. Se [ARXaaS](https://github.com/navikt/ARXaaS) for dokumentasjon av oppsett.
+2. ARXaaS tjenesten er tilgjengelig i [prod-fss](https://anonymiserer.nais.adeo.no) og [dev-fss](https://anonymiserer.nais.preprod.local). ARXaaS kan også settes opp lokalt, enten ved å kjøre applikasjonen som en Java JAR eller ved å bruke Docker image. Se [ARXaaS](https://github.com/navikt/ARXaaS) for dokumentasjon av oppsett.
 3. Utnytt en av klient/programpakke løsningene eller gjør direkte kall mot ARXaaS.
-    - **Bruk WebARX** WebARX er tilgjengelig på prod-fss og dev-fss. https://webarxaas.(nais.adeo.no, nais.preprod.local).
+    - **Bruk WebARX** WebARX er tilgjengelig på [prod-fss](https://webarxaas.nais.adeo.no) og [dev-fss](https://webarxaas.nais.preprod.local).
     - **Bruk PyARXaaS** Se dokumentasjon for bruk av PyARXaaS her: [PyARXaaS](https://github.com/navikt/PyARXaaS). For å bruke PyARXaaS må du ha en fungerende URL til ARXaaS. for å nå instansen på dev-fss eller prod-fss må du derfor bruke *Utvikler image* om du skal scripte en Jupyter notebook eller lignende. NAIS-applikasjoner når ARXaaS som vanlig.
     - **Direkte kall mot ARXaaS** ARXaaS er en *stateless* mikrotjeneste med REST APIer. Se dokumentasjonen på [ARXaaS](https://github.com/navikt/ARXaaS) for beskrivelse av APIene.
 
