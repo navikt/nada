@@ -26,7 +26,7 @@ ARXaaS/PyARXaaS/WebARX tilbyr re-identifikasjon risikovurdering av tabulære dat
 #### Kontaktinformasjon
 Slack: #dataplattform
 
-Epost: Dataplattform@nav.no
+Epost: dataplattform@nav.no
 
 #### Hvordan komme i gang?
 For å komme i gang med å bruke **Anonymization as a Service**:
