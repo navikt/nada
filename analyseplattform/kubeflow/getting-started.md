@@ -1,8 +1,8 @@
 # Kom i gang med Kubeflow
 
-For å bruke Kubeflow så må man være medlem av Azure AD-gruppen `dataplattform` eller `ai-labben`. Kubeflow er kun
-tilgjengelig fra utviklerimage/VDI, fra laptop på NAV-nettet, eller NAVTunnelen (foreløpig kun i disse
-Korona-tider).
+For å bruke Kubeflow så må man være medlem av Azure AD-gruppen `dataplattform`, `ai-labben`, eller `kubeflow`. Sistnevte
+er mest for de som ikke er medlem av en av de to første teamene. Kubeflow er kun tilgjengelig fra utviklerimage/VDI, fra
+laptop på NAV-nettet, eller NAVTunnelen (foreløpig kun i disse Korona-tider).
 
 Meld fra i [#naisflow](https://nav-it.slack.com/archives/CGRMQHT50) hvis du får problemer.
 
