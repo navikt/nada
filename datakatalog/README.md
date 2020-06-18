@@ -95,7 +95,7 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
   
 ### Repoer
 
-* [Søkeside](https://github.com/navikt/data-search)
+* [Søkeside](https://github.com/navikt/data-search). Basert på [Search UI](https://github.com/elastic/search-ui) fra Elastic 
 * [Swagger API (Cosmos DB)](https://github.com/navikt/data-catalog-api)
 
 #### Mikro frontend viewer applikasjoner for ulike innholdstyper
