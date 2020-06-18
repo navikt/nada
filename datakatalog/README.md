@@ -96,7 +96,7 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 * [API for innohold i katalogen lagret i Cosmos DB](https://github.com/navikt/data-catalog-api). Cosmos DB benyttes som lager for metadata for datakatalogen
 * [RDF API](https://github.com/navikt/digdir-api). API som Felles Datakalog bruker for å laste data
 * [DCAT AP-NO validator](https://github.com/navikt/data-catalog-dcat-validator). Python pakke for å validere metadata
-* [ETL verktøy](https://github.com/navikt/dataverk). Python pakke for kodebasert ETL
+* [ETL verktøykasse](https://github.com/navikt/dataverk). Python pakke for kodebasert ETL
 
 #### Mikro frontend viewer applikasjoner for ulike innholdstyper
 
@@ -107,10 +107,10 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 * [Tableau workbook viewer](https://github.com/navikt/data-catalog-tableau-viewer).  Visning av tableau workbooks (POC)
 
 #### Utils
-* [Designsystem komponenter](https://github.com/navikt/data-catalog-components). Felleskomponenter basert på [Base Web](https://baseweb.design). [Storybook](https://navikt.github.io/data-catalog-components/?path=/story/design-system-intro--page)
+* [Designsystem komponenter](https://github.com/navikt/data-catalog-components). Felleskomponenter basert på [Base Web](https://baseweb.design). Preview: [Storybook](https://navikt.github.io/data-catalog-components/?path=/story/design-system-intro--page)
 * [Viewer template](https://github.com/navikt/data-catalog-api-viewer). Template for utvikling av nye viewer applikasjoner
 * [Theming](https://github.com/navikt/dataverk-tools). Python bibliotek for NAV theming av grafiske fremstillinger av data.
-* [Tekster (markdown](https://github.com/navikt/data-catalog-markdown). 'About' tekster som brukes i viewer applikasjonene.
+* [Tekster (markdown)](https://github.com/navikt/data-catalog-markdown). 'About' tekster som brukes i viewer applikasjonene.
 
 #### Indeksering av data
   
