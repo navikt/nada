@@ -94,18 +94,25 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
   * [RDF API](https://github.com/navikt/data-catalog-rdf). API som Felles datakalog bruker for å laste data
   
 ### Repoer
-* [Tekster (markdown](https://github.com/navikt/data-catalog-markdown). 'About' tekster som brukes i viewer applikasjonene.
+
+* [Søkeside](https://github.com/navikt/data-search)
+* [Swagger API (Cosmos DB)](https://github.com/navikt/data-catalog-api)
+
+#### Mikro frontend viewer applikasjoner for ulike innholdstyper
+
 * [Tabell viewer](https://github.com/navikt/data-catalog-table-viewer). Visning av databasetabeller inkl dataprofilering
-* [Kafka viewer](https://github.com/navikt/data-catalog-kafka-viewer)
-* [Begrep viewer](https://github.com/navikt/data-catalog-term-viewer)
-* [Datasett viewer](https://github.com/deetly/datapackage-viewer)
-* [Theming](https://github.com/navikt/dataverk-tools). Python bibliotek for NAV theming av grafiske fremstillinger av data.
+* [Kafka viewer](https://github.com/navikt/data-catalog-kafka-topic-viewer). Visning av kafka topics (POC)
+* [Begrep viewer](https://github.com/navikt/data-catalog-term-viewer). Visning av begreper
+* [Datasett viewer](https://github.com/deetly/datapackage-viewer). Visning av datasett
+* [Tableau workbook viewer](https://github.com/navikt/data-catalog-tableau-viewer).  Visning av tableau workbooks (POC)
+
+#### Felles komponenter / utils
 
 * [Viewer template](https://github.com/navikt/data-catalog-api-viewer). Template for utvikling av nye viewer applikasjoner
+* [Theming](https://github.com/navikt/dataverk-tools). Python bibliotek for NAV theming av grafiske fremstillinger av data.
+* [Tekster (markdown](https://github.com/navikt/data-catalog-markdown). 'About' tekster som brukes i viewer applikasjonene.
 
-* [Grafdatabase i postgres med connexion swagger API](https://github.com/navikt//data-catalog-graph). Backend API for datakatalogen
-  * [API Test](https://data-catalog-graph.nais.preprod.local)
-  * [API Prod](https://data-catalog-graph.nais.adeo.no)
+#### Indeksering av data
   
 * [Python script for å hente, laste og indeksere data](https://github.com/navikt/data-catalog-indexers). Skedulerte skript for å hente data fra ulike kilder, laste til graf databasen og indeksere i Elastic Search
 
