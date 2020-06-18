@@ -89,14 +89,12 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 ### API'er
   [https://dv-resource-rw-api.nais.adeo.no/dcat](https://dv-resource-rw-api.nais.adeo.no/dcat). Elastic search index for datakatalogen
   
-  Repo:
-  * [Cosmos DB API. Apache TinkerPop basert graf database)](https://github.com/navikt/data-catalog-api). Cosmos DB API. Cosmos DB benyttes som lager for metadata for datakatalogen
-  * [RDF API](https://github.com/navikt/data-catalog-rdf). API som Felles datakalog bruker for å laste data
   
 ### Repoer
 
 * [Søkeside](https://github.com/navikt/data-search). Basert på [Search UI](https://github.com/elastic/search-ui) fra Elastic 
-* [Swagger API (Cosmos DB)](https://github.com/navikt/data-catalog-api)
+* [API for innohold i katalogen lagret i Cosmos DB](https://github.com/navikt/data-catalog-api). Cosmos DB benyttes som lager for metadata for datakatalogen
+* [RDF API](https://github.com/navikt/data-catalog-rdf). API som Felles Datakalog bruker for å laste data
 
 #### Mikro frontend viewer applikasjoner for ulike innholdstyper
 
@@ -107,7 +105,7 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 * [Tableau workbook viewer](https://github.com/navikt/data-catalog-tableau-viewer).  Visning av tableau workbooks (POC)
 
 #### Felles komponenter / utils
-
+* [Designsystem komponenter](https://github.com/navikt/data-catalog-components). Felleskomponenter basert på [Base Web](https://baseweb.design). [Storybook](https://navikt.github.io/data-catalog-components/?path=/story/design-system-intro--page)
 * [Viewer template](https://github.com/navikt/data-catalog-api-viewer). Template for utvikling av nye viewer applikasjoner
 * [Theming](https://github.com/navikt/dataverk-tools). Python bibliotek for NAV theming av grafiske fremstillinger av data.
 * [Tekster (markdown](https://github.com/navikt/data-catalog-markdown). 'About' tekster som brukes i viewer applikasjonene.
