@@ -121,7 +121,7 @@ Metadata kan også presenteres på andre måter. One-off og ad-hoc visninger kan
 
 
 ### Risikovurdering
-* [Risikovurdering Cosmos DB](https://apps.powerapps.com/play/f8517640-ea01-46e2-9c09-be6b05013566?ID=268) 
+* [Risikovurdering Cosmos DB + API](https://apps.powerapps.com/play/f8517640-ea01-46e2-9c09-be6b05013566?ID=268) 
 * [Risikovurdering Dataverk & Kubeflow](https://apps.powerapps.com/play/f8517640-ea01-46e2-9c09-be6b05013566?ID=120) 
 
 ### Utvikling
