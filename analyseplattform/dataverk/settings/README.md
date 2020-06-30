@@ -4,7 +4,9 @@ Dataverk krever en settings.json fil hvor man angir konfigurerbare innstillinger
 bruker til bruker. I denne filen kan man spesifisere kildene man ønsker å lese data fra, 
 og datalageret samt elastic search indeksen man ønsker å publisere datapakker til.
 
-## Eksempel
+## Eksempler
+
+### Med vault
 ````python
 {
   "index_connections": {
@@ -18,21 +20,40 @@ og datalageret samt elastic search indeksen man ønsker å publisere datapakker 
   }
 }
 ````
-Eksemplet over tar utgangspunkt i at man jobber fra en jupyter notebook server på nais plattformen
-med vault integrasjon satt opp for kubernetes namespacet.
+Eksemplet over tar utgangspunkt i at man jobber **fra en jupyter notebook server på nais plattformen
+med vault integrasjon satt opp for kubernetes namespacet**.
 
-Hvis du har lagt inn følgende hemmeligheter i vault
+For å bruke settingsfilen over må følgende hemmeligheter være lagt inn som key/value par i vault:
 ````bash
-ELASTIC_HOST="https://min-elastic-search-host.no"
-ELASTIC_INDEX="index"
-ORACLE_CONNECTION_STRING="oracle://user:pass@host:port/db"
-POSTGRES_CONNECTION_STRING="postgres://user:pass@host:port/db"
+ELASTIC_HOST: "https://min-elastic-search-host.no"
+ELASTIC_INDEX: "index"
+ORACLE_CONNECTION_STRING: "oracle://user:pass@host:port/db"
+POSTGRES_CONNECTION_STRING: "postgres://user:pass@host:port/db"
 ````
-vil disse verdiene bli hentet og erstatte placeholderne ved runtime når dataverk 
-parser settings.json filen. Se [kubeflow getting started](kubeflow/getting_started.md) for å komme i gang med kubeflow.
 
+Verdiene til hemmelighetene vil da **bli hentet og erstatte placeholderverdiene** når dataverk 
+parser settings.json filen. F.eks. vil ${ELASTIC_HOST} bli erstattet med 
+"https://min-elastic-search-host.no" i settings objektet.
+
+Se [kubeflow getting started](kubeflow/getting_started.md) for å komme 
+i gang med kubeflow.
+
+### Uten vault
 Dersom man bruker dataverk utenfor et jupyter notebook miljø på nais og ikke har satt 
-opp vault integrasjonen selv må hemmeligheter legges inn i settings.json filen direkte.
+opp vault integrasjonen selv må hemmeligheter legges inn i settings.json filen direkte, dvs.
+````python
+{
+  "index_connections": {
+    "elastic_host": "https://min-elastic-search-host.no",
+    "index": "index"
+  },
+
+  "db_connection_strings": {
+    "oracle_database": "oracle://user:pass@host:port/db",
+    "postgres_database": "postgres://user:pass@host:port/db"
+  }
+}
+````
 
 ## Fullstendig eksempel
 Under følger et eksempel med alle de mulige konfigurasjonene man per nå kan spesifisere i settings.json.
@@ -125,10 +146,11 @@ Under følger et eksempel med alle de mulige konfigurasjonene man per nå kan sp
         - definisjon: Sti til ca-bundle i containermiljø
 
 ## Referanser til settings fil i kode
+
+### Les fra databaser
 Databasetilkoblingene som spesifiseres i settings.json må eksplisitt refereres til i koden når de
 skal benyttes.
 
-### Eksempel
 settings.json:
 ````python
 {
