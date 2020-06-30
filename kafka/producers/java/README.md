@@ -23,7 +23,7 @@ public class KafkaConfig {
         Properties credProps = new Properties();
         credProps.put(SaslConfigs.SASL_MECHANISM, "PLAIN")
         credProps.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT")
-        credProps.put(SaslConfigs.SASL_JAAS_CONFIG, "org.apache.kafka.common.security.plain.PlainLoginModule required username=" +$env.username+ "password=" +env.password +";");
+        credProps.put(SaslConfigs.SASL_JAAS_CONFIG, "org.apache.kafka.common.security.plain.PlainLoginModule required username=" +$env.username+ " password=" +env.password +";");
         if (System.getenv("NAV_TRUSTSTORE_PATH") != null) {
             credProps.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
             credProps.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, new File(it).getAbsolutePath());
