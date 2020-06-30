@@ -20,8 +20,10 @@ Meld fra i [#naisflow](https://nav-it.slack.com/archives/CGRMQHT50) hvis du får
 Hvis du har hjemmekontor, så må du sette opp NAVTunnelen for å få tilgang til Kubeflow. Alle som har Mac har NAVTunnel
 automagisk installerte, det eneste man da trenger å gjøre er å endre litt config til tunnelen (og starte den på nytt)
 for å få tilgang til Kubeflow.
+ 
+1. Opprett `~/.navtunnel/config.json` hvis den ikke finnes fra før. 
 
-I filen `~/.navtunnel/config.json` legger du til følgende:
+Kopiér innholdet fra filen `/Applications/navtunnel.app/Contents/Resources/config.json`, og legg til følgende i listen over **jumphosts**:
 ```
 ,{
  "host": "kubeflow02",
@@ -29,10 +31,7 @@ I filen `~/.navtunnel/config.json` legger du til følgende:
 }
 ```
 
-PS: Hvis denne filen ikke finnes, kan du kopiere den først fra
-`/Applications/navtunnel.app/Contents/Resources/config.json`.
-
-I filen `/Applications/navtunnel.app/Contents/Resources/ssh_config`  legger du til følgende:
+2. I filen `/Applications/navtunnel.app/Contents/Resources/ssh_config`  legger du til følgende:
 ```
 Host kubeflow02
   Hostname kubeflow02
@@ -40,6 +39,8 @@ Host kubeflow02
   DynamicForward 14139
   LocalForward 127.0.0.1:14140 kubeflow-apiserver.prod-fss.nais.io:443
 ```
+
+Logg inn via [https://kubeflow.adeo.no](https://kubeflow.adeo.no)
 
 ## (valgfritt) Opprett AD-gruppe for teamet
 
