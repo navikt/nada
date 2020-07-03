@@ -7,6 +7,7 @@
      * [Custom image](analyseplattform/kubeflow/build-custom-image.md)
    * [Dataverk](analyseplattform/dataverk/README.md)
      * [Datapakker](analyseplattform/dataverk/datapakker/README.md)
+     * [Settings](analyseplattform/dataverk/settings/README.md)
 * [Anonymisering](anonymisering/README.md)
 * [Kafka](kafka/README.md)
   * [Admin Rest](kafka/adminrest/README.md)
