@@ -90,7 +90,29 @@ Under følger et eksempel med alle de mulige konfigurasjonene man per nå kan sp
 }
 ````
 
-### Feltdefinisjoner
+## Referanser til settings fil i kode
+
+### Les fra databaser
+Databasetilkoblingene som spesifiseres i settings.json må eksplisitt refereres til i koden når de
+skal benyttes.
+
+settings.json:
+````python
+{
+  "db_connection_strings": {
+    "oracle_database": "${ORACLE_CONNECTION_STRING}"
+  }
+}
+````
+kode:
+````python
+from dataverk import Client
+dv = Client()
+
+df = dv.read_sql("oracle_database", "SELECT * FROM some.table")
+````
+
+## Feltdefinisjoner
 - **index_connections**:
   - datatype: dict
   - definisjon: Konfigurasjon for elastic search index
@@ -144,25 +166,3 @@ Under følger et eksempel med alle de mulige konfigurasjonene man per nå kan sp
     - ssl_cafile:
         - datatype: string
         - definisjon: Sti til ca-bundle i containermiljø
-
-## Referanser til settings fil i kode
-
-### Les fra databaser
-Databasetilkoblingene som spesifiseres i settings.json må eksplisitt refereres til i koden når de
-skal benyttes.
-
-settings.json:
-````python
-{
-  "db_connection_strings": {
-    "oracle_database": "${ORACLE_CONNECTION_STRING}"
-  }
-}
-````
-kode:
-````python
-from dataverk import Client
-dv = Client()
-
-df = dv.read_sql("oracle_database", "SELECT * FROM some.table")
-````
