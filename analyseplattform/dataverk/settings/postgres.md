@@ -64,6 +64,7 @@ til kubeflow namespacet som beskrevet [her](README.md).
 F.eks.
 ````bash
 POSTGRES_CREDENTIALS: "postgres://user:pass@<hostname>:<port>/<database>"
+POSTGRES_CREDS_PATH: "postgresql/preprod-fss/creds/<database>-user"
 ````
 
 _Host_, _port_ og _database_ over finner man i 
@@ -80,10 +81,14 @@ setting.json filen dataverk benytter.
 {
   "db_connection_strings": {
     "postgres_database": "${POSTGRES_CREDENTIALS}"
+  },
+  
+  "db_vault_path": {
+    "postgres_database": "${POSTGRES_CREDS_PATH}"
   }
 }
 ````
-${POSTGRES_CREDENTIALS} vil så erstattes med verdien i vault når dataverk parser settings.json filen.
+${POSTGRES_CREDENTIALS} og ${POSTGRES_CREDS_PATH} vil så erstattes med verdien i vault når dataverk parser settings.json filen.
 
 #### 4. Les fra postgres
 Etter at alt over er konfigurert kan man bruke dataverk til å lese fra postgres databasen på samme måte som
