@@ -112,6 +112,10 @@ dv = Client()
 df = dv.read_sql("oracle_database", "SELECT * FROM some.table")
 ````
 
+#### Postgres
+Se [her](postgres.md) for oppskrift på hvordan man kan konfigurere postgres
+tilkoblinger fra kubeflow.
+
 ## Feltdefinisjoner
 - **index_connections**:
   - datatype: dict
