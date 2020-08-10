@@ -9,6 +9,7 @@
      * [Datapakker](analyseplattform/dataverk/datapakker/README.md)
      * [Settings](analyseplattform/dataverk/settings/README.md)
        * [Postgres](analyseplattform/dataverk/settings/postgres.md)
+   * [Doccano](analyseplattform/doccano/README.md)
 * [Anonymisering](anonymisering/README.md)
 * [Kafka](kafka/README.md)
   * [Admin Rest](kafka/adminrest/README.md)
