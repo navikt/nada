@@ -3,14 +3,14 @@
 ## Hva er produktet?
 [Doccano](https://github.com/doccano/doccano) er et open source tekst
 annoterings verktøy for mennesker. Hensikten er å forenkle konstruksjonen
-av treningsdata, for maskinslærings modeller innenfor NLP.
+av treningsdata, for maskinlærings modeller innenfor NLP.
 
 ## Features
 - Prosjekt samarbeid
 - Prosjektbasert tilgangsstyring
 - Brukertilpasset labels og snarveier
 - Persistering av tekster
-- Støtter dokument klassififisering og sekvens annotering
+- Støtter dokument klassifisering og sekvens annotering
 
 ## Kom i gang
 Doccano er egen applikasjon som kjører på NAIS sitt cluster og er tilgjengelig gjennom
