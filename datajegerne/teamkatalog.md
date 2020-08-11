@@ -45,6 +45,7 @@ All data er åpent tilgjengelig i NAV uten innlogging, brukere med skrivetilgang
 
 ### Lenker til API og repo
 * [Swagger API (Test)](https://teamkatalog-api.nais.preprod.local/swagger-ui.html)
+* [Swagger API (Prod)](https://teamkatalog-api.nais.adeo.no/swagger-ui.html)
 
 * [Repo](https://github.com/navikt/team-catalog)
 
