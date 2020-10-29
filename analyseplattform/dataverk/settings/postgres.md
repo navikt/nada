@@ -45,7 +45,7 @@ group_id: <gruppe-id>
 postgresql:
   dev-fss:
     - database_name: <databasenavn>
-      permission_level: user
+      permission_level: <rolle>
 kubeflow:
   - namespace: <namespace>
     extra_policies:
@@ -55,7 +55,7 @@ kubeflow:
 I eksempelet over vil _gruppe-id_ være IDen til 
 [AAD gruppen](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups), 
 _databasenavn_ navnet på [databasen](https://github.com/navikt/database-iac) 
-du ønsker tilgang til, _namespace_ navnet på kubeflow namespacet og _rolle_ være rollen ([admin, user eller readonly](https://github.com/navikt/database-iac/blob/master/README.md)) som brukeren som provisjoneres skal ha.
+du ønsker tilgang til, _namespace_ navnet på kubeflow namespacet og _rolle_ være rollen ([admin, user eller readonly](https://github.com/navikt/database-iac/blob/master/README.md)) som brukeren som provisjoneres skal ha. NB! _rolle_ må matche permission_level som er spesifisert for teamet.
 
 #### 2. Legg til connection string i vault
 I vault legges connection string til databasen inn som key/value par under stien 
