@@ -25,14 +25,14 @@ kubeflow:
 postgresql:
   dev-fss:
     - database_name: <databasenavn_dev>
-      permission_level: user
+      permission_level: <rolle>
   prod-fss:
     - database_name: <databasenavn_prod>
-      permission_level: user
+      permission_level: <rolle>
 ````
 
 I eksempelet over er _database_name_ navnet på databasen du ønsker tilgang til. Dette finner man i 
-[navikt/database-iac](https://github.com/navikt/database-iac).
+[navikt/database-iac](https://github.com/navikt/database-iac). _Rolle_ vil være rollen ([admin, user eller readonly](https://github.com/navikt/database-iac/blob/master/README.md)) som brukeren som provisjoneres skal ha.
 
 ##### Tilgang team
 For å få tilgang til en postgres database fra et team namespace i kubeflow må man opprette eller 
@@ -49,13 +49,13 @@ postgresql:
 kubeflow:
   - namespace: <namespace>
     extra_policies:
-      - postgresql_preprod-fss_<databasenavn>_user
+      - postgresql_preprod-fss_<databasenavn>_<rolle>
 ````
 
 I eksempelet over vil _gruppe-id_ være IDen til 
 [AAD gruppen](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups), 
 _databasenavn_ navnet på [databasen](https://github.com/navikt/database-iac) 
-du ønsker tilgang til og _namespace_ navnet på kubeflow namespacet.
+du ønsker tilgang til, _namespace_ navnet på kubeflow namespacet og _rolle_ være rollen ([admin, user eller readonly](https://github.com/navikt/database-iac/blob/master/README.md)) som brukeren som provisjoneres skal ha.
 
 #### 2. Legg til connection string i vault
 I vault legges connection string til databasen inn som key/value par under stien 
@@ -64,11 +64,13 @@ til kubeflow namespacet som beskrevet [her](README.md).
 F.eks.
 ````bash
 POSTGRES_CREDENTIALS: "postgres://user:pass@<hostname>:<port>/<database>"
-POSTGRES_CREDS_PATH: "postgresql/preprod-fss/creds/<database>-user"
+POSTGRES_CREDS_PATH: "postgresql/preprod-fss/creds/<database>-<rolle>"
 ````
 
 _Host_, _port_ og _database_ over finner man i 
 [navikt/database-iac](https://github.com/navikt/database-iac).
+
+_Rolle_ være rollen ([admin, user eller readonly](https://github.com/navikt/database-iac/blob/master/README.md)) som brukeren som provisjoneres skal ha.
 
 Merk: Autentiseringsdelen av connection strengen (*user:pass* over) må være med. Det spiller ingen rolle
 hva man setter dette til da dataverk vil bytte det ut med gyldige credentials når man forsøker å gjøre
