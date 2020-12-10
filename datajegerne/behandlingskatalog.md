@@ -51,12 +51,11 @@ Team datajegerne har utviklet og forvalter løsningen. Du kan nå oss på slack 
 
 
 ## Litt om arkitektur
-Behandlingskatalogen består av backend Polly (fra "Policy Catalog") og en frontend (github repo data-catalog-editor).
+Behandlingskatalogen består av backend (java spring boot) Polly (fra "Policy Catalog") og en frontend (react app).
 All data er åpent tilgjengelig i NAV uten innlogging, brukere med skrivetilgang kan endre data. Innlogging skjer via Single sign-on via Azure AD, brukere i frontend vil få en session cookie som varer i 14 dager. APIet støtter innlogging via Authorization header med Bearer token (access token fra Azure).
 
 Løsningen bruker postgresql som datakilde men de fleste felter er lagret i JSONB kolonner.
-Eksterne kilder til data inkluderer nora (nais-team oversikt) og begrepskatalogen.
-En kafka topic blir oppdatert med behandlinger og dens opplysningstyper, tanken er at denne kan tilpasses til å bli brukt i tilgangskontroll i fremtiden, men det er en stund siden denne er gjennomgått.
+Eksterne kilder til data inkluderer teamkatalogen og begrepskatalogen og felles kodeverk.
 
 ### Administratorer (per nå datajegerne) kan aksessere noen få admin tjenester
 * Versjonshistorikk som inkludert timestamp , hvem som har endret noe, samt et snapshot av hele dataobjektet når det ble endret.
@@ -66,10 +65,9 @@ En kafka topic blir oppdatert med behandlinger og dens opplysningstyper, tanken 
 
 #### Lenker til API og repo
 * [Swagger API](https://polly.nais.adeo.no/swagger-ui.html)
-* [Swagger API (Test)](https://polly.nais.preprod.local/swagger-ui.html)
+* [Swagger API (Test)](https://polly.dev.adeo.no/swagger-ui.html)
 
-* [Repo Backend](https://github.com/navikt/polly)
-* [Repo Frontend](https://github.com/navikt/data-catalog-editor)
+* [Repo](https://github.com/navikt/polly)
 
 #### Tilgang og headers
 Api er åpent for lesing uten innlogging. Enkelte funksjoner (som ikke er naturlig at andre system ikke skal ha tilgang til) er begrenset, samt skriving. Kontakt #datajegerne for mer info.
