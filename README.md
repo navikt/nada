@@ -22,7 +22,13 @@ NADA dokumentasjon
 * [Om behandlingskatalogen](datajegerne/behandlingskatalog.md)
 
 * [Applikasjon](https://behandlingskatalog.nais.adeo.no). Behandlingskatalogen
-* [Applikasjon Test](https://behandlingskatalog.nais.preprod.local). Behandlingskatalogen (Test)
+* [Applikasjon Test](https://behandlingskatalog.dev.adeo.no/). Behandlingskatalogen (Test)
+
+## Teamkatalog
+* [Om teamkatalogen](datajegerne/teamkatalog.md)
+
+* [Applikasjon](https://teamkatalog.nais.adeo.no). Teamkatalogen
+* [Applikasjon Test](https://teamkatalog.dev.adeo.no/). Teamkatalogen (Test)
 
 
 ## Kafka
