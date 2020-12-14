@@ -1,7 +1,7 @@
 # Airflow på knada
-Apache airflow er et verktøy for å orkestrere, skedulere og monitorere datapipelines. Web-grensesnittet til airflow gir 
-brukeren enkel tilgang til å lese logger fra de ulike stegene i pipelinen, trigge datapipelines manuelt og sjekke
-statistikk på tidligere kjøringer. 
+[Apache airflow](https://airflow.apache.org/docs/apache-airflow/stable/index.html) er et verktøy for å orkestrere, 
+skedulere og monitorere datapipelines. Web-grensesnittet til airflow gir brukeren enkel tilgang til å lese logger fra 
+de ulike stegene i pipelinen, trigge datapipelines manuelt og sjekke statistikk på tidligere kjøringer. 
 
 
 En datapipeline i airflow, eller DAG (Directed Acyclic Graph), er et sett med oppgaver man ønsker å kjøre som beskriver
@@ -50,3 +50,12 @@ airflow instansen.
 - [Eksempel dags](https://github.com/navikt/nada-dags) inneholder en rekke eksempler på hvordan å ta i bruk ulike
 operators i airflow.
 - [Opendata dags](https://github.com/navikt/opendata-dags) er DAGs repoet brukt for opendata datapakker.
+
+### dataverk-airflow
+[dataverk-airflow](https://github.com/navikt/dataverk-airflow) er et wrapperbibliotek som gjør det enklere å 
+bruke [KubernetesPodOperator](https://airflow.apache.org/docs/apache-airflow/stable/kubernetes.html) i knada clusteret. 
+
+
+Biblioteket inneholder wrapper-funksjoner for å kjøre jupyter notebooks, python scripts, bigquery kommandoer og 
+dbt transformasjoner i separate kubernetes podder. Se [README](https://github.com/navikt/dataverk-airflow/blob/master/README.md) 
+på repoet for eksempler.
