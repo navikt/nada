@@ -5,6 +5,7 @@
    * [Kubeflow](analyseplattform/kubeflow/README.md)
      * [Getting started](analyseplattform/kubeflow/getting-started.md)
      * [Custom image](analyseplattform/kubeflow/build-custom-image.md)
+   * [Airflow](analyseplattform/airflow/README.md)
    * [Dataverk](analyseplattform/dataverk/README.md)
      * [Datapakker](analyseplattform/dataverk/datapakker/README.md)
      * [Settings](analyseplattform/dataverk/settings/README.md)
