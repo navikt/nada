@@ -13,10 +13,6 @@ repo som periodisk synkroniseres med airflow instansen. Under er en grafisk repr
 Knada plattformen tilbyr team eller enkeltpersoner å sette opp airflow instanser i sine egne k8s namespacer i 
 knada clusteret. For mer informasjon om airflow, se [airflow docs](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
 
-## Forutsetninger for å ta i bruk airflow i knada cluster
-Eneste forutsetning for å ta i bruk airflow er at man har tilgang til enten et personlig eller team namespace i knada
-clusteret. For å få dette må man ha satt opp enten kubeflow eller jupyterhub, se [her](../kubeflow/README.md) 
-
 ## Oppsett
 For å sette opp airflow må man lage en pull request til [navikt/knada-airflow](https://github.com/navikt/knada-airflow) 
 og legge til en yaml-fil med følgende innhold i mappen _configs_: 
