@@ -19,7 +19,7 @@ clusteret. For å få dette må man ha satt opp enten kubeflow eller jupyterhub,
 
 ## Oppsett
 For å sette opp airflow må man lage en pull request til [navikt/knada-airflow](https://github.com/navikt/knada-airflow) 
-og legge til en yaml-fil med følgende innhold i mappen _airflows_: 
+og legge til en yaml-fil med følgende innhold i mappen _configs_: 
 
 ````bash
 namespace: <namespace>
