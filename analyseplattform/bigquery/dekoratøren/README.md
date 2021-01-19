@@ -30,7 +30,14 @@ Klikk på 'send svar'-knapp logger ```{ kilde: 'footer', fritekst: 'besvart' }``
 Klikk på avbryt-knapp logger ```{ kilde: 'footer', fritekst: 'ingen kommentar' }```  
 
 ### Eksempler på dashboard:  
+Prosentandel som har svart ja per app:  
 https://analytics.amplitude.com/nav/chart/ys0z6wc?source=space  
+
+Prosentandel som har svart ja per side:  
 https://analytics.amplitude.com/nav/chart/e4sq1fo?source=space  
+
+Prosentandel som skriver noe i fritekst-feltet: (filtrert på kilde: footer, så denne har kun svar etter 19.01)  
+https://analytics.amplitude.com/nav/chart/kyv4bz8
+
 
 
