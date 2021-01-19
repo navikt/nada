@@ -19,3 +19,14 @@ result = bq_client.query("SELECT * FROM dekoratoren.dekorator_svar")
 
 df = result.to_dataframe()
 ````
+
+## Metrikker i Amplitude
+Klikk blir registrert på eventet 'tilbakemelding' i amplitude.
+For å skille svarerne på eventer som kommer fra chatbot Frida, la vi på propertien kilde:'footer' den 19.01.2021.
+Følgende blir logget:   
+Klikk på ja-knapp logger { kilde: 'footer', svar: 'ja' });
+Klikk på nei-knapp logger { kilde: 'footer', svar: 'nei' });
+Klikk på 'send svar'-knapp logger { kilde: 'footer', fritekst: 'besvart' });
+Klikk på 'avbryt'-knapp logger { kilde: 'footer', fritekst: 'ingen kommentar' });
+   
+
