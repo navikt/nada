@@ -29,7 +29,7 @@ Klikk på nei-knapp logger ```{ kilde: 'footer', svar: 'nei' }```
 Klikk på 'send svar'-knapp logger ```{ kilde: 'footer', fritekst: 'besvart' }```  
 Klikk på avbryt-knapp logger ```{ kilde: 'footer', fritekst: 'ingen kommentar' }```  
 
-### Eksempel på dashboard:  
+### Eksempler på dashboard:  
 https://analytics.amplitude.com/nav/chart/ys0z6wc?source=space  
 https://analytics.amplitude.com/nav/chart/e4sq1fo?source=space  
 
