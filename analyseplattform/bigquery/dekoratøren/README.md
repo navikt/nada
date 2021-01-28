@@ -19,3 +19,25 @@ result = bq_client.query("SELECT * FROM dekoratoren.tilbakemeldinger")
 
 df = result.to_dataframe()
 ````
+
+## Metrikker i Amplitude
+Klikk blir registrert på eventet 'tilbakemelding' i amplitude.  
+For å skille svarene på eventer som kommer fra chatbot Frida, la vi på propertien ```kilde: 'footer'``` den 19.01.2021.  
+Følgende blir logget:     
+Klikk på ja-knapp logger ```{ kilde: 'footer', svar: 'ja' }```  
+Klikk på nei-knapp logger ```{ kilde: 'footer', svar: 'nei' }```  
+Klikk på 'send svar'-knapp logger ```{ kilde: 'footer', fritekst: 'besvart' }```  
+Klikk på avbryt-knapp logger ```{ kilde: 'footer', fritekst: 'ingen kommentar' }```  
+
+### Eksempler på dashboard:  
+Prosentandel som har svart ja per app:  
+https://analytics.amplitude.com/nav/chart/ys0z6wc?source=space  
+
+Prosentandel som har svart ja per side:  
+https://analytics.amplitude.com/nav/chart/e4sq1fo?source=space  
+
+Prosentandel som skriver noe i fritekst-feltet: (filtrert på kilde: footer, så denne har kun svar etter 19.01)  
+https://analytics.amplitude.com/nav/chart/kyv4bz8
+
+
+
