@@ -15,7 +15,7 @@ from google.cloud import bigquery
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/sti/til/google/credentials.json"
 
 bq_client = bigquery.Client()
-result = bq_client.query("SELECT * FROM dekoratoren.dekorator_svar")
+result = bq_client.query("SELECT * FROM dekoratoren.tilbakemeldinger")
 
 df = result.to_dataframe()
 ````
