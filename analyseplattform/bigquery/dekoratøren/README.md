@@ -1,5 +1,5 @@
 # Svar fra "Fant du det du lette etter"
-Alle svar skrives til bigquery tabellen _dekoratoren.dekoratoren_svar_ i _dataplattform_ prosjektet på GCP.
+Alle svar skrives til bigquery tabellen _dekoratoren.tilbakemeldinger_ i _dataplattform_ prosjektet på GCP.
 
 ## Få tilgang til data
 Ønsker du å lese disse dataene kan du melde behovet i [#data-catalog-intern](https://nav-it.slack.com/archives/CQ9SV9DNE).
