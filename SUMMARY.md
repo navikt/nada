@@ -1,18 +1,6 @@
 # Summary
 
 * [NADA](README.md)
-* [Analyseplattform](analyseplattform/README.md)
-   * [Kubeflow](analyseplattform/kubeflow/README.md)
-     * [Getting started](analyseplattform/kubeflow/getting-started.md)
-     * [Custom image](analyseplattform/kubeflow/build-custom-image.md)
-   * [Airflow](analyseplattform/airflow/README.md)
-   * [Bigquery](analyseplattform/bigquery/README.md)
-     * [Dekoratøren](analyseplattform/bigquery/dekoratøren/README.md)
-   * [Dataverk](analyseplattform/dataverk/README.md)
-     * [Datapakker](analyseplattform/dataverk/datapakker/README.md)
-     * [Settings](analyseplattform/dataverk/settings/README.md)
-       * [Postgres](analyseplattform/dataverk/settings/postgres.md)
-   * [Doccano](analyseplattform/doccano/README.md)
 * [Anonymisering](anonymisering/README.md)
 * [Kafka](kafka/README.md)
   * [Admin Rest](kafka/adminrest/README.md)

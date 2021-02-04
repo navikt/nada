@@ -14,9 +14,7 @@ NADA dokumentasjon
 * Åpne data. Offentlig tilgjengelig: [dataverk.nav.no](https://dataverk.nav.no).
 
 ## Plattform for analyse og maskinlæring
-* [Om analyseplattformen](analyseplattform/README.md)
-
-* Login analyseplattformen: [kubeflow.adeo.no](https://kubeflow.adeo.no). 
+* Besøk knada på [navikt.github.io/knada/docs/](navikt.github.io/knada/docs/).
 
 ## Behandlingskatalog
 * [Om behandlingskatalogen](datajegerne/behandlingskatalog.md)
