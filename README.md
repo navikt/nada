@@ -11,7 +11,7 @@ NADA dokumentasjon
 * [Om datakatalogen](datakatalog/README.md)
 
 * Intern datakatalog. Tilgjengelig kun for NAV ansatte: [data.adeo.no](https://data.adeo.no).
-* Åpne data. Offentlig tilgjengelig: [dataverk.nav.no](https://dataverk.nav.no).
+* Åpne data. Offentlig tilgjengelig: [data.nav.no](https://data.nav.no).
 
 ## Plattform for analyse og maskinlæring
 * Besøk knada på [navikt.github.io/knada/docs/](navikt.github.io/knada/docs/).
