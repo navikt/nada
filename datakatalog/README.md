@@ -5,8 +5,7 @@
 
 Datakatalogen gir oversikt over og informasjon om data og dataprodukter i NAV. Det er tre ulike innganger til katalogen:
 
-* [Åpne data (ckan)](https://data.nav.no). Dette er et utsnitt av data og dataprodukter som er offentlig tilgjengelige.
-* [Åpne data (beta)](https://dataverk.nav.no). Nå versjon basert på intern datakatalog.
+* [Åpne data](https://data.nav.no). Offentlig tilgjengelige datasett.
 
 * [Intern datakatalog](https://data.adeo.no). Inneholder i tillegg til offentlig tilgjengelige data og dataprodukter også data og dataprodukter som kun er tilgjengelige internt i NAV
 
