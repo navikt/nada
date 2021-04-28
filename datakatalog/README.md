@@ -40,7 +40,7 @@ Som produsent av data:
 
 ## Kontaktinformasjon
 
-Ta kontakt med [#data-catalog-intern](https://nav-it.slack.com/archives/CQ9SV9DNE) på Slack.
+Ta kontakt med [#dig-dakan](https://nav-it.slack.com/archives/CQ9SV9DNE) på Slack.
 
 
 ## Litt om arkitektur
