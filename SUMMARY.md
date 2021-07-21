@@ -14,6 +14,7 @@
   * [Testing](kafka/testing/README.md)
 * [Kataloger](kataloger.md)
   * [Behandlingskatalog](datajegerne/behandlingskatalog.md)
+  * [Etterlevelse](datajegerne/etterlevelse.md)
   * [Datakatalog](datakatalog/README.md)
     * [Brukerhistorier](datakatalog/stories.md)
     * [Arkitektur](arkitektur.md)
