@@ -32,8 +32,7 @@ TODO
 ### API
 
 #### Lenker til API og repo
-
-
+TODO
 
 #### Tilgang og headers
 TODO
