@@ -30,10 +30,10 @@ TODO
 * Administrering av kodelister, for å sikre datakvalitet er en rekke felter i løsningen basert på internt kontrollerte kodeverk. 
 
 ### API
+TODO
 
 #### Lenker til API og repo
-
-
+TODO
 
 #### Tilgang og headers
 TODO
