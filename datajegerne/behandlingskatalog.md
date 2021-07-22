@@ -55,7 +55,8 @@ All data er åpent tilgjengelig internt i NAV uten innlogging. Brukere med skriv
 Løsningen bruker PostgreSQL som datakilde men de fleste felter er lagret i JSONB kolonner.
 Eksterne kilder til data inkluderer teamkatalogen og begrepskatalogen og felles kodeverk.
 
-### Administratorer (per nå datajegerne) kan aksessere noen få admin tjenester
+### Administratorer (per nå datajegerne) kan aksessere noen få admin funksjoner
+* Administrasjon av tilgang til applikasjonen.
 * Versjonshistorikk som inkludert timestamp , hvem som har endret noe, samt et snapshot av hele dataobjektet når det ble endret.
 * Administrering av kodelister, for å sikre datakvalitet er en rekke felter i løsningen basert på internt kontrollerte kodeverk. (Om noen av disse skal flyttes ut og bli NAV-kodeverk er en pågående diskusjon)
 
