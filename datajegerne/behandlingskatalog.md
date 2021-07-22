@@ -50,25 +50,24 @@ Team datajegerne har utviklet og forvalter løsningen. Du kan nå oss på slack 
 
 ## Litt om arkitektur
 Behandlingskatalogen består av backend (java spring boot) Polly (fra "Policy Catalog") og en frontend (react app).
-All data er åpent tilgjengelig i NAV uten innlogging, brukere med skrivetilgang kan endre data. Innlogging skjer via Single sign-on via Azure AD, brukere i frontend vil få en session cookie som varer i 14 dager. APIet støtter innlogging via Authorization header med Bearer token (access token fra Azure).
+All data er åpent tilgjengelig internt i NAV uten innlogging. Brukere med skrivetilgang kan endre data. Innlogging skjer via Single Sign-On via Azure AD, brukere i frontend vil få en session cookie som varer i 14 dager. APIet støtter innlogging via Authorization header med Bearer token (access token fra Azure).
 
-Løsningen bruker postgresql som datakilde men de fleste felter er lagret i JSONB kolonner.
+Løsningen bruker PostgreSQL som datakilde men de fleste felter er lagret i JSONB kolonner.
 Eksterne kilder til data inkluderer teamkatalogen og begrepskatalogen og felles kodeverk.
 
 ### Administratorer (per nå datajegerne) kan aksessere noen få admin tjenester
 * Versjonshistorikk som inkludert timestamp , hvem som har endret noe, samt et snapshot av hele dataobjektet når det ble endret.
 * Administrering av kodelister, for å sikre datakvalitet er en rekke felter i løsningen basert på internt kontrollerte kodeverk. (Om noen av disse skal flyttes ut og bli NAV-kodeverk er en pågående diskusjon)
 
-### API
+### Kildekode
+* [Repo](https://github.com/navikt/polly)
 
-#### Lenker til API og repo
+#### API
 * [Swagger API](https://polly.nais.adeo.no/swagger-ui.html)
 * [Swagger API (Test)](https://polly.dev.adeo.no/swagger-ui.html)
 
-* [Repo](https://github.com/navikt/polly)
-
 ### Datasett
-* [Behandlingskatalogen datasett](https://data.adeo.no/datapakke/37427aeae539aba2dee2c40ae4ac9319) 
+* [Behandlingskatalogen datasett](https://data.adeo.no/datapakke/37427aeae539aba2dee2c40ae4ac9319) (mangelfullt, under arbeid)
 
 #### Tilgang og headers
 Api er åpent for lesing uten innlogging. Enkelte funksjoner (som ikke er naturlig at andre system ikke skal ha tilgang til) er begrenset, samt skriving. Kontakt #datajegerne for mer info.
@@ -77,6 +76,5 @@ Headers
 * Authorizaion - Systemer kan sende med Azure access token som Bearer token
 * Nav-Call-Id - optional callId/correlation id to set for log tracing
 * Nav-Consumer-Id - optional but strongly suggested to trace source of requests
-
 
 
