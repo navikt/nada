@@ -67,6 +67,9 @@ Eksterne kilder til data inkluderer teamkatalogen og begrepskatalogen og felles 
 
 * [Repo](https://github.com/navikt/polly)
 
+### Datasett
+* [Behandlingskatalogen datasett](https://data.adeo.no/datapakke/37427aeae539aba2dee2c40ae4ac9319) 
+
 #### Tilgang og headers
 Api er åpent for lesing uten innlogging. Enkelte funksjoner (som ikke er naturlig at andre system ikke skal ha tilgang til) er begrenset, samt skriving. Kontakt #datajegerne for mer info.
 
