@@ -62,14 +62,14 @@ Eksterne kilder til data inkluderer teamkatalogen og begrepskatalogen og felles 
 ### Kildekode
 * [Repo](https://github.com/navikt/polly)
 
-#### API
+### API
 * [Swagger API](https://polly.nais.adeo.no/swagger-ui.html)
 * [Swagger API (Test)](https://polly.dev.adeo.no/swagger-ui.html)
 
 ### Datasett
 * [Behandlingskatalogen datasett](https://data.adeo.no/datapakke/37427aeae539aba2dee2c40ae4ac9319) (mangelfullt, under arbeid)
 
-#### Tilgang og headers
+### Tilgang og headers
 Api er åpent for lesing uten innlogging. Enkelte funksjoner (som ikke er naturlig at andre system ikke skal ha tilgang til) er begrenset, samt skriving. Kontakt #datajegerne for mer info.
 
 Headers
