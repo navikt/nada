@@ -23,12 +23,13 @@ const config = {
   title: 'NADA',
   tagline: 'NAV Data - vi bygger plattform og verktøy for deling av data i NAV',
   url: 'https://navikt.github.io',
-  baseUrl: '/',
+  baseUrl: '/nada/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'navikt',
   projectName: 'nada',
+  trailingSlash: false,
 
   presets: [
     [
