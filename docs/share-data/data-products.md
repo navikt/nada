@@ -2,7 +2,7 @@
 title: Data products 
 ---
 
-**Data Product**. The term data product is here used as defined in the datamesh literature: 'Data Product is the node on the mesh that encapsulates three structural components required for its function: Code, Data and Metadata, Infrastructure' [Source: Thoughtworks](https://www.thoughtworks.com/what-we-do/data-and-ai/data-mesh). A more complete definition can be found under [Concepts](/begreper/dataprodukt)
+**Data Product**. The term data product is here used as defined in the datamesh literature: 'Data Product is the node on the mesh that encapsulates three structural components required for its function: Code, Data and Metadata, Infrastructure' [Source: Thoughtworks](https://www.thoughtworks.com/what-we-do/data-and-ai/data-mesh). A more complete definition can be found under [Concepts](/concepts/data-product)
 
 Please note that the term is used differently from the more conventional definition: 'data product is a product that facilitates an end goal through the use of data' [Source: DJ. Patil. 2012](http://radar.oreilly.com/2012/07/data-jujitsu.html)
 
@@ -27,7 +27,7 @@ Things to consider when delivering data as a product:
 
 Data as a product must be easily discoverable. [dakan](https://github.com/navikt/dakan) provides a search interface to our metadata graph. 
 
-[Register metadata](registrere)
+[Register metadata](/share-data/register)
 
 
 ## Create a data product
