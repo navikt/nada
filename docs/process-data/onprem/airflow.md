@@ -68,26 +68,26 @@ Specifies how often (in seconds) the Airflow instance should pull your Github re
 **default:** 60
 
 ### dvApiEndpoint
-When publishing data packages [dataverk](../../dataverk/README) uses this parameter to set the api address the data catalog
+When publishing data packages [dataverk](/process-data/dataverk/README) uses this parameter to set the api address the data catalog
 uses to fetch the content for the data package viewer.
 
-**NAV internal (default):** https://data.intern.nav.no/api ([internal data catalog](../finn-data/datakatalog#internal-datacatalog-nav-only))
+**NAV internal (default):** https://data.intern.nav.no/api ([internal data catalog](/find-data/data-catalog#internal-datacatalog-nav-only))
 
-**External:** https://data.nav.no/api ([external data catalog](../finn-data/datakatalog#public-datacatalog))
+**External:** https://data.nav.no/api ([external data catalog](/find-data/data-catalog#public-datacatalog))
 
 
 ### dvBucketEndpoint
-When publishing data packages [dataverk](../../dataverk/README) uses this parameter to determine which data catalog the 
+When publishing data packages [dataverk](/process-data/dataverk/README) uses this parameter to determine which data catalog the 
 data package content (resource files and visualizations) should be published to.
 
-**NAV internal (default):** https://dv-api-intern.prod-gcp.nais.io/storage ([internal data catalog](../finn-data/datakatalog#internal-datacatalog-nav-only))
+**NAV internal (default):** https://dv-api-intern.prod-gcp.nais.io/storage ([internal data catalog](/find-data/data-catalog#internal-datacatalog-nav-only))
 
-**External:** https://dv-api-ekstern.prod-gcp.nais.io/storage ([external data catalog](../finn-data/datakatalog#public-datacatalog))
+**External:** https://dv-api-ekstern.prod-gcp.nais.io/storage ([external data catalog](/find-data/data-catalog#public-datacatalog))
 
 :::caution external data catalog
 When not specifying `dvApiEndpoint` and `dvBucketEndpoint` the data packages are by default published to the  
-[internal data catalog](../../finn-data/datakatalog/#internal-datakatalog-nav-only). Do not override these parameters unless you 
-want to publish data packages to the [external data catalog](../../finn-data/datakatalog/#public-datacatalog).
+[internal data catalog](/find-data/data-catalog/#internal-datakatalog-nav-only). Do not override these parameters unless you 
+want to publish data packages to the [external data catalog](/find-data/data-catalog/#public-datacatalog).
 :::
 
 ## Examples of DAG repositories

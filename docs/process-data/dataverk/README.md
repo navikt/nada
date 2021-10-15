@@ -14,7 +14,7 @@ connectors is that they return data in the same format, a [pandas](https://panda
 the user the ability to utilize the pandas library to perform transformations and mutations on datasets, and combine data 
 from different sources.
 
-![Read sources](//img/dv_les_kilde.png)
+![Read sources](/img/dv_les_kilde.png)
 
 #### Storage and publishing of results
 For storing results dataverk offer a google cloud storage connector which can be used either directly or through the 
@@ -22,7 +22,7 @@ publishing mechanism of dataverk.
 
 To publish data products with dataverk involves the following:
 1. Prepare datasets, create visualizations, and text descriptions
-2. Publish a [data package](../dele-innsikt/datapakker)
+2. Publish a [data package](/share-data/data-products)
 
 When a "data package" is published it will be available either in the [internal](https://data.intern.nav.no) or 
 [external](https://data.nav.no) data catalog. 
@@ -46,7 +46,7 @@ driver etc.). These dependencies will be installed in the docker image used by t
 for applications running in the NAIS clusters, i.e. secrets (e.g. database credentials) are mounted into the container 
 environment as opposed to stored locally on your machine.
 
-To get started with Jupyterhub, see [getting started](onprem/getting-started) or reach out in 
+To get started with Jupyterhub, see [getting started](/process-data/onprem/getting-started) or reach out in 
 [#knada](https://nav-it.slack.com/archives/CGRMQHT50) for assistance.
 
 ### Without Jupyterhub
