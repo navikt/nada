@@ -1,61 +1,33 @@
----
+# Website
 
-NADA dokumentasjon
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
----
+### Installation
 
-* [Om NADA på Confluence](https://confluence.adeo.no/pages/viewpage.action?pageId=338181121)
+```
+$ yarn
+```
 
+### Local Development
 
-## Datakatalog
-* [Om datakatalogen](datakatalog/README.md)
+```
+$ yarn start
+```
 
-* Intern datakatalog. Tilgjengelig kun for NAV ansatte: [data.adeo.no](https://data.adeo.no).
-* Åpne data. Offentlig tilgjengelig: [data.nav.no](https://data.nav.no).
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-## Plattform for analyse og maskinlæring
-* Besøk knada på [navikt.github.io/knada/docs/](navikt.github.io/knada/docs/).
+### Build
 
-## Behandlingskatalog
-* [Om behandlingskatalogen](datajegerne/behandlingskatalog.md)
+```
+$ yarn build
+```
 
-* [Applikasjon](https://behandlingskatalog.nais.adeo.no). Behandlingskatalogen
-* [Applikasjon Test](https://behandlingskatalog.dev.adeo.no/). Behandlingskatalogen (Test)
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-## Etterlevelse
-* [Om etterlevelse](datajegerne/etterlevelse.md)
+### Deployment
 
-* [Applikasjon](https://etterlevelse.intern.nav.no/). Etterlevelse
-* [Applikasjon Test](https://etterlevelse.dev.intern.nav.no/). Etterlevelse (Test)
+```
+$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+```
 
-## Teamkatalog
-* [Om teamkatalogen](datajegerne/teamkatalog.md)
-
-* [Applikasjon](https://teamkatalog.nais.adeo.no). Teamkatalogen
-* [Applikasjon Test](https://teamkatalog.dev.adeo.no/). Teamkatalogen (Test)
-
-
-## Kafka
-* [Kafka](kafka/README.md)
-
-
-## Anonymisering
-* [Anonymisering](anonymisering/README.md)
-
-
-## Om sikkerhet og personvern ved bruk av plattformtjenester
-For tjenester i NADA vil det allerede være utført en sikkerhetsvurdering (ROS). Team som ønsker å benytte tjenesten har
-ansvar for å vurdere om sikkerheten er tilstrekkelig god for sitt bruk. De fleste sikkerhetsvurderinger er dokumentert i
-PowerApps-applikasjnen TryggNok. Spør NADA-teamet på Slack i #team-dataplattform hvis dere ikke finner en relevant
-sikkerhetsvurdering.
-
-I NAV utføres Personvernkonsekvensvurderinger (PVK) for å dokumentere at vi opererer i henhold til GDPR. Hvert team må
-ha PVK for behandlingen av personopplysninger som de gjør. Når teamet tar i bruk ny teknologi kan det innebære en
-endring i personvernkonsekvensene. Teamet bør derfor gjøre en oppdatering av PVK. ROS vil ofte inkludere
-informasjonssikkerhet, og kan gi støtte i utfylling av PVK.
-
-Når team vil behandle personopplysninger på en helt ny måte kan det bety at den eksisterende PVK ikke dekker dette
-formålet. I så fall kreves en ny PVK som dokumenterer formål og hjemmel for behandlingen. En legal coach fra juridisk
-seksjon kan bistå med en slik vurdering.
-
-
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
