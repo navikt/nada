@@ -61,3 +61,5 @@ En pipeline er produksjon av en eller flere datakilder.
 ## Oppsummering
 
 Produksjon av datakilder vil ikke bli styrt av plattformen, men NADA kan komme med anbefalinger på hvordan man bør sette opp en pipeline.
+
+![NADA sine definisjoner og sammenhenger](/img/adr-001.png)
