@@ -40,7 +40,7 @@ Source: [Martin Fowler](https://martinfowler.com/articles/data-mesh-principles.h
 * The domains and product teams are masters of their data, data quality control and domain related analytics. The domain can see operational and analytical data holistically and have deep knowledge of the origins and affordances of the data.
 * Data product: Teams work directly with users of their data. Platform can help make the products easy to use for business users.
 * Security & GDPR: Limit number of users, data minimalization, proportional use.
-* No central bottleneck for developing new dataproducts or scaling to more domains.
+* No central bottleneck for developing new data products or scaling to more domains.
 
 
 ### Challenges

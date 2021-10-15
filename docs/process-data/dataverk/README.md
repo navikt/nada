@@ -22,9 +22,9 @@ publishing mechanism of dataverk.
 
 To publish data products with dataverk involves the following:
 1. Prepare datasets, create visualizations, and text descriptions
-2. Publish a [datapackage](../dele-innsikt/datapakker)
+2. Publish a [data package](../dele-innsikt/datapakker)
 
-When a "datapackage" is published it will be available either in the [internal](https://data.intern.nav.no) or 
+When a "data package" is published it will be available either in the [internal](https://data.intern.nav.no) or 
 [external](https://data.nav.no) data catalog. 
 
 #### Anonymization of datasets

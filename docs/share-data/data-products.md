@@ -88,7 +88,7 @@ Color coding in figures:
 
 ![Encoding](/img/dataproducts-explication.svg)
 
-### Simple dataproduct
+### Simple data product
 
 The data product offers a single or a few datasets which do not require complex transformations.
 
@@ -110,7 +110,7 @@ The data product offers multiple datasets and, possibly, examples of use.
 
 #### Implementation examples
 
-Bare-bone minimal data product examples. Please note that these examples have been made for development and testing of the integration of dataproducts with the metadata api and the datacatalog. They are far from complete and do not represent good practice for creating data products.   
+Bare-bone minimal data product examples. Please note that these examples have been made for development and testing of the integration of data products with the metadata api and the datacatalog. They are far from complete and do not represent good practice for creating data products.
 
 * Enhetsregisteret
   *   [Github](https://github.com/navikt/knada-naisjobb-test)

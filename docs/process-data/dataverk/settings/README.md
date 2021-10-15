@@ -4,7 +4,7 @@ title: Settings file
 
 Dataverk requires a settings.json file where you specify configurable settings which vary from user 
 to user. In this file you can specify the sources you wish to read data from, and the storage sink and 
-elastic search index you wish to publish datapackages to.
+elastic search index you wish to publish data packages to.
 
 ## Examples
 

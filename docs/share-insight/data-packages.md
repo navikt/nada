@@ -3,11 +3,11 @@ title: Data packages
 ---
 
 
-## Why datapackages?
+## Why data packages?
 
-With datapackages you can create and publish datastories directly from notebooks or scripts. You can combine data visualizations with formatted text, tables, images, html and PDFs to create your datastory. The easiest way to create datapackages is using notebooks. See <a href="https://deetly.github.io/docs/intro.html">deetly</a> for examples and getting started documentation.
+With data packages you can create and publish datastories directly from notebooks or scripts. You can combine data visualizations with formatted text, tables, images, html and PDFs to create your datastory. The easiest way to create data packages is using notebooks. See <a href="https://deetly.github.io/docs/intro.html">deetly</a> for examples and getting started documentation.
 
-## Creating datapackages with notebooks
+## Creating data packages with notebooks
 
 ```python
 import deetly
@@ -80,13 +80,13 @@ Client().publish(ds)
 ```
 
 
-## Publishing datapackages without using notebooks
+## Publishing data packages without using notebooks
 
 It is also possible to publish data stories using other languages than Python and without using notebooks.
 
-A datapackage is just a declarative specification in JSON format. The package can also contain data and/or references to data sources.
+A data package is just a declarative specification in JSON format. The package can also contain data and/or references to data sources.
 
-The datapackage JSON object contains:
+The data package JSON object contains:
 
 * metadata
 * a list of 0-n data 'resources'
@@ -113,21 +113,21 @@ Basic example contain only one view of type markdown and noe data  resources:
 ```
 
 
-### Publishing a datapackage via API
+### Publishing a data package via API
 
 
-When publishing a datapackage the JSON declaration along with eventual resource file are written to files in bucket store via and API. The files can then be accessed by a 'datapackage viewer' front-end application.
+When publishing a data package the JSON declaration along with eventual resource file are written to files in bucket store via and API. The files can then be accessed by a 'data package viewer' front-end application.
 
-The following example shows how to publish a datapackage JSON file to the dev environment (https://data.dev.intern.nav.no)
+The following example shows how to publish a data package JSON file to the dev environment (https://data.dev.intern.nav.no)
 
 To publish to prod you would have used the API address: https://datakatalog-api.intern.nav.no.
 
-### Create a new datapackage
+### Create a new data package
 ```
 curl -X 'POST' -H "Content-Type: application/json" -d @datapakke.json 'https://datakatalog-api.dev.intern.nav.no/v1/datapackage'
 ```
 
-If all goes well you wil get a respons containing the id of your datapackage:
+If all goes well you wil get a respons containing the id of your data package:
 
 ```
 {
@@ -137,7 +137,7 @@ If all goes well you wil get a respons containing the id of your datapackage:
 ```
 
 :::info
-Take note of the ID. You will need this if you would like to update the datapackage
+Take note of the ID. You will need this if you would like to update the data package
 :::
 
 ### Adding a view and ressourcefiles
@@ -146,7 +146,7 @@ Take note of the ID. You will need this if you would like to update the datapack
 curl -X PUT -F files=@resource.csv -F files=@testfigur.json https://datakatalog-api.dev.intern.nav.no/v1/datapackage/1c9c6c7c40812e207946632dcc4be58f/attachments
 ```
 
-### Updating a datapackage
+### Updating a data package
 
 ```
 curl -X 'PUT' -H "Content-Type: application/json" -d @datapakke.json 'https://datakatalog-api.dev.intern.nav.no/v1/datapackage/1c9c6c7c40812e207946632dcc4be58f'
@@ -186,7 +186,7 @@ curl -X 'PUT' -H "Content-Type: application/json" -d @datapakke.json 'https://da
 
 ## Example datapackage.json including references to a data file and a plotly figure
 
-When including figures which contain large amounts of data you can reduce the load time of the datapackage by storing the figures (spec) as separate files and including just the url's in the datapackage.json. 
+When including figures which contain large amounts of data you can reduce the load time of the data package by storing the figures (spec) as separate files and including just the url's in the data package.json. 
 
 
 ```json
@@ -219,7 +219,7 @@ When including figures which contain large amounts of data you can reduce the lo
 
 ### Publishing to data.nav.no
 
-If the datapackage is to be published to the public data catalog you must provide metadata following the DCAT-AP-NO standard. Example:
+If the data package is to be published to the public data catalog you must provide metadata following the DCAT-AP-NO standard. Example:
 
 ```json
 metadata = {

@@ -1,5 +1,6 @@
 ---
 title: Getting started
+sidebar_position: 0
 ---
 
 We are working on creating a modern analytics platform on GCP (Google Cloud Platform) where we want to utilize all the 

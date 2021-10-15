@@ -1,8 +1,8 @@
 ---
-title: Deletion of published datapackages
+title: Deletion of published data packages
 ---
 
-### Internal datapackages (data.intern.nav.no)
+### Internal data packages (data.intern.nav.no)
 
 1 Go to the data catalog api swagger
 ````
@@ -26,4 +26,4 @@ https://dv-api-ekstern.prod-gcp.nais.io/swagger/ui
 DELETE /dp/{bucket}/{id}
 ````
 
-_bucket_ must be set to *nav-opendata* for external datapackages (`data.nav.no`).
+_bucket_ must be set to *nav-opendata* for external data packages (`data.nav.no`).

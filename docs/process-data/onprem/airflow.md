@@ -68,8 +68,8 @@ Specifies how often (in seconds) the Airflow instance should pull your Github re
 **default:** 60
 
 ### dvApiEndpoint
-When publishing datapackages [dataverk](../../dataverk/README) uses this parameter to set the api address the data catalog
-uses to fetch the content for the datapackage viewer.
+When publishing data packages [dataverk](../../dataverk/README) uses this parameter to set the api address the data catalog
+uses to fetch the content for the data package viewer.
 
 **NAV internal (default):** https://data.intern.nav.no/api ([internal data catalog](../finn-data/datakatalog#internal-datacatalog-nav-only))
 
@@ -77,22 +77,22 @@ uses to fetch the content for the datapackage viewer.
 
 
 ### dvBucketEndpoint
-When publishing datapackages [dataverk](../../dataverk/README) uses this parameter to determine which data catalog the 
-datapackage content (resource files and visualizations) should be published to.
+When publishing data packages [dataverk](../../dataverk/README) uses this parameter to determine which data catalog the 
+data package content (resource files and visualizations) should be published to.
 
 **NAV internal (default):** https://dv-api-intern.prod-gcp.nais.io/storage ([internal data catalog](../finn-data/datakatalog#internal-datacatalog-nav-only))
 
 **External:** https://dv-api-ekstern.prod-gcp.nais.io/storage ([external data catalog](../finn-data/datakatalog#public-datacatalog))
 
 :::caution external data catalog
-When not specifying `dvApiEndpoint` and `dvBucketEndpoint` the datapackages are by default published to the  
+When not specifying `dvApiEndpoint` and `dvBucketEndpoint` the data packages are by default published to the  
 [internal data catalog](../../finn-data/datakatalog/#internal-datakatalog-nav-only). Do not override these parameters unless you 
-want to publish datapackages to the [external data catalog](../../finn-data/datakatalog/#public-datacatalog).
+want to publish data packages to the [external data catalog](../../finn-data/datakatalog/#public-datacatalog).
 :::
 
 ## Examples of DAG repositories
 - [nada-dags](https://github.com/navikt/nada-dags) contains examples on how to use different operators in Airflow.
-- [opendata-dags](https://github.com/navikt/opendata-dags) contains the DAGs used for creating datapackages.
+- [opendata-dags](https://github.com/navikt/opendata-dags) contains the DAGs used for creating data packages.
 
 ## Dataverk-Airflow
 [Dataverk-Airflow](https://github.com/navikt/dataverk-airflow) is a library aimed at making it easier to use

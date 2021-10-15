@@ -1,5 +1,6 @@
 ---
 title: Getting started
+sidebar_position: 0
 ---
 
 On-prem we offer [JupyterHub](jupyterhub.md) for performing data analysis in Jupyter Notebooks, and [Airflow](airflow.md)
