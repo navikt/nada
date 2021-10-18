@@ -5,7 +5,7 @@ title: BigQuery - decorator
 All responses are written to the bigquery table _dekoratoren.tilbakemeldinger_ in the _dataplattform_ project on GCP.
 
 ## Get access to data
-Reach out in [#data-catalog-intern](https://nav-it.slack.com/archives/CQ9SV9DNE) if you want access to this data.
+Reach out in [#nada](https://nav-it.slack.com/archives/CGRMQHT50) if you want access to this data.
 
 You will receive a service account key with read access to the bigquery data set which can used with a 
 [klientbibliotek](https://cloud.google.com/bigquery/docs/reference/libraries) in the language you choose.

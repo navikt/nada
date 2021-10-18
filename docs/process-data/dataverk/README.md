@@ -47,7 +47,7 @@ for applications running in the NAIS clusters, i.e. secrets (e.g. database crede
 environment as opposed to stored locally on your machine.
 
 To get started with Jupyterhub, see [getting started](/process-data/onprem/getting-started) or reach out in 
-[#knada](https://nav-it.slack.com/archives/CGRMQHT50) for assistance.
+[#nada](https://nav-it.slack.com/archives/CGRMQHT50) for assistance.
 
 ### Without Jupyterhub
 As long as you have a python distribution >=python36 installed, the library can be installed with:
@@ -56,7 +56,7 @@ pip install dataverk
 ````
 
 ## Contact us
-For questions, reach out in [#dataverk](https://nav-it.slack.com/archives/CCY2V3N4E).
+For questions, reach out in [#nada](https://nav-it.slack.com/archives/CGRMQHT50).
 
 ## Link for ROS
 [ROS for dataverk](https://apps.powerapps.com/play/f8517640-ea01-46e2-9c09-be6b05013566?ID=209)
