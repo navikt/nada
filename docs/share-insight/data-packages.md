@@ -239,4 +239,4 @@ metadata = {
 
 A full description of required and optional metadata fields is available at [metadata](process-data/dataverk/metadata.md)
 
-If you get stuck or need more info please contact #knada on Slack
+If you get stuck or need more info please contact #nada on Slack

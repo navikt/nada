@@ -43,7 +43,7 @@ Metadata is published as JSON object with the following fields:
 | title  | String | | name |
 | description  | String | Kan være ren tekst eller markdown | | TODO: skal vi vise readme fra repo dersom description ikke er oppgitt? |
 | repo | String | Lenke til github repository | https://github.com/repo | |
-| slack | String | Slack kanal der brukere kan kontakte dataprodukt eiere | #knada | |
+| slack | String | Slack kanal der brukere kan kontakte dataprodukt eiere | #nada | |
 | keyword |  String or list of strings | Disse nøkkelordene/tags er søkbare og valgbare i datakatalogen |  |
 | theme |  String | Tema. Vises i nederste del av datakatalogen venstremeny og i den nasjonale datakatalogen data.norge.no. Bruk gjerne et tema som finnes der fra før. | | |
 
@@ -156,5 +156,4 @@ The following content types are pulled automatically into the catalog with crawl
 
 Crawler code: [github](https://github.com/navikt/nada-crawlers-and-indexers/tree/master/crawlers)
 
-Please contact #knada on Slack if you have content you would like to have registered
-
+Please contact #nada on Slack if you have content you would like to have registered
