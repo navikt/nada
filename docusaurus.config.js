@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'NADA',
   tagline: 'NAV Data - vi bygger plattform og verktøy for deling av data i NAV',
-  url: 'https://navikt.github.io',
-  baseUrl: '/nada/',
+  url: 'https://docs.knada.io',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
