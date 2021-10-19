@@ -20,6 +20,8 @@
 - Team, personer, produktområder ivaretas av teamkatalogen
 - Øvrig innhold i datakatalogen kan scrappes
 
+![Status datakatalog oktober 2021](datakatalog-status.png)
+
 ## Nær framtid: Dashboard
 **Hva:** Finne ut hvilke(t) dashboardverktøy vi ønsker å ha i plattformen, om noe
 
