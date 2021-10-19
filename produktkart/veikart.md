@@ -1,4 +1,5 @@
 # Veikart
+Oppdatert 19. oktober 2021
 
 ## Nå: NAV Data
 **Hva:** Markedsplass for deling av dataprodukter i datamesh
