@@ -81,7 +81,7 @@ In order to restart your Jupyterhub server, do as follows:
 
 ## Delete hub
 Deletion of Jupyterhubs needs to be done manually by one of the cluster administrators. 
-Reach out in [#knada](https://nav-it.slack.com/archives/CGRMQHT50) for assistance.
+Reach out in [#nada](https://nav-it.slack.com/archives/CGRMQHT50) for assistance.
 
 ## Remote Jupyterhub connection
 If you want to connect to your Jupyterhub from Visual Studio Code locally, do as follows 

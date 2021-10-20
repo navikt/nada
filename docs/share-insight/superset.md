@@ -10,4 +10,4 @@ title: Superset
 
 Superset for internal data in NAV is available at <a href="https://superset.apache.org/">https://superset.intern.nav.no/</a>
 
-Please contact #knada on Slack if you need help. 
+Please contact #nada on Slack if you need help. 

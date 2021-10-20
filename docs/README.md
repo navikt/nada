@@ -55,4 +55,4 @@ Amount of multidiciplinary team that delivers data as a product.
 
 ### Contact us
 
-* [Slack (#knada)](https://nav-it.slack.com/archives/CGRMQHT50)
+* [Slack (#nada)](https://nav-it.slack.com/archives/CGRMQHT50)
