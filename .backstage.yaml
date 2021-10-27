@@ -58,4 +58,55 @@ spec:
   owner: nada
   system: nav-data
   definition:
-    $text: https://nada.intern.nav.no/api/
+    _queryType: Query
+    _mutationType: Mutation
+    _subscriptionType:
+    _directives:
+    - "@authenticated"
+    - "@deprecated"
+    - "@goField"
+    - "@goModel"
+    - "@include"
+    - "@skip"
+    _typeMap:
+      Access: Access
+      BigQuery: BigQuery
+      BigQueryTable: BigQueryTable
+      BigQueryType: BigQueryType
+      Boolean: Boolean
+      Collection: Collection
+      CollectionElement: CollectionElement
+      CollectionElementType: CollectionElementType
+      Dataproduct: Dataproduct
+      Datasource: Datasource
+      Float: Float
+      GCPProject: GCPProject
+      Group: Group
+      ID: ID
+      Int: Int
+      Mutation: Mutation
+      NewBigQuery: NewBigQuery
+      NewCollection: NewCollection
+      NewDataproduct: NewDataproduct
+      Owner: Owner
+      Query: Query
+      SearchQuery: SearchQuery
+      SearchResult: SearchResult
+      String: String
+      SubjectType: SubjectType
+      TableColumn: TableColumn
+      Time: Time
+      UpdateCollection: UpdateCollection
+      UpdateDataproduct: UpdateDataproduct
+      UserInfo: UserInfo
+      __Schema: __Schema
+      __Type: __Type
+      __TypeKind: __TypeKind
+      __Field: __Field
+      __InputValue: __InputValue
+      __EnumValue: __EnumValue
+      __Directive: __Directive
+      __DirectiveLocation: __DirectiveLocation
+    _subTypeMap: {}
+    _implementationsMap: {}
+
