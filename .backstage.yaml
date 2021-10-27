@@ -57,56 +57,421 @@ spec:
   lifecycle: experimental
   owner: nada
   system: nav-data
-  definition:
-    _queryType: Query
-    _mutationType: Mutation
-    _subscriptionType:
-    _directives:
-    - "@authenticated"
-    - "@deprecated"
-    - "@goField"
-    - "@goModel"
-    - "@include"
-    - "@skip"
-    _typeMap:
-      Access: Access
-      BigQuery: BigQuery
-      BigQueryTable: BigQueryTable
-      BigQueryType: BigQueryType
-      Boolean: Boolean
-      Collection: Collection
-      CollectionElement: CollectionElement
-      CollectionElementType: CollectionElementType
-      Dataproduct: Dataproduct
-      Datasource: Datasource
-      Float: Float
-      GCPProject: GCPProject
-      Group: Group
-      ID: ID
-      Int: Int
-      Mutation: Mutation
-      NewBigQuery: NewBigQuery
-      NewCollection: NewCollection
-      NewDataproduct: NewDataproduct
-      Owner: Owner
-      Query: Query
-      SearchQuery: SearchQuery
-      SearchResult: SearchResult
-      String: String
-      SubjectType: SubjectType
-      TableColumn: TableColumn
-      Time: Time
-      UpdateCollection: UpdateCollection
-      UpdateDataproduct: UpdateDataproduct
-      UserInfo: UserInfo
-      __Schema: __Schema
-      __Type: __Type
-      __TypeKind: __TypeKind
-      __Field: __Field
-      __InputValue: __InputValue
-      __EnumValue: __EnumValue
-      __Directive: __Directive
-      __DirectiveLocation: __DirectiveLocation
-    _subTypeMap: {}
-    _implementationsMap: {}
-
+  definition: |
+    #
+    directive @authenticated(on: Boolean) on FIELD_DEFINITION
+    
+    #
+    directive @goField(
+      forceResolver: Boolean
+      name: String
+    ) on INPUT_FIELD_DEFINITION | FIELD_DEFINITION
+    
+    #
+    directive @goModel(
+      model: String
+      models: [String!]
+    ) on OBJECT | INPUT_OBJECT | SCALAR | ENUM | INTERFACE | UNION
+    
+    #
+    type Access {
+      #
+      id: ID!
+    
+      #
+      subject: String!
+    
+      #
+      granter: String!
+    
+      #
+      expires: Time
+    
+      #
+      created: Time!
+    
+      #
+      revoked: Time
+    }
+    
+    #
+    type BigQuery {
+      #
+      projectID: String!
+    
+      #
+      dataset: String!
+    
+      #
+      table: String!
+    
+      #
+      schema: [TableColumn!]!
+    }
+    
+    #
+    type BigQueryTable {
+      #
+      description: String!
+    
+      #
+      lastModified: Time!
+    
+      #
+      name: String!
+    
+      #
+      type: BigQueryType!
+    }
+    
+    #
+    enum BigQueryType {
+      #
+      table
+    
+      #
+      view
+    
+      #
+      materialized_view
+    }
+    
+    #
+    type Collection {
+      #
+      id: ID!
+    
+      #
+      name: String!
+    
+      #
+      description: String
+    
+      #
+      created: Time!
+    
+      #
+      lastModified: Time!
+    
+      #
+      keywords: [String!]!
+    
+      #
+      owner: Owner!
+    
+      #
+      elements: [CollectionElement!]!
+    }
+    
+    #
+    union CollectionElement = Dataproduct
+    
+    #
+    enum CollectionElementType {
+      #
+      dataproduct
+    }
+    
+    #
+    type Dataproduct {
+      #
+      id: ID!
+    
+      #
+      name: String!
+    
+      #
+      description: String
+    
+      #
+      created: Time!
+    
+      #
+      lastModified: Time!
+    
+      #
+      repo: String
+    
+      #
+      pii: Boolean!
+    
+      #
+      keywords: [String!]!
+    
+      #
+      owner: Owner!
+    
+      #
+      datasource: Datasource!
+    
+      #
+      requesters: [String!]!
+    
+      #
+      access: [Access!]!
+    }
+    
+    #
+    union Datasource = BigQuery
+    
+    #
+    type GCPProject {
+      #
+      id: String!
+    
+      #
+      group: Group!
+    }
+    
+    #
+    type Group {
+      #
+      name: String!
+    
+      #
+      email: String!
+    }
+    
+    #
+    type Mutation {
+      #
+      dummy(no: String): String
+    
+      #
+      createCollection(input: NewCollection!): Collection!
+    
+      #
+      updateCollection(id: ID!, input: UpdateCollection!): Collection!
+    
+      #
+      deleteCollection(id: ID!): Boolean!
+    
+      #
+      addToCollection(
+        id: ID!
+        elementID: ID!
+        elementType: CollectionElementType!
+      ): Boolean!
+    
+      #
+      removeFromCollection(
+        id: ID!
+        elementID: ID!
+        elementType: CollectionElementType!
+      ): Boolean!
+    
+      #
+      createDataproduct(input: NewDataproduct!): Dataproduct!
+    
+      #
+      updateDataproduct(id: ID!, input: UpdateDataproduct!): Dataproduct!
+    
+      #
+      deleteDataproduct(id: ID!): Boolean!
+    
+      #
+      addRequesterToDataproduct(dataproductID: ID!, subject: String!): Boolean!
+    
+      #
+      removeRequesterFromDataproduct(dataproductID: ID!, subject: String!): Boolean!
+    
+      #
+      grantAccessToDataproduct(
+        dataproductID: ID!
+        expires: Time
+        subject: String
+        subjectType: SubjectType
+      ): Access!
+    
+      #
+      revokeAccessToDataproduct(id: ID!): Boolean!
+    }
+    
+    #
+    input NewBigQuery {
+      #
+      projectID: String!
+    
+      #
+      dataset: String!
+    
+      #
+      table: String!
+    }
+    
+    #
+    input NewCollection {
+      #
+      name: String!
+    
+      #
+      description: String
+    
+      #
+      group: String!
+    
+      #
+      keywords: [String!]
+    }
+    
+    #
+    input NewDataproduct {
+      #
+      name: String!
+    
+      #
+      description: String
+    
+      #
+      repo: String
+    
+      #
+      pii: Boolean!
+    
+      #
+      keywords: [String!]
+    
+      #
+      group: String!
+    
+      #
+      bigquery: NewBigQuery!
+    
+      #
+      requesters: [String!]
+    }
+    
+    #
+    type Owner {
+      #
+      group: String!
+    
+      #
+      teamkatalogen: String!
+    }
+    
+    #
+    type Query {
+      #
+      version: String!
+    
+      #
+      collections(limit: Int, offset: Int): [Collection!]!
+    
+      #
+      collection(id: ID!): Collection!
+    
+      #
+      dataproduct(id: ID!): Dataproduct!
+    
+      #
+      dataproducts(limit: Int, offset: Int): [Dataproduct!]!
+    
+      #
+      gcpGetTables(projectID: String!, datasetID: String!): [BigQueryTable!]!
+    
+      #
+      gcpGetDatasets(projectID: String!): [String!]!
+    
+      #
+      search(q: SearchQuery): [SearchResult!]!
+    
+      #
+      userInfo: UserInfo!
+    }
+    
+    #
+    input SearchQuery {
+      # Freetext search
+      text: String
+    
+      # Filter on keyword
+      keyword: String
+    
+      #
+      limit: Int
+    
+      #
+      offset: Int
+    }
+    
+    #
+    union SearchResult = Dataproduct | Collection
+    
+    #
+    enum SubjectType {
+      #
+      user
+    
+      #
+      group
+    
+      #
+      serviceAccount
+    }
+    
+    #
+    type TableColumn {
+      #
+      name: String!
+    
+      #
+      description: String!
+    
+      #
+      mode: String!
+    
+      #
+      type: String!
+    }
+    
+    #
+    scalar Time
+    
+    #
+    input UpdateCollection {
+      #
+      name: String!
+    
+      #
+      description: String
+    
+      #
+      keywords: [String!]
+    }
+    
+    #
+    input UpdateDataproduct {
+      #
+      name: String!
+    
+      #
+      description: String
+    
+      #
+      repo: String
+    
+      #
+      pii: Boolean!
+    
+      #
+      keywords: [String!]
+    
+      #
+      requesters: [String!]
+    }
+    
+    #
+    type UserInfo {
+      #
+      name: String!
+    
+      #
+      email: String!
+    
+      #
+      groups: [Group!]!
+    
+      #
+      gcpProjects: [GCPProject!]!
+    }
