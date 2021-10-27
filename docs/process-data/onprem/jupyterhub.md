@@ -83,6 +83,11 @@ In order to restart your Jupyterhub server, do as follows:
 Deletion of Jupyterhubs needs to be done manually by one of the cluster administrators. 
 Reach out in [#nada](https://nav-it.slack.com/archives/CGRMQHT50) for assistance.
 
+## Remove users
+To remove a user from a jupyterhub namespace do as follows:
+- Remove the person from the `users` list in the config file under `/config`
+- Login to the hub's admin page (`https://<ingress>.jupyter.adeo.no/hub/admin`) and delete the user from hubs database
+
 ## Remote Jupyterhub connection
 If you want to connect to your Jupyterhub from Visual Studio Code locally, do as follows 
 
