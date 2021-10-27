@@ -28,7 +28,7 @@ spec:
   owner: nada
   system: nav-data
   providesApis:
-    - nada-backend
+    - nada-api
   subcomponentOf: nav-data
     
 ---
@@ -43,7 +43,7 @@ spec:
   owner: nada
   system: nav-data
   consumesApis:
-    - nada-backend
+    - nada-api
   subcomponentOf: nav-data
 
 ---
