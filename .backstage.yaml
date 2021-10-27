@@ -29,8 +29,7 @@ spec:
   system: nav-data
   providesApis:
     - nada-backend
-  subcomponentOf:
-    - nav-data
+  subcomponentOf: nav-data
     
 ---
 apiVersion: backstage.io/v1alpha1
@@ -45,8 +44,7 @@ spec:
   system: nav-data
   consumesApis:
     - nada-backend
-  subcomponentOf:
-    - nav-data
+  subcomponentOf: nav-data
 
 ---
 apiVersion: backstage.io/v1alpha1
