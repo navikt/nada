@@ -1,0 +1,63 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: nada
+  description: NAV Data
+spec:
+  owner: nada
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: nav-data
+  description: Markedsplassen for dataprodukter
+spec:
+  owner: nada
+  domain: nada
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nada-backend
+  description: An application to register and publish dataproducts, as well as to give access to dataproducts.
+spec:
+  type: service
+  lifecycle: experimental
+  owner: nada
+  system: nav-data
+  providesApis:
+    - nada-backend
+  subcomponentOf:
+    - nav-data
+    
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nada-frontend
+  description: An application to register and publish dataproducts, as well as to give access to dataproducts.
+spec:
+  type: website
+  lifecycle: experimental
+  owner: nada
+  system: nav-data
+  consumesApis:
+    - nada-backend
+  subcomponentOf:
+    - nav-data
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: nada-api
+  description: OpenAPI Spec for NADA
+spec:
+  type: graphql
+  lifecycle: experimental
+  owner: nada
+  system: nav-data
+  definition:
+    $text: https://nada.intern.nav.no/api/
