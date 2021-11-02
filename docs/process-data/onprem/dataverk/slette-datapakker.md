@@ -1,27 +1,27 @@
 ---
-title: Deletion of published data packages
+title: Sletting av datapakker
 ---
 
-### Internal data packages (data.intern.nav.no)
+### Interne datapakker (datapakker.intern.nav.no)
 
-1 Go to the data catalog api swagger
+1 Gå til intern datapakke katalog swagger
 ````
 https://datakatalog-api.intern.nav.no/docs
 ````
 
-2 Delete datapackage
+2 Slett datapakke
 ```
 DELETE /v1/datapackage/{id}
 ```
 
 
-### External packages (data.nav.no)
-1 Go to the data catalog api swagger
+### Eksterne datapakker (data.nav.no)
+1 Gå til ekstern datapakke katalog swagger
 ````
 https://dv-api-ekstern.prod-gcp.nais.io/swagger/ui
 ````
 
-2 Delete datapackage
+2 Slett datapakke
 ````
 DELETE /dp/{bucket}/{id}
 ````

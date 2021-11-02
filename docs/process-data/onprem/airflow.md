@@ -2,102 +2,101 @@
 title: Airflow
 ---
 
-[Apache Airflow](https://airflow.apache.org/docs/apache-airflow/stable/index.html) is a tool for orchestration, scheduling
-and monitoring of datapipelines. The web UI that comes with Airflow gives the user e.g. easy access to logs for the different
-steps in pipelines, the option to trigger datapipelines manually, and statistics on previous runs.
+[Apache Airflow](https://airflow.apache.org/docs/apache-airflow/stable/index.html) er et verktøy for å orkestrere,
+skedulere og monitorere datapipelines. Web-grensesnittet til Airflow gir brukeren enkel tilgang til å lese logger fra
+de ulike stegene i pipelinen, trigge datapipelines manuelt og sjekke statistikk på tidligere kjøringer.
 
-A datapipeline in Airflow, or DAG (Directed Acyclic Graph), is a set of tasks (or steps) one wishes to execute and describes 
-the order and dependencies between these tasks. The DAGs are described programmatically in python files and put in a 
-Github repository which is synchronized with the Airflow instance periodically. Below is a graphical representation of the flow 
-in one such DAG.
+En datapipeline i Airflow, eller DAG (Directed Acyclic Graph), er et sett med oppgaver man ønsker å kjøre som beskriver
+rekkefølge og avhengigheter mellom oppgavene. Disse DAG-ene beskrives programmatisk i python filer og legges i et Github
+repo som periodisk synkroniseres med Airflow instansen. Nedenfor ser du en en grafisk representasjon av flyten i en DAG:
 
-![Pipeline flow in an Airflow DAG](/img/dag-eksempel.png)
+![Flyten i en Airflow DAG](dag-eksempel.png)
 
-KNADA offers teams or individuals the option to set up airflow instances in their personal k8s namespaces in the KNADA cluster.
+KNADA plattformen tilbyr team eller enkeltpersoner å sette opp airflow instanser i sine egne k8s namespacer i
+KNADA clusteret.
 
-For more information on Airflow, see [Airflow docs](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
+For mer informasjon om Airflow, se [Airflow docs](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
 
-## Configuration
-In order to set up Airflow one must create a pull request to [navikt/knada-airflow](https://github.com/navikt/knada-airflow)
-with a .yaml file with the following content in the catalog _configs_:
+## Konfigurasjon
+For å sette opp Airflow må man lage en pull request til [navikt/knada-airflow](https://github.com/navikt/knada-airflow)
+og legge til en yaml-fil med følgende innhold i katalogen _configs_:
 
 ````bash
 namespace: <namespace>
 ingress: <ingress>
 users:
-  - <Userident 1>
-  - <Userident 2>
+  - <Brukerident 1>
+  - <Brukerident 2>
   - ...
 dagsRepo: <dagsRepo>
 ````
 
-With every new pull request to [navikt/knada-airflow](https://github.com/navikt/knada-airflow) (including changes to 
-existing ones) validation checks are performed on the files committed. When these checks passes the committer can
-merge his or her own pull request themselves, _one does not have to wait for approval from the codeowners_.
+Ved hver ny pull request (og endringer) blir sjekker kjørt automatisk.
+Når disse sjekkene er godkjente (lyser grønt), kan du selv merge inn din pull request.
+Du trenger altså _ikke_ vente på godkjenning.
 
 ### namespace
-The name of the k8s namespace where the Airflow instance should be set up (usually the same as your Jupyterhub
-namespace).
+Settes til navnet på namespacet hvor Airflow instansen skal settes opp. Som regel det samme som JupyterHub-en din.
 
 ### ingress
-The value set in the _ingress_ field becomes the prefix for the address to the Airflow web UI, 
-i.e. https://_prefix_-airflow.knada.adeo.no. The users themselves decide what this prefix should be, but usually
-the prefix has been set to the same value as the name of the k8s namespace.
+Blir prefikset for adressen til Airflow web grensesnittet, altså https://_prefiks_-airflow.knada.adeo.no. Dette
+kan i grunn settes til hva man vil, men det vanligste har vært å sette det til det samme som namespace navnet.
 
-### users
-List of the users (NAV idents) which should have access to the Airflow web UI.
+### user
+List opp de identene som skal ha tilgang til airflow instansen.
 
 ### dagsRepo
-Repository in the navikt organization on Github that contains Python files with DAGs for the Airflow instance.
+Repoet under NAVIKT-orgen på Github som inneholder Python-filer med DAG-er.
 
-:::caution The repository must exist
-The repository does not need to contain any DAG files when the Airflow instance is set up, but the repository **must exist** 
-on Github prior to setting up the Airflow instance.
+:::caution repoet må eksistere
+Repoet trenger ikke inneholde noen DAG-er når Airflow instansen settes opp, men repoet **må eksistere**.
 :::
 
-Once every minute the DAGs in this repository will be synchronized with the Airflow instance.
+En gang i minuttet vil DAG-ene som ligger i repoet bli synkronisert til Airflow instansen.
+
+#### Eksempler på DAGs repoer
+- [nada-dags](https://github.com/navikt/nada-dags) inneholder en rekke eksempler på hvordan å ta i bruk ulike operators i Airflow.
+- [opendata-dags](https://github.com/navikt/opendata-dags) er DAG-ene Opendata bruker for å lage datapakker.
 
 ### dagsRepoBranch
-Specifies the branch in the Gihub repository which the Airflow instance should pull.
+Du kan også spesifisere en branch som Airflow skal synkronisere mot.
 
 **default:** main
 
 ### repoSyncTime
-Specifies how often (in seconds) the Airflow instance should pull your Github repository.
+Hvor ofte (i sekunder) Airflow skal synkronisere mot repoet ditt.
 
 **default:** 60
 
 ### dvApiEndpoint
-When publishing data packages [dataverk](/process-data/dataverk/README) uses this parameter to set the api address the data catalog
-uses to fetch the content for the data package viewer.
+Ved datapakke-publisering bruker dataverk denne parameteren for å sette api-adressen som datakatalogen skal hente
+innholdet fra for datapakkevisningen.
 
-**NAV internal (default):** https://data.intern.nav.no/api ([internal data catalog](/find-data/data-catalog#internal-datacatalog-nav-only))
+**NAV intern publisering (default):** https://data.adeo.no/api ([intern datakatalog](../finn-data/datakatalog#internal-datacatalog-nav-only))
 
-**External:** https://data.nav.no/api ([external data catalog](/find-data/data-catalog#public-datacatalog))
+**Ekstern publisering:** https://data.nav.no/api ([ekstern datakatalog](../finn-data/datakatalog#public-datacatalog))
 
 
 ### dvBucketEndpoint
-When publishing data packages [dataverk](/process-data/dataverk/README) uses this parameter to determine which data catalog the 
-data package content (resource files and visualizations) should be published to.
+Ved datapakke-publisering bruker dataverk denne parameteren for å avgjøre hvilken datakatalog som innholdet i 
+datapakken (ressursfiler og visualiseringer) skal publiseres til.
 
-**NAV internal (default):** https://dv-api-intern.prod-gcp.nais.io/storage ([internal data catalog](/find-data/data-catalog#internal-datacatalog-nav-only))
+**NAV intern publisering (default):** https://dv-resource-rw-api.nais.adeo.no/storage ([intern datakatalog](../finn-data/datakatalog#internal-datacatalog-nav-only))
 
-**External:** https://dv-api-ekstern.prod-gcp.nais.io/storage ([external data catalog](/find-data/data-catalog#public-datacatalog))
+**Ekstern publisering:** https://dv-api-ekstern.prod-gcp.nais.io/storage ([ekstern datakatalog](../finn-data/datakatalog#public-datacatalog))
 
-:::caution external data catalog
-When not specifying `dvApiEndpoint` and `dvBucketEndpoint` the data packages are by default published to the  
-[internal data catalog](/find-data/data-catalog/#internal-datakatalog-nav-only). Do not override these parameters unless you 
-want to publish data packages to the [external data catalog](/find-data/data-catalog/#public-datacatalog).
+:::caution ekstern publisering
+Dersom man ikke spesifiserer `dvApiEndpoint` og `dvBucketEndpoint` vil datapakker publiseres til den 
+[interne datakatalogen](../finn-data/datakatalog#internal-datakatalog-nav-only). Den *eneste* grunnen til å endre disse parameterene er dersom man ønsker å publisere 
+datapakker fra AirFlow til den åpne datakatalogen [data.nav.no](../finn-data/datakatalog#public-datacatalog). 
+Merk også at dersom disse parameterene først settes til ekstern publisering så vil alle datapakker som publiseres fra denne AirFlow-instansen være 
+åpent tilgjengelig fra internett.
 :::
 
-## Examples of DAG repositories
-- [nada-dags](https://github.com/navikt/nada-dags) contains examples on how to use different operators in Airflow.
-- [opendata-dags](https://github.com/navikt/opendata-dags) contains the DAGs used for creating data packages.
-
 ## Dataverk-Airflow
-[Dataverk-Airflow](https://github.com/navikt/dataverk-airflow) is a library aimed at making it easier to use
-[KubernetesPodOperator](https://airflow.apache.org/docs/apache-airflow/stable/kubernetes.html) in the KNADA cluster.
+[Dataverk-Airflow](https://github.com/navikt/dataverk-airflow) er et wrapperbibliotek som gjør det enklere å
+bruke [KubernetesPodOperator](https://airflow.apache.org/docs/apache-airflow/stable/kubernetes.html) i KNADA clusteret.
 
-The library contains wrapper functions for running Jupyter notebooks, Python scripts, BigQuery commands and DBT 
-transformations in separate k8s pods in the cluster. View 
-[README](https://github.com/navikt/dataverk-airflow/blob/master/README.md) in the repository for examples.
+Biblioteket inneholder wrapper-funksjoner for å kjøre Jupyter notebooks, Python scripts, BigQuery kommandoer og
+DBT transformasjoner i separate Kubernetes pod-er. Se [README](https://github.com/navikt/dataverk-airflow/blob/master/README.md)
+på repoet for eksempler.

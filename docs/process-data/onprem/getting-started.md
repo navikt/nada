@@ -3,13 +3,11 @@ title: Getting started
 sidebar_position: 0
 ---
 
-On-prem we offer [JupyterHub](jupyterhub.md) for performing data analysis in Jupyter Notebooks, and [Airflow](airflow.md)
-to schedule and administrate datapipelines.
+On-prem tilbyr vi [JupyterHub](jupyterhub.md) for analysering med Jupyter Notebooks, og [Airflow](airflow.md) for å automatisere, og administrere kjøring av analyser.
 
-## Secrets
+## Hemmeligheter
 
-We use Vault for secrets on-prem, see [vault-iac/doc/knada](https://github.com/navikt/vault-iac/blob/master/doc/knada.md)
-for documentation on how to set this up for your Jupyterhub/Airflow namespaces.
+Vi bruker Vault for hemmeligheter on-prem, se [vault-iac/doc/knada](https://github.com/navikt/vault-iac/blob/master/doc/knada.md)
+for dokumentasjon på hvordan dette settes opp for ditt Jupyterhub/Airflow namespace.
 
-See [import secrets in Jupyterhub and Airflow](vault/#import-the-secrets-in-jupyterhub-and-airflow) to learn how to import 
-the secrets in Jupyterhub/Airflow.
+Se [import secrets in Jupyterhub and Airflow](vault/#import-the-secrets-in-jupyterhub-and-airflow) for hvordan hemmeligheter kan importeres til Jupyterhub/Airflow.
