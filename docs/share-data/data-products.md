@@ -1,6 +1,27 @@
 ---
-title: Data products 
+title: Dataprodukt
 ---
+
+
+Et dataprodukt skal følge de seks egenskapene nedenfor:
+
+- Discoverable
+- Adressable
+- Trustworthy and truthful (defined & monitored SLOs)
+- Self-describing semantics & syntax
+- Interoperable (governed by open standards)
+- Secure and governed by global access control
+
+Kilde: https://martinfowler.com/articles/data-monolith-to-mesh.html#DomainDataAsAProduct
+
+Som eier av data er teamet ansvarlig for "Trustworthy and truthful" og "Self-describing semantics & syntax". Resten tar Nada ansvar for.
+
+## Lage en datakilde
+
+
+## Publisere dataprodukt
+
+
 
 **Data Product**. The term data product is here used as defined in the datamesh literature: 'Data Product is the node on the mesh that encapsulates three structural components required for its function: Code, Data and Metadata, Infrastructure' [Source: Thoughtworks](https://www.thoughtworks.com/what-we-do/data-and-ai/data-mesh). A more complete definition can be found under [Concepts](/concepts/data-product)
 
