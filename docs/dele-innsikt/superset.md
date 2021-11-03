@@ -2,12 +2,12 @@
 title: Superset
 ---
 
-## Why Superset?
+## Hvorfor Superset?
 
-<a href="https://superset.apache.org/">Superset</a> is an open source and easy to use modern data exploration and visualization platform.
+<a href="https://superset.apache.org/">Superset</a> er en opensource plattform for moderne datautforskning og visualisering.
 
 ## Kom igang
 
-Superset for internal data in NAV is available at <a href="https://superset.apache.org/">https://superset.intern.nav.no/</a>
+Superset for interne data i NAV er tilgjengelig på <a href="https://superset.apache.org/">https://superset.intern.nav.no/</a>
 
-Please contact #nada on Slack if you need help. 
+Ta kontakt i #nada på Slack hvis du trenger hjelp.

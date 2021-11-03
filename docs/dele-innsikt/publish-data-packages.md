@@ -1,17 +1,16 @@
 ---
-title: Publish data packages 
+title: Publisering av datapakker
 ---
 
-The example below show how one can publish data packages to the data catalog in dev (https://data.dev.intern.nav.no). The 
-API address for prod is `https://datakatalog-api.intern.nav.no`.
+Eksempelet under viser hvordan man kan publisere datapakker til datapakke-katalogen i dev (https://data.dev.intern.nav.no). API-adressen for prod er `https://datakatalog-api.intern.nav.no`.
 
 
-## Create a new data package
+## Lag en ny datapakke
 ```
 curl -X 'POST' -d @datapackage.json 'https://datakatalog-api.dev.intern.nav.no/v1/datapackage'
 ```
 
-### Response
+### Respons
 ```
 {
   "id": "1c9c6c7c40812e207946632dcc4be58f",
@@ -20,21 +19,20 @@ curl -X 'POST' -d @datapackage.json 'https://datakatalog-api.dev.intern.nav.no/v
 ```
 
 :::info
-Store the ID in the response object from the POST request above, this must be used as reference for the data package to 
-update it later.
+Merk deg IDen som returneres. Du trenger denne dersom du ønsker å oppdatere datapakken
 :::
 
-## Upload view and resource file
+## Last opp view og ressursfil
 ```
 curl -X PUT -F files=@resource.csv -F files=@testfig.json https://datakatalog-api.dev.intern.nav.no/v1/datapackage/1c9c6c7c40812e207946632dcc4be58f/attachments
 ```
 
-## Update a data package
+## Oppdater en datapakke
 ```
 curl -X 'PUT' -d @datapakke.json 'https://datakatalog-api.dev.intern.nav.no/v1/datapackage/1c9c6c7c40812e207946632dcc4be58f'
 ```
 
-## Example on data package json including a visualization
+## Eksempel på en datapakke json som inneholder en visualisering
 ```
 {
   "title": "Echarts demo data package",
@@ -61,13 +59,12 @@ curl -X 'PUT' -d @datapakke.json 'https://datakatalog-api.dev.intern.nav.no/v1/d
   ]
 }
 ```
-### Echarts covers a variety of [different visualization types](https://echarts.apache.org/examples/en/index.html)
+### Echarts dekker mange forskjellige [visualiseringstyper](https://echarts.apache.org/examples/en/index.html)
 
 
-## Example on data package json including a downloadable file and a reference to a visualization 
+## Eksempel på en datapakke json som inkluderer en nedlastbar fil og en referanse til en visualisering
 
-When including one or more figures that contain a lot of data you should store the visualization data (`spec`) as 
-separate files and reference these in the data package json, e.g. 
+Når man inkluderer en eller flere figurer som inneholder mye data burde du lagre visualiseringsdata (`spec`) som separate filer og referere til disse i datapakke json, f.eks.
 ```
 {
   "title": "my data package",

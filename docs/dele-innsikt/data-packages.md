@@ -1,44 +1,44 @@
 ---
-title: Data packages
+title: Datapakker
 ---
 
 
-## Why data packages?
+## Hvorfor datapakker
 
-With data packages you can create and publish datastories directly from notebooks or scripts. You can combine data visualizations with formatted text, tables, images, html and PDFs to create your datastory. The easiest way to create data packages is using notebooks. See <a href="https://deetly.github.io/docs/intro.html">deetly</a> for examples and getting started documentation.
+Med datapakker (tidligere kalt datapakker) kan du lage og publisere datapakker direkte fra notebooks eller skript. Du kan kombinere datavisualiseringer med 
+formattert tekst, tabeller, bilder, html og PDFer til å lage en datapakker. Den enkleste veien til å lage datapakker er ved å bruke notebooks. Se <a href="https://deetly.github.io/docs/intro.html">deetly</a> for eksempler og getting started dokumentasjon.
 
-## Creating data packages with notebooks
+## Lage datapakker med notebooks
 
 ```python
 import deetly
 from dataverk import Client
 ```
 
-### Define metadata
-
+### Definer metadata
 
 ```python
-# Create the data story
+# Lag en datapakker
 metadata = {
     "name":"Hello world"
 }
 ds = deetly.story(metadata)
 ```
 
-### Add content to the story
+### Legg til innhold i datapakker
 
-Content can be text as shown in this example. But content can also be markdown, data visualizations or dashbards. More examples can be found on <a href="https://deetly.github.io/docs/intro.html">deetly</a>. You can add multiple content items to a story.
+Innhold kan være tekst som vist i dette eksempelet. Men innhold kan også være markdown, datavisualiseringer eller dashboards. Flere eksempler kan finnes på <a href="https://deetly.github.io/docs/intro.html">deetly</a>. Du kan legge til flere innholdselementer i en datapakker.
 
 ```python
-# Add a text section to the story
+# Legg en tekst til i datapakkeren
 ds.text("Glad you are here!")
 ```
 
-### Publish to NAV datacatalog
+### Publiser til NAV datapakke katalog
 
-With naisdevice installed and running you can publish to the internal datakatalog directly from your desktop. In this case you need to define some environment variables to publish to either test (<a href="https://data.dev.intern.nav.no">https://data.dev.intern.nav.no</a>) or prod (<a href="https://data.intern.nav.no">https://data.intern.nav.no</a>). 
+Med naisdevice installert og kjørende kan du publisere til datapakke-katalogen direkte fra maskinen din. I dette tilfellet trenger du å definere noen miljøvariabler for å publisere enten til test (<a href="https://datapakker.dev.intern.nav.no">https://data.dev.intern.nav.no</a>) eller prod (<a href="https://datapakker.intern.nav.no">https://data.intern.nav.no</a>).
 
-When working in jupyter.adeo.no these are not necessary.   
+Når man jobber i notebooks på .jupyter.adeo.no er det ikke nødvendig å sette disse.
 
 #### For dataverk >=0.4.7
 
@@ -73,26 +73,26 @@ os.environ['DATAVERK_BUCKET'] ='nav-interndata'
 os.environ['DATAVERK_STORAGE_SINK'] = 'nais'
 ```
 
-All is now set. After you call the publish() method your story will immediately be be available in the datacatalog.
+Alt er nå satt. Når du nå kaller publish() metoden vil datapakker din umiddelbart være tilgjengelig i datapakke-katalogen.
 
 ```python
 Client().publish(ds)
 ```
 
 
-## Publishing data packages without using notebooks
+## Publisering av datapakker utenom notebooks
 
-It is also possible to publish data stories using other languages than Python and without using notebooks.
+Det er også mulig å publisere datapakker med andre programmeringsspråk og uten å bruke notebooks.
 
-A data package is just a declarative specification in JSON format. The package can also contain data and/or references to data sources.
+En datapakke er bare en deklarativ spesifikasjon i JSON format. Datapakken kan også inneholde data og/eller referanser til datakilder.
 
-The data package JSON object contains:
+Datapakke JSON objektet inneholder:
 
 * metadata
-* a list of 0-n data 'resources'
-* a list of 0-n content item declarations (='views')
+* en liste av 0-n data 'ressurser'
+* en liste av 0-n innholdselement deklarasjoner (='views')
 
-Basic example contain only one view of type markdown and noe data  resources:
+Eksempelet under inneholder et view av type markdown og ingen data ressurser:
 
 ```json
 {
@@ -113,21 +113,21 @@ Basic example contain only one view of type markdown and noe data  resources:
 ```
 
 
-### Publishing a data package via API
+### Publisering av datapakker via api
 
+Når man publiserer en datapakke vil JSON deklarasjonen sammen med eventuelle ressursfiler bli skrevet til filer i en bucket store via et API. Filene kan så akksesseres av 
+en "datapakke-viewer" front-end applikasjon.
 
-When publishing a data package the JSON declaration along with eventual resource file are written to files in bucket store via and API. The files can then be accessed by a 'data package viewer' front-end application.
+Det følgende eksempelet viser hvordan man publiserer en datapakke JSON fil til dev miljøet (https://datapakker.dev.intern.nav.no)
 
-The following example shows how to publish a data package JSON file to the dev environment (https://data.dev.intern.nav.no)
+For å publisere til prod må du bruke API adressen: https://datakatalog-api.intern.nav.no.
 
-To publish to prod you would have used the API address: https://datakatalog-api.intern.nav.no.
-
-### Create a new data package
+### Lag en ny datapakke
 ```
 curl -X 'POST' -H "Content-Type: application/json" -d @datapakke.json 'https://datakatalog-api.dev.intern.nav.no/v1/datapackage'
 ```
 
-If all goes well you wil get a respons containing the id of your data package:
+Hvis alt går bra vil du da få en respons med IDen til datapakken din:
 
 ```
 {
@@ -137,22 +137,22 @@ If all goes well you wil get a respons containing the id of your data package:
 ```
 
 :::info
-Take note of the ID. You will need this if you would like to update the data package
+Merk deg IDen som returneres. Du trenger denne dersom du ønsker å oppdatere datapakken
 :::
 
-### Adding a view and ressourcefiles
+### Legg til view og ressursfiler
 
 ```
 curl -X PUT -F files=@resource.csv -F files=@testfigur.json https://datakatalog-api.dev.intern.nav.no/v1/datapackage/1c9c6c7c40812e207946632dcc4be58f/attachments
 ```
 
-### Updating a data package
+### Oppdatering av datapakke
 
 ```
 curl -X 'PUT' -H "Content-Type: application/json" -d @datapakke.json 'https://datakatalog-api.dev.intern.nav.no/v1/datapackage/1c9c6c7c40812e207946632dcc4be58f'
 ```
 
-### Example datapackage.json which includes a data visualization
+### Eksempel datapackage.json som inkluderer en data visualisering
 
 ```json
 {
@@ -184,10 +184,9 @@ curl -X 'PUT' -H "Content-Type: application/json" -d @datapakke.json 'https://da
 }
 ```
 
-## Example datapackage.json including references to a data file and a plotly figure
+## Eksempel datapackage.json som inkluderer referanser til en datafil og en plotly figur
 
-When including figures which contain large amounts of data you can reduce the load time of the data package by storing the figures (spec) as separate files and including just the url's in the data package.json. 
-
+Når du inkluderer figurer som inneholder store datamengder kan du redusere lastetiden til datapakken hvis du lagrer figurens spesifikasjon som separate filer og inkluderer bare URLen i datapackage.json
 
 ```json
 {
@@ -215,11 +214,9 @@ When including figures which contain large amounts of data you can reduce the lo
 }
 ```
 
+### Publisering til data.nav.no
 
-
-### Publishing to data.nav.no
-
-If the data package is to be published to the public data catalog you must provide metadata following the DCAT-AP-NO standard. Example:
+Hvis datapakken skal publiseres offentlig må man legge ved metadata som følger DCAT-AP-NO standarden. Eksempel:
 
 ```json
 metadata = {
@@ -237,6 +234,6 @@ metadata = {
     }
 ```
 
-A full description of required and optional metadata fields is available at [metadata](process-data/dataverk/metadata.md)
+En full beskrivelse av alle obligatoriske og valgfrie metadata-felt finnes i [metadata](process-data/dataverk/metadata.md) 
 
-If you get stuck or need more info please contact #nada on Slack
+Ta kontakt i #nada på Slack dersom du trenger hjelp.
