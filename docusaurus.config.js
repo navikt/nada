@@ -32,10 +32,10 @@ const config = {
           editUrl: 'https://github.com/navikt/nada/edit/master/',
           routeBasePath: '/adr',
         },
-        concepts: {
+        konsepter: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/navikt/nada/edit/master/',
-          routeBasePath: '/concepts',
+          routeBasePath: '/konsepter',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -68,9 +68,9 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'concepts/README',
+            docId: 'konsepter/README',
             position: 'left',
-            label: 'concepts',
+            label: 'konsepter',
           },
           {
             href: 'https://github.com/navikt/nada',
