@@ -24,7 +24,7 @@ så kan man benytte seg av publiseringsmekanismen som kommer med dataverk biblio
 
 Å publisere med dataverk innebærer følgende:
 1. Bearbeidede data, lage visualiseringer og skrive tekst i notebooken
-2. Publisere en [datapakke](../dele-innsikt/datapakker)
+2. Publisere en datapakke
 
 Når man har publisert en "datapakke" vil denne være tilgjengelig 
 enten i den [interne](https://data.adeo.no) eller den [eksterne](https://dataverk.nav.no)
@@ -51,8 +51,6 @@ i dockerimaget som notebook serveren bruker.
 3. Enklere og sikrere håndtering av secrets. Ved bruk av jupyterhub håndteres dette likt
 som applikasjoner på nais, dvs. secrets (f.eks. database credentials) mountes inn
 i containermiljøet og trenger ikke være lagret lokalt.
-
-Se [getting started](onprem/getting-started) eller ta kontakt i [#knada](https://nav-it.slack.com/archives/CGRMQHT50) for hjelp til å komme i gang.
 
 ### Uten Jupyterhub
 Så lenge man har en python distribusjon >=python36 installert kan biblioteket

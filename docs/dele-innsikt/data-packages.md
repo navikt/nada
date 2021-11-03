@@ -234,6 +234,4 @@ metadata = {
     }
 ```
 
-En full beskrivelse av alle obligatoriske og valgfrie metadata-felt finnes i [metadata](process-data/dataverk/metadata.md) 
-
 Ta kontakt i #nada på Slack dersom du trenger hjelp.

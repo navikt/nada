@@ -6,7 +6,7 @@ slug: /
 The NADA team is part of Tjenesteplattform and is focused on delivering infrastructure and tools for dataplattform and 
 analysis platform in NAV. Our purpose is to:
 
-* simplify the process of delivering data products for teams and contribute to realizing the [data mesh](docs/konsepter/data-mesh) vision i NAV.
+* simplify the process of delivering data products for teams and contribute to realizing the [data mesh](konsepter/data-mesh) vision i NAV.
 * simplify working with advanced analysis and machine learning for analysts and data scientists.
 
 Our operational goals are to make it easy to share and use data across product areas and outside of NAV.

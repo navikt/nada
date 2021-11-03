@@ -5,9 +5,9 @@ sidebar_position: 0
 ---
 
 
-[Data Mesh](data-mesh.md)
+[Data mesh](data-mesh.md)
 
-[Data product](data-product.md)
+[Dataprodukt](dataprodukt.md)
 
-[Data package](share-insight/data-packages.md)
+[Datapakke](../dele-innsikt/data-packages.md)
 

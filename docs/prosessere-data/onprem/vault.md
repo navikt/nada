@@ -90,6 +90,3 @@ vault_api.set_secrets_as_envs()
 
 my_secret = os.environ["DB_PASSWORD"]
 ````
-
-## Vault integrasjon med dataverk
-For å bruke hemmeligheter i vault med dataverk onprem se [her](../dataverk/settings/README.md).

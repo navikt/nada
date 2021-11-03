@@ -72,23 +72,15 @@ Hvor ofte (i sekunder) Airflow skal synkronisere mot repoet ditt.
 Ved datapakke-publisering bruker dataverk denne parameteren for å sette api-adressen som datakatalogen skal hente
 innholdet fra for datapakkevisningen.
 
-**NAV intern publisering (default):** https://data.adeo.no/api ([intern datakatalog](../finn-data/datakatalog#internal-datacatalog-nav-only))
-
-**Ekstern publisering:** https://data.nav.no/api ([ekstern datakatalog](../finn-data/datakatalog#public-datacatalog))
-
 
 ### dvBucketEndpoint
 Ved datapakke-publisering bruker dataverk denne parameteren for å avgjøre hvilken datakatalog som innholdet i 
 datapakken (ressursfiler og visualiseringer) skal publiseres til.
 
-**NAV intern publisering (default):** https://dv-resource-rw-api.nais.adeo.no/storage ([intern datakatalog](../finn-data/datakatalog#internal-datacatalog-nav-only))
-
-**Ekstern publisering:** https://dv-api-ekstern.prod-gcp.nais.io/storage ([ekstern datakatalog](../finn-data/datakatalog#public-datacatalog))
-
 :::caution ekstern publisering
 Dersom man ikke spesifiserer `dvApiEndpoint` og `dvBucketEndpoint` vil datapakker publiseres til den 
-[interne datakatalogen](../finn-data/datakatalog#internal-datakatalog-nav-only). Den *eneste* grunnen til å endre disse parameterene er dersom man ønsker å publisere 
-datapakker fra AirFlow til den åpne datakatalogen [data.nav.no](../finn-data/datakatalog#public-datacatalog). 
+interne datakatalogen. Den *eneste* grunnen til å endre disse parameterene er dersom man ønsker å publisere 
+datapakker fra AirFlow til den åpne datakatalogen data.nav.no. 
 Merk også at dersom disse parameterene først settes til ekstern publisering så vil alle datapakker som publiseres fra denne AirFlow-instansen være 
 åpent tilgjengelig fra internett.
 :::

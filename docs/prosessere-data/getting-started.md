@@ -5,7 +5,6 @@ sidebar_position: 0
 
 Vi jobber med å lage en moderne analyseplattform på Google Cloud Platform (GCP), hvor vi ønsker å tilby alle de mulighetene skyen gir oss.
 Fra fritt valg av ressurser, til alskens rammeverk.
-I første omgang har vi fokusert på [Jupyter Notebook](gcp/notebooks.md), [BigQuery](gcp/bigquery/bigquery.md), og [Pipelines/jobs](gcp/pipelines.md).
 
 I GCP jobber man i det som kalles prosjekter, og hvert team har sitt eget prosjekt.
 Så den enkleste måten å komme i gang er å bli en del av et team, og jobbe i deres GCP prosjekt.
