@@ -13,4 +13,5 @@ Det er teamet som eier tilgangsstyringen på sine dataprodukter og har ansvar fo
 Her skilles det på to nivåer:
 - Har tilgang
 - Kan gi seg selv tilgang
+
 Tilgangene styres via grensesnittet i [nav data](data.intern.nav.no), som automatisk oppdaterer tilgangen i gcp-prosjektet.
