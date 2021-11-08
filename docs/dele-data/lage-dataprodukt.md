@@ -2,17 +2,19 @@
 title: Lage dataprodukt
 ---
 
-Et dataprodukt tar utgangspunkt i en datakilde som kan være så mangt.
-Per i dag støtter NAV Data kun BigQuery som kilde, men flere kilder vil bli lagt til etter nødvendighet.
+Den første typen [dataprodukt](data-products.md) som støttes av NAV Data er *tabell* eller *view* i *BigQuery*. 
+Denne tabellen/viewet vil kunne bli direkte aksessert av konsumenter av dataproduktet. 
 
-Teamet som eier datakilden er selv nødt til å finne passende løsning for opprettelse og vedlikehold av datakilden.
+Det er mange ulike måter å lage et dataprodukt på. Plattformen har i dag best støtte for:
 
-## Anbefalinger
+- [nais-job](https://doc.nais.io/naisjob/)
 
-### BigQuery for data
-Vi anbefaler at data lagres i BigQuery.
-BigQuery støtter tilgangsstyring og teamet kan velge å bruke Views for å lage dataprodukter av et subset av kildedataen.
+I tillegg har vi sett at dataprodukter kan lages på andre måter, som for eksempel:
 
-### Naisjob for prosessering
-[Naisjob](https://doc.nais.io/naisjob/) er en tjeneste i NAIS som lar deg kjøre kode èn gang eller på en tidsplan.
-Naisjob støtter å opprette BigQuery datasett og sørger for at jobben har tilgang til dette.
+- skrive rett til bigquery fra applikasjonen hvor dataene oppstår
+- en kafkakonsument som leser en topic og skriver til bigquery
+- federated queries fra postgresql til bigquery
+- ulike former for ETL-jobber
+
+Vi jobber kontinuerlig med å videreutvkle støtte for ulike måter å lage dataprodukter på. 
+Vi tar gjerne feedback på dette.
