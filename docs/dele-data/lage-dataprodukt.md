@@ -2,8 +2,8 @@
 title: Lage dataprodukt
 ---
 
-Den første typen [dataprodukt](data-products.md) som støttes av NAV Data er *tabell* eller *view* i *BigQuery*. 
-Denne tabellen/viewet vil kunne bli direkte aksessert av konsumenter av dataproduktet. 
+Den første typen [dataprodukt](data-products.md) som støttes av NAV Data er *tabell* i *BigQuery*. 
+Denne tabellen vil kunne bli direkte aksessert av konsumenter av dataproduktet. 
 
 Det er mange ulike måter å lage et dataprodukt på. Plattformen har dokumentert følgende metoder:
 
