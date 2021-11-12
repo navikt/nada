@@ -5,8 +5,8 @@ title: Datapakker
 
 ## Hvorfor datapakker
 
-Med datapakker (tidligere kalt datapakker) kan du lage og publisere datapakker direkte fra notebooks eller skript. Du kan kombinere datavisualiseringer med 
-formattert tekst, tabeller, bilder, html og PDFer til å lage en datapakker. Den enkleste veien til å lage datapakker er ved å bruke notebooks. Se <a href="https://deetly.github.io/docs/intro.html">deetly</a> for eksempler og getting started dokumentasjon.
+Med datapakker kan du lage og publisere datafortellinger direkte fra notebooks eller skript. Du kan kombinere datavisualiseringer med 
+formattert tekst, tabeller, bilder, html og PDFer til å lage en datapakke. Den enkleste veien til å lage datapakker er ved å bruke notebooks. Se <a href="https://deetly.github.io/docs/intro.html">deetly</a> for eksempler og getting started dokumentasjon.
 
 ## Lage datapakker med notebooks
 
