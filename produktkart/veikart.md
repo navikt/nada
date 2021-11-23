@@ -10,31 +10,41 @@ Oppdatert 19. oktober 2021
 - metadatastore for dataprodukter
 - funksjonalitet for tilgangsstyring på dataprodukter i bigquery
 
-## Neste: Avvikle datakatalogen
-**Hva:** Bryte ut elementene som skal videreføres. Finne ut hva vi gjør med `data.nav.no`.
+## Neste: Dashboard
+**Hva:** Finne ut hvilke(t) visualiseringsverktøy vi tror bør tilbys fra plattform
 
-**Sentrale brukergrupper:** Brukere av data.nav.no, brukere av begreper, brukere og produsenter av datapakker
-
-**Hypoteser/ideer:**
-- Datapakker er en egen tjeneste
-- Begreper er en egen tjeneste
-- Team, personer, produktområder ivaretas av teamkatalogen
-- Øvrig innhold i datakatalogen kan scrappes
-
-![Status datakatalog oktober 2021](datakatalog-status.png)
-
-## Nær framtid: Dashboard
-**Hva:** Finne ut hvilke(t) dashboardverktøy vi ønsker å ha i plattformen, om noe
+**Sentrale brukergrupper:** Brukere av dataprodukter på datamarkedsplassen
 
 **Hypoteser/ideer:**
-- Superset
-- Looker
-- Metabase
+- Superset (POC)
+- Metabase (POC)
 - Redash
+- Looker
+- Tableau
 
-## Senere: Avvikle on-prem Knada
-**Hva:** Skru av on-pªrem notebooks og airflow-tjeneste til fordel for sky
+## Snart: datahistorier
+**Hva:** Finne ut hva vi gjør videre med datapakker, hvordan dette skal videreutvikles og forvaltes.
+
+
+## Senere: data.nav.no
+**Hva:** Finne ut hvordan vi ønsker å bruke data.nav.no, og hvordan den henger sammen med data.intern.nav.no.
+
+**Hypoteser/ideer:**
+- Datahistorier er høyaktuelt
+- Begreper kan ligge kun i felles datakatalog
+
+## Enda senere: Datamarkedsplass v2
+**Hva:** Basert på læring, videreutvikle datamarkedsplassen
+
+**Hypoteser/ideer:**
+- Kobling til behandlingskatalogen
+- Nye dataprodukttyper (filer? andre former for databaser? kafka topics?)
+
+## Enda senere: Avvikle on-prem Knada
+**Hva:** Skru av on-prem notebooks og airflow-tjeneste til fordel for sky
 
 **Hypoteser/ideer:**
 - Notebooks i sky er bedre enn on-prem-tjenesten vår
 - Vi må gjøre det mulig å aksessere data fra on-prem PG og on-prem Oracle fra notebooks i sky
+
+
