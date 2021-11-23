@@ -48,11 +48,19 @@ import os
 os.environ['DATAVERK_HOST'] = 'https://datakatalog-api.dev.intern.nav.no'
 
 # publish to prod: https://data.intern.nav.no
-#os.environ['DATAVERK_HOST'] = 'https://datakatalog-api.intern.nav.no'
-
-# publish from onprem
-os.environ['DATAVERK_ENVIRONMENT'] = 'nais'
+# os.environ['DATAVERK_HOST'] = 'https://datakatalog-api.intern.nav.no'
 ```
+
+##### Publish from onprem
+````python
+os.environ['DATAVERK_ENVIRONMENT'] = 'nais'
+````
+
+##### Publish from gcp project
+````python
+os.environ['DATAVERK_BUCKET'] = 'nav-interndata-prod-gcp'
+os.environ['DATAVERK_ENVIRONMENT'] = 'gcs'
+````
 
 #### For dataverk <0.4.7
 
