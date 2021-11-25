@@ -36,7 +36,7 @@ ds.text("Glad you are here!")
 
 ### Publiser til NAV datapakke katalog
 
-Med naisdevice installert og kjørende kan du publisere til datapakke-katalogen direkte fra maskinen din. I dette tilfellet trenger du å definere noen miljøvariabler for å publisere enten til test (<a href="https://datapakker.dev.intern.nav.no">https://data.dev.intern.nav.no</a>) eller prod (<a href="https://datapakker.intern.nav.no">https://data.intern.nav.no</a>).
+Med naisdevice installert og kjørende kan du publisere til datapakke-katalogen direkte fra maskinen din. I dette tilfellet trenger du å definere noen miljøvariabler for å publisere enten til test (<a href="https://datapakker.dev.intern.nav.no">https://datapakker.dev.intern.nav.no</a>) eller prod (<a href="https://datapakker.intern.nav.no">https://datapakker.intern.nav.no</a>).
 
 Når man jobber i notebooks på .jupyter.adeo.no er det ikke nødvendig å sette disse.
 
