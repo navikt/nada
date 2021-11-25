@@ -42,6 +42,8 @@ Når man jobber i notebooks på .jupyter.adeo.no er det ikke nødvendig å sette
 
 #### For dataverk >=0.4.7
 
+##### Publish from onprem
+
 ```python
 import os
 # publish to test: https://data.dev.intern.nav.no
@@ -49,15 +51,13 @@ os.environ['DATAVERK_HOST'] = 'https://datakatalog-api.dev.intern.nav.no'
 
 # publish to prod: https://data.intern.nav.no
 # os.environ['DATAVERK_HOST'] = 'https://datakatalog-api.intern.nav.no'
-```
 
-##### Publish from onprem
-````python
 os.environ['DATAVERK_ENVIRONMENT'] = 'nais'
-````
+```
 
 ##### Publish from gcp project
 ````python
+os.environ['DATAVERK_HOST'] = 'https://data-catalog-es-api.nav.no'
 os.environ['DATAVERK_BUCKET'] = 'nav-interndata-prod-gcp'
 os.environ['DATAVERK_ENVIRONMENT'] = 'gcs'
 ````
