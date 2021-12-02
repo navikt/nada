@@ -16,7 +16,6 @@ Oppdatert 19. oktober 2021
 **Sentrale brukergrupper:** Brukere av dataprodukter på datamarkedsplassen
 
 **Hypoteser/ideer:**
-- Superset (POC)
 - Metabase (POC)
 - Redash
 - Looker
