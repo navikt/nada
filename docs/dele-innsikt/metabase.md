@@ -2,8 +2,6 @@
 title: Metabase
 ---
 
-## Hvorfor Superset?
-
 [Metabase](https://www.metabase.com/) er en opensource plattform for moderne datautforskning og visualisering.
 
 ## Kom igang
