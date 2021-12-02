@@ -24,17 +24,17 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/navikt/nada/edit/master/',
+          editUrl: 'https://github.com/navikt/nada/edit/main/',
           routeBasePath: '/',
         },
         adr: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/navikt/nada/edit/master/',
+          editUrl: 'https://github.com/navikt/nada/edit/main/',
           routeBasePath: '/adr',
         },
         konsepter: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/navikt/nada/edit/master/',
+          editUrl: 'https://github.com/navikt/nada/edit/main/',
           routeBasePath: '/konsepter',
         },
         theme: {
