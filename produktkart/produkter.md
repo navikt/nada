@@ -3,7 +3,7 @@
 |Produkt|Funksjon|Adresse|Status|
 |---|---|---|---|
 |NADA docs|Dokumentasjon av plattformtjenestene våre|`docs.knada.io`|Allment tilgjengelig (AT)|
-|NAV Data|Markedsplass for deling av dataprodukter i NAV|Kommer|Prototype under utprøving|
+|NAV Data|Markedsplass for deling av dataprodukter i NAV|`data.intern.nav.no`|Prototype under utprøving|
 |Notebooks (i GCP)|Jupyter notebooks levert som GCP-tjeneste - til utforskning, analyse og arbeid med data|`console.cloud.google.com`|Allment tilgjengelig (AT)|
 |Composer (i GCP)|Airflow levert som GCP-tjeneste - til orkestrering av data pipelines|`console.cloud.google.com`|Allment tilgjengelig (AT)| 
 |Knada-clusteret|On-prem jupyter notebooks og Airflow - til utforskning, analyse og arbeid med data samt orkestrering av data pipelines.|`[dittnavn].jupyter.adeo.no`|Allment tilgjengelig (AT)(*)|
