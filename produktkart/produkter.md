@@ -9,7 +9,7 @@
 |Knada-clusteret|On-prem jupyter notebooks og Airflow - til utforskning, analyse og arbeid med data samt orkestrering av data pipelines.|`[dittnavn].jupyter.adeo.no`|Allment tilgjengelig (AT)(*)|
 |Metabase|GUI-basert dashboardverktøy for å lage visualiseringer|`metabase.intern.nav.no`|Prototype under utprøving|
 |Amplitude|Brukerinnsikt, analyse av brukeradferd|`analytics.amplitude.com/nav`|Allment tilgjengelig (AT)|
-|Datakatalogen|Katalog over data som finnes i NAV|`data.nav.no` <br/> `data.intern.nav.no`|Under avvikling (**)|
+|Datakatalogen|Katalog over data som finnes i NAV|`data.nav.no` <br/> `~~data.intern.nav.no~~`|Under avvikling (**)|
 |Begrepskatalogen|Søkbar oversikt over begreper samt eksport av begreper|`data.nav.no` <br/> `data.intern.nav.no`| Uavklart (***)|
 |Datapakker|Historiefortelling med data, publisering av statiske dokumenter med visualiseringer|`data.nav.no` <br/> `data.intern.nav.no`|Uavklart (***)|
 |~~Arx-as-a-Service~~|Anonymisering og analyse av reidentifikasjonsrisiko|N/A|Avviklet|
