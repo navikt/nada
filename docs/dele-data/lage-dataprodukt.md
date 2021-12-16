@@ -16,5 +16,5 @@ I tillegg har vi sett at dataprodukter kan lages på andre måter, som for eksem
 - en kafkakonsument som leser en topic og skriver til bigquery
 - ulike former for ETL-jobber
 
-Vi jobber kontinuerlig med å videreutvkle støtte for ulike måter å lage dataprodukter på. 
+Vi jobber kontinuerlig med å videreutvikle støtte for ulike måter å lage dataprodukter på. 
 Vi tar gjerne feedback på dette.
