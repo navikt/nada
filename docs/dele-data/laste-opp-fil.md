@@ -14,19 +14,19 @@ ALle tabeller og view må ligge i et datasett.
 ## Opprett et datasett
 Klikk på de tre prikkene til høyre på ditt prosjekt i _pinned projects_-listen og velg "Create dataset".
 
-<kbd>![Klikk "create dataset"](create-dataset.png)</kbd>
+![Klikk "create dataset"](create-dataset.png)
 
 Fyll inn detaljer for datasettet ditt.
 
 Merk at "Data location" **skal være** `europe-north1`.
 
-<kbd>![Fyll inn detaljer](create-dataset-details.png)</kbd>
+![Fyll inn detaljer](create-dataset-details.png)
 
 
 ## Last opp en fil til en ny tabell
 Klikk på de tre prikkene til høyre i datasettet ditt, og velg "Create table".
 
-<kbd>![Velg "create table"](create-table.png)</kbd>
+![Velg "create table"](create-table.png)
 
 I vinduet som popper opp velger du "Create table from" --> "Upload". Så velger du fil og filformat.
 
@@ -34,6 +34,6 @@ Under "Destination" velger du ditt prosjekt og datasett, og gir tabellen et navn
 
 Schema kan du så redigere - merk at det er lurt å spesifisere riktig datatype for hvert felt. 
 
-<kbd>![Fyll inn detaljer](create-table-details.png)</kbd>
+![Fyll inn detaljer](create-table-details.png)
 
 Trykk "Create table". Voila!
