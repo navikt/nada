@@ -1,14 +1,13 @@
 ---
-title: Publish data packages from GCP projects
+title: Publisere fra GCP prosjekter
 ---
 
-When setting up [on-demand GCP projects](https://github.com/navikt/knada-on-demand-projects) some
-dataverk configuration is automatically stored as secrets in [Google Secret Manager](https://cloud.google.com/secret-manager/docs) 
-in the created project. These configuration values needs to be imported and set as environment variables 
-in order to use dataverk to publish data packages from GCP.
+Når man har satt opp et [on-demand GCP projekt](https://github.com/navikt/knada-on-demand-projects) så vil noe
+dataverk konfigurasjon bli lagret som hemmeligheter i [Google Secret Manager](https://cloud.google.com/secret-manager/docs) 
+i det opprettede prosjektet. Disse konfigurasjonsverdiene må importeres og settes som miljøvariabler for at dataverk skal fungere når datapakker skal 
+publiseres fra GCP.
 
-To simplify this, we have developed a python library [dataverk-gsm](https://github.com/navikt/dataverk-gsm) 
-which can be used as follows:
+For å forenkle dette har vi utviklet et python biblioted [dataverk-gsm](https://github.com/navikt/dataverk-gsm) som kan brukes som følger:
 ````python
 from dataverk_gsm import api as gsm_api
 
@@ -16,6 +15,5 @@ gsm_api.set_secrets_as_envs()
 ````
 
 :::info
-In order to publish data packages to the internal data catalog from GCP projects it is required that installed 
-version of dataverk is >=0.4.4
+For å kunne publisere datapakker fra GCP prosjekter må installert versjon av dataverk >= 0.4.4
 :::
