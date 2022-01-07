@@ -27,11 +27,6 @@ const config = {
           editUrl: 'https://github.com/navikt/nada/edit/main/',
           routeBasePath: '/',
         },
-        adr: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/navikt/nada/edit/main/',
-          routeBasePath: '/adr',
-        },
         konsepter: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/navikt/nada/edit/main/',
@@ -59,12 +54,6 @@ const config = {
             docId: 'README',
             position: 'left',
             label: 'docs',
-          },
-          {
-            type: 'doc',
-            docId: 'adr/README',
-            position: 'left',
-            label: 'adr',
           },
           {
             type: 'doc',
