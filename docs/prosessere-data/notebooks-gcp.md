@@ -41,9 +41,9 @@ Du kan nå kjøre følgende kode i din notebook for å hente hemmeligheten.
 from google.cloud import secretmanager
 secrets = secretmanager.SecretManagerServiceClient()
 
-resource_name = f"projects/knada-gcp/secrets/<navn på hemmelighet>/versions/latest”
+resource_name = f"projects/knada-gcp/secrets/<navn på hemmelighet>/versions/latest"
 secret = secrets.access_secret_version(name=resource_name)
-seret.payload.data.decode('UTF-8')
+secret.payload.data.decode('UTF-8')
 ```
 
 
