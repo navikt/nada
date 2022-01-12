@@ -9,7 +9,7 @@ const config = {
   title: 'NADA',
   tagline: 'NAV Data - vi bygger plattform og verktøy for deling av data i NAV',
   url: 'https://.nais.io/oslomet-nada-docs',
-  baseUrl: '/oslomet-nada-docs/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
