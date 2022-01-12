@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'NADA',
   tagline: 'NAV Data - vi bygger plattform og verktøy for deling av data i NAV',
-  url: 'https://docs.knada.io',
+  url: 'https://.nais.io/oslomet-nada-docs',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -62,7 +62,7 @@ const config = {
             label: 'konsepter',
           },
           {
-            href: 'https://github.com/navikt/nada',
+            href: 'https://github.com/navikt/oslomet-nada-docs',
             label: 'GitHub',
             position: 'right',
           },
