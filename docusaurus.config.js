@@ -13,8 +13,8 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'navikt',
-  projectName: 'nada',
+  organizationName: 'nais',
+  projectName: 'oslomet-nada-docs',
   trailingSlash: false,
 
   presets: [
@@ -24,12 +24,12 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/navikt/nada/edit/main/',
+          editUrl: 'https://github.com/nais/oslomet-nada-docs/edit/main/',
           routeBasePath: '/',
         },
         konsepter: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/navikt/nada/edit/main/',
+          editUrl: 'https://github.com/nais/oslomet-nada-docs/edit/main/',
           routeBasePath: '/konsepter',
         },
         theme: {
@@ -62,7 +62,7 @@ const config = {
             label: 'konsepter',
           },
           {
-            href: 'https://github.com/navikt/oslomet-nada-docs',
+            href: 'https://github.com/nais/oslomet-nada-docs',
             label: 'GitHub',
             position: 'right',
           },
