@@ -1,5 +1,5 @@
 ---
-title: Tilgang med service account dataprodukter på dataplassen
+title: Tilgang med service account til dataprodukter på dataplassen
 ---
 
 1. Lag service account under ditt prosjekt i gcp konsollen som beskrevet [her](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
