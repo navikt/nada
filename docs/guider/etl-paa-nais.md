@@ -58,7 +58,36 @@ Konfigurasjonen man må skrive for at en applikasjon skal kunne kjøre på nais 
 For nais-apper kalles dette manifestet som regel `nais.yaml`. 
 
 ### CI/CD-pipeline
+CI/CD (continous integration/deployment) gjør at *team* raskt kan publisere endringer på en tryggere måte.
+Noe av dette får vi utbytte av uavhengig av hva vi aktivt velger å gjøre.
+Eksempelvis vil det være sjekker av hvorvidt credentials er inkludert i repoet. 
+For å få fullt utbytte av CI/CD må vi i tillegg aktivt inkludere en del innhold.
+Enhetstester er et eksempel på dette, der CI-løpet vil trigge alle testene som er inkludert i repoet.
+Dersom noen av testene ikke returnerer verdien som forventes under forutsetningene lagt inn i testen, vil utvikler umiddelbart få tilbakemelding og pipelinen stanses.
 
+### Hemmeligheter
+Kommer!
 
+## En enkel ETL-pipeline
+### Lese fra en kilde
+"Extract"-delen av vår ETL består i å lese data fra en BigQuery-tabell. 
+Vi gjør dette på følgende måte:
 
+...
+df = pd....()
+
+### Test-drevet transformasjon
+I eksempelet vårt består "transform"-delen at vi skal endre kolonne-headere til lower-case.
+Vi bruker funksjonen rename_to_lower:
+
+def rename_to_lower(df, columns_to_rename):
+
+"""
+"""
+  column_mapper = {col: col.lower() for col in columns_to_rename)
+  df.rename(column_mapper, axis=1, inplace=True)
+  return df
+
+...som vi forventer skal returnere en bestemt output for en gitt input.
+Den logikken vil vi teste med en enhetstest ved bruk av unittest-modulen, og denne testen vil trigges hver gang vi kjører CI-pipelinen.
 
