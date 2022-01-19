@@ -24,7 +24,7 @@ All den tid mange relevante datakilder kun er tilgjengelig on-premises, er det e
 6. Når maskinen er ferdig laget, kan du trykke på `Open jupyterlab` for å få tilgang.
 
 ## Credentials og hemmeligheter.
-Det anbefales å lagre brukernavn, passord o.l. for notebooken din i [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp).
+Det anbefales å bruke [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp) som erstatning for Vault.
 1. Gå til [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp)
 1. Legg inn relevante verdier i din hemmelighet.
 
