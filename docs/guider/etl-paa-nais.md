@@ -10,9 +10,9 @@
   * CI/CD
   * Hemmeligheter
 * En enkel ETL-pipeline
-  * Lese fra en kilde (dataprodukt i GCP)
-  * Test-drevet transformasjonsutvikling
-  * Skrive til et nytt dataprodukt
+  * E: Lese fra en kilde (dataprodukt i GCP)
+  * T: Test-drevet transformasjonsutvikling
+  * L: Skrive til et nytt dataprodukt
 * Pipeline
   * Dockerfile
   * naisjob.yaml
@@ -69,25 +69,80 @@ Dersom noen av testene ikke returnerer verdien som forventes under forutsetninge
 Kommer!
 
 ## En enkel ETL-pipeline
-### Lese fra en kilde
-"Extract"-delen av vår ETL består i å lese data fra en BigQuery-tabell. 
+Vi illustrerer hvordan ETL kan gjøres i python gjennom et veldig enkelt eksempel der vi bruker packagen pandas.
+
+### E: Lese fra en kilde
+"Extract"-delen av vår ETL består i å lese data fra en BigQuery-tabell.  
 Vi gjør dette på følgende måte:
+````
+import pandas as pd # Tredjepartsbibliotek spesifiseres i docker-imaget
 
-...
-df = pd....()
+SQL_QUERY = "select * from table_x"
 
-### Test-drevet transformasjon
-I eksempelet vårt består "transform"-delen at vi skal endre kolonne-headere til lower-case.
+df = pd.read_gbq(SQL_QUERY) # Leser tabellen inn til minnet (hvor er dataene i sky egentlig?)
+````
+
+Pandas støtter lesing fra et bredt spekter dokumentert [her](https://pandas.pydata.org/docs/reference/io.html).
+
+### T: Test-drevet transformasjon
+I det enkle eksempelet vårt består "transform"-delen at vi skal endre kolonne-headere til lower-case.
 Vi bruker funksjonen rename_to_lower:
-
+````
 def rename_to_lower(df, columns_to_rename):
-
-"""
-"""
-  column_mapper = {col: col.lower() for col in columns_to_rename)
-  df.rename(column_mapper, axis=1, inplace=True)
-  return df
+    """
+    Docstring
+    """
+    column_mapper = {col: col.lower() for col in columns_to_rename)
+    df.rename(column_mapper, axis=1, inplace=True)
+    
+    return df
+````
 
 ...som vi forventer skal returnere en bestemt output for en gitt input.
-Den logikken vil vi teste med en enhetstest ved bruk av unittest-modulen, og denne testen vil trigges hver gang vi kjører CI-pipelinen.
+Den logikken vil vi teste med en enhetstest gjennom unittest-modulen:
 
+````
+import unittest
+
+import numpy as np
+import pandas as pd
+
+class TestRenameColumns(unittest.TestCase):
+       
+    def test_rename_from_upper(self):
+        df = pd.DataFrame({'A': [1, 2], 'B': [1, 2]})
+        cols_to_rename = ['A', 'B']
+        df_renamed = rename_to_lower(df, cols_to_rename)
+        actual = list(df_renamed.columns)
+        expected = ['a', 'b']
+
+        self.assertEqual(actual, expected)
+        
+````
+...som gjør oss *litt* tryggere på at funksjonen gjør det den skal.
+Om vi dekker de mest relevante variasjonene i input, kan teamet med større trygghet:
+1. Utvikle ny kode
+2. Gjøre endringer i eksisterende kode
+
+I praksis består transformasjonene som regel av flere steg enn dette. 
+Dersom vi faktoriserer koden i mindre deler, gjør vi jobben vår med testing veldig mye enklere.
+Det vil da være færre variasjoner å ta hensyn til, siden vi tester hver enkelt del separat.
+Når vi "syr sammen" koden til slutt, må vi også teste denne delen av koden.
+Disse testene vil dog være mindre omfattende siden vi allerede har testet hver enkelt del av totalen.
+
+I tillegg til *enhetstestene* som skrives, bør vi også teste om det er avhengigheter til andre komponenter.
+Disse *integrasjonstestene* vil gjøre at teamet er tryggere på at endringer som gjøres ikke har negative konsekvenser for avhengigheter til vår del.
+
+### L: Skrive til et nytt dataprodukt
+Siste steg i ETL-en er å laste dataene.
+I vårt eksempel skal vi skrive til BigQuery, men det er mulig å skrive til de flest, vanlige kildeformater.
+Vi gjør dette på følgende måte:
+````
+import pandas as pd
+...
+# Extract, transform
+...
+DESTINATION_TABLE = tabell_y
+df.to_gbq(tabell_y)
+
+````
