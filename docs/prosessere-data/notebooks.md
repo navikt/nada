@@ -11,7 +11,12 @@ Disse finner man under [Vertex AI/Workbench  (doc)](https://cloud.google.com/ver
 Et teamprosjekt i GCP har av sikkerhetsmessige årsaker ikke tilgang til datakilder on-prem.
 All den tid mange relevante datakilder kun er tilgjengelig on-premises, er det etablert en løsning for å nå disse datakildene via et eget prosjekt.
 
-TODO: Nevne hva man har tilgang til
+Notebook server i GCP har ikke tilgang til følgende tjenester:
+
+* Aiven-tjenester (Kafka, OpenSearch)
+* API-tjenester i NAIS-clustere
+* Datapakker
+* Kafka (on-prem)
 
 ### Team-prosjekt server
 
