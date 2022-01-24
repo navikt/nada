@@ -7,7 +7,7 @@ Denne tabellen vil kunne bli direkte aksessert av konsumenter av dataproduktet.
 
 Det er mange ulike måter å lage et dataprodukt på. Plattformen har dokumentert følgende metoder:
 
-- [nais-job](../prosessere-data/skedulering/skeduleringnaisjobs.md)
+- [nais-job](../prosessere-data/skedulering/naisjobs.md)
 - [scheduled query](../prosessere-data/skedulering/scheduled-query.md)
 
 I tillegg har vi sett at dataprodukter kan lages på andre måter, som for eksempel:
