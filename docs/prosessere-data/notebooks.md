@@ -91,7 +91,16 @@ secret = secrets.access_secret_version(name=resource_name)
 secret.payload.data.decode('UTF-8')
 ```
 
-## Maskin type og GPU
+## Bruk av hostnavn på onprem-tjenester
+I dette prosjektet ikke lagt opp til navneoppslag mot on-premises.
+Databasenavn må derfor oversettes til ip-adresser i notebooks.
+Man finner ip-adressen til en database ved å pinge hostnavnet fra f.eks. utviklerimage:
+```
+$ ping dm08db01.adeo.no
+> PING dm08db01.adeo.no (10.x.x.x): 56 data bytes
+```
+
+## Maskintype og GPU
 Det er du som vet best hva du trenger, derfor er det ingen begrensninger på hva du kan velge av maskin og GPU.
 Bare husk at det kan bli veldig kostbart hvis du lar en maskin (med mye minne og GPU) stå uten at den blir brukt.
 
