@@ -63,6 +63,7 @@ FROM dataproducts,constants
 For å kjøre spørringen på intervall, så kan du i Query Explorer i Cloud Console velge å definere en "Schedule".
 
 Klikk "Schedule" og "Create new schedule"
+
 ![Schedule knapp eksempel](scheduled.png)
 
 ```
