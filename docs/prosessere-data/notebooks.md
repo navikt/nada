@@ -113,13 +113,16 @@ Har du en maskin du ikke trenger lenger, så kan du slette den.
 Velg maskinen i [oversikten](https://console.cloud.google.com/ai-platform/notebooks/instances) og trykk `DELETE` i toppen.
 
 ## Oppsett for Oracle og Postgres drivere
-For å gjøre det enkelt for dere å komme i gang, har vi lagd to script:
+For å gjøre det enkelt for dere å komme i gang, har vi lagd to scripts som begge må kjøres med root privilegier.
+
+Kjør først kommandoen:
+```bash
+sudo -i
+```
+for å kunne kjøre skriptene som root.
 
 Trenger du Oracle lim inn følgende i terminalen din:
 ```bash
-#!/bin/bash
-
-set -e
 
 apt-get update && apt-get install -yq --no-install-recommends \
     build-essential \
