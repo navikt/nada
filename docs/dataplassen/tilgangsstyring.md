@@ -8,4 +8,4 @@ Tilganger som gis via dataplassen er `BigQuery Data Viewer` på tabellnivå og `
 
 ## Andre rettigheter du trenger
 
-Ved en spørring i BigQuery er det to gcp-prosjekter å holde styr på. Det første er der tabellen tabellen ligger, og det andre er der jobben kjøres og kostnadene registreres, altså billing-prosjektet. Billing-prosjektet vil typisk være det som tilhører teamet du jobber i. I tillegg til rettighetene som settes via Dataplassen, må man være `BigQuery User` (eller tilsvarende) i billing-prosjektet for å kunne kjøre jobben. Dette styres fra [IAM & Admin](https://console.cloud.google.com/iam-admin) i aktuelt prosjekt. 
+Ved en spørring i BigQuery er det to gcp-prosjekter å holde styr på. Det første er der tabellen tabellen ligger, og det andre er der jobben kjøres og kostnadene registreres, altså billing-prosjektet. Billing-prosjektet vil typisk være det som tilhører teamet du jobber i. I tillegg til rettighetene som settes via Dataplassen, må man være `BigQuery User` (eller tilsvarende) i billing-prosjektet for å kunne kjøre jobben. Dette styres fra [IAM & Admin](https://console.cloud.google.com/iam-admin) i aktuelt prosjekt.    
