@@ -70,14 +70,14 @@ Det anbefales å bruke [Secret manager](https://console.cloud.google.com/securit
 
 
 For at notebooken skal kunne bruke din personlige bruker når den henter hemmeligheter fra secret manager, må du gi den tilgang til det ved å kjøre følgende kommando fra en notebook-terminal:
-```
+```bash
 # Hvis du ikke har gjort dette fra før
 gcloud auth application-default login
 ```
 
 Deretter legge inn secret-manager-pakken:
 
-```
+```bash
 pip install google-cloud-secret-manager
 ```
 
@@ -91,14 +91,38 @@ secret = secrets.access_secret_version(name=resource_name)
 secret.payload.data.decode('UTF-8')
 ```
 
+Har du flere hemmeligheter, som du gjerne skulle hatt som miljøvariabler i din Notebook, kan du bytte ut siste linje med følgende:
+```
+os.environ.update(dict([line.split("=") for line in secret.payload.data.decode('UTF-8').splitlines()]))
+```
+
+Dette fordrer at du har hemmelighetene dine i følgende format:
+```
+key=value
+key2=value
+```
+
+Eksempel:
+```
+ORACLE_USERNAME=e152435
+ORACLE_PASSWORD=asdfløkjamsfwoie23$9283/$lkmsdfl)(23$wio/3
+```
+
+Da kan du hente de ut med for eksempel:
+```python
+print(os.environ["ORACLE_USERNAME"])
+```
+
 ## Bruk av hostnavn på onprem-tjenester
-I dette prosjektet ikke lagt opp til navneoppslag mot on-premises.
-Databasenavn må derfor oversettes til ip-adresser i notebooks.
-Man finner ip-adressen til en database ved å pinge hostnavnet fra f.eks. utviklerimage:
+I dette prosjektet støtter vi ikke navneoppslag mot on-premises.
+Det betyr at databasenavn må oversettes til ip-adresser i Notebooks.
+Man kan finner ip-adressen til en database ved å pinge hostnavnet fra f.eks. utviklerimage:
 ```
 $ ping dm08db01.adeo.no
 > PING dm08db01.adeo.no (10.x.x.x): 56 data bytes
 ```
+
+Vi har også lagd en liste over de åpningen vi har (og ip-adressene) over i [navikt/pig/nada](https://github.com/navikt/pig/blob/master/nada/doc/knada-gcp.md#brannmur%C3%A5pninger).
 
 ## Maskintype og GPU
 Det er du som vet best hva du trenger, derfor er det ingen begrensninger på hva du kan velge av maskin og GPU.
