@@ -124,6 +124,17 @@ $ ping dm08db01.adeo.no
 
 Vi har også lagd en liste over de åpningen vi har (og ip-adressene) over i [navikt/pig/nada](https://github.com/navikt/pig/blob/master/nada/doc/knada-gcp.md#brannmur%C3%A5pninger).
 
+For å bruke IP i stedet for en vanlig adresse så er det bare å bytte direkte.
+Så hvis følgende er den "vanlige" kode-snutten din:
+```python
+dsnStr = cx_Oracle.makedsn('dm08db01.adeo.no','1521',service_name='DWH_HA')
+```
+
+så kan du heller skrive
+```python
+dsnStr = cx_Oracle.makedsn('10.x.x.x','1521',service_name='DWH_HA')
+```
+
 ## Maskintype og GPU
 Det er du som vet best hva du trenger, derfor er det ingen begrensninger på hva du kan velge av maskin og GPU.
 Bare husk at det kan bli veldig kostbart hvis du lar en maskin (med mye minne og GPU) stå uten at den blir brukt.
