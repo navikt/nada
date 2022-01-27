@@ -13,6 +13,7 @@ Målgruppen for denne guiden er datautviklere som kan litt python og skal lage d
 Ved å bruke nais som plattform for pipelinen vår får vi mye gratis. 
 Vi får et robust og veltestet kjøretidsmiljø, tilgang på logger og metrikker og alerts, i tillegg til enkle provisjoneringsmekanismer for BigQuery-datasett og hemmeligheter og slikt.
 
+All koden vi bruker i eksemplet under ligger [på github](https://github.com/navikt/naisapps-agg-dataproduct).
 
 ## Grunnleggende konsepter
 ### Docker / containere
@@ -322,4 +323,4 @@ I tillegg er det lurt å ha noen tester som man kjører som en del av sin CI/CD-
 
 Når job'en er oppe og går har man tilgang til alle verktøy for observability som alle apper på nais har. 
 Se [doc.nais.io](https://doc.nais.io/) for en nærmere beskrivelse av disse.
-Man kan også følge med på job'en med [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/). 
+Man kan også følge med på job'en med [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/).
