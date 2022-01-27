@@ -1,27 +1,5 @@
 # How to: Python ETL-pipeline på nais 101
 
-## Disposisjon
-* Introduksjon
-  * Hva skal vi gjøre i denne guiden?
-  * Hvorfor bruke nais til dette?
-* Viktige konsepter å forstå
-  * Docker/containers
-  * Kubernetes og nais
-  * CI/CD
-  * Hemmeligheter
-* En enkel ETL-pipeline
-  * E: Lese fra en kilde (dataprodukt i GCP)
-  * T: Test-drevet transformasjonsutvikling
-  * L: Skrive til et nytt dataprodukt
-* Pipeline
-  * Dockerfile
-  * naisjob.yaml
-  * Github Action
-* Drift av pipeline
-  * Monitorering
-  * Alerts
-* Oppsummering
-
 ## Introduksjon
 I denne guiden viser vi hvordan vi kan lage en data pipeline ("ETL-pipeline") i python og sette denne i produksjon på nais.
 Vi vil i eksempelet lese data fra et dataprodukt som ligger på [datamarkedsplassen](../finne-data/navdata.md),
@@ -43,8 +21,6 @@ En "container" i denne konteksten betyr at vi pakker inn koden vår sammen med a
 I praksis trenger et pythonscript et operativsystem med python installert, samt alle biblioteker vi skal benytte. 
 Vi kommer til å lage en container som inneholder et Linux-basert operativsystem, python 3.9 samt alle bibliotekene vi har definert i vår `requirements.txt`.
 
-### Hemmeligheter
-
 ### Kubernetes, nais og applikasjonsmanifestet
 *For en utfyllende beskrivelse av nais bør man lese seg litt opp på [nais-dokumentasjonen](https://docs.nais.io/).*
 
@@ -56,6 +32,13 @@ og gjort det mulig å sette en applikasjon i produksjon på kubernetes [kun med 
 
 Konfigurasjonen man må skrive for at en applikasjon skal kunne kjøre på nais kalles et [applikasjonsmanifest.](https://docs.nais.io/nais-application/application/)
 For nais-apper kalles dette manifestet som regel `nais.yaml`. 
+
+### Nais-job
+Dersom man ikke har behov for en applikasjon som kjører hele tiden, men i stedet har et script eller lignende som skal gjøre én ting og så være ferdig kan man benytte seg av en `job` i stedet for en applikasjon.
+En `job` starter opp på samme måte som en applikasjon på kubernetes, men når den har gjort det den skal blir den terminert og alle ressurser den opprettet i clusteret blir frigitt.
+
+Ved hjelp av [naisjob](https://docs.nais.io/naisjob/) kan vi enkelt definere en job som kjører på faste tidspunkter, angitt på [crontab-format](https://crontab.guru/).
+Bortsett fra at `job`en blir borte når den er ferdig oppfører naisjobs seg stort sett som applikasjoner.
 
 ### CI/CD-pipeline
 CI/CD (continous integration/deployment) gjør at *team* raskt kan publisere endringer på en tryggere måte.
@@ -189,7 +172,154 @@ Vi skriver til en tabell i BigQuery i dette tilfellet.
 
 #### **`main.py`**
 ````
-destination = 'aggregated_apps.apps_per_day'
-df.to_gbq(destination)
+project_id = 'nais-analyse-prod-2dcc'
+dataset = 'apps_aggregated'
+table = 'apps_per_env'
+
+destination_table = f'{project_id}.{dataset}.{table}'
+
+table_schema = [
+  {'name': 'dato', 'type': 'DATE'},
+  {'name': 'env', 'type': 'STRING'},
+  {'name': 'datacenter', 'type': 'STRING'},
+  {'name': 'antall_apper', 'type': 'INT'}
+]
+
+df.to_gbq(
+  destination_table=destination_table, 
+  table_schema=table_schema,
+  if_exists='replace'
+)
 
 ````
+Project ID er IDen på GCP-prosjektet hvor datasettet ditt skal leve. 
+Dette er typisk oppkalt etter ditt teamnavn.
+
+Datasettet må vi opprette før vi kan skrive dit. 
+Det gjør vi i applikasjonsmanifestet vårt.
+Det vil derfor ikke fungere å skrive til BigQuery før vi har applyet applikasjonsmanifestet første gang.
+I praksis vil vi gjøre dette i vår CI/CD pipeline under.
+
+Tabellen opprettes automatisk med schema vi angir når vi bruker [`to_gbq`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_gbq.html).
+Vi har her valgt en replace-strategi, men man kan for eksempel velge append i stedet. Se [dokumentasjon av biblioteket](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_gbq.html).
+
+## Applikasjonsmanifest
+Vi skal lage en naisjob, og den beskriver vi i et manifest.
+
+#### *`naisjob.yaml`*
+```
+apiVersion: nais.io/v1
+kind: Naisjob
+metadata:
+  labels:
+    team: nais-analyse
+  name: naisapps-agg-dataproduct
+  namespace: nais-analyse
+spec:
+  image: {{image}}
+  schedule: "30 6 * * *"
+  gcp:
+    bigQueryDatasets:
+      - name: apps_aggregated
+        permission: READWRITE
+```
+Joben må ha et navn, tilhøre et team og kjøre i det teamets namespace på nais.
+I tillegg må den ha en schedule, som i dette tilfellet er kl 0630 hver dag.
+
+Så må job'en vite hvilken kode den skal kjøre - altså hvilket dockerimage som skal spinnes opp og kjøre til det er ferdig kl 0630 hver dag.
+Navnet på imaget vil endre seg hver gang vi gjør endringer i koden, så vi bruker en miljøvariabel `IMAGE` til å representere dette, som blir skutt inn av CI/CD-pipelinen vår.
+
+Til slutt må vi beskrive BigQuery-datasettet vi skal opprette. 
+Ved å beskrive det i manifestet vil det automatisk bli provisjonert av nais når appen deployes første gang.
+Dette betyr at datasettet blir opprettet og at riktige tilganger blir satt på dette slik at vi som er i teamet som eier appen kan benytte datasettet slik vi vil.
+
+## CI/CD-pipeline
+For å sy alt dette sammen lager vi oss en automatisk pipeline. 
+Hver gang vi pusher endringer i koden til github ønsker vi at pipelinen vår skal gjøre følgende:
+1. Sett opp python 3.9 
+2. Installer alle dependencies som er angitt i requirements.txt
+3. Installer pytest
+4. Kjør testene våre (og dersom noen tester feiler så stopp pipelinen)
+5. Bygg et dockerimage av appen vår
+6. Last opp imaget til et image repository 
+7. Kjør applikasjonsmanifestet (som peker på imaget fra punkt 6.) ut i nais-clusteret `prod-gcp`
+
+Når alt dette er gjort vil nais ta over og sørge for at datapipelinen vår kjøres hver dag kl 0630.
+
+Vi bruker [Github Actions](https://docs.github.com/en/actions) til å lage denne pipelinen. For at dette skal fungere må vi lage en yaml-fil som beskriver actionen vår i en mappe som heter `.github/workflows`.
+
+#### *`.github/workflows/main.yaml`*
+```
+name: "Build and deploy naisapps-agg-dataproduct naisjob"
+on:
+  push:
+    branches:
+      - "main"
+
+env:
+  "IMAGE": docker.pkg.github.com/${{ github.repository }}/deploy-datapipeline:${{ github.sha }}
+
+jobs:
+  build:
+    name: "build"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v2"
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Test with pytest
+        run: |
+          pytest
+      - name: Build and push docker image
+        run: "docker build --pull --tag ${IMAGE} . && echo $GITHUB_TOKEN | docker login\
+                \ --username $GITHUB_REPOSITORY --password-stdin https://docker.pkg.github.com\
+                \ && docker push ${IMAGE}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  deployToProd:
+    name: "Deploy to prod"
+    needs: build
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v2"
+      - name: "Deploy to prod-gcp"
+        uses: "nais/deploy/actions/deploy@v1"
+        env:
+          "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
+          "CLUSTER": "prod-gcp"
+          "RESOURCE": "nais.yaml"
+```
+
+Det siste elementet som må på plass for at dette skal fungere er en nøkkel for nais deploy-APIet som beviser at vi er eiere av denne appen og dermed skal ha rettighet til å sende slike applikasjonsmanifest som dette til nais.
+Den kan vi hente under API-keys på [deploy.nais.io](https://deploy.nais.io/apikeys).
+(Trykk "Copy key".)
+
+Siden dette er en hemmelighet vil vi ikke oppbevare den i koden vår.
+I stedet putter vi den inn i settings i repositoriet vårt på github under secrets, slik at github kan dytte nøkkelen inn i Action'en når den kjøres.
+Gi secreten navnet `NAIS_DEPLOY_APIKEY`, lim inn nøkkelen, og lagre.
+
+![Legg inn secrets](secret.png)
+
+Siden repositoriet eies av oss er det kun de som er i vårt team som har tilgang til å redigere repository-secrets.
+Det er også kun vårt team som har tilgang til å endre på koden i repositoriet, og slik sikrer vi at kun medlemmer av vårt team kan gjøre endringer på datapipelinen.
+
+## Oppsummering
+For å sette en data pipeline i drift på nais trenger man et github-repo som inneholder:
+* En datapipeline (i dette eksempelet implementert i python i `main.py`)
+* En `Dockerfile`
+* Et manifest (`nais.yaml`)
+* En CI/CD-pipeline (`.github/workflows/main.yaml`)
+* En nais API-key i github-repositoriet sitt
+
+I tillegg er det lurt å ha noen tester som man kjører som en del av sin CI/CD-pipeline.
+
+Når job'en er oppe og går har man tilgang til alle verktøy for observability som alle apper på nais har. 
+Se [doc.nais.io](https://doc.nais.io/) for en nærmere beskrivelse av disse.
+Man kan også følge med på job'en med [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/). 
