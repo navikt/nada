@@ -2,7 +2,7 @@
 title: Guide til datapipeline på nais
 ---
 
-# Introduksjon
+## Introduksjon
 I denne guiden viser vi hvordan vi kan lage en data pipeline ("ETL-pipeline") i python og sette denne i produksjon på nais.
 Vi vil i eksempelet lese data fra et dataprodukt som ligger på [datamarkedsplassen](../finne-data/navdata.md),
 gjøre noen enkle transformasjoner, og skrive data tilbake til en tabell i BigQuery. 
@@ -17,14 +17,14 @@ Vi får et robust og veltestet kjøretidsmiljø, tilgang på logger og metrikker
 
 All koden vi bruker i eksemplet under ligger [på github](https://github.com/navikt/naisapps-agg-dataproduct).
 
-# Grunnleggende konsepter
-## Docker / containere
+## Grunnleggende konsepter
+### Docker / containere
 Alle applikasjoner (og data pipelinen vi skal lage er i praksis en applikasjon) må pakkes inn i en container for å kunne kjøre på nais.
 En "container" i denne konteksten betyr at vi pakker inn koden vår sammen med alle avhengigheter koden måtte ha. 
 I praksis trenger et pythonscript et operativsystem med python installert, samt alle biblioteker vi skal benytte. 
 Vi kommer til å lage en container som inneholder et Linux-basert operativsystem, python 3.9 samt alle bibliotekene vi har definert i vår `requirements.txt`.
 
-## Kubernetes, nais og applikasjonsmanifestet
+### Kubernetes, nais og applikasjonsmanifestet
 *For en utfyllende beskrivelse av nais bør man lese seg litt opp på [nais-dokumentasjonen](https://docs.nais.io/).*
 
 Enhver applikasjon må kjøre et sted. I NAV kjører vi applikasjonene våre på [kubernetes](https://kubernetes.io/), 
@@ -36,14 +36,14 @@ og gjort det mulig å sette en applikasjon i produksjon på kubernetes [kun med 
 Konfigurasjonen man må skrive for at en applikasjon skal kunne kjøre på nais kalles et [applikasjonsmanifest.](https://docs.nais.io/nais-application/application/)
 For nais-apper kalles dette manifestet som regel `nais.yaml`. 
 
-## Nais-job
+### Nais-job
 Dersom man ikke har behov for en applikasjon som kjører hele tiden, men i stedet har et script eller lignende som skal gjøre én ting og så være ferdig kan man benytte seg av en `job` i stedet for en applikasjon.
 En `job` starter opp på samme måte som en applikasjon på kubernetes, men når den har gjort det den skal blir den terminert og alle ressurser den opprettet i clusteret blir frigitt.
 
 Ved hjelp av [naisjob](https://docs.nais.io/naisjob/) kan vi enkelt definere en job som kjører på faste tidspunkter, angitt på [crontab-format](https://crontab.guru/).
 Bortsett fra at `job`en blir borte når den er ferdig oppfører naisjobs seg stort sett som applikasjoner.
 
-## CI/CD-pipeline
+### CI/CD-pipeline
 CI/CD (continous integration/deployment) gjør at *team* raskt kan publisere endringer på en tryggere måte.
 Noe av dette får vi utbytte av uavhengig av hva vi aktivt velger å gjøre.
 Eksempelvis vil det være sjekker av hvorvidt credentials er inkludert i repoet. 
@@ -51,14 +51,14 @@ For å få fullt utbytte av CI/CD må vi i tillegg aktivt inkludere en del innho
 Enhetstester er et eksempel på dette, der CI-løpet vil trigge alle testene som er inkludert i repoet.
 Dersom noen av testene ikke returnerer verdien som forventes under forutsetningene lagt inn i testen, vil utvikler umiddelbart få tilbakemelding og pipelinen stanses.
 
-# En enkel datapipeline
+## En enkel datapipeline
 Vi illustrerer hvordan vi kan sette disse bestanddelene sammen gjennom i en enkel datapipeline i python.
 I dette eksempelet leser vi inn dataproduktet [Applikasjoner på nais](https://data.intern.nav.no/dataproduct/2ed94917-2f31-4582-9456-01e77bcb11d6/info),
 som inneholder daglige snapshots av alle applikasjoner i alle nais-miljøene. 
 Vi ønsker å lage et nytt datasett som inneholde antall applikasjoner i henholdsvis `dev` og `prod` hver dag, samt antall applikasjoner i "skyen" og i "onprem" hver dag.
 Resultatet ønsker vi å skrive til en tabell, og vi ønsker å oppdatere dette hver dag.
 
-## Lese fra en kilde
+### Lese fra en kilde
 Siden dataproduktet vi skal lese er tilgjengelig for alle i NAV trenger vi ikke gjøre noe spesielt for å gi appen vår tilgang til dataene.
 Dersom vi skulle lest data som var strengere tilgangsbegrensning på måtte vi sørget for at servicebrukeren som applikasjonen vår kjører som hadde tilgang, men dette slipper vi å tenke på i dette tilfellet.
 Vi kan adressen til dataene i datamarkedsplassen, og siden dataene ligger i BigQuery kan vi lese ut dataene med `pandas_gbq`.
@@ -71,7 +71,7 @@ query = 'SELECT * FROM `aura-prod-d7e3.dataproduct_apps.dataproduct_apps_unique`
 df = pandas_gbq.read_gbq(query)
 ````
 
-## Test-drevet transformasjon
+### Test-drevet transformasjon
 Kilden vår inneholder én rad per snapshot per applikasjon (og per kubernetes-cluster). 
 Det vi ønsker er å telle antall apper per dato langs to dimensjoner: miljø og datasenter. 
 Vi gjør dette med en funksjon `count_apps` som tar inn en dataframe og returnerer en dataframe.
@@ -169,7 +169,7 @@ def count_apps(df):
 
 Når vi nå kjører `pytest` er testene grønne!
 
-## Skrive resultatet til en ny tabell
+### Skrive resultatet til en ny tabell
 Det neste steget er å skrive resultatet vårt til en tabell. 
 Vi skriver til en tabell i BigQuery i dette tilfellet.
 
@@ -206,7 +206,7 @@ I praksis vil vi gjøre dette i vår CI/CD pipeline under.
 Tabellen opprettes automatisk med schema vi angir når vi bruker [`to_gbq`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_gbq.html).
 Vi har her valgt en replace-strategi, men man kan for eksempel velge append i stedet. Se [dokumentasjon av biblioteket](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_gbq.html).
 
-# Applikasjonsmanifest
+## Applikasjonsmanifest
 Vi skal lage en naisjob, og den beskriver vi i et manifest.
 
 #### *`naisjob.yaml`*
@@ -236,7 +236,7 @@ Til slutt må vi beskrive BigQuery-datasettet vi skal opprette.
 Ved å beskrive det i manifestet vil det automatisk bli provisjonert av nais når appen deployes første gang.
 Dette betyr at datasettet blir opprettet og at riktige tilganger blir satt på dette slik at vi som er i teamet som eier appen kan benytte datasettet slik vi vil.
 
-# CI/CD-pipeline
+## CI/CD-pipeline
 For å sy alt dette sammen lager vi oss en automatisk pipeline. 
 Hver gang vi pusher endringer i koden til github ønsker vi at pipelinen vår skal gjøre følgende:
 1. Sett opp python 3.9 
@@ -313,7 +313,7 @@ Gi secreten navnet `NAIS_DEPLOY_APIKEY`, lim inn nøkkelen, og lagre.
 Siden repositoriet eies av oss er det kun de som er i vårt team som har tilgang til å redigere repository-secrets.
 Det er også kun vårt team som har tilgang til å endre på koden i repositoriet, og slik sikrer vi at kun medlemmer av vårt team kan gjøre endringer på datapipelinen.
 
-# Oppsummering
+## Oppsummering
 For å sette en data pipeline i drift på nais trenger man et github-repo som inneholder:
 * En datapipeline (i dette eksempelet implementert i python i `main.py`)
 * En `Dockerfile`
