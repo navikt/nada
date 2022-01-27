@@ -260,7 +260,7 @@ on:
       - "main"
 
 env:
-  "IMAGE": docker.pkg.github.com/${{ github.repository }}/deploy-datapipeline:${{ github.sha }}
+  "IMAGE": docker.pkg.github.com/${{ github.repository }}/naisapps-agg-dataproduct:${{ github.sha }}
 
 jobs:
   build:
