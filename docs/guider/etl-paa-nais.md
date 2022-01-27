@@ -295,7 +295,7 @@ jobs:
         env:
           "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
           "CLUSTER": "prod-gcp"
-          "RESOURCE": "nais.yaml"
+          "RESOURCE": "naisjob.yaml"
 ```
 
 Det siste elementet som må på plass for at dette skal fungere er en nøkkel for nais deploy-APIet som beviser at vi er eiere av denne appen og dermed skal ha rettighet til å sende slike applikasjonsmanifest som dette til nais.
