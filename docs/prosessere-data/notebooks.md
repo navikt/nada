@@ -57,25 +57,21 @@ Notebook server i GCP har ikke tilgang til følgende tjenester:
 ## Autentisering med brukers credentials på serveren
 
 1. I Jupyterlab, åpne en terminal
-2. Kjør kommandoen `gcloud auth login --update-adc`
+2. Kjør kommandoen `gcloud auth application-default login`
 3. Gå til lenken som vises i terminalen og logg inn med NAV-bruker
 4. Etter at du har logget inn kopierer du verifikasjonskoden du får inn i terminalen
 
 Etter å ha utført stegene over vil du i din Notebook kunne jobbe med dine private Google credentials mot kilder.
+Denne tilgangen er kun midlertidig, og man må gjøre dette hver dag.
 
 ## Credentials og hemmeligheter.
 Det anbefales å bruke [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp) som erstatning for Vault.
 1. Gå til [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp)
 1. Legg inn relevante verdier i din hemmelighet.
 
+For at notebooken skal kunne bruke din personlige bruker når den henter hemmeligheter fra secret manager, må du gi den tilgang til det ved å følge stegene i [Autentisering med brukers credentials på serveren](#autentisering-med-brukers-credentials-på-serveren).
 
-For at notebooken skal kunne bruke din personlige bruker når den henter hemmeligheter fra secret manager, må du gi den tilgang til det ved å kjøre følgende kommando fra en notebook-terminal:
-```bash
-# Hvis du ikke har gjort dette fra før
-gcloud auth application-default login
-```
-
-Deretter legge inn secret-manager-pakken:
+Deretter må du installere Python sin Google Cloud Secret Manager pakke:
 
 ```bash
 pip install google-cloud-secret-manager
@@ -112,6 +108,11 @@ Da kan du hente de ut med for eksempel:
 ```python
 print(os.environ["ORACLE_USERNAME"])
 ```
+
+### Hemmeligheter for on-prem Postgres
+
+Hvis du skal snakke med on-prem Postgres, må du ta kontakt med [Karl Heinz](https://nav-it.slack.com/team/U8X0SSG7L) og be om personlig tilgang til de Postgres-databasene du bruker.
+Husk å presisere at dette er for å kommunisere fra GCP prosjektet Knada.
 
 ## Bruk av hostnavn på onprem-tjenester
 I dette prosjektet støtter vi ikke navneoppslag mot on-premises.
