@@ -116,8 +116,7 @@ print(os.environ["ORACLE_USERNAME"])
 
 ### Hemmeligheter for on-prem Postgres
 
-Hvis du skal snakke med on-prem Postgres, må du ta kontakt med [Karl Heinz](https://nav-it.slack.com/team/U8X0SSG7L) og be om personlig tilgang til de Postgres-databasene du bruker.
-Husk å presisere at dette er for å kommunisere fra GCP prosjektet Knada.
+Kyrre jobber med saken her
 
 ## Bruk av hostnavn på onprem-tjenester
 I dette prosjektet støtter vi ikke navneoppslag mot on-premises.
