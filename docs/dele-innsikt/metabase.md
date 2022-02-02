@@ -14,3 +14,15 @@ For å logge på må du ha en Google-bruker utsted av NAV tilknyttet din @nav.no
 Alle som er medlem av et [NAIS team](https://docs.nais.io/basics/teams/) har dette fra før av.
 Andre må gi seg selv tilgang via [My Apps](https://myapps.microsoft.com/). Trykk på de tre prikkene (...) oppe til høyre og "Be om nye apper (+)". Velg _Google Cloud Plattform_ .
 Det kan ta opp til 40 minutter før dette er synkronisert slik at du kan logge deg inn.
+
+## Finne dataprodukter i metabase
+
+Dataprodukter som er åpne for alle i NAV synkroniseres automatisk til metabase og åpnes for alle brukere. For alle andre dataprodukter må eier velge `Legg til i metabase` for at det skal dukke opp. I dette tilfellet vil kun de som eksplisitt har bedt om tilgang til dataproduktet via sin personlige bruker ha tilgang til databasen i metabase. Det vil også opprettes en tilgangsstyrt mappe med samme navn som dataproduktet. Innholdet i spørsmål og dashboards som ligger i denne mappen vil bare være synlig for de som har tilgang til mappen. 
+
+## Hvor skal spørsmål og dashboards lagres?
+
+Tilgangen knyttet til mappen elementene er lagret i bestemmer hvem som kan se dem. Metabase har to toppnivå:
+- Personal collections: Her kan du lagre alt som ikke skal være synlig for andre enn deg selv.
+- Our analytics: Alt som skal være synlig for andre lagres her. Helst i mapper relatert til det aktuelle dataproduktet. 
+
+Det er mulig å flytte elementer mellom mapper etter behov.
