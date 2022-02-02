@@ -43,6 +43,17 @@ En `job` starter opp på samme måte som en applikasjon på kubernetes, men når
 Ved hjelp av [naisjob](https://docs.nais.io/naisjob/) kan vi enkelt definere en job som kjører på faste tidspunkter, angitt på [crontab-format](https://crontab.guru/).
 Bortsett fra at `job`en blir borte når den er ferdig oppfører naisjobs seg stort sett som applikasjoner.
 
+### Tilganger og workload identity
+En _workload_ (app eller job) som kjører i et teams namespace får automatisk tilgang til de ressursene på GCP man har satt opp at denne workloaden skal ha i applikasjonsmanifestet uten at man trenger å gjøre noe tilgangsstyring manuelt.
+Det betyr at dersom man for eksempel oppretter et BigQuery-datasett i manifestet kan appen skrive til det datasettet uten at man må tenke på credentials eller noe slikt.
+I praksis fungerer dette ved at kubernetes kjører appen _som en serviceaccount_ ("SA"), og denne SAen har tilgang til ressursene man har definert i manifestet.
+
+Når man utvikler (lokalt på sin maskin) og kjører koden lokalt vil man jo ikke agere som denne SAen, men i stedet som sin bruker lokalt på sin maskin. 
+Det kan derfor være avvik mellom hva appen har tilgang til når man kjører lokalt og når man kjører "i prod". 
+
+God praksis for utvikling er å ikke gjøre seg avhengig av tilkobling til ressurser (som databaser) i utviklingsmiljøet, men i stedet teste lokalt med testdata og enhetstester.
+I denne guiden er det denne strategien vi har valgt. 
+
 ### CI/CD-pipeline
 CI/CD (continous integration/deployment) gjør at *team* raskt kan publisere endringer på en tryggere måte.
 Noe av dette får vi utbytte av uavhengig av hva vi aktivt velger å gjøre.
@@ -206,7 +217,10 @@ I praksis vil vi gjøre dette i vår CI/CD pipeline under.
 Tabellen opprettes automatisk med schema vi angir når vi bruker [`to_gbq`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_gbq.html).
 Vi har her valgt en replace-strategi, men man kan for eksempel velge append i stedet. Se [dokumentasjon av biblioteket](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_gbq.html).
 
-## Applikasjonsmanifest
+## Rigg for å rulle ut appen/jobben
+For at koden skal kunne deployes til nais trenger vi tre ting: et _manifest_, en _Dockerfile_ og en _github action_.
+
+### Applikasjonsmanifest
 Vi skal lage en naisjob, og den beskriver vi i et manifest.
 
 #### *`naisjob.yaml`*
@@ -236,7 +250,28 @@ Til slutt må vi beskrive BigQuery-datasettet vi skal opprette.
 Ved å beskrive det i manifestet vil det automatisk bli provisjonert av nais når appen deployes første gang.
 Dette betyr at datasettet blir opprettet og at riktige tilganger blir satt på dette slik at vi som er i teamet som eier appen kan benytte datasettet slik vi vil.
 
-## CI/CD-pipeline
+### Dockerfile
+Dockerfile'en vår må heter `Dockerfile`, og vi legger den på roten i repositoriet.
+
+#### *`Dockerfile`*
+```
+FROM python:3.10-buster
+
+WORKDIR /usr/src/app
+COPY requirements.txt ./
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+RUN groupadd --system --gid 1069 apprunner
+RUN useradd --system --uid 1069 --gid apprunner apprunner
+COPY . .
+EXPOSE 8080
+CMD [ "python", "./main.py" ]
+```
+
+På nais får ikke apper lov å kjøre som `root` inne i containeren, av sikkerhetsmessige årsaker. 
+Det er derfor vi setter opp brukeren `apprunner` og bruker denne til å kjøre applikasjonen.
+
+### CI/CD-pipeline
 For å sy alt dette sammen lager vi oss en automatisk pipeline. 
 Hver gang vi pusher endringer i koden til github ønsker vi at pipelinen vår skal gjøre følgende:
 1. Sett opp python 3.9 
