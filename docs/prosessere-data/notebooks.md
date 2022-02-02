@@ -109,9 +109,6 @@ secrets = dict([line.split("=") for line in secret.payload.data.decode('UTF-8').
 os.environ.update(dict([line.split("=") for line in secret.payload.data.decode('UTF-8').splitlines()]))
 ```
 
-Dette fordrer at du har hemmelighetene dine i følgende format:
-
-
 Da kan du hente de ut med for eksempel:
 ```python
 print(os.environ["ORACLE_USERNAME"])
