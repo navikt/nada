@@ -116,7 +116,16 @@ print(os.environ["ORACLE_USERNAME"])
 
 ### Hemmeligheter for on-prem Postgres
 
-Kyrre jobber med saken her
+Hvis du har behov for å snakke med Postgres on-prem må du enten opprette en statisk (5000 timer) brukernavn, heller hente nytt passord hver 24 time.
+For å kunne hente statiske brukere må du gjøre endring på database-oppsettet, ta en titt på [database-iac/doc](https://github.com/navikt/database-iac#static-credentials) for hvordan dette gjøres.
+
+Uavhengig om hvilken type bruker du trenger må du følge dokumentasjonen til [vault-iac/postgres](https://github.com/navikt/vault-iac/blob/master/doc/databases/postgres.md#developer-access) for å hente ut brukernavn og passord.
+
+Begge deler kan gjøres via [Vault CLI](https://www.vaultproject.io/docs/commands) lokalt eller via [Vault Browser terminal](https://vault.adeo.no) (se bilde for hvor du finner knappen).
+
+![Vault nettleser terminal](/img/vault-cli-browser.png)
+
+Når du har hentet ut hemmeligheten fra Vault må du legge det inn i Google Secret manager som beskrevet [ovenfor](#credentials-og-hemmeligheter).
 
 ## Bruk av hostnavn på onprem-tjenester
 I dette prosjektet støtter vi ikke navneoppslag mot on-premises.
