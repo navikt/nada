@@ -27,7 +27,7 @@ const config = {
           editUrl: 'https://github.com/navikt/nada/edit/main/',
           routeBasePath: '/',
         },
-        konsepter: {
+        docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/navikt/nada/edit/main/',
           routeBasePath: '/konsepter',
