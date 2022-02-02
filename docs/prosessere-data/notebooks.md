@@ -87,12 +87,7 @@ secret = secrets.access_secret_version(name=resource_name)
 secret.payload.data.decode('UTF-8')
 ```
 
-Har du flere hemmeligheter, som du gjerne skulle hatt som miljøvariabler i din Notebook, kan du bytte ut siste linje med følgende:
-```
-os.environ.update(dict([line.split("=") for line in secret.payload.data.decode('UTF-8').splitlines()]))
-```
-
-Dette fordrer at du har hemmelighetene dine i følgende format:
+Har du flere verdier i den samme hemmeligheten i secret manager kan du parse den og hente ut de ulike verdiene. Under følger eksempler på hvordan dette kan lagres i en [python dictionary](#i-dictionary) eller som [miljøvariabler](#som-miljøvariabler) dersom hemmeligheten din i secret manager er på følgende format:
 ```
 key=value
 key2=value
@@ -103,6 +98,19 @@ Eksempel:
 ORACLE_USERNAME=e152435
 ORACLE_PASSWORD=asdfløkjamsfwoie23$9283/$lkmsdfl)(23$wio/3
 ```
+
+### I dictionary
+```
+secrets = dict([line.split("=") for line in secret.payload.data.decode('UTF-8').splitlines()])
+```
+
+### Som miljøvariabler
+```
+os.environ.update(dict([line.split("=") for line in secret.payload.data.decode('UTF-8').splitlines()]))
+```
+
+Dette fordrer at du har hemmelighetene dine i følgende format:
+
 
 Da kan du hente de ut med for eksempel:
 ```python
