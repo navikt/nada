@@ -27,11 +27,6 @@ const config = {
           editUrl: 'https://github.com/navikt/nada/edit/main/',
           routeBasePath: '/',
         },
-        docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/navikt/nada/edit/main/',
-          routeBasePath: '/konsepter',
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
