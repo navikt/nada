@@ -204,7 +204,7 @@ For å publisere datapakker til [datapakker.intern.nav.no](https://datapakker.in
 
 I tillegg må to miljøvariabler settes:
 - DATAVERK_HOST settes til `https://data-catalog-es-api.nav.no`
-- DATAVERK_ES_TOKEN (spør i knada om hva denne skal settes til)
+- DATAVERK_ES_TOKEN (si ifra i [#nada](https://nav-it.slack.com/archives/CGRMQHT50) dersom du trenger denne)
 
 Eksempel på hvordan å sette disse miljøvariablene i python
 ````python
