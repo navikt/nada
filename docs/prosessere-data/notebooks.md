@@ -197,3 +197,19 @@ Trenger du Postgres, lim inn følgende i terminalen din:
 ```bash
 apt-get update && apt-get install -yq --no-install-recommends libpq-dev
 ```
+
+## Publisere datapakker fra GCP prosjekter
+For å publisere datapakker til [datapakker.intern.nav.no](https://datapakker.intern.nav.no) fra gcp prosjekter kreves det at installert versjon av dataverk er
+`>= 0.4.16` (for å oppdatere nåværende versjon kjør `pip install dataverk -U`). 
+
+I tillegg må to miljøvariabler settes:
+- DATAVERK_HOST settes til `https://data-catalog-es-api.nav.no`
+- DATAVERK_ES_TOKEN (spør i knada om hva denne skal settes til)
+
+Eksempel på hvordan å sette disse miljøvariablene i python
+````python
+import os
+
+os.environ["DATAVERK_HOST"] = "https://data-catalog-es-api.nav.no"
+os.environ["DATAVERK_ES_TOKEN"] = "token"
+````
