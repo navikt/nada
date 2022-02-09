@@ -11,7 +11,7 @@ pip install datastory
 For å publisere en datafortelling må man angi en api adressen det skal publiseres til.
 
 - For [dev-miljøet](https://data.dev.intern.nav.no) er denne adressen `https://nada.ekstern.dev.nav.no/api`
-- For [prod-miljøet](https://data.intern.nav.no) er denne adressen `https://data.intern.nav.no/api`
+- For [prod-miljøet](https://data.intern.nav.no) er denne adressen `https://nada.intern.nav.no/api`
 
 I kodeeksemplene som følger brukes dev adressen.
 
