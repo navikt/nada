@@ -15,7 +15,7 @@ For å publisere en datafortelling må man angi en api adressen det skal publise
 
 I kodeeksemplene som følger brukes dev adressen.
 
-## Lage datafortelling
+## Lage utkast til datafortelling
 ````python
 import os
 from datastory import DataStory
@@ -36,9 +36,20 @@ ds.markdown("Beskrivelse av figur 2")
 ds.publish(url="https://nada.ekstern.dev.nav.no/api")
 ````
 
+Når man kaller `ds.publish()` i eksempelet over vil det bli opprettet en kladd til en datafortelling, se [her](#publisere-datafortelling) 
+for å se hvordan man publiserer en datafortelling fra en kladd.
+
+## Publisere datafortelling
+Publisering av en datafortelling gjøres fra kladd-visningen i datamarkedsplassen som følger:
+
+1. Logg inn
+2. Trykk lagre
+![kladd](datafortelling-utkast.png)
+3. Velg hvilket av dine team som skal eie datafortellingen
+
 ## Oppdatere eksisterende datafortelling
 For å oppdatere en publisert datafortelling programmatisk må man autentisere seg med et token. 
-Dette tokenet blir generert når man publiserer en draft og kan hentes ut fra nav data [her](https://data.dev.intern.nav.no/user/stories).
+Dette tokenet blir generert når man publiserer en kladd og kan hentes ut ved å gå til den publiserte datafortellingen og fra [kebab menyen](https://uxplanet.org/choose-correct-menu-icon-for-your-navigation-7ffc22df80ac#160b) fra velg `vis token`.
 Når du har fått hentet ut oppdateringstokenet kan du erstatte siste kodelinje i eksempelet over (dvs. `ds.publish()`) med en metode som i stedet oppdaterer datafortellingen.
 
 ````python
