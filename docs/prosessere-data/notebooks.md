@@ -38,21 +38,26 @@ Notebook server i GCP har ikke tilgang til følgende tjenester:
 ### Server med tilgang til on-prem
 
 1. Ta kontakt med oss i [#nada](https://nav-it.slack.com/archives/CGRMQHT50) for å få tilgang til dette prosjektet.
-1. Gå til [knada-gcp Google console](https://console.cloud.google.com/vertex-ai/workbench/list/instances?orgonly=true&project=knada-gcp&supportedpurview=organizationId)
-2. Velg `New Notebook` og velg `Customize`
-3. Fyll inn alle obligatoriske felter:
+2. Gå til [knada-gcp Google console](https://console.cloud.google.com/vertex-ai/workbench/list/instances?orgonly=true&project=knada-gcp&supportedpurview=organizationId)
+3. Velg `New Notebook` og velg `Customize`
+4. Fyll inn alle obligatoriske felter:
    - Notebook name - Navn på kladdeboka
    - Region - europe-west1 (Belgium)
    - Zone - En sone innenfor regionen
    - Environment - Velg et miljø som passer ditt behov/språk
    - Machine type og GPU - Hvor kraftig maskin du trenger
-4. Ekspander `Networking`
+5. Ekspander `Networking`
    - Under `External IP` velg none
-4. Ekspander `Permission`
-   - Under `Access to JupyterLab` velg 
-      - `Single user only` 
-5. Trykk `Create`
-6. Når maskinen er ferdig laget, kan du trykke på `Open jupyterlab` for å få tilgang.
+6. Ekspander `Permission`
+   - Under `Identity and API access`
+      - Avhuk `Use Compute Engine default service account` og lim inn service accounten knyttet til din bruker, se [her](#personlig-service-account-og-secret-manager-hemmelighet-for-brukerteam) for informasjon om hvor denne finnes
+7. Trykk `Create`
+8. Når maskinen er ferdig laget, kan du trykke på `Open jupyterlab` for å få tilgang.
+
+#### Personlig service account og secret manager hemmelighet for bruker/team
+For å enklere styre tilgang oppretter vi en unik service account og en secret manager hemmelighet for hver ulike bruker/gruppe som legges til i knada-gcp prosjektet. Disse blir opprettet når man tar kontakt med oss i (1) [her](#server-med-tilgang-til-on-prem).
+
+Du vil finne igjen service accounten [her](https://console.cloud.google.com/iam-admin/serviceaccounts?project=knada-gcp) og hemmeligheten [her](https://console.cloud.google.com/security/secret-manager?project=knada-gcp).
 
 ## Autentisering med brukers credentials på serveren
 
