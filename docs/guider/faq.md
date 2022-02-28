@@ -2,6 +2,14 @@
 title: FAQ
 ---
 
+## Hvordan få en Google-bruker?
+Alle nada-tjenster i sky krever at du har en Google-bruker utsted av NAV tilknyttet din @nav.no-epostadresse.
+Alle som er medlem av et [NAIS team](https://docs.nais.io/basics/teams/) har dette fra før av.
+Andre må gi seg selv tilgang via [My Apps](https://myapps.microsoft.com/). 
+Trykk på de tre prikkene (...) oppe til høyre og "Be om nye apper (+)". 
+Velg _Google Cloud Plattform_.
+Det kan ta opp til 40 minutter før dette er synkronisert slik at du kan logge deg inn.
+
 ## Hvordan snakke med BigQuery fra lokal maskin?
 
 Da må du autentisere deg med Google, dette kan gjøres via [gcloud-cli](https://cloud.google.com/sdk/docs/install).
