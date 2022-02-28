@@ -14,5 +14,7 @@
 |~~Arx-as-a-Service~~|Anonymisering og analyse av reidentifikasjonsrisiko|N/A|Avviklet|
 
 1 Datakatalogens data.intern.nav.no er erstattet av NAV Data. Den eksterne siden data.nav.no har vi foreløpig ikke noen plan for.
+
 2 Datapakker erstattes med datafortellinger. På sikt vil gamle datapakker bli migrert til datafortellingsformatet.
+
 3 Begrepskatalogen hører ikke hjemme i produktporteføljen til NADA, fordi det er forvaltning av innhold.
