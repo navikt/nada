@@ -7,6 +7,7 @@
 |Knada-clusteret|On-prem jupyter notebooks og Airflow - til utforskning, analyse og arbeid med data samt orkestrering av data pipelines.|`[dittnavn].jupyter.adeo.no`|Under avvikling|
 |`knada-gcp`|Notebooks i GCP med tilgang til on-prem data (erstatter Knada-clusteret)|[Doc](https://docs.knada.io/prosessere-data/notebooks#server-med-tilgang-til-on-prem)|Allment tilgjengelig (AT)|
 |Metabase|GUI-basert dashboardverktøy for å lage visualiseringer|`metabase.intern.nav.no`|Allment tilgjengelig (AT)|
+|Datafortellinger|Historiefortelling med data, publisering av statiske sider med visualiseringer fra notebooks|`data.intern.nav.no`|Allment tilgjengelig (AT)|
 |Amplitude|Brukerinnsikt, analyse av brukeradferd|`analytics.amplitude.com/nav`|Allment tilgjengelig (AT)|
 |Datakatalogen|Katalog over data som finnes i NAV|`data.nav.no` <br/> <code><del>data.intern.nav.no</del></code>|Under avvikling (1)|
 |Datapakker|Historiefortelling med data, publisering av statiske dokumenter med visualiseringer|`data.nav.no` <br/> `datapakker.intern.nav.no`|Under avvikling (2)|
