@@ -187,11 +187,11 @@ apt-get update && apt-get install -yq --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-curl https://download.oracle.com/otn_software/linux/instantclient/215000/oracle-instantclient21.5-basic-21.5.0.0.0-1.x86_64.rpm > /tmp/oracle-instantclient21.5-basic-21.5.0.0.0-1.x86_64.rpm
+curl https://download.oracle.com/otn_software/linux/instantclient/215000/oracle-instantclient-basic-21.5.0.0.0-1.x86_64.rpm > /tmp/oracle-instantclient-basic-21.5.0.0.0-1.x86_64.rpm
 
-alien -i /tmp/oracle-instantclient18.5-basic-21.5.0.0.0-1.x86_64.rpm && \
+alien -i /tmp/oracle-instantclient-basic-21.5.0.0.0-1.x86_64.rpm && \
     rm -rf /var/cache/yum && \
-    rm -f /tmp/oracle-instantclient18.5-basic-21.5.0.0.0-1.x86_64.rpm && \
+    rm -f /tmp/oracle-instantclient-basic-21.5.0.0.0-1.x86_64.rpm && \
     echo "/usr/lib/oracle/21.5/client64/lib" > /etc/ld.so.conf.d/oracle-instantclient21.5.conf && \
     /usr/sbin/ldconfig
 
