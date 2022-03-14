@@ -12,8 +12,7 @@ Da vil man også få generert en kryptert nøkkel som brukes av JupyterHub inter
 Derfor er det viktig at man har linjeskift på slutten av konfigurasjonen.
 
 Ved hver ny pull request (og endringer) blir sjekker kjørt automatisk.
-Når disse sjekkene er godkjente (lyser grønt), kan du selv merge inn din pull request.
-Du trenger altså _ikke_ vente på godkjenning.
+Når disse sjekkene er godkjente (lyser grønt) og du har fått en approval fra én av kodeeierne, kan du merge inn endringen.
 
 Nedenfor ser du et eksempel på det man minimum trenger å fylle ut.
 Med denne konfigurasjonen får man en hub med 2GB minne, og 0.5 CPU.

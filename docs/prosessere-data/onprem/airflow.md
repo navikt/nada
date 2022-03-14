@@ -32,8 +32,7 @@ dagsRepo: <dagsRepo>
 ````
 
 Ved hver ny pull request (og endringer) blir sjekker kjørt automatisk.
-Når disse sjekkene er godkjente (lyser grønt), kan du selv merge inn din pull request.
-Du trenger altså _ikke_ vente på godkjenning.
+Når disse sjekkene er godkjente (lyser grønt) og du har fått en approval fra én av kodeeierne, kan du merge inn endringen.
 
 ### namespace
 Settes til navnet på namespacet hvor Airflow instansen skal settes opp. Som regel det samme som JupyterHub-en din.
