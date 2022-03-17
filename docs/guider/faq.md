@@ -36,3 +36,12 @@ For å kunne snakke med BigQuery trenger dere et token for en service account so
 Følg guiden [Createing a service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-console) hos Google, og så følger dere guiden [Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
 
 Når dette er gjort så ender dere opp med en JSON-fil som er hemmeligheten dere trenger å legge inn i Vault, som igjen da blir eksponert i jobben deres. For at Pandas eller andre rammeverk skal plukke denne opp automatisk så må den være eksponert som en miljøvariabel som heter `GOOGLE_APPLICATION_CREDENTIALS`.
+
+## Hvordan kan jeg sjekke etter sårbarheter i biblioteker jeg installerer på notebook servere på GCP?
+NADA tilbyr ikke noen automatisk sjekk av hva som installeres på hver enkelt notebook server i GCP og det er opp til hver enkelt bruker selv å avgjøre om et bibliotek kan tas i bruk.
+
+Det finnes flere verktøy en kan bruke som sjekker etter kjente sårbarheter i tredjeparts biblioteker i en rekke programmeringsspråk. Det mest kjente verktøyet for dette er [snyk](https://snyk.io/) som blant annet støtter python.
+
+For å sjekke etter sårbarheter i python biblioteker med snyk kan man:
+- enten opprette et github repo og legge en requirements.txt fil med alle biblioteker man ønsker å installere og legge til repoet under [navikt organisasjonen på snyk](https://app.snyk.io/org/navikt/projects). Da vil det kontinuerlig kjøres sjekker etter sårbarheter i bibliotekene listet opp i requirements.txt.
+- eventuelt kan man bruke [kommandolinjeverktøyet](https://docs.snyk.io/snyk-cli/install-the-snyk-cli) til å sjekke et bibliotek manuelt før installasjon.
