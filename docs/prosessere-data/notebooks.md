@@ -218,3 +218,31 @@ import os
 os.environ["DATAVERK_HOST"] = "https://data-catalog-es-api.nav.no"
 os.environ["DATAVERK_ES_TOKEN"] = "token"
 ````
+
+## Koble til notebook server i knada-gcp fra VS Code lokalt
+Du kan koble deg til VMen som notebook serveren din kjører på med SSH fra VS Code lokalt som følger:
+1. Først trenger du å få `owner` rettighet på VM instansen. Dette får du ved å ta kontakt i [#nada](https://nav-it.slack.com/archives/CGRMQHT50).
+2. Installer extension `Remote - SSH` i VS Code.
+3. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`.
+4. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din, denne finner du [her](https://console.cloud.google.com/compute/instances?project=knada-gcp). Denne kommandoen vil også generere ssh nøkler.
+5. Outputen fra kommandoen i (4) inneholder en del ting du trenger fylle inn i ssh-configen din. Under er et eksempel på hvordan en slik ssh config skal se ut.
+````
+Host gcp-notebook
+  HostName ${HOSTNAME}
+  IdentityFile ~/.ssh/google_compute_engine
+  CheckHostIP no
+  HostKeyAlias ${HOSTNAME}
+  IdentitiesOnly yes
+  UserKnownHostsFile ~/.ssh/google_compute_known_hosts
+  ProxyCommand ${PROXYCOMMAND}
+  ProxyUseFdpass no
+  User ${USERNAME}
+````
+Erstatt ${HOSTNAME}, ${PROXYCOMMAND} og ${USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: ${USERNAME} skal kun være det før `@` i output fra kommandoen over, ${HOSTNAME} er det som begynner med `compute.`
+6. I VS Code trykk cmnd+shift+P (mac) eller cntrl+shift+P (windows) og skriv inn og velg `Remote - SSH: Connect to host...` og velg så hosten `gcp-notebook`.
+
+I [denne guiden](https://medium.com/@albert.brand/remote-to-a-vm-over-an-iap-tunnel-with-vscode-f9fb54676153) dokumenterer de hvordan denne ssh-configen kan fylles ut automagisk når man legger til en ny host i VS Code. Gjør man dette må man alikevel inn å manuelt endre ting i ssh configen i etterkant, så det anbefales å ta utgangspunkt i eksempelet i punkt 5 over når ssh configen skal lages.
+
+:::info
+Stegene over vil ikke fungere for PyCharm og andre JetBrains IDEer da disse krever at GCP-VMen du kobler deg til har en ekstern IP, noe vi ikke tillater for notebook servere i `knada-gcp` prosjektet.
+:::
