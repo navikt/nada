@@ -27,3 +27,4 @@ This command generates static content into the `site` directory and can be serve
 ### Deployment
 
 Via github action
+
