@@ -11,10 +11,6 @@ theme:
     - navigation.tabs
   logo: 'img/logo.svg'
   favicon: img/favicon.ico
-markdown_extensions:
-    - admonition
-    - pymdownx.details
-    - pymdownx.superfences
 extra:
   search:
     language: 'no'
@@ -30,6 +26,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.caret
   - pymdownx.tilde
+  - pymdownx.superfences
   - pymdownx.superfences:
       preserve_tabs: true
   - pymdownx.highlight:
