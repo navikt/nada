@@ -1,6 +1,4 @@
----
-title: Settingsfil
----
+# Settingsfil
 
 Dataverk krever en settings.json fil hvor man angir konfigurerbare innstillinger som vil variere fra
 bruker til bruker. I denne filen kan man spesifisere kildene man ønsker å lese data fra, 

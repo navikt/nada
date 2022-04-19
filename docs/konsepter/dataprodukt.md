@@ -1,6 +1,4 @@
----
-title: Data product
----
+# Data product
 
 ## Generic definitions
 

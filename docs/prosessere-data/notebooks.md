@@ -128,7 +128,7 @@ Uavhengig om hvilken type bruker du trenger må du følge dokumentasjonen til [v
 
 Begge deler kan gjøres via [Vault CLI](https://www.vaultproject.io/docs/commands) lokalt eller via [Vault Browser terminal](https://vault.adeo.no) (se bilde for hvor du finner knappen).
 
-![Vault nettleser terminal](/img/vault-cli-browser.png)
+![Vault nettleser terminal](vault-cli-browser.png)
 
 Når du har hentet ut hemmeligheten fra Vault må du legge det inn i Google Secret manager som beskrevet [ovenfor](#credentials-og-hemmeligheter).
 
@@ -244,6 +244,5 @@ Erstatt ${HOSTNAME}, ${PROXYCOMMAND} og ${USERNAME} med verdiene du får ut av d
 
 I [denne guiden](https://medium.com/@albert.brand/remote-to-a-vm-over-an-iap-tunnel-with-vscode-f9fb54676153) dokumenterer de hvordan denne ssh-configen kan fylles ut automagisk når man legger til en ny host i VS Code. Gjør man dette må man alikevel inn å manuelt endre ting i ssh configen i etterkant, så det anbefales å ta utgangspunkt i eksempelet i punkt 5 over når ssh configen skal lages.
 
-:::info
-Stegene over vil ikke fungere for PyCharm og andre JetBrains IDEer da disse krever at GCP-VMen du kobler deg til har en ekstern IP, noe vi ikke tillater for notebook servere i `knada-gcp` prosjektet.
-:::
+!!! warning "Stegene over vil ikke fungere for PyCharm og andre JetBrains IDEer da disse krever at GCP-VMen du kobler deg til har en ekstern IP, noe vi ikke tillater for notebook servere i `knada-gcp` prosjektet."
+

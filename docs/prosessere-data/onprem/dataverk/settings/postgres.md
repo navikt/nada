@@ -63,7 +63,7 @@ du ønsker tilgang til, _namespace_ navnet på kubeflow namespacet og _rolle_ v�
 
 #### 2. Legg til connection string i vault
 I vault legges connection string til databasen inn som key/value par under stien 
-til kubeflow namespacet som beskrevet [her](README.md).
+til kubeflow namespacet som beskrevet [her](settings.md).
 
 F.eks.
 ````bash
@@ -81,7 +81,7 @@ hva man setter dette til da dataverk vil bytte det ut med gyldige credentials n�
 en spørring, men det må stå en verdi her som default.
 
 #### 3. Settingsfil
-Som med andre secrets (beskrevet [her](README.md)) må følgende legges til i 
+Som med andre secrets (beskrevet [her](settings.md)) må følgende legges til i 
 setting.json filen dataverk benytter.
 ````python
 {

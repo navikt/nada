@@ -25,9 +25,7 @@ Dette gjøres via en Pull Request.
 
 Av informasjon trenger vi navn på prosjektet (for eks. `team-analyse`, og e-posten til brukeren som skal ha tilgang.
 
-:::info
-Navnet må være unikt!
-:::
+!!! info "Navnet må være unikt"
 
 I filen `terraform/on-demand.td` legger du til følgende under `locals.projects`:
 ```

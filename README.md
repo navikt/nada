@@ -1,31 +1,30 @@
 # Website
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website is built using [MkDocs](https://www.mkdocs.org/).
 
 ### Installation
 
 ```
-$ yarn
+$ pip install mkdocs mkdocs-pymdownx-material-extras mkdocs-build-plantuml-plugin
 ```
-
-Bruker du Node >1.17 så må du sette `export NODE_OPTIONS=--openssl-legacy-provider`.
 
 ### Local Development
 
 ```
-$ yarn start
+$ mkdocs serve
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This command starts a local development server on localhost:8000. Most changes are reflected live without having to restart the server.
 
 ### Build
 
 ```
-$ yarn build
+$ mkdocs build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+This command generates static content into the `site` directory and can be served using any static contents hosting service.
 
 ### Deployment
 
-Går via Github Actions.
+Via github action
+

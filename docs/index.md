@@ -1,7 +1,4 @@
----
-title: NADA
-slug: /
----
+# NADA
 
 NADA er verktøykassen for å finne og dele data i NAV.
 Målgruppen vår er analytikere, produktteam, og andre som trenger å finne og dele data.

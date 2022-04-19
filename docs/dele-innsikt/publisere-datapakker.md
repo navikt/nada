@@ -18,9 +18,8 @@ curl -X 'POST' -d @datapackage.json 'https://datakatalog-api.dev.intern.nav.no/v
 }
 ```
 
-:::info
-Merk deg IDen som returneres. Du trenger denne dersom du ønsker å oppdatere datapakken
-:::
+!!! info "Merk deg IDen som returneres. Du trenger denne dersom du ønsker å oppdatere datapakken"
+
 
 ## Last opp view og ressursfil
 ```

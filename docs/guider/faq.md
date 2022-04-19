@@ -43,5 +43,6 @@ NADA tilbyr ikke noen automatisk sjekk av hva som installeres på hver enkelt no
 Det finnes flere verktøy en kan bruke som sjekker etter kjente sårbarheter i tredjeparts biblioteker i en rekke programmeringsspråk. Det mest kjente verktøyet for dette er [snyk](https://snyk.io/) som blant annet støtter python.
 
 For å sjekke etter sårbarheter i python biblioteker med snyk kan man:
+
 - enten opprette et github repo og legge en requirements.txt fil med alle biblioteker man ønsker å installere og legge til repoet under [navikt organisasjonen på snyk](https://app.snyk.io/org/navikt/projects). Da vil det kontinuerlig kjøres sjekker etter sårbarheter i bibliotekene listet opp i requirements.txt.
 - eventuelt kan man bruke [kommandolinjeverktøyet](https://docs.snyk.io/snyk-cli/install-the-snyk-cli) til å sjekke et bibliotek manuelt før installasjon.
