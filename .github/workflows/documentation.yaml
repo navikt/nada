@@ -1,40 +1,15 @@
 name: documentation
 
-on:
-  pull_request:
-    branches:
-      - "*"
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
-  checks:
-    if: github.event_name != 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "14.x"
-      - name: Test Build
-        run: |
-          if [ -e yarn.lock ]; then
-            yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
-            npm ci
-          else
-            npm i
-          fi
-          npm run build
   gh-release:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "14.x"
+      - name: Install mkdocs
+        run: pip install mkdocs mkdocs-pymdownx-material-extras mkdocs-build-plantuml-plugin
       - name: Release to GitHub Pages
         env:
           GIT_USER: "x-actor"
@@ -42,11 +17,4 @@ jobs:
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          if [ -e yarn.lock ]; then
-            yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
-            npm ci
-          else
-            npm i
-          fi
-          yarn deploy
+          mkdocs gh-deploy
