@@ -70,9 +70,8 @@ cpuLimit: 1
 Hvis jupyterhub serveren du endrer ressurskonfigurasjonen for kjører når du endrer `memoryLimit`/`cpuLimit` må du restarte serveren 
 for at endringene skal tre i kraft. For å restarte serveren se [Restarte jupyterhub server](#restarte-jupyterhub-server)
 
-:::info
-Jupyterhub følger strengt med på hvor mye ressurser du bruker, og vil drepe kernel hvis du bruker mer enn du har bedt om.
-:::
+!!! info "Jupyterhub følger strengt med på hvor mye ressurser du bruker, og vil drepe kernel hvis du bruker mer enn du har bedt om."
+
 
 ## Restarte jupyterhub server
 For å restarte serveren gjøres følgende:

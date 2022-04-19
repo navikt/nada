@@ -14,6 +14,5 @@ from dataverk_gsm import api as gsm_api
 gsm_api.set_secrets_as_envs()
 ````
 
-:::info
-For å kunne publisere datapakker fra GCP prosjekter må installert versjon av dataverk >= 0.4.4
-:::
+!!! info "For å kunne publisere datapakker fra GCP prosjekter må installert versjon av dataverk >= 0.4.4"
+

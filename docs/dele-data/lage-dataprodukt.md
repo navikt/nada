@@ -1,6 +1,4 @@
----
-title: Lage dataprodukt
----
+# Lage dataprodukt
 
 Den første typen [dataprodukt](dataprodukt.md) som støttes av NAV Data er *tabell* i *BigQuery*. 
 Denne tabellen vil kunne bli direkte aksessert av konsumenter av dataproduktet. 

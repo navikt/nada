@@ -30,8 +30,5 @@ pm.execute_notebook(
 0 * * * * /opt/conda/bin/python /absoulutt/sti/til/run_my_nb.py /absoulutt/sti/til/my_nb.ipynb > /sti/til/logfil.log
 ````
 
-:::info
-Med oppsettet over vil notebooken `my_nb.ipynb` kjøres én gang hver hele time. 
-Frekvensen til cronjobben stiller du på ved å endre cronutrykket (`0 * * * *` i eksempelet over).
-Se [her](https://crontab.guru/) for informasjon om hva de ulike feltene i et cronutrykk representerer.
-:::
+!!! info "Med oppsettet over vil notebooken `my_nb.ipynb` kjøres én gang hver hele time. Frekvensen til cronjobben stiller du på ved å endre cronutrykket (`0 * * * *` i eksempelet over). Se [her](https://crontab.guru/) for informasjon om hva de ulike feltene i et cronutrykk representerer."
+

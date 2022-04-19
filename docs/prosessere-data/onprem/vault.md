@@ -60,10 +60,8 @@ Navnet på Jupyterhub/Airflow namespacet. Skal personen ha tilgang til vault for
 legger man bare til flere i listen under `kubeflow`.
 
 
-:::info
-Etter at pull requesten er godkjent og merget inn vil det ta 5-10 minutter før endringene i vault 
-er synkronisert.
-:::
+!!! info "Etter at pull requesten er godkjent og merget inn vil det ta 5-10 minutter før endringene i vault er synkronisert."
+
 
 
 ## Legg inn hemmeligheter for Jupyterhub/Airflow namespacet

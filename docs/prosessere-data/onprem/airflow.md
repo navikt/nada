@@ -10,7 +10,7 @@ En datapipeline i Airflow, eller DAG (Directed Acyclic Graph), er et sett med op
 rekkefølge og avhengigheter mellom oppgavene. Disse DAG-ene beskrives programmatisk i python filer og legges i et Github
 repo som periodisk synkroniseres med Airflow instansen. Nedenfor ser du en en grafisk representasjon av flyten i en DAG:
 
-![Flyten i en Airflow DAG](/img/dag-eksempel.png)
+![Flyten i en Airflow DAG](dag-eksempel.png)
 
 KNADA plattformen tilbyr team eller enkeltpersoner å sette opp airflow instanser i sine egne k8s namespacer i
 KNADA clusteret.
@@ -47,9 +47,9 @@ List opp de identene som skal ha tilgang til airflow instansen.
 ### dagsRepo
 Repoet under NAVIKT-orgen på Github som inneholder Python-filer med DAG-er.
 
-:::caution repoet må eksistere
+caution repoet må eksistere
 Repoet trenger ikke inneholde noen DAG-er når Airflow instansen settes opp, men repoet **må eksistere**.
-:::
+
 
 En gang i minuttet vil DAG-ene som ligger i repoet bli synkronisert til Airflow instansen.
 
@@ -76,13 +76,13 @@ innholdet fra for datapakkevisningen.
 Ved datapakke-publisering bruker dataverk denne parameteren for å avgjøre hvilken datakatalog som innholdet i 
 datapakken (ressursfiler og visualiseringer) skal publiseres til.
 
-:::caution ekstern publisering
+caution ekstern publisering
 Dersom man ikke spesifiserer `dvApiEndpoint` og `dvBucketEndpoint` vil datapakker publiseres til den 
 interne datakatalogen. Den *eneste* grunnen til å endre disse parameterene er dersom man ønsker å publisere 
 datapakker fra AirFlow til den åpne datakatalogen data.nav.no. 
 Merk også at dersom disse parameterene først settes til ekstern publisering så vil alle datapakker som publiseres fra denne AirFlow-instansen være 
 åpent tilgjengelig fra internett.
-:::
+
 
 ## Dataverk-Airflow
 [Dataverk-Airflow](https://github.com/navikt/dataverk-airflow) er et wrapperbibliotek som gjør det enklere å

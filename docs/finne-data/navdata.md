@@ -1,6 +1,4 @@
----
-title: NAV Data
----
+# NAV Data
 
 I [NAV Data](https://data.intern.nav.no) kan du søke, filtere og finne alle [dataproduktene](../konsepter/dataprodukt.md) i NAV.
 

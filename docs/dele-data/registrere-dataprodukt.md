@@ -1,6 +1,4 @@
----
-title: Registrere dataprodukt
----
+# Registrere dataprodukt
 
 For å dele et dataprodukt med andre kan teamet registrere dataproduktet i [NAV Data](https://data.intern.nav.no).
 For at en bruker på [NAV Data](https://data.intern.nav.no) skal være mest mulig selvbetjent er det viktig at teamet skriver en fyldig beskrivelse av dataproduktet. 

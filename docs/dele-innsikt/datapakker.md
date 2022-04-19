@@ -144,9 +144,8 @@ Hvis alt går bra vil du da få en respons med IDen til datapakken din:
 }
 ```
 
-:::info
-Merk deg IDen som returneres. Du trenger denne dersom du ønsker å oppdatere datapakken
-:::
+!!! info "Merk deg IDen som returneres. Du trenger denne dersom du ønsker å oppdatere datapakken"
+
 
 ### Legg til view og ressursfiler
 

@@ -55,10 +55,8 @@ Når du har fått hentet ut oppdateringstokenet kan du erstatte siste kodelinje 
 ds.update(token="mitt-token", url="https://nada.ekstern.dev.nav.no/api")
 ````
 
-:::info
-Dersom man ønsker å unngå å sette api adressen til nav data som input parameter til `ds.publish()` og `ds.update()` metodene kan man i stedet sette det som miljøvariabel, f.eks. 
+Dersom man ønsker å unngå å sette api adressen til nav data som input parameter til `ds.publish()` og `ds.update()` metodene kan man i stedet sette det som miljøvariabel, f.eks.
 ````python
 import os
 os.environ["DATASTORY_URL"] = "https://nada.ekstern.dev.nav.no/api"
 ````
-:::

@@ -1,6 +1,4 @@
----
-title: Dataprodukt
----
+# Dataprodukt
 
 En *datamarkedsplass* (en **dataplass**) er et sted hvor team kan dele dataprodukter slik at andre team, analytikere eller andre interesserte
 kan konsumere og analysere disse dataene. Et dataprodukt er typisk noe vi regner som *data-on-the-outside* tilpasset

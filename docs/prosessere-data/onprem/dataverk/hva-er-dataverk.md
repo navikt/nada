@@ -15,7 +15,7 @@ for konnektorene er at de alle returnerer data på det samme formatet - som en [
 Dette gjør at man kan benytte seg av alt pandas tilbyr av funksjonalitet for å 
 utføre transformasjoner og mutasjoner på datasett, samt kombinere data fra ulike kilder.  
 
-![Les kilder](//img/dv_les_kilde.png)
+![Les kilder](dv_les_kilde.png)
 
 #### Lagring og publisering av resultater
 For lagring av resultater tilbys det konnektorer mot ulike typer datalagre, f.eks. nais S3

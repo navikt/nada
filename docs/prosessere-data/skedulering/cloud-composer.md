@@ -18,12 +18,8 @@ Følgende må spesifiseres
 2. `Location` - regionen hvor instansen settes opp (må velge Europa)
 3. Trykk `CREATE`
 
-:::info
-Når man setter opp Cloud Composer så opprettes det automatisk en [bucket](https://cloud.google.com/storage/docs/introduction)
-som er knyttet til Composer instansen.
-Før neste steg er det viktig å notere seg navnet på bucketen som blir opprettet. Det gjøres ved å gå til 
-[Cloud Storage](https://console.cloud.google.com/storage) i konsollen og finne bucketen som har `goog-composer-environment` labels.
-:::
+!!! info "Når man setter opp Cloud Composer så opprettes det automatisk en [bucket](https://cloud.google.com/storage/docs/introduction) som er knyttet til Composer instansen. Før neste steg er det viktig å notere seg navnet på bucketen som blir opprettet. Det gjøres ved å gå til [Cloud Storage](https://console.cloud.google.com/storage) i konsollen og finne bucketen som har `goog-composer-environment` labels."
+
 
 
 ## Oppsett av github repo for DAGS
@@ -44,9 +40,8 @@ og trykk på `CREATE SERVICE ACCOUNT`
     - `Storage Legacy Bucket Writer`
     - `Storage Object Admin`
 
-:::info
-Merk deg eposten som den nyopprettede service accounten får
-:::
+!!! info "Merk deg eposten som den nyopprettede service accounten får."
+
 
 ### Last ned service account nøkkel
 1. Gå til [Google IAM](https://console.cloud.google.com/iam-admin/serviceaccounts)
@@ -90,10 +85,8 @@ jobs:
       run: gsutil cp -r dags gs://BUCKET
 ````
 
-:::info
-Erstatt BUCKET i workflowen over med navnet på bucketen som ble opprettet i 
-[Opprett ny composer instans](cloud-composer#opprett-ny-composer-instans)
-:::
+!!! info "Erstatt BUCKET i workflowen over med navnet på bucketen som ble opprettet i [Opprett ny composer instans](cloud-composer#opprett-ny-composer-instans)"
+
 
 Ved push til main branch vil denne workflowen laste opp innholdet i `dags` mappen i repoet til gcs bucketen 
 som igjen synkroniseres med Cloud Composer instansen.

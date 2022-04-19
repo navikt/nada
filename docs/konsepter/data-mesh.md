@@ -1,8 +1,5 @@
----
-title: Data Mesh
----
+# Data Mesh
 
-### Data Mesh
 
 Datamesh is a novel paradigm proposed by Zhamak Dehghani from ThoughWorks. 
 The paradigm is founded in four principles: domain-oriented decentralized data ownership and architecture, 
