@@ -46,47 +46,60 @@ markdown_extensions:
       custom_checkbox: true
 nav:
   - NADA:
-    - Hva er NADA: index.md
-    - Dataplassen:
-      - Lag service account: dataplassen/lag-serviceaccount.md
-      - Tilgangsstyring: dataplassen/tilgangsstyring.md
-    - Finne data: 
-      - NAV data: finne-data/navdata.md
-    - Dele data:
-      - Dataprodukt: dele-data/dataprodukt.md
-      - Lage dataprodukt: dele-data/lage-dataprodukt.md
-      - Last opp fil: dele-data/laste-opp-fil.md
-      - Registrere dataprodukt: dele-data/registrere-dataprodukt.md
-    - Prosessere data:
-      - Kom i gang: prosessere-data/getting-started.md
-      - Notebooks på GCP: prosessere-data/notebooks.md
-      - Onprem:
-        - Kom i gang: prosessere-data/onprem/getting-started.md
-        - Airflow: prosessere-data/onprem/airflow.md
-        - Jupyterhub: prosessere-data/onprem/jupyterhub.md
-        - Vault: prosessere-data/onprem/vault.md
-        - Dataverk:
-          - Hva er dataverk: prosessere-data/onprem/dataverk/hva-er-dataverk.md
-          - Metadata: prosessere-data/onprem/dataverk/metadata.md
-          - Publisering fra GCP: prosessere-data/onprem/dataverk/publisering-fra-gcp.md
-          - Slette datapakker: prosessere-data/onprem/dataverk/slette-datapakker.md
-          - Settings:
-            - Settingsfil: prosessere-data/onprem/dataverk/settings/settings.md
-            - Postgres konfigurasjon: prosessere-data/onprem/dataverk/settings/postgres.md
-      - Skedulering på GCP:
-        - Cloud composer: prosessere-data/skedulering/cloud-composer.md
-        - Naisjobs: prosessere-data/skedulering/naisjobs.md
-        - Notebook GCP CronJob: prosessere-data/skedulering/notebook-gcp-cronjob.md
-        - Scheduled query: prosessere-data/skedulering/scheduled-query.md
-    - Dele innsikt:
-      - Metabase: dele-innsikt/metabase.md
-      - Datapakke: dele-innsikt/datapakker.md
-      - Datafortelling: dele-innsikt/datafortelling.md
-      - Publisere datapakker: dele-innsikt/publisere-datapakker.md
-  - Guides:
-    - ETL på NAIS: guider/etl-paa-nais.md
-    - FAQ: guider/faq.md
-  - Konsepter:
-    - Data mesh: konsepter/data-mesh.md
-    - Datafortelling: konsepter/datafortelling.md
-    - Dataprodukt: konsepter/dataprodukt.md
+    - Hva og hvorfor?:
+      - Hva er nada?: konsepter/data-mesh.md
+      - Hvorfor har vi nada?: index.md
+      - Data som produkt?: dele-data/dataprodukt.md
+      - Spilleregler: ""
+      - Hvordan funker det hos oss?: prosessere-data/getting-started.md
+      - FAQ: ""
+    - Produsere data:
+      - Bygge produkt:
+        - Innhente: ""
+        - Transformere: ""
+        - Kvalitetssikre: ""
+        - Laste data: ""
+        - Skedulere:
+           - Cloud composer: prosessere-data/skedulering/cloud-composer.md
+           - Naisjobs: prosessere-data/skedulering/naisjobs.md
+           - Notebook GCP CronJob: prosessere-data/skedulering/notebook-gcp-cronjob.md
+           - Scheduled query: prosessere-data/skedulering/scheduled-query.md
+        - Registrere: dele-data/registrere-dataprodukt.md
+        - Deploye: ""
+      - Forvalte:
+        - Tilgangsstyre: dataplassen/tilgangsstyring.md
+        - Overvåke: ""
+        - Avvikle: ""
+      - Tutorials:
+        - ETL på NAIS: guider/etl-paa-nais.md
+        - Laste opp fil: dele-data/laste-opp-fil.md
+    - Konsumere data:
+      - Finne og forstå: finne-data/navdata.md
+      - Få tilgang:
+        - Personlig bruker: ""
+        - Serviceaccounts: dataplassen/lag-serviceaccount.md
+      - Finne innsikt:
+        - Notebooks på GCP: prosessere-data/notebooks.md
+      - Dele innsikt:
+        - Datafortelling: dele-innsikt/datafortelling.md
+        - Metabase: dele-innsikt/metabase.md
+    - Legacy:
+      - KNADA on-prem:
+          - Kom i gang: prosessere-data/onprem/getting-started.md
+          - Airflow: prosessere-data/onprem/airflow.md
+          - Jupyterhub: prosessere-data/onprem/jupyterhub.md
+          - Vault: prosessere-data/onprem/vault.md
+          - Dataverk:
+              - Hva er dataverk: prosessere-data/onprem/dataverk/hva-er-dataverk.md
+              - Metadata: prosessere-data/onprem/dataverk/metadata.md
+              - Publisering fra GCP: prosessere-data/onprem/dataverk/publisering-fra-gcp.md
+              - Slette datapakker: prosessere-data/onprem/dataverk/slette-datapakker.md
+              - Settings:
+                  - Settingsfil: prosessere-data/onprem/dataverk/settings/settings.md
+                  - Postgres konfigurasjon: prosessere-data/onprem/dataverk/settings/postgres.md
+      - Datapakker:
+        - Datapakke: dele-innsikt/datapakker.md
+        - Publisere: dele-innsikt/publisere-datapakker.md
+    - Community:
+      - Guider: ""
+
