@@ -50,7 +50,7 @@ nav:
       - Hva er nada?: konsepter/data-mesh.md
       - Hvorfor har vi nada?: index.md
       - Data som produkt?: dele-data/dataprodukt.md
-      - Spilleregler: ""
+      - Spilleregler: intro/spilleregler.md
       - Hvordan funker det hos oss?: prosessere-data/getting-started.md
       - FAQ: ""
     - Produsere data:
