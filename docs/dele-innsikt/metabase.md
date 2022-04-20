@@ -18,6 +18,7 @@ Dataprodukter som er åpne for alle i NAV synkroniseres automatisk til metabase 
 ## Hvor skal spørsmål og dashboards lagres?
 
 Tilgangen knyttet til mappen elementene er lagret i bestemmer hvem som kan se dem. Metabase har to toppnivå:
+
 - Personal collections: Her kan du lagre alt som ikke skal være synlig for andre enn deg selv.
 - Our analytics: Alt som skal være synlig for andre lagres her. Helst i mapper relatert til det aktuelle dataproduktet. 
 

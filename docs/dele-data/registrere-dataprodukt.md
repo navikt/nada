@@ -14,6 +14,7 @@ I tillegg anbefaler vi å legge inn beskrivelser av kolonnene i tabellen i [BigQ
 
 Det er teamet som eier tilgangsstyringen på sine dataprodukter og har ansvar for å gi tilgang til riktige grupper, personer eller [servicebrukere](../dataplassen/lag-serviceaccount.md).
 Her skilles det på to nivåer:
+
 - Har tilgang
 - Kan gi seg selv tilgang
 

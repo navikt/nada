@@ -30,6 +30,7 @@ Foreløpig kan vi ikke gjenbruke datasett som har blitt opprettet av en nais-app
 ## Lag en Google serviceaccount for federated query
 Følg [Google sin guide](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
 Gi serviceaccounten følgende tilganger på prosjektnivå:
+
 - BigQuery Connection User
 - BigQuery Job User
 - BigQuery Metadata Viewer

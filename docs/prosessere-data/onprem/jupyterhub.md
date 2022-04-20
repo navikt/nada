@@ -75,6 +75,7 @@ for at endringene skal tre i kraft. For å restarte serveren se [Restarte jupyte
 
 ## Restarte jupyterhub server
 For å restarte serveren gjøres følgende:
+
 1. Gå til `https://<ingress>.jupyter.adeo.no/home`
 2. Trykk `Stop My Server`
 3. Når du igjen får muligheten til å starte serveren trykker du `Start My Server`
@@ -85,6 +86,7 @@ Ta kontakt i [#knada](https://nav-it.slack.com/archives/CGRMQHT50).
 
 ## Fjerne brukere
 For å fjerne brukere fra et jupyterhub namespace gjør som følger:
+
 - Fjern identen(e) fra `users` listen i konfigurasjonsfilen under `/config` i [iac-repoet](https://github.com/navikt/knada-jupyterhub)
 - Logg inn på hubens admin side (`https://<ingress>.jupyter.adeo.no/hub/admin`) og slett brukeren(e) fra databasen.
 
