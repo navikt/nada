@@ -71,8 +71,9 @@ Denne tilgangen er kun midlertidig, og man må gjøre dette hver dag.
 
 ## Credentials og hemmeligheter.
 Det anbefales å bruke [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp) som erstatning for Vault.
+
 1. Gå til [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp)
-1. Legg inn relevante verdier i din hemmelighet.
+2. Legg inn relevante verdier i din hemmelighet.
 
 For at notebooken skal kunne bruke din personlige bruker når den henter hemmeligheter fra secret manager, må du gi den tilgang til det ved å følge stegene i [Autentisering med brukers credentials på serveren](#autentisering-med-brukers-credentials-på-serveren).
 
@@ -208,6 +209,7 @@ For å publisere datapakker til [datapakker.intern.nav.no](https://datapakker.in
 `>= 0.4.16` (for å oppdatere nåværende versjon kjør `pip install dataverk -U`). 
 
 I tillegg må to miljøvariabler settes:
+
 - DATAVERK_HOST settes til `https://data-catalog-es-api.nav.no`
 - DATAVERK_ES_TOKEN (si ifra i [#nada](https://nav-it.slack.com/archives/CGRMQHT50) dersom du trenger denne)
 
@@ -221,6 +223,7 @@ os.environ["DATAVERK_ES_TOKEN"] = "token"
 
 ## Koble til notebook server i knada-gcp fra VS Code lokalt
 Du kan koble deg til VMen som notebook serveren din kjører på med SSH fra VS Code lokalt som følger:
+
 1. Først trenger du å få `owner` rettighet på VM instansen. Dette får du ved å ta kontakt i [#nada](https://nav-it.slack.com/archives/CGRMQHT50).
 2. Installer extension `Remote - SSH` i VS Code.
 3. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`.
