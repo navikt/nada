@@ -50,10 +50,14 @@ nav:
       - Hva er nada?: konsepter/data-mesh.md
       - Hvorfor har vi nada?: index.md # Flytt "data som produkt" inn her
       - Forankring: intro/forankring.md
-      - Spilleregler: intro/spilleregler.md
-      - Hvordan funker det hos oss?: prosessere-data/getting-started.md
+    - Hvordan gjør vi det?:
+      - Spilleregler:
+        - Hvorfor trenger vi spilleregler?: spilleregler/spilleregler_intro.md
+        - Juridiske spilleregler: spilleregler/spilleregler_juridisk.md
+        - Øvrige spilleregler: spilleregler/spilleregler_annet.md
+      - Getting started: prosessere-data/getting-started.md
       - FAQ: ""
-    - Produsere data:
+    - Hvordan deles data?:
       - Bygge produkt:
         - Innhente: ""
         - Transformere: ""
@@ -73,7 +77,7 @@ nav:
       - Tutorials:
         - ETL på NAIS: guider/etl-paa-nais.md
         - Laste opp fil: dele-data/laste-opp-fil.md
-    - Konsumere data:
+    - Hvordan brukes data?:
       - Finne og forstå: finne-data/navdata.md
       - Få tilgang:
         - Personlig bruker: ""
@@ -100,6 +104,6 @@ nav:
       - Datapakker:
         - Datapakke: dele-innsikt/datapakker.md
         - Publisere: dele-innsikt/publisere-datapakker.md
-    - Community:
+    - Hvordan bidrar jeg?:
       - Guider: ""
 

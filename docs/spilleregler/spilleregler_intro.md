@@ -4,7 +4,7 @@ title: Spilleregler på nada-plattformen
 
 ### Motivasjon og prinsipper
 Spilleregler trenger vi for at data skal gi størst mulig verdi i analyser og samtidig behandles slik at vi er compliant.
-Der governance tidligere primært har handlet om å kontrollere for å unngå feil, ønsker vi heller å utforme spilleregler slik at de gjør det enkelt for team å tilføre størst mulig verdi innenfor klar rammer.
+Der governance tidligere primært har handlet om å kontrollere for å unngå feil, ønsker vi heller å utforme spilleregler slik at de gjør det enkelt for team å tilføre størst mulig verdi innenfor klare rammer.
 En fundamental tro vi har, er at teamene selv i utgangspunktet er best rustet til å utforme dataproduktene til å møte behov.
 Samtidig erkjenner vi at det i noen tilfeller vil være behov for sentraliserte beslutninger.
 Et eksempel er anonymisering, der det er urealistisk at hvert enkelt team skal eller bør ha kompetanse til å gjøre alle vurderingene.
