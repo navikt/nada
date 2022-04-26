@@ -249,3 +249,44 @@ I [denne guiden](https://medium.com/@albert.brand/remote-to-a-vm-over-an-iap-tun
 
 !!! warning "Stegene over vil ikke fungere for PyCharm og andre JetBrains IDEer da disse krever at GCP-VMen du kobler deg til har en ekstern IP, noe vi ikke tillater for notebook servere i `knada-gcp` prosjektet."
 
+## Lese fra cloudsql postgres database
+For å lese en cloudsql postgres database på GCP kan man bruke en [Cloud SQL connector](https://cloud.google.com/sql/docs/postgres/connect-connectors#python).
+
+For å bruke dette fra en notebook server på GCP, gjør som følger:
+1. Installer postgres driver med `pip install cloud-sql-python-connector[pg8000]`
+2. Opprett en ny databasebruker hvis du ikke har gjort det, dette kan gjøres i cloud konsollen hvis du velger riktig SQL instans fra [SQL instances](https://console.cloud.google.com/sql/instances). Dette kan også opprettes med terraform eller med [manifestet til appen som eier databasen](https://doc.nais.io/nais-application/application/#gcpsqlinstancesdatabasesusers)
+4. Gi databasebrukeren tilgang til å lese fra tabellene i database-skjemaet. Dette må gjøres med å logge inn i databasen med appens credentials og kjøre kommandoen `grant select on all tables in schema public to <bruker du opprettet i steg 2>;`
+5. Gi rollen `Cloud SQL Admin` til service accounten som notebook serveren bruker fra [IAM & Admin](https://console.cloud.google.com/iam-admin/iam).
+
+Kodeeksempel på å lese fra database:
+````python
+import pg8000
+import sqlalchemy
+import pandas as pd
+from google.cloud.sql.connector import connector
+
+def getconn() -> pg8000.dbapi.Connection:
+    conn: pg8000.dbapi.Connection = connector.connect(
+        f"${GCP_PROJECT}:europe-north1:${INSTANCE_NAME}",
+        "pg8000",
+        user=f"${DB_USER}",
+        password=f"${DB_PASSWORD}",
+        db=f"${DB_NAME}",
+    )
+    return conn
+
+engine = sqlalchemy.create_engine(
+        "postgresql+pg8000://",
+        creator=getconn,
+)
+
+df = pd.read_sql("SELECT * FROM table", engine)
+````
+
+I eksempelet over er:
+
+- ${GCP_PROJECT} er navnet på GCP prosjektet hvor databasen finnes.
+- ${INSTANCE_NAME} er navnet på database instansen i prosjektet.
+- ${DB_USER} er navnet på databasebrukeren.
+- ${DB_PASSWORD} er navnet på passordet til databasebrukeren.
+- ${DB_NAME} er navnet på databasen.
