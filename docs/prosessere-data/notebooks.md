@@ -288,5 +288,5 @@ I eksempelet over er:
 - ${GCP_PROJECT} er navnet på GCP prosjektet hvor databasen finnes.
 - ${INSTANCE_NAME} er navnet på database instansen i prosjektet.
 - ${DB_USER} er navnet på databasebrukeren.
-- ${DB_PASSWORD} er navnet på passordet til databasebrukeren.
+- ${DB_PASSWORD} er passordet til databasebrukeren.
 - ${DB_NAME} er navnet på databasen.
