@@ -253,6 +253,7 @@ I [denne guiden](https://medium.com/@albert.brand/remote-to-a-vm-over-an-iap-tun
 For å lese en cloudsql postgres database på GCP kan man bruke en [Cloud SQL connector](https://cloud.google.com/sql/docs/postgres/connect-connectors#python).
 
 For å bruke dette fra en notebook server på GCP, gjør som følger:
+
 1. Installer postgres driver med `pip install cloud-sql-python-connector[pg8000]`
 2. Opprett en ny databasebruker hvis du ikke har gjort det, dette kan gjøres i cloud konsollen hvis du velger riktig SQL instans fra [SQL instances](https://console.cloud.google.com/sql/instances). Dette kan også opprettes med terraform eller med [manifestet til appen som eier databasen](https://doc.nais.io/nais-application/application/#gcpsqlinstancesdatabasesusers)
 4. Gi databasebrukeren tilgang til å lese fra tabellene i database-skjemaet. Dette må gjøres med å logge inn i databasen med appens credentials og kjøre kommandoen `grant select on all tables in schema public to <bruker du opprettet i steg 2>;`
