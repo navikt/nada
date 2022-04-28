@@ -41,8 +41,8 @@ markdown_extensions:
       custom_checkbox: true
 nav:
   - Hva og hvorfor?:
-    - Hva er nada?: konsepter/data-mesh.md
-    - Hvorfor har vi nada?: index.md # Flytt "data som produkt" inn her
+    - Hvorfor en ny retning for data?: intro/ny_retning.md
+    - Hva er nada?: intro/hva_er_nada.md
     - Forankring: intro/forankring.md
   - Spilleregler:
     - Hvorfor trenger vi spilleregler?: spilleregler/spilleregler_intro.md
@@ -50,21 +50,20 @@ nav:
     - Øvrige spilleregler: spilleregler/spilleregler_annet.md
   - Dataprodukter:
     - Produsere:
-      - Innhente: ""
+      - Innhente: "" # Hvordan koble seg på postgress GCP, Oracle etc.
       - Transformere: ""
       - Kvalitetssikre: ""
       - Laste data: ""
-      - Skedulere:
-         - Cloud composer: prosessere-data/skedulering/cloud-composer.md
-         - Naisjobs: prosessere-data/skedulering/naisjobs.md
-         - Notebook GCP CronJob: prosessere-data/skedulering/notebook-gcp-cronjob.md
-         - Scheduled query: prosessere-data/skedulering/scheduled-query.md
+      - Deploye:
+          - Skedulere:
+              - Cloud composer: prosessere-data/skedulering/cloud-composer.md
+              - Naisjobs: prosessere-data/skedulering/naisjobs.md
+              - Notebook GCP CronJob: prosessere-data/skedulering/notebook-gcp-cronjob.md
+              - Scheduled query: prosessere-data/skedulering/scheduled-query.md
       - Registrere: dele-data/registrere-dataprodukt.md
-      - Deploye: ""
     - Forvalte:
       - Tilgangsstyre: dataplassen/tilgangsstyring.md
       - Overvåke: ""
-      - Slette: ""
     - Konsumere:
       - Finne og forstå: finne-data/navdata.md
       - Få tilgang:
