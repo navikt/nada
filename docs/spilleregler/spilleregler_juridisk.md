@@ -23,5 +23,5 @@ En viktig presisering er at Team B kun skal verfisere at GPA/PVK samt behandling
 Dersom konsumenten skal koble datasett med personopplysninger sammen med andre kilder, må konsumenten være spesielt oppmerksom på personvernrisikoen.
 Produsenten er ikke forventet å kunne hensynta dette ved vurdering av tilgangsforespørsel.
 
-### Hva skal produsenten vurdere og dokumentere ved behandling av personopplysninger?
-
+### Retningslinjer ifm Schrems II-dommen
+Disse finnes [her](https://nav-it.slack.com/archives/CGRMQHT50/p1650979093246669?thread_ts=1648108682.804329&cid=CGRMQHT50).ß

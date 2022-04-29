@@ -50,10 +50,10 @@ nav:
     - Øvrige spilleregler: spilleregler/spilleregler_annet.md
   - Dataprodukter:
     - Produsere:
-      - Innhente: "" # Hvordan koble seg på postgress GCP, Oracle etc.
-      - Transformere: ""
-      - Kvalitetssikre: ""
-      - Laste data: ""
+      - Innhente: dataprodukter/produsere/innhente.md
+      - Transformere: dataprodukter/produsere/transformere.md
+      - Kvalitetssikre: dataprodukter/produsere/kvalitetssikre.md
+      - Laste data: dataprodukter/produsere/laste_data.md
       - Deploye:
           - Skedulere:
               - Cloud composer: prosessere-data/skedulering/cloud-composer.md

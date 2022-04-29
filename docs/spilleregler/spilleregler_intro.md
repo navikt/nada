@@ -27,3 +27,8 @@ Utformingen av spilleregler gjøres av et forum satt sammen av ulike perspektive
 I tillegg er det avgjørende med input fra folk utenfor dette forumet.
 
 ### Prosess
+1. Brukere på plattformen sender input gjennom kanalen #nada_spilleregler eller direkte til medlemmer av forumet.
+2. Innspill diskuteres i forumet, og det utarbeides en architectural decision record (ADR). Denne publiseres [her](https://github.com/navikt/nada)
+3. Brukere på plattformen gir innspill til ADR
+4. Beslutning tas i forumet
+5. Policy implementeres, fortrinnsvis støttet i plattformen
