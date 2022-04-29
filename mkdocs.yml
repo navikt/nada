@@ -51,8 +51,8 @@ nav:
   - Dataprodukter:
     - Produsere:
       - Innhente: dataprodukter/produsere/innhente.md
-      - Transformere: dataprodukter/produsere/transformere.md
-      - Kvalitetssikre: dataprodukter/produsere/kvalitetssikre.md
+      #- Transformere: dataprodukter/produsere/transformere.md
+      #- Kvalitetssikre: dataprodukter/produsere/kvalitetssikre.md
       - Laste data: dataprodukter/produsere/laste_data.md
       - Deploye:
           - Skedulere:
@@ -60,15 +60,15 @@ nav:
               - Naisjobs: prosessere-data/skedulering/naisjobs.md
               - Notebook GCP CronJob: prosessere-data/skedulering/notebook-gcp-cronjob.md
               - Scheduled query: prosessere-data/skedulering/scheduled-query.md
-      - Registrere: dele-data/registrere-dataprodukt.md
+      - Registrere: dataprodukter/produsere/registrere.md
     - Forvalte:
-      - Tilgangsstyre: dataplassen/tilgangsstyring.md
-      - Overvåke: ""
+      - Tilgangsstyre: dataprodukter/forvalte/tilgangsstyring.md
+      - Overvåke: dataprodukter/forvalte/overvåke.md
     - Konsumere:
-      - Finne og forstå: finne-data/navdata.md
+      - Finne og forstå: dataprodukter/konsumere/finne.md #finne-data/navdata.md
       - Få tilgang:
-        - Personlig bruker: ""
-        - Serviceaccounts: dataplassen/lag-serviceaccount.md
+        - Personlig bruker: dataprodukter/konsumere/tilgang_personlig.md
+        - Serviceaccounts: dataprodukter/konsumere/tilgang_serviceaccount.md
     - Veiledninger:
         - ETL på NAIS: guider/etl-paa-nais.md
         - Laste opp fil: dele-data/laste-opp-fil.md
