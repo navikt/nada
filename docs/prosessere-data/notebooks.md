@@ -47,8 +47,8 @@ Notebook server i GCP har ikke tilgang til følgende tjenester:
    - Environment - Velg et miljø som passer ditt behov/språk
    - Machine type og GPU - Hvor kraftig maskin du trenger
 5. Ekspander `Networking`
-   - Under `External IP` velg none
    - Under `Network` velg `knada-vpc`
+   - Under `External IP` velg none
 6. Ekspander `Permission`
    - Avhuk `Use Compute Engine default service account` og lim inn service accounten knyttet til din bruker, se [her](#personlig-service-account-og-secret-manager-hemmelighet-for-brukerteam) for informasjon om hvor denne finnes
 7. Trykk `Create`
