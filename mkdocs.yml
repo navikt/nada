@@ -41,13 +41,13 @@ markdown_extensions:
       custom_checkbox: true
 nav:
   - Hva og hvorfor?:
-    - Hvorfor en ny retning for data?: intro/ny_retning.md
+    - Hvorfor en ny retning for data?: intro/ny_retning.md # <- Ta ut biten om ny retning, behold prinsippene
     - Hva er nada?: intro/hva_er_nada.md
-    - Forankring: intro/forankring.md
+    #- Forankring: intro/forankring.md <- Flytt ut i egen ressurs
   - Spilleregler:
     - Hvorfor trenger vi spilleregler?: spilleregler/spilleregler_intro.md
     - Juridiske spilleregler: spilleregler/spilleregler_juridisk.md
-    - Øvrige spilleregler: spilleregler/spilleregler_annet.md
+    #- Øvrige spilleregler: spilleregler/spilleregler_annet.md
   - Dataprodukter:
     - Produsere:
       - Innhente: dataprodukter/produsere/innhente.md
