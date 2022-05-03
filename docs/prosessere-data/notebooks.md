@@ -59,6 +59,18 @@ For å enklere styre tilgang oppretter vi en unik service account og en secret m
 
 Du vil finne igjen service accounten [her](https://console.cloud.google.com/iam-admin/serviceaccounts?project=knada-gcp) og hemmeligheten [her](https://console.cloud.google.com/security/secret-manager?project=knada-gcp).
 
+## Maskintype og GPU
+Det er du som vet best hva du trenger, derfor er det ingen begrensninger på hva du kan velge av maskin og GPU.
+Bare husk at det kan bli veldig kostbart hvis du lar en maskin (med mye minne og GPU) stå uten at den blir brukt.
+
+## Stoppe en maskin
+Har du en maskin du ikke trenger for en periode, men ikke ønsker å [slette](#slette-en-maskin), så kan du stoppe den.
+Velg maskinen i [oversikten](https://console.cloud.google.com/ai-platform/notebooks/instances) og trykk `STOP` i toppen.
+
+## Slette en maskin
+Har du en maskin du ikke trenger lenger, så kan du slette den.
+Velg maskinen i [oversikten](https://console.cloud.google.com/ai-platform/notebooks/instances) og trykk `DELETE` i toppen.
+
 ## Autentisering med brukers credentials på serveren
 
 1. I Jupyterlab, åpne en terminal
@@ -66,14 +78,14 @@ Du vil finne igjen service accounten [her](https://console.cloud.google.com/iam-
 3. Gå til lenken som vises i terminalen og logg inn med NAV-bruker
 4. Etter at du har logget inn kopierer du verifikasjonskoden du får inn i terminalen
 
-Etter å ha utført stegene over vil du i din Notebook kunne jobbe med dine private Google credentials mot kilder.
+Etter å ha utført stegene over vil du i din Notebook kunne jobbe med dine private Google credentials mot kilder dersom du har behov for dette.
 Denne tilgangen er kun midlertidig, og man må gjøre dette hver dag.
 
 ## Credentials og hemmeligheter.
 Det anbefales å bruke [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp) som erstatning for Vault.
 
 1. Gå til [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp)
-2. Legg inn relevante verdier i din hemmelighet.
+2. Legg inn relevante verdier i din hemmelighet. Velg `NEW VERSION` og last opp en fil med hemmeligheter eller skriv inn hemmeligheter.
 
 For at notebooken skal kunne bruke din personlige bruker når den henter hemmeligheter fra secret manager, må du gi den tilgang til det ved å følge stegene i [Autentisering med brukers credentials på serveren](#autentisering-med-brukers-credentials-på-serveren).
 
@@ -133,48 +145,15 @@ Begge deler kan gjøres via [Vault CLI](https://www.vaultproject.io/docs/command
 
 Når du har hentet ut hemmeligheten fra Vault må du legge det inn i Google Secret manager som beskrevet [ovenfor](#credentials-og-hemmeligheter).
 
-## Bruk av hostnavn på onprem-tjenester
-I dette prosjektet støtter vi ikke navneoppslag mot on-premises.
-Det betyr at databasenavn må oversettes til ip-adresser i Notebooks.
-Man kan finner ip-adressen til en database ved å pinge hostnavnet fra f.eks. utviklerimage:
-```
-$ ping dm08db01.adeo.no
-> PING dm08db01.adeo.no (10.x.x.x): 56 data bytes
-```
-
-Vi har også lagd en liste over de åpningen vi har (og ip-adressene) over i [navikt/pig/nada](https://github.com/navikt/pig/blob/master/nada/doc/knada-gcp.md#brannmur%C3%A5pninger).
-
-For å bruke IP i stedet for en vanlig adresse så er det bare å bytte direkte.
-Så hvis følgende er den "vanlige" kode-snutten din:
-```python
-dsnStr = cx_Oracle.makedsn('dm08db01.adeo.no','1521',service_name='DWH_HA')
-```
-
-så kan du heller skrive
-```python
-dsnStr = cx_Oracle.makedsn('10.x.x.x','1521',service_name='DWH_HA')
-```
-
-## Maskintype og GPU
-Det er du som vet best hva du trenger, derfor er det ingen begrensninger på hva du kan velge av maskin og GPU.
-Bare husk at det kan bli veldig kostbart hvis du lar en maskin (med mye minne og GPU) stå uten at den blir brukt.
-
-## Stoppe en maskin
-Har du en maskin du ikke trenger for en periode, men ikke ønsker å [slette](#slette-en-maskin), så kan du stoppe den.
-Velg maskinen i [oversikten](https://console.cloud.google.com/ai-platform/notebooks/instances) og trykk `STOP` i toppen.
-
-## Slette en maskin
-Har du en maskin du ikke trenger lenger, så kan du slette den.
-Velg maskinen i [oversikten](https://console.cloud.google.com/ai-platform/notebooks/instances) og trykk `DELETE` i toppen.
-
 ## Oppsett for Oracle og Postgres drivere
-For å gjøre det enkelt for dere å komme i gang, har vi lagd to scripts som begge må kjøres med root privilegier.
+For å gjøre det enkelt for dere å komme i gang, har vi lagd to scripts som begge må kjøres med root privilegier. Scriptene bør kjøres etter at driver for Oracle eller postgres er installert.
+
 
 Kjør først kommandoen:
 ```bash
 sudo -i
 ```
-for å kunne kjøre skriptene som root.
+for å kunne kjøre scriptene som root.
 
 Trenger du Oracle lim inn følgende i terminalen din:
 ```bash
@@ -204,50 +183,27 @@ Trenger du Postgres, lim inn følgende i terminalen din:
 apt-get update && apt-get install -yq --no-install-recommends libpq-dev
 ```
 
-## Publisere datapakker fra GCP prosjekter
-For å publisere datapakker til [datapakker.intern.nav.no](https://datapakker.intern.nav.no) fra gcp prosjekter kreves det at installert versjon av dataverk er
-`>= 0.4.16` (for å oppdatere nåværende versjon kjør `pip install dataverk -U`). 
+## Bruk av hostnavn på onprem-tjenester
+I dette prosjektet støtter vi ikke navneoppslag mot on-premises.
+Det betyr at databasenavn må oversettes til ip-adresser i Notebooks.
+Man kan finner ip-adressen til en database ved å pinge hostnavnet fra f.eks. utviklerimage:
+```
+$ ping dm08db01.adeo.no
+> PING dm08db01.adeo.no (10.x.x.x): 56 data bytes
+```
 
-I tillegg må to miljøvariabler settes:
+Vi har også lagd en liste over de åpningen vi har (og ip-adressene) over i [navikt/pig/nada](https://github.com/navikt/pig/blob/master/nada/doc/knada-gcp.md#brannmur%C3%A5pninger).
 
-- DATAVERK_HOST settes til `https://data-catalog-es-api.nav.no`
-- DATAVERK_ES_TOKEN (si ifra i [#nada](https://nav-it.slack.com/archives/CGRMQHT50) dersom du trenger denne)
+For å bruke IP i stedet for en vanlig adresse så er det bare å bytte direkte.
+Så hvis følgende er den "vanlige" kode-snutten din:
+```python
+dsnStr = cx_Oracle.makedsn('dm08db01.adeo.no','1521',service_name='DWH_HA')
+```
 
-Eksempel på hvordan å sette disse miljøvariablene i python
-````python
-import os
-
-os.environ["DATAVERK_HOST"] = "https://data-catalog-es-api.nav.no"
-os.environ["DATAVERK_ES_TOKEN"] = "token"
-````
-
-## Koble til notebook server i knada-gcp fra VS Code lokalt
-Du kan koble deg til VMen som notebook serveren din kjører på med SSH fra VS Code lokalt som følger:
-
-1. Først trenger du å få `owner` rettighet på VM instansen. Dette får du ved å ta kontakt i [#nada](https://nav-it.slack.com/archives/CGRMQHT50).
-2. Installer extension `Remote - SSH` i VS Code.
-3. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`.
-4. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din, denne finner du [her](https://console.cloud.google.com/compute/instances?project=knada-gcp). Denne kommandoen vil også generere ssh nøkler.
-5. Outputen fra kommandoen i (4) inneholder en del ting du trenger fylle inn i ssh-configen din. Under er et eksempel på hvordan en slik ssh config skal se ut.
-````
-Host gcp-notebook
-  HostName ${HOSTNAME}
-  IdentityFile ~/.ssh/google_compute_engine
-  CheckHostIP no
-  HostKeyAlias ${HOSTNAME}
-  IdentitiesOnly yes
-  UserKnownHostsFile ~/.ssh/google_compute_known_hosts
-  ProxyCommand ${PROXYCOMMAND}
-  ProxyUseFdpass no
-  User ${USERNAME}
-````
-Erstatt ${HOSTNAME}, ${PROXYCOMMAND} og ${USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: ${USERNAME} skal kun være det før `@` i output fra kommandoen over, ${HOSTNAME} er det som begynner med `compute.`
-
-6. I VS Code trykk cmnd+shift+P (mac) eller cntrl+shift+P (windows) og skriv inn og velg `Remote - SSH: Connect to host...` og velg så hosten `gcp-notebook`.
-
-I [denne guiden](https://medium.com/@albert.brand/remote-to-a-vm-over-an-iap-tunnel-with-vscode-f9fb54676153) dokumenterer de hvordan denne ssh-configen kan fylles ut automagisk når man legger til en ny host i VS Code. Gjør man dette må man alikevel inn å manuelt endre ting i ssh configen i etterkant, så det anbefales å ta utgangspunkt i eksempelet i punkt 5 over når ssh configen skal lages.
-
-!!! warning "Stegene over vil ikke fungere for PyCharm og andre JetBrains IDEer da disse krever at GCP-VMen du kobler deg til har en ekstern IP, noe vi ikke tillater for notebook servere i `knada-gcp` prosjektet."
+så kan du heller skrive
+```python
+dsnStr = cx_Oracle.makedsn('10.x.x.x','1521',service_name='DWH_HA')
+```
 
 ## Lese fra cloudsql postgres database
 For å lese en cloudsql postgres database på GCP kan man bruke en [Cloud SQL connector](https://cloud.google.com/sql/docs/postgres/connect-connectors#python).
@@ -291,3 +247,49 @@ I eksempelet over er:
 - ${DB_USER} er navnet på databasebrukeren.
 - ${DB_PASSWORD} er passordet til databasebrukeren.
 - ${DB_NAME} er navnet på databasen.
+
+
+## Koble til notebook server i knada-gcp fra VS Code lokalt
+Du kan koble deg til VMen som notebook serveren din kjører på med SSH fra VS Code lokalt som følger:
+
+1. Først trenger du å få `owner` rettighet på VM instansen. Dette får du ved å ta kontakt i [#nada](https://nav-it.slack.com/archives/CGRMQHT50).
+2. Installer extension `Remote - SSH` i VS Code.
+3. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`.
+4. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din, denne finner du [her](https://console.cloud.google.com/compute/instances?project=knada-gcp). Denne kommandoen vil også generere ssh nøkler.
+5. Outputen fra kommandoen i (4) inneholder en del ting du trenger fylle inn i ssh-configen din. Under er et eksempel på hvordan en slik ssh config skal se ut.
+````
+Host gcp-notebook
+  HostName ${HOSTNAME}
+  IdentityFile ~/.ssh/google_compute_engine
+  CheckHostIP no
+  HostKeyAlias ${HOSTNAME}
+  IdentitiesOnly yes
+  UserKnownHostsFile ~/.ssh/google_compute_known_hosts
+  ProxyCommand ${PROXYCOMMAND}
+  ProxyUseFdpass no
+  User ${USERNAME}
+````
+Erstatt ${HOSTNAME}, ${PROXYCOMMAND} og ${USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: ${USERNAME} skal kun være det før `@` i output fra kommandoen over, ${HOSTNAME} er det som begynner med `compute.`
+
+6. I VS Code trykk cmnd+shift+P (mac) eller cntrl+shift+P (windows) og skriv inn og velg `Remote - SSH: Connect to host...` og velg så hosten `gcp-notebook`.
+
+I [denne guiden](https://medium.com/@albert.brand/remote-to-a-vm-over-an-iap-tunnel-with-vscode-f9fb54676153) dokumenterer de hvordan denne ssh-configen kan fylles ut automagisk når man legger til en ny host i VS Code. Gjør man dette må man alikevel inn å manuelt endre ting i ssh configen i etterkant, så det anbefales å ta utgangspunkt i eksempelet i punkt 5 over når ssh configen skal lages.
+
+!!! warning "Stegene over vil ikke fungere for PyCharm og andre JetBrains IDEer da disse krever at GCP-VMen du kobler deg til har en ekstern IP, noe vi ikke tillater for notebook servere i `knada-gcp` prosjektet."
+
+## Publisere datapakker fra GCP prosjekter
+For å publisere datapakker til [datapakker.intern.nav.no](https://datapakker.intern.nav.no) fra gcp prosjekter kreves det at installert versjon av dataverk er
+`>= 0.4.16` (for å oppdatere nåværende versjon kjør `pip install dataverk -U`). 
+
+I tillegg må to miljøvariabler settes:
+
+- DATAVERK_HOST settes til `https://data-catalog-es-api.nav.no`
+- DATAVERK_ES_TOKEN (si ifra i [#nada](https://nav-it.slack.com/archives/CGRMQHT50) dersom du trenger denne)
+
+Eksempel på hvordan å sette disse miljøvariablene i python
+````python
+import os
+
+os.environ["DATAVERK_HOST"] = "https://data-catalog-es-api.nav.no"
+os.environ["DATAVERK_ES_TOKEN"] = "token"
+````
