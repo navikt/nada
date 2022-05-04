@@ -85,7 +85,7 @@ Denne tilgangen er kun midlertidig, og man må gjøre dette hver dag.
 Det anbefales å bruke [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp) som erstatning for Vault.
 
 1. Gå til [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp)
-2. Legg inn relevante verdier i din hemmelighet. Velg `NEW VERSION` og last opp en fil med hemmeligheter eller skriv inn hemmeligheter.
+2. Velg `NEW VERSION` og last opp en fil med hemmeligheter eller skriv inn hemmelighetene dine.
 
 For at notebooken skal kunne bruke din personlige bruker når den henter hemmeligheter fra secret manager, må du gi den tilgang til det ved å følge stegene i [Autentisering med brukers credentials på serveren](#autentisering-med-brukers-credentials-på-serveren).
 
