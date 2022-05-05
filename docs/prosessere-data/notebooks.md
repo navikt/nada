@@ -78,7 +78,7 @@ Velg maskinen i [oversikten](https://console.cloud.google.com/ai-platform/notebo
 3. Gå til lenken som vises i terminalen og logg inn med NAV-bruker
 4. Etter at du har logget inn kopierer du verifikasjonskoden du får inn i terminalen
 
-Etter å ha utført stegene over vil du i din Notebook kunne jobbe med dine private Google credentials mot kilder dersom du har behov for dette.
+Etter å ha utført stegene over vil du i din Notebook kunne jobbe med dine private Google credentials mot andre tjenester i GCP.
 Denne tilgangen er kun midlertidig, og man må gjøre dette hver dag.
 
 ## Credentials og hemmeligheter.
@@ -146,7 +146,9 @@ Begge deler kan gjøres via [Vault CLI](https://www.vaultproject.io/docs/command
 Når du har hentet ut hemmeligheten fra Vault må du legge det inn i Google Secret manager som beskrevet [ovenfor](#credentials-og-hemmeligheter).
 
 ## Oppsett for Oracle og Postgres drivere
-For å gjøre det enkelt for dere å komme i gang, har vi lagd to scripts som begge må kjøres med root privilegier. Scriptene bør kjøres etter at driver for Oracle eller postgres er installert.
+For å gjøre det enkelt for dere å komme i gang, har vi lagd to scripts som begge må kjøres med root privilegier.
+Scriptene må kjøres etter at driver for Oracle eller postgres er installert.
+En driver (i vår kontekst) er et program man må ha for å snakke med en database.
 
 
 Kjør først kommandoen:
