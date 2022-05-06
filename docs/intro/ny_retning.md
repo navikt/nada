@@ -1,28 +1,3 @@
----
-title: Bedre bruk av bedre data
----
-### Situasjonen i dag
-NAV har de siste årene vært gjennom en massiv endring i hvordan produkter utvikles. 
-Tiden med store prosjekter og detaljerte kravspesifikasjoner er langt på vei forbi.
-Nå måles de tverrfaglige produktteamene heller på oppnådde effekter og er rustet til å ta dette ansvaret.
-I den operasjonelle verden.
-
-Data til analytiske formål gir i dag verdi gjennom komplekse verdikjeder der det er stor avstand mellom der data oppstår og der data brukes.
-Produktteamene leverer data til et sentralt team som bearbeider og leverer disse videre til sluttbrukere.
-Her vil en verdikjede bygges for å svare på et konkret spørsmål.
-Dette er en struktur som kan fungere når endringstakten er lav.
-
-Moderne produktutvikling forutsetter kjennskap til domenet og til sluttbrukeren.
-Dagens struktur strider med begge disse forutsetningene:
-Omfanget av produktteam er for stort til at et sentralt team kan ha nok kunnskap om et domene og et sentralt team i seg selv gjør at produktteamene ikke kjenner behovene til sluttbrukerne.
-
-### Produktutvikling og data
-Vi mener at produktutvikling av data hører hjemme sammen med øvrig produktutvikling -- i produktteam.
-Dette innebærer at vi går fra å bygge verdikjeder for å svare på konkrete spørsmål, til å tilrettelegge data som produkter som kan svare på flere spørsmål.
-Dette kommer ikke gratis -- vi ber jo her om at produktteamene tar på seg enda en hatt.
-Teamene er best rustet til å utformere dataproduktene for størst mulig verdi, men de trenger støtte til å gjøre jobben.
-
-### Fire prinsipper for å lykkes
 Vi ønsker å flytte ansvaret for produktutvikling av data til produktteamene, slik det er beskrevet i [data mesh-paradigmet](https://martinfowler.com/articles/data-mesh-principles.html).
 For at dette skal lykkes, følger vi de fire prinsippene beskrevet:
 

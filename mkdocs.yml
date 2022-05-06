@@ -41,7 +41,7 @@ markdown_extensions:
       custom_checkbox: true
 nav:
   - Hva og hvorfor?:
-    - Hvorfor en ny retning for data?: intro/ny_retning.md # <- Ta ut biten om ny retning, behold prinsippene
+    - Prinsipper: intro/ny_retning.md # <- Ta ut biten om ny retning, behold prinsippene
     - Hva er nada?: intro/hva_er_nada.md
     #- Forankring: intro/forankring.md <- Flytt ut i egen ressurs
   - Spilleregler:
@@ -53,13 +53,12 @@ nav:
       - Innhente: dataprodukter/produsere/innhente.md
       #- Transformere: dataprodukter/produsere/transformere.md
       #- Kvalitetssikre: dataprodukter/produsere/kvalitetssikre.md
-      - Laste data: dataprodukter/produsere/laste_data.md
-      - Deploye:
-          - Skedulere:
-              - Cloud composer: prosessere-data/skedulering/cloud-composer.md
-              - Naisjobs: prosessere-data/skedulering/naisjobs.md
-              - Notebook GCP CronJob: prosessere-data/skedulering/notebook-gcp-cronjob.md
-              - Scheduled query: prosessere-data/skedulering/scheduled-query.md
+      #- Laste data: dataprodukter/produsere/laste_data.md
+      - Skedulere:
+          - Cloud composer: prosessere-data/skedulering/cloud-composer.md
+          - Naisjobs: prosessere-data/skedulering/naisjobs.md
+          - Notebook GCP CronJob: prosessere-data/skedulering/notebook-gcp-cronjob.md
+          - Scheduled query: prosessere-data/skedulering/scheduled-query.md
       - Registrere: dataprodukter/produsere/registrere.md
     - Forvalte:
       - Tilgangsstyre: dataprodukter/forvalte/tilgangsstyring.md
@@ -73,7 +72,10 @@ nav:
         - ETL på NAIS: guider/etl-paa-nais.md
         - Laste opp fil: dele-data/laste-opp-fil.md
   - Finne og dele innsikt:
-    - Notebooks: prosessere-data/notebooks.md # Ta inn noe om on-demand her
+    - Notebooks:
+        - Overordnet: prosessere-data/notebook_intro.md
+        - Komme i gang: prosessere-data/notebook.md
+        - Kilder on-prem: prosessere-data/notebook_knada.md
     - Datafortelling: dele-innsikt/datafortelling.md
     - Metabase: dele-innsikt/metabase.md
   - Legacy:
