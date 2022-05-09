@@ -1,7 +1,7 @@
 ---
 title: Juridiske spilleregler
 ---
-De juridiske spillereglene er, i motsetning til de øvrige, obligatoriske å følge.
+De juridiske spillereglene er laget for å hjelpe teamene å gjøre rett hva gjelder juss.
 Dette er ikke en uttømmende liste over regler.
 Istedet bør dette ses på som et ressurssenter som veileder og svarer ut spørsmål som typisk dukker opp på markedsplassen.
 

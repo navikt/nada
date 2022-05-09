@@ -1,21 +1,3 @@
-## Server med tilgang til on-prem
-
-1. Ta kontakt med oss i [#nada](https://nav-it.slack.com/archives/CGRMQHT50) for å få tilgang til dette prosjektet.
-2. Gå til [knada-gcp Google console](https://console.cloud.google.com/vertex-ai/workbench/list/instances?orgonly=true&project=knada-gcp&supportedpurview=organizationId)
-3. Velg `New Notebook` og velg `Customize`
-4. Fyll inn alle obligatoriske felter:
-   - Notebook name - Navn på kladdeboka
-   - Region - europe-west1 (Belgium)
-   - Zone - En sone innenfor regionen
-   - Environment - Velg et miljø som passer ditt behov/språk
-   - Machine type og GPU - Hvor kraftig maskin du trenger
-5. Ekspander `Networking`
-   - Under `External IP` velg none
-6. Ekspander `Permission`
-   - Under `Identity and API access`
-      - Avhuk `Use Compute Engine default service account` og lim inn service accounten knyttet til din bruker, se [her](#personlig-service-account-og-secret-manager-hemmelighet-for-brukerteam) for informasjon om hvor denne finnes
-7. Trykk `Create`
-8. Når maskinen er ferdig laget, kan du trykke på `Open jupyterlab` for å få tilgang.
 
 ## Personlig service account og secret manager hemmelighet for bruker/team
 For å enklere styre tilgang oppretter vi en unik service account og en secret manager hemmelighet for hver ulike bruker/gruppe som legges til i knada-gcp prosjektet. Disse blir opprettet når man tar kontakt med oss i (1) [her](#server-med-tilgang-til-on-prem).

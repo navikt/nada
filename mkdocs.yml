@@ -66,7 +66,7 @@ nav:
     - Konsumere:
       - Finne og forstå: dataprodukter/konsumere/finne.md #finne-data/navdata.md
       - Få tilgang:
-        - Personlig bruker: dataprodukter/konsumere/tilgang_personlig.md
+        #- Personlig bruker: dataprodukter/konsumere/tilgang_personlig.md
         - Serviceaccounts: dataprodukter/konsumere/tilgang_serviceaccount.md
     - Veiledninger:
         - ETL på NAIS: guider/etl-paa-nais.md
@@ -74,8 +74,9 @@ nav:
   - Finne og dele innsikt:
     - Notebooks:
         - Overordnet: prosessere-data/notebook_intro.md
-        - Komme i gang: prosessere-data/notebook.md
-        - Kilder on-prem: prosessere-data/notebook_knada.md
+        - Komme i gang: prosessere-data/notebook_projects.md
+        - Generelle veiledninger: prosessere-data/notebook_general.md
+        - Spesifikt for kilder on-prem: prosessere-data/notebook_knada.md
     - Datafortelling: dele-innsikt/datafortelling.md
     - Metabase: dele-innsikt/metabase.md
   - Legacy:
