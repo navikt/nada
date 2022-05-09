@@ -1,8 +1,8 @@
 Det er tre ulike typer prosjekt som kan brukes til å kjøre notebooks:
 
 1. Team-prosjekt server: Majoriteten bruker dette. Dette er notebooks som skal eies av team
-2. On-demand prosjekter: Kan brukes dersom kun enkeltpersoner skal ha tilgang til prosjektet.
-3. Server med tilgang til on-prem: Brukes der det er behov for tilgang til kilder som ligger on-prem.
+2. On-demand prosjekter: Kan brukes dersom kun enkeltpersoner skal ha tilgang til prosjektet
+3. Server med tilgang til on-prem: Brukes der det er behov for tilgang til kilder som ligger on-prem
 
 ## Team-prosjekt server
 
