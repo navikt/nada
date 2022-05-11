@@ -41,7 +41,7 @@ markdown_extensions:
       custom_checkbox: true
 nav:
   - Hva og hvorfor?:
-    - Prinsipper: intro/ny_retning.md # <- Ta ut biten om ny retning, behold prinsippene
+    - Prinsipper: intro/ny_retning.md
     - Hva er nada?: intro/hva_er_nada.md
     #- Forankring: intro/forankring.md <- Flytt ut i egen ressurs
   - Spilleregler:
@@ -65,9 +65,7 @@ nav:
       - Overvåke: dataprodukter/forvalte/overvåke.md
     - Konsumere:
       - Finne og forstå: dataprodukter/konsumere/finne.md #finne-data/navdata.md
-      - Få tilgang:
-        #- Personlig bruker: dataprodukter/konsumere/tilgang_personlig.md
-        - Serviceaccounts: dataprodukter/konsumere/tilgang_serviceaccount.md
+      - Få tilgang: dataprodukter/konsumere/tilgang_serviceaccount.md
     - Veiledninger:
         - ETL på NAIS: guider/etl-paa-nais.md
         - Laste opp fil: dele-data/laste-opp-fil.md
