@@ -40,15 +40,14 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 nav:
-  - Hva og hvorfor?:
-    - Prinsipper: intro/ny_retning.md
-    - Hva er nada?: intro/hva_er_nada.md
-    #- Forankring: intro/forankring.md <- Flytt ut i egen ressurs
-  - Spilleregler:
+  - Landing page: intro/hva_er_nada.md # Hvordan får jeg dette til å bare være landing page?
+  - Prinsipper og spilleregler:
+    - Prinsipper for data: intro/ny_retning.md
     - Hvorfor trenger vi spilleregler?: spilleregler/spilleregler_intro.md
     - Juridiske spilleregler: spilleregler/spilleregler_juridisk.md
     #- Øvrige spilleregler: spilleregler/spilleregler_annet.md
   - Dataprodukter:
+    - Hva er et dataprodukt?: dataprodukter/definisjon.md
     - Produsere:
       - Innhente: dataprodukter/produsere/innhente.md
       #- Transformere: dataprodukter/produsere/transformere.md

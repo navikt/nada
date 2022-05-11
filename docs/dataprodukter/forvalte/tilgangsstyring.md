@@ -1,7 +1,7 @@
 ---
 title: Tilgangsstyring på markedsplassen
 ---
-
+Default er at det kun er teamet som eier dataproduktet som har tilgang til det ved publisering.
 Det er teamet som eier tilgangsstyringen på sine dataprodukter og har ansvar for å gi tilgang til riktige grupper, personer eller [servicebrukere](../dataplassen/lag-serviceaccount.md). 
 Du kan se hvilke grupper du er medlem av [her](https://groups.google.com/my-groups). 
 Tilgangene styres enten ved å godkjenne forespørsler eller ved å legge til e-poster via grensesnittet på [markedsplassen](https://data.intern.nav.no), som automatisk oppdaterer tilgangen på BigQuery-tabellen. 

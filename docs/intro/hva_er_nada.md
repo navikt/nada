@@ -1,7 +1,7 @@
 ---
 title: Hva er NADA?
 ---
-Med den nye retningen får produktteamene mer arbeid og kompleksitet i fanget når data skal behandles som produkter.
+Når produktteamene skal behandle data som produkter får de mer arbeid og kompleksitet i fanget.
 Samtidig stiller vi større krav til konsumentene som skal finne innsikt i data.
 En plattform med høy grad av selvbetjening vil gjøre dette enklere for brukerne.
 Plattformen vil også gi verdi i form av at det blir kortere avstand mellom aktørene på plattformen slik at dataproduktene kan tilpasses behov.

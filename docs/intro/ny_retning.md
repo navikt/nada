@@ -42,5 +42,3 @@ Det kan også være ubevisste valg, enten som følge av mangel på koordinering 
 For å korrigere for dette, har vi spilleregler på plattformen.
 Disse utformes av aktører på plattformen i fellesskap.
 Implementeringen av disse skal i størst mulig grad støttes i plattformen.
-
-Spillereglene er dokumentert inngående senere i dokumentasjonen.
