@@ -76,7 +76,7 @@ Deretter kan man legge inn hemmeligheter som key/value verdier, altså hvor `key
 hemmeligheten som du skal bruke for å referere til den senere og `value` er verdien.
 
 
-## Bruke hemmeligheter i Jupyterhub/Airflow
+## <a name="airflow_secrets"></a> Bruke hemmeligheter i Jupyterhub/Airflow 
 Hvis du f.eks. har lagt inn en hemmelighet som heter `DB_PASSWORD` i vault kan denne nå hentes inn
 i Jupyterhub/Airflow med følgende kode 
 

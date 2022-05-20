@@ -4,7 +4,7 @@ title: Guide til datapipeline på nais
 
 ## Introduksjon
 I denne guiden viser vi hvordan vi kan lage en data pipeline ("ETL-pipeline") i python og sette denne i produksjon på nais.
-Vi vil i eksempelet lese data fra et dataprodukt som ligger på [datamarkedsplassen](../finne-data/navdata.md),
+Vi vil i eksempelet lese data fra et dataprodukt som ligger på [markedsplassen](https://data.intern.nav.no/),
 gjøre noen enkle transformasjoner, og skrive data tilbake til en tabell i BigQuery. 
 Vi vil skrive tester for transformasjonene våre, slik at vi er trygge på at de gjør det de skal også når vi endrer koden i fremtiden.
 Til slutt vil vi pakke koden vår inn i en kjørende container som vi setter i produksjon. 
