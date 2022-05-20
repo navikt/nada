@@ -17,15 +17,11 @@ Det er viktig å understreke at behovene vil variere.
 En viktig forutsetning for å lykkes med dette, som med annen produktutvikling, er å få til en god dialog mellom konsumenter og produsenter.
 
 ### Vår definisjon
-Vi definerer et dataprodukt som:
+Vi definerer et dataprodukt som en samling av:
 
-- Metadata: Beskrivelser av dataproduktet, tags, beskrivelser av felter, etc.
+- Metadata: Beskrivelser av dataproduktet, tags, beskrivelser av felter, etc. Beskrivelsene kan også inkludere visualiseringer og eksempler på bruk
 - Koden som produserer datasettene
 - 1-n `datasett`
-- 0-m `visualiseringer`
 
-`datasett`: Foreløpig er dette BigQuery-tabeller
-
-`visualiseringer`: Datafortellinger/metabase-dashboards knyttet til dataproduktet som produsenten ønsker å ha med.
-Vi jobber med å få datafortellinger inn som del av beskrivelsen av selve dataproduktet på markedsplassen.
+`datasett`: Per nå er dette BigQuery-tabeller, men det kan også være andre format.
 

@@ -1,7 +1,7 @@
 # Registrere dataprodukt
 
-For å dele et dataprodukt med andre kan teamet registrere dataproduktet i [NAV Data](https://data.intern.nav.no).
-For at en bruker på [NAV Data](https://data.intern.nav.no) skal være mest mulig selvbetjent er det viktig at teamet skriver en fyldig beskrivelse av dataproduktet. 
+For å dele et dataprodukt med andre kan teamet registrere dataproduktet på [markedsplassen](https://data.intern.nav.no).
+For at en bruker på [markedsplassen](https://data.intern.nav.no) skal være mest mulig selvbetjent er det viktig at teamet skriver en fyldig beskrivelse av dataproduktet. 
 Beskrivelsen av et BigQuery dataprodukt kan for eksempel inneholde:
 - Introduksjon til tabellen
 - Transformasjoner gjort på tabellen
