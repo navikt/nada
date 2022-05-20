@@ -12,7 +12,7 @@ Kjernen i NADA er [datamarkedsplassen](https://data.intern.nav.no), hvor du finn
 Vi tilbyr i tillegg tjenester for å [publisere](dele-data/dataprodukt), [analysere](prosessere-data/getting-started), og [dele innsikt](dele-innsikt/metabase) data.
 
 ### Hva NADA **ikke** er
-- NADA-plattformen i seg selv har ikke et forhold til data. Produsentene på plattformen eier selv data.
+- NADA-plattformen eier ikke andres data. Produsentene på plattformen eier selv data.
 - Teamet som bygger NADA er et plattform-team -- ikke et "enabling-team"
 
 ### Kontakt oss

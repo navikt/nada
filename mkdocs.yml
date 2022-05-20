@@ -8,7 +8,9 @@ theme:
     primary: white
   features:
     - navigation.instant
+    - navigation.tabs
   logo: 'img/logo.svg'
+  custom_dir: custom_theme_overrides
   favicon: img/favicon.ico
 extra:
   search:
@@ -40,58 +42,59 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 nav:
-  - Landing page: intro/hva_er_nada.md # Hvordan får jeg dette til å bare være landing page?
-  - Prinsipper og spilleregler:
-    - Prinsipper for data: intro/ny_retning.md
-    - Hvorfor trenger vi spilleregler?: spilleregler/spilleregler_intro.md
-    - Juridiske spilleregler: spilleregler/spilleregler_juridisk.md
-    #- Øvrige spilleregler: spilleregler/spilleregler_annet.md
-  - Dataprodukter:
-    - Hva er et dataprodukt?: dataprodukter/definisjon.md
-    - Produsere:
-      - Innhente: dataprodukter/produsere/innhente.md
-      #- Transformere: dataprodukter/produsere/transformere.md
-      #- Kvalitetssikre: dataprodukter/produsere/kvalitetssikre.md
-      #- Laste data: dataprodukter/produsere/laste_data.md
-      - Skedulere:
-          - Cloud composer: prosessere-data/skedulering/cloud-composer.md
-          - Naisjobs: prosessere-data/skedulering/naisjobs.md
-          - Notebook GCP CronJob: prosessere-data/skedulering/notebook-gcp-cronjob.md
-          - Scheduled query: prosessere-data/skedulering/scheduled-query.md
-      - Registrere: dataprodukter/produsere/registrere.md
-    - Forvalte:
-      - Tilgangsstyre: dataprodukter/forvalte/tilgangsstyring.md
-      - Overvåke: dataprodukter/forvalte/overvåke.md
-    - Konsumere:
-      - Finne og forstå: dataprodukter/konsumere/finne.md #finne-data/navdata.md
-      - Få tilgang: dataprodukter/konsumere/tilgang_serviceaccount.md
-    - Veiledninger:
-        - ETL på NAIS: guider/etl-paa-nais.md
-        - Laste opp fil: dele-data/laste-opp-fil.md
-  - Finne og dele innsikt:
-    - Notebooks:
-        - Overordnet: prosessere-data/notebook_intro.md
-        - Komme i gang: prosessere-data/notebook_projects.md
-        - Generelle veiledninger: prosessere-data/notebook_general.md
-        - Spesifikt for kilder on-prem: prosessere-data/notebook_knada.md
-    - Datafortelling: dele-innsikt/datafortelling.md
-    - Metabase: dele-innsikt/metabase.md
-  - Legacy:
-    - KNADA on-prem:
-        - Kom i gang: prosessere-data/onprem/getting-started.md
-        - Airflow: prosessere-data/onprem/airflow.md
-        - Jupyterhub: prosessere-data/onprem/jupyterhub.md
-        - Vault: prosessere-data/onprem/vault.md
-        - Dataverk:
-            - Hva er dataverk: prosessere-data/onprem/dataverk/hva-er-dataverk.md
-            - Metadata: prosessere-data/onprem/dataverk/metadata.md
-            - Publisering fra GCP: prosessere-data/onprem/dataverk/publisering-fra-gcp.md
-            - Slette datapakker: prosessere-data/onprem/dataverk/slette-datapakker.md
-            - Settings:
-                - Settingsfil: prosessere-data/onprem/dataverk/settings/settings.md
-                - Postgres konfigurasjon: prosessere-data/onprem/dataverk/settings/postgres.md
-    - Datapakker:
-      - Datapakke: dele-innsikt/datapakker.md
-      - Publisere: dele-innsikt/publisere-datapakker.md
+  - NADA:
+    - Hva er nada?: intro/hva_er_nada.md # Hvordan får jeg dette til å bare være landing page?
+    - Prinsipper og spilleregler:
+      - Prinsipper for data: intro/ny_retning.md
+      - Hvorfor trenger vi spilleregler?: spilleregler/spilleregler_intro.md
+      - Juridiske spilleregler: spilleregler/spilleregler_juridisk.md
+      #- Øvrige spilleregler: spilleregler/spilleregler_annet.md
+    - Dataprodukter:
+      - Hva er et dataprodukt?: dataprodukter/definisjon.md
+      - Produsere:
+        - Innhente: dataprodukter/produsere/innhente.md
+        #- Transformere: dataprodukter/produsere/transformere.md
+        #- Kvalitetssikre: dataprodukter/produsere/kvalitetssikre.md
+        #- Laste data: dataprodukter/produsere/laste_data.md
+        - Skedulere:
+            - Cloud composer: prosessere-data/skedulering/cloud-composer.md
+            - Naisjobs: prosessere-data/skedulering/naisjobs.md
+            - Notebook GCP CronJob: prosessere-data/skedulering/notebook-gcp-cronjob.md
+            - Scheduled query: prosessere-data/skedulering/scheduled-query.md
+        - Registrere: dataprodukter/produsere/registrere.md
+      - Forvalte:
+        - Tilgangsstyre: dataprodukter/forvalte/tilgangsstyring.md
+        - Overvåke: dataprodukter/forvalte/overvåke.md
+      - Konsumere:
+        - Finne og forstå: dataprodukter/konsumere/finne.md #finne-data/navdata.md
+        - Få tilgang: dataprodukter/konsumere/tilgang_serviceaccount.md
+      - Veiledninger:
+          - ETL på NAIS: guider/etl-paa-nais.md
+          - Laste opp fil: dele-data/laste-opp-fil.md
+    - Finne og dele innsikt:
+      - Notebooks:
+          - Overordnet: prosessere-data/notebook_intro.md
+          - Komme i gang: prosessere-data/notebook_projects.md
+          - Generelle veiledninger: prosessere-data/notebook_general.md
+          - Spesifikt for kilder on-prem: prosessere-data/notebook_knada.md
+      - Datafortelling: dele-innsikt/datafortelling.md
+      - Metabase: dele-innsikt/metabase.md
+    - Legacy:
+      - KNADA on-prem:
+          - Kom i gang: prosessere-data/onprem/getting-started.md
+          - Airflow: prosessere-data/onprem/airflow.md
+          - Jupyterhub: prosessere-data/onprem/jupyterhub.md
+          - Vault: prosessere-data/onprem/vault.md
+          - Dataverk:
+              - Hva er dataverk: prosessere-data/onprem/dataverk/hva-er-dataverk.md
+              - Metadata: prosessere-data/onprem/dataverk/metadata.md
+              - Publisering fra GCP: prosessere-data/onprem/dataverk/publisering-fra-gcp.md
+              - Slette datapakker: prosessere-data/onprem/dataverk/slette-datapakker.md
+              - Settings:
+                  - Settingsfil: prosessere-data/onprem/dataverk/settings/settings.md
+                  - Postgres konfigurasjon: prosessere-data/onprem/dataverk/settings/postgres.md
+      - Datapakker:
+        - Datapakke: dele-innsikt/datapakker.md
+        - Publisere: dele-innsikt/publisere-datapakker.md
 
 
