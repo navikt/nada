@@ -43,7 +43,7 @@ markdown_extensions:
       custom_checkbox: true
 nav:
   - NADA:
-    - Hva er nada?: intro/hva_er_nada.md # Hvordan får jeg dette til å bare være landing page?
+    - Hva er nada?: hva_er_nada.md # Hvordan får jeg dette til å bare være landing page?
     - Prinsipper og spilleregler:
       - Prinsipper for data: intro/ny_retning.md
       - Hvorfor trenger vi spilleregler?: spilleregler/spilleregler_intro.md
