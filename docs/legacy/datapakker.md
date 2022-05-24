@@ -2,6 +2,7 @@
 title: Datapakker
 ---
 
+**NB: Vi skrur av datapakker  24. juni. Fremover vil datafortellinger støttes og videreutvikles**
 
 ## Hvorfor datapakker
 

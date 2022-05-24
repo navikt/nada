@@ -1,1 +1,0 @@
-Skriver mer når vi har løsning på plass for å sende tilgangsforespørsler.
