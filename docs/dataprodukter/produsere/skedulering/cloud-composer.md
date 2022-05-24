@@ -14,6 +14,7 @@ For å sette opp en ny Cloud Composer instans gjennom Google Cloud Platform kons
 går du først til [Cloud Composer](https://console.cloud.google.com/composer) og trykker `CREATE`
 
 Følgende må spesifiseres
+
 1. `Name` - navn på Cloud Composer instansen
 2. `Location` - regionen hvor instansen settes opp (må velge Europa)
 3. Trykk `CREATE`

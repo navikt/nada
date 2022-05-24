@@ -1,7 +1,7 @@
 site_name: NADA
 repo_url: https://github.com/navikt/nada
 edit_uri: ./edit/main/docs
-site_url: https://docs.knada.io
+site_url: https://docs.knada.io/
 theme:
   name: material
   palette:
@@ -27,6 +27,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.caret
   - pymdownx.tilde
+  - pymdownx.superfences
   - pymdownx.superfences:
       preserve_tabs: true
   - pymdownx.highlight:

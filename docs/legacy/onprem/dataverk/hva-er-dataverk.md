@@ -23,6 +23,7 @@ og google cloud storage. Disse kan enten brukes direkte, eller
 så kan man benytte seg av publiseringsmekanismen som kommer med dataverk biblioteket.
 
 Å publisere med dataverk innebærer følgende:
+
 1. Bearbeidede data, lage visualiseringer og skrive tekst i notebooken
 2. Publisere en datapakke
 
@@ -45,6 +46,7 @@ datasett.
 ### Fra JupyterHub
 Det anbefales å jobbe i jupyter notebook for at det skal
 være enklest å komme i gang. Dette fordi:
+
 1. Dataverk har en del eksterne avhengigheter som må være installert i det miljøet man 
 jobber (oracle client, postgres driver etc.). Disse avhengighetene vil være installert 
 i dockerimaget som notebook serveren bruker.

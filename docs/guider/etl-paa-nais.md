@@ -274,6 +274,7 @@ Det er derfor vi setter opp brukeren `apprunner` og bruker denne til å kjøre a
 ### CI/CD-pipeline
 For å sy alt dette sammen lager vi oss en automatisk pipeline. 
 Hver gang vi pusher endringer i koden til github ønsker vi at pipelinen vår skal gjøre følgende:
+
 1. Sett opp python 3.9 
 2. Installer alle dependencies som er angitt i requirements.txt
 3. Installer pytest
@@ -350,6 +351,7 @@ Det er også kun vårt team som har tilgang til å endre på koden i repositorie
 
 ## Oppsummering
 For å sette en data pipeline i drift på nais trenger man et github-repo som inneholder:
+
 * En datapipeline (i dette eksempelet implementert i python i `main.py`)
 * En `Dockerfile`
 * Et manifest (`nais.yaml`)
