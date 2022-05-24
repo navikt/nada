@@ -10,4 +10,4 @@ On-prem tilbyr vi [JupyterHub](jupyterhub.md) for analysering med Jupyter Notebo
 Vi bruker Vault for hemmeligheter on-prem, se [vault-iac/doc/knada](https://github.com/navikt/vault-iac/blob/master/doc/knada.md)
 for dokumentasjon på hvordan dette settes opp for ditt Jupyterhub/Airflow namespace.
 
-Se [import secrets in Jupyterhub and Airflow](vault/#bruke-hemmeligheter-i-jupyterhubairflow) for hvordan hemmeligheter kan importeres til Jupyterhub/Airflow.
+Se [import secrets in Jupyterhub and Airflow](vault.md#airflow_secrets) for hvordan hemmeligheter kan importeres til Jupyterhub/Airflow.
