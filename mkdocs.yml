@@ -47,7 +47,7 @@ nav:
     - Hva er nada?: index.md # Hvordan får jeg dette til å bare være landing page?
     - Prinsipper og spilleregler:
       - Prinsipper for data: intro/ny_retning.md
-      - Hvorfor trenger vi spilleregler?: spilleregler/spilleregler_intro.md
+      - Om spilleregler: spilleregler/spilleregler_intro.md
       - Juridiske spilleregler: spilleregler/spilleregler_juridisk.md
       #- Øvrige spilleregler: spilleregler/spilleregler_annet.md
     - Dataprodukter:
