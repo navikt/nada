@@ -75,3 +75,7 @@ Trenger du Postgres, lim inn følgende i terminalen din:
 ```bash
 apt-get update && apt-get install -yq --no-install-recommends libpq-dev
 ```
+
+### Tilpasse connector for raskere spørringer
+Ved å justere `arraysize` og `prefetchrows` kan spørringer fra databaser on-prem forbedres markant.
+Se for eksempel dokumentasjonen av [cx_Oracle-biblioteket](https://cx-oracle.readthedocs.io/en/latest/user_guide/tuning.html#tuningfetch).
