@@ -70,6 +70,6 @@ Dokumentasjon for dette finner man på [doc.nais.io](https://doc.nais.io/basics/
    - Under `External IP` velg none
 6. Ekspander `Permission`
    - Under `Identity and API access`
-      - Avhuk `Use Compute Engine default service account` og lim inn service accounten knyttet til din bruker, se [her](#personlig-service-account-og-secret-manager-hemmelighet-for-brukerteam) for informasjon om hvor denne finnes
+      - Avhuk `Use Compute Engine default service account` og lim inn service accounten knyttet til din bruker, se [her](../notebook_knada/#personlig-service-account-og-secret-manager-hemmelighet-for-brukerteam) for informasjon om hvor denne finnes
 7. Trykk `Create`
 8. Når maskinen er ferdig laget, kan du trykke på `Open jupyterlab` for å få tilgang.
