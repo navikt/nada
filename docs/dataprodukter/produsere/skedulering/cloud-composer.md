@@ -7,7 +7,7 @@ monitor and manage workflows. Cloud Composer automation helps you create Airflow
 Airflow-native tools, such as the powerful Airflow web interface and command line tools, so you can focus on your 
 workflows and not your infrastructure.
 
-Du finner den offisielle dokumentasjonen for Cloud Composer hos [cloud.google.com](https://cloud.google.com/composer/docs/konsepter/overview).
+Du finner den offisielle dokumentasjonen for Cloud Composer hos [cloud.google.com](https://cloud.google.com/composer/docs/concepts/overview).
 
 ## Opprett ny composer instans
 For å sette opp en ny Cloud Composer instans gjennom Google Cloud Platform konsollen (GCP), 
