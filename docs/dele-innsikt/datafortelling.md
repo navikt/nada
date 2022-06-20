@@ -1,6 +1,8 @@
 ---
 title: Datafortelling
 ---
+Datafortellinger brukes til å dele innsikt i form av statiske dokumenter som består av tekstkomponenter (`markdown`) og visualiseringer (`plotly`og `vega`).
+Datafortellinger produseres enklest gjennom en notebook og kan enkelt deles med andre i NAV.
 
 ## Installer datastory bibliotek
 ````bash
