@@ -95,4 +95,4 @@ Hvis du skal lese TDV data fra notebook i `knada-gcp` prosjektet må du selv ins
 3. Fra terminal på notebook server, installer python biblioteket `pyodbc`: `pip install pyodbc`
 4. Følg eksempelet i [dataseksjonens guide](https://reimagined-umbrella-50bfbf70.pages.github.io/kompetanse/guider/hente_data_fra_tdv.html) for å lese fra TDV.
 
-!!! info Steg 1-3 over er ikke nødvendig dersom man jobber fra en onprem jupyterhub da disse har installert drivere og biblioteker fra før dersom man velger `Jupyterlab JKBL edition` når man starter notebook serveren.
+!!! info "Steg 1-3 over er ikke nødvendig dersom man jobber fra en onprem jupyterhub da disse har installert drivere og biblioteker fra før dersom man velger `Jupyterlab JKBL edition` når man starter notebook serveren."
