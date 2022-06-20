@@ -8,8 +8,8 @@ For at folk raskt skal få data de har grunnlag for å bruke, trenger vi å tilg
 ## Avgjørelse
 Når støtten er laget på nada-plattformen skal produsenter oppgi om dataproduktet inneholder:
 
-- ...felter som inneholder direkte identifiserende personopplysninger
-- ...felter som inneholder særlige kategorier av personopplysninger
+- ...felter som inneholder direkte identifiserende personopplysninger. Aktuelle felter skal merkes
+- ...felter som inneholder særlige kategorier av personopplysninger. Aktuelle felter skal merkes
 - ...kode 6/7
 - ...taushetsbelagt informasjon
 
