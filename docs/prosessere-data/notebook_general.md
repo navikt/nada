@@ -87,3 +87,12 @@ I [denne guiden](https://medium.com/@albert.brand/remote-to-a-vm-over-an-iap-tun
 
 !!! warning "Stegene over vil ikke fungere for PyCharm og andre JetBrains IDEer da disse krever at GCP-VMen du kobler deg til har en ekstern IP, noe vi ikke tillater for notebook servere i `knada-gcp` prosjektet."
 
+## Lese fra TDV i notebook miljø
+Hvis du skal lese TDV data fra notebook i `knada-gcp` prosjektet må du selv installere drivere og biblioteker som er nødvendig. Dette kan gjøres som følger:
+
+1. Last opp TDV driveren til notebook serveren: Denne finnes i repoet [navikt/knada-tdv](https://github.com/navikt/knada-tdv).
+2. Fra terminal på notebook server, installer `unixodbc-dev`: `sudo apt-get install unixodbc-dev`
+3. Fra terminal på notebook server, installer python biblioteket `pyodbc`: `pip install pyodbc`
+4. Følg eksempelet i [dataseksjonens guide](https://reimagined-umbrella-50bfbf70.pages.github.io/kompetanse/guider/hente_data_fra_tdv.html) for å lese fra TDV.
+
+!!! info Steg 1-3 over er ikke nødvendig dersom man jobber fra en onprem jupyterhub da disse har installert drivere og biblioteker fra før dersom man velger `Jupyterlab JKBL edition` når man starter notebook serveren.
