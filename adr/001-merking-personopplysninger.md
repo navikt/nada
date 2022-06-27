@@ -8,12 +8,14 @@ For at folk raskt skal få data de har grunnlag for å bruke, trenger vi å tilg
 ## Avgjørelse
 Når støtten er laget på nada-plattformen skal produsenter oppgi om dataproduktet inneholder:
 
+- ...taushetsbelagt informasjon
 - ...felter som inneholder direkte identifiserende personopplysninger. Aktuelle felter skal merkes
 - ...felter som inneholder særlige kategorier av personopplysninger. Aktuelle felter skal merkes
 - ...kode 6/7
-- ...taushetsbelagt informasjon
+- ...opplysninger om NAV-ansatte
 
-Vurderinger knyttet til disse fire punktene bør dokumenteres per dataprodukt.
+
+Relevante vurderinger knyttet til disse fem punktene bør dokumenteres per dataprodukt.
 
 ## Status
 Til behandling i spilleregel-forumet.
