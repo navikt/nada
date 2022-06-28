@@ -24,7 +24,7 @@ Når støtten er laget på nada-plattformen skal produsenter oppgi om dataproduk
 Relevante vurderinger knyttet til disse fem punktene bør dokumenteres per dataprodukt.
 
 ## Status
-Til behandling i spilleregel-forumet.
+Til høring i #nada-spilleregler.
 
 ## Konsekvenser
 Konsumenter kan få raskere tilgang til data de har grunnlag for å bruke når de forstår innholdet bedre.
