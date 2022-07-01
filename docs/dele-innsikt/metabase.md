@@ -23,3 +23,7 @@ Tilgangen knyttet til mappen elementene er lagret i bestemmer hvem som kan se de
 - Our analytics: Alt som skal være synlig for andre lagres her. Helst i mapper relatert til det aktuelle dataproduktet. 
 
 Det er mulig å flytte elementer mellom mapper etter behov.
+
+## FAQ
+Q: Jeg har nettopp lagt til en ny kolonne i BigQuery-tabellen min. Hvorfor dukker den ikke opp i metabase?  
+A: Metabase kjører en daglig synk for sjekke om skjemaet har endret seg. Det vil derfor ta litt tid før det dukker opp i metabase automatisk. Dersom du trenger det i metabase med en gang kan noen i nadateamet enkelt trigge synken manuelt.
