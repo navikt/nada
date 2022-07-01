@@ -23,8 +23,10 @@ Når støtten er laget på nada-plattformen skal produsenter oppgi om dataproduk
 
 Relevante vurderinger knyttet til disse fem punktene bør dokumenteres per dataprodukt.
 
+Dersom produsenten oppgir at dataproduktet *ikke* inneholder personopplysninger, skal en kort vurdering oppgis.
+
 ## Status
-Til høring i #nada-spilleregler.
+Til beslutning i spilleregel-forumet.
 
 ## Konsekvenser
 Konsumenter kan få raskere tilgang til data de har grunnlag for å bruke når de forstår innholdet bedre.
