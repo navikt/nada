@@ -12,6 +12,7 @@ Denne tilgangen er kun midlertidig, og man må gjøre dette hver dag.
 
 ## Credentials og hemmeligheter.
 Det anbefales å bruke [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp) som erstatning for Vault.
+
 1. Gå til [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp)
 1. Legg inn relevante verdier i din hemmelighet.
 
@@ -61,6 +62,7 @@ print(os.environ["ORACLE_USERNAME"])
 ```
 
 ## Koble til notebook server i knada-gcp fra VS Code lokalt
+
 Du kan koble deg til VMen som notebook serveren din kjører på med SSH fra VS Code lokalt som følger:
 1. Først trenger du å få `owner` rettighet på VM instansen. Dette får du ved å ta kontakt i [#nada](https://nav-it.slack.com/archives/CGRMQHT50).
 2. Installer extension `Remote - SSH` i VS Code.
