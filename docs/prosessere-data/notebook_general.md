@@ -64,6 +64,7 @@ print(os.environ["ORACLE_USERNAME"])
 ## Koble til notebook server i knada-gcp fra VS Code lokalt
 
 Du kan koble deg til VMen som notebook serveren din kjører på med SSH fra VS Code lokalt som følger:
+
 1. Først trenger du å få `owner` rettighet på VM instansen. Dette får du ved å ta kontakt i [#nada](https://nav-it.slack.com/archives/CGRMQHT50).
 2. Installer extension `Remote - SSH` i VS Code.
 3. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`.
