@@ -4,6 +4,7 @@ title: Notebooks
 
 Vi tilbyr [Jupyter Notebooks](https://jupyter.org/) i GCP.
 Disse finner man under [Vertex AI/Workbench  (doc)](https://cloud.google.com/vertex-ai/docs/workbench), sammen med en del andre verktøy.
+Du gir deg selv tilgang til GCP i [myapps](https://myapps.microsoft.com).
 
 I GCP jobber man i det som kalles prosjekter, og hvert team har sitt eget prosjekt.
 Den enkleste måten å komme i gang er å bli en del av et team, og jobbe i deres GCP prosjekt.
