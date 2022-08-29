@@ -67,9 +67,10 @@ Du kan koble deg til VMen som notebook serveren din kjører på med SSH fra VS C
 
 1. Først trenger du å få `owner` rettighet på VM instansen. Dette får du ved å ta kontakt i [#nada](https://nav-it.slack.com/archives/CGRMQHT50).
 2. Installer extension `Remote - SSH` i VS Code.
-3. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`.
-4. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din, denne finner du [her](https://console.cloud.google.com/compute/instances?project=knada-gcp). Denne kommandoen vil også generere ssh nøkler.
-5. Outputen fra kommandoen i (4) inneholder en del ting du trenger fylle inn i ssh-configen din. Under er et eksempel på hvordan en slik ssh config skal se ut.
+3. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`. Hvis dette ikke fungerer last ned gcloud CLI https://cloud.google.com/sdk/docs/install-sdk og prøv igjen.
+4. 5. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> Erstatt `<instance>` med navnet på VM instansen din, denne finner du [her](https://console.cloud.google.com/compute/instances?project=knada-gcp) under "Name".
+5. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din slik som i punkt 4. Denne kommandoen vil også generere ssh nøkler.
+6. Outputen fra kommandoen i (4) inneholder en del ting du trenger fylle inn i ssh-configen din. Under er et eksempel på hvordan en slik ssh config skal se ut.
 ````
 Host gcp-notebook
   HostName ${HOSTNAME}
@@ -82,7 +83,9 @@ Host gcp-notebook
   ProxyUseFdpass no
   User ${USERNAME}
 ````
-Erstatt ${HOSTNAME}, ${PROXYCOMMAND} og ${USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: ${USERNAME} skal kun være det før `@` i output fra kommandoen over, ${HOSTNAME} er det som begynner med `compute.`
+Erstatt ${HOSTNAME}, ${PROXYCOMMAND} og ${USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: ${USERNAME} skal kun være det før `@` i output fra kommandoen over, ${HOSTNAME} er det som begynner med `compute.` og ${PROXYCOMMAND} er alt etter ProxyCommand til --verbosity=warning. 
+  
+(Legg gjerne inn RemoteCommand sudo su - jupyter i config filen)
 
 6. I VS Code trykk cmnd+shift+P (mac) eller cntrl+shift+P (windows) og skriv inn og velg `Remote - SSH: Connect to host...` og velg så hosten `gcp-notebook`.
 
