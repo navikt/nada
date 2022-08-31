@@ -6,7 +6,7 @@
 
 ## Status
 
-Under consideration
+Done ([bqrator](https://github.com/nais/bqrator))
 
 ## Background
 
