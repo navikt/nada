@@ -2,8 +2,8 @@
 title: 1 / Merking av personopplysninger og taushetsbelagt informasjon
 ---
 ## Kontekst
-Et dataprodukt på markedsplassen kan inneholde felter med personopplysninger og/eller taushetsbelagt informasjon.
-For at folk raskt skal få data de har grunnlag for å bruke, trenger vi å tilgjengeliggjøre denne informasjon. 
+Dataprodukter på markedsplassen kan inneholde felter med personopplysninger og/eller taushetsbelagt informasjon.
+Bedre merking av dataprodukter gjør at konsumenter raskere får en bedre forståelse av hva de må gjøre for å etterleve krav i NAV.
 
 Nyttige lenker:
 - [Taushetsbelagt informasjon](https://lovdata.no/lov/1967-02-10)
@@ -18,15 +18,14 @@ Når støtten er laget på nada-plattformen skal produsenter oppgi om dataproduk
 - ...felter som inneholder direkte identifiserende personopplysninger. Aktuelle felter skal merkes
 - ...felter som inneholder særlige kategorier av personopplysninger. Aktuelle felter skal merkes
 - ...kode 6/7
-- ...opplysninger om NAV-ansatte
 
 
-Relevante vurderinger knyttet til disse fem punktene bør dokumenteres per dataprodukt.
+Relevante vurderinger knyttet til disse fire punktene bør dokumenteres per datasett.
 
 Dersom produsenten oppgir at dataproduktet *ikke* inneholder personopplysninger, skal en kort vurdering oppgis.
 
 ## Status
-Til beslutning i spilleregel-forumet.
+Beslutning fattet i spilleregel-forumet.
 
 ## Konsekvenser
 Konsumenter kan få raskere tilgang til data de har grunnlag for å bruke når de forstår innholdet bedre.
