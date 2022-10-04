@@ -16,7 +16,7 @@ Det anbefales å bruke [Secret manager](https://console.cloud.google.com/securit
 1. Gå til [Secret manager](https://console.cloud.google.com/security/secret-manager?project=knada-gcp)
 1. Legg inn relevante verdier i din hemmelighet.
 
-For at notebooken skal kunne bruke din personlige bruker når den henter hemmeligheter fra secret manager, må du gi den tilgang til det ved å følge stegene i [Autentisering med brukers credentials på serveren](#autentisering-med-brukers-credentials-på-serveren).
+For at notebooken skal kunne bruke din personlige bruker når den henter hemmeligheter fra secret manager, må du gi den tilgang til det ved å følge stegene i [Autentisering med brukers credentials på serveren](#autentisering-med-brukers-credentials-pa-serveren).
 
 Deretter må du installere Python sin Google Cloud Secret Manager pakke:
 
