@@ -39,7 +39,7 @@ så kan du heller skrive
 dsnStr = cx_Oracle.makedsn('10.x.x.x','1521',service_name='DWH_HA')
 ```
 
-## Oppsett for Oracle- og Postgres-drivere
+## Oppsett for Postgres-drivere
 For å gjøre det enkelt for dere å komme i gang, har vi lagd to scripts som begge må kjøres med root privilegier.
 
 Kjør først kommandoen:
@@ -48,7 +48,15 @@ sudo -i
 ```
 for å kunne kjøre skriptene som root.
 
-Trenger du Oracle lim inn følgende i terminalen din:
+Trenger du Postgres, lim inn følgende i terminalen din:
+```bash
+apt-get update && apt-get install -yq --no-install-recommends libpq-dev
+```
+
+## Oppsett for Oracle-drivere
+
+1) Lag et tom fil of kall den setup_nb.sh
+2) Lim inn følgene kodesnutt:
 ```bash
 
 apt-get update && apt-get install -yq --no-install-recommends \
@@ -70,12 +78,17 @@ alien -i /tmp/oracle-instantclient-basic-21.5.0.0.0-1.x86_64.rpm && \
 
 PATH=$PATH:/usr/lib/oracle/21.5/client64/bin
 ```
+og lagre filen.
 
-Trenger du Postgres, lim inn følgende i terminalen din:
+3) Åpne terminalen og kjør 
 ```bash
-apt-get update && apt-get install -yq --no-install-recommends libpq-dev
+chmod +x setup_nb.sh
 ```
-
+etterfulgt av 
+```bash
+sudo ./setup_nb.sh
+```
+ 
 ### Tilpasse connector for raskere spørringer
 Ved å justere `arraysize` og `prefetchrows` kan spørringer fra databaser on-prem forbedres markant.
 Se for eksempel dokumentasjonen av [cx_Oracle-biblioteket](https://cx-oracle.readthedocs.io/en/latest/user_guide/tuning.html#tuningfetch).
