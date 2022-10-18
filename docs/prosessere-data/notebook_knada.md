@@ -55,8 +55,8 @@ apt-get update && apt-get install -yq --no-install-recommends libpq-dev
 
 ## Oppsett for Oracle-drivere
 
-1) Lag et tom fil of kall den setup_nb.sh
-2) Lim inn følgene kodesnutt:
+1. Lag et tom fil of kall den setup_nb.sh
+2. Lim inn følgene kodesnutt:
 ```bash
 
 apt-get update && apt-get install -yq --no-install-recommends \
@@ -80,7 +80,7 @@ PATH=$PATH:/usr/lib/oracle/21.5/client64/bin
 ```
 og lagre filen.
 
-3) Åpne terminalen og kjør 
+3. Åpne terminalen og kjør 
 ```bash
 chmod +x setup_nb.sh
 ```
