@@ -32,12 +32,12 @@ Det er mulig å flytte elementer mellom mapper etter behov.
 Q: Jeg har nettopp lagt til en ny kolonne i BigQuery-tabellen min. Hvorfor dukker den ikke opp i metabase?  
 A: Metabase kjører en synk hver time for å sjekke om skjemaet har endret seg. Det vil derfor ta litt tid før det dukker opp i metabase automatisk. Dersom du trenger det i metabase med en gang kan noen i nadateamet enkelt trigge synken manuelt.
 
-Q: Filter-verdier i metabase er ikke oppdatert?
+Q: Filter-verdier i metabase er ikke oppdatert?  
 A: Metabase kjører en daglig sync mot hele tabellen i BigQuery for å finne ut av hvilke verdier som finnes. Dette brukes bl.a. til å generere `options` i filter.
 
-Q: Hvorfor får jeg ikke joinet datasett som er åpent tilgjengelig?
+Q: Hvorfor får jeg ikke joinet datasett som er åpent tilgjengelig?  
 A: Du kan det! Men du må gjøre det med `SQL query`. Et alternativ er å joine tabeller i BigQuery, lage et nytt datasett og legge dette til i Metabase.
 
-Q: Kan jeg koble sammen datasett som er tilgangsbegrenset?
+Q: Kan jeg koble sammen datasett som er tilgangsbegrenset?  
 A: Slik Metabase er satt opp, er det en unik service-bruker som leser hvert datasett. 
 Det er mulig å gjøre dette i metabase ved å be datasetteier om å gi tilgang til service-account, men vi anbefaler å lage et view i BigQuery. 
