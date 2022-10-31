@@ -39,5 +39,5 @@ Q: Hvorfor får jeg ikke joinet datasett som er åpent tilgjengelig?
 A: Du kan det! Men du må gjøre det med `SQL query`. Et alternativ er å joine tabeller i BigQuery, lage et nytt datasett og legge dette til i Metabase.
 
 Q: Kan jeg koble sammen datasett som er tilgangsbegrenset?  
-A: Slik Metabase er satt opp, er det en unik service-bruker som leser hvert datasett. 
+A: Slik Metabase er satt opp, er det en unik service-bruker per tilgangsbegrensede datasett. 
 Det er mulig å gjøre dette i metabase ved å be datasetteier om å gi tilgang til service-account, men vi anbefaler å lage et view i BigQuery. 
