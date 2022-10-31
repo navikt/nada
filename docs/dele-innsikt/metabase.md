@@ -13,7 +13,11 @@ Velg "Logg inn med Google" og bruk din @nav.no-epostadresse (forutsetter at du h
 
 ## Finne dataprodukter i metabase
 
-Dataprodukter som er åpne for alle i NAV synkroniseres automatisk til metabase og åpnes for alle brukere. For alle andre dataprodukter må eier velge `Legg til i metabase` for at det skal dukke opp. I dette tilfellet vil kun de som eksplisitt har bedt om tilgang til dataproduktet via sin personlige bruker ha tilgang til databasen i metabase. Det vil også opprettes en tilgangsstyrt mappe med samme navn som dataproduktet. Innholdet i spørsmål og dashboards som ligger i denne mappen vil bare være synlig for de som har tilgang til mappen. 
+Dataprodukter som er åpne for alle i NAV synkroniseres automatisk til metabase og åpnes for alle brukere. 
+For alle andre dataprodukter må eier velge `Legg til i metabase` for at det skal dukke opp. 
+I dette tilfellet vil kun de som eksplisitt har bedt om tilgang til dataproduktet via sin personlige bruker ha tilgang til databasen i metabase. 
+Det vil også opprettes en tilgangsstyrt mappe med samme navn som dataproduktet. 
+Innholdet i spørsmål og dashboards som ligger i denne mappen vil bare være synlig for de som har tilgang til mappen. 
 
 ## Hvor skal spørsmål og dashboards lagres?
 
