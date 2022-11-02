@@ -1,4 +1,12 @@
 
+## Autentisering med service account
+En fersk notebook i knada-gcp vil automatisk autentisere seg mot gcp-tjenester med service accountens credentials. Det betyr at det er service accounten som trenger tilgang til eksempelvis en bigquery-tabell, ikke din personlige bruker. Hvis du på et tidspunkt har logget på gcp med din personlige bruker fra notebooken (for eksempel med `gcloud auth application-default login`), må du bytte tilbake til service accounten. Det gjør du slik:
+
+1. Sjekk hvilken bruker som er aktiv med `gcloud auth list`.
+2. Hvis det er din personlige, velg service accounten ved å kjøre `gcloud config set account <eposten til service accounten din>`.
+3. Fjern tilgangen til din personlige bruker ved å kjøre `gcloud auth application-default revoke --account <din personlige nav-epost>`.
+
+
 ## Autentisering med brukers credentials på serveren
 
 1. I Jupyterlab, åpne en terminal
