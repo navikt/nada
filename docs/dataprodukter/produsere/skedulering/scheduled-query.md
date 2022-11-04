@@ -4,6 +4,12 @@
 ![Konseptuell fremstilling av federated queries med schedule](federated-query.png)
 
 ## Lag en ny PostgreSQL bruker og gi den tilgang til databasen
+Lesebrukeren som brukes av federated query kan enten opprettes med [nais cli](#nais-cli) eller [manuelt](#manuelt)
+
+### nais cli
+Kommandolinjeverktøyet til nais har en egen kommando for tilgang til [postgres](https://docs.nais.io/cli/commands/postgres/#postgres-command) databaser på gcp. Denne har subkommandoen [users add](https://docs.nais.io/cli/commands/postgres/#users-add) for å opprette en bruker med `select` privilegier til public schema i databasen.
+
+### Manuelt
 Følg instruksjonene i [NAIS-dokumentasjonen](https://docs.nais.io/persistence/postgres/#personal-database-access) for å koble til databasen
 Når du er inne i databasen, oppretter du og gir tilgang til databasebrukeren med kommandoene nedenfor.
 ```sql
