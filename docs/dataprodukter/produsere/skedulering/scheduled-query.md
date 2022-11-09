@@ -34,7 +34,7 @@ Følg [Google sin guide](https://cloud.google.com/bigquery/docs/datasets)
 Foreløpig kan vi ikke gjenbruke datasett som har blitt opprettet av en nais-applikasjon, da denne overstyrer tilgangene vi oppretter senere i denne guiden.
 
 ## Lag en Google serviceaccount for federated query
-Følg [Google sin guide](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
+Følg [Google sin guide](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
 Gi serviceaccounten følgende tilganger på prosjektnivå:
 
 - BigQuery Connection User
@@ -68,6 +68,8 @@ FROM dataproducts,constants
 
 ## Kjør spørring på tidsintervall
 For å kjøre spørringen på intervall, så kan du i Query Explorer i Cloud Console velge å definere en "Schedule".
+
+For å få lov til å sette opp eller oppdatere en schedule må din personlige bruker ha noen rettigheter også. Disse er for det meste dekket av Bigquery Admin, men hvis du setter opp jobben med en servicebruker (anbefalt) må du også ha tilgang til denne, for eksempel via en midlertidig Service Account Admin.
 
 Klikk "Schedule" og "Create new schedule"
 
