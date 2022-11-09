@@ -3,15 +3,34 @@ title: Juridiske spilleregler
 ---
 De juridiske spillereglene er laget for å hjelpe teamene å gjøre rett hva gjelder juss.
 Dette er ikke en uttømmende liste over regler.
-Istedet bør dette ses på som et ressurssenter som veileder og svarer ut spørsmål som typisk dukker opp på markedsplassen.
+Istedet bør dette ses på som et ressurssenter som veileder og svarer ut spørsmål som typisk dukker opp ved deling og bruk av data.
 
-
-## Personvern
 Det er et stort potensiale i å utforske og bruke data til å svare på problemstillinger i NAV.
-Disse dataene inneholder ofte personopplysninger med ulik grad av sensitivitet, og må behandles deretter.
+Disse dataene inneholder ofte personopplysninger med ulik grad av sensitivitet.
 Det er derfor  etablert prinsipper og regler som hjelper oss å få verdi ut av dataene samtidig som verdien i personvernet ivaretas.
 
-### Hvordan er ansvarsdelingen mellom produsent og konsument?
+## Hva må jeg som **produsent** dokumentere om dataene jeg behandler?
+Produksjon av data dekker innlesing, bearbeiding og lagring av data på `BigQuery` *før* eventuell deling utenfor teamet.
+Denne behandlingen av personopplysninger dokumenteres sammen med eksisterende registrering i `behandlingskatalogen` knyttet til systemet der data oppstår.
+I beskrivelsen av behandlingen må det fremkomme at data registreres på markedsplassen og til hvilket formål.
+Om behandlingsgrunnlaget er forskjellig fra opprinnelig registrering, må dette oppgis.
+Informasjon om hvilke opplysningstyper som inngår i datasettet oppgis ved registrering på markedsplassen.
+
+NAV har ikke en egen hjemmel for å bruke data til innsiktsarbeid.
+Formålet med delingen av data er tjenesteutvikling og/eller statistikkproduksjon.
+
+## Er det begrensninger på hvilke data vi kan flytte til sky?
+Nei.
+
+## Kan jeg dele data med fødselsnummer?
+Ja, men det må foreligge et behandlingsgrunnlag (se under).
+Det er viktig at data beskrives slik at konsumenter vet hva de forholder seg til.
+
+## Hvordan fjerner jeg personopplysninger?
+Det er ulike teknikker for anonymisering av data.
+Ta kontakt med [`Team Ansvarlig Data og AI (TADA)`](https://nav-it.slack.com/archives/C03CXENSLMV) for bistand.
+
+## Hvordan er ansvarsdelingen mellom produsent og konsument ved deling av data?
 En typisk situasjon er slik: Team (A) har behov for tilgang til produksjonsdata med personopplysninger fra annet team (B)
 
 1. Det forutsettes at team A har gjennomført grunnleggende personvernanalyse (GPA) og evt. personvernkonsekvensvurdering (PVK), hvor de blant annet dokumenterer hjemmel og formål med analysen.
@@ -23,5 +42,5 @@ En viktig presisering er at Team B kun skal verfisere at GPA/PVK samt behandling
 Dersom konsumenten skal koble datasett med personopplysninger sammen med andre kilder, må konsumenten være spesielt oppmerksom på personvernrisikoen.
 Produsenten er ikke forventet å kunne hensynta dette ved vurdering av tilgangsforespørsel.
 
-### Retningslinjer ifm Schrems II-dommen
+## Retningslinjer ifm Schrems II-dommen
 Disse finnes [her](https://nav-it.slack.com/archives/CGRMQHT50/p1650979093246669?thread_ts=1648108682.804329&cid=CGRMQHT50).
