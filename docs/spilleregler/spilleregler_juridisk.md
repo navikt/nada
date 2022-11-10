@@ -27,8 +27,9 @@ Ja, men det må foreligge et behandlingsgrunnlag (se under).
 Det er viktig at data beskrives slik at konsumenter vet hva de forholder seg til.
 
 ## Hvordan fjerner jeg personopplysninger?
-Det er ulike teknikker for anonymisering av data.
+Det finnes teknikker for anonymisering av data.
 Ta kontakt med [`Team Ansvarlig Data og AI (TADA)`](https://nav-it.slack.com/archives/C03CXENSLMV) for bistand.
+Metoden for anonymisering dokumenteres ved registrering av datasett.
 
 ## Hvordan er ansvarsdelingen mellom produsent og konsument ved deling av data?
 En typisk situasjon er slik: Team (A) har behov for tilgang til produksjonsdata med personopplysninger fra annet team (B)
