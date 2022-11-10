@@ -13,11 +13,9 @@ Det er derfor  etablert prinsipper og regler som hjelper oss å få verdi ut av 
 Produksjon av data dekker innlesing, bearbeiding og lagring av data på `BigQuery` *før* eventuell deling utenfor teamet.
 Denne behandlingen av personopplysninger dokumenteres sammen med eksisterende registrering i `behandlingskatalogen` knyttet til systemet der data oppstår.
 I beskrivelsen av behandlingen må det fremkomme at data registreres på markedsplassen og til hvilket formål.
+Formålet med delingen av data kan her være tjenesteutvikling og/eller statistikkproduksjon.
 Om behandlingsgrunnlaget er forskjellig fra opprinnelig registrering, må dette oppgis.
 Informasjon om hvilke opplysningstyper som inngår i datasettet oppgis ved registrering på markedsplassen.
-
-NAV har ikke en egen hjemmel for å bruke data til innsiktsarbeid.
-Formålet med delingen av data er tjenesteutvikling og/eller statistikkproduksjon.
 
 ## Er det begrensninger på hvilke data vi kan flytte til sky?
 Nei.
