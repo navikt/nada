@@ -70,6 +70,7 @@ nav:
       - Konsumere:
         - Finne og forstå: dataprodukter/konsumere/finne.md #finne-data/navdata.md
         - Få tilgang: dataprodukter/konsumere/tilgang.md
+        - Lese: dataprodukter/konsumere/lese.md
       - Veiledninger:
           - ETL på NAIS: guider/etl-paa-nais.md
           - Laste opp fil: dataprodukter/produsere/laste_data.md
