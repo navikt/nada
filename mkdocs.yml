@@ -80,6 +80,7 @@ nav:
           - Komme i gang: prosessere-data/notebook_projects.md
           - Generelle veiledninger: prosessere-data/notebook_general.md
           - Spesifikt for kilder on-prem: prosessere-data/notebook_knada.md
+          - Knada GKE: prosessere-data/knada_gke.md
       - Datafortelling: dele-innsikt/datafortelling.md
       - Metabase: dele-innsikt/metabase.md
     - Legacy:
