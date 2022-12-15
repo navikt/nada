@@ -1,9 +1,14 @@
-# Website
+# NADA dokumentasjon
+
+NADA sin dokumentasjon om [Markedsplassen](https://data.intern.nav.no) og [Knada](knorten.knada.io).
+
+Tilgjengelig på [docs.knada.io](https://docs.knada.io).
+
+## Development
 
 This website is built using [MkDocs](https://www.mkdocs.org/).
 
-### Installation
-
+### Install
 ```
 $ pip install mkdocs mkdocs-pymdownx-material-extras mkdocs-build-plantuml-plugin
 ```
@@ -26,5 +31,4 @@ This command generates static content into the `site` directory and can be serve
 
 ### Deployment
 
-Via github action
-
+Pull request via github action.
