@@ -10,6 +10,8 @@ I tillegg vil plattformen gi innsikt i hvordan data brukes på et mer overordnet
 Kjernen i NADA er [datamarkedsplassen](https://data.intern.nav.no), hvor produsenter kan registrere og konsumenter kan finne, forstå og be om tilgang til dataprodukter.
 Plattformen har også støtte for å bygge, produsere og forvalte dataprodukter samt å analysere og dele innsikt i data. 
 
+<object data="flyt-markedsplassen.svg" type="image/svg+xml"></object>
+
 ### Hva NADA **ikke** er
 - NADA-plattformen eier ikke andres data. Produsentene på plattformen eier selv data.
 - Teamet som bygger NADA er et plattform-team -- ikke et "enabling-team"
