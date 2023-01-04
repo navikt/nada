@@ -15,6 +15,20 @@ theme:
 extra:
   search:
     language: 'no'
+  analytics:
+    feedback:
+        title: Fikk du svar på det du lurte på?
+        ratings:
+            - icon: material/thumb-down-outline
+              name: Nei
+              data: 0
+              note: >-
+                Takk! Kontakt oss gjerne på <a href="https://nav-it.slack.com/archives/CGRMQHT50">#nada på Slack</a> med tilbakemeldinger eller spørsmål.
+            - icon: material/thumb-up-outline
+              name: Ja
+              data: 1
+              note: >-
+                Takk for tilbakemeldingen!
 extra_javascript:
   - amplitude_javascript/events.js
 plugins:
