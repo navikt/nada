@@ -12,7 +12,7 @@ Nyttige lenker:
 - ["Ordbok": Norsk Senter for Forskningsdata](https://www.nsd.no/personverntjenester/oppslagsverk-for-personvern-i-forskning/personvernordbok/)
 
 ## Avgjørelse
-Når støtten er laget på nada-plattformen skal produsenter oppgi om dataproduktet inneholder:
+Når støtten er laget på NADA-plattformen skal produsenter oppgi om dataproduktet inneholder:
 
 - ...taushetsbelagt informasjon
 - ...felter som inneholder direkte identifiserende personopplysninger. Aktuelle felter skal merkes

@@ -1,6 +1,6 @@
 # NADA dokumentasjon
 
-NADA sin dokumentasjon om [Markedsplassen](https://data.intern.nav.no) og [Knada](knorten.knada.io).
+NADA sin dokumentasjon om [Markedsplassen](https://data.intern.nav.no) og [KNADA](knorten.knada.io).
 
 Tilgjengelig på [docs.knada.io](https://docs.knada.io).
 
