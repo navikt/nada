@@ -92,7 +92,7 @@
             </g>
             <g id="dataprodukt" class="subgraph" transform="translate(0, 20)">
                 <rect width="190" height="200"></rect>
-                <text x="95" dominant-baseline="text-before-edge" text-anchor="middle"><a href="/dataprodukter/dataprodukt" target="_top">Dataprodukt</a></text>
+                <text x="95" dominant-baseline="text-before-edge" text-anchor="middle"><a href="/dataprodukter/definisjon/" target="_top">Dataprodukt</a></text>
                  <g transform="translate(50,25)">
                     <rect class="node" width="90" height="30"></rect>
                     <text x="45" y="20" dominant-baseline="center" text-anchor="middle"><a href="/dataprodukter/konsumere/finne/" target="_top">Beskrivelse</a></text>
@@ -103,7 +103,7 @@
                 </g>
                 <g id="datasett" class="subgraph" transform="translate(5, 65)">
                     <rect width="180" height="95"></rect>
-                    <text x="90" dominant-baseline="text-before-edge" text-anchor="middle"><a href="/dataprodukter/dataprodukt#hva-er-et-datasett" target="_top">Datasett 1</a></text>
+                    <text x="90" dominant-baseline="text-before-edge" text-anchor="middle"><a href="/dataprodukter/definisjon/" target="_top">Datasett 1</a></text>
                     <g id="bq" transform="translate(5,25)">
                         <path class="node" d="M 0,9.651277473876071 a 39.30000305175781,9.651277473876071 0,0,0 78.60000610351562 0 a 39.30000305175781,9.651277473876071 0,0,0 -78.60000610351562 0 l 0,43.65127747387607 a 39.30000305175781,9.651277473876071 0,0,0 78.60000610351562 0 l 0,-43.65127747387607"></path>
                         <text x="40" y="40" dominant-baseline="center" text-anchor="middle">BigQuery</text>

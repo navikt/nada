@@ -13,10 +13,10 @@ På markedsplassen kan man legge ut egne data og finne andres dataprodukter, dat
 ### Kontakt oss
 
 * [Slack (#nada)](https://nav-it.slack.com/archives/CGRMQHT50)
-* Brukerforum (annenhver torsdag i partallsuker, kl. 0900 på Zoom.)
+* Brukerforum (annen hver torsdag i partallsuker, kl. 0900)
 
 ### Behandling av NAV-ansattes personopplysninger på plattformen
-Du kan [lese om behandlingene vi gjør i behandlingskatalogen](https://behandlingskatalog.nais.adeo.no/process/team/3f85cdce-1257-4862-8ce3-3aec9b576df0/18089de7-829d-47e3-868b-53d4e5f251da).
+Dette er dokumentert i [behandlingskatalogen](https://behandlingskatalog.nais.adeo.no/process/team/3f85cdce-1257-4862-8ce3-3aec9b576df0/18089de7-829d-47e3-868b-53d4e5f251da).
 
 
 
