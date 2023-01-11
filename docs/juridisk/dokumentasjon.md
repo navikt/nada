@@ -5,7 +5,8 @@ For å kunne behandle data må du ha
 
 - en behandling i [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no)
 - GPA eller tatt stilling til personvernskravene på [etterlevelse.intern.nav.no](https://etterlevelse.intern.nav.no/)
-    - Dersom GPA mener at det kreves: En PVK
+    - Dersom behandling av personopplysninger vil medføre høy risiko, kreves det PVK.
+    [Les om kravet på etterlevelse.intern.nav.no](https://etterlevelse.intern.nav.no/krav/114/1).
 
 ## Det NADA har gjort allerede :)
 
