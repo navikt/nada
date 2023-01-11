@@ -62,13 +62,26 @@ markdown_extensions:
 nav:
   - Om NADA: index.md
   - Juridisk:
-    - Spilleregler: spilleregler/spilleregler.md
-    - Hvem lager spilleregler?: spilleregler/hvem.md
+    - Hva trenger jeg av dokumentasjon?: juridisk/dokumentasjon.md
+    - Spilleregler: juridisk/spilleregler.md
+    - Hvem lager spilleregler?: juridisk/hvem.md
   - Dataprodukter:
     - Hva er et dataprodukt?: dataprodukter/dataprodukt.md
+    - Kom i gang: dataprodukter/index.md
     - Få tilgang til databaser: dataprodukter/dele/få-tilgang.md
+    - Føre over data: dataprodukter/dele/dataoverføring.md
+    - Legg til et dataprodukt: dataprodukter/dele/dataprodukt.md
+    - Tilgangsstyring: dataprodukter/tilgangsstyring.md
+  - Analyse:
+    - Metabase: analyse/metabase.md 
+    - Notebook: analyse/notebook.md
+    - Datafortellinger: analyse/datafortellinger.md
   - Vår visjon:
     - Data mesh: visjon/data_mesh.md
+  - Legacy:
+    - KNADA on-prem: legacy/knada-onprem.md
+    - Datapakker: legacy/datapakker.md
+
   # - Hva er NADA?: index.md
   # - Prinsipper og spilleregler:
   #   - Prinsipper for data: intro/ny_retning.md
