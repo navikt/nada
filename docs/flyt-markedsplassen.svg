@@ -72,15 +72,15 @@
             <text x="90" dominant-baseline="text-before-edge" text-anchor="middle">Analyse</text>
             <g transform="translate(5,25)">
                 <rect class="node" width="160" height="50"></rect>
-                <text x="80" y="30" dominant-baseline="center" text-anchor="middle"><a href="/dele-innsikt/metabase/" target="_top">Metabase-dashboard</a></text>
+                <text x="80" y="30" dominant-baseline="center" text-anchor="middle"><a href="/analyse/metabase/" target="_top">Metabase-dashboard</a></text>
             </g>
             <g transform="translate(5,85)">
                 <rect class="node" width="80" height="50"></rect>
-                <text x="40" y="30" dominant-baseline="center" text-anchor="middle"><a href="/prosessere-data/notebook_intro/" target="_top">Notebook</a></text>
+                <text x="40" y="30" dominant-baseline="center" text-anchor="middle"><a href="/analyse/notebook/" target="_top">Notebook</a></text>
             </g>
             <g transform="translate(5,145)">
                 <rect class="node" width="120" height="50"></rect>
-                <text x="60" y="30" dominant-baseline="center" text-anchor="middle"><a href="/dele-innsikt/datafortelling/" target="_top">Datafortellinger</a></text>
+                <text x="60" y="30" dominant-baseline="center" text-anchor="middle"><a href="/analyse/datafortellinger/" target="_top">Datafortellinger</a></text>
             </g>
             <path marker-end="url(#end)" class="edge" d="M85 110 C 175 110, 175 170, 128 170"></path>
         </g>
@@ -95,7 +95,7 @@
                 <text x="95" dominant-baseline="text-before-edge" text-anchor="middle"><a href="/dataprodukter/dataprodukt" target="_top">Dataprodukt</a></text>
                  <g transform="translate(50,25)">
                     <rect class="node" width="90" height="30"></rect>
-                    <text x="45" y="20" dominant-baseline="center" text-anchor="middle"><a href="/dataprodukter/konsumere/finne/" target="_top">Beskrivelse</a></text>
+                    <text x="45" y="20" dominant-baseline="center" text-anchor="middle">Beskrivelse</text>
                 </g>
                 <g transform="translate(5, 165)">
                     <rect class="node" width="180" height="30"></rect>
@@ -110,11 +110,11 @@
                     </g>
                     <g transform="translate(95,25)">
                         <rect class="node" width="80" height="30"></rect>
-                        <text x="40" y="20" dominant-baseline="center" text-anchor="middle"><a href="/dataprodukter/konsumere/finne/" target="_top">Metadata</a></text>
+                        <text x="40" y="20" dominant-baseline="center" text-anchor="middle">Metadata</text>
                     </g>
                     <g transform="translate(95,60)">
                         <rect class="node" width="80" height="30"></rect>
-                        <text x="40" y="20" dominant-baseline="center" text-anchor="middle"><a href="/dataprodukter/konsumere/tilgang/" target="_top">Tilganger</a></text>
+                        <text x="40" y="20" dominant-baseline="center" text-anchor="middle">Tilganger</text>
                     </g>
                 </g>
                 <g>

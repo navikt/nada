@@ -1,12 +1,10 @@
----
-title: Hva er NADA?
----
+NADA er et plattformteam med ansvar for KNADA og [markedsplassen](https://data.intern.nav.no).
 
-Kjernen i NADA er KNADA og [datamarkedsplassen](https://data.intern.nav.no).
+KNADA er en plattform som tilbyr verktøy for å hente ut data og dele data via BigQuery tabeller.
+Dataene kan brukes til analyse i Notebook, Metabase og datafortellinger.
 
-Dataplattformen tilbyr verktøy for å hente ut data og dele BigQuery tabeller. Det støtter Jupyter Notebook og uthenting fra postgres via SQL.
-
-På markedsplassen kan man legge ut egne data og finne andres dataprodukter, datasett og datafortellinger.
+På markedsplassen kan man legge ut egne og finne andres dataprodukter, datasett og datafortellinger.
+Det er også mulig å integrere dashboard fra Metabase på markedsplassen.
 
 <object data="flyt-markedsplassen.svg" type="image/svg+xml"></object>
 
@@ -14,12 +12,3 @@ På markedsplassen kan man legge ut egne data og finne andres dataprodukter, dat
 
 * [Slack (#nada)](https://nav-it.slack.com/archives/CGRMQHT50)
 * Brukerforum (annenhver torsdag i partallsuker, kl. 0900 på Zoom.)
-
-### Behandling av NAV-ansattes personopplysninger på plattformen
-Du kan [lese om behandlingene vi gjør i behandlingskatalogen](https://behandlingskatalog.nais.adeo.no/process/team/3f85cdce-1257-4862-8ce3-3aec9b576df0/18089de7-829d-47e3-868b-53d4e5f251da).
-
-
-
-
-
-
