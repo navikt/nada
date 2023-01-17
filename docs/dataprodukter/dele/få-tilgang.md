@@ -19,10 +19,12 @@ CREATE USER <brukernavn> WITH ENCRYPTED PASSWORD '<passord>';
 GRANT CONNECT ON DATABASE <databasenavn> TO <brukernavn>;
 GRANT USAGE ON SCHEMA public TO <brukernavn>;
 ```
+
 Videre kan du gi brukeren rettigheter til å lese alle tabeller:
 ```plpgsql
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO <brukernavn>;
 ```
+
 eller utvalgte tabeller:
 ```plpgsql
 GRANT SELECT ON <tabellnavn> TO <brukernavn>;
