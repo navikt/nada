@@ -73,14 +73,18 @@ nav:
     - Legg til et dataprodukt: dataprodukter/dele/dataprodukt.md
     - Tilgangsstyring: dataprodukter/tilgangsstyring.md
   - Analyse:
-    - Metabase: analyse/metabase.md 
-    - Notebook: analyse/notebook.md
+    - Kom i gang: analyse/komigang.md
+    - Knorten: analyse/knorten.md
+    - Notebook:
+      - Google managed notebooks: analyse/notebook/managed-notebook.md
+      - Knada notebooks: analyse/notebook/knada-notebook.md
+    - Airflow: 
+      - Google managed airflow (cloud composer): analyse/airflow/managed-airflow.md
+      - Knada airflow: analyse/airflow/knada-airflow.md
+    - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
   - Vår visjon:
     - Data mesh: visjon/data_mesh.md
-  - Legacy:
-    - KNADA on-prem: legacy/knada-onprem.md
-    - Datapakker: legacy/datapakker.md
 
   # - Hva er NADA?: index.md
   # - Prinsipper og spilleregler:
