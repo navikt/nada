@@ -1,12 +1,17 @@
 
 ## Det du må gjøre
 
+Se på, lagre, flytte, vaske, telle - nesten alt du kan gjøre med en personopplysning er å regne som en behandling. All behandling er ulovlig med mindre du har et behandlingsgrunnlag.
+
+All behandling av personopplysninger krever et såkalt rettslig grunnlag (aka Behandlingsgrunnlag) for å være lovlig.
 For å kunne behandle data må du ha
 
 - en behandling i [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no)
 - GPA eller tatt stilling til personvernskravene på [etterlevelse.intern.nav.no](https://etterlevelse.intern.nav.no/)
     - Dersom behandling av personopplysninger vil medføre høy risiko, kreves det PVK.
     [Les om kravet på etterlevelse.intern.nav.no](https://etterlevelse.intern.nav.no/krav/114/1).
+
+Du kan også [lese mer om behandlinger i playbook for ansvarlig datascience](https://laughing-guacamole-242227e5.pages.github.io/notebooks/p2_Privacy_IntroGPA.html).
 
 ## Det NADA har gjort allerede :)
 
