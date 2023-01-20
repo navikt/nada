@@ -11,10 +11,12 @@ Det er to ulike typer GCP prosjekt som kan brukes dersom en ønsker å jobbe i [
 - [Team-prosjekt server](#team-prosjekt-server): Dette er notebooks som kjøres i teamets GCP prosjekt for formål hvor man _**ikke**_ har behov for å nå onprem kilder
 - [Knada-gcp server](#knada-gcp-server): Dette er notebooks som kjøres i `knada-gcp` prosjektet for formål der det er behov for tilgang til kilder som ligger onprem
 
-Oppskriftene under (for [Team-prosjekt server](#team-prosjekt-server) og [Knada-gcp server](#knada-gcp-managed-server)) er _forslag til innstillinger_ som vil passe for de fleste brukere. Der hvor det ikke eksplisitt nevnes at man skal sette noe kan man la default verdien stå. Det er mange ulike konfigurasjonsmuligheter for disse notebook serverene og man står fritt til å sette den opp med de innstillingene man ønsker selv. Men merk særlig det som presiseres under [Maskintype og GPU](#maskintype-og-gpu). Det er også kostnadsbesparende å [skru av](#stoppe-en-maskin) disse notebook serveren på slutten av arbeidsdagen med mindre man trenger å ha noe kjørende der utenfor arbeidstid.
+Oppskriftene under (for [Team-prosjekt server](#team-prosjekt-server) og [Knada-gcp server](#knada-gcp-managed-server)) er _forslag til innstillinger_ som vil passe for de fleste brukere. Der hvor det ikke eksplisitt nevnes at man skal sette noe kan man la default verdien stå. Det er mange ulike konfigurasjonsmuligheter for disse notebook serverene og man står fritt til å sette den opp med de innstillingene man ønsker selv. Men merk særlig det som presiseres under [Maskintype og GPU](#maskintype-og-gpu). Det er også kostnadsbesparende å [skru av](#stoppe-en-maskin) notebook serveren på slutten av arbeidsdagen med mindre man trenger å ha noe kjørende der utenfor arbeidstid.
 
 ## Team-prosjekt server
-Dette vil være en notebook server som settes opp i GCP prosjektet til teamet ditt. 
+Dette vil være en notebook server som settes opp i GCP prosjektet til teamet ditt.
+
+Man kan til enhver tid se hvilke prosjekter man er medlem av ved å gå til [GCP Billing](https://console.cloud.google.com/billing/projects?project=&folder=&organizationId=139592330668).
 
 #### Oppsett
 1. Velg riktig prosjekt for teamet ditt i [GCP Cloud console](https://console.cloud.google.com). Dette velger du i nedtrekksmenyen øverst til venstre.

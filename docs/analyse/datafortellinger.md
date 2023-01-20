@@ -47,8 +47,9 @@ Publisering av en datafortelling gjøres fra kladd-visningen i datamarkedsplasse
 2. Trykk lagre
 ![kladd](datafortelling-utkast.png)
 3. Velg hvilket av dine team som skal eie datafortellingen
+4. Velg om du skal lage en ny eller overskrive en eksisterende datastory
 
-## Oppdatere eksisterende datafortelling
+## Programmatisk oppdatere eksisterende datafortelling
 For å oppdatere en publisert datafortelling programmatisk må man autentisere seg med et token. 
 Dette tokenet blir generert når man publiserer en kladd og kan hentes ut ved å gå til den publiserte datafortellingen og fra [kebab menyen](https://uxplanet.org/choose-correct-menu-icon-for-your-navigation-7ffc22df80ac#160b) velge `vis token`.
 Når du har fått hentet ut oppdateringstokenet kan du erstatte siste kodelinje i eksempelet over (dvs. `ds.publish()`) med en metode som i stedet oppdaterer datafortellingen.
