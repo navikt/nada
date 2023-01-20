@@ -7,43 +7,48 @@ Det er to ulike typer GCP prosjekt som kan brukes dersom en ønsker å jobbe i [
 - [Team-prosjekt server](#team-prosjekt-server): Dette er notebooks som kjøres i teamets GCP prosjekt for formål hvor man _**ikke**_ har behov for å nå onprem kilder
 - [Knada-gcp server](#knada-gcp-server): Dette er notebooks som kjøres i `knada-gcp` prosjektet for formål der det er behov for tilgang til kilder som ligger onprem
 
+Oppskriftene under (for [Team-prosjekt server](#team-prosjekt-server) og [Knada-gcp server](#knada-gcp-server)) er forslag til innstillinger som vil passe for de fleste brukere. Der hvor det ikke eksplisitt nevnes at man skal sette noe kan man la default verdien stå. Det er mange ulike konfigurasjonsmuligheter for disse notebook serverene og man står fritt til å sette den opp med de innstillingene man ønsker selv. Men merk særlig det som presiseres under [Maskintype og GPU](#maskintype-og-gpu). Det er også fornuftig å [skru av](#stoppe-en-maskin) disse notebook serveren på slutten av arbeidsdagen med mindre man har noe kjørende der utenfor arbeidstid.
 
 ## Team-prosjekt server
+Dette vil være en notebook server som settes opp i GCP prosjektet til teamet ditt. 
 
-### Oppsett
-1. Gå til [Vertex-AI/Workbench](https://console.cloud.google.com/vertex-ai/workbench/instances)
-2. Velg `New Notebook` og velg `Customize`
-3. Fyll inn alle obligatoriske felter:
+#### Oppsett
+1. Velg riktig prosjekt for teamet ditt i [GCP Cloud console](https://console.cloud.google.com). Dette velger du i nedtrekksmenyen øverst til venstre.
+2. Gå så til [Vertex-AI/Workbench](https://console.cloud.google.com/vertex-ai/workbench/instances)
+3. Velg `New Notebook` og velg `Customize`
+4. Under `Properties`spesifiser følgende:
     - Notebook name - Navn på kladdeboka
-    - Region - Velg en av de europeiske
-    - Zone - En sone innenfor regionen du valgte
-    - Environment - Velg et miljø som passer ditt behov/språk
-    - Machine type og GPU - Hvor kraftig maskin du trenger
-4. Ekspander `Permission`
+    - Region - europe-west1 (Belgium)
+    - Zone - En sone innenfor regionen
+5. Under `Environment` spesifiser følgende
+    - Environment - med mindre man har spesielle behov kan man her velge et av python miljøene
+5. Ekspander `Permission`
     - Under `Access to JupyterLab` velg
         - `Single user only` hvis det kun er du som skal ha tilgang til hubben
         - `Service account` hvis alle med tilgang til gcp prosjektet skal ha tilgang
-5. Trykk `Create`
-6. Når maskinen er klar til bruk kan du trykke på `Open JupyterLab`
+6. Trykk `Create`
+7. Når maskinen er ferdig laget, kan du finne og trykke på `Open Jupyterlab` for din notebook server fra [Workbench](https://console.cloud.google.com/vertex-ai/workbench/user-managed) for å få tilgang.
 
 
 ## Knada-gcp server
+Dette vil være en notebook server som settes opp i `knada-gcp` prosjektet. Det er et GCP prosjekt satt opp spesifikt for at man skal _**kunne nå onprem kilder**_ fra analyseverktøy på GCP. Dersom man ikke har behov for det anbefales det å heller sette opp en [Team-prosjekt server](#team-prosjekt-server).
+
+#### Oppsett
 1. Ta kontakt med oss i [#nada](https://nav-it.slack.com/archives/CGRMQHT50) for å få tilgang til dette prosjektet.
-2. Gå til [knada-gcp Google console](https://console.cloud.google.com/vertex-ai/workbench/list/instances?orgonly=true&project=knada-gcp&supportedpurview=organizationId)
+2. Gå til `Vertex AI` i [knada-gcp i Google console](https://console.cloud.google.com/vertex-ai/workbench/list/instances?orgonly=true&project=knada-gcp&supportedpurview=organizationId)
 3. Velg `New Notebook` og velg `Customize`
-4. Fyll inn alle obligatoriske felter:
-   - Notebook name - Navn på kladdeboka
-   - Region - europe-west1 (Belgium)
-   - Zone - En sone innenfor regionen
-   - Environment - Velg et miljø som passer ditt behov/språk
-   - Machine type og GPU - Hvor kraftig maskin du trenger
-5. Ekspander `Networking`
-   - Under `External IP` velg none
-6. Ekspander `Permission`
-   - Under `Identity and API access`
-      - Avhuk `Use Compute Engine default service account` og lim inn service accounten knyttet til din bruker, se [her](../notebook_knada/#personlig-service-account-og-secret-manager-hemmelighet-for-brukerteam) for informasjon om hvor denne finnes
-7. Trykk `Create`
-8. Når maskinen er ferdig laget, kan du trykke på `Open jupyterlab` for å få tilgang.
+4. Under `Properties`spesifiser følgende:
+    - Notebook name - Navn på kladdeboka
+    - Region - europe-west1 (Belgium)
+    - Zone - En sone innenfor regionen
+5. Under `Environment` spesifiser følgende
+    - Environment - med mindre man har spesielle behov kan man her velge et av python miljøene
+5. Under `Networking`
+   - Fjern avhukingen av `Enable external IP address`
+6. Under `Permission and security`
+    - Fjern avhukingen `Use Compute Engine default service account` og lim inn service accounten knyttet til din bruker, se [her](../notebook_knada/#personlig-service-account-og-secret-manager-hemmelighet-for-brukerteam) for informasjon om hvor denne finnes
+7. Trykk `Create` nederst
+8. Når maskinen er ferdig laget, kan du finne og trykke på `Open Jupyterlab` for din notebook server fra [Workbench](https://console.cloud.google.com/vertex-ai/workbench/user-managed?project=knada-gcp) for å få tilgang.
 
 
 ## Maskintype og GPU
