@@ -2,6 +2,10 @@
 title: Google managed notebooks
 ---
 
+> Vertex AI Workbench is a Jupyter notebook-based development environment for the entire data science workflow. You can interact with Vertex AI and other Google Cloud services from within a Vertex AI Workbench instance's Jupyter notebook.
+
+Du finner den offisielle dokumentasjonen for Managed notebook servere hos [cloud.google.com](https://cloud.google.com/vertex-ai/docs/workbench/introduction).
+
 Det er to ulike typer GCP prosjekt som kan brukes dersom en ønsker å jobbe i [Google managed notebook servere](https://cloud.google.com/vertex-ai/docs/workbench/introduction):
 
 - [Team-prosjekt server](#team-prosjekt-server): Dette er notebooks som kjøres i teamets GCP prosjekt for formål hvor man _**ikke**_ har behov for å nå onprem kilder
