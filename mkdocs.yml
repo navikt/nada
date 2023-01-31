@@ -74,10 +74,10 @@ nav:
     - Tilgangsstyring: dataprodukter/tilgangsstyring.md
   - Analyse:
     - Kom i gang: analyse/komigang.md
-    - Knorten: analyse/knorten.md
     - Notebook:
       - Google managed notebooks: analyse/notebook/managed-notebook.md
       - Knada notebooks: analyse/notebook/knada-notebook.md
+      - Generelle råd: analyse/notebook/generelt.md
     - Airflow: 
       - Google managed airflow (cloud composer): analyse/airflow/managed-airflow.md
       - Knada airflow: analyse/airflow/knada-airflow.md

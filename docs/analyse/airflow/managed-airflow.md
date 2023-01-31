@@ -94,38 +94,3 @@ som igjen synkroniseres med Cloud Composer instansen.
 ## Legg til DAGs
 Nå er man klar til å begynne å legge til DAGs. Eksempler på dags finnes i repoet 
 [navikt/composer-dags](https://github.com/navikt/composer-dags)
-
-## Synkronisere requirements.txt i repo mot cloud composer miljø
-1. Legg en `requirements.txt` fil i repoet
-2. Lag filen `.github/workflows/update-requirements.yaml` med innhold som følger
-
-````
-name: Update-composer-dependencies
-
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'requirements.txt'
-      - '.github/workflows/update-requirements.yaml'
-
-jobs:
-  update-composer-requirements:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      with:
-        service_account_key: ${{ secrets.GCS_CREDS }}
-        project_id: ${{ secrets.PROJECT_NAME }}
-        export_default_credentials: true
-    - name: Update requirements.txt
-      continue-on-error: true
-      run: |
-        gcloud composer environments update COMPOSER_INSTANS --update-pypi-packages-from-file requirements.txt --location LOCATION --project ${GCLOUD_PROJECT}
-````
-
-Erstatt `COMPOSER_INSTANS` med navnet på composer instansen din og `LOCATION` med 
-navnet på lokasjonen composeren kjører. Begge disse verdiene finner du 
-[her](https://console.cloud.google.com/composer/environments).
