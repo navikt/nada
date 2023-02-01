@@ -42,10 +42,14 @@ Det er også kostnadsbesparende å [skru av](#stoppe-en-maskin) notebook-servere
 
 
 === "Knada-gcp managed notebook"
+    !!! danger "Bruk Knorten i stedet"
+        Vi ønsker at folk som har behov for å lese data fra onprem-kilder bruker [Knorten](../komigang.md#knorten).
+        Vi kommer til å fase ut knada-gcp på et senere tidspunkt.
+    
     !!! warning inline end "`knada-gcp`-prosjekt" 
         Dette vil være en notebook-server som settes opp i `knada-gcp`, som er et prosjekt i GCP satt opp spesifikt for å **kunne nå onprem-kilder** fra analyseverktøy på GCP.
         Dersom man ikke har behov for å nå onprem-kilder anbefales det å sette opp _team-prosjekt notebook_.
-
+    
     1. Ta kontakt med oss i [#nada på Slack](https://nav-it.slack.com/archives/CGRMQHT50) for å få tilgang til dette prosjektet.
     2. Gå til [Vertex AI i knada-gcp i Google Console](https://console.cloud.google.com/vertex-ai/workbench/list/instances?orgonly=true&project=knada-gcp&supportedpurview=organizationId)
     3. Velg _New Notebook_ og velg **Customize**
