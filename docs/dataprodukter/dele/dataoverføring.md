@@ -2,6 +2,14 @@
 ### Bruksområde
 Federated Query brukes typisk til å lese data fra en postgres-database i GCP, transformere disse og skrive til BigQuery.
 
+```mermaid
+graph TD
+postgres[(Postgres)] --Spørring mot Postgres-database i GCP--> federated_query[Federated query]
+federated_query --Ytterligere transformasjoner kan gjøres i BigQuery--> BQ_query[BQ-query]
+Schedule --Regelbasert styring av kjøringen--> BQ_query
+BQ_query --Tabell skrives til BigQuery--> BigQuery[(BigQuery-tabell)]
+```
+
 ### Sett opp external connection
 Følg [Google sin guide](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries#setting-up-cloud-sql-database-connections) til hvordan legge til en Cloud SQL databasekobling.
 
