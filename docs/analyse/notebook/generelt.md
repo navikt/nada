@@ -6,6 +6,7 @@ title: Generelt for notebooks
 For å unngå at output celler fra jupyter notebooks blir pushet sammen med kode til github anbefaler vi å installere [nbstripout](https://github.com/kynan/nbstripout) på repoet ditt lokalt. Dette verktøyet sørger for at output celler i jupyter notebooks utelates fra kode commits.
 
 For å installere, gjør som følger:
+
 - `pip install nbstripout --user`
 - Kjør kommandoen `nbstripout --install --global` fra repoet ditt lokalt
 
