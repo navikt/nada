@@ -70,7 +70,7 @@ nav:
   - Dataprodukter:
     - Hva er et dataprodukt?: dataprodukter/dataprodukt.md
     - Kom i gang: dataprodukter/index.md
-    - Få tilgang til databaser: dataprodukter/dele/få-tilgang.md
+    - Få tilgang til datakilder: dataprodukter/dele/få-tilgang.md
     - Føre over data: dataprodukter/dele/dataoverføring.md
     - Legg til et dataprodukt: dataprodukter/dele/dataprodukt.md
     - Tilgangsstyring: dataprodukter/tilgangsstyring.md

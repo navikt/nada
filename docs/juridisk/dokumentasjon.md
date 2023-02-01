@@ -3,10 +3,10 @@
 
 Se på, lagre, flytte, vaske, telle - nesten alt du kan gjøre med en personopplysning er å regne som en behandling. All behandling er ulovlig med mindre du har et behandlingsgrunnlag.
 
-All behandling av personopplysninger krever et såkalt rettslig grunnlag (aka Behandlingsgrunnlag) for å være lovlig.
-For å kunne behandle data må du ha
+Behandling av personopplysninger krever et såkalt rettslig grunnlag (aka Behandlingsgrunnlag) for å være lovlig.
+For å kunne behandle data må du ha:
 
-- en behandling i [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no)
+- en behandling i [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no). Se [dokumentasjon til registrering](spilleregler.md#hva-m-jeg-som-produsent-dokumentere-om-dataene-jeg-behandler)
 - GPA eller tatt stilling til personvernskravene på [etterlevelse.intern.nav.no](https://etterlevelse.intern.nav.no/)
     - Dersom behandling av personopplysninger vil medføre høy risiko, kreves det PVK.
     [Les om kravet på etterlevelse.intern.nav.no](https://etterlevelse.intern.nav.no/krav/114/1).
