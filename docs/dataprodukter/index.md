@@ -16,7 +16,7 @@ Dette gjøres på følgende måte:
 
 !!! question "Hvordan har andre team løst dette?"
     - [Team Flex sitt oppsett med Terraform](https://github.com/navikt/flex-bigquery-terraform)
-    - [Digihot sitt oppsett]()
+    - [Digihot sitt oppsett](https://github.com/navikt/hm-statistikk)
 
 ### Kafka
 Per i dag er det ikke plattformstøtte for å flytte data fra Kafka til BigQuery, men det er noen team som har gjort dette på egen hånd.
@@ -24,7 +24,7 @@ Per i dag er det ikke plattformstøtte for å flytte data fra Kafka til BigQuery
 !!! question "Hvordan har andre team løst dette?"
     - [Dagpenger sitt oppsett med Kafka Connect](https://github.com/navikt/dp-kafka-connect/)
         - [Kubernetes-operator](https://github.com/navikt/dp-kafka-connect-operator/)
-    - [Digihot sitt oppsett]()
+    - [Digihot sin sink fra Kafka](https://github.com/navikt/hm-bigquery-sink)
 
 ### Onprem
 Plattformen tilbyr to måter å flytte data fra onprem til BigQuery:
