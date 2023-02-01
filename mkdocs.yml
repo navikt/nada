@@ -71,8 +71,8 @@ nav:
     - Hva er et dataprodukt?: dataprodukter/dataprodukt.md
     - Kom i gang: dataprodukter/index.md
     - Få tilgang til datakilder: dataprodukter/dele/få-tilgang.md
-    - Føre over data: dataprodukter/dele/dataoverføring.md
-    - Legg til et dataprodukt: dataprodukter/dele/dataprodukt.md
+    - Laste data fra kilde til BigQuery: dataprodukter/dele/dataoverføring.md
+    - Legge til et dataprodukt: dataprodukter/dele/dataprodukt.md
     - Tilgangsstyring: dataprodukter/tilgangsstyring.md
   - Analyse:
     - Kom i gang: analyse/komigang.md

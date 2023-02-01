@@ -32,8 +32,6 @@ GRANT SELECT ON <tabellnavn> TO <brukernavn>;
 
 ## Få tilgang til data on-prem
 
-
-
 ### Hvordan snakke med Vault fra on-prem Naisjob?
 Når man kjører en Naisjob i on-prem og har hemmeligheter i Vault må disse bli hentet ved oppstart av jobben.
 Dette kan løses ved bruk av Vault-config i [applikasjonsmanifestet](https://docs.nais.io/naisjob/reference/#vault).
