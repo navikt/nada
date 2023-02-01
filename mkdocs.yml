@@ -9,6 +9,7 @@ theme:
   features:
     - navigation.instant
     - navigation.sections
+    - content.tabs.link
   logo: 'img/logo.svg'
   custom_dir: custom_theme_overrides
   favicon: img/favicon.ico
@@ -53,7 +54,8 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.smartsymbols
   - pymdownx.inlinehilite
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true 
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - def_list
@@ -75,12 +77,13 @@ nav:
   - Analyse:
     - Kom i gang: analyse/komigang.md
     - Notebook:
+      - Hva er en notebook?: analyse/notebook/index.md
       - Google managed notebooks: analyse/notebook/managed-notebook.md
       - Knada notebooks: analyse/notebook/knada-notebook.md
       - Generelle råd: analyse/notebook/generelt.md
     - Airflow: 
-      - Google managed airflow (cloud composer): analyse/airflow/managed-airflow.md
-      - Knada airflow: analyse/airflow/knada-airflow.md
+      - Google managed Airflow (Cloud Composer): analyse/airflow/managed-airflow.md
+      - Knada Airflow: analyse/airflow/knada-airflow.md
     - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
   - Vår visjon:

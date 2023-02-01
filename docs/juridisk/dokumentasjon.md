@@ -13,7 +13,7 @@ For å kunne behandle data må du ha
 
 Du kan også [lese mer om behandlinger i playbook for ansvarlig datascience](https://laughing-guacamole-242227e5.pages.github.io/notebooks/p2_Privacy_IntroGPA.html).
 
-## Det NADA har gjort allerede :)
+## Det NADA har gjort allerede
 
 NAIS har gjort en risiko- og sårbarhetsanalyse av verktøyene som brukes i NADA.
 Du kan [lese analysen i Tryggnok](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=607).

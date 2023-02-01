@@ -1,16 +1,19 @@
 ---
 title: Knada notebooks
 ---
-Knada notebooks settes opp gjennom [Knorten](https://knorten.knada.io). Disse notebook serverene kjører i et k8s cluster som driftes av NADA.
+Knada notebooks settes opp gjennom [Knorten](https://knorten.knada.io).
+Disse notebook serverene kjører i et k8s cluster som driftes av NADA.
 
 ### Installasjon av pakker
-For Knada notebooks vil det kun være det du som bruker lagrer under stien `/home/jovyan` som blir persistert når notebooken slås av. Derfor er det nødvendig å bruke `--user` flagget når python pakker skal installeres. F.eks.
+For Knada notebooks vil det kun være det du som bruker lagrer under stien `/home/jovyan` som blir persistert når notebooken slås av.
+Derfor er det nødvendig å bruke `--user` flagget når python pakker skal installeres. F.eks.
 
 ````
 pip install google-cloud-bigquery --user
 ````
 
-Globalt installerte pakker vil disse forsvinne neste gang du starter notebooken din. Dersom du trenger å installere pakker globalt, se [lage eget image for jupyterhub](#lage-eget-image-for-jupyterhub).
+Globalt installerte pakker vil disse forsvinne neste gang du starter notebooken din. 
+Dersom du trenger å installere pakker globalt, se [lage eget image for jupyterhub](#lage-eget-image-for-jupyterhub).
 
 ### Automatisk avslåing av jupyterhub
 For å spare ressurser vil jupyterhubber skrus av automatisk etter en times inaktivitet, men man kan øke denne timeouten selv ved å spesifisere `Cull Timeout` gjennom [knorten](https://knorten.knada.io).
