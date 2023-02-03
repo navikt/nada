@@ -17,6 +17,7 @@ Dette gjøres på følgende måte:
 !!! question "Hvordan har andre team løst dette?"
     - [Team Flex sitt oppsett med Terraform](https://github.com/navikt/flex-bigquery-terraform)
     - [Digihot sitt oppsett](https://github.com/navikt/hm-statistikk)
+    - [Team Risks Naisjob](https://github.com/navikt/helse-risk-flytte-data) 
 
 ### Kafka
 Per i dag er det ikke plattformstøtte for å flytte data fra Kafka til BigQuery, men det er noen team som har gjort dette på egen hånd.
@@ -38,6 +39,7 @@ For å lese fra databaser onprem og for å få tilgang til å skrive til BigQuer
     - [ereg dataprodukt](https://github.com/navikt/dataprodukt-register-ereg)
     - [aareg dataprodukt](https://github.com/navikt/dataprodukt-register-aareg)
     - [paw dataprodukt](https://github.com/navikt/dataprodukt_paw)
+    - [Helse Arbeidsgivers Naisjob som henter data fra Postgres](https://github.com/navikt/helsearbeidsgiver-flytte-data)
 
 
 ## Opprett et dataprodukt
