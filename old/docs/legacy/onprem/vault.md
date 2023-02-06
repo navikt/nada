@@ -2,7 +2,7 @@
 title: Vault
 ---
 
-For lagring av hemmeligheter som skal brukes i Jupyterhub/Airflow i knada clusteret brukes 
+For lagring av hemmeligheter som skal brukes i Jupyterhub/Airflow i KNADA-clusteret brukes 
 [vault](https://github.com/navikt/vault-iac/tree/master/doc) på samme måte som applikasjoner gjør i de øvrige onprem 
 clusterne i NAV.
 

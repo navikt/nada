@@ -1,4 +1,4 @@
-<svg version="1.1" viewBox="0 0 620 512" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" viewBox="0 0 620 600" xmlns="http://www.w3.org/2000/svg">
     <title>Flyten av data fra kilde til bruk</title>
     <style>
         * {
@@ -15,7 +15,7 @@
         }
 
         .edge {
-            stroke: black;
+            stroke: gray;
             stroke-width: 2px;
             fill: transparent;
         }
@@ -47,6 +47,7 @@
             stroke-width: 1px;
         }
     </style>
+    
     <g id="markedsplassen" class="subgraph" transform="translate(0,5)">
         <rect width="360" height="90"></rect>
         <text x="180" dominant-baseline="text-before-edge" text-anchor="middle"><a href="https://data.intern.nav.no" target="_top">Markedsplassen</a></text>
@@ -63,61 +64,70 @@
             <text x="55" y="30" dominant-baseline="center" text-anchor="middle">...</text>
         </g>
     </g>
-    <g id="teamets-domene" class="subgraph" transform="translate(0,130)">
-        <rect width="600" height="380"></rect>
+    <g id="teamets-domene" class="subgraph" transform="translate(0,150)">
+        <rect width="600" height="440"></rect>
         <text x="300" dominant-baseline="text-before-edge" text-anchor="middle">Teamets domene</text>
-        <g id="analyse" class="subgraph" transform="translate(425, 20)">
+        <g id="analyse" class="subgraph" transform="translate(420, 20)">
             <rect width="170" height="200"></rect>
             <text x="90" dominant-baseline="text-before-edge" text-anchor="middle">Analyse</text>
             <g transform="translate(5,25)">
                 <rect class="node" width="160" height="50"></rect>
-                <text x="80" y="30" dominant-baseline="center" text-anchor="middle"><a href="/dele-innsikt/metabase/" target="_top">Metabase-dashboard</a></text>
+                <text x="80" y="30" dominant-baseline="center" text-anchor="middle"><a href="/analyse/metabase/" target="_top">Metabase-dashboard</a></text>
             </g>
             <g transform="translate(5,85)">
                 <rect class="node" width="80" height="50"></rect>
-                <text x="40" y="30" dominant-baseline="center" text-anchor="middle"><a href="/prosessere-data/notebook_intro/" target="_top">Notebook</a></text>
+                <text x="40" y="30" dominant-baseline="center" text-anchor="middle"><a href="/analyse/notebook/" target="_top">Notebook</a></text>
             </g>
             <g transform="translate(5,145)">
                 <rect class="node" width="120" height="50"></rect>
-                <text x="60" y="30" dominant-baseline="center" text-anchor="middle"><a href="/dele-innsikt/datafortelling/" target="_top">Datafortellinger</a></text>
+                <text x="60" y="30" dominant-baseline="center" text-anchor="middle"><a href="/analyse/datafortellinger/" target="_top">Datafortellinger</a></text>
             </g>
             <path marker-end="url(#end)" class="edge" d="M85 110 C 175 110, 175 170, 128 170"></path>
         </g>
         <g transform="translate(5, 50)">
+
+            <g transform="translate(0, 61)">
+                <path marker-end="url(#end)" class="edge" d="M147 210 C 147 160, 50 220, 50 115"></path>
+                <path class="edge" d="M435 210 C 435 140, 69 190, 69 170"></path>
+            </g>
             <g id="dataprodukt" class="subgraph" transform="translate(0, 20)">
-                <rect width="190" height="100"></rect>
-                <text x="95" dominant-baseline="text-before-edge" text-anchor="middle"><a href="/dataprodukter/definisjon/" target="_top">Dataprodukt</a></text>
-                <g id="bq" transform="translate(10,25)">
-                    <path class="node" d="M 0,9.651277473876071 a 39.30000305175781,9.651277473876071 0,0,0 78.60000610351562 0 a 39.30000305175781,9.651277473876071 0,0,0 -78.60000610351562 0 l 0,43.65127747387607 a 39.30000305175781,9.651277473876071 0,0,0 78.60000610351562 0 l 0,-43.65127747387607"></path>
-                    <text x="40" y="40" dominant-baseline="center" text-anchor="middle">BigQuery</text>
+                <rect width="190" height="200"></rect>
+                <text x="95" dominant-baseline="text-before-edge" text-anchor="middle"><a href="/dataprodukter/dataprodukt" target="_top">Dataprodukt</a></text>
+                 <g transform="translate(50,25)">
+                    <rect class="node" width="90" height="30"></rect>
+                    <text x="45" y="20" dominant-baseline="center" text-anchor="middle">Beskrivelse</text>
                 </g>
-                <g transform="translate(100,25)">
-                    <rect class="node" width="80" height="30"></rect>
-                    <text x="40" y="20" dominant-baseline="center" text-anchor="middle"><a href="/dataprodukter/konsumere/finne/" target="_top">Metadata</a></text>
+                <g transform="translate(5, 165)">
+                    <rect class="node" width="180" height="30"></rect>
+                    <text x="90" y="20" dominant-baseline="center" text-anchor="middle">(Datasett 2, f.eks.)</text>
                 </g>
-                <g transform="translate(100,60)">
-                    <rect class="node" width="80" height="30"></rect>
-                    <text x="40" y="20" dominant-baseline="center" text-anchor="middle"><a href="/dataprodukter/konsumere/tilgang/" target="_top">Tilganger</a></text>
-                </g>
-                <g>
-                    <path marker-end="url(#end)" class="edge" d="M190 50 C 240 50, 200 0, 422 0"></path>
-                    <g transform="translate(230, -5)">
-                        <rect class="label" width="137" height="34"></rect>
-                        <text dominant-baseline="text-before-edge">Dine dataprodukter</text>
-                        <text y="16" dominant-baseline="text-before-edge">i dashboard</text>
+                <g id="datasett" class="subgraph" transform="translate(5, 65)">
+                    <rect width="180" height="95"></rect>
+                    <text x="90" dominant-baseline="text-before-edge" text-anchor="middle"><a href="/dataprodukter/dataprodukt#hva-er-et-datasett" target="_top">Datasett 1</a></text>
+                    <g id="bq" transform="translate(5,25)">
+                        <path class="node" d="M 0,9.651277473876071 a 39.30000305175781,9.651277473876071 0,0,0 78.60000610351562 0 a 39.30000305175781,9.651277473876071 0,0,0 -78.60000610351562 0 l 0,43.65127747387607 a 39.30000305175781,9.651277473876071 0,0,0 78.60000610351562 0 l 0,-43.65127747387607"></path>
+                        <text x="40" y="40" dominant-baseline="center" text-anchor="middle">BigQuery</text>
+                    </g>
+                    <g transform="translate(95,25)">
+                        <rect class="node" width="80" height="30"></rect>
+                        <text x="40" y="20" dominant-baseline="center" text-anchor="middle">Metadata</text>
+                    </g>
+                    <g transform="translate(95,60)">
+                        <rect class="node" width="80" height="30"></rect>
+                        <text x="40" y="20" dominant-baseline="center" text-anchor="middle">Tilganger</text>
                     </g>
                 </g>
                 <g>
-                    <path marker-end="url(#end)" class="edge" d="M190 50 C 240 50, 200 60, 422 60"></path>
-                    <g transform="translate(250, 45)">
+                    <path marker-end="url(#end)" class="edge" d="M190 50 C 240 50, 200 90, 412 90"></path>
+                    <g transform="translate(230, 70)">
                         <rect class="label" width="137" height="34"></rect>
                         <text dominant-baseline="text-before-edge">Dine dataprodukter</text>
-                        <text y="16" dominant-baseline="text-before-edge">i notebook</text>
+                        <text y="16" dominant-baseline="text-before-edge">i din analyse</text>
                     </g>
                 </g>
             </g>
         
-            <g class="subgraph" transform="translate(0,190)">
+            <g class="subgraph" transform="translate(0,250)">
                 <rect width="590" height="130"></rect>
                 <text x="250" dominant-baseline="text-before-edge" text-anchor="middle">Kildesystem</text>
                 <g class="subgraph" transform="translate(5,20)">
@@ -153,25 +163,22 @@
                     </g>
                 </g>
             </g>
-            <path marker-end="url(#end)" class="edge" d="M147 210 C 147 160, 50 150, 50 111"></path>
-            <path class="edge" d="M435 210 C 435 150, 50 180, 50 112"></path>
-            
         </g>
         
         <marker orient="auto" markerHeight="10" markerWidth="10" markerUnits="userSpaceOnUse" refY="5" refX="7" viewBox="0 0 10 10" id="end">
-            <path style="stroke-width: 2px" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path>
+            <path style="stroke-width: 2px; stroke: gray; fill: gray" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path>
         </marker>
     </g>
-    <g>
-        <path marker-end="url(#end)" class="edge" d="M180 95 C 180 150, 515 60, 515 147"></path>
+    <g transform="translate(0, 20)">
+        <path marker-end="url(#end)" class="edge" d="M180 75 C 180 150, 515 60, 515 147"></path>
         <g transform="translate(400, 80)">
             <rect class="label" height="34" width="175"></rect>
             <text dominant-baseline="text-before-edge">Andres dataprodukter</text>
             <text y="16" dominant-baseline="text-before-edge">kan brukes i din analyse</text>
         </g>
     </g>
-    <g>
-        <path marker-end="url(#end)" class="edge" d="M180 95 C 180 150, 100 100, 100 197"></path>
+    <g transform="translate(0, 20)">
+        <path marker-end="url(#end)" class="edge" d="M180 75 C 180 150, 100 100, 100 197"></path>
         <g transform="translate(35, 140)">
             <rect class="label" height="34" width="155"></rect>
             <text dominant-baseline="text-before-edge">Andres dataprodukter</text>
