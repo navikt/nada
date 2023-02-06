@@ -27,3 +27,7 @@ En fersk notebook (både [knada notebook](./knada-notebook.md) og [managed noteb
 1. Sjekk hvilken bruker som er aktiv med `gcloud auth list`.
 2. Hvis det er din personlige, velg service accounten ved å kjøre `gcloud config set account <eposten til service accounten din>`.
 3. Fjern tilgangen til din personlige bruker ved å kjøre `gcloud auth application-default revoke --account <din personlige nav-epost>`.
+
+#### Tilpasse connector for raskere spørringer
+Ved å justere `arraysize` og `prefetchrows` kan spørringer fra databaser on-prem forbedres markant.
+Se for eksempel dokumentasjonen av [cx_Oracle-biblioteket](https://cx-oracle.readthedocs.io/en/latest/user_guide/tuning.html#tuningfetch).
