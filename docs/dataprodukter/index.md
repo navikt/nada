@@ -16,6 +16,8 @@ For å få tilgang til GCP må man [legge til Google Cloud Platform i myapps.mic
             - Satt opp med Terraform
         - [Digihot sitt oppsett](https://github.com/navikt/hm-statistikk)
             - Kommandolinjeverktøy for å enkelt opprette [BigQuery dataset, connection](dele/dataoverføring.md#federated-query), og [scheduled query](dele/dataoverføring.md#kjøre-spørring-på-tidsintervall)
+        - [Team Sykmelding sitt oppsett](https://github.com/navikt/teamsykmelding-gcp-infra)
+            - Satt opp Datastream med Terraform. Laster over alle endringer for aktuelle kolonner i Postgres (change data capture)
         - [Team Risks sitt oppsett](https://github.com/navikt/helse-risk-flytte-data)
             - Benytter [Naisjob](dele/dataoverføring.md#naisjob) for å flytte data
 === "Kafka"
