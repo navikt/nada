@@ -27,7 +27,7 @@ For å få tilgang til GCP må man [legge til Google Cloud Platform i myapps.mic
         - [Dagpenger sitt oppsett med Kafka Connect](https://github.com/navikt/dp-kafka-connect/)
             - [Kubernetes-operator](https://github.com/navikt/dp-kafka-connect-operator/)
         - [Digihot sin sink fra Kafka](https://github.com/navikt/hm-bigquery-sink)
-        - [Bømlo sin app](https://github.com/navikt/helse-dataprodukter)
+        - [Bømlo sitt oppsett: Kafka -> Postgres -> BigQuery ](https://github.com/navikt/helse-dataprodukter)
 
 === "Onprem"
     Plattformen tilbyr to måter å flytte data fra onprem til BigQuery:
