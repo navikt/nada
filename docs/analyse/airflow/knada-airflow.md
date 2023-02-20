@@ -26,13 +26,6 @@ En gang i minuttet vil DAGene som ligger i repoet bli synkronisert til Airflow i
 - [opendata-dags](https://github.com/navikt/opendata-dags) inneholder eksempler på DAGs.
 - [sykefravar-dags](https://github.com/navikt/sykefravar-dags) inneholder en rekke eksempler på hvordan å ta i bruk ulike operators i Airflow.
 
-## Dataverk-Airflow
-[Dataverk-Airflow](https://github.com/navikt/dataverk-airflow) er et wrapperbibliotek som gjør det enklere å
-bruke [KubernetesPodOperator](https://airflow.apache.org/docs/apache-airflow/stable/kubernetes.html) i KNADA.
-
-Biblioteket inneholder wrapper-funksjoner for å kjøre Jupyter notebooks og Python scripts i egne Kubernetes poder. Se [README](https://github.com/navikt/dataverk-airflow/blob/master/README.md)
-på repoet for eksempler.
-
 ## Trafikk fra Airflow-workere
 I KNADA er Airflow konfigurert til å bruke [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html).
 Dette innebærer at hver task i en Airflow DAG vil spinne opp og kjøre en egen worker i en separat [Kubernetes pod](https://kubernetes.io/docs/concepts/workloads/pods/).
