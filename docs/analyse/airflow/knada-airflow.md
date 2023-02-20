@@ -26,10 +26,83 @@ En gang i minuttet vil DAGene som ligger i repoet bli synkronisert til Airflow i
 - [opendata-dags](https://github.com/navikt/opendata-dags) inneholder eksempler på DAGs.
 - [sykefravar-dags](https://github.com/navikt/sykefravar-dags) inneholder en rekke eksempler på hvordan å ta i bruk ulike operators i Airflow.
 
-## Trafikk fra Airflow-workere
+## Konfigurasjon av Airflow-workere
 I KNADA er Airflow konfigurert til å bruke [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html).
-Dette innebærer at hver task i en Airflow DAG vil spinne opp og kjøre en egen worker i en separat [Kubernetes pod](https://kubernetes.io/docs/concepts/workloads/pods/).
-Poder har i utgangspunktet all trafikk ut blokkert, med følgende unntak:
+Dette innebærer at hver task i en Airflow DAG vil spinne opp og kjøre en egen worker i en separat [Kubernetes pod](https://kubernetes.io/docs/concepts/workloads/pods/). Det gjør at man står fritt til å selv spesifisere miljøet til Airflow-workeren. Se [Image for Airflow-workere](#image-for-airflow-workere), [Ressursbehov for Airflow-workere](#ressursbehov-for-airflow-workere) og [Trafikk fra Airflow-workere](#trafikk-fra-airflow-workere) for eksempler på hvordan å overstyre standard instillingene som Airflow workeren vil kjøre med.
+
+!!! info "Merk: Hovedcontaineren som worker-poden bruker vil alltid hete `base`, så dersom en ønsker å overskrive noe som gjelder spesifikt for denne containeren må man referere til den med navn som i eksemplene under."
+
+### Image for Airflow-workere
+Som standard vil airflow workere kjøre med et [dockerimage](https://github.com/navikt/knada-images/pkgs/container/knada-airflow-base) som bygges av NADA. Dette imaget inneholder drivere for oracle, postgres og TDV, men inneholder __**ikke et stort utvalg av python biblioteker**__. Dersom du har spesifikke behov for biblioteker som ikke er en del av dette imaget er det beste om du bygger et eget image som tar utgangspunkt i vårt. Se [bygge eget worker image](#bygge-eget-worker-image) for guide på hvordan å dette kan gjøres. Under følger et eksempel på hvordan å overstyre imaget som hovedcontaineren til Airflow workeren skal bruke:
+
+```python
+from airflow import DAG
+from airflow.utils.dates import days_ago
+from airflow.operators.python_operator import PythonOperator
+from kubernetes import client as k8s
+
+def myfunc():
+    print("kjør task")
+
+with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
+    run_this = PythonOperator(
+        task_id='test',
+        python_callable=myfunc,
+        executor_config={
+           "pod_override": k8s.V1Pod(
+               spec=k8s.V1PodSpec(
+                   containers=[
+                      k8s.V1Container(
+                         name="base",
+                         image="ghcr.io/navikt/mitt-airflow-image:v1"
+                      )
+                   ]
+               )
+           )
+        },
+        dag=dag
+    )
+```
+
+### Ressursbehov for Airflow-workere
+Dersom en ikke spesifiserer ressursbehov for Airflow taskene sine vil de kjøre med standard instillinger som er `256 MB` minne og `0.5` vCPU. Dette kan man enkelt overstyre for alle operators gitt at de tar utgangspunkt i [BaseOperatoren](https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/baseoperator/index.html#airflow.models.baseoperator.BaseOperator) til Airflow. Under følger et eksempel på hvordan ressursbehov for en task endres til `2GB` minne og `2` vCPU:
+
+```python
+from airflow import DAG
+from airflow.utils.dates import days_ago
+from airflow.operators.python_operator import PythonOperator
+from kubernetes import client as k8s
+
+def myfunc():
+    print("kjør task")
+
+with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
+    run_this = PythonOperator(
+        task_id='test',
+        python_callable=myfunc,
+        executor_config={
+           "pod_override": k8s.V1Pod(
+               spec=k8s.V1PodSpec(
+                   containers=[
+                      k8s.V1Container(
+                         name="base",
+                         resources={
+                           "requests": {
+                               "cpu": "2"
+                               "memory": "2GiB"
+                           }
+                         }
+                      )
+                   ]
+               )
+           )
+        },
+        dag=dag
+    )
+```
+
+### Trafikk fra Airflow-workere
+I podene hvor airflow workeren kjører blokkeres i utgangspunktet all trafikk ut, med følgende unntak:
 
 - github.com: workeren vil alltid trenge å hente repoet som koden ligger i
 - storage.googleapis.com: workeren skriver Airflow loggene til en Google Cloud Storage bucket
@@ -83,3 +156,39 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
 Dersom man ikke angir port vil vi bruke `443` som standardport.
 Vi har en controller kjørende i KNADA som vil lage en `NetworkPolicy` som tillater trafikk ut fra poden mot de hostene som legges til.
 Når jobben er ferdig vil tilgangene bli fjernet.
+
+## Bygge eget Airflow worker image
+Følgende guide antar at docker er installert på maskinen din og at brukeren din er autentisert mot GitHub Container Registry. Se enten installasjon av [colima](https://github.com/abiosoft/colima) eller [docker desktop](https://docs.docker.com/get-docker/) for å sette opp docker.
+
+Eksempelet under viser hvordan man kan installere en egendefinert liste med python biblioteker i et image for airflow, dersom en følger eksempelet vil dette imaget ta utgangspunkt i vårt base image og inneholde nødvendige drivere for oracle, postgres og TDV.
+
+#### Lag først en `requirements.txt` fil, f.eks.
+```
+backoff==2.0.1
+cx_Oracle==8.3.0
+datastory>=0.1.12
+google-cloud-bigquery>3.0.0
+google-cloud-storage==2.4.0
+great-expectations==0.15.34
+influxdb==5.3.1
+```
+
+#### Lag så en `Dockerfile` i samme mappe som `requirements.txt` filen
+```
+FROM ghcr.io/navikt/knada-airflow-base:2023-01-30-7d2e0dc
+
+USER root
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+USER ${AIRFLOW_UID}
+```
+
+#### Bygg og push imaget til GitHub Container Registry
+
+```bash
+docker build -t ghcr.io/navikt/mitt-airflow-image:v1 .
+docker push ghcr.io/navikt/mitt-airflow-image:v1
+```
