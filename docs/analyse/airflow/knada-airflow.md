@@ -121,7 +121,7 @@ import logging
 
 def myfunc():
     import requests
-    res = requests.get("https://data.ssb.no")
+    res = requests.get("https://ssb.no/api")
     res.raise_for_status()
 
 with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
@@ -144,7 +144,7 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
         python_callable=myfunc,
         executor_config={
             "pod_override": k8s.V1Pod(
-                metadata=k8s.V1ObjectMeta(annotations={"allowlist": "data.ssb.no,db.adeo.no:1521"})
+                metadata=k8s.V1ObjectMeta(annotations={"allowlist": "ssb.no,db.adeo.no:1521"})
             )
         },
     dag=dag)
