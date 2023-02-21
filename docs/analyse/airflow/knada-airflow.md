@@ -65,7 +65,7 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
 ```
 
 ### Ressursbehov for Airflow-workere
-Dersom en ikke spesifiserer ressursbehov for Airflow taskene sine vil de kjøre med standard instillinger som er `256 MB` minne og `0.5` vCPU. Dette kan man enkelt overstyre for alle operators gitt at de tar utgangspunkt i [BaseOperatoren](https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/baseoperator/index.html#airflow.models.baseoperator.BaseOperator) til Airflow. Under følger et eksempel på hvordan ressursbehov for en task endres til `2GB` minne og `2` vCPU:
+Dersom en ikke spesifiserer ressursbehov for Airflow taskene sine vil de kjøre med standard instillinger som er `512 MB` minne og `0.5` vCPU. Dette kan man enkelt overstyre for alle operators gitt at de tar utgangspunkt i [BaseOperatoren](https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/baseoperator/index.html#airflow.models.baseoperator.BaseOperator) til Airflow. Under følger et eksempel på hvordan ressursbehov for en task endres til `2GB` minne og `2` vCPU:
 
 ```python
 from airflow import DAG
