@@ -157,6 +157,23 @@ Dersom man ikke angir port vil vi bruke `443` som standardport.
 Vi har en controller kjørende i KNADA som vil lage en `NetworkPolicy` som tillater trafikk ut fra poden mot de hostene som legges til.
 Når jobben er ferdig vil tilgangene bli fjernet.
 
+#### For KubernetesPodOperators laget med dataverk-airflow
+Man kan også sette allowlist for KubernetesPodOperators som lages med `dataverk-airflow` som i eksempelet under.
+
+```python
+from airflow import DAG
+from dataverk_airflow.knada_operators import create_knada_nb_pod_operator
+
+with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
+    task = create_knada_nb_pod_operator(dag=dag,
+                                        name="knada-pod-operator",
+                                        repo="navikt/repo",
+                                        nb_path="notebooks/mynb.ipynb",
+                                        retries=1,
+                                        allowlist=["ssb.no", "db.adeo.no:1521"],
+                                        branch="main")
+```
+
 ## Bygge eget Airflow worker image
 Følgende guide antar at docker er installert på maskinen din og at brukeren din er autentisert mot GitHub Container Registry. Se enten installasjon av [colima](https://github.com/abiosoft/colima) eller [docker desktop](https://docs.docker.com/get-docker/) for å sette opp docker.
 
