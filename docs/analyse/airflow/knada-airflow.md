@@ -103,7 +103,7 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
 
 ### Trafikk fra Airflow-workere
 
-::: info "Det følgende er foreløpig en valgfri feature som må enables gjennom Knorten. Dersom det ikke gjøres er det ingen begrensninger på trafikk fra airflow workere"
+!!! info "Det følgende er foreløpig en valgfri feature som må enables gjennom Knorten. Dersom det ikke gjøres er det ingen begrensninger på trafikk fra airflow workere"
 
 I podene hvor airflow workeren kjører blokkeres i utgangspunktet all trafikk ut, med følgende unntak:
 
