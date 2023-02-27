@@ -39,7 +39,7 @@ Produsenten er ikke forventet å kunne hensynta dette ved vurdering av tilgangsf
 
 ## Har vi retningslinjer i forbindelse med Schrems II-dommen?
 
-Svaret til dette spørsmålet må holdes internt, men du kan [lese svaret på Slack](https://nav-it.slack.com/archives/CGRMQHT50/p1650979093246669?thread_ts=1648108682.804329&cid=CGRMQHT50).
+Svaret til dette spørsmålet må holdes internt, men du kan [lese svaret på retningslinjer for Schrems II-dommen på Slack](https://nav-it.slack.com/archives/CGRMQHT50/p1650979093246669?thread_ts=1648108682.804329&cid=CGRMQHT50).
 
 
 *[FAQ]: frequently asked questions
