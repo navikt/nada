@@ -11,7 +11,7 @@ Nedenfor har vi et _forslag til innstillinger_ som passer for de fleste brukere.
 
 Det er mange ulike konfigurasjonsmuligheter for notebooks og man står fritt til å sette de opp med de innstillingene man selv ønsker, men merk særlig det som presiseres under [maskintype og GPU](#maskintype-og-gpu).
 
-Det er også kostnadsbesparende å [skru av](#stoppe-en-maskin) notebooken på slutten av arbeidsdagen med mindre man trenger å ha noe kjørende utenfor arbeidstid.
+Det er også kostnadsbesparende å [skru av notebooken](#stoppe-en-maskin) på slutten av arbeidsdagen med mindre man trenger å ha noe kjørende utenfor arbeidstid.
 
 === "Team-prosjekt notebook"
 
