@@ -12,20 +12,16 @@ BQ_query --Tabell skrives til BigQuery--> BigQuery[(BigQuery-tabell)]
 
 For å sette opp federated query:
 
-1. Sett opp Cloud SQL databasetilkobling
-    * [Følg Google sin guide](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries#setting-up-cloud-sql-database-connections)
-2. Opprett et BigQuery dataset
-    * [Følg Google sin guide](https://cloud.google.com/bigquery/docs/datasets)
+1. [Følg Google sin guide for å sette opp Cloud SQL databasetilkobling](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries#setting-up-cloud-sql-database-connections)
+2. [Følg Google sin guide for å opprette et BigQuery dataset](https://cloud.google.com/bigquery/docs/datasets)
     * Merk at _dataset_ i denne konteksten er noe annet enn [datasett i markedsplassen](../dataprodukt.md#hva-er-et-datasett)
     * Foreløpig kan vi ikke gjenbruke datasets som har blitt opprettet av en nais-applikasjon, da denne overstyrer tilgangene vi oppretter senere i denne guiden
-3. Lag en Google servicebruker for federated query
-    * [Følg Google sin guide](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
+3. [Følg Google sin guide for å lage en Google servicebruker for federated query](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
     * Gi serviceaccounten følgende tilganger på prosjektnivå:
         - _BigQuery Connection User_
         - _BigQuery Job User_
         - _BigQuery Metadata Viewer_
-4. Gi tilganger til servicebrukeren på datasett
-    * [Følg Google sin guide](https://cloud.google.com/bigquery/docs/dataset-access-controls)
+4. [Følg Google sin guide for å gil tilganger til servicebrukeren på datasett](https://cloud.google.com/bigquery/docs/dataset-access-controls)
     * Serviceaccounten trenger rollen _BigQuery Data Editor_
 
 Etter at servicebrukeren har tilgang til datasettet kan man sette opp en spørring som henter data via _external connection_.
