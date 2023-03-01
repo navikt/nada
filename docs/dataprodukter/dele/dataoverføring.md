@@ -198,7 +198,7 @@ Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan 
 
     fun createKafkaConsumer(topicName: String, kafkaBrokers: String): KafkaConsumer<String, String> {
         val props = Properties()
-        props.setProperty("bootstrap.servers", )
+        props.setProperty("bootstrap.servers", kafkaBrokers)
         props.setProperty("group.id", "mygroup")
         props.setProperty("auto.offset.reset", "earliest")
         props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
