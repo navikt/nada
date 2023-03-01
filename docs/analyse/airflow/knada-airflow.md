@@ -10,7 +10,25 @@ En datapipeline i Airflow, eller DAG (Directed Acyclic Graph), er et sett med op
 Disse DAG-ene beskrives programmatisk i python filer og legges i et Github repo som periodisk synkroniseres med Airflow instansen.
 Nedenfor ser du en en grafisk representasjon av flyten i en DAG:
 
-![Flyten i en Airflow DAG](dag-eksempel.png)
+````mermaid
+flowchart LR
+    A(email_start) --> C(waiting_1)
+    B(slack_start) --> C(waiting_1)
+    C --> D(fetch_styrk)
+    C --> E(fetch_nace)
+    C --> F(fetch_pam)
+    D --> G(waiting_2)
+    E --> G(waiting_2)
+    F --> G(waiting_2)
+    G --> H(transform_styrk)
+    G --> I(transform_nace)
+    G --> J(transform_pam)
+    H --> K(waiting_3)
+    I --> K(waiting_3)
+    J --> K(waiting_3)
+    K --> L(slack_success)
+    K --> M(email_success)
+````
 
 NADA tilbyr team eller enkeltpersoner å sette opp Airflow instanser i KNADA gjennom [Knorten](https://knorten.knada.io).
 
