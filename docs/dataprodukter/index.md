@@ -21,7 +21,7 @@ For å få tilgang til GCP må man [legge til Google Cloud Platform i myapps.mic
         - [Team Risks sitt oppsett](https://github.com/navikt/helse-risk-flytte-data)
             - Benytter [Naisjob](dele/dataoverføring.md#naisjob) for å flytte data
 === "Kafka"
-    Per i dag er det ikke plattformstøtte for å flytte data fra Kafka til BigQuery, men det er noen team som har gjort dette på egen hånd.
+    Kodeeksempler på hvordan du kan flytte data fra Kafka til BigQuery på NAIS finner du ved å følge [denne lenken](dele/dataoverføring.md#kafka-til-bigquery).
 
     !!! question "Hvordan har andre team løst dette?"
         - [Dagpenger sitt oppsett med Kafka Connect](https://github.com/navikt/dp-kafka-connect/)

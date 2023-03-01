@@ -1,4 +1,5 @@
-## Federated query
+## Postgres til BigQuery 
+### Federated query
 
 Federated query brukes typisk til å lese data fra en postgres-database i GCP, transformere disse og skrive til BigQuery.
 
@@ -53,7 +54,7 @@ FROM dataproducts, constants
 ''');
 ```
 
-### Kjøre spørring på tidsintervall
+#### Kjøre spørring på tidsintervall
 
 For å kjøre en spørring på intervall, så kan du i Query Explorer i Cloud Console velge å definere en "Schedule".
 
@@ -69,23 +70,14 @@ Klikk "Schedule" og "Create new schedule"
 * Table name: navn på produkt-tabell
 * Advanced options:
     - Service account: servicebrukeren som ble laget tidligere
-
-## Naisjob
-
-NAIS-plattformen tilbyr skedulering av workloads med deres [naisjob-ressurs](https://doc.nais.io/naisjob).
-
-Denne ressurstypen er en abstraksjon på Kubernetes sin [Cronjob](https://kubernetes.io/docs/konsepter/workloads/controllers/cron-jobs/) som gir deg de samme konfigurasjonsmulighetene som man får med NAIS applikasjoner, eksempelvis muligheten til å provisjonere buckets, postgres/BigQuery og kafka-brukere, samt injeksjon av hemmeligheter i kjøremiljøet til jobben ved runtime.
-
-### Bruksområde
-Naisjob egner seg godt dersom du trenger å skedulere kjøring av kode, f.eks. periodisk oppdatering av [dataprodukter](../dataprodukt.md) eller [datafortellinger](../../analyse/datafortellinger.md).
-
-### Kafka til BigQuery
+    
+## Kafka til BigQuery
 [Under](#kode-eksempler) følger enkle eksempler på hvordan å lese fra Kafka og skrive til BigQuery i forskjellige programmeringsspråk. Alle eksemplene forutsetter at en på forhånd har laget datasettet BigQuery tabellen skal opprettes i og at man har tilgang til å skrive til/opprette tabeller i datasettet. 
 
-#### App i GCP cluster
+### App i GCP cluster
 Opprettelsen av datasettet og tilgangene ordnes automatisk dersom appen deployes til gcp clusterne til nais med [nais.yaml](https://doc.nais.io/nais-application/application/#kafka). 
 
-#### App i FSS cluster
+### App i FSS cluster
 Men dersom appen skal kjøre i fagsystemsonen er man nødt til å [opprette datasettet](https://cloud.google.com/bigquery/docs/datasets#create-dataset), hente ut en [google service account nøkkel](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#get-key) og gi service accounten følgende roller:
 
 - `BigQuery Job User` i GCP prosjektet gjennom [IAM](https://console.cloud.google.com/iam-admin/iam)
@@ -93,7 +85,7 @@ Men dersom appen skal kjøre i fagsystemsonen er man nødt til å [opprette data
 
 Hvis man så mounter inn service account json-nøkkelen i podden til appen kan man sørge for at google klientbiblioteket bruker denne for å autentisere seg dersom man setter miljøvariabelen `GOOGLE_APPLICATION_CREDENTIALS` til stien til hvor credentials filen ligger.
 
-#### Kode eksempler
+### Kodeeksempler
 Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan lese fra kafka topicet anonymt. For mer informasjon om oppsett av app og autentisering for Kafka i NAV, se [nais docs](https://doc.nais.io/persistence/kafka/application/).
 
 !!!info "Topicet det leses fra i eksemplene har JSON schema og inneholder fire felter: et tekstfelt, et boolean felt, et numerisk felt og et timestamp."
@@ -391,3 +383,12 @@ Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan 
         return tableRef, nil
     }
     ````
+
+## Naisjob
+
+NAIS-plattformen tilbyr skedulering av workloads med deres [naisjob-ressurs](https://doc.nais.io/naisjob).
+
+Denne ressurstypen er en abstraksjon på Kubernetes sin [Cronjob](https://kubernetes.io/docs/konsepter/workloads/controllers/cron-jobs/) som gir deg de samme konfigurasjonsmulighetene som man får med NAIS applikasjoner, eksempelvis muligheten til å provisjonere buckets, postgres/BigQuery og kafka-brukere, samt injeksjon av hemmeligheter i kjøremiljøet til jobben ved runtime.
+
+### Bruksområde
+Naisjob egner seg godt dersom du trenger å skedulere kjøring av kode, f.eks. periodisk oppdatering av [dataprodukter](../dataprodukt.md) eller [datafortellinger](../../analyse/datafortellinger.md).
