@@ -1,4 +1,4 @@
-## Postgres til BigQuery 
+## Flytte data fra Postgres til BigQuery 
 ### Federated query
 
 Federated query brukes typisk til å lese data fra en postgres-database i GCP, transformere disse og skrive til BigQuery.
@@ -71,19 +71,11 @@ Klikk "Schedule" og "Create new schedule"
 * Advanced options:
     - Service account: servicebrukeren som ble laget tidligere
     
-## Kafka til BigQuery
-[Under](#kode-eksempler) følger enkle eksempler på hvordan å lese fra Kafka og skrive til BigQuery i forskjellige programmeringsspråk. Alle eksemplene forutsetter at en på forhånd har laget datasettet BigQuery tabellen skal opprettes i og at man har tilgang til å skrive til/opprette tabeller i datasettet. 
-
-### App i GCP cluster
-Opprettelsen av datasettet og tilgangene ordnes automatisk dersom appen deployes til gcp clusterne til nais med [nais.yaml](https://doc.nais.io/nais-application/application/#kafka). 
-
-### App i FSS cluster
-Men dersom appen skal kjøre i fagsystemsonen er man nødt til å [opprette datasettet](https://cloud.google.com/bigquery/docs/datasets#create-dataset), hente ut en [google service account nøkkel](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#get-key) og gi service accounten følgende roller:
-
-- `BigQuery Job User` i GCP prosjektet gjennom [IAM](https://console.cloud.google.com/iam-admin/iam)
-- `BigQuery Data Editor` på datasettet som beskrevet [her](https://cloud.google.com/bigquery/docs/control-access-to-resources-iam#grant_access_to_a_dataset)
-
-Hvis man så mounter inn service account json-nøkkelen i podden til appen kan man sørge for at google klientbiblioteket bruker denne for å autentisere seg dersom man setter miljøvariabelen `GOOGLE_APPLICATION_CREDENTIALS` til stien til hvor credentials filen ligger.
+## Flytte data fra Kafka til BigQuery
+For å ta data fra en Kafka-strøm til BigQuery, trenger du å sette opp en applikasjon.
+[Under](#kode-eksempler) følger enkle eksempler på hvordan å lese fra Kafka og skrive til BigQuery i forskjellige programmeringsspråk. 
+Alle eksemplene forutsetter at en på forhånd har laget datasettet BigQuery tabellen skal opprettes i og at man har tilgang til å skrive til/opprette tabeller i datasettet.
+Opprettelsen av datasettet og tilgangene ordnes automatisk når appen deployes til GCP-clusterne til nais med [nais.yaml](https://doc.nais.io/nais-application/application/#kafka). 
 
 ### Kodeeksempler
 Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan lese fra kafka topicet anonymt. For mer informasjon om oppsett av app og autentisering for Kafka i NAV, se [nais docs](https://doc.nais.io/persistence/kafka/application/).

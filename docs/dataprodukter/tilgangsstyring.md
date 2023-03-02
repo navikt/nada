@@ -4,9 +4,12 @@ Det betyr at ingen kan se dataene frem til eier gjør et **aktivt** valg om å g
 Dersom datasettet ikke inneholder personopplysninger, kan man ved oppretting av datasett gi tilgang til alle i NAV.
 I praksis betyr det at folk som har lagt til Google Cloud Platform i [myapps.microsoft.com](https://myapps.microsoft.com) kan se dataen i datasettet.
 
-## Gi tilgang
+## Gi tilgang til view/tabell
+Tilganger gis per view/tabell i BigQuery.
+Det betyr at team kan ha view/tabeller i BigQuery som er tilgjengelig for forskjellige grupper.
 
-Tilganger til datasett forvaltes gjennom [Markedsplassen](https://data.intern.nav.no/).
+Tilganger til viewene/tabellene som er del av datasettene forvaltes gjennom [Markedsplassen](https://data.intern.nav.no/).
+
 Det er to måter å gi tilgang til et datasett på.
 
 ### Manuelt
