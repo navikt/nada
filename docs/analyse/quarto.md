@@ -13,6 +13,8 @@ I eksemplene under må følgende byttes ut med reelle verdier:
 - `${QUARTO_ID}` - erstatt med id på quarto
 - `${QUARTO_TOKEN}` - erstatt med team token fra markedsplassen
 
+Eksemplene tar også utgangspunkt i at det er de to filene `index.html` og `file.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filene ligger.
+
 #### Med curl
 
 ```bash
