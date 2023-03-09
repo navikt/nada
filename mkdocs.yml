@@ -89,5 +89,6 @@ nav:
       - Google managed Airflow (Cloud Composer): analyse/airflow/managed-airflow.md
     - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
+    - Quarto: analyse/quarto.md
   - Vår visjon:
     - Data mesh: visjon/data_mesh.md
