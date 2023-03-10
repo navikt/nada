@@ -29,8 +29,8 @@ import requests
 
 index_buffer = open("index.html", "rb")
 
-res = requests.put("https://${ENV}/quarto/update/${QUARTO_ID}",
-                  headers={"Authorization": f"Bearer ${QUARTO_TOKEN}"},
+res = requests.put(f"https://${ENV}/quarto/update/{QUARTO_ID}",
+                  headers={"Authorization": f"Bearer {QUARTO_TOKEN}"},
                   files={"file": index_buffer})
 
 res.raise_for_status()
