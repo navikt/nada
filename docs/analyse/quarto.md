@@ -13,12 +13,12 @@ I eksemplene under må følgende byttes ut med reelle verdier:
 - `${QUARTO_ID}` - erstatt med id på quarto
 - `${QUARTO_TOKEN}` - erstatt med team token fra markedsplassen
 
-Eksemplene tar også utgangspunkt i at det er de to filene `index.html` og `file.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filene ligger.
+Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.
 
 #### Med curl
 
 ```bash
-curl -X PUT -F file=@index.html -F file2=@file.html \
+curl -X PUT -F file=@index.html \
     https://${ENV}/quarto/update/${QUARTO_ID} \
     -H 'Authorization:Bearer ${QUARTO_TOKEN}'
 ```
@@ -27,15 +27,13 @@ curl -X PUT -F file=@index.html -F file2=@file.html \
 ```python
 import requests
 
-indexb = open("index.html", "rb")
-fileb = open("file.html", "rb")
+index_buffer = open("index.html", "rb")
 
 res = requests.put("https://${ENV}/quarto/update/${QUARTO_ID}",
                   headers={"Authorization": "Bearer ${QUARTO_TOKEN}"},
-                  files={"file": datab, "file2": fileb})
+                  files={"file": datab})
 
 res.raise_for_status()
 
-datab.close()
-fileb.close()
+index_buffer.close()
 ```
