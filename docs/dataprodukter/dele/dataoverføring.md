@@ -153,53 +153,63 @@ Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan 
     import org.apache.kafka.clients.consumer.KafkaConsumer
     import java.time.LocalDateTime
     import java.time.temporal.ChronoUnit
-
+    
     fun main() {
-        val projectId = "PROJECT" // erstatt med prosjektets id
-        val datasetId = "DATASET" // erstatt med datasett id
-        val tableName = "TABLE" // erstatt med tabellnavn
-        val bqClient = BigQueryClient(projectId, datasetId)
-        val tableId = bqClient.getOrCreateTable(tableName)
-
-        val topicName = "TOPIC" // erstatt med navn på Kafka topic
-        val kafkaBrokers = "BROKERS" // erstatt med navn på brokers
-        val consumer = createKafkaConsumer(topicName, kafkaBrokers)
-
+    
+        val bigQueryClient = BigQueryClient()
+    
+        val tableId = bigQueryClient.getOrCreateBigQueryTable("TABLE" /* erstatt med tabellnavn */)
+    
+        val kafkaConsumer = createKafkaConsumer()
+    
         while (true) {
-            val records: ConsumerRecords<String?, String?> = consumer.poll(Duration.ofMillis(100))
+            val records: ConsumerRecords<String?, String?> = kafkaConsumer.poll(Duration.ofMillis(100))
             for (record in records) {
-                System.out.printf(
-                    "offset = %d, key = %s, value = %s%n",
-                    record.offset(),
-                    record.key(),
-                    record.value()
-                )
-                val value = ObjectMapper().readValue(record.value(), JsonNode::class.java)
-                bqClient.insert(tableId, value)
+                storeRecordInBigQuery(record, bigQueryClient, tableId)
             }
         }
     }
-
-    fun createKafkaConsumer(topicName: String, kafkaBrokers: String): KafkaConsumer<String, String> {
-        val props = Properties()
-        props.setProperty("bootstrap.servers", kafkaBrokers)
-        props.setProperty("group.id", "mygroup")
-        props.setProperty("auto.offset.reset", "earliest")
-        props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-        props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-
+    
+    private fun setupBigQueryClient(): BigQueryClient {
+    val bqClient = BigQueryClient(projectId, datasetId)
+    return bqClient
+    }
+    
+    fun createKafkaConsumer(): KafkaConsumer<String, String> {
+    val topicName = "TOPIC" // erstatt med navn på Kafka topic
+    val kafkaBrokers = "BROKERS" // erstatt med navn på brokers
+    val props = Properties()
+    props.setProperty("bootstrap.servers", kafkaBrokers)
+    props.setProperty("group.id", "mygroup")
+    props.setProperty("auto.offset.reset", "earliest")
+    props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
+    props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
+    
         val consumer = KafkaConsumer<String, String>(props)
         consumer.subscribe(Arrays.asList(topicName))
-
+    
         return consumer
     }
-
-    class BigQueryClient(private val projectId: String, private val datasetId: String) {
-        private val bigQuery = BigQueryOptions.newBuilder()
-            .setProjectId(projectId)
-            .build()
-            .service
-
+    
+    private fun storeRecordInBigQuery(record: ConsumerRecord<String? String?>, bigQueryClient: BigQueryClient, tableId: Unit) {
+    System.out.printf(
+    "offset = %d, key = %s, value = %s%n",
+    record.offset(),
+    record.key(),
+    record.value()
+    )
+    val value = ObjectMapper().readValue(record.value(), JsonNode::class.java)
+    bigQueryClient.insert(tableId, value)
+    }
+    
+    class BigQueryClient() {
+    private val projectId = "PROJECT" // erstatt med prosjektets id
+    private val datasetId = "DATASET" // erstatt med datasett id
+    private val bigQuery = BigQueryOptions.newBuilder()
+    .setProjectId(projectId)
+    .build()
+    .service
+    
         fun getOrCreateTable(tableName: String): TableId {
             val tableId = TableId.of(datasetId, tableName)
             val table = bigQuery.getTable(tableId)
@@ -210,7 +220,7 @@ Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan 
                 return createTable(tableName)
             }
         }
-
+    
         private fun createTable(tableName: String): TableId {
             val schema = Schema.of(
                 Field.newBuilder("stringValue", StandardSQLTypeName.STRING).setMode(Field.Mode.REQUIRED).build(),
@@ -218,14 +228,14 @@ Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan 
                 Field.of("numericValue", StandardSQLTypeName.INT64),
                 Field.of("timestampValue", StandardSQLTypeName.TIMESTAMP),
             )
-
+    
             val tableId = TableId.of(datasetId, tableName)
             val tableDefinition = StandardTableDefinition.of(schema)
             val tableInfo = TableInfo.newBuilder(tableId, tableDefinition).build()
-
+    
             return bigQuery.create(tableInfo).tableId
         }
-
+    
         fun insert(tableId: TableId, value: JsonNode) {
             val row = InsertAllRequest.RowToInsert.of(mapOf(
                 value.use("stringValue") { textValue() },
@@ -233,7 +243,7 @@ Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan 
                 value.use("numericValue") { intValue() },
                 value.use("timestampValue") { LocalDateTime.parse(asText()).truncatedTo(ChronoUnit.MICROS).toString() },
             ))
-
+    
             val table = bigQuery.getTable(tableId)
             val rows = listOf(row)
             val response = table.insert(rows)
@@ -244,9 +254,9 @@ Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan 
             }
         }
     }
-
+    
     fun <T> JsonNode.use(key: String, transform: JsonNode.() -> T): Pair<String, T?> = key to get(key)?.let {
-        transform(it)
+    transform(it)
     }
     ````
 
