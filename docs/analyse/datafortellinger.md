@@ -2,7 +2,7 @@
 title: Datafortelling
 ---
 Datafortellinger brukes til å dele innsikt i form av statiske dokumenter.
-Datafortellingerkan kan enkelt deles med andre i NAV gjennom Markedsplassen.
+Datafortellinger kan kan enkelt deles med andre i NAV gjennom Markedsplassen.
 
 ## Lage quarto
 Se dokumentasjon på [Quarto sine sider](https://quarto.org).
