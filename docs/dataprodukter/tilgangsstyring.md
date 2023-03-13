@@ -20,8 +20,8 @@ For å få tilgang til datasett som inneholder personopplysninger må det finnes
 - Navigér til datasettet
 - Velg Legg til tilgang under _Aktive tilganger_-seksjonen
 - Fyll ut skjema
-    - Du kan gi tilgang for en annen bruker, en servicebruker eller ei gruppe
-    - Du kan velge hvor lenge tilgangen skal vare; til en gitt dato eller for alltid
+    - Du kan gi tilgang for en annen bruker, en servicebruker eller ei gruppe. I alle tre tilfellene bruker du e-post-adressen.
+    - Du kan velge hvor lenge tilgangen skal vare; til en gitt dato eller for alltid.
 
 ### Godkjenne en søknad
 
