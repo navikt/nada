@@ -66,6 +66,7 @@ markdown_extensions:
       custom_checkbox: true
 nav:
   - Om NADA: index.md
+  - Ordliste: ordliste.md
   - Juridisk:
     - Hva trenger jeg av dokumentasjon?: juridisk/dokumentasjon.md
     - Spilleregler: juridisk/spilleregler.md
