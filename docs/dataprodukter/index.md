@@ -33,7 +33,7 @@ For å få tilgang til GCP må man [legge til Google Cloud Platform i myapps.mic
     Plattformen tilbyr to måter å flytte data fra onprem til BigQuery:
 
     1. [Naisjobs](dele/dataoverføring.md#naisjob)
-    2. [Knorten](../analyse/komigang.md#knorten)
+    2. [Knorten](../analyse/kom-i-gang.md#knada)
 
     For å lese fra databaser onprem og for å få tilgang til å skrive til BigQuery fra onprem kan du [følge dokumentasjonen](dele/få-tilgang.md#f-tilgang-til-data-on-prem).
 
