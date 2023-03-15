@@ -13,7 +13,7 @@ En del av et dataprodukt. Består av data, metadata og kode. Data er i dag tilgj
 Database hostet av Google som er tilgjengelig for team på GCP. [Les om hvordan man kan flytte data til BigQuery](dataprodukter/index.md#flytte-data-til-bigquery).
 
 ### Metabase
-Dashboard-verktøy integrert med datasettene på markedsplassen. Brukes både av data scientister, utviklere og produktledere. [Les mer om Metabase](analyse/metabase.md).
+Dashboard-verktøy integrert med datasettene på datamarkedsplassen. Brukes både av data scientister, utviklere og produktledere. [Les mer om Metabase](analyse/metabase.md).
 
 ### Datafortellinger 
 Analyser med en "rød tråd". Datafortellinger lages som regel av data scientister. Tidligere har dette vært implementert gjennom vårt egenutviklede Datastory. Fra nå er det Quarto som gjelder. [Les mer om datafortellinger](analyse/datafortellinger.md).
