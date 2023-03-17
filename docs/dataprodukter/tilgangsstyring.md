@@ -28,7 +28,7 @@ Når man oppretter [Views](https://cloud.google.com/bigquery/docs/views)/[Materi
 
 Når man i [Markedsplassen](https://data.intern.nav.no/) lager et datasett som er et BigQuery View eller Materialized View vil vi automatisk autorisere viewet i BigQuery datasettet til viewet. Det betyr at dersom alle underliggende tabeller finnes i samme BigQuery datasett så kan man uten videre gi tilgang til det på samme måte som med tabeller gjennom Markedsplassen. 
 
-Men dersom viewet bygger på tabeller som ligger i andre BigQuery datasett enn det viewet selv ligger i må man manuelt [autorisere viewet](https://cloud.google.com/bigquery/docs/share-access-views) i disse BigQuery datasettene også.
+Men dersom viewet bygger på tabeller som ligger i andre BigQuery datasett enn det viewet selv ligger i må man manuelt [autorisere viewet](https://cloud.google.com/bigquery/docs/share-access-views#authorize_the_view_to_access_the_source_dataset) i disse BigQuery datasettene også.
 
 ### Godkjenne en søknad
 
