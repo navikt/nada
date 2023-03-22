@@ -41,3 +41,14 @@ Det gjør du slik:
 ## Tilpasse Oracle connector for raskere spørringer
 Ved å justere `arraysize` og `prefetchrows` kan spørringer mot databaser onprem forbedres markant!
 Se dokumentasjonen til [cx_Oracle-biblioteket](https://cx-oracle.readthedocs.io/en/latest/user_guide/tuning.html#tuningfetch) for mer informasjon.
+
+## Jupyter extensions
+
+Du kan installere extensions til Jupyter selv på samme måte som du installere Python pakker.
+Etter man har installert en extension må du stoppe notebooken og starte den på nytt.
+
+Eksempel for `Git-extension` i KNADA:
+
+```
+pip install --upgrade jupyterlab jupyterlab-git --user
+```
