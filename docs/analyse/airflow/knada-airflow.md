@@ -197,11 +197,10 @@ with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
 
 ## Airflow metrikker i Grafana
 
-Nå kan man lage dashboard i https://grafana.nais.io med metrikker fra Airflow.
-Airflow har egen dokumentasjon for hvilke metrikker som blir delt: https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/metrics.html#counters
-Metrikkene bruker Google sitt Monitoring Query Language dokumentert hos https://cloud.google.com/monitoring/mql.
-Vi har lagd et enkelt dashboard som et eksempel på hva man kan følge med på.
-https://grafana.nais.io/d/dPaDzl-4z/knada-airflow
+Nå kan man lage Grafana-dashboard i [grafana.nais.io](https://grafana.nais.io) med metrikker fra Airflow.
+Airflow har egen [dokumentasjon](https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/metrics.html#counters) for hvilke metrikker som blir delt.
+Metrikkene bruker Google sitt [Monitoring Query Language](https://cloud.google.com/monitoring/mql), så det enkleste er nok å bruke nedtrekksmenyene i Grafana når man lager spørringer.
+Vi har lagd et enkelt [eksempel-dashboard](https://grafana.nais.io/d/dPaDzl-4z/knada-airflow) som man kan bruke som inspirasjon på hva man kan følge med på.
 
 !!! info "Dette er foreløpig et eksperiment, så si i fra hvis det er nyttig. Hvis det er ingen som trenger dette så vil vi fjerne dette."
 
