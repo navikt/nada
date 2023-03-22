@@ -51,3 +51,45 @@ Stopping er ikke det samme som sletting, så alt er der når du starter den opp 
 Har du en maskin du ikke trenger lenger, så kan du slette den.
 
 [Velg maskinen i Vertex AI](https://console.cloud.google.com/vertex-ai/workbench/instances) i oversikten og trykk _DELETE_ i toppen.
+
+## Installasjon av databasedrivere
+For å bruke python biblioteker til å lese fra postgres, oracle kreves det at drivere for det er installert på notebook serveren. Dersom man bruker en [Knada Notebook](./knada-notebook.md) så kommer det miljøet man jobber i der allerede med disse driverne isntallert. Men dersom man jobber i en GCP Managed Notebook må man manuelt installere disse driverne.
+
+For å gjøre det enkelt for dere å komme i gang, har vi lagd to scripts som begge må kjøres med root privilegier. Disse vil installere nødvendige drivere for postgres og oracle.
+
+Kjør derfor først kommandoen:
+```
+sudo -i
+```
+
+### Postgres
+Trenger du Postgres, lim inn følgende i terminalen din:
+```bash
+apt-get update && apt-get install -yq --no-install-recommends libpq-dev
+```
+
+### Oracle
+1. Lag en tom fil og kall den setup_nb.sh
+2. Lim inn følgene kodesnutt:
+```bash
+apt-get update && apt-get install -yq --no-install-recommends \
+    build-essential \
+    curl \
+    alien \
+    libaio1 \
+    libaio-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+curl https://download.oracle.com/otn_software/linux/instantclient/215000/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm > /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm
+
+alien -i /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm && \
+    rm -rf /var/cache/yum && \
+    rm -f /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm && \
+    echo "/usr/lib/oracle/21.9/client64/lib" > /etc/ld.so.conf.d/oracle-instantclient21.9.conf && \
+    /usr/sbin/ldconfig
+
+PATH=$PATH:/usr/lib/oracle/21.9/client64/bin
+```
+
+!!! info "Nå vil skriptet installere versjon 21.9 av oracle klienten. Dersom du i stedet ønsker en annen versjon kan editere skriptet over med den versjonen du ønsker. Du finner en liste over tilgjengelige versjoner av oracle klienten [her](https://www.oracle.com/cis/database/technologies/instant-client/linux-x86-64-downloads.html)."
