@@ -195,6 +195,16 @@ with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
                                         branch="main")
 ```
 
+## Airflow metrikker i Grafana
+
+Nå kan man lage dashboard i https://grafana.nais.io med metrikker fra Airflow.
+Airflow har egen dokumentasjon for hvilke metrikker som blir delt: https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/metrics.html#counters
+Metrikkene bruker Google sitt Monitoring Query Language dokumentert hos https://cloud.google.com/monitoring/mql.
+Vi har lagd et enkelt dashboard som et eksempel på hva man kan følge med på.
+https://grafana.nais.io/d/dPaDzl-4z/knada-airflow
+
+!!! info "Dette er foreløpig et eksperiment, så si i fra hvis det er nyttig. Hvis det er ingen som trenger dette så vil vi fjerne dette."
+
 ## Bygge eget Airflow worker image
 Følgende guide antar at docker er installert på maskinen din og at brukeren din er autentisert mot GitHub Container Registry. Se enten installasjon av [colima](https://github.com/abiosoft/colima) eller [docker desktop](https://docs.docker.com/get-docker/) for å sette opp docker.
 
