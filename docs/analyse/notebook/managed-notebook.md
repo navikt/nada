@@ -53,9 +53,9 @@ Har du en maskin du ikke trenger lenger, så kan du slette den.
 [Velg maskinen i Vertex AI](https://console.cloud.google.com/vertex-ai/workbench/instances) i oversikten og trykk _DELETE_ i toppen.
 
 ## Installasjon av databasedrivere
-For å bruke python biblioteker til å lese fra postgres, oracle kreves det at drivere for det er installert på notebook serveren. Dersom man bruker en [Knada Notebook](./knada-notebook.md) så kommer det miljøet man jobber i der allerede med disse driverne isntallert. Men dersom man jobber i en GCP Managed Notebook må man manuelt installere disse driverne.
+For å bruke python biblioteker til å lese fra postgres og oracle kreves det at drivere for det er installert på notebook serveren. Dersom man bruker en [Knada Notebook](./knada-notebook.md) så kommer det miljøet man jobber i der allerede med disse driverne installert. Men dersom man jobber i en GCP Managed Notebook må man manuelt installere disse driverne.
 
-For å gjøre det enkelt for dere å komme i gang, har vi lagd to scripts som begge må kjøres med root privilegier. Disse vil installere nødvendige drivere for postgres og oracle.
+For å gjøre det enkelt for dere å komme i gang har vi lagd to scripts som begge må kjøres med root privilegier.
 
 Kjør derfor først kommandoen:
 ```
