@@ -10,6 +10,8 @@ Overskrifter korresponderer til overskrifter i malen, og vi tar kun for oss seks
     Tekst som er {==markert==} er ment som noe man bør ta stilling til.
     Kanskje det er noe som ikke gjelder dere, eller kanskje det er en eller flere av alternativene som er beskrevet som passer deres situasjon.
 
+    Kommentarer fra NADA er ofte i bokser som denne, men ikke alltid. 
+
 ## Dokumentasjon og ajourhold
 
 ### Eksterne deltagere
@@ -20,7 +22,7 @@ Overskrifter korresponderer til overskrifter i malen, og vi tar kun for oss seks
     Teamet må gjøre en vurdering av involvering av egne databehandlere.
 
 Nada-plattformen bygger på GCP som har egen databehandleravtale.
-[Dokumentert etterlevelse på NADA (B532)](https://etterlevelse.intern.nav.no/behandling/18089de7-829d-47e3-868b-53d4e5f251da/PERSONVERN/RELEVANTE_KRAV/krav/190/2/).
+[Dokumentert etterlevelse på NADA (B532, krever innlogging)](https://etterlevelse.intern.nav.no/behandling/18089de7-829d-47e3-868b-53d4e5f251da/PERSONVERN/RELEVANTE_KRAV/krav/190/2/).
 
 
 ## Beskrivelse av behandlingen
@@ -536,3 +538,41 @@ Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderi
     **Tiltak**
 
     Nye lagringssteder skal inkluderes i lagrings- og sletterutiner, dette er beskrevet i rutine.
+
+=== "Scenario 11"
+    **Konfidensiell informasjon om personer med kode 6/7 og egen ansatt blir tilgjengelig for personer som ikke skal ha tilgang fordi...**
+
+    Det hentes data fra databaser, herunder {==fyll inn navn på databaser==}, som inneholder data om personer med {==kode 6/7 og egen ansatt==}.
+
+    !!! info "Foreslått nivå"
+        - Sannsynlighetsnivå: **3**
+        - Konsekvensnivå: **5**
+
+    **Beskriv deres vurdering av sannsynlighet**
+    
+    Bosted, konfidensiell informasjon for personer med kode 6 eller 7, vil sjeldent hentes for analyse og statistikk. 
+    Fordi de kan finnes i databasene vil det være en mulighet for at de hentes.
+    Eksempelvis kan slik informasjon være oppgitt i dokumenter, henvendelser eller andre fritekstfelt.
+    Det kan også hentes data som indirekte kan identifisere lokasjon, som NAV-kontor.
+
+    Det er utarbeidet rutiner for å forhindre at det behandles personopplysninger med kode 6 og kode 7, {==se rutine==}. 
+    
+    Sannsynlighetsnivået settes relativt lavt, men ikke på laveste nivå da det alltid vil være en risiko for menneskelige feil.  
+
+    **Beskriv deres vurdering av konsekvens**
+
+    Ved sammenstilling av data benyttes som hovedregel en unik ID/nøkkel som ikke er identifiserende eller inneholder personopplysninger. 
+
+    Resultatene, aggregert statistikk vil i seg selv ikke være identifiserende.  
+
+    Dersom rutine for henting av data ikke blir fulgt, kan det få den konsekvens at det behandles personopplysninger knyttet til kode 6 og kode 7.
+
+    Det er dermed en risiko for at opplysningene behandles, men konsekvensen anses som lav da det kun er dataanalytiker som har tilgang til dataene i forbindelse med behandlingen. 
+
+    **Tiltak**
+
+    Filtrere bort personer med diskresjonskode når data som inneholder personidentifiserende informasjon og saksopplysninger om person hentes.
+
+    Unngå å utføre analyser der informasjon om person, f.eks. lokasjon, aggregeres slik at datasett får små antall.
+
+    Det må inntas beskrivelser i rutine. 
