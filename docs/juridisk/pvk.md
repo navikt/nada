@@ -72,6 +72,9 @@ Dette betyr at vi ikke samler inn noen data, vi kun gjenbruker data som allerede
 
 **Behandling av data**
 
+!!! tip "Hvor har dere data?"
+    Vi har beskrevet ulike måter å hente ut data på. Velg den som passer for deg! :sparkles:
+
 === "Data fra produktteam"
     Dataene som behandles hentes fra {==fyll inn applikasjon==} som eies av {==fyll inn team==}.
     Data leses fra {==[Kafka / BigQuery / database]==}.
@@ -88,7 +91,7 @@ Dette betyr at vi ikke samler inn noen data, vi kun gjenbruker data som allerede
 
 
     !!! tip "Hemmeligheter i notebook"
-        Har man behov for hemmeligheter i notebooken så anbefaler vi at man bruker Google Secret Manager (GSM) i teamets prosjekt.
+        Har man behov for hemmeligheter i notebooken så anbefaler vi at man bruker [Google Secret Manager (GSM)](../analyse/notebook/knada-notebook.md#lese-hemmeligheter-fra-google-secret-manager) i teamets prosjekt.
         En hemmelighet opprettet i GSM vil kun være tilgjengelig for de som har gitt seg tilgang til den, derfor anbefaler vi ikke at team opererer med admin-tilganger i sitt prosjekt.
 
         Man har mulighet til å gi en service account, opprettet i KNADA for teamet, tilgang til teamets hemmeligheter eller kilder i GCP.
@@ -120,7 +123,7 @@ Dette betyr at vi ikke samler inn noen data, vi kun gjenbruker data som allerede
     For å få tilgang til KNADA må man registrere et team i Knorten, da vil man få muligheten til å installere Jupyter og Airflow.
 
     !!! tip "Hemmeligheter i notebook"
-        Har man behov for hemmeligheter i notebooken så anbefaler vi at man bruker Google Secret Manager (GSM) i teamets prosjekt.
+        Har man behov for hemmeligheter i notebooken så anbefaler vi at man bruker [Google Secret Manager (GSM)](../analyse/notebook/knada-notebook.md#lese-hemmeligheter-fra-google-secret-manager) i teamets prosjekt.
         En hemmelighet opprettet i GSM vil kun være tilgjengelig for de som har gitt seg tilgang til den, derfor anbefaler vi ikke at team opererer med admin-tilganger i sitt prosjekt.
 
         Man har mulighet til å gi en service account, opprettet i KNADA for teamet, tilgang til teamets hemmeligheter eller kilder i GCP.
@@ -155,7 +158,7 @@ Tidvis mellomlagres resultat ved spesielt tunge spørringer.
         - *Hvis aktuelt*, beskriv metode for pseudonymisering og/eller anonymisering gjort av analytiker.
         - Referer til TADA ved spørsmål for valg av metode.
         - Alternativt beskriv hvorfor det ikke blir gjort, eller beskriv at det er gjort i kildesystemet ved innsamling av data, steg 1
-    4. Sammenstilling av data i notebook (i Analyseplattformen i GCP)
+    4. Sammenstilling av data i notebook
         - Dataene som samles inn fra databaser leses fra en notebook, ved at det gjøres spørringer mot en kilde.
         - {==Fyll inn navn på datakilder, feks løsning, datavarehus, BigQuery.==}
         - Se beskrivelser av innsamling av data og lagring av data.
@@ -165,9 +168,9 @@ Tidvis mellomlagres resultat ved spesielt tunge spørringer.
     6. Automatisk publisering av data
         - Det skeduleres til å oppdateres jevnlig med orkestreringsverktøyet Airflow (del av Analyseplattform) eller i GCP.
     7.	Sletting av data
-        - Når man ikke lenger har behov for å utvikle ny statistikk, slettes personopplysninger og data som er grunnlag for analysen i henhold til sletterutiner, vennligst se vedlagt rutine.
+        - Når man ikke lenger har behov for å utvikle ny statistikk, slettes personopplysninger og data som er grunnlag for analysen i henhold til sletterutiner, {==(legg ved rutine)==}.
 === "On-prem"
-    Her er det ikke noe enda!
+    Her er det ikke noe enda! :nail_care:
 
 
 #### Referanse til supplerende vedlegg
@@ -180,7 +183,7 @@ Vurderingen gjelder behandling fra uttrekk fra database, til visualisering av st
 
 Vurderingen baserer seg på dataplattformen sine løsninger, som er beskrevet i {==[behandlingskatalogen / etterlevelseskatalogen / egen PVK / følgende ROSer]==}
 
-Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderinger.==}
+Dataplattformen baserer seg på databehandleravtaler for {==[GCP / on-prem], og eventuelt andre vurderinger.==}
 
 {==Disse er lenket til over i form av behandlingskatalog, etterlevelses-verktøy, ROSer og lenke til aktuelle ROSer fra plattformtjenestene til nais==}
 
@@ -259,6 +262,7 @@ Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderi
     **Det samles inn flere personopplysninger enn det som er nødvendig for formålet fordi...**
 
     Erfaringsmessig vil det forekomme overskuddsinformasjon, til tross for at teamet i forkant har definert hvilke kategorier personopplysninger som er nødvendig for å gjennomføre analysen.
+
     Dette skyldes ofte manglende oversikt over hva som finnes i NAVs datakilder.
     Det er derfor mulig at vi henter ut flere opplysninger og/eller opplysninger på et detaljnivå som senere viser seg å være unødvendig detaljert.
 
@@ -313,7 +317,7 @@ Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderi
 
     **Beskriv deres vurdering av sannsynlighet**
 
-    {==Det er utarbeidet sletterutiner, se vedlegg.==}
+    {==Det er utarbeidet sletterutiner, (legg ved sletterutine).==}
     Det er imidlertid alltid en risiko for at rutiner ikke følges og at de manuelle sletterutinene ikke gjennomføres.
     Sannsynlighetsnivået settes til nivå tre {==ettersom ikke alle sletterutinene er automatisert==}
 
@@ -324,12 +328,13 @@ Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderi
 
     **Tiltak**
 
-    Sletterutiner er utarbeidet, se vedlegg.
+    Sletterutiner er utarbeidet, {==(legg ved letterutine)==}.
 
 === "Scenario 4"
     **Personopplysningene som behandles er ikke korrekte fordi...**
 
     Analyse og statistikk tar utgangspunkt i informasjon som er gitt fra bruker eller saksbehandler, og en eventuell feil vil være basert på at brukere har gitt feil informasjon eller saksbehandler har fylt inn feil.
+    
     Teknisk kan det også skje feil avlesninger når det er felter som skrives inn manuelt, slikt som antall timer som kan skrives med punkt, komma osv.
     Dette kan medføre at informasjonen tolkes feil.
 
@@ -383,7 +388,7 @@ Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderi
     **Beskriv deres vurdering av sannsynlighet**
 
     Analyse i denne sammenhengen medfører at det trekkes ut en kopi av personopplysninger.
-    Personopplysningene kan i en kort periode lagres pseudonymisert i NAVs Analyseplattform i GCP før de slettes.
+    Personopplysningene kan i en kort periode lagres {==pseudonymisert==} i NAVs Analyseplattform i GCP før de slettes.
     Den registrertes mulighet for innsyn forutsettes håndtert der informasjonen samles inn og vurderes ikke særskilt i denne PVK.
 
     Da det ikke gis innsyn i hvilke personopplysninger som er gjenstand for statistikk og analyse, settes sannsynlighetsnivået deretter.
@@ -491,7 +496,7 @@ Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderi
 === "Scenario 9"
     **Analyse og statistikk blir ikke tilstrekkelig anonymisert fordi...**
 
-    Analyserer for «små» datasett slik at personer kan bli re-identifisert.
+    Datasettene inneholder et lavt antall rader, slik at personer kan bli re-identifisert.
 
     !!! info "Foreslått nivå"
         - Sannsynlighetsnivå: **1**
@@ -513,7 +518,7 @@ Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderi
     Vi lagrer ikke grupper på mindre enn fem personer, hverken i tabeller eller i plott.
 
 === "Scenario 10"
-    **Det oppbevares flere kopier av samme informasjon i form av mellomlagring mv, som ikke er omfattet av slettereglene.**
+    **Det oppbevares flere kopier av samme informasjon i form av mellomlagring som ikke er omfattet av slettereglene.**
 
     I de fleste tilfeller benyttes det data som kan hentes programmatisk for analyse.
     Men det forekommer at {==grunnlagsdata med personinformasjon (hovedsakelig i fritekstfelt) lastes opp og lagres==} på lokal PC og deretter i notebook for å utføre analyse og/eller lage statistikk.
@@ -555,7 +560,7 @@ Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderi
     Eksempelvis kan slik informasjon være oppgitt i dokumenter, henvendelser eller andre fritekstfelt.
     Det kan også hentes data som indirekte kan identifisere lokasjon, som NAV-kontor.
 
-    Det er utarbeidet rutiner for å forhindre at det behandles personopplysninger med kode 6 og kode 7, {==se rutine==}. 
+    Det er utarbeidet rutiner for å forhindre at det behandles personopplysninger med kode 6 og kode 7, {==(legg ved rutine)==}. 
     
     Sannsynlighetsnivået settes relativt lavt, men ikke på laveste nivå da det alltid vil være en risiko for menneskelige feil.  
 
