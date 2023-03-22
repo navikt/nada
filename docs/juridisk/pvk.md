@@ -536,15 +536,3 @@ Dataplattformen baserer seg på databehandleravtaler {==for..., og andre vurderi
     **Tiltak**
 
     Nye lagringssteder skal inkluderes i lagrings- og sletterutiner, dette er beskrevet i rutine.
-
-=== "Scenario 11"
-
-    **Tiltak**
-
-    Filtrere bort personer med diskresjonskode når data som inneholder personidentifiserende informasjon og saksopplysninger om person hentes.
-
-    Unngå å utføre analyser der informasjon om person, f.eks. lokasjon, aggregeres slik at datasett får små antall.
-
-    Det må inntas beskrivelser i rutine.
-
-    *Kode 6 7 filtrering fra plattformen?*
