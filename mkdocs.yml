@@ -42,6 +42,7 @@ markdown_extensions:
   - toc:
       permalink: True
   - admonition
+  - pymdownx.critic
   - pymdownx.details
   - pymdownx.caret
   - pymdownx.tilde
@@ -71,6 +72,7 @@ nav:
     - Hva trenger jeg av dokumentasjon?: juridisk/dokumentasjon.md
     - Spilleregler: juridisk/spilleregler.md
     - Hvem lager spilleregler?: juridisk/hvem.md
+    - Hvordan fyller jeg ut PVK?: juridisk/pvk.md
   - Dataprodukter:
     - Hva er et dataprodukt?: dataprodukter/dataprodukt.md
     - Kom i gang: dataprodukter/index.md
