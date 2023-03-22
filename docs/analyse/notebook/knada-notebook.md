@@ -81,3 +81,6 @@ data = secret.payload.data.decode('UTF-8')
 
 Har du hemmeligheter i et eget team-prosjekt så må du gi service accounten for KNADA tilgang til hemmeligheter i ditt team-prosjekt.
 Navn på service accounten finner du i Knorten.
+
+## Restarte server
+For manuelt å restarte en Jupyter notebook går man til kontrollpanelet ved å velge `File` -> `Hub Control Panel` -> `Stop My Server`. Etter at serveren er stoppet vil man så kunne trykke `Start My Server`.

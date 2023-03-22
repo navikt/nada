@@ -45,7 +45,7 @@ Se dokumentasjonen til [cx_Oracle-biblioteket](https://cx-oracle.readthedocs.io/
 ## Jupyter extensions
 
 Du kan installere extensions til Jupyter selv på samme måte som du installere Python pakker.
-Etter man har installert en extension må du stoppe notebooken og starte den på nytt.
+Etter man har installert en extension må du [stoppe notebooken og starte den på nytt](./knada-notebook.md#restarte-server).
 
 Eksempel for `Git-extension` i KNADA:
 
