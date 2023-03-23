@@ -195,7 +195,10 @@ Dataplattformen baserer seg på databehandleravtaler for {==[GCP / on-prem], og 
 ## Konsekvenser og tiltak
 
 !!! tip "Vær oppmerksom"
-    Denne seksjonen omfatter *Konsekvenser for den enkelte*, samt *Tiltak*.
+    Denne seksjonen handler om overskriftene *Konsekvenser for den enkelte* og *Tiltak*.
+    Scenariene er eksempler, og passer ikke nødvendigvis løsningen deres.
+    Likevel kan det hende at de kan være til inspirasjon! :relieved:
+
     Hvert scenario inneholder tekst som passer i konsekvensdelen: beskrivelse, forslag til konsekvens- og risikonivå, vurdering av konsekvens og risko. I tillegg inneholder visse scenario tiltak, som hører til i *tabell for risikoreduserende tiltak*.
 
 === "Scenario 1"
