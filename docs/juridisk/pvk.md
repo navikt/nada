@@ -130,6 +130,8 @@ Dette betyr at vi ikke samler inn noen data, vi kun gjenbruker data som allerede
 
     Det gjøres spørringer mot BigQuery med BigQuery API klient og servicebruker.
 
+---
+
 #### Hvordan og hvor lenge skal personopplysningene lagres?
 
 Personopplysningene blir midlertidig lagret i en periode på {==fyll inn varighet==}
@@ -170,7 +172,10 @@ Tidvis mellomlagres resultat ved spesielt tunge spørringer.
     7.	Sletting av data
         - Når man ikke lenger har behov for å utvikle ny statistikk, slettes personopplysninger og data som er grunnlag for analysen i henhold til sletterutiner, {==(legg ved rutine)==}.
 === "On-prem"
-    Her er det ikke noe enda! :nail_care:
+    !!! info "Under arbeid"
+        Her er det ikke noe enda! :nail_care:
+
+---
 
 
 #### Referanse til supplerende vedlegg
