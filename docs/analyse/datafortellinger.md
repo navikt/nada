@@ -24,8 +24,8 @@ Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp o
 
 ```bash
 curl -X PUT -F file=@index.html \
-    https://${ENV}/quarto/update/${QUARTO_ID} \
-    -H 'Authorization:Bearer ${QUARTO_TOKEN}'
+    "https://${ENV}/quarto/update/${QUARTO_ID}" \
+    -H "Authorization:Bearer ${QUARTO_TOKEN}"
 ```
 
 #### Med python
