@@ -222,7 +222,7 @@ influxdb==5.3.1
 
 #### Lag så en `Dockerfile` i samme mappe som `requirements.txt` filen
 ```
-FROM europe-west1-docker.pkg.dev/knada-gcp/knada/airflow-papermill:2023-03-22-fb1c4a4
+FROM ghcr.io/navikt/knada-images/airflow-custom-base:v1
 
 COPY requirements.txt .
 
