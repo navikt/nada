@@ -239,3 +239,5 @@ USER ${AIRFLOW_UID}
 docker build -t ghcr.io/navikt/mitt-airflow-image:v1 .
 docker push ghcr.io/navikt/mitt-airflow-image:v1
 ```
+
+!!! info "Merk: Imaget som airflow workeren skal bruke må ha apache-airflow installert. Dette vil følge med dersom en tar utgangspunkt i vårt image over, men dersom man bygger et eget image fra scratch må man selv installere dette biblioteket med `pip install apache-airflow>=2.5.1`"
