@@ -222,15 +222,11 @@ influxdb==5.3.1
 
 #### Lag så en `Dockerfile` i samme mappe som `requirements.txt` filen
 ```
-FROM ghcr.io/navikt/knada-airflow-base:2023-01-30-7d2e0dc
-
-USER root
+FROM europe-west1-docker.pkg.dev/knada-gcp/knada/airflow-papermill:2023-03-22-fb1c4a4
 
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
-
-USER ${AIRFLOW_UID}
 ```
 
 #### Bygg og push imaget til GitHub Container Registry
