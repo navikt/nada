@@ -580,8 +580,6 @@ Dataplattformen baserer seg på databehandleravtaler for {==[GCP / on-prem], og 
 
     Dersom rutine for henting av data ikke blir fulgt, kan det få den konsekvens at det behandles personopplysninger knyttet til kode 6 og kode 7.
 
-    Det er dermed en risiko for at opplysningene behandles, men konsekvensen anses som lav da det kun er dataanalytiker som har tilgang til dataene i forbindelse med behandlingen. 
-
     **Tiltak**
 
     Filtrere bort personer med diskresjonskode når data som inneholder personidentifiserende informasjon og saksopplysninger om person hentes.
