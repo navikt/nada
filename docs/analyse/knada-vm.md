@@ -10,7 +10,7 @@ Du kan koble deg til VMen med SSH fra VS Code lokalt som følger:
 1. Installer extension `Remote - SSH` i VS Code.
 2. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`. Hvis dette ikke fungerer last ned gcloud CLI https://cloud.google.com/sdk/docs/install-sdk og prøv igjen.
 3. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance>` Erstatt `<instance>` med navnet på VM instansen din, denne finner du for teamet ditt på `oversikt` siden i [Knorten](https://knorten.knada.io/oversikt) under `Compute`. Denne kommandoen vil også generere SSH nøkler.
-4. Kjør så kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din slik som i punkt 4.
+4. Kjør så kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din slik som i punkt 3.
 5. Outputen fra kommandoen i (4) inneholder en del ting du trenger fylle inn i ssh-configen din. Under er et eksempel på hvordan en slik ssh config skal se ut.
 ````
 Host knada-vm
