@@ -34,6 +34,8 @@ NADA tilbyr team eller enkeltpersoner å sette opp Airflow instanser i KNADA gje
 
 For mer informasjon om Airflow, se [Airflow docs](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
 
+!!! warning "Vær oppmerksom på at alt av logger fra en airflow task vil skrives til en [bucket](https://cloud.google.com/storage/docs/buckets) i `knada-gcp` prosjektet og være tilgjengelig etterpå gjennom airflow og direkte for de som har tilgang til bucketene. Vær derfor forsiktig så ikke sensitiv informasjon skrives til stdout i koden som kjøres."
+
 ### Oppsett av repo for DAGs
 For å bruke KNADA Airflow kreves det at det lages et Github repo under `navikt` organisasjonen på Github som inneholder Python-filer med DAGer. 
 
