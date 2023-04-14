@@ -31,7 +31,7 @@ I VS Code trykk cmnd+shift+P (mac) eller cntrl+shift+P (windows) og skriv inn og
 I [denne guiden](https://medium.com/@albert.brand/remote-to-a-vm-over-an-iap-tunnel-with-vscode-f9fb54676153) dokumenterer de hvordan denne ssh-configen kan fylles ut automagisk når man legger til en ny host i VS Code. Gjør man dette må man alikevel inn å manuelt endre ting i ssh configen i etterkant, så det anbefales å ta utgangspunkt i eksempelet i punkt 5 over når ssh configen skal lages.
 
 ## Installasjon av databasedrivere
-For å bruke python biblioteker til å lese fra postgres og oracle kreves det at drivere for det er installert på notebook serveren.
+For å bruke python biblioteker til å lese fra postgres og oracle kreves det at drivere for det er installert på den virtuelle maskinen.
 
 For å gjøre det enkelt for dere å komme i gang har vi lagd to scripts som begge må kjøres med root privilegier.
 
