@@ -3,32 +3,44 @@ Du kan sette opp én [virtuell maskin](https://cloud.google.com/compute/docs/ins
 
 !!! warn "Merk: Selv om hvert teammedlem får sitt eget hjemmeområde på den virtuelle maskinen vil alle ha tilgang til å aksessere hverandres områder da hvert teammedlem gis eier-rettigheter for VMen."
 
-## Koble til VM i knada-gcp fra VS Code lokalt
+## Koble til VM i knada-gcp med SSH 
+For å koble deg til en VM i `knada-gcp` trenger du å opprette et ssh nøkkelpar og hente ut noe informasjon om instansen som må fylles inn i ssh-configen lokalt.
 
-Du kan koble deg til VMen med SSH fra VS Code lokalt som følger:
-
-1. Installer extension `Remote - SSH` i VS Code.
-2. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`. Hvis dette ikke fungerer last ned gcloud CLI https://cloud.google.com/sdk/docs/install-sdk og prøv igjen.
-3. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance>` Erstatt `<instance>` med navnet på VM instansen din, denne finner du for teamet ditt på `oversikt` siden i [Knorten](https://knorten.knada.io/oversikt) under `Compute`. Denne kommandoen vil også generere SSH nøkler.
-4. Kjør så kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din slik som i punkt 3.
-5. Outputen fra kommandoen i (4) inneholder en del ting du trenger fylle inn i ssh-configen din. Under er et eksempel på hvordan en slik ssh config skal se ut.
+1. Hvis du ikke har gjort det i dag, kjør kommandoen `gcloud auth login --update-adc`.
+2. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance>` Erstatt `<instance>` med navnet på VM instansen din, denne finner du for teamet ditt på `oversikt` siden i [Knorten](https://knorten.knada.io/oversikt) under `Compute`. Denne kommandoen vil også generere SSH nøkler.
+3. Kjør så kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din slik som i punkt (2).
+4. Outputen fra kommandoen i (3) inneholder en del ting du trenger fylle inn i ssh-configen din. Under er et eksempel på hvordan en slik ssh config skal se ut.
 ````
 Host knada-vm
-  HostName ${HOSTNAME}
+  HostName {HOSTNAME}
   IdentityFile ~/.ssh/google_compute_engine
   CheckHostIP no
-  HostKeyAlias ${HOSTNAME}
+  HostKeyAlias {HOSTNAME}
   IdentitiesOnly yes
   UserKnownHostsFile ~/.ssh/google_compute_known_hosts
-  ProxyCommand ${PROXYCOMMAND}
+  ProxyCommand {PROXYCOMMAND}
   ProxyUseFdpass no
-  User ${USERNAME}
+  User {USERNAME}
 ````
-Erstatt ${HOSTNAME}, ${PROXYCOMMAND} og ${USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: ${USERNAME} skal kun være det før `@` i output fra kommandoen over, ${HOSTNAME} er det som begynner med `compute.` og ${PROXYCOMMAND} er alt etter ProxyCommand til --verbosity=warning. 
 
-I VS Code trykk cmnd+shift+P (mac) eller cntrl+shift+P (windows) og skriv inn og velg `Remote - SSH: Connect to host...` og velg så hosten `knada-vm`.
+Erstatt {HOSTNAME}, {PROXYCOMMAND} og {USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: {USERNAME} skal kun være det før `@` i output fra kommandoen over, {HOSTNAME} er det som begynner med `compute.` og {PROXYCOMMAND} er alt etter ProxyCommand til --verbosity=warning. 
 
-I [denne guiden](https://medium.com/@albert.brand/remote-to-a-vm-over-an-iap-tunnel-with-vscode-f9fb54676153) dokumenterer de hvordan denne ssh-configen kan fylles ut automagisk når man legger til en ny host i VS Code. Gjør man dette må man alikevel inn å manuelt endre ting i ssh configen i etterkant, så det anbefales å ta utgangspunkt i eksempelet i punkt 5 over når ssh configen skal lages.
+### Fra VS Code
+1. Installer extension `Remote - SSH` i VS Code.
+2. I VS Code trykk cmnd+shift+P (mac) eller cntrl+shift+P (windows) og skriv inn og velg `Remote - SSH: Connect to host...` og velg så hosten `knada-vm`.
+
+### Fra IntelliJ/Pycharm
+1. I oppstartsvinduet velg `SSH` under `Remote Development`
+2. Klikk `New Connection`
+3. Åpne `SSH Configurations` ved å trykke på tannhjulet til høyre for `Connection` feltet
+4. I `SSH Configurations` vinduet trykk `+` for å legge til en ny konfigurasjon.
+5. Spesifiser så følgende og klikk `OK`
+    - `Host` settes til `knada-vm`
+    - `User name` settes til brukernavnet på maskinen din lokalt
+    - `Authentication type` settes til `OpenSSH config and authentication agent`
+6. Trykk på `Check Connection and Continue` (dette tar fort litt tid første gangen)
+7. Når vinduet `Choose IDE and Project` dukker opp sett `Project directory`. Dette skal settes til ditt hjemmeområde på serveren `/home/<brukernavn>`, trykk på browse ikonet til høyre for boksen for å lete det opp
+8. Klikk så `Download and Start IDE`
 
 ## Installasjon av databasedrivere
 For å bruke python biblioteker til å lese fra postgres og oracle kreves det at drivere for det er installert på den virtuelle maskinen.
