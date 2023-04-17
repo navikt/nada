@@ -71,7 +71,7 @@ apt-get update && apt-get install -yq --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-curl https://download.oracle.com/otn_software/linux/instantclient/215000/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm > /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm
+curl https://download.oracle.com/otn_software/linux/instantclient/219000/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm > /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm
 
 alien -i /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm && \
     rm -rf /var/cache/yum && \
