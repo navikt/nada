@@ -20,7 +20,5 @@ token <- token_fetch(scopes = scope)
 gcs_auth(token = token)
 
 gcs_global_bucket("my-bucket")
-
-gcs_global_bucket("my-bucket")
 obj <- gcs_get_object(“file.txt”)
 ````
