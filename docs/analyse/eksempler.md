@@ -6,8 +6,8 @@
 1. Autentiser deg med `gcloud auth login --update-adc`
 2. Installer følgende pakker
 ````R
-install.packages(“googleCloudStorageR”)
-install.packages(“gargle”)
+install.packages("googleCloudStorageR")
+install.packages("gargle")
 ````
 3. Les fra bucket
 ````R
