@@ -16,7 +16,7 @@ I eksemplene under må følgende byttes ut med reelle verdier:
 
 - `${ENV}` - erstatt med nada.dev.intern.nav.no for dev og nada.intern.nav.no for prod
 - `${QUARTO_ID}` - erstatt med id på quarto
-- `${QUARTO_TOKEN}` - erstatt med team token fra markedsplassen
+- `${TEAM_TOKEN}` - erstatt med team token fra markedsplassen
 
 Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.
 
@@ -25,7 +25,7 @@ Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp o
 ```bash
 curl -X PUT -F file=@index.html \
     "https://${ENV}/quarto/update/${QUARTO_ID}" \
-    -H "Authorization:Bearer ${QUARTO_TOKEN}"
+    -H "Authorization:Bearer ${TEAM_TOKEN}"
 ```
 
 #### Med python
@@ -35,7 +35,7 @@ import requests
 index_buffer = open("index.html", "rb")
 
 res = requests.put(f"https://{ENV}/quarto/update/{QUARTO_ID}",
-                  headers={"Authorization": f"Bearer {QUARTO_TOKEN}"},
+                  headers={"Authorization": f"Bearer {TEAM_TOKEN}"},
                   files={"file": index_buffer})
 
 res.raise_for_status()
@@ -43,6 +43,51 @@ res.raise_for_status()
 index_buffer.close()
 ```
 
+### Oppdatere Quarto med naisjob
+
+#### Eksempler
+- [nada](https://github.com/navikt/nada-quarto)
+- [fia](https://github.com/navikt/fia-datafortelling)
+
+````Dockerfile
+FROM python:3.11
+
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+    curl \
+    jq && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN QUARTO_VERSION=$(curl https://api.github.com/repos/quarto-dev/quarto-cli/releases/latest | jq '.tag_name' | sed -e 's/[\"v]//g') && \
+    wget https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.tar.gz && \
+    tar -xvzf quarto-${QUARTO_VERSION}-linux-amd64.tar.gz && \
+    ln -s /quarto-${QUARTO_VERSION}/bin/quarto /usr/local/bin/quarto && \
+    rm -rf quarto-${QUARTO_VERSION}-linux-amd64.tar.gz
+
+WORKDIR /app
+
+COPY main.qmd .
+
+ENV DENO_DIR=/tmp/deno
+ENV XDG_CACHE_HOME=/tmp/cache
+
+CMD ["quarto", "render", "main.qmd", "main.html"]
+````
+
+````yaml
+apiVersion: nais.io/v1
+kind: Naisjob
+metadata:
+  annotations:
+    nais.io/read-only-file-system: "false"
+  labels:
+    team: nada
+  name: quarto-eksempel
+  namespace: nada
+spec:
+  image: "{{ image }}"
+  schedule: "0 1 * * *"
+````
 
 ## Datastory-biblioteket
 !!!warning "Datafortellinger laget med datastory-biblioteket vil fases ut. Eksisterende datafortellinger vil leve videre en stund, men vi vil om kort tid stenge muligheten til å lage nye."

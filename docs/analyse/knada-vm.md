@@ -10,20 +10,39 @@ For å koble deg til en VM i `knada-gcp` trenger du å opprette et ssh nøkkelpa
 2. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance>` Erstatt `<instance>` med navnet på VM instansen din, denne finner du for teamet ditt på `oversikt` siden i [Knorten](https://knorten.knada.io/oversikt) under `Compute`. Denne kommandoen vil også generere SSH nøkler.
 3. Kjør så kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`. Erstatt `<instance>` med navnet på VM instansen din slik som i punkt (2).
 4. Outputen fra kommandoen i (3) inneholder en del ting du trenger fylle inn i ssh-configen din. Under er et eksempel på hvordan en slik ssh config skal se ut.
-````
-Host knada-vm
-  HostName {HOSTNAME}
-  IdentityFile ~/.ssh/google_compute_engine
-  CheckHostIP no
-  HostKeyAlias {HOSTNAME}
-  IdentitiesOnly yes
-  UserKnownHostsFile ~/.ssh/google_compute_known_hosts
-  ProxyCommand {PROXYCOMMAND}
-  ProxyUseFdpass no
-  User {USERNAME}
-````
 
-Erstatt {HOSTNAME}, {PROXYCOMMAND} og {USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: {USERNAME} skal kun være det før `@` i output fra kommandoen over, {HOSTNAME} er det som begynner med `compute.` og {PROXYCOMMAND} er alt etter ProxyCommand til --verbosity=warning. 
+=== "MAC"
+    ````
+    Host knada-vm
+        HostName {HOSTNAME}
+        IdentityFile ~/.ssh/google_compute_engine
+        CheckHostIP no
+        HostKeyAlias {HOSTNAME}
+        IdentitiesOnly yes
+        UserKnownHostsFile ~/.ssh/google_compute_known_hosts
+        ProxyCommand {PROXYCOMMAND}
+        ProxyUseFdpass no
+        User {USERNAME}
+    ````
+
+    Erstatt {HOSTNAME}, {PROXYCOMMAND} og {USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: {USERNAME} skal kun være det før `@` i output fra kommandoen over, {HOSTNAME} er det som begynner med `compute.` og {PROXYCOMMAND} er alt etter ProxyCommand til --verbosity=warning. 
+
+=== "Windows"
+    ````
+    Host knada-vm
+        HostName {HOSTNAME}
+        IdentityFile C:\\Users\\{USERNAME}\\.ssh\\google_compute_engine
+        CheckHostIP no
+        HostKeyAlias {HOSTNAME}
+        IdentitiesOnly yes
+        UserKnownHostsFile C:\\Users\\{USERNAME}\\.ssh\\google_compute_known_hosts
+        ProxyCommand "C:\\Users\\{USERNAME}\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\..\\platform\\bundledpython\\python.exe" "-S" "C:\\Users\\{USERNAME}\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\lib\\gcloud.py" compute start-iap-tunnel {INSTANS} %p --listen-on-stdin --project=knada-gcp --zone=europe-west1-b --verbosity=warning
+        ProxyUseFdpass no
+        User {USERNAME}
+    ````
+
+    Erstatt {HOSTNAME}, {PROXYCOMMAND} og {USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under `~/.ssh/config`. Merk: {USERNAME} skal kun være det før `@` i output fra kommandoen over, {HOSTNAME} er det som begynner med `compute.` og {INSTANS} som du finner i [Knorten](https://knorten.knada.io/oversikt) under `Compute` for teamet ditt.
+
 
 ### Fra VS Code
 1. Installer extension `Remote - SSH` i VS Code.
@@ -42,7 +61,28 @@ Erstatt {HOSTNAME}, {PROXYCOMMAND} og {USERNAME} med verdiene du får ut av dry-
 7. Når vinduet `Choose IDE and Project` dukker opp sett `Project directory`. Dette skal settes til ditt hjemmeområde på serveren `/home/<brukernavn>`, trykk på browse ikonet til høyre for boksen for å lete det opp
 8. Klikk så `Download and Start IDE`
 
-## Installasjon av databasedrivere
+## Oppsett av VM
+
+### Python
+Den virtuelle maskinen kommer med python 3.9 installert, men mangler installasjon av [pip](). Installasjon av `pip` på VMen kan gjøres med
+````bash
+sudo apt install python3-pip
+````
+
+### R
+R kan installeres som følger
+````bash
+sudo apt update -y && sudo apt install -y r-base
+````
+
+#### Nyttige R biblioteker for interaksjon med google APIer
+- [gargle](https://gargle.r-lib.org/): Bibliotek for enklere håndtering av autentisering mot google APIer
+- [googleCloudStorageR](https://cran.r-project.org/web/packages/googleCloudStorageR/vignettes/googleCloudStorageR.html): Bibliotek for å lese/skrive filer til `Google Cloud Storage`
+- [bigrquery](https://github.com/r-dbi/bigrquery): Bibliotek for å lese skrive data til `BigQuery`
+
+Alle disse kan lastes ned og installeres fra CRAN.
+
+### Installasjon av databasedrivere
 For å bruke python biblioteker til å lese fra postgres og oracle kreves det at drivere for det er installert på den virtuelle maskinen.
 
 For å gjøre det enkelt for dere å komme i gang har vi lagd to scripts som begge må kjøres med root privilegier.
@@ -52,13 +92,13 @@ Kjør derfor først kommandoen:
 sudo -i
 ```
 
-### Postgres
+#### Postgres
 Trenger du Postgres, lim inn følgende i terminalen din:
 ```bash
 apt-get update && apt-get install -yq --no-install-recommends libpq-dev
 ```
 
-### Oracle
+#### Oracle
 1. Lag en tom fil og kall den setup_nb.sh
 2. Lim inn følgene kodesnutt:
 ```bash
