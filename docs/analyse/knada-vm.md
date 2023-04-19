@@ -77,7 +77,7 @@ sudo apt update -y && sudo apt install -y r-base
 
 #### Nyttige R biblioteker for interaksjon med google APIer
 - [gargle](https://gargle.r-lib.org/): Bibliotek for enklere håndtering av autentisering mot google APIer
-- [googleCloudStorageR](https://cran.r-project.org/web/packages/googleCloudStorageR/vignettes/googleCloudStorageR.html): Bibliotek for å lese/skrive filer til `Google Cloud Storage`
+- [googleCloudStorageR](https://cran.r-project.org/web/packages/googleCloudStorageR/vignettes/googleCloudStorageR.html): Bibliotek for å lese/skrive filer til `Google Cloud Storage`. Se [eksempel](./eksempler.md#lese-fra-google-cloud-storage-bucket)
 - [bigrquery](https://github.com/r-dbi/bigrquery): Bibliotek for å lese skrive data til `BigQuery`
 
 Alle disse kan lastes ned og installeres fra CRAN.
