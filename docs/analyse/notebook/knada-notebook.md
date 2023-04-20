@@ -84,3 +84,5 @@ Navn på service accounten finner du i Knorten.
 
 ## Restarte server
 For manuelt å restarte en Jupyter notebook går man til kontrollpanelet ved å velge `File` -> `Hub Control Panel` -> `Stop My Server`. Etter at serveren er stoppet vil man så kunne trykke `Start My Server`.
+
+!!! info "Dersom jupyterhubben din har fryst seg og du ikke har mulighet til å gjøre det over kan du gå direkte til kontroll panelet hvis du går til stien `/hub/home` i nettleseren"
