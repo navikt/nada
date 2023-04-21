@@ -70,6 +70,7 @@ USER python
 ````
 
 Repoet [navikt/nada-quarto](https://github.com/navikt/nada-quarto) har et fullstendig eksempel nødvendig oppsett, se spesielt
+
 - [Naisjob manifest](https://github.com/navikt/nada-quarto/blob/main/naisjob.yaml)
 - [Dockerfile](https://github.com/navikt/nada-quarto/blob/main/Dockerfile)
 - [Publiseringsskript](https://github.com/navikt/nada-quarto/blob/main/publish.sh)
