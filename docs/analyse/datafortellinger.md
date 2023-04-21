@@ -43,51 +43,43 @@ res.raise_for_status()
 index_buffer.close()
 ```
 
-### Oppdatere Quarto med naisjob
+### Oppdatere Quarto med Naisjob
+For å produksjonsette oppdatering av en Quarto Datafortelling med Naisjob er det noe konfigurasjon man må spesifisere i nais manifestet og dockerfilen til jobben.
 
-#### Eksempler
-- [nada](https://github.com/navikt/nada-quarto)
-- [fia](https://github.com/navikt/fia-datafortelling)
-
-````Dockerfile
-FROM python:3.11
-
-RUN apt-get update && apt-get install -yq --no-install-recommends \
-    curl \
-    jq && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN QUARTO_VERSION=$(curl https://api.github.com/repos/quarto-dev/quarto-cli/releases/latest | jq '.tag_name' | sed -e 's/[\"v]//g') && \
-    wget https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.tar.gz && \
-    tar -xvzf quarto-${QUARTO_VERSION}-linux-amd64.tar.gz && \
-    ln -s /quarto-${QUARTO_VERSION}/bin/quarto /usr/local/bin/quarto && \
-    rm -rf quarto-${QUARTO_VERSION}-linux-amd64.tar.gz
-
-WORKDIR /app
-
-COPY main.qmd .
-
-ENV DENO_DIR=/tmp/deno
-ENV XDG_CACHE_HOME=/tmp/cache
-
-CMD ["quarto", "render", "main.qmd", "main.html"]
-````
-
+- `quarto render` resulterer i at det genereres noen filer som må lagres midlertidig i containermiljøet før publisering til Markedsplassen. Man er derfor nødt til å legge til annotasjon i naisjob manifestet for å tillate skriving til filsystemet i containeren
 ````yaml
-apiVersion: nais.io/v1
-kind: Naisjob
 metadata:
   annotations:
     nais.io/read-only-file-system: "false"
-  labels:
-    team: nada
-  name: quarto-eksempel
-  namespace: nada
-spec:
-  image: "{{ image }}"
-  schedule: "0 1 * * *"
 ````
+- All utgående trafikk fra naisjobben vil by default stoppes, så man må legge til en outbound access policy til Markedsplass hosten man skal publisere til (dev/prod)
+````yaml
+spec:
+  accessPolicy:
+    outbound:
+      external:
+        - host: nada.dev.intern.nav.no # for dev
+        - host: nada.intern.nav.no # for prod
+````
+- I dockerfilen må man lage en bruker med userid 1069 å velge denne brukeren
+````Dockerfile
+RUN groupadd -g 1069 python && \
+    useradd -r -u 1069 -g python python
+
+USER python
+````
+
+Repoet [navikt/nada-quarto](https://github.com/navikt/nada-quarto) har et fullstendig eksempel nødvendig oppsett, se spesielt
+- [Naisjob manifest](https://github.com/navikt/nada-quarto/blob/main/naisjob.yaml)
+- [Dockerfile](https://github.com/navikt/nada-quarto/blob/main/Dockerfile)
+- [Publiseringsskript](https://github.com/navikt/nada-quarto/blob/main/publish.sh)
+- [Nødvendige python biblioteker som må installeres](https://github.com/navikt/nada-quarto/blob/main/requirements.txt)
+
+I eksempelet hentes teamtokenet fra en [kubernetes secret](https://kubernetes.io/docs/concepts/configuration/secret/) i clusteret og settes som miljøvariabelen `NADA_TOKEN`.
+
+#### Andre eksempler
+- [fia](https://github.com/navikt/fia-datafortelling): Mer avansert eksempel med produksjonssatt datafortelling
+
 
 ## Datastory-biblioteket
 !!!warning "Datafortellinger laget med datastory-biblioteket vil fases ut. Eksisterende datafortellinger vil leve videre en stund, men vi vil om kort tid stenge muligheten til å lage nye."
