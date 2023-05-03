@@ -127,7 +127,7 @@ PATH=$PATH:/usr/lib/oracle/21.9/client64/bin
 ### Lese fra TDV
 Hvis du skal lese TDV data fra VM i `knada-gcp` må du selv installere drivere og biblioteker som er nødvendig. Dette kan gjøres som følger:
 
-1. Last opp TDV driveren til VMen: Denne finnes i repoet [navikt/knada-tdv](https://github.com/navikt/knada-tdv) (`libcomposite85_x64.so`). Merk deg stien du lagrer denne driveren på da den må refereres til i steg 4.
+1. Last opp TDV driveren til VMen: Denne finnes i repoet [navikt/knada-images](https://github.com/navikt/knada-images) under `TDV/driver/libcomposite86_x64.so`. Merk deg stien du lagrer denne driveren på da den må refereres til i steg 4.
 2. Installer `unixodbc-dev`: `sudo apt-get install unixodbc-dev`
 3. Installer python biblioteket `pyodbc`: `pip install pyodbc`
 4. Følg eksempelet i [dataseksjonens guide](https://reimagined-umbrella-50bfbf70.pages.github.io/kompetanse/guider/hente_data_fra_tdv.html) for å lese fra TDV.
