@@ -1,4 +1,35 @@
 ## Flytte data fra Postgres til BigQuery 
+### Datastream
+Google tilbyr Datastream for å strømme data fra f.eks. Postgres til BigQuery.
+Vi har laget et forenklet oppsett som er tilgjengelig i dette repoet:
+
+[Link til github-repo for oppsett av Datastream](https://github.com/navikt/nada-datastream)
+
+Dere trenger kun å gjøre en enkel database-migrasjon for å klargjøre Postgres-databasen for strømming før dere kjører scriptet i repoet.
+Dataen strømmes til en samling (`dataset`) i BigQuery hvor kun teamet har tilgang.
+Fra samlingen kan man gjøre transformasjoner og gjøre tabeller/view klare for bruk internt i teamet. 
+Tabeller/view kan også tilgjengeliggjøres for andre.
+
+````mermaid
+flowchart LR
+    A[(Postgres 1)] --> C(Datastream)  
+    B[(Postgres 2)] --> C
+
+    C --> D
+    C --> E
+    D --transformasjon--> F
+    E --transformasjon--> G
+
+  
+    subgraph BigQuery
+       D[(Tabell 1)]
+       E[(Tabell 2)]
+
+       F[(Dataprodukt 1)] 
+       G[(Dataprodukt 2)]
+    end
+````
+
 ### Federated query
 
 Federated query brukes typisk til å lese data fra en postgres-database i GCP, transformere disse og skrive til BigQuery.
