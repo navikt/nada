@@ -20,7 +20,7 @@ I eksemplene under må følgende byttes ut med reelle verdier:
 
 Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.
 
-#### Med curl
+### Med curl
 
 ```bash
 curl -X PUT -F file=@index.html \
@@ -28,7 +28,23 @@ curl -X PUT -F file=@index.html \
     -H "Authorization:Bearer ${TEAM_TOKEN}"
 ```
 
-#### Med python
+#### Flere filer
+
+```bash
+#!/bin/bash
+set -e
+
+FILES=""
+for file in <mappe med filene>/*
+do
+  FILES+=" -F $file=@$file"
+done
+
+curl -X PUT $FILES "https://${ENV}/quarto/update/${QUARTO_ID}" \
+    -H "Authorization:Bearer ${TEAM_TOKEN}"
+```
+
+### Med python
 ```python
 import requests
 
