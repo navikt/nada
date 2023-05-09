@@ -46,17 +46,29 @@ curl -X PUT $FILES "https://${ENV}/quarto/update/${QUARTO_ID}" \
 
 ### Med python
 ```python
+import os
 import requests
 
-index_buffer = open("index.html", "rb")
+# A list of file paths to be uploaded
+files_to_upload = [
+    "PATH/index.html"
+    "PATH/SUB/FOLDER/some.html"
+]
 
-res = requests.put(f"https://{ENV}/quarto/update/{QUARTO_ID}",
-                  headers={"Authorization": f"Bearer {TEAM_TOKEN}"},
-                  files={"file": index_buffer})
+multipart_form_data = {}
+for file_path in files_to_upload:
+    file_name = os.path.basename(file_path)
+    with open(file_path, 'rb') as file:
+        # Read the file contents and store them in the dictionary
+        file_contents = file.read()
+        multipart_form_data[file_path] = (file_name, file_contents)
 
-res.raise_for_status()
-
-index_buffer.close()
+# Send the request with all files in the dictionary
+response = requests.put( "https://${ENV}/quarto/update/${QUARTO_ID}", 
+                        headers={"Authorization": f"Bearer {TEAM_TOKEN}"},
+                        files=multipart_form_data)
+    
+print(response.status_code)
 ```
 
 ### Oppdatere Quarto med Naisjob
