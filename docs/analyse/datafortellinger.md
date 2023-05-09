@@ -23,7 +23,7 @@ Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp o
 ### Med curl
 
 ```bash
-curl -X PUT -F file=@index.html \
+curl -X PUT -F index.html=@index.html \
     "https://${ENV}/quarto/update/${QUARTO_ID}" \
     -H "Authorization:Bearer ${TEAM_TOKEN}"
 ```
