@@ -64,7 +64,7 @@ for file_path in files_to_upload:
         multipart_form_data[file_path] = (file_name, file_contents)
 
 # Send the request with all files in the dictionary
-response = requests.put( "https://${ENV}/quarto/update/${QUARTO_ID}", 
+response = requests.put( f"https://{ENV}/quarto/update/{QUARTO_ID}", 
                         headers={"Authorization": f"Bearer {TEAM_TOKEN}"},
                         files=multipart_form_data)
     
