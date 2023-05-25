@@ -6,6 +6,7 @@
 For å slippe å opprette og bruke [builtin users](https://cloud.google.com/sql/docs/postgres/create-manage-users) i sql databaser på GCP bør man i stedet bruke [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/postgres/authentication) når man skal koble seg til Cloud SQL databaser for analyse. Da vil man unngå å måtte lese inn passordet for brukeren fra hemmelighet i koden.
 
 Eksemplene som følger forutsetter:
+
 - At følgende python biblioteker er installert:
     ````
     cloud-sql-python-connector
@@ -13,8 +14,11 @@ Eksemplene som følger forutsetter:
     pg8000
     sqlalchemy
     ````
+
 - At den personlige brukeren eller IAM service accounten har rollene `Cloud SQL Instance User` og `Cloud SQL Client` i GCP prosjektet som eier database instansen du skal koble deg mot. Dette er prosjektnivå roller du gir gjennom [IAM](https://console.cloud.google.com/iam-admin/iam) i GCP prosjektet.
+
 - At den personlige brukeren eller IAM service accounten er lagt til som en `Cloud IAM` bruker på database instansen. Se [her](https://cloud.google.com/sql/docs/postgres/add-manage-iam-users#creating-a-database-user) for hvordan å legge til dette.
+
 - Enten manuelt eller med databasemigrasjon må man gi brukeren/service accounten tilgang til å lese fra tabellene i databasen.
     - For å gi tilgang til personlige brukere:
         ````sql
