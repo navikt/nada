@@ -50,17 +50,12 @@ Nada-plattformen bygger på GCP som har egen databehandleravtale.
 
 {==fyll inn aktuelle risikovurderinger==}
 
-[Risikovurderinger for ulike plattformer fra NAIS](https://docs.nais.io/legal/nais-ros/).
+* [Risikovurderinger for ulike plattformer fra NAIS](https://docs.nais.io/legal/nais-ros/)
+* [Risikovurderinger gjort av NADA (Datamarkedsplassen og KNADA)](https://docs.knada.io/juridisk/dokumentasjon/#det-nada-har-gjort-allerede)
 
-[Risikovurderinger for verktøyene i NADA og datamarkedsplassen](https://docs.knada.io/juridisk/dokumentasjon/#det-nada-har-gjort-allerede).
+Relevante risikovurderinger gjort av andre team
 
-* [Analyseplattform på GCP (ROS 607)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=607)
 * [DBT med Airflow på KNADA (ROS 1045)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=1045)
-* [KNADA GKE (ROS 1239)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=1239)
-* [NADA: BigQuery (ROS 969)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=969)
-* [Datamarkedsplassen NADA (ROS 1005)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=1005)
-* [Metabase (ROS 988)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=988)
-* [Tilgangsstyring av data i GCP (ROS 787)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=787)
 
 ### Behandlingens art og omfang
 
