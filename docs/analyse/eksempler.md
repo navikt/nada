@@ -36,7 +36,7 @@ Hvis du ikke har gjort det i dag, kjør først kommandoen `gcloud auth login --u
 ````python
 import os
 
-from google.cloud.sql.connector import Connector, IPTypes
+from google.cloud.sql.connector import Connector
 import pg8000
 import pandas as pd
 import sqlalchemy
@@ -71,7 +71,7 @@ Dette eksempelet er ment for airflow tasks i KNADA og _**vil ikke fungere**_ fra
 ````python
 import os
 
-from google.cloud.sql.connector import Connector, IPTypes
+from google.cloud.sql.connector import Connector
 import pg8000
 import pandas as pd
 import sqlalchemy
