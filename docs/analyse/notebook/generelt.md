@@ -56,4 +56,10 @@ pip install --upgrade jupyterlab jupyterlab-git --user
 ```
 
 ## Bruk av Github Advanced Security og Dependabot for notebook servere
+!!! warning "Dependabot støtter per i dag kun språkene Ruby, JavaScript, Python, PHP, Dart, Elixir, Elm, Go, Rust, Java og .NET så hvis man bruker R kan man ikke benytte seg av det følgende"
+
 Vi oppfordrer notebook brukere til å ha en requirements.txt fil med python bibliotekene som de selv installerer på notebook serveren i et github repo i `navikt` orgen på github. Alle repoer i `navikt` har automatisk aktivert [Github Advanced Security inkludert Dependabot](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security). Gjøres dette vil man få varsler om sårbarheter i bibliotekene som er i bruk samt at det automatisk blir generert pull requests i repoet med versjon av biblioteket hvor sårbarheten er fikset.
+
+Dersom man bygger egne Dockerimages for Notebooks eller Airflow tilbyr Dependabot også automatisk scanning etter sårbarheter i disse.
+
+En kan også aktivere [CodeQL](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql) for repoet som analyserer koden din og genererer alerts ved sårbarheter. [Se her for informasjon om oppsett av CodeQL](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository#configuring-code-scanning-automatically).
