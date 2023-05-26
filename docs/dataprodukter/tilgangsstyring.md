@@ -13,7 +13,6 @@ Tilganger til viewene/tabellene som er del av datasettene forvaltes gjennom [Mar
 Det er to måter å gi tilgang til et datasett på.
 
 ### Manuelt
-
 Som eier kan man manuelt gi tilgang for en annen bruker, en servicebruker eller ei gruppe.
 For å få tilgang til datasett som inneholder personopplysninger må det finnes en relevant behandling i [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no/).
 
@@ -61,3 +60,34 @@ For å søke om tilgang til et datasett på Markedsplassen:
     - Du kan søke om tilgang til deg selv, en annen bruker, en servicebruker eller ei gruppe
     - Du kan velge hvor lenge tilgangen skal vare; til en gitt dato eller for alltid
     - Du kan søke opp en behandling i Behandlingskatalogen ved å søke på navnet på behandlingen
+
+## Tilgangsstyring gjennom markedsplassen
+Under er en enkel skisse av hvordan tilgang til datasett i dataprodukter søkes om og gis gjennom markedsplassen. Det er to måter å få tilgang til et datasett i markedsplassen:
+
+1. En bruker kan initiere dette selv ved å opprette en tilgangsforespørsel for enten enkeltbruker, en gruppe eller en service account. Denne tilgangsforespørselen må så godtas av en av eierene av dataproduktet datasettet er en del av. Dersom denne forespørselen godtas vil markedsplassen gi tilgangen i BigQuery til den eller de brukerene det ble søkt om tilgang for.
+2. En eier kan også gi tilgang til enkeltbrukere, grupper eller service accounts direkte uten at det først må bli laget en tilgangsforespørsel.
+
+```mermaid
+graph BT;
+    user(Bruker)
+    eier(Eier)
+    user=="Søk om tilgang til datasett for person, gruppe eller service account"==>tf
+    eier=="Godta tilgangsforespørsel"==>ds1
+    eier=="Gi tilgang direkte"==>ds2
+    tf==>eier
+    subgraph "Markedsplassen"
+        subgraph "Dataprodukt"
+            tf[Tilgangsforespørsel]
+            ds1[Datasett]
+            ds2[Datasett]
+        end
+    end
+    subgraph "Google Cloud"
+        subgraph "BigQuery datasett"
+            t1[Tabell/view]
+            t2[Tabell/view]
+            ds1=="Gi tilgang til person/gruppe/service account"==>t1
+            ds2=="Gi tilgang til person/gruppe/service account"==>t2
+        end
+    end
+```
