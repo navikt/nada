@@ -68,16 +68,16 @@ Under er en enkel skisse av hvordan tilgang til datasett i dataprodukter søkes 
 2. En eier kan også gi tilgang til enkeltbrukere, grupper eller service accounts direkte uten at det først må bli laget en tilgangsforespørsel.
 
 ```mermaid
-graph BT;
+graph LR;
     user(Bruker)
     eier(Eier)
-    user=="Søk om tilgang til datasett for person, gruppe eller service account"==>tf
-    eier=="Godta tilgangsforespørsel"==>ds1
-    eier=="Gi tilgang direkte"==>ds2
+    user=="Søk om tilgang <br> til datasett for person, <br> gruppe eller service account"==>tf
+    eier=="1: Godta tilgangsforespørsel"==>ds1
+    eier=="2: Gi tilgang direkte"==>ds2
     tf==>eier
     subgraph "Markedsplassen"
         subgraph "Dataprodukt"
-            tf[Tilgangsforespørsel]
+            tf[Forespørsel]
             ds1[Datasett]
             ds2[Datasett]
         end
@@ -86,8 +86,8 @@ graph BT;
         subgraph "BigQuery datasett"
             t1[Tabell/view]
             t2[Tabell/view]
-            ds1=="Gi tilgang til person/gruppe/service account"==>t1
-            ds2=="Gi tilgang til person/gruppe/service account"==>t2
+            ds1=="Gi tilgang til <br> person/gruppe/<br>service account"==>t1
+            ds2=="Gi tilgang til <br> person/gruppe/<br>service account"==>t2
         end
     end
 ```
