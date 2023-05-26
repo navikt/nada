@@ -54,3 +54,6 @@ Eksempel for `Git-extension` i KNADA:
 ```
 pip install --upgrade jupyterlab jupyterlab-git --user
 ```
+
+## Bruk av Github Advanced Security og Dependabot for notebook servere
+Vi oppfordrer notebook brukere til å ha en requirements.txt fil med python bibliotekene som de selv installerer på notebook serveren i et github repo i `navikt` orgen på github. Alle repoer i `navikt` har automatisk aktivert [Github Advanced Security inkludert Dependabot](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security). Gjøres dette vil man få varsler om sårbarheter i bibliotekene som er i bruk samt at det automatisk blir generert pull requests i repoet med versjon av biblioteket hvor sårbarheten er fikset.
