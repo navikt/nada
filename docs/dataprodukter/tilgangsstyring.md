@@ -91,3 +91,6 @@ graph LR;
         end
     end
 ```
+
+## Gi tilganger i GCP konsoll direkte
+Dersom du ønsker å se tilganger gitt eller gi tilganger til en bigquery tabell direkte utenom [Markedsplassen](https://data.intern.nav.no), se [google docs](https://cloud.google.com/bigquery/docs/control-access-to-resources-iam)
