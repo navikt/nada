@@ -61,6 +61,7 @@ USER $NB_USER
 Du kan selv velge om du ønsker å lagre imaget ditt i [GAR](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling) eller i [GHCR](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry). I dette [repoet](https://github.com/navikt/knada-image-eksempel) er det eksempler på hvordan å bygge et docker image og pushe til begge to docker repositories. Begge pipelinene bygger image med samme [Dockerfile](https://github.com/navikt/knada-image-eksempel/blob/main/Dockerfile) og [requirements.txt](https://github.com/navikt/knada-image-eksempel/blob/main/requirements.txt).
 
 Når du så har bygget image ditt finner du det igjen ved å:
+
 - For GAR - Gå til [nais management](https://console.cloud.google.com/artifacts/browse/nais-management-233d) og let opp teamet ditt.
 - For GHCR - Gå til [packages](https://github.com/orgs/navikt/packages) og søk på repo navnet ditt.
 
