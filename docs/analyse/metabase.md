@@ -26,14 +26,37 @@ Tilgangen knyttet til mappen elementene er lagret i bestemmer hvem som kan se de
 - Personal collections: Her kan du lagre alt som ikke skal være synlig for andre enn deg selv.
 - Our analytics: Alt som skal være synlig for andre lagres her. Helst i mapper relatert til det aktuelle dataproduktet.
 
-Det er mulig å flytte elementer mellom mapper etter behov.
+Det er mulig å flytte elementer mellom mapper etter behov, men husk at det er tilgangen til mappen som bestemmer hvem som kan se spørsmål og dashboard.
+
+## Administere datamodell
+Når et datasett legges til i metabase vil appen gi hvert felt en semantisk type som den tror passer. Hvis metabase gjetter feil kan det føre til problemer som at du ikke kan summere tall, filtrere på en kategori eller bruke tidsfunksjoner. Dette kan endres i adminmenyen:
+
+1. Trykk på tannhjulet oppe til høyre og gå inn i `Admin settings`. Her finner du alle datasett du har tilgang til via Datamarkedsplassen.
+2. Velg tabellen du ønsker å administrere. 
+3. Her kan du for hvert felt gjøre endringer som å velge semantisk type og filtertype utifra hva du selv ønsker. Merk at disse endringene vil gjelde for alle som bruker dette datasettet til å lage spørsmål. 
+
+Er du usikker på hvilken type som passer kan du prøve deg fram eller velge en av disse:
+
+- Kategori: `Entity name` eller `Category`
+- Tid: `Creation timestamp` eller `Creation date`
+- Tall: `Quantity`
+
+
+## Synkronisering av skjemaendringer
+Dersom du gjør endringer på skjemaet til en tabell i BigQuery vil det ta inntil en time før metabase oppdager endringen av seg selv. Du kan trigge denne synken selv via adminmenyen:
+
+1. Trykk på tannhjulet oppe til høyre og gå inn i `Admin settings`. Her finner du alle datasett du har tilgang til via Datamarkedsplassen.
+2. Velg tabellen du ønsker å synkronisere og trykk på det nye tannhjulet som dukker opp i høyre hjørne.
+3. Trykk på `Re-scan this table`.
+4. Det kan være nødvendig å åpne nettleser på nytt for at den skal få med seg endringen.
+
 
 ## FAQ
 Q: Jeg har nettopp lagt til en ny kolonne i BigQuery-tabellen min. Hvorfor dukker den ikke opp i metabase?  
-A: Metabase kjører en synk hver time for å sjekke om skjemaet har endret seg. Det vil derfor ta litt tid før det dukker opp i metabase automatisk. Dersom du trenger det i metabase med en gang kan noen i NADA-teamet enkelt trigge synken manuelt.
+A: Metabase kjører en synk hver time for å sjekke om skjemaet har endret seg. Det vil derfor ta litt tid før det dukker opp i metabase automatisk. Dersom du trenger det i metabase med en gang, følg oppskriften for  synkronisering av skjemaendringer over.
 
 Q: Filter-verdier i metabase er ikke oppdatert?  
-A: Metabase kjører en daglig sync mot hele tabellen i BigQuery for å finne ut av hvilke verdier som finnes. Dette brukes bl.a. til å generere `options` i filter.
+A: Metabase kjører en daglig sync mot hele tabellen i BigQuery for å finne ut av hvilke verdier som finnes. Dette brukes bl.a. til å generere `options` i filter. Disse vil også oppdateres med `Re-scan this table` som forklart over.
 
 Q: Hvorfor får jeg ikke joinet datasett som er åpent tilgjengelig?  
 A: Du kan det! Men du må gjøre det med `SQL query`. Et alternativ er å joine tabeller i BigQuery, lage et nytt datasett og legge dette til i Metabase.
