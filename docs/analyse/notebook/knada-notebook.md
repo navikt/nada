@@ -27,8 +27,7 @@ Samtlige av image-ene man kan velge mellom kommer med drivere for oracle, postgr
 
 ### Eget image for Jupyter notebook
 Har du behov for noe mer enn det vi tilbyr ut av boksen kan du lage ditt eget Jupyter notebook image.
-Ta gjerne utgangspunkt i et av [våre imager](https://github.com/navikt/knada-images/pkgs/container/knada-jupyterhub) med den Python-versjonen du ønsker.
-Bruker du et av våre får du drivere for oracle, postgres og TDV, samt de vanligste kommandolinjeverktøyene som er hendige å ha i en notebook allerede installert.
+Ta gjerne utgangspunkt i [vårt image](https://github.com/navikt/knada-images/pkgs/container/knada-images%2Fjupyter) med den Python-versjonen du ønsker. Gjør du det får du drivere for oracle, postgres og TDV, samt de vanligste kommandolinjeverktøyene som er hendige å ha i en notebook allerede installert.
 
 Når du har laget et image kan du selv spesifisere at det er dette imaget som skal brukes for teamet ditt i Knorten.
 
@@ -48,7 +47,7 @@ influxdb==5.3.1
 Da kan du med følgende `Dockerfile` installere disse pakkene når du bygger ditt image:
 
 ```dockerfile
-FROM ghcr.io/navikt/knada-jupyterhub:2022-12-19-2214959-3.10
+FROM ghcr.io/navikt/knada-images/jupyter:2023-06-16-738148c-3.10
 
 USER root
 
@@ -57,6 +56,13 @@ RUN pip install -r requirements.txt
 
 USER $NB_USER
 ```
+
+#### Lagring av image
+Du kan selv velge om du ønsker å lagre imaget ditt i [GAR](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling) eller i [GHCR](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry). I dette [repoet](https://github.com/navikt/knada-image-eksempel) er det eksempler på hvordan å bygge et docker image og pushe til begge to docker repositories. Begge pipelinene bygger image med samme [Dockerfile](https://github.com/navikt/knada-image-eksempel/blob/main/Dockerfile) og [requirements.txt](https://github.com/navikt/knada-image-eksempel/blob/main/requirements.txt).
+
+Når du så har bygget image ditt finner du det igjen ved å:
+- For GAR - Gå til [nais management](https://console.cloud.google.com/artifacts/browse/nais-management-233d) og let opp teamet ditt.
+- For GHCR - Gå til [packages](https://github.com/orgs/navikt/packages) og søk på repo navnet ditt.
 
 ### Lese hemmeligheter fra Google Secret Manager
 
