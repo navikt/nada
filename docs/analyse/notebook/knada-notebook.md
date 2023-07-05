@@ -94,11 +94,11 @@ For manuelt å restarte en Jupyter notebook går man til kontrollpanelet ved å 
 
 !!! info "Dersom jupyterhubben din har fryst seg og du ikke har mulighet til å gjøre det over kan du gå direkte til kontroll panelet hvis du går til stien `/hub/home` i nettleseren"
 
-## Trafikk fra jupyterhubs
-!!! info "Det følgende er foreløpig en valgfri feature som må enables gjennom Knorten. Dersom det ikke gjøres er det ingen begrensninger på trafikk fra jupyterhub"
+## Trafikk fra notebooks
+!!! info "Det følgende er foreløpig en valgfri feature som må enables gjennom Knorten. Dersom det ikke gjøres er det ingen begrensninger på trafikk fra notebooks"
 
-Man må eksplisitt oppgi hvilke hoster man ønsker å snakke med fra jupyterhubber i KNADA. Dette spesifiserer du gjennom knorten.
+Man må eksplisitt oppgi hvilke hoster man ønsker å snakke med fra notebooks i KNADA. Dette spesifiserer du gjennom knorten.
 
 Tilsvarende som for [airflow](../airflow/knada-airflow/#trafikk-fra-airflow-workere) legger du inn hostnavn og port på formatet `hostnavn:port`. Dersom man ikke angir port vil vi bruke `443` som standardport.
-Vi har en controller kjørende i KNADA som vil lage en `NetworkPolicy` som tillater trafikk ut fra jupyterhubben mot de hostene som legges til.
-Når jupyterhubben din slås av vil tilgangene bli fjernet.
+Vi har en controller kjørende i KNADA som vil lage en `NetworkPolicy` som tillater trafikk ut fra notebooken mot de hostene som legges til.
+Når notebooken din slås av vil tilgangene bli fjernet.
