@@ -212,7 +212,7 @@ Vi har lagd et enkelt [eksempel-dashboard](https://grafana.nais.io/d/dPaDzl-4z/k
 ## Bygge eget Airflow worker image
 Følgende guide antar at docker er installert på maskinen din og at brukeren din er autentisert mot GitHub Container Registry. Se enten installasjon av [colima](https://github.com/abiosoft/colima) eller [docker desktop](https://docs.docker.com/get-docker/) for å sette opp docker.
 
-Eksempelet under viser hvordan man kan installere en egendefinert liste med python biblioteker i et image for airflow, dersom en følger eksempelet vil dette imaget ta utgangspunkt i vårt base image og inneholde nødvendige drivere for oracle, postgres og TDV.
+Eksempelet under viser hvordan man kan installere en egendefinert liste med python biblioteker i et image for airflow. Dersom en følger eksempelet vil dette imaget ta utgangspunkt i vårt base image som allerede inneholder nødvendige drivere for oracle, postgres og TDV. Se [her](https://github.com/navikt/knada-images/tree/main/airflow/papermill) for `Dockerfile` og `requirements.txt` som brukes for å bygge dette imaget. For å finne siste versjon av vårt image, se [her](https://github.com/navikt/knada-images/pkgs/container/knada-images%2Fairflow-papermill).
 
 #### Lag først en `requirements.txt` fil, f.eks.
 ```
@@ -227,7 +227,7 @@ influxdb==5.3.1
 
 #### Lag så en `Dockerfile` i samme mappe som `requirements.txt` filen
 ```
-FROM ghcr.io/navikt/knada-images/airflow-custom-base:v1
+FROM ghcr.io/navikt/knada-images/airflow-papermill:2023-07-03-71bed7b
 
 COPY requirements.txt .
 
@@ -241,4 +241,4 @@ docker build -t ghcr.io/navikt/mitt-airflow-image:v1 .
 docker push ghcr.io/navikt/mitt-airflow-image:v1
 ```
 
-!!! info "Merk: Imaget som airflow workeren skal bruke må ha apache-airflow installert. Dette vil følge med dersom en tar utgangspunkt i vårt image over, men dersom man bygger et eget image fra scratch må man selv installere dette biblioteket med `pip install apache-airflow>=2.5.1`"
+!!! info "Merk: Imaget som airflow workeren skal bruke må ha apache-airflow installert. Dette vil følge med dersom en tar utgangspunkt i vårt image over, men dersom man bygger et eget image fra scratch bør man ta utgangspunkt i det offisielle docker imaget til [airflow](https://hub.docker.com/r/apache/airflow)"
