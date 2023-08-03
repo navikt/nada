@@ -226,12 +226,57 @@ influxdb==5.3.1
 ```
 
 #### Lag så en `Dockerfile` i samme mappe som `requirements.txt` filen
-```
+
+##### Med utgangspunkt i vårt base image
+```docker
 FROM ghcr.io/navikt/knada-images/airflow-papermill:2023-07-03-71bed7b
 
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
+```
+
+##### Med utgangspunkt i det offisielle base imaget til airflow
+Under er Dockerfile for å bygge basert på det offisielle airflow imaget med oracle client installert.
+
+```docker
+FROM apache/airflow:2.6.3-python3.10
+ARG ORACLE_CLIENT_VERSION=21.10
+ARG ORACLE_CLIENT_URL=https://download.oracle.com/otn_software/linux/instantclient/2111000/oracle-instantclient-basic-21.11.0.0.0-1.x86_64.rpm
+
+USER root
+
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+    alien \
+    build-essential \
+    bzip2 \
+    ca-certificates \
+    cmake \
+    curl \
+    git \
+    libaio-dev \
+    libaio1 \
+    locales \
+    locales-all \
+    tzdata \
+    wget && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install oracle client
+RUN curl ${ORACLE_CLIENT_URL} -o /tmp/oracle-instantclient.rpm
+RUN alien -i /tmp/oracle-instantclient.rpm && \
+    rm -rf /var/cache/yum && \
+    rm -f /tmp/oracle-instantclient.rpm && \
+    echo /usr/lib/oracle/${ORACLE_CLIENT_VERSION}/client64/lib > /etc/ld.so.conf.d/oracle-instantclient${ORACLE_CLIENT_VERSION}.conf && \
+    ldconfig
+
+USER ${AIRFLOW_UID}
+
+COPY requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
+ENV PYTHONPATH "/workspace"
 ```
 
 #### Bygg og push imaget til GitHub Container Registry
@@ -243,7 +288,7 @@ docker push ghcr.io/navikt/mitt-airflow-image:v1
 
 !!! info "Merk: Imaget som airflow workeren skal bruke må ha apache-airflow installert. Dette vil følge med dersom en tar utgangspunkt i vårt image over, men dersom man bygger et eget image fra scratch bør man ta utgangspunkt i det offisielle docker imaget til [airflow](https://hub.docker.com/r/apache/airflow)"
 
-### Kubernetes pod operators eksempel
+## Kubernetes pod operators eksempel
 Dersom du har behov for å bruke Kubernetes Pod Operators så tilbyr vi en [eksempel modul](https://github.com/navikt/nada-dags/tree/main/common) man kan ta utgangspunkt i og inkludere i sitt eget DAGs repo. Dette eksempelet gjør det mulig å ha airflow tasker som kjører kode i form av et python script eller en jupyter notebook fra et annet repo enn det DAGen er definert i.
 
 Eksempelet inneholder en [initcontainer](https://github.com/navikt/nada-dags/blob/main/common/initcontainers.py#L5) som kjører [før](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L113) hovedcontaineren til jobben. Denne initcontaineren vil klone et [selvvalgt repo](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L23) som så blir mountet inn i hovedcontaineren i mappen `/workspace`.
