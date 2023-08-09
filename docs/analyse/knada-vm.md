@@ -7,7 +7,8 @@ Denne maskinen vil ha tilgang til on-premise kilder på lik linje som [Notebooks
 
 For å koble deg til en VM i `knada-gcp` trenger du å opprette et SSH nøkkelpar og hente ut noe informasjon om instansen som må fylles inn i SSH-configen lokalt (`~/.ssh`).
 
-1. Logg inn med `gcloud auth login --update-adc` (trengs kun å kjøres en gang om dagen). For å gjøre dette må gcloud være installer. Det kan gjøres ved å følge instruksjonene her: https://cloud.google.com/sdk/docs/install#mac.
+1. Logg inn med `gcloud auth login --update-adc` (trengs kun å kjøres en gang om dagen).
+For å gjøre dette må gcloud være installer (se dokumentasjon hos [cloud.google.com](https://cloud.google.com/sdk/docs/install)).
 2. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance>`.
 Erstatt `<instance>` med navnet på VM instansen din, denne finner du etter du har logget inn i [Knorten](https://knorten.knada.io/oversikt) under `Compute`.
 Denne kommandoen vil også generere SSH-nøkler.
