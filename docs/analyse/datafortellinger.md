@@ -14,7 +14,7 @@ Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-token
 
 I eksemplene under må følgende byttes ut med reelle verdier:
 
-- `${ENV}` - settes til *data.dev.ekstern.nav.no* for dev og *data.nav.no* for prod
+- `${ENV}` - settes til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
 - `${QUARTO_ID}` - erstatt med ID på Quarto
 - `${TEAM_TOKEN}` - erstatt med team-token fra markedsplassen
 
@@ -88,8 +88,8 @@ spec:
   accessPolicy:
     outbound:
       external:
-        - host: nada.dev.intern.nav.no # for dev
-        - host: nada.intern.nav.no # for prod
+        - host: data.ekstern.dev.nav.no # for dev
+        - host: data.nav.no # for prod
 ````
 - I Dockerfilen må man lage en bruker med userid 1069 å velge denne brukeren
 ````Dockerfile
