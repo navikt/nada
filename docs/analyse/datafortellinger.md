@@ -123,8 +123,8 @@ pip install datastory
 ## API adresser
 For å publisere en datafortelling må man angi api adressen det skal publiseres til.
 
-- For [dev-miljøet](https://data.dev.intern.nav.no) er adressen `https://data.intern.dev.nav.no/api`
-- For [prod-miljøet](https://data.intern.nav.no) er adressen `https://data.intern.nav.no/api`
+- For [dev-miljøet](https://data.dev.intern.nav.no) er adressen `https://nada.intern.dev.nav.no/api`
+- For [prod-miljøet](https://data.intern.nav.no) er adressen `https://nada.intern.nav.no/api`
 
 I kodeeksemplene som følger brukes dev adressen.
 
@@ -166,11 +166,11 @@ Dette tokenet blir generert når man publiserer en kladd og kan hentes ut ved å
 Når du har fått hentet ut oppdateringstokenet kan du erstatte siste kodelinje i eksempelet over (dvs. `ds.publish()`) med en metode som i stedet oppdaterer datafortellingen.
 
 ````python
-ds.update(token="mitt-token", url="https://data.intern.dev.nav.no/api")
+ds.update(token="mitt-token", url="https://nada.intern.dev.nav.no/api")
 ````
 
 Dersom man ønsker å unngå å sette api adressen til Markedsplassen som input parameter til `ds.publish()` og `ds.update()` metodene kan man i stedet sette det som miljøvariabel, f.eks.
 ````python
 import os
-os.environ["DATASTORY_URL"] = "https://data.intern.dev.nav.no/api"
+os.environ["DATASTORY_URL"] = "https://nada.intern.dev.nav.no/api"
 ````
