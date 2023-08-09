@@ -123,8 +123,8 @@ pip install datastory
 ## API adresser
 For å publisere en datafortelling må man angi api adressen det skal publiseres til.
 
-- For [dev-miljøet](https://data.dev.intern.nav.no) er adressen `https://nada.intern.dev.nav.no/api`
-- For [prod-miljøet](https://data.intern.nav.no) er adressen `https://nada.intern.nav.no/api`
+- For [dev-miljøet](https://data.dev.intern.nav.no) er adressen `https://data.ekstern.dev.nav.no/api`
+- For [prod-miljøet](https://data.intern.nav.no) er adressen `https://data.nav.no/api`
 
 I kodeeksemplene som følger brukes dev adressen.
 
@@ -145,7 +145,7 @@ ds.header("Figur 2 tittel", level=3)
 ds.vega(fig_vega)
 ds.markdown("Beskrivelse av figur 2")
 
-ds.publish(url="https://data.intern.dev.nav.no/api")
+ds.publish(url="https://data.ekstern.dev.nav.no/api")
 ````
 
 Når man kaller `ds.publish()` i eksempelet over vil det bli opprettet en kladd til en datafortelling, se [her](#publisere-datafortelling) 
