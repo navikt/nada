@@ -210,83 +210,11 @@ Vi har lagd et enkelt [eksempel-dashboard](https://grafana.nais.io/d/dPaDzl-4z/k
 !!! info "Dette er foreløpig et eksperiment, så si i fra hvis det er nyttig. Hvis det er ingen som trenger dette så vil vi fjerne dette."
 
 ## Bygge eget Airflow worker image
-Følgende guide antar at docker er installert på maskinen din og at brukeren din er autentisert mot GitHub Container Registry. Se enten installasjon av [colima](https://github.com/abiosoft/colima) eller [docker desktop](https://docs.docker.com/get-docker/) for å sette opp docker.
 
-Eksempelet under viser hvordan man kan installere en egendefinert liste med python biblioteker i et image for airflow. Dersom en følger eksempelet vil dette imaget ta utgangspunkt i vårt base image som allerede inneholder nødvendige drivere for oracle, postgres og TDV. Se [her](https://github.com/navikt/knada-images/tree/main/airflow/papermill) for `Dockerfile` og `requirements.txt` som brukes for å bygge dette imaget. For å finne siste versjon av vårt image, se [her](https://github.com/navikt/knada-images/pkgs/container/knada-images%2Fairflow-papermill).
+I noen tilfeller har du kanskje flere avhengigheter enn det vi tilbyr i standard Airflow-oppsett.
 
-#### Lag først en `requirements.txt` fil, f.eks.
-```
-backoff==2.0.1
-cx_Oracle==8.3.0
-datastory>=0.1.12
-google-cloud-bigquery>3.0.0
-google-cloud-storage==2.4.0
-great-expectations==0.15.34
-influxdb==5.3.1
-```
-
-#### Lag så en `Dockerfile` i samme mappe som `requirements.txt` filen
-
-##### Med utgangspunkt i vårt base image
-```docker
-FROM ghcr.io/navikt/knada-images/airflow-papermill:2023-07-03-71bed7b
-
-COPY requirements.txt .
-
-RUN pip install -r requirements.txt
-```
-
-##### Med utgangspunkt i det offisielle base imaget til airflow
-Under er Dockerfile for å bygge basert på det offisielle airflow imaget med oracle client installert.
-
-```docker
-FROM apache/airflow:2.6.3-python3.10
-ARG ORACLE_CLIENT_VERSION=21.10
-ARG ORACLE_CLIENT_URL=https://download.oracle.com/otn_software/linux/instantclient/2111000/oracle-instantclient-basic-21.11.0.0.0-1.x86_64.rpm
-
-USER root
-
-RUN apt-get update && apt-get install -yq --no-install-recommends \
-    alien \
-    build-essential \
-    bzip2 \
-    ca-certificates \
-    cmake \
-    curl \
-    git \
-    libaio-dev \
-    libaio1 \
-    locales \
-    locales-all \
-    tzdata \
-    wget && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install oracle client
-RUN curl ${ORACLE_CLIENT_URL} -o /tmp/oracle-instantclient.rpm
-RUN alien -i /tmp/oracle-instantclient.rpm && \
-    rm -rf /var/cache/yum && \
-    rm -f /tmp/oracle-instantclient.rpm && \
-    echo /usr/lib/oracle/${ORACLE_CLIENT_VERSION}/client64/lib > /etc/ld.so.conf.d/oracle-instantclient${ORACLE_CLIENT_VERSION}.conf && \
-    ldconfig
-
-USER ${AIRFLOW_UID}
-
-COPY requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
-
-ENV PYTHONPATH "/workspace"
-```
-
-#### Bygg og push imaget til GitHub Container Registry
-
-```bash
-docker build -t ghcr.io/navikt/mitt-airflow-image:v1 .
-docker push ghcr.io/navikt/mitt-airflow-image:v1
-```
-
-!!! info "Merk: Imaget som airflow workeren skal bruke må ha apache-airflow installert. Dette vil følge med dersom en tar utgangspunkt i vårt image over, men dersom man bygger et eget image fra scratch bør man ta utgangspunkt i det offisielle docker imaget til [airflow](https://hub.docker.com/r/apache/airflow)"
+For å legge til ekstra avhengigheter kan du benytte et [Github template](https://github.com/navikt/knemplate/) som vi har opprettet, for å lage et eget repo.
+Når du har opprettet repoet og lagt til avhengighetene du ønsker i `requirements.txt` vil arbeidsflyten som allerede er definert generere et Dockerimage som kan benyttes videre.
 
 ## Kubernetes pod operators eksempel
 Dersom du har behov for å bruke Kubernetes Pod Operators så tilbyr vi en [eksempel modul](https://github.com/navikt/nada-dags/tree/main/common) man kan ta utgangspunkt i og inkludere i sitt eget DAGs repo. Dette eksempelet gjør det mulig å ha airflow tasker som kjører kode i form av et python script eller en jupyter notebook fra et annet repo enn det DAGen er definert i.
