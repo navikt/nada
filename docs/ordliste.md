@@ -17,7 +17,7 @@ Data er i dag tilgjengelig i form av views/tabeller på BigQuery.
 BigQuery-tabeller/views kan brukes som datasett.
 
 ### Metabase
-[Metabase](analyse/metabase.md) er et dashboard-verktøy integrert med datasettene på markedsplassen.
+[Metabase](analyse/metabase.md) er et dashboard-verktøy integrert med datasettene på datamarkedsplassen.
 
 ### Datafortellinger 
 [Datafortellinger](analyse/datafortellinger.md) er analyser med en "rød tråd".
