@@ -1,31 +1,44 @@
 # Ordliste
 
 ## Datamarkedsplassen 
-Vårt finn.no der produsenter viser og forvalter data og innsikt, mens konsumenter finner og ber om tilgang til data.
+Datamarkedsplassen er vårt finn.no, der produsenter viser og forvalter data og innsikt, mens konsumenter finner og ber om tilgang til data.
 
 ### Dataprodukt 
-En samling av ett eller flere [datasett](dataprodukter/dataprodukt.md#hva-er-et-datasett) som teamet mener hører sammen. Dataproduktet inneholder en overordnet beskrivelse og har en eier med et tilhørende kontaktpunkt. [Les mer om dataprodukt](dataprodukter/dataprodukt.md).
+Et [dataprodukt](dataprodukter/dataprodukt.md) er en samling av ett eller flere datasett som teamet mener hører sammen. 
+Dataproduktet inneholder en overordnet beskrivelse og har en eier med et tilhørende kontaktpunkt. 
 
 #### Datasett 
-En del av et dataprodukt. Består av data, metadata og kode. Data er i dag tilgjengelig i form av views/tabeller på BigQuery.
+Et [datasett](dataprodukter/dataprodukt.md#hva-er-et-datasett) er en del av et dataprodukt. 
+Det består av data, metadata og kode.
+Data er i dag tilgjengelig i form av views/tabeller på BigQuery.
 
 ### BigQuery
-Database hostet av Google som er tilgjengelig for team på GCP. [Les om hvordan man kan flytte data til BigQuery](dataprodukter/index.md#flytte-data-til-bigquery).
+[BigQuery](dataprodukter/index.md#flytte-data-til-bigquery) er en database hostet av Google som er tilgjengelig for team på GCP. 
+BigQuery-tabeller/views kan brukes som datasett.
 
 ### Metabase
-Dashboard-verktøy integrert med datasettene på datamarkedsplassen. Brukes både av data scientister, utviklere og produktledere. [Les mer om Metabase](analyse/metabase.md).
+[Metabase](analyse/metabase.md) er et dashboard-verktøy integrert med datasettene på datamarkedsplassen.
 
 ### Datafortellinger 
-Analyser med en "rød tråd". Datafortellinger lages som regel av data scientister. Tidligere har dette vært implementert gjennom vårt egenutviklede Datastory. Fra nå er det Quarto som gjelder. [Les mer om datafortellinger](analyse/datafortellinger.md).
+[Datafortellinger](analyse/datafortellinger.md) er analyser med en "rød tråd".
+Tidligere har dette vært implementert gjennom vårt egenutviklede Datastory.
+Fra nå er det Quarto som gjelder.
 
 ## KNADA 
-Analyseplattform bygd på Kubernetes i GCP der Jupyter Notebook og Airflow kjører. Det er åpninger mot FSS som gjør at man kan jobbe med data derfra og kombinere med data i sky.
+KNADA er en kodebasert analyseplattform bygd på Kubernetes i GCP der vi tilbyr Jupyter Notebook og Airflow.
+KNADA tilbyr åpning mot on-prem FSS, som gjør det mulig å kombinere med data i sky.
 
 ### Knorten
-Portalen for å administrere team som bruker KNADA. Her kan man sette opp Airflow og Jupyter automatisk. [https://knorten.knada.io/](https://knorten.knada.io/) (krever naisdevice).
+Knorten er portalen for å administrere team som bruker KNADA.
+Her kan man sette opp Airflow og Jupyter automatisk.
+[https://knorten.knada.io (krever naisdevice)](https://knorten.knada.io/).
 
 ### Airflow
-Orkestrering av jobber. Brukes i dag både til å skedulere enkle jobber og til å håndtere mer komplekse jobber med avhengigheter. Brukes både av data scientister og data engineers i datavarehus. [Les mer om Airflow i KNADA](analyse/airflow/knada-airflow.md).
+[Airflow](analyse/airflow/knada-airflow.md) er et orkestreringsverktøy for å kjøre jobber. 
+Brukes i dag både til å skedulere enkle jobber og til å håndtere mer komplekse jobber med avhengigheter.
+Brukes både av data scientister og data engineers i datavarehus.
 
 ### Jupyter Notebook 
-Verktøyet alle data scientistene bruker. Enkelt å kjøre mindre bolker av kode og visualisere resultater i nettleseren. [Les mer om Notebooks i KNADA](analyse/notebook/knada-notebook.md).
+[Jupyter Notebook](analyse/notebook/knada-notebook.md) er et webbasert utviklerverktøy for å drive med kodebasert utforsking av data i on-prem eller sky.
+Støtter Python.
+Gjør det enkelt å kjøre mindre bolker av kode og visualisere resultater i nettleseren.

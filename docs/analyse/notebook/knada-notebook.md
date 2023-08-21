@@ -27,8 +27,7 @@ Samtlige av image-ene man kan velge mellom kommer med drivere for oracle, postgr
 
 ### Eget image for Jupyter notebook
 Har du behov for noe mer enn det vi tilbyr ut av boksen kan du lage ditt eget Jupyter notebook image.
-Ta gjerne utgangspunkt i et av [våre imager](https://github.com/navikt/knada-images/pkgs/container/knada-jupyterhub) med den Python-versjonen du ønsker.
-Bruker du et av våre får du drivere for oracle, postgres og TDV, samt de vanligste kommandolinjeverktøyene som er hendige å ha i en notebook allerede installert.
+Ta gjerne utgangspunkt i [vårt image](https://github.com/navikt/knada-images/pkgs/container/knada-images%2Fjupyter) med den Python-versjonen du ønsker. Gjør du det får du drivere for oracle, postgres og TDV, samt de vanligste kommandolinjeverktøyene som er hendige å ha i en notebook allerede installert.
 
 Når du har laget et image kan du selv spesifisere at det er dette imaget som skal brukes for teamet ditt i Knorten.
 
@@ -48,7 +47,7 @@ influxdb==5.3.1
 Da kan du med følgende `Dockerfile` installere disse pakkene når du bygger ditt image:
 
 ```dockerfile
-FROM ghcr.io/navikt/knada-jupyterhub:2022-12-19-2214959-3.10
+FROM ghcr.io/navikt/knada-images/jupyter:2023-06-16-738148c-3.10
 
 USER root
 
@@ -57,6 +56,14 @@ RUN pip install -r requirements.txt
 
 USER $NB_USER
 ```
+
+#### Lagring av image
+Du kan selv velge om du ønsker å lagre imaget ditt i [GAR](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling) eller i [GHCR](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry). I dette [repoet](https://github.com/navikt/knada-image-eksempel) er det eksempler på hvordan å bygge et docker image og pushe til begge to docker repositories. Begge pipelinene bygger image med samme [Dockerfile](https://github.com/navikt/knada-image-eksempel/blob/main/Dockerfile) og [requirements.txt](https://github.com/navikt/knada-image-eksempel/blob/main/requirements.txt).
+
+Når du så har bygget image ditt finner du det igjen ved å:
+
+- For GAR - Gå til [nais management](https://console.cloud.google.com/artifacts/browse/nais-management-233d) og let opp teamet ditt.
+- For GHCR - Gå til [packages](https://github.com/orgs/navikt/packages) og søk på repo navnet ditt.
 
 ### Lese hemmeligheter fra Google Secret Manager
 
@@ -81,3 +88,17 @@ data = secret.payload.data.decode('UTF-8')
 
 Har du hemmeligheter i et eget team-prosjekt så må du gi service accounten for KNADA tilgang til hemmeligheter i ditt team-prosjekt.
 Navn på service accounten finner du i Knorten.
+
+## Restarte server
+For manuelt å restarte en Jupyter notebook går man til kontrollpanelet ved å velge `File` -> `Hub Control Panel` -> `Stop My Server`. Etter at serveren er stoppet vil man så kunne trykke `Start My Server`.
+
+!!! info "Dersom jupyterhubben din har fryst seg og du ikke har mulighet til å gjøre det over kan du gå direkte til kontroll panelet hvis du går til stien `/hub/home` i nettleseren"
+
+## Trafikk fra notebooks
+!!! info "Det følgende er foreløpig en valgfri feature som må enables gjennom Knorten. Dersom det ikke gjøres er det ingen begrensninger på trafikk fra notebooks"
+
+Man må eksplisitt oppgi hvilke hoster man ønsker å snakke med fra notebooks i KNADA. Dette spesifiserer du gjennom knorten.
+
+Tilsvarende som for [airflow](../airflow/knada-airflow/#trafikk-fra-airflow-workere) legger du inn hostnavn og port på formatet `hostnavn:port`. Dersom man ikke angir port vil vi bruke `443` som standardport.
+Vi har en controller kjørende i KNADA som vil lage en `NetworkPolicy` som tillater trafikk ut fra notebooken mot de hostene som legges til.
+Når notebooken din slås av vil tilgangene bli fjernet.

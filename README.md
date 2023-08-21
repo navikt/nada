@@ -1,6 +1,6 @@
 # NADA dokumentasjon
 
-NADA sin dokumentasjon om [Markedsplassen](https://data.intern.nav.no) og [KNADA](knorten.knada.io).
+NADA sin dokumentasjon om [Markedsplassen](https://data.intern.nav.no) og [KNADA](https://knorten.knada.io).
 
 Tilgjengelig på [docs.knada.io](https://docs.knada.io).
 
@@ -9,11 +9,20 @@ Tilgjengelig på [docs.knada.io](https://docs.knada.io).
 This website is built using [MkDocs](https://www.mkdocs.org/).
 
 ### Install
+
+```
+$ poetry install
+```
+or
 ```
 $ pip install mkdocs mkdocs-pymdownx-material-extras mkdocs-build-plantuml-plugin
 ```
 
 ### Local Development
+
+```
+$ poetry run mkdocs serve
+```
 
 ```
 $ mkdocs serve
@@ -24,6 +33,11 @@ This command starts a local development server on localhost:8000. Most changes a
 ### Build
 
 ```
+$ poetry run mkdocs build
+```
+or
+
+```
 $ mkdocs build
 ```
 
@@ -31,4 +45,4 @@ This command generates static content into the `site` directory and can be serve
 
 ### Deployment
 
-Pull request via github action.
+A push to `main` triggers a deployment workflow.

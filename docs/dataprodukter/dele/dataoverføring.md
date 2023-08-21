@@ -1,4 +1,35 @@
 ## Flytte data fra Postgres til BigQuery 
+### Datastream
+Google tilbyr Datastream for å strømme data fra f.eks. Postgres til BigQuery.
+Vi har laget et forenklet oppsett som er tilgjengelig i dette repoet:
+
+[Link til github-repo for oppsett av Datastream](https://github.com/navikt/nada-datastream)
+
+Dere trenger kun å gjøre en enkel database-migrasjon for å klargjøre Postgres-databasen for strømming før dere kjører scriptet i repoet.
+Dataen strømmes til en samling (`dataset`) i BigQuery hvor kun teamet har tilgang.
+Fra samlingen kan man gjøre transformasjoner og gjøre tabeller/view klare for bruk internt i teamet. 
+Tabeller/view kan også tilgjengeliggjøres for andre.
+
+````mermaid
+flowchart LR
+    A[(Postgres 1)] --> C(Datastream)  
+    B[(Postgres 2)] --> C
+
+    C --> D
+    C --> E
+    D --transformasjon--> F
+    E --transformasjon--> G
+
+  
+    subgraph BigQuery
+       D[(Tabell 1)]
+       E[(Tabell 2)]
+
+       F[(Dataprodukt 1)] 
+       G[(Dataprodukt 2)]
+    end
+````
+
 ### Federated query
 
 Federated query brukes typisk til å lese data fra en postgres-database i GCP, transformere disse og skrive til BigQuery.
@@ -14,15 +45,21 @@ BQ_query --Tabell skrives til BigQuery--> BigQuery[(BigQuery-tabell)]
 For å sette opp federated query:
 
 1. [Følg Google sin guide for å sette opp Cloud SQL databasetilkobling](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries#setting-up-cloud-sql-database-connections)
-2. [Følg Google sin guide for å opprette et BigQuery dataset](https://cloud.google.com/bigquery/docs/datasets)
+2. Gi generert service account roller for å kunne utføre external queries
+    * Når man i (1) aktiverer `BigQuery Connection API` blir det automatisk generert en service account på formatet `service-<projectNumber>@gcp-sa-bigqueryconnection.iam.gserviceaccount.com`. Denne må gis følgende roller i prosjektet:
+        - `Bigquery Connection Admin`
+        - `Cloud SQL Client`
+    !!! info "`projectNumber` over er prosjektnummeret, ikke prosjekt ID. Du finner prosjektnummer [her](https://console.cloud.google.com/welcome)."
+
+3. [Følg Google sin guide for å opprette et BigQuery dataset](https://cloud.google.com/bigquery/docs/datasets)
     * Merk at _dataset_ i denne konteksten er noe annet enn [datasett i markedsplassen](../dataprodukt.md#hva-er-et-datasett)
     * Foreløpig kan vi ikke gjenbruke datasets som har blitt opprettet av en nais-applikasjon, da denne overstyrer tilgangene vi oppretter senere i denne guiden
-3. [Følg Google sin guide for å lage en Google servicebruker for federated query](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
+4. [Følg Google sin guide for å lage en Google servicebruker for å kjøre en skedulert federated query](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
     * Gi serviceaccounten følgende tilganger på prosjektnivå:
         - _BigQuery Connection User_
         - _BigQuery Job User_
         - _BigQuery Metadata Viewer_
-4. [Følg Google sin guide for å gil tilganger til servicebrukeren på datasett](https://cloud.google.com/bigquery/docs/dataset-access-controls)
+5. [Følg Google sin guide for å gi tilganger til servicebrukeren på datasett](https://cloud.google.com/bigquery/docs/dataset-access-controls)
     * Serviceaccounten trenger rollen _BigQuery Data Editor_
 
 Etter at servicebrukeren har tilgang til datasettet kan man sette opp en spørring som henter data via _external connection_.

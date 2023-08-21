@@ -34,6 +34,8 @@ NADA tilbyr team eller enkeltpersoner å sette opp Airflow instanser i KNADA gje
 
 For mer informasjon om Airflow, se [Airflow docs](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
 
+!!! warning "Vær oppmerksom på at alt av logger fra en airflow task vil skrives til en [bucket](https://cloud.google.com/storage/docs/buckets) i `knada-gcp` prosjektet og være tilgjengelig etterpå gjennom airflow og direkte for de som har tilgang til bucketene. Vær derfor forsiktig så ikke sensitiv informasjon skrives til stdout i koden som kjøres."
+
 ### Oppsett av repo for DAGs
 For å bruke KNADA Airflow kreves det at det lages et Github repo under `navikt` organisasjonen på Github som inneholder Python-filer med DAGer. 
 
@@ -83,7 +85,9 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
 ```
 
 ### Ressursbehov for Airflow-workere
-Dersom en ikke spesifiserer ressursbehov for Airflow taskene sine vil de kjøre med standard instillinger som er `512 MB` minne og `0.5` vCPU. Dette kan man enkelt overstyre for alle operators gitt at de tar utgangspunkt i [BaseOperatoren](https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/baseoperator/index.html#airflow.models.baseoperator.BaseOperator) til Airflow. Under følger et eksempel på hvordan ressursbehov for en task endres til `2GB` minne og `2` vCPU:
+Dersom en ikke spesifiserer ressursbehov for Airflow taskene sine vil de kjøre med standard instillinger som er `512 MB` minne, `0.5` vCPU, og `1Gi` disk (`ephemeral-storage`).
+Dette kan man enkelt overstyre for alle operators gitt at de tar utgangspunkt i [BaseOperatoren](https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/baseoperator/index.html#airflow.models.baseoperator.BaseOperator) til Airflow.
+Under følger et eksempel på hvordan ressursbehov for en task endres til `2GB` minne,`2` vCPU, og `5Gi` disk:
 
 ```python
 from airflow import DAG
@@ -107,7 +111,8 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
                          resources={
                            "requests": {
                                "cpu": "2",
-                               "memory": "2Gi"
+                               "memory": "2Gi",
+                               "ephemeral-storage": "5Gi"
                            }
                          }
                       )
@@ -195,10 +200,19 @@ with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
                                         branch="main")
 ```
 
+## Airflow metrikker i Grafana
+
+Nå kan man lage Grafana-dashboard i [grafana.nais.io](https://grafana.nais.io) med metrikker fra Airflow.
+Airflow har egen [dokumentasjon](https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/metrics.html#counters) for hvilke metrikker som blir delt.
+Metrikkene bruker Google sitt [Monitoring Query Language](https://cloud.google.com/monitoring/mql), så det enkleste er nok å bruke nedtrekksmenyene i Grafana når man lager spørringer.
+Vi har lagd et enkelt [eksempel-dashboard](https://grafana.nais.io/d/dPaDzl-4z/knada-airflow) som man kan bruke som inspirasjon på hva man kan følge med på.
+
+!!! info "Dette er foreløpig et eksperiment, så si i fra hvis det er nyttig. Hvis det er ingen som trenger dette så vil vi fjerne dette."
+
 ## Bygge eget Airflow worker image
 Følgende guide antar at docker er installert på maskinen din og at brukeren din er autentisert mot GitHub Container Registry. Se enten installasjon av [colima](https://github.com/abiosoft/colima) eller [docker desktop](https://docs.docker.com/get-docker/) for å sette opp docker.
 
-Eksempelet under viser hvordan man kan installere en egendefinert liste med python biblioteker i et image for airflow, dersom en følger eksempelet vil dette imaget ta utgangspunkt i vårt base image og inneholde nødvendige drivere for oracle, postgres og TDV.
+Eksempelet under viser hvordan man kan installere en egendefinert liste med python biblioteker i et image for airflow. Dersom en følger eksempelet vil dette imaget ta utgangspunkt i vårt base image som allerede inneholder nødvendige drivere for oracle, postgres og TDV. Se [her](https://github.com/navikt/knada-images/tree/main/airflow/papermill) for `Dockerfile` og `requirements.txt` som brukes for å bygge dette imaget. For å finne siste versjon av vårt image, se [her](https://github.com/navikt/knada-images/pkgs/container/knada-images%2Fairflow-papermill).
 
 #### Lag først en `requirements.txt` fil, f.eks.
 ```
@@ -212,16 +226,57 @@ influxdb==5.3.1
 ```
 
 #### Lag så en `Dockerfile` i samme mappe som `requirements.txt` filen
-```
-FROM ghcr.io/navikt/knada-airflow-base:2023-01-30-7d2e0dc
 
-USER root
+##### Med utgangspunkt i vårt base image
+```docker
+FROM ghcr.io/navikt/knada-images/airflow-papermill:2023-07-03-71bed7b
 
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
+```
+
+##### Med utgangspunkt i det offisielle base imaget til airflow
+Under er Dockerfile for å bygge basert på det offisielle airflow imaget med oracle client installert.
+
+```docker
+FROM apache/airflow:2.6.3-python3.10
+ARG ORACLE_CLIENT_VERSION=21.10
+ARG ORACLE_CLIENT_URL=https://download.oracle.com/otn_software/linux/instantclient/2111000/oracle-instantclient-basic-21.11.0.0.0-1.x86_64.rpm
+
+USER root
+
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+    alien \
+    build-essential \
+    bzip2 \
+    ca-certificates \
+    cmake \
+    curl \
+    git \
+    libaio-dev \
+    libaio1 \
+    locales \
+    locales-all \
+    tzdata \
+    wget && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install oracle client
+RUN curl ${ORACLE_CLIENT_URL} -o /tmp/oracle-instantclient.rpm
+RUN alien -i /tmp/oracle-instantclient.rpm && \
+    rm -rf /var/cache/yum && \
+    rm -f /tmp/oracle-instantclient.rpm && \
+    echo /usr/lib/oracle/${ORACLE_CLIENT_VERSION}/client64/lib > /etc/ld.so.conf.d/oracle-instantclient${ORACLE_CLIENT_VERSION}.conf && \
+    ldconfig
 
 USER ${AIRFLOW_UID}
+
+COPY requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
+ENV PYTHONPATH "/workspace"
 ```
 
 #### Bygg og push imaget til GitHub Container Registry
@@ -230,3 +285,14 @@ USER ${AIRFLOW_UID}
 docker build -t ghcr.io/navikt/mitt-airflow-image:v1 .
 docker push ghcr.io/navikt/mitt-airflow-image:v1
 ```
+
+!!! info "Merk: Imaget som airflow workeren skal bruke må ha apache-airflow installert. Dette vil følge med dersom en tar utgangspunkt i vårt image over, men dersom man bygger et eget image fra scratch bør man ta utgangspunkt i det offisielle docker imaget til [airflow](https://hub.docker.com/r/apache/airflow)"
+
+## Kubernetes pod operators eksempel
+Dersom du har behov for å bruke Kubernetes Pod Operators så tilbyr vi en [eksempel modul](https://github.com/navikt/nada-dags/tree/main/common) man kan ta utgangspunkt i og inkludere i sitt eget DAGs repo. Dette eksempelet gjør det mulig å ha airflow tasker som kjører kode i form av et python script eller en jupyter notebook fra et annet repo enn det DAGen er definert i.
+
+Eksempelet inneholder en [initcontainer](https://github.com/navikt/nada-dags/blob/main/common/initcontainers.py#L5) som kjører [før](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L113) hovedcontaineren til jobben. Denne initcontaineren vil klone et [selvvalgt repo](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L23) som så blir mountet inn i hovedcontaineren i mappen `/workspace`.
+
+Eksempelet innholder også notifikasjoner ved feil som kan enables ved å angi parametere for [slack kanal](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L28) og/eller [epost](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L27). Angis disse så vil man få generelle notifikasjoner ved feil på enten [epost](https://github.com/navikt/nada-dags/blob/main/common/notifications.py#L11) eller [slack](https://github.com/navikt/nada-dags/blob/main/common/notifications.py#L22).
+
+Brukere står fritt til å bruke eller ta utgangspunkt i og modifisere denne modulen for sitt eget formål.
