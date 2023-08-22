@@ -24,5 +24,5 @@ All ROS er gjort i TryggNok.
 * [KNADA GKE (ROS #1239)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=1239)
 * [Datamarkedsplassen (ROS #1005)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=1005)
 * [Metabase (ROS #988)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=988)
-
+* [Quarto (ROS #1347)](https://apps.powerapps.com/play/f8517640-ea01-46e2-9c09-be6b05013566?ID=1357)
 Du kan lese om behandlingene NADA gjør i [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no/process/team/3f85cdce-1257-4862-8ce3-3aec9b576df0/18089de7-829d-47e3-868b-53d4e5f251da).
