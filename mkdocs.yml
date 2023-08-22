@@ -94,6 +94,7 @@ nav:
     - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
     - KNADA VM: analyse/knada-vm.md
+    - Google Secret Manager: analyse/google-secret-manager.md
     - Kodeeksempler: analyse/eksempler.md
   - Vår visjon:
     - Data mesh: visjon/data_mesh.md

@@ -67,27 +67,7 @@ Når du så har bygget image ditt finner du det igjen ved å:
 
 ### Lese hemmeligheter fra Google Secret Manager
 
-Hvert team i Knorten har sitt eget område for hemmeligheter i [Google Secret Manager](https://console.cloud.google.com/security/secret-manager).
-For å lese disse hemmelighetene i en notebook trenger man å ha installert pakken `google-cloud-secret-manager`.
-
-```bash
-pip install --user google-cloud-secret-manager
-```
-
-Koden nedenfor henter alle hemmelighentene fra ditt område og legger de inn i en variabel som heter `data`.
-
-```python
-import os
-from google.cloud import secretmanager
-secrets = secretmanager.SecretManagerServiceClient()
-
-resource_name = f"{os.environ['KNADA_TEAM_SECRET']}/versions/latest"
-secret = secrets.access_secret_version(name=resource_name)
-data = secret.payload.data.decode('UTF-8')
-```
-
-Har du hemmeligheter i et eget team-prosjekt så må du gi service accounten for KNADA tilgang til hemmeligheter i ditt team-prosjekt.
-Navn på service accounten finner du i Knorten.
+Du kan lese mer om hemmeligheter under [Google Secret Manager](../google-secret-manager.md).
 
 ## Restarte server
 For manuelt å restarte en Jupyter notebook går man til kontrollpanelet ved å velge `File` -> `Hub Control Panel` -> `Stop My Server`. Etter at serveren er stoppet vil man så kunne trykke `Start My Server`.
