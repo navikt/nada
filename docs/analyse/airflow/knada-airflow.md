@@ -53,7 +53,7 @@ Dette innebærer at hver task i en Airflow DAG vil spinne opp og kjøre en egen 
 !!! info "Merk: Hovedcontaineren som worker-poden bruker vil alltid hete `base`, så dersom en ønsker å overskrive noe som gjelder spesifikt for denne containeren må man referere til den med navn som i eksemplene under."
 
 ### Image for Airflow-workere
-Som standard vil airflow workere kjøre med et [dockerimage](https://github.com/navikt/knada-images/pkgs/container/knada-airflow-base) som bygges av NADA. Dette imaget inneholder drivere for oracle, postgres og TDV, men inneholder __**ikke et stort utvalg av python biblioteker**__. Dersom du har spesifikke behov for biblioteker som ikke er en del av dette imaget er det beste om du bygger et eget image som tar utgangspunkt i vårt. Se [bygge eget worker image](#bygge-eget-worker-image) for guide på hvordan å dette kan gjøres. Under følger et eksempel på hvordan å overstyre imaget som hovedcontaineren til Airflow workeren skal bruke:
+Som standard vil airflow workere kjøre med et [dockerimage](https://github.com/navikt/knada-images/pkgs/container/knada-airflow-base) som bygges av NADA. Dette imaget inneholder drivere for oracle, postgres og TDV, men inneholder __**ikke et stort utvalg av python biblioteker**__. Dersom du har spesifikke behov for biblioteker som ikke er en del av dette imaget er det beste om du bygger et eget image som tar utgangspunkt i vårt. Se [bygge eget worker image](#bygge-eget-airflow-worker-image) for guide på hvordan å dette kan gjøres. Under følger et eksempel på hvordan å overstyre imaget som hovedcontaineren til Airflow workeren skal bruke:
 
 ```python
 from airflow import DAG
@@ -214,7 +214,7 @@ Vi har lagd et enkelt [eksempel-dashboard](https://grafana.nais.io/d/dPaDzl-4z/k
 I noen tilfeller har du kanskje flere avhengigheter enn det vi tilbyr i standard Airflow-oppsett.
 
 For å legge til ekstra avhengigheter kan du benytte et [Github template](https://github.com/navikt/knemplate/) som vi har opprettet, for å lage et eget repo.
-Når du har opprettet repoet og lagt til avhengighetene du ønsker i `requirements.txt` vil arbeidsflyten som allerede er definert generere et Dockerimage som kan benyttes videre.
+Når du har opprettet repoet og lagt til avhengighetene du ønsker i `requirements.txt` vil arbeidsflyten som allerede er definert generere et Dockerimage som kan benyttes som [Image for Airflow workere](#image-for-airflow-workere).
 
 ## Kubernetes pod operators eksempel
 Dersom du har behov for å bruke Kubernetes Pod Operators så tilbyr vi en [eksempel modul](https://github.com/navikt/nada-dags/tree/main/common) man kan ta utgangspunkt i og inkludere i sitt eget DAGs repo. Dette eksempelet gjør det mulig å ha airflow tasker som kjører kode i form av et python script eller en jupyter notebook fra et annet repo enn det DAGen er definert i.
