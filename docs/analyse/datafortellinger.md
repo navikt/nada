@@ -14,9 +14,13 @@ Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-token
 
 I eksemplene under må følgende byttes ut med reelle verdier:
 
-- `${ENV}` - settes til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
+- `${ENV}` 
+    - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *nada.intern.dev.nav.no* for dev og *nada.intern.nav.no* for prod
+    - Ellers settes det til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
 - `${QUARTO_ID}` - erstatt med ID på Quarto
 - `${TEAM_TOKEN}` - erstatt med team-token fra markedsplassen
+
+!!!warning "API adressene over gjelder ikke for VMer satt opp i `knada-gcp` eller jupyter notebooks/airflow i `knada` clusteret. Her skal adressen "
 
 Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.
 
@@ -123,8 +127,12 @@ pip install datastory
 ## API adresser
 For å publisere en datafortelling må man angi api adressen det skal publiseres til.
 
-- For [dev-miljøet](https://data.dev.intern.nav.no) er adressen `https://data.ekstern.dev.nav.no/api`
-- For [prod-miljøet](https://data.intern.nav.no) er adressen `https://data.nav.no/api`
+- for [dev-miljøet](https://data.dev.intern.nav.no)
+    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://nada.intern.dev.nav.no/api`
+    - ellers er adressen `https://data.ekstern.dev.nav.no/api`
+- for [prod-miljøet](https://data.intern.nav.no) 
+    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://nada.intern.nav.no/api`
+    - ellers er adressen `https://data.nav.no/api`
 
 I kodeeksemplene som følger brukes dev adressen.
 
