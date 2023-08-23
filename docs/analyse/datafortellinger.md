@@ -20,8 +20,6 @@ I eksemplene under må følgende byttes ut med reelle verdier:
 - `${QUARTO_ID}` - erstatt med ID på Quarto
 - `${TEAM_TOKEN}` - erstatt med team-token fra markedsplassen
 
-!!!warning "API adressene over gjelder ikke for VMer satt opp i `knada-gcp` eller jupyter notebooks/airflow i `knada` clusteret. Her skal adressen "
-
 Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.
 
 ### Med curl
