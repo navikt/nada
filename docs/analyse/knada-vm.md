@@ -144,6 +144,11 @@ alien -i /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm && \
 
 PATH=$PATH:/usr/lib/oracle/21.9/client64/bin
 ```
+3. Gjør scriptet/kodesnutten kjørbar:
+```
+chmod +x setup_nb.sh
+sudo ./setup_nb.sh
+```
 
 !!! info "Nå vil skriptet installere versjon 21.9 av oracle klienten. Dersom du i stedet ønsker en annen versjon kan editere skriptet over med den versjonen du ønsker. Du finner en liste over tilgjengelige versjoner av oracle klienten [her](https://www.oracle.com/cis/database/technologies/instant-client/linux-x86-64-downloads.html)."
 
