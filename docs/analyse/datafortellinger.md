@@ -4,8 +4,31 @@ title: Datafortelling
 Datafortellinger brukes til å dele innsikt i form av statiske dokumenter.
 Datafortellinger kan kan enkelt deles med andre i NAV gjennom Markedsplassen.
 
-## Lage quarto
-Se dokumentasjon på [Quarto sine sider](https://quarto.org).
+## Installere Quarto
+
+### Lokal maskin
+Følge installasjonsoppskriften på [quarto.org/docs](https://quarto.org/docs/get-started/).
+Husk å hold Quarto oppdatert.
+
+### KNADA VM
+Vi anbefaler å følge guiden [Tarball Installation On Linux](https://quarto.org/docs/download/tarball.html).
+Igjen må man selv huske å holde Quarto oppdatert.
+
+### Docker image
+Vi anbefaler å bruke kommandoen nedenfor i din `Dockerfile` for å installere Quarto.
+Denne vil hente ned siste versjon av Quarto hver gang Docker-imaget blir bygd.
+
+```
+# jq, wget, og tar må være installert for at kommandoen nedenfor skal fungere
+RUN cd /app && \
+    QUARTO_VERSION=$(curl https://api.github.com/repos/quarto-dev/quarto-cli/releases/latest | jq '.tag_name' | sed -e 's/[\"v]//g') && \
+    wget https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.tar.gz && \
+    tar -zxvf quarto-${QUARTO_VERSION}-linux-amd64.tar.gz \
+ENV PATH="${PATH}:/app/quarto-${QUARTO_VERSION}/bin"
+```
+
+## Lage Quarto
+Se [Get Started](https://quarto.org/docs/get-started/) på Quarto sine sider.
 
 ## Oppdater eksisterende Quarto
 For å oppdatere en eksisterende Quarto fortelling må man først generere ressursfilene på nytt med `quarto render <file>`.
