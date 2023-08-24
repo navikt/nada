@@ -216,6 +216,9 @@ I noen tilfeller har du kanskje flere avhengigheter enn det vi tilbyr i standard
 For å legge til ekstra avhengigheter kan du benytte et [Github template](https://github.com/navikt/knemplate/) som vi har opprettet, for å lage et eget repo.
 Når du har opprettet repoet og lagt til avhengighetene du ønsker i `requirements.txt` vil arbeidsflyten som allerede er definert generere et Dockerimage som kan benyttes som [Image for Airflow workere](#image-for-airflow-workere).
 
+NB: Hvis du bygger image *lokalt på en nyere Mac* så er det viktig at du bygger imaget for riktig plattform.
+Legg til `--platform linux/amd64` i `docker build` kommandoen.
+
 ## Kubernetes pod operators eksempel
 Dersom du har behov for å bruke Kubernetes Pod Operators så tilbyr vi en [eksempel modul](https://github.com/navikt/nada-dags/tree/main/common) man kan ta utgangspunkt i og inkludere i sitt eget DAGs repo. Dette eksempelet gjør det mulig å ha airflow tasker som kjører kode i form av et python script eller en jupyter notebook fra et annet repo enn det DAGen er definert i.
 
