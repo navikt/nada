@@ -31,6 +31,9 @@ Ta gjerne utgangspunkt i [vårt image](https://github.com/navikt/knada-images/pk
 
 Når du har laget et image kan du selv spesifisere at det er dette imaget som skal brukes for teamet ditt i Knorten.
 
+NB: Hvis du bygger image *lokalt på en nyere Mac* så er det viktig at du bygger imaget for riktig plattform.
+Legg til `--platform linux/amd64` i `docker build` kommandoen.
+
 #### Eksempel på Dockerfile
 La oss si at du har en `requirements.txt` fil med Python-pakker som under:
 
