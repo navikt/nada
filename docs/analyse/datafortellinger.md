@@ -38,7 +38,7 @@ Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-token
 I eksemplene under må følgende byttes ut med reelle verdier:
 
 - `${ENV}` 
-    - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *nada.intern.dev.nav.no* for dev og *nada.intern.nav.no* for prod
+    - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *datamarkedsplassen.intern.dev.nav.no* for dev og *datamarkedsplassen.intern.nav.no* for prod
     - Ellers settes det til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
 - `${QUARTO_ID}` - erstatt med ID på Quarto
 - `${TEAM_TOKEN}` - erstatt med team-token fra markedsplassen
@@ -149,10 +149,10 @@ pip install datastory
 For å publisere en datafortelling må man angi api adressen det skal publiseres til.
 
 - for [dev-miljøet](https://data.dev.intern.nav.no)
-    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://nada.intern.dev.nav.no/api`
+    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://datamarkedsplassen.intern.dev.nav.no/api`
     - ellers er adressen `https://data.ekstern.dev.nav.no/api`
 - for [prod-miljøet](https://data.intern.nav.no) 
-    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://nada.intern.nav.no/api`
+    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://datamarkedsplassen.intern.nav.no/api`
     - ellers er adressen `https://data.nav.no/api`
 
 I kodeeksemplene som følger brukes dev adressen.
@@ -195,11 +195,11 @@ Dette tokenet blir generert når man publiserer en kladd og kan hentes ut ved å
 Når du har fått hentet ut oppdateringstokenet kan du erstatte siste kodelinje i eksempelet over (dvs. `ds.publish()`) med en metode som i stedet oppdaterer datafortellingen.
 
 ````python
-ds.update(token="mitt-token", url="https://nada.intern.dev.nav.no/api")
+ds.update(token="mitt-token", url="https://datamarkedsplassen.intern.dev.nav.no/api")
 ````
 
 Dersom man ønsker å unngå å sette api adressen til Markedsplassen som input parameter til `ds.publish()` og `ds.update()` metodene kan man i stedet sette det som miljøvariabel, f.eks.
 ````python
 import os
-os.environ["DATASTORY_URL"] = "https://nada.intern.dev.nav.no/api"
+os.environ["DATASTORY_URL"] = "https://datamarkedsplassen.intern.dev.nav.no/api"
 ````
