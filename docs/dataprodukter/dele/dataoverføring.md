@@ -10,6 +10,8 @@ Dataen strømmes til en samling (`dataset`) i BigQuery hvor kun teamet har tilga
 Fra samlingen kan man gjøre transformasjoner og gjøre tabeller/view klare for bruk internt i teamet. 
 Tabeller/view kan også tilgjengeliggjøres for andre.
 
+Det anbefales også at `diskAutoresize` for Postgres-databasen settes til `true` siden Datastream bruker en del lagringsplass.
+
 ````mermaid
 flowchart LR
     A[(Postgres 1)] --> C(Datastream)  
