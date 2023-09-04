@@ -1,8 +1,5 @@
 name: documentation
 
-permissions:
-  packages: write
-
 on: 
   push:
     branches:
@@ -11,6 +8,9 @@ on:
 jobs:
   gh-release:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
     steps:
       - uses: actions/checkout@v2
       - name: Install mkdocs
