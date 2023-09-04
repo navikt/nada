@@ -9,10 +9,10 @@ For å koble deg til en VM i `knada-gcp` trenger du å opprette et SSH nøkkelpa
 
 1. Logg inn med `gcloud auth login --update-adc` (trengs kun å kjøres en gang om dagen).
 For å gjøre dette må gcloud være installer (se dokumentasjon hos [cloud.google.com](https://cloud.google.com/sdk/docs/install)).
-2. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance>`.
+2. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-north1-b <instance>`.
 Erstatt `<instance>` med navnet på VM instansen din, denne finner du etter du har logget inn i [Knorten](https://knorten.knada.io/oversikt) under `Compute`.
 Denne kommandoen vil også generere SSH-nøkler.
-3. Kjør så kommandoen `gcloud compute ssh --project knada-gcp --zone europe-west1-b <instance> --dry-run`.
+3. Kjør så kommandoen `gcloud compute ssh --project knada-gcp --zone europe-north1-b <instance> --dry-run`.
 Erstatt `<instance>` med navnet på VM instansen din slik som i punkt (2).
 4. Outputen fra kommandoen i (3) inneholder en del ting du trenger fylle inn i SSH-configen din.
 Under er et eksempel på hvordan en slik SSH-config skal se ut.
@@ -43,7 +43,7 @@ Under er et eksempel på hvordan en slik SSH-config skal se ut.
         HostKeyAlias {HOSTNAME}
         IdentitiesOnly yes
         UserKnownHostsFile C:\\Users\\{USERNAME}\\.ssh\\google_compute_known_hosts
-        ProxyCommand "C:\\Users\\{USERNAME}\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\..\\platform\\bundledpython\\python.exe" "-S" "C:\\Users\\{USERNAME}\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\lib\\gcloud.py" compute start-iap-tunnel {INSTANS} %p --listen-on-stdin --project=knada-gcp --zone=europe-west1-b --verbosity=warning
+        ProxyCommand "C:\\Users\\{USERNAME}\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\..\\platform\\bundledpython\\python.exe" "-S" "C:\\Users\\{USERNAME}\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\lib\\gcloud.py" compute start-iap-tunnel {INSTANS} %p --listen-on-stdin --project=knada-gcp --zone=europe-north1-b --verbosity=warning
         ProxyUseFdpass no
         User {USERNAME}
     ````
