@@ -12,8 +12,42 @@ Innloggingen gjøres med SSO.
 ## Hvordan fungerer tilgangsstyring i metabase?
 Datasett er ved registrering kun tilgjengelig for teamet som eier data.
 Dersom teamet legger til datasettet i Metabase (`Legg til i metabase` på markedsplassen), vil det være tilgjengelig for de samme som har tilgang til datasettet på markedsplassen.
-Når datasettet legges til i metabase, vil det opprettes en database og en folder i metabase.
+Når datasettet legges til i metabase, vil det opprettes en database (`I` i figuren under) og en collection (`II` i figuren under) i metabase.
 Begge deler er tilgangsbegrenset.
+Tilgangsstyringen gjelder både for å lese Dashboard og for å lage dem.
+
+````mermaid
+flowchart BT
+subgraph Dataprodukt
+subgraph Datasett 1
+A{Tilganger}
+B[(BigQuery-tabell)]
+end
+end
+
+subgraph Metabase
+subgraph II: Tilgangsstyrt collection
+C[Dashboard]
+D[Questions]
+end
+E[(I: Database)]
+F{Metabase-tilganger}
+end
+
+subgraph Annen collection
+G[Questions]
+H[Dashboard]
+
+end
+
+A --Tilganger til Metabase er <br> er de samme som i BigQuery--> F
+B --> E
+F --> D
+D --> C
+G --> H
+E --> F
+F --Kan kun bruke data <br> andre steder om personen <br> har tilgang--> G
+````
 
 Datasett som er åpne for alle i NAV (`all-users@nav.no`) synkroniseres automatisk til metabase og åpnes for alle brukere.
 
