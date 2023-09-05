@@ -17,7 +17,7 @@ Figuren under illustrerer hvordan arkitekturen kan se ut.
 ````mermaid
 flowchart BT
 classDef tittel_styling font-weight:bold,font-size:14pt,margin:1em
-subgraph intern[Intern modell]
+subgraph intern[Data på innsiden]
 
 subgraph Postgres-db
 A[(Tabell 1)]
