@@ -72,6 +72,22 @@ Under er et eksempel på hvordan en slik SSH-config skal se ut.
 Dette skal settes til ditt hjemmeområde på serveren `/home/<brukernavn>`, trykk på browse ikonet til høyre for boksen for å lete det opp
 8. Klikk så `Download and Start IDE`
 
+### SSH multiplexing aka gjenbruk av koblinger
+
+For å optimalisere tilkobling mot VMen kan man bruke SSH multiplexing.
+Dette er kjekt mot KNADA VM for da man slipper å autentisere seg for hver tilkobling.
+Med bruk av `ControlPersists` kan man si hvor lenge forbindelsen skal leve etter at man kobler fra siste gang.
+Så hvis du SSH-er inn, skrur av tilkoblingen så vil du kunne starte VSCode innen 5 minutter og den vil kunne gjennbruke samme tilkobling.
+Hvis man ikke ønsker at alle SSH tilkoblinger skal bruke multiplexing kan du bruke legge linjene (minus `Host *`) under `Host knada-vm`.
+
+```
+Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h-%p
+  ControlPersists 300
+```
+
+
 ## Oppsett av VM
 
 ### Python
