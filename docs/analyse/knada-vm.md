@@ -84,7 +84,7 @@ Hvis man ikke ønsker at alle SSH tilkoblinger skal bruke multiplexing kan du br
 Host *
   ControlMaster auto
   ControlPath ~/.ssh/sockets/%r@%h-%p
-  ControlPersists 300
+  ControlPersist 300
 ```
 
 
