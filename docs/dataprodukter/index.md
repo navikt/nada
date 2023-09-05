@@ -4,6 +4,84 @@ For å flytte data til BigQuery må man først ha tilgang til et prosjekt i GCP.
 Et sånt prosjekt er typisk et NAIS-team, les mer om det i [NAIS-dokumentasjonen](https://doc.nais.io/basics/teams/#gcp-team-projects).
 For å få tilgang til GCP må man [legge til Google Cloud Platform i myapps.microsoft.com](https://account.activedirectory.windowsazure.com/r#/addApplications).
 
+### Data på innsiden og på utsiden
+`Data på innsiden` = Teamets interne modell for å levere verdi til brukerne innenfor domenet og endres typisk ofte.
+
+`Data på utsiden` = Analytiske data som er mer stabile: Kan være begrenset til eget bruk i teamet.
+
+Teamene velger selv hvordan de etablerer skillet mellom innsiden og utsiden.
+Noen team velger å flytte mer av data på innsiden ut til BigQuery, og så sammenstille og bearbeide data videre til analytiske produkter i BigQuery.
+"Råsonen" er der fortsatt en del av teamets interne modell.
+Figuren under illustrerer hvordan arkitekturen kan se ut.
+
+````mermaid
+flowchart BT
+subgraph Intern modell
+
+subgraph Postgres-db
+A[(Tabell 1)]
+B[(Tabell 2)]
+end
+
+subgraph Oracle-db on-prem
+C[(Tabell n)]
+end
+
+subgraph Annen kilde
+C_1[(Kafka)]
+C_2[(DB2)]
+end
+
+X[Naisjob for <br> å flytte data]
+X_1[Datastream for <br>å strømme endringer]
+X_2[Federated Query <br> for å flytte data]
+X_3[Nais-app for å <br> flytte data]
+
+subgraph BigQuery: Råsone
+D[(Tabell 1)]
+E[(Tabell 2)]
+F[(Tabell 3)]
+F_2[Tabell m]
+end
+Y(Sammenstilling og bearbeiding)
+Z(Bearbeiding)
+Z_1(Sammenstilling og bearbeiding)
+end
+
+
+subgraph "Data på utsiden (BigQuery)"
+subgraph Dataprodukt 1
+H[(Tabell X)]
+end
+subgraph Dataprodukt 2
+I[(View Y)]
+end
+subgraph Dataprodukt m
+I_1[(View Z)]
+end
+end
+
+A --> X_1
+B --> X_2
+C_1 --> X_3
+C --> X
+X --> D
+X_1 --> E
+X_2 --> F
+X_3 --> F_2
+D --> Y
+E --> Y
+F --> Z
+F --> Z_1
+F_2 --> Z_1
+Y --> H
+Z --> I
+Z_1 --> I_1
+
+````
+
+
+
 === "Postgres"
     Team bruker i hovedsak [Federated Query](dele/dataoverføring.md#federated-query) til å flytte data fra Postgres til BigQuery.
     Dette gjøres på følgende måte:
