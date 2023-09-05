@@ -83,9 +83,10 @@ Hvis man ikke ønsker at alle SSH tilkoblinger skal bruke multiplexing kan du br
 ```
 Host *
   ControlMaster auto
-  ControlPath ~/.ssh/sockets/%r@%h-%p
-  ControlPersist 300
+  ControlPersist 5m
 ```
+
+Se SSH sin egen [dokumentasjon](https://man.openbsd.org/ssh_config.5) for mer informasjon om de forskjellige variablene.
 
 
 ## Oppsett av VM
