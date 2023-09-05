@@ -16,7 +16,8 @@ Figuren under illustrerer hvordan arkitekturen kan se ut.
 
 ````mermaid
 flowchart BT
-subgraph Intern modell
+classDef tittel_styling font-weight:bold,font-size:14pt,margin:1em
+subgraph intern[Intern modell]
 
 subgraph Postgres-db
 A[(Tabell 1)]
@@ -47,9 +48,9 @@ Y(Sammenstilling og bearbeiding)
 Z(Bearbeiding)
 Z_1(Sammenstilling og bearbeiding)
 end
+class intern tittel_styling
 
-
-subgraph "Data på utsiden (BigQuery)"
+subgraph outside["Data på utsiden (BigQuery)"]
 subgraph Dataprodukt 1
 H[(Tabell X)]
 end
@@ -60,6 +61,7 @@ subgraph Dataprodukt m
 I_1[(View Z)]
 end
 end
+class outside tittel_styling
 
 A --> X_1
 B --> X_2
