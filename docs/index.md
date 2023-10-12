@@ -10,5 +10,6 @@ Metabase-dashboard kan også deles direkte på markedsplassen.
 ## Kontakt oss
 
 * [Slack (#nada)](https://nav-it.slack.com/archives/CGRMQHT50)
-* Brukerforum (annenhver torsdag i partallsuker, kl. 0900 på Zoom.)
+* Brukerforum: Annonseres på slack
+* Kurs: Annonseres på [Delta](https://delta.nav.no)
 
