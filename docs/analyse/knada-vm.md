@@ -12,7 +12,7 @@ For å gjøre dette må gcloud være installer (se dokumentasjon hos [cloud.goog
 2. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-north1-b <instance>`.
 Erstatt `<instance>` med navnet på VM instansen din, denne finner du etter du har logget inn i [Knorten](https://knorten.knada.io/oversikt) under `Compute`.
 Denne kommandoen vil også generere SSH-nøkler.
-3. Kjør så kommandoen `gcloud compute ssh --project knada-gcp --zone europe-north1-b <instance> --dry-run`.
+3. Lukk terminalen fra (2) og kjør så kommandoen `gcloud compute ssh --project knada-gcp --zone europe-north1-b <instance> --dry-run` __**lokalt på maskinen din**__.
 Erstatt `<instance>` med navnet på VM instansen din slik som i punkt (2).
 4. Outputen fra kommandoen i (3) inneholder en del ting du trenger fylle inn i SSH-configen din.
 Under er et eksempel på hvordan en slik SSH-config skal se ut.
