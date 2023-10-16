@@ -183,21 +183,21 @@ Dersom man ikke angir port vil vi bruke `443` som standardport.
 Vi har en controller kjørende i KNADA som vil lage en `NetworkPolicy` som tillater trafikk ut fra poden mot de hostene som legges til.
 Når jobben er ferdig vil tilgangene bli fjernet.
 
-#### For KubernetesPodOperators laget med dataverk-airflow
-Man kan også sette allowlist for KubernetesPodOperators som lages med `dataverk-airflow` som i eksempelet under.
+#### For operators laget med Dataverk-Airflow
+
+Man kan også sette `allowlist` for operators som lages med [dataverk-airflow](https://github.com/navikt/dataverk-airflow#dataverk-airflow) som i eksempelet under.
 
 ```python
 from airflow import DAG
-from dataverk_airflow.knada_operators import create_knada_nb_pod_operator
+from airflow.utils.dates import days_ago
+from dataverk_airflow import notebook_operator
 
 with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
-    task = create_knada_nb_pod_operator(dag=dag,
-                                        name="knada-pod-operator",
-                                        repo="navikt/repo",
-                                        nb_path="notebooks/mynb.ipynb",
-                                        retries=1,
-                                        allowlist=["ssb.no", "db.adeo.no:1521"],
-                                        branch="main")
+    task = notebook_operator(dag=dag,
+                             name="knada-pod-operator",
+                             repo="navikt/repo",
+                             nb_path="notebooks/mynb.ipynb",
+                             allowlist=["ssb.no", "db.adeo.no:1521"])
 ```
 
 ## Airflow metrikker i Grafana
