@@ -12,6 +12,16 @@ Du må selv aktivt holde disse oppdatert!
 
 Hvis du syns dette blir for mye ansvar så anbefaler vi heller [Jupyter notebooks](./notebook/knada-notebook).
 
+En annen ting man må ha et bevist forhold til når man bruker KNADA VM er "avstanden" mellom lokal maskin og data med PII (personidentifiserende informasjon).
+Derfor må man være ekstra obs på at man ikke gjør noe utenfor behandlingsgrunnlaget man har.
+For eksempel må man være ekstra bevist på at man ikke lagrer data lokalt på sin maskin (så fremt ikke behandlingsgrunnlaget sier noe annet).
+Ved å bruke KNADA VM som beskrevet nedenfor vil man minske risikoen for at lokal lagring vil skje, da man kjører prosesser *i* KNADA i stedet for å gjøre det lokalt.
+
+Man bør også være bevist på hva man skriver _inn_ i terminalen (det man skriver _ut_ i terminalen forsvinner så fort man avslutter shellet).
+For eksempel bær man ikke skrive brukernavn og passord direkte i terminalen, men heller bruker konfigurasjons-filer, eller enda bedre hente hemmeligheter fra [Google Secret Manager](https://cloud.google.com/secret-manager/docs).
+Det kan også være fornuftig å konfigurere shellet til å slette historikken når man logger ut.
+Hvis man bruker `bash` kan man legge til `history -c` i `.bash_logout`.
+
 ## Vedlikehold
 
 For Debian (selve maskinen/OSet) så kan man lese [Keeping your Debian system up-to-date](https://www.debian.org/doc/manuals/debian-faq/uptodate.en.html), men i korte trekk handler det om å kjøre `aptitude update` etterfulgt av `aptitude full-upgrade`.
