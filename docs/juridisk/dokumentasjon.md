@@ -8,7 +8,7 @@ Behandling av personopplysninger krever et såkalt rettslig grunnlag (behandling
 
 For å kunne behandle data må du ha:
 
-- en behandling i [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no). Se [dokumentasjon til registrering](spilleregler.md#hva-m-jeg-som-produsent-dokumentere-om-dataene-jeg-behandler)
+- en behandling i [Behandlingskatalogen](https://behandlingskatalog.intern.nav.no/). Se [dokumentasjon til registrering](spilleregler.md#hva-ma-jeg-som-produsent-dokumentere-om-dataene-jeg-behandler)
 - grunnleggende personvernavklaringer (GPA) eller tatt stilling til personvernskravene på [etterlevelse.intern.nav.no](https://etterlevelse.intern.nav.no/)
     - Dersom behandling av personopplysninger vil medføre høy risiko, kreves det en personvernkonsekvensvurdering (PVK).
     [Les om kravet på etterlevelse.intern.nav.no](https://etterlevelse.intern.nav.no/krav/114/1).
