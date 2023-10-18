@@ -22,7 +22,7 @@ All ROS er gjort i TryggNok.
 
 * [Dataanalyseverktøy i GCP (ROS #607)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=607)
 * [KNADA GKE (ROS #1239)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=1239)
-* [KNADA VM (knada-gcp)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=897&tenantId=62366534-1ec3-4962-8869-9b5535279d0b)
+* [KNADA VM (ROS #897)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=897)
 * [Datamarkedsplassen (ROS #1005)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=1005)
 * [Metabase (ROS #988)](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=988)
 * [Quarto (ROS #1347)](https://apps.powerapps.com/play/f8517640-ea01-46e2-9c09-be6b05013566?ID=1357)
