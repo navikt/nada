@@ -10,7 +10,7 @@ Dette betyr at du må sette deg inn i hvordan man [vedlikeholder](#vedlikehold) 
 Det samme gjelder for pakker og applikasjoner du installerer.
 Du må selv aktivt holde disse oppdatert!
 
-Hvis du syns dette blir for mye ansvar så anbefaler vi heller [Jupyter notebooks](./notebook/knada-notebook).
+Hvis du syns dette blir for mye ansvar så anbefaler vi heller [Jupyter notebooks](../notebook/knada-notebook).
 
 Som med Jupyter notebook har man muligheter til å laste ned data til lokal maskin, derfor må man være ekstra obs på at man ikke gjør noe utenfor det behandlingsgrunnlaget man har.
 
