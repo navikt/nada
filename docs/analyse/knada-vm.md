@@ -5,7 +5,7 @@ Denne maskinen vil ha tilgang til on-premise kilder på lik linje som [Notebooks
 
 Siden dette er en privat maskin stiller vi høyere krav til bruk av maskinene.
 Blant annet er du selv ansvarlig for å holde maskinen oppdatert!
-Dette betyr at du må sette deg inn i hvordan man vedlikeholder en Debian GNU/Linux maskin.
+Dette betyr at du må sette deg inn i hvordan man [vedlikeholder](#vedlikehold) en Debian GNU/Linux maskin.
 
 Det samme gjelder for pakker og applikasjoner du installerer.
 Du må selv aktivt holde disse oppdatert!
