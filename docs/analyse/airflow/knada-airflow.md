@@ -34,7 +34,7 @@ NADA tilbyr team eller enkeltpersoner å sette opp Airflow instanser i KNADA gje
 
 For mer informasjon om Airflow, se [Airflow docs](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
 
-!!! warning "Vær oppmerksom på at alt av logger fra en airflow task vil skrives til en [bucket](https://cloud.google.com/storage/docs/buckets) i `knada-gcp` prosjektet og være tilgjengelig etterpå gjennom airflow og direkte for de som har tilgang til bucketene. Vær derfor forsiktig så ikke sensitiv informasjon skrives til stdout i koden som kjøres."
+!!! warning "Vær oppmerksom på at alt av logger fra en Airflow task vil skrives til en [bucket](https://cloud.google.com/storage/docs/buckets) i `knada-gcp` prosjektet, og være tilgjengelig etterpå for Airflow og direkte for NADA som er admins i `knada-gcp`. Vær derfor forsiktig så ikke sensitiv informasjon skrives til stdout i koden som kjøres."
 
 ### Oppsett av repo for DAGs
 For å bruke KNADA Airflow kreves det at det lages et Github repo under `navikt` organisasjonen på Github som inneholder Python-filer med DAGer. 
@@ -227,3 +227,17 @@ Eksempelet inneholder en [initcontainer](https://github.com/navikt/nada-dags/blo
 Eksempelet innholder også notifikasjoner ved feil som kan enables ved å angi parametere for [slack kanal](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L28) og/eller [epost](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L27). Angis disse så vil man få generelle notifikasjoner ved feil på enten [epost](https://github.com/navikt/nada-dags/blob/main/common/notifications.py#L11) eller [slack](https://github.com/navikt/nada-dags/blob/main/common/notifications.py#L22).
 
 Brukere står fritt til å bruke eller ta utgangspunkt i og modifisere denne modulen for sitt eget formål.
+
+## Audit logs av tasks
+
+Som et risikotiltak logger vi hvem som kjører hvilke jobber i KNADA ned til Datavarehus.
+Dette er for at Datavarehus skal ha bedre kontroll på hvem som snakker med de.
+Selve tjenesten heter [knaudit](https://github.com/nais/knaudit#knaudit), og det er kun Datavarehus og NADA som har tilgang til disse loggene.
+
+Eksempel på hva vi logger:
+
+```json
+{"commit_sha1":["d19dcf695f043c6eff6b0cc2478b58d45299ca97"],"hostname":["mycsvdag-starting-fc8dfe28afae414da33a5d2a57db85d1"],"run_id":["scheduled__2023-05-03T05:30:00+00:00"],"timestamp":["2023-05-03T05:35:11.000Z"],"git_repo":["github.com/navikt/test-team-dag"],"ip":["321.312.312.321"],"namespace":["team-test-ncnv"],"task_id":["starting"],"git_branch":["main"],"dag_id":["MyCSVDAG"],"triggered_by":["airflow"]}
+```
+
+Hvis det er en manuell kjøring så vil `triggered_by` inneholder navnet på innlogget Airflow-bruker.
