@@ -183,7 +183,7 @@ Dersom man ikke angir port vil vi bruke `443` som standardport.
 Vi har en controller kjørende i KNADA som vil lage en `NetworkPolicy` som tillater trafikk ut fra poden mot de hostene som legges til.
 Når jobben er ferdig vil tilgangene bli fjernet.
 
-#### For operators laget med Dataverk-Airflow
+#### For operators laget med Dataverk Airflow
 
 Man kan også sette `allowlist` for operators som lages med [dataverk-airflow](https://github.com/navikt/dataverk-airflow#dataverk-airflow) som i eksempelet under.
 
@@ -219,14 +219,9 @@ Når du har opprettet repoet og lagt til avhengighetene du ønsker i `requiremen
 NB: Hvis du bygger image *lokalt på en nyere Mac* så er det viktig at du bygger imaget for riktig plattform.
 Legg til `--platform linux/amd64` i `docker build` kommandoen.
 
-## Kubernetes pod operators eksempel
-Dersom du har behov for å bruke Kubernetes Pod Operators så tilbyr vi en [eksempel modul](https://github.com/navikt/nada-dags/tree/main/common) man kan ta utgangspunkt i og inkludere i sitt eget DAGs repo. Dette eksempelet gjør det mulig å ha airflow tasker som kjører kode i form av et python script eller en jupyter notebook fra et annet repo enn det DAGen er definert i.
+## Kubernetes pod operators
 
-Eksempelet inneholder en [initcontainer](https://github.com/navikt/nada-dags/blob/main/common/initcontainers.py#L5) som kjører [før](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L113) hovedcontaineren til jobben. Denne initcontaineren vil klone et [selvvalgt repo](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L23) som så blir mountet inn i hovedcontaineren i mappen `/workspace`.
-
-Eksempelet innholder også notifikasjoner ved feil som kan enables ved å angi parametere for [slack kanal](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L28) og/eller [epost](https://github.com/navikt/nada-dags/blob/main/common/podop_factory.py#L27). Angis disse så vil man få generelle notifikasjoner ved feil på enten [epost](https://github.com/navikt/nada-dags/blob/main/common/notifications.py#L11) eller [slack](https://github.com/navikt/nada-dags/blob/main/common/notifications.py#L22).
-
-Brukere står fritt til å bruke eller ta utgangspunkt i og modifisere denne modulen for sitt eget formål.
+Dersom du har behov for å bruke Kubernetes Pod Operators så har vi et eksempel i [nada-dags](https://github.com/navikt/nada-dags/blob/main/dags/kubernetes_pod_operator.py) som fortsatt lar deg klone et annet repo, og installere Python-pakker ved oppstart.
 
 ## Audit logs av tasks
 
