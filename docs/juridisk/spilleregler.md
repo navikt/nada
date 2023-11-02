@@ -42,6 +42,11 @@ Produsenten er ikke forventet å kunne hensynta dette ved vurdering av tilgangsf
 Svaret til dette spørsmålet må holdes internt, men du kan [lese svaret på retningslinjer for Schrems II-dommen på Slack](https://nav-it.slack.com/archives/CGRMQHT50/p1650979093246669?thread_ts=1648108682.804329&cid=CGRMQHT50).
 
 
+## Må jeg arkivere data på nada?
+Data arkiveres typisk fra teamenes egne databaser som er master. 
+Denne arkiveringen skjer før data behandles på nada-plattformen.
+
+
 *[FAQ]: frequently asked questions
 *[GPA]: grunnleggende personvernanalyse
 *[PVK]: personvernkonsekvensvurdering
