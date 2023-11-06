@@ -137,6 +137,85 @@ I eksempelet hentes team-tokenet fra en [kubernetes secret](https://kubernetes.i
 #### Andre eksempler
 - [fia](https://github.com/navikt/fia-datafortelling): Mer avansert eksempel med produksjonssatt datafortelling
 
+### Quarto book
+Vi har en foreløpig rigg for å publisere [quarto books](https://quarto.org/docs/books/) internt i NAV på `data.intern.nav.no` og/eller eksternt på `data.nav.no`. Dette oppsettet forutsetter at man oppretter et github repo som med en github action som dytter quarto booken til en GCP bucket. Under følger en oppskrift på hvordan dette kan settes opp:
+
+!!! info "Oppskriften forutsetter at du har tilgang til [navikt organisasjonen](https://github.com/navikt) på github og tilgang til et GCP prosjekt hvor [storage bucketen](https://cloud.google.com/storage/docs/creating-buckets) skal opprettes. I tillegg kreves kunnskap om hvordan å dytte kode til et github repo"
+
+
+1. Opprett et repo under [navikt-organisasjonen](https://github.com/organizations/navikt/repositories/new) på github.
+2. Opprett en [storage bucket](https://cloud.google.com/storage/docs/creating-buckets) i GCP prosjekt du er medlem av.
+3. Lag quarto fortellingen din:
+    - Anbefaler å bruke Quarto sin egen [doc](https://quarto.org/docs/books/) for dette.
+    - Eksempler på quarto-books i NAV:
+        - [omverdensanalysen](https://github.com/navikt/oma_2023)
+        - [overgangsindikator](https://github.com/navikt/ovind_docs)
+        - [tada](https://github.com/navikt/tada-playbook)
+4. Opprett en service account i GCP prosjektet:
+    - For å opprette service account, se [her](https://cloud.google.com/iam/docs/service-accounts-create).
+    - Gi service accounten rollen `Storage Admin` på bucketen opprettet i (2). Se [her](https://cloud.google.com/storage/docs/access-control/using-iam-permissions) for doc på dette.
+5. Lag en [JSON nøkkel](https://cloud.google.com/iam/docs/keys-create-delete) for service accounten. Denne lagrer du midlertidig lokalt på maskinen din.
+6. Opprett en en [github action secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) i repoet ditt du kaller `GCP_CREDENTIALS`. Innholdet i secreten er JSON nøkkelen fra (5). Etter at secreten er lagt til i repoet bør JSON-nøkkelen fjernes fra maskinen din.
+7. Når du har laget quarto-booken og dyttet denne til repoet opprettet i (1) kan du sette opp en github action som dytter skriver det til bucketen på GCP hver gang du pusher kode til repoet. Opprett filen `.github/workflows/update-quarto.yaml` i repoet med følgende innhold:
+
+!!! info "I eksempelet under må ${BUCKET} erstattes med navnet på bucketen du lagde i (2). ${NAME} må erstattes med et selvvalgt navn som representerer quarto storien."
+
+```yaml
+name: update-quarto
+on: 
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  update-quarto:
+    name: Update quarto story
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+      - name: Upload files
+        working-directory: _site
+        run: gsutil cp -r * gs://${BUCKET}/${NAME}/
+```
+
+8. Lag en pull request til [navikt/nada-quarto-proxy](https://github.com/navikt/nada-quarto-proxy). Pull requesten må inneholde følgende:
+- Opprett filen `.nais/${NAME}.yaml` med følgende innhold:
+
+!!! info "Erstatt ${BUCKET} med navn på bucket fra (2) og ${NAME} med det du valgte i (7)"
+
+```yaml
+kind: "Application"
+apiVersion: "nais.io/v1alpha1"
+metadata:
+  name: quarto-${NAME}
+  namespace: nada
+  labels:
+    team: nada
+spec:
+  image: {{ image }}
+  env:
+    - name: GCS_QUARTO_BUCKET
+      value: ${BUCKET}
+    - name: QUARTO_UUID
+      value: ${NAME}
+    - name: QUARTO_PATH
+      value: ${NAME}
+  ingresses:
+    - https://data.intern.nav.no/${NAME}
+  replicas:
+    min: 1
+    max: 2
+```
+
+- Legg til `,.nais/${NAME}.yaml` på slutten av linjen [her](https://github.com/navikt/nada-quarto-proxy/blob/main/.github/workflows/build-and-deploy.yaml#L34).
+9. Etter at pull requesten er godkjent og appen som skal hoste quarto-booken er rullet ut må service accounten appen bruker få lese tilgang til bucketen opprettet på GCP. Ta kontakt i [#nada](https://nav-it.slack.com/archives/CGRMQHT50) eller på DM til en av medlemmene av NADA-teamet for dette.
+
 
 ## Datastory-biblioteket
 !!!warning "Datafortellinger laget med datastory-biblioteket vil fases ut. Eksisterende datafortellinger vil leve videre en stund, men vi vil om kort tid stenge muligheten til å lage nye."
