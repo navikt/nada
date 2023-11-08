@@ -157,9 +157,6 @@ Under følger en oppskrift på hvordan dette kan settes opp:
     - For å opprette service account, se dokumentasjon i [cloud.google.com](https://cloud.google.com/iam/docs/service-accounts-create).
     - Gi service accounten rollen `Storage Admin` på bucketen opprettet i (2).
       Se dokumentasjon i [cloud.google.com](https://cloud.google.com/storage/docs/access-control/using-iam-permissions).
-    - Man må også gi Nada sin service account lesetilgang til den samme bucketen.
-      Gi `quarto-${NAME}@nada-prod-6977.iam.gserviceaccount.com` rollen `Storage Object Viewer` på bucketen opprettet i (2).
-      `${NAME}` må være det samme som du velger i (7).
 5. Lag en [JSON nøkkel](https://cloud.google.com/iam/docs/keys-create-delete) for service accounten.
    Denne lagrer du midlertidig lokalt på maskinen din.
 6. Opprett en en [Github Action secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) i repoet ditt du kaller `GCP_CREDENTIALS`.
@@ -223,6 +220,10 @@ spec:
     min: 1
     max: 2
 ```
+
+9. Man må også gi Nais-appen som blir opprettet i navikt/nada-quarto-proxy lesetilgang til den samme bucketen.
+   Etter at appen har blitt deployet må noen manuelt inn i clustert for å finne ut hvilken service account som har blitt opprettet.
+   Denne service accounten må da få rollen `Storage Object Viewer` på bucketen opprettet i (2).
 
 ## Datastory
 !!!warning "Datafortellinger laget med datastory-biblioteket vil fases ut. Eksisterende datafortellinger vil leve videre en stund, og vi har stengt muligheten for å lage nye."
