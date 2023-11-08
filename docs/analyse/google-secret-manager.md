@@ -3,14 +3,14 @@
 Google Secret Manager er en tjeneste som gir en sikker og praktisk metode for å lagre API-nøkler, passord, sertifikater og annen sensitiv data.
 I KNADA tilbyr vi Google Secret Manager enten for team eller enkeltpersoner.
 
-Hvert team som blir opprettet i KNADA igjennom Knorten vil få opprettet sin team-hemmelighet i Google Secret Manager.
-Hver enkelt KNADA-bruker har også muligheten til å bestille sin egen personlig hemmelighet i Google Secret Manager.
+Hvert team som blir opprettet i KNADA igjennom Knorten vil få opprettet sin team-hemmelighet i Google Secret Manager, denne er kun tilgjengelig fra Airflow.
+Hver enkelt KNADA-bruker har også muligheten til å bestille sin egen personlige hemmelighet i Google Secret Manager.
 Denne er tenkt brukt til å lagre hemmeligheter som kun du skal ha tilgang til.
 
 ## Få tilgang
 
 Det blir automatisk opprettet en hemmelighet for et team i Knorten, og alle medlemmer av teamet har tilgang.
-Personlige hemmeligheter må man selv aktivt opprette, og dette gjør man under [Personlig secret manager](https://knorten.knada.io/oversikt#personlig-secret-manager).
+Personlige hemmeligheter må man selv aktivt opprette, og dette gjør man under [Personlige tjenester](https://knorten.knada.io/oversikt).
 
 ## Legge til en ny hemmelighet
 
@@ -27,7 +27,7 @@ Da kan man lett lese de inn i Python.
 For å lese hemmelighter fra Google Secret Manager må du installere Python-biblioteket [google-cloud-secret-manager](https://pypi.org/project/google-cloud-secret-manager/).
 
 
- ```bash
+```bash
 pip install --user google-cloud-secret-manager
 ```
 
@@ -43,4 +43,4 @@ secret = secrets.access_secret_version(name=resource_name)
 data = secret.payload.data.decode('UTF-8')
 ```
 
-Har du hemmeligheter i et eget NAIS team-prosjekt så må du gi service accounten for KNADA (denne finner du i [Knorten](https://knorten.knada.io)) tilgang til hemmeligheter i ditt team-prosjekt.
+Har du hemmeligheter i et eget NAIS team-prosjekt som du ønsker å bruke fra Airflow, så må du gi service accounten for KNADA (denne finner du i [Knorten](https://knorten.knada.io)) tilgang til hemmeligheter i ditt team-prosjekt.
