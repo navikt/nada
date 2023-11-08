@@ -134,29 +134,38 @@ Repoet [navikt/nada-quarto](https://github.com/navikt/nada-quarto) har et fullst
 
 I eksempelet hentes team-tokenet fra en [kubernetes secret](https://kubernetes.io/docs/concepts/configuration/secret/) i clusteret og settes som miljøvariabelen `NADA_TOKEN`.
 
-#### Andre eksempler
+#### Andre eksempler med Naisjob
 - [fia](https://github.com/navikt/fia-datafortelling): Mer avansert eksempel med produksjonssatt datafortelling
 
-### Quarto book
-Vi har en foreløpig rigg for å publisere [quarto books](https://quarto.org/docs/books/) internt i NAV på `data.intern.nav.no` og/eller eksternt på `data.nav.no`. Dette oppsettet forutsetter at man oppretter et github repo som med en github action som dytter quarto booken til en GCP bucket. Under følger en oppskrift på hvordan dette kan settes opp:
+## Quarto book
+Vi har en enkel rigg for å publisere [Quarto fortelling](https://quarto.org/docs/books/) internt i NAV på `data.intern.nav.no` og eksternt på `data.nav.no`.
+Dette oppsettet forutsetter at man oppretter et Github repo med en Github Action som laster opp Quarto booken din til en GCP-bucket eid av deg.
+Under følger en oppskrift på hvordan dette kan settes opp:
 
-!!! info "Oppskriften forutsetter at du har tilgang til [navikt organisasjonen](https://github.com/navikt) på github og tilgang til et GCP prosjekt hvor [storage bucketen](https://cloud.google.com/storage/docs/creating-buckets) skal opprettes. I tillegg kreves kunnskap om hvordan å dytte kode til et github repo"
+!!! info "Oppskriften forutsetter at du har tilgang til [navikt organisasjonen](https://github.com/navikt) på Github og tilgang til et GCP prosjekt hvor [storage bucketen](https://cloud.google.com/storage/docs/creating-buckets) skal opprettes. I tillegg kreves kunnskap om hvordan å dytte kode til et Github repo"
 
 
-1. Opprett et repo under [navikt-organisasjonen](https://github.com/organizations/navikt/repositories/new) på github.
-2. Opprett en [storage bucket](https://cloud.google.com/storage/docs/creating-buckets) i GCP prosjekt du er medlem av.
-3. Lag quarto fortellingen din:
-    - Anbefaler å bruke Quarto sin egen [doc](https://quarto.org/docs/books/) for dette.
-    - Eksempler på quarto-books i NAV:
-        - [omverdensanalysen](https://github.com/navikt/oma_2023)
-        - [overgangsindikator](https://github.com/navikt/ovind_docs)
+1. Opprett et repo under [navikt-organisasjonen](https://github.com/organizations/navikt/repositories/new) på Github.
+2. Opprett en [storage bucket](https://cloud.google.com/storage/docs/creating-buckets) i et GCP prosjekt du er medlem av.
+3. Lag Quarto fortellingen din:
+    - Anbefaler å bruke Quarto sin egen [dokumentasjon](https://quarto.org/docs/books/) for dette.
+    - Eksempler på datafortellinger laget med Quarto i NAV:
+        - [Omverdensanalysen](https://github.com/navikt/oma_2023)
+        - [Overgangsindikator](https://github.com/navikt/ovind_docs)
         - [tada](https://github.com/navikt/tada-playbook)
 4. Opprett en service account i GCP prosjektet:
-    - For å opprette service account, se [her](https://cloud.google.com/iam/docs/service-accounts-create).
-    - Gi service accounten rollen `Storage Admin` på bucketen opprettet i (2). Se [her](https://cloud.google.com/storage/docs/access-control/using-iam-permissions) for doc på dette.
-5. Lag en [JSON nøkkel](https://cloud.google.com/iam/docs/keys-create-delete) for service accounten. Denne lagrer du midlertidig lokalt på maskinen din.
-6. Opprett en en [github action secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) i repoet ditt du kaller `GCP_CREDENTIALS`. Innholdet i secreten er JSON nøkkelen fra (5). Etter at secreten er lagt til i repoet bør JSON-nøkkelen fjernes fra maskinen din.
-7. Når du har laget quarto-booken og dyttet denne til repoet opprettet i (1) kan du sette opp en github action som dytter skriver det til bucketen på GCP hver gang du pusher kode til repoet. Opprett filen `.github/workflows/update-quarto.yaml` i repoet med følgende innhold:
+    - For å opprette service account, se dokumentasjon i [cloud.google.com](https://cloud.google.com/iam/docs/service-accounts-create).
+    - Gi service accounten rollen `Storage Admin` på bucketen opprettet i (2).
+      Se dokumentasjon i [cloud.google.com](https://cloud.google.com/storage/docs/access-control/using-iam-permissions).
+    - Man må også gi Nada sin service account lesetilgang til den samme bucketen.
+      Gi `quarto-${NAME}@nada-prod-6977.iam.gserviceaccount.com` rollen `Storage Object Viewer` på bucketen opprettet i (2).
+      `${NAME}` må være det samme som du velger i (7).
+5. Lag en [JSON nøkkel](https://cloud.google.com/iam/docs/keys-create-delete) for service accounten.
+   Denne lagrer du midlertidig lokalt på maskinen din.
+6. Opprett en en [Github Action secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) i repoet ditt du kaller `GCP_CREDENTIALS`.
+   Innholdet i secreten er JSON nøkkelen fra (5). Etter at secreten er lagt til i repoet bør JSON-nøkkelen fjernes fra maskinen din.
+7. Når du har laget datafortellingen din med Quarto og dyttet denne til repoet opprettet i (1) kan du sette opp en Github Action som laster fortellingen din til bucketen på GCP hver gang du pusher kode til repoet.
+   Opprett filen `.github/workflows/update-quarto.yaml` i repoet med følgende innhold:
 
 !!! info "I eksempelet under må ${BUCKET} erstattes med navnet på bucketen du lagde i (2). ${NAME} må erstattes med et selvvalgt navn som representerer quarto storien."
 
@@ -170,9 +179,9 @@ on:
 jobs:
   update-quarto:
     name: Update quarto story
-    runs-on: ubuntu-20.04
+    runs-on: latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
@@ -184,8 +193,10 @@ jobs:
         run: gsutil cp -r * gs://${BUCKET}/${NAME}/
 ```
 
-8. Lag en pull request til [navikt/nada-quarto-proxy](https://github.com/navikt/nada-quarto-proxy). Pull requesten må inneholde følgende:
-- Opprett filen `.nais/${NAME}.yaml` med følgende innhold:
+8. Lag en pull request til [navikt/nada-quarto-proxy](https://github.com/navikt/nada-quarto-proxy).
+   Pull requesten må inneholde følgende:
+    - Opprett filen `.nais/${NAME}.yaml` med innholdet nedenfor.
+    - Legg til `,.nais/${NAME}.yaml` på slutten av linjen på felles [workflow](https://github.com/navikt/nada-quarto-proxy/blob/main/.github/workflows/build-and-deploy.yaml#L34).
 
 !!! info "Erstatt ${BUCKET} med navn på bucket fra (2) og ${NAME} med det du valgte i (7)"
 
@@ -213,19 +224,15 @@ spec:
     max: 2
 ```
 
-- Legg til `,.nais/${NAME}.yaml` på slutten av linjen [her](https://github.com/navikt/nada-quarto-proxy/blob/main/.github/workflows/build-and-deploy.yaml#L34).
-9. Etter at pull requesten er godkjent og appen som skal hoste quarto-booken er rullet ut må service accounten appen bruker få lese tilgang til bucketen opprettet på GCP. Ta kontakt i [#nada](https://nav-it.slack.com/archives/CGRMQHT50) eller på DM til en av medlemmene av NADA-teamet for dette.
+## Datastory
+!!!warning "Datafortellinger laget med datastory-biblioteket vil fases ut. Eksisterende datafortellinger vil leve videre en stund, og vi har stengt muligheten for å lage nye."
 
-
-## Datastory-biblioteket
-!!!warning "Datafortellinger laget med datastory-biblioteket vil fases ut. Eksisterende datafortellinger vil leve videre en stund, men vi vil om kort tid stenge muligheten til å lage nye."
-
-## Installer datastory bibliotek
+### Installer datastory bibliotek
 ````bash
 pip install datastory
 ````
 
-## API adresser
+### API adresser
 For å publisere en datafortelling må man angi api adressen det skal publiseres til.
 
 - for [dev-miljøet](https://data.dev.intern.nav.no)
@@ -237,7 +244,7 @@ For å publisere en datafortelling må man angi api adressen det skal publiseres
 
 I kodeeksemplene som følger brukes dev adressen.
 
-## Lage utkast til datafortelling
+### Lage utkast til datafortelling
 ````python
 from datastory import DataStory
 
@@ -260,7 +267,7 @@ ds.publish(url="https://data.ekstern.dev.nav.no/api")
 Når man kaller `ds.publish()` i eksempelet over vil det bli opprettet en kladd til en datafortelling, se [her](#publisere-datafortelling) 
 for å se hvordan man publiserer en datafortelling fra en kladd.
 
-## Publisere datafortelling
+### Publisere datafortelling
 Publisering av en datafortelling gjøres fra kladd-visningen i datamarkedsplassen som følger:
 
 1. Logg inn
@@ -269,7 +276,7 @@ Publisering av en datafortelling gjøres fra kladd-visningen i datamarkedsplasse
 3. Velg hvilket av dine team som skal eie datafortellingen
 4. Velg om du skal lage en ny eller overskrive en eksisterende datastory
 
-## Programmatisk oppdatere eksisterende datafortelling
+### Programmatisk oppdatere eksisterende datafortelling
 For å oppdatere en publisert datafortelling programmatisk må man autentisere seg med et token. 
 Dette tokenet blir generert når man publiserer en kladd og kan hentes ut ved å gå til den publiserte datafortellingen og fra [kebab menyen](https://uxplanet.org/choose-correct-menu-icon-for-your-navigation-7ffc22df80ac#160b) velge `vis token`.
 Når du har fått hentet ut oppdateringstokenet kan du erstatte siste kodelinje i eksempelet over (dvs. `ds.publish()`) med en metode som i stedet oppdaterer datafortellingen.
