@@ -92,6 +92,7 @@ nav:
       - KNADA Airflow: analyse/airflow/knada-airflow.md
       - Google managed Airflow (Cloud Composer): analyse/airflow/managed-airflow.md
     - Metabase: analyse/metabase.md
+    - Allowlisting av trafikk: analyse/allowlisting.md
     - Datafortellinger: analyse/datafortellinger.md
     - KNADA VM: analyse/knada-vm.md
     - Google Secret Manager: analyse/google-secret-manager.md
