@@ -7,6 +7,8 @@ I praksis betyr det at folk som har lagt til Google Cloud Platform i [myapps.mic
 ## Gi tilgang til view/tabell
 Tilganger gis per view/tabell i BigQuery.
 Det betyr at team kan ha view/tabeller i BigQuery som er tilgjengelig for forskjellige grupper.
+Når en bruker får tilgang til *dataene* i et view/tabell, gis de de også `metadata viewer` i BigQuery-datasettet.
+Dette gir *ikke* tilgang til andre views/tabeller, men det er mulig å se metadata for de andre viewene/tabellene i BigQuery-datasettet.
 
 Tilganger til viewene/tabellene som er del av datasettene forvaltes gjennom [Markedsplassen](https://data.intern.nav.no/).
 
