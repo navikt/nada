@@ -1,3 +1,13 @@
+# mkdocs html output
+site/
+
+# Env files that should not be checked into git
+.env*
+
+# Nix stuffs
+.direnv/
+result*
+
 # Logs
 logs
 *.log
