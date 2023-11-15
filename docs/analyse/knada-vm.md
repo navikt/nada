@@ -35,7 +35,7 @@ Per dags dato bør *ingen* være på noe lavere enn 3.8, og man bør jobbe med �
 
 For å koble deg til en VM i `knada-gcp` trenger du å opprette et SSH nøkkelpar og hente ut noe informasjon om instansen som må fylles inn i SSH-configen lokalt (`~/.ssh`).
 
-1. Logg inn med `gcloud auth login --update-adc` (trengs kun å kjøres en gang om dagen).
+1. Logg inn med `gcloud auth login` (trengs kun å kjøres en gang om dagen).
 For å gjøre dette må gcloud være installer (se dokumentasjon hos [cloud.google.com](https://cloud.google.com/sdk/docs/install)).
 2. Kjør kommandoen `gcloud compute ssh --project knada-gcp --zone europe-north1-b <instance>`.
 Erstatt `<instance>` med navnet på VM instansen din, denne finner du etter du har logget inn i [Knorten](https://knorten.knada.io/oversikt) under `Compute`.
