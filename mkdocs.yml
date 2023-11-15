@@ -98,4 +98,5 @@ nav:
     - Google Secret Manager: analyse/google-secret-manager.md
     - Kodeeksempler: analyse/eksempler.md
   - Vår visjon:
+    - Brukerforventinger: visjon/brukerforventninger.md
     - Data mesh: visjon/data_mesh.md
