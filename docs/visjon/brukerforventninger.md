@@ -2,6 +2,14 @@ Som en bruker av Nada sine tjenester har vi lagd en oversikt over programmerings
 Denne oversikten er ikke ment som en uttømmende liste over hva du må kunne for å bruke våre tjenester.
 Den er heller ment som en oversikt over hva som kan være nyttig for å bruke Nada sine tjenester effektivt og trygt.
 
+!!! info
+    Denne oversikten har kun som mål å beskrive det en utvikler bør ha kjennskap til, i tillegg til sin utviklingsportefølje, for å best kunne utnytte Nada sine tjenester.
+
+
+!!! warning
+    Det er forventet at man har basiskunnskaper som utviklere ansatt hos NAV IT skal ha for å kunne lese denne dokumentasjonen.
+    Det inkluderer også forståelse av at man selv har ansvar for å sikre oppdaterte rammeverk/biblioteker, samt git/github forståelse osv.
+
 ## Programmeringsspråk
 
 Nesten alle brukere av KNADA bruker [Python](https://www.python.org/) som sitt programmeringsspråk, men vi har også støtte for [R](https://www.r-project.org/).
