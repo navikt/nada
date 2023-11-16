@@ -29,15 +29,17 @@
         '';
       };
 
-      setupPoetryName = "setup-mkdocs-poetry";
+      setupPoetryName = ",setup-mkdocs-poetry";
       setUpPoetry = poetryBashScript {
         name = setupPoetryName;
         poetryCommands = ''
+          poetry config virtualenvs.in-project true --local
+          poetry config virtualenvs.path ./venv --local
           poetry install --sync --no-interaction --ansi
         '';
       };
 
-      localServeHtmlDocsName = "serve-mkdocs-livereload";
+      localServeHtmlDocsName = ",serve-mkdocs-livereload";
       localServeHtmlDocs = poetryBashScript {
         name = localServeHtmlDocsName;
         poetryCommands = ''
@@ -45,7 +47,7 @@
         '';
       };
 
-      buildHtmlDocsName = "build-mkdocs-html";
+      buildHtmlDocsName = ",build-mkdocs-html";
       buildHtmlDocs = poetryBashScript {
         name = buildHtmlDocsName;
         poetryCommands = ''
@@ -59,9 +61,9 @@
         buildInputs = [setUpPoetry buildHtmlDocs];
         buildPhase = ''
           # TODO: Figure out why the below two lines are not executing their respective scripts
-          ''${setupPoetryName}
-          ''${buildHtmlDocsName}
-          mkdir -p $out
+          ${setupPoetryName}
+          ${buildHtmlDocsName}
+          # mkdir -p $out
           mv site $out  # Then this `site` folder should exist and be non-empty
         '';
       };
@@ -78,8 +80,8 @@
       };
 
       packages = rec {
-        html = htmlDocs;
         default = html;
+        html = htmlDocs;
         ${setupPoetryName} = setUpPoetry;
         ${localServeHtmlDocsName} = localServeHtmlDocs;
         ${buildHtmlDocsName} = buildHtmlDocs;
