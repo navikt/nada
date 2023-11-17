@@ -2,7 +2,8 @@
 title: TDV
 ---
 
-Imager vi tilbyr for Jupyterhub og Airflow kommer uten TDV driver. Er du avhengig av denne driveren er du nødt til å enten bygge et custom image med driveren inkludert eller (for jupyterhub) laste den opp til hjemmeområde på Jupyterhub serveren.
+Imager vi tilbyr for Jupyterhub og Airflow kommer uten TDV driver. 
+Er du avhengig av denne driveren er du nødt til å enten bygge et custom image med driveren inkludert eller (for jupyterhub) laste den opp til hjemmeområde på Jupyterhub serveren.
 
 Driveren finner du via utviklerimage ved å gå til `F:\DVH\TIBCO\drivers\TIB_tdv_drivers_x.x.x_all\apps\odbc\linux64` (erstatt x med ønsket versjon).
 
@@ -16,7 +17,7 @@ RUN chown -R jovyan:users  /opt/TDV
 ENV TDV_ODBC_DRIVER /opt/TDV/driver/libcomposite86_x64.so
 ```
 
-!!! info"Merk: eksempelet over forutsetter at TDV driveren er inkludert i github repoet hvor imaget bygges på stien `TDV/driver/libcomposite86_x64.so`"
+!!! info "Merk: eksempelet over forutsetter at TDV driveren er inkludert i github repoet hvor imaget bygges på stien `TDV/driver/libcomposite86_x64.so`"
 
 ## Eksempel på bruk av TDV driver
 
@@ -39,4 +40,5 @@ df = pd.read_sql("SELECT * FROM schema.table", conn)
 df.head()
 ```
 
-!!! info"Kode eksempelet forutsetter at miljøvariabelen TDV_ODBC_DRIVER er satt til å peke på stien til TDV driveren. Dersom du ikke har [bygget eget image](#bygge-custom-image) og i stedet bare har lastet driveren opp til hjemmeområdet (`/home/jovyan`) på notebook serveren må du i stedet sette denne stien direkte."
+!!! info "Kode eksempelet forutsetter at miljøvariabelen TDV_ODBC_DRIVER er satt til å peke på stien til TDV driveren. 
+Dersom du ikke har [bygget eget image](#bygge-custom-image) og i stedet bare har lastet driveren opp til hjemmeområdet (`/home/jovyan`) på notebook serveren må du i stedet sette denne stien direkte."
