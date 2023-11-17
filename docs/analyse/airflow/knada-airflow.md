@@ -221,6 +221,15 @@ with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
                              allowlist=["ssb.no", "db.adeo.no:1521"])
 ```
 
+## API-tilgang til Airflow
+
+Har man behov for at en ekstern tjeneste skal snakke med API-et til Airflow trenger Nada å konfigurere noe på "baksiden" og lage en service bruker for dere.
+Ta kontakt i [Slack#nada](https://nav-it.slack.com/archives/CGRMQHT50), så fikser vi dette for dere.
+Vi vil ta opprette en service account for deres Airflow, og lage en ekstern adresse (som tilgangsstyres med Cloud Armor).
+
+Et typisk scenario for dette er å la IWS styre jobber i Airflow.
+Akkurat dette scenarioet er også dokumentert i [Confluence/Analytisk Plattform](https://confluence.adeo.no/display/DEP/Airflow+i+knada-gke).
+
 ## Airflowmetrikker i Grafana
 
 Man kan nå lage Grafana-dashboard i [grafana.nais.io](https://grafana.nais.io) med metrikker fra Airflow.
