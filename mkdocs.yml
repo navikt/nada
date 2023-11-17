@@ -97,6 +97,7 @@ nav:
     - KNADA VM: analyse/knada-vm.md
     - Google Secret Manager: analyse/google-secret-manager.md
     - Kodeeksempler: analyse/eksempler.md
+    - TDV driver: analyse/tdv.md
   - Vår visjon:
     - Brukerforventinger: visjon/brukerforventninger.md
     - Data mesh: visjon/data_mesh.md
