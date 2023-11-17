@@ -202,8 +202,7 @@ sudo ./setup_nb.sh
 Hvis du skal lese TDV data fra VM i `knada-gcp` må du selv installere drivere og biblioteker som er nødvendig.
 Dette kan gjøres som følger:
 
-1. Last opp TDV driveren til VMen: Denne finnes i repoet [navikt/knada-images](https://github.com/navikt/knada-images) under `TDV/driver/libcomposite86_x64.so`.
-Merk deg stien du lagrer denne driveren på da den må refereres til i steg 4.
+1. Last opp TDV driveren til VMen: Denne finner du via utviklerimage på stien `F:\DVH\TIBCO\drivers\TIB_tdv_drivers_x.x.x_all\apps\odbc\linux64` (erstatt x med ønsket versjon)
 2. Installer `unixodbc-dev`: `sudo apt-get install unixodbc-dev`
 3. Installer python biblioteket `pyodbc`: `pip install pyodbc`
 4. Følg eksempelet i [dataseksjonens guide](https://dataseksjonen.intern.nav.no/kompetanse/guider/hente_data_fra_tdv.html) for å lese fra TDV.
