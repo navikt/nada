@@ -142,7 +142,7 @@ Vi har en enkel rigg for å publisere [Quarto fortelling](https://quarto.org/doc
 Dette oppsettet forutsetter at man oppretter et Github repo med en Github Action som laster opp Quarto booken din til en GCP-bucket eid av deg.
 Under følger en oppskrift på hvordan dette kan settes opp:
 
-!!! info "Oppskriften forutsetter at du har tilgang til [navikt organisasjonen](https://github.com/navikt) på Github og tilgang til et GCP prosjekt hvor [storage bucketen](https://cloud.google.com/storage/docs/creating-buckets) skal opprettes. I tillegg kreves kunnskap om hvordan å dytte kode til et Github repo"
+!!! info "Oppskriften forutsetter at du har tilgang til [navikt organisasjonen](https://github.com/navikt) på Github og tilgang til et GCP prosjekt hvor [storage bucketen](https://cloud.google.com/storage/docs/creating-buckets) skal opprettes. I tillegg kreves kunnskap om hvordan å dytte kode til et Github repo. GCP bruker og tilgang til `navikt` organisasjonen på Github får du gjennom [myapps](https://myapps.microsoft.com). GCP prosjekt blir opprettet dersom du lager et nais-team [her](https://teams.nav.cloud.nais.io/)."
 
 
 1. Opprett et repo under [navikt-organisasjonen](https://github.com/organizations/navikt/repositories/new) på Github.
