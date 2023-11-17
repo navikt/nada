@@ -40,5 +40,4 @@ df = pd.read_sql("SELECT * FROM schema.table", conn)
 df.head()
 ```
 
-!!! info "Kode eksempelet forutsetter at miljøvariabelen TDV_ODBC_DRIVER er satt til å peke på stien til TDV driveren. 
-Dersom du ikke har [bygget eget image](#bygge-custom-image) og i stedet bare har lastet driveren opp til hjemmeområdet (`/home/jovyan`) på notebook serveren må du i stedet sette denne stien direkte."
+!!! info "Kode eksempelet forutsetter at miljøvariabelen TDV_ODBC_DRIVER er satt til å peke på stien til TDV driveren. Dersom du ikke har [bygget eget image](#bygge-custom-image) og i stedet bare har lastet driveren opp til hjemmeområdet (`/home/jovyan`) på notebook serveren må du i stedet sette denne stien direkte."
