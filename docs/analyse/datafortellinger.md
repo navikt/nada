@@ -31,6 +31,15 @@ ENV PATH="${PATH}:/app/quarto/bin"
 ## Lage Quarto
 Se [Get Started](https://quarto.org/docs/get-started/) på Quarto sine sider.
 
+I eksemplene under må følgende byttes ut med reelle verdier:
+
+- `${ENV}` 
+    - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *datamarkedsplassen.intern.dev.nav.no* for dev og *datamarkedsplassen.intern.nav.no* for prod
+    - Ellers settes det til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
+- `${QUARTO_ID}` - erstatt med ID på Quarto
+- `${TEAM_TOKEN}` - erstatt med team-token fra markedsplassen
+- `${TEAM_ID}` - erstatt med team ID for teamet ditt i [teamkatalogen](https://teamkatalog.intern.nav.no)
+
 ## Registrere Quarto i markedsplassen
 Når man skal registrere en Quarto i [markedsplassen](https://data.intern.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
 
@@ -62,41 +71,33 @@ Headers for requesten
 #### Med curl
 ```bash
 $ curl -X POST \
-    -d '{"name": "min quarto", "description": "min beskrivelse", "teamID": "<team-id>", "id": "<id>"}' \
-    -H "Authorization: Bearer <token>" \
-    https://data.nav.no/quarto/create
+    -d '{"name": "min quarto", "description": "min beskrivelse", "teamID": "<team-id>", "id": "${QUARTO_ID}"}' \
+    -H "Authorization: Bearer ${TEAM_TOKEN}" \
+    https://${ENV}/quarto/create
 ```
 
 #### Med python
 ```python
 import requests
 
-res = requests.post(f"https://{env}/quarto/create", headers={"Authorization": "bearer <token>", json={
+res = requests.post(f"https://${ENV}/quarto/create", headers={"Authorization": "bearer ${TEAM_TOKEN}", json={
     "name": "min quarto",
     "description": "min beskrivelse",
     "teamID": "<team-id>",
-    "id": "<id>"
+    "id": "${QUARTO_ID}"
 }})
 
 quarto_id = res.json()["id"]
 ```
 
-## Oppdater eksisterende Quarto
+### Oppdater eksisterende Quarto
 For å oppdatere en eksisterende Quarto fortelling må man først generere ressursfilene på nytt med `quarto render <file>`.
 
 Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-tokenet fra [markedsplassen](https://data.intern.nav.no).
 
-I eksemplene under må følgende byttes ut med reelle verdier:
-
-- `${ENV}` 
-    - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *datamarkedsplassen.intern.dev.nav.no* for dev og *datamarkedsplassen.intern.nav.no* for prod
-    - Ellers settes det til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
-- `${QUARTO_ID}` - erstatt med ID på Quarto
-- `${TEAM_TOKEN}` - erstatt med team-token fra markedsplassen
-
 Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.
 
-### Med curl
+#### Med curl
 
 ```bash
 curl -X PUT -F index.html=@index.html \
@@ -104,7 +105,7 @@ curl -X PUT -F index.html=@index.html \
     -H "Authorization:Bearer ${TEAM_TOKEN}"
 ```
 
-#### Flere filer
+##### Flere filer
 
 ```bash
 #!/bin/bash
@@ -120,7 +121,7 @@ curl -X PUT $FILES "https://${ENV}/quarto/update/${QUARTO_ID}" \
     -H "Authorization:Bearer ${TEAM_TOKEN}"
 ```
 
-### Med python
+#### Med python
 
 ```python
 import os
