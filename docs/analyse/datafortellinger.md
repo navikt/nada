@@ -31,6 +31,56 @@ ENV PATH="${PATH}:/app/quarto/bin"
 ## Lage Quarto
 Se [Get Started](https://quarto.org/docs/get-started/) på Quarto sine sider.
 
+## Registrere Quarto i markedsplassen
+Når man skal registrere en Quarto i [markedsplassen](https://data.intern.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
+
+### Registrer gjennom brukergrensesnitt
+1. Gå til [data.intern.nav.no](https://data.intern.nav.no) for prod eller [data.intern.dev.nav.no](https://data.intern.dev.nav.no) for dev.
+2. Logg inn
+3. Klikk hamburgermeny og velg `Legg til ny datafortelling`
+4. Fyll inn metadata om Quarto fortellingen
+5. Velg fil(er) du ønsker å laste opp
+6. Trykk `Lagre`
+
+!!! info "Dersom du kun ønsker å registere en tom datafortelling som siden skal oppdateres programmatisk kan man droppe steg (5) over"
+
+### Registrer programmatisk
+Du kan også programmatisk registrere en datafortelling.
+
+Request body parametere:
+
+- `name` (obligatrisk): Navn på quarto fortellingen
+- `description`: Beskrivelse av quarto fortellingen
+- `teamID`: ID i [teamkatalogen](https://teamkatalog.nav.no) for teamet som eier datafortellingen. Nødvendig å spesifisere dersom datafortellingen skal sorteres riktig i produktområdevisningen på [data.intern.nav.no](https://data.intern.nav.no)
+- `id`: Kan spesifiseres dersom du ønsker å spesifisere ID for quarto fortellingen selv. Dersom den utelates genereres det en ny.
+
+Headers for requesten
+- `bearer token` (obligatorisk): Team tokenet for teamet som skal eie datafortellingen
+
+!!! info "Merk: IDen for datafortellingen blir returnert når man gjør en POST til `/quarto/create`. Denne må så brukes når datafortellingen skal oppdateres etterpå."
+
+#### Med curl
+```bash
+$ curl -X POST \
+    -d '{"name": "min quarto", "description": "min beskrivelse", "teamID": "<team-id>", "id": "<id>"}' \
+    -H "Authorization: Bearer <token>" \
+    https://data.nav.no/quarto/create
+```
+
+#### Med python
+```python
+import requests
+
+res = requests.post(f"https://{env}/quarto/create", headers={"Authorization": "bearer <token>", json={
+    "name": "min quarto",
+    "description": "min beskrivelse",
+    "teamID": "<team-id>",
+    "id": "<id>"
+}})
+
+quarto_id = res.json()["id"]
+```
+
 ## Oppdater eksisterende Quarto
 For å oppdatere en eksisterende Quarto fortelling må man først generere ressursfilene på nytt med `quarto render <file>`.
 
