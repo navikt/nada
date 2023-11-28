@@ -13,6 +13,7 @@ Du angir hostene du har lyst til å allowliste på formatet `<ip-adresse>`:`<por
 Dersom port utelates vil vi bruke `443` som standardport.
 
 Eksempler:
+
 - 35.235.240.1:3307
 - oracle.db.no:1521
 - google.com
