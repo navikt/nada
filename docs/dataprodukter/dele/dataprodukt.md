@@ -13,3 +13,14 @@ Datasett legges til ved at man klikker seg inn på et `dataprodukt` på [Markeds
 Under `Legg til datasett` kan man registrere den aktuelle tabellen fra BigQuery sammen med metadata som gjør det enklere for teamet å beholde oversikten.
 Metadata gjør det også enklere for folk utenfor teamet å finne dataene.
 Beskrivelser av kolonnene i tabellen kan legges inn i [BigQuery-konsollet](https://console.cloud.google.com/bigquery).
+
+
+### Pseudonymisering av datasett
+Team har ofte data om enkeltpersoner der vi trenger identifikatorer for å kunne koble tabeller sammen og følge personer over tid.
+Vi tilbyr en løsning for å registrere BigQuery-views der valgte kolonner pseudonymiseres.
+Pseudonymiserte views baserer seg på en hvilken som helst BigQuery-tabell/view i teamets prosjekt.
+Ved registrering av `datasett`, kan du velge å pseudonymisere tabellen.
+Du må velge minst èn kolonne som skal pseudonymiseres.
+Vi oppretter et eget view i teamets prosjekt der kolonnene er pseuodnymisert.
+Kolonnene pseudonymiseres med SHA256-algoritmen og en tilfeldig verdi som er forskjellig for hver tabell.
+Til tross for at tabellene pseudonymiseres med forskjellige verdier, kan de likevel kobles sammen gjennom en [tjenesten vi tilbyr for å koble sammen pseudonymiserte tabeller](/analyse/sammenstille).
