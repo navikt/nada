@@ -21,6 +21,22 @@ Eksempler:
 For å konfigurere allowlist for Jupyterhub se [Trafikk fra notebooks](./notebook/knada-notebook.md#trafikk-fra-notebooks).
 For å konfigurere allowlist for Airflow se [Trafikk ut fra Airflow](./airflow/knada-airflow.md#trafikk-ut-fra-airflow).
 
+### Default åpninger for Jupyterhub
+
+- `*.googleapis.com` (for secret manager, google storage buckets, bigquery etc.)
+- `github.com` (for lesing av repo med kode)
+- `pypi.org` (installasjon av pakker)
+- `files.pythonhosted.org` (installasjon av pakker)
+- `pypi.python.org` (installasjon av pakker)
+
+### For Airflow
+
+- `*.googleapis.com` (for secret manager, google storage buckets, bigquery etc.)
+- `github.com` (for lesing av repo med kode)
+
+Dersom man bruker [dataverk-airflow](https://pypi.org/project/dataverk-airflow) vil det avhengig av hvilken operator og opsjoner man bruker også bli lagt på nødvendige åpninger. Se [repo](https://github.com/navikt/dataverk-airflow#allow-list) for dokumentasjon på hva som settes for ulike operatorer.
+
+
 ## GCP cloudsql postgres
 For å allowliste tilgang til en cloudsql postgres database på GCP kreves det åpning mot public IP adressen til databaseinstansen.
 Public IP for database instansen finner du ved å gå til [cloud console](https://console.cloud.google.com/sql/instances) -> klikke på database instansen -> `Public IP address`
