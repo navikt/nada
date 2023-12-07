@@ -21,7 +21,7 @@ Eksempler:
 For å konfigurere allowlist for Jupyterhub se [Trafikk fra notebooks](./notebook/knada-notebook.md#trafikk-fra-notebooks).
 For å konfigurere allowlist for Airflow se [Trafikk ut fra Airflow](./airflow/knada-airflow.md#trafikk-ut-fra-airflow).
 
-### Default åpninger for Jupyterhub
+### Standardåpninger for Jupyterhub
 
 - `*.googleapis.com` (for secret manager, google storage buckets, bigquery etc.)
 - `github.com` (for lesing av repo med kode)
@@ -29,7 +29,7 @@ For å konfigurere allowlist for Airflow se [Trafikk ut fra Airflow](./airflow/k
 - `files.pythonhosted.org` (installasjon av pakker)
 - `pypi.python.org` (installasjon av pakker)
 
-### For Airflow
+### Standardåpninger for Airflow
 
 - `*.googleapis.com` (for secret manager, google storage buckets, bigquery etc.)
 - `github.com` (for lesing av repo med kode)
