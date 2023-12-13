@@ -42,7 +42,7 @@ Det gjør du slik:
 
 ## Tilpasse Oracle connector for raskere spørringer
 Ved å justere `arraysize` og `prefetchrows` kan spørringer mot databaser onprem forbedres markant!
-Se dokumentasjonen til [cx_Oracle-biblioteket](https://cx-oracle.readthedocs.io/en/latest/user_guide/tuning.html#tuningfetch) for mer informasjon.
+Se dokumentasjonen til [oracledb-biblioteket](https://python-oracledb.readthedocs.io/en/latest/user_guide/tuning.html) for mer informasjon.
 
 ## Jupyter extensions
 

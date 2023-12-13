@@ -39,7 +39,7 @@ La oss si at du har en `requirements.txt` fil med Python-pakker som under:
 
 ```python
 backoff==2.0.1
-cx_Oracle==8.3.0
+oracledb>=1.4.2
 datastory>=0.1.12
 google-cloud-bigquery>3.0.0
 google-cloud-storage==2.4.0
