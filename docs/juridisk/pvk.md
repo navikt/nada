@@ -161,7 +161,7 @@ Tidvis mellomlagres resultat ved spesielt tunge spørringer.
         - Se beskrivelser av innsamling av data og lagring av data.
             - Undersøker, formaterer, sammenstiller, aggregerer og anonymiserer hentede data, dette skjer hovedsakelig i spørring mot databaser eller i notebook.
     5. Resultater publiseres og deles
-        - Data blir aggregert og anonymisert før publisering av datasett og visualiseringer som rapporter (datafortellinger tilgjengelig på markedsplassen) eller interaktive dashboards (metabase). Aggregerte resultater kan også deles på andre måter (f.eks ved å sende datasett).
+        - Data blir aggregert og anonymisert før publisering av datasett og visualiseringer som rapporter (datafortellinger tilgjengelig på Datamarkedsplassen) eller interaktive dashboards (metabase). Aggregerte resultater kan også deles på andre måter (f.eks ved å sende datasett).
     6. Automatisk publisering av data
         - Det skeduleres til å oppdateres jevnlig med orkestreringsverktøyet Airflow (del av Analyseplattform) eller i GCP.
     7.	Sletting av data
@@ -175,7 +175,7 @@ Tidvis mellomlagres resultat ved spesielt tunge spørringer.
 
 #### Referanse til supplerende vedlegg
 
-Dataprodukt og markedsplassen er beskrevet i [dokumentasjonen til NADA](https://docs.knada.io/dataprodukter/dataprodukt/).
+Dataprodukt og Datamarkedsplassen er beskrevet i [dokumentasjonen til NADA](https://docs.knada.io/dataprodukter/dataprodukt/).
 
 #### Oppgi eventuelle opplysninger for denne vurderingen sammenlignet med beskrivelsen av hele verdikjeden eller beskrivelsen av aktuell behandling i behandlingskatalogen
 

@@ -5,7 +5,7 @@ title: Spilleregler på NADA-plattformen
 Vi ønsker at spillereglene lages sammen med brukerne våre, slik at hvert enkelt team gjør trygge og gode valg med støtte av plattformen.
 
 ## Roller
-Utformingen av spilleregler gjøres av et forum satt sammen av ulike perspektiver på markedsplassen.
+Utformingen av spilleregler gjøres av et forum satt sammen av ulike perspektiver på Datamarkedsplassen.
 
 - Konsument: Representerer verdi fra et analytisk perspektiv
 - Produsent: Representerer verdi fra produsentens ståsted samt kostnaden av å innføre spilleregler

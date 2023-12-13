@@ -56,4 +56,4 @@ Hvis du har lyst til å raskt komme i gang med
 - å lage en datafortelling så bør du starte med [Quarto](/analyse/datafortellinger/), og publisere den på Datamarkedsplassen.
 - utforskende analyse av dine on-prem datakilder, så anbefaler vi at du starter med en [Jupyter notebook](/analyse/notebook/knada-notebook) i Knada.
 - utforskende analyse av dine datakilder i skyen, så anbefaler vi [Managed notebook](/analyse/notebook/managed-notebook) i GCP.
-- flytte data fra Postgres i GCP til BigQuery, så anbefaler vi deg å se på [Datastream](/dataprodukter/dele/dataoverføring#datastrem).
+- flytte data fra Postgres i GCP til BigQuery, så anbefaler vi deg å se på [Datastream](/dataprodukter/dele/dataoverføring#datastream).

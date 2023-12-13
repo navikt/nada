@@ -2,7 +2,7 @@
 title: Datafortelling
 ---
 Datafortellinger brukes til å dele innsikt i form av statiske dokumenter.
-Datafortellinger kan kan enkelt deles med andre i NAV gjennom Markedsplassen.
+Datafortellinger kan kan enkelt deles med andre i NAV gjennom Datamarkedsplassen.
 
 ## Installere Quarto
 
@@ -37,11 +37,11 @@ I eksemplene under må følgende byttes ut med reelle verdier:
     - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *datamarkedsplassen.intern.dev.nav.no* for dev og *datamarkedsplassen.intern.nav.no* for prod
     - Ellers settes det til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
 - `${QUARTO_ID}` - erstatt med ID på Quarto
-- `${TEAM_TOKEN}` - erstatt med team-token fra markedsplassen
+- `${TEAM_TOKEN}` - erstatt med team-token fra Datamarkedsplassen
 - `${TEAM_ID}` - erstatt med team ID for teamet ditt i [teamkatalogen](https://teamkatalog.intern.nav.no)
 
-## Registrere Quarto i markedsplassen
-Når man skal registrere en Quarto i [markedsplassen](https://data.intern.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
+## Registrere Quarto i Datamarkedsplassen
+Når man skal registrere en Quarto i [Datamarkedsplassen](https://data.intern.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
 
 ### Registrer gjennom brukergrensesnitt
 1. Gå til [data.intern.nav.no](https://data.intern.nav.no) for prod eller [data.intern.dev.nav.no](https://data.intern.dev.nav.no) for dev.
@@ -93,7 +93,7 @@ quarto_id = res.json()["id"]
 ### Oppdater eksisterende Quarto
 For å oppdatere en eksisterende Quarto fortelling må man først generere ressursfilene på nytt med `quarto render <file>`.
 
-Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-tokenet fra [markedsplassen](https://data.intern.nav.no).
+Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-tokenet fra [Datamarkedsplassen](https://data.intern.nav.no).
 
 Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.
 
@@ -153,7 +153,7 @@ print(response.status_code)
 
 For å produksjonsette oppdatering av en Quarto Datafortelling med Naisjob er det noe konfigurasjon man må spesifisere i NAIS manifestet og Dockerfilen til jobben.
 
-- `quarto render` resulterer i at det genereres noen filer som må lagres midlertidig i containermiljøet før publisering til Markedsplassen. Man er derfor nødt til å legge til annotasjon i Naisjob manifestet for å tillate skriving til filsystemet i containeren
+- `quarto render` resulterer i at det genereres noen filer som må lagres midlertidig i containermiljøet før publisering til Datamarkedsplassen. Man er derfor nødt til å legge til annotasjon i Naisjob manifestet for å tillate skriving til filsystemet i containeren
 ````yaml
 metadata:
   annotations:
@@ -320,7 +320,7 @@ Når man kaller `ds.publish()` i eksempelet over vil det bli opprettet en kladd 
 for å se hvordan man publiserer en datafortelling fra en kladd.
 
 ### Publisere datafortelling
-Publisering av en datafortelling gjøres fra kladd-visningen i datamarkedsplassen som følger:
+Publisering av en datafortelling gjøres fra kladd-visningen i Datamarkedsplassen som følger:
 
 1. Logg inn
 2. Trykk lagre
@@ -337,7 +337,7 @@ Når du har fått hentet ut oppdateringstokenet kan du erstatte siste kodelinje 
 ds.update(token="mitt-token", url="https://datamarkedsplassen.intern.dev.nav.no/api")
 ````
 
-Dersom man ønsker å unngå å sette api adressen til Markedsplassen som input parameter til `ds.publish()` og `ds.update()` metodene kan man i stedet sette det som miljøvariabel, f.eks.
+Dersom man ønsker å unngå å sette api adressen til Datamarkedsplassen som input parameter til `ds.publish()` og `ds.update()` metodene kan man i stedet sette det som miljøvariabel, f.eks.
 ````python
 import os
 os.environ["DATASTORY_URL"] = "https://datamarkedsplassen.intern.dev.nav.no/api"

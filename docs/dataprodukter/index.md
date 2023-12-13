@@ -126,5 +126,5 @@ Z_1 --> I_1
 
 ## Opprett et dataprodukt
 
-1. [Legg til et dataprodukt på markedsplassen](dele/dataprodukt.md)
+1. [Legg til et dataprodukt på Datamarkedsplassen](dele/dataprodukt.md)
 2. (Valgfritt) [Gi tilgang til datasett](tilgangsstyring.md)
