@@ -12,7 +12,7 @@ Ellers bruker de fleste databasene man jobber med [SQL](https://en.wikipedia.org
 - R
 - SQL
 
-Vi anbefaler at du setter deg inn i SQL for å lage dataprodukter/analysere data i Metabase, og Python dersom du skal analysere data i Notebooks.
+Vi anbefaler at du setter deg inn i SQL for å lage dataprodukter/analysere data i Metabase, og Python dersom du skal analysere data i Jupyter notebooks, eller Airflow.
 
 ## Rammeverk
 
