@@ -61,5 +61,5 @@ Hvis du har lyst til å raskt komme i gang med
 - utforskende analyse av dine on-prem datakilder, så anbefaler vi at du starter med en [Jupyter notebook](/analyse/notebook/knada-notebook) i Knada.
 - utforskende analyse av data i skyen, så anbefaler vi [Managed notebook](/analyse/notebook/managed-notebook) i GCP.
 - utforskende analyse av data i skyen når du *ikke kan python*, så anbefaler vi [Metabase]((analyse/metabase))
-- dele tilgangsstyrte eller åpne dashboard med interaktivitet, så anbefaler vi [Metabase]((analyse/metabase))
+- dele tilgangsstyrte eller åpne dashboard med interaktivitet, så anbefaler vi [Metabase](analyse/metabase).
 - dele analyserapporter så bør du starte med [Quarto](/analyse/datafortellinger/), og publisere den på Datamarkedsplassen.
