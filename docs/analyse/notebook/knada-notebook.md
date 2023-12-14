@@ -39,7 +39,7 @@ La oss si at du har en `requirements.txt` fil med Python-pakker som under:
 
 ```python
 backoff==2.0.1
-cx_Oracle==8.3.0
+oracledb>=1.4.2
 datastory>=0.1.12
 google-cloud-bigquery>3.0.0
 google-cloud-storage==2.4.0
@@ -82,6 +82,6 @@ For manuelt å restarte en Jupyter notebook går man til kontrollpanelet ved å 
 
 Man må eksplisitt oppgi hvilke hoster man ønsker å snakke med fra notebooks i KNADA. Dette spesifiserer du gjennom knorten.
 
-Tilsvarende som for [airflow](../airflow/knada-airflow/#trafikk-fra-airflow-workere) legger du inn hostnavn og port på formatet `hostnavn:port`. Dersom man ikke angir port vil vi bruke `443` som standardport.
+Tilsvarende som for [airflow](../../airflow/knada-airflow/#trafikk-ut-fra-airflow) legger du inn hostnavn og port på formatet `hostnavn:port`. Dersom man ikke angir port vil vi bruke `443` som standardport.
 Vi har en controller kjørende i KNADA som vil lage en `NetworkPolicy` som tillater trafikk ut fra notebooken mot de hostene som legges til.
 Når notebooken din slås av vil tilgangene bli fjernet.

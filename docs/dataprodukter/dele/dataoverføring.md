@@ -54,7 +54,7 @@ For å sette opp federated query:
     !!! info "`projectNumber` over er prosjektnummeret, ikke prosjekt ID. Du finner prosjektnummer [her](https://console.cloud.google.com/welcome)."
 
 3. [Følg Google sin guide for å opprette et BigQuery dataset](https://cloud.google.com/bigquery/docs/datasets)
-    * Merk at _dataset_ i denne konteksten er noe annet enn [datasett i markedsplassen](../dataprodukt.md#hva-er-et-datasett)
+    * Merk at _dataset_ i denne konteksten er noe annet enn [datasett i Datamarkedsplassen](../dataprodukt.md#hva-er-et-datasett)
     * Foreløpig kan vi ikke gjenbruke datasets som har blitt opprettet av en nais-applikasjon, da denne overstyrer tilgangene vi oppretter senere i denne guiden
 4. [Følg Google sin guide for å lage en Google servicebruker for å kjøre en skedulert federated query](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
     * Gi serviceaccounten følgende tilganger på prosjektnivå:

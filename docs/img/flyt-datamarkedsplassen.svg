@@ -48,9 +48,9 @@
         }
     </style>
     
-    <g id="markedsplassen" class="subgraph" transform="translate(0,5)">
+    <g id="datamarkedsplassen" class="subgraph" transform="translate(0,5)">
         <rect width="360" height="90"></rect>
-        <text x="180" dominant-baseline="text-before-edge" text-anchor="middle"><a href="https://data.intern.nav.no" target="_top">Markedsplassen</a></text>
+        <text x="180" dominant-baseline="text-before-edge" text-anchor="middle"><a href="https://data.intern.nav.no" target="_top">Datamarkedsplassen</a></text>
         <g transform="translate(10,25)">
             <rect class="node" width="110" height="50"></rect>
             <text x="55" y="30" dominant-baseline="center" text-anchor="middle">Dataprodukt 1</text>
