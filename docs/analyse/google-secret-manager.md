@@ -1,7 +1,11 @@
 # Google Secret Manager
-
 Google Secret Manager er en tjeneste som gir en sikker og praktisk metode for å lagre API-nøkler, passord, sertifikater og annen sensitiv data.
-I KNADA tilbyr vi Google Secret Manager enten for team eller enkeltpersoner.
+
+## Secrets i NAIS team-prosjekt
+Har du hemmeligheter i et eget NAIS team-prosjekt som du ønsker å bruke fra Airflow, så må du gi service accounten for KNADA (denne finner du i [Knorten](https://knorten.knada.io)) tilgang til hemmeligheter i ditt team-prosjekt.
+
+## Secrets i KNADA
+I og med at noen av brukerne i KNADA ikke er knyttet til et NAIS team-prosjekt, tilbyr KNADA Google Secret Manager enten for team eller enkeltpersoner.
 
 Hvert team som blir opprettet i KNADA igjennom Knorten vil få opprettet sin team-hemmelighet i Google Secret Manager, denne er kun tilgjengelig fra Airflow.
 Hver enkelt KNADA-bruker har også muligheten til å bestille sin egen personlige hemmelighet i Google Secret Manager.
@@ -43,4 +47,3 @@ secret = secrets.access_secret_version(name=resource_name)
 data = secret.payload.data.decode('UTF-8')
 ```
 
-Har du hemmeligheter i et eget NAIS team-prosjekt som du ønsker å bruke fra Airflow, så må du gi service accounten for KNADA (denne finner du i [Knorten](https://knorten.knada.io)) tilgang til hemmeligheter i ditt team-prosjekt.
