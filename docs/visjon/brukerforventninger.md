@@ -28,7 +28,7 @@ Vi anbefaler at du setter deg inn i SQL for å lage dataprodukter/analysere data
 - [Docker](https://friendly-disco-4bc2d71d.pages.github.io/teknisk/Docker.html)
     - Kan være nyttig når du trenger noe mer enn Knada tilbyr, for eksempel tredjepartsrammeverk som Plotly og Pandas.
 - Pythonbiblioteker for å koble seg til din database (Oracle, Postgres, Redis)
-- Pip for å installere tredjepartspakker (https://pypi.org/project/pip/)
+- Pip for å installere tredjepartspakker for Python (https://pypi.org/project/pip/)
 
 ## IDE/verktøy
 
