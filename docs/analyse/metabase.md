@@ -44,7 +44,7 @@ A --Tilganger til Metabase er <br> er de samme som i BigQuery--> F
 B --> E
 F --> D
 D --> C
-G --> H
+G --Personer med tilgang til <br> collectionen har tilgang til <br> *resultatet* fra questionen <br> om den ligger i samme collection. <br> De kan ikke endre questionen <br> eller se data i underliggende tabell--> H
 E --> F
 F --Kan kun bruke data <br> andre steder om personen <br> har tilgang--> G
 ````
