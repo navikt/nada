@@ -143,8 +143,6 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
 
 ### Trafikk ut fra Airflow
 
-!!! info "Dette er foreløpig en valgfri feature som må skrues på i Knorten. Dersom dette ikke gjøres er det ingen begrensninger på trafikk fra Airflow!"
-
 For å skallsikre Airflow har man muligheten til å skru på allow list for teamets tjenester.
 Dette innebærer for Airflow at man i hvert task må spesifisere hvilke eksterne tjenester (les: tjenester utenfor Airflow) man skal snakke med.
 Vi har stengt av muligheten for eksterne tjenester å snakke *inn* til Airflow.
