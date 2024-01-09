@@ -68,49 +68,10 @@ Foreløpig har vi fire operators, hvor alle støtter å klone et annet repo ved 
 I KNADA er Airflow konfigurert til å bruke [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html).
 Dette innebærer at hver task i en Airflow DAG vil spinne opp og kjøre en egen worker i en separat [Kubernetes pod](https://kubernetes.io/docs/concepts/workloads/pods/).
 Det gjør at man står fritt til å selv spesifisere miljøet til Airflow-workeren.
+
 Nedenfor har vi listet opp noen av de konfigurasjonen vi tror er nyttig å vite om.
 
 !!! info "Merk: Hovedcontaineren som worker-poden bruker vil alltid hete `base`, så dersom en ønsker å overskrive noe som gjelder spesifikt for denne containeren må man referere til den med navn som i eksemplene under."
-
-### Docker image for Airflow
-
-Ut av boksen bruker Airflow Docker images eid av Nada, disse er definert i [navikt/knada-images](https://github.com/navikt/knada-images/).
-Disse Docker imagene kommer med drivere for Oracle, og Postgres, men inneholder __**ikke et stort utvalg av Python biblioteker**__. 
-Du finner en oppdatert liste i [navikt/knada-images](https://github.com/navikt/knada-images/).
-Dersom du har behov som ikke er dekket av oppsettet vår må du lage dine egne Docker images, og bruke de i stedet.
-Se [bygge eget worker image](#bygge-eget-airflow-worker-image) for guide på hvordan å dette kan gjøres. 
-Under følger et eksempel på hvordan å overstyre imaget som hovedcontaineren til Airflow workeren skal bruke:
-
-```python
-from airflow import DAG
-from airflow.utils.dates import days_ago
-from airflow.operators.python_operator import PythonOperator
-from kubernetes import client as k8s
-
-def myfunc():
-    print("kjør task")
-
-with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
-    run_this = PythonOperator(
-        task_id='test',
-        python_callable=myfunc,
-        executor_config={
-           "pod_override": k8s.V1Pod(
-               spec=k8s.V1PodSpec(
-                   containers=[
-                      k8s.V1Container(
-                         name="base",
-                         image="ghcr.io/navikt/mitt-airflow-image:v1"
-                      )
-                   ]
-               )
-           )
-        },
-        dag=dag
-    )
-```
-
-Har du behov for at hele Airflow instansen skal bruke ditt Docker image så spesifiseres det i Knorten.
 
 ### Ressursbehov for Airflow
 
@@ -153,7 +114,7 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
     )
 ```
 
-### Trafikk ut fra Airflow
+### Trafikk ut fra Airflow (aka allow list)
 
 For å skallsikre Airflow har man muligheten til å skru på allow list for teamets tjenester.
 Dette innebærer for Airflow at man i hvert task må spesifisere hvilke eksterne tjenester (les: tjenester utenfor Airflow) man skal snakke med.
@@ -231,6 +192,68 @@ with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
                              allowlist=["ssb.no", "db.adeo.no:1521"])
 ```
 
+
+### Eget Docker image for Airflow
+
+I noen tilfeller har du kanskje flere avhengigheter enn det vi tilbyr i standard Airflow-oppsett.
+Da kan det å bygge sitt eget Docker image være en løsning.
+
+Du kan se hva vi tilbyr i vårt image, og hvordan dette er bygd i [navikt/knada-images](https://github.com/navikt/knada-images/).
+Våre Docker imager kommer med drivere for Oracle, og Postgres, men inneholder __**ikke et stort utvalg av Python biblioteker**__. 
+Hvis du kun har behov for andre Python-biblioteker så anbefaler vi på det sterkeste at du bruker [Dataverk Airflow](#dataverk-airflow), i stedet for å bygge ditt eget image.
+
+Under følger et eksempel på hvordan å overstyre imaget som Airflow worker containeren bruker:
+
+```python
+from airflow import DAG
+from airflow.utils.dates import days_ago
+from airflow.operators.python_operator import PythonOperator
+from kubernetes import client as k8s
+
+def myfunc():
+    print("kjør task")
+
+with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
+    run_this = PythonOperator(
+        task_id='test',
+        python_callable=myfunc,
+        executor_config={
+           "pod_override": k8s.V1Pod(
+               spec=k8s.V1PodSpec(
+                   containers=[
+                      k8s.V1Container(
+                         name="base",
+                         image="ghcr.io/navikt/mitt-airflow-image:v1"
+                      )
+                   ]
+               )
+           )
+        },
+        dag=dag
+    )
+```
+
+For Dataverk Airflow trenger du kun å spesifisere `image`:
+
+
+```python
+from airflow import DAG
+from airflow.utils.dates import days_ago
+from dataverk_airflow import notebook_operator
+
+with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
+    task = notebook_operator(dag=dag,
+                             name="knada-pod-operator",
+                             repo="navikt/repo",
+                             nb_path="notebooks/mynb.ipynb",
+                             image="ghcr.io/navikt/mitt-airflow-image:v1")
+```
+
+Har du behov for at hele Airflow instansen skal bruke ditt Docker image så spesifiseres det i Knorten.
+
+NB: Hvis du bygger image *lokalt på en nyere Mac* så er det viktig at du bygger imaget for riktig plattform.
+Legg til `--platform linux/amd64` i `docker build` kommandoen.
+
 ## API-tilgang til Airflow
 
 Har man behov for at en ekstern tjeneste skal snakke med API-et til Airflow trenger Nada å konfigurere noe på "baksiden" og lage en service bruker for dere.
@@ -240,25 +263,10 @@ Vi vil ta opprette en service account for deres Airflow, og lage en ekstern adre
 Et typisk scenario for dette er å la IWS styre jobber i Airflow.
 Akkurat dette scenarioet er også dokumentert i [Confluence/Analytisk Plattform](https://confluence.adeo.no/display/DEP/Airflow+i+knada-gke).
 
-
-
-## Bygge eget Airflow worker image
-
-I noen tilfeller har du kanskje flere avhengigheter enn det vi tilbyr i standard Airflow-oppsett.
-For å legge til ekstra avhengigheter kan du benytte et [Github template](https://github.com/navikot/knemplate/) som vi har opprettet, for å lage et eget repo.
-Når du har opprettet repoet og lagt til avhengighetene du ønsker i `requirements.txt` vil arbeidsflyten som allerede er definert generere et Dockerimage som kan benyttes som [Docker image for Airflow](#docker-image-for-airflow).
-
-NB: Hvis du bygger image *lokalt på en nyere Mac* så er det viktig at du bygger imaget for riktig plattform.
-Legg til `--platform linux/amd64` i `docker build` kommandoen.
-
-## KubernetesPodOperator
-
-Dersom du har behov for å bruke Kubernetes Pod Operators så har vi et eksempel i [nada-dags](https://github.com/navikt/nada-dags/blob/main/dags/kubernetes_pod_operator.py) som fortsatt lar deg klone et annet repo, og installere Python-pakker ved oppstart.
-
 ## Audit logs av tasks
 
 Som et risikoreduserendetiltak logger vi hvem som kjører hvilke jobber i KNADA ned til Datavarehus.
-Dette er for at Datavarehus skal ha bedre kontroll på hvem som snakker med de.
+dette er for at Datavarehus skal ha bedre kontroll på hvem som snakker med de.
 Selve tjenesten heter [knaudit](https://github.com/nais/knaudit#knaudit), og det er kun Datavarehus og NADA som har tilgang til disse loggene.
 
 Eksempel på hva vi logger:
