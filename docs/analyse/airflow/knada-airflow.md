@@ -51,6 +51,18 @@ Hvert minutt vil Github repoet bli synkronisert til Airflow instansen, og Airflo
 - [Dataverk Airflow](https://github.com/navikt/dataverk-airflow/tree/main/tests-integration) eksempel på intergrasjonstester av Airflow som kjører i Github.
 - [sykefravar-dags](https://github.com/navikt/sykefravar-dags) Team Sykefravær sine DAGer.
 
+## Dataverk Airflow
+
+Vi har laget et bibliotek med flere enkle operators for å lette jobben når man lager DAGer.
+Dette ligger ute på [PyPi.org](https://pypi.org/project/dataverk-airflow/) og er dokumentert der.
+
+Foreløpig har vi fire operators, hvor alle støtter å klone et annet repo ved oppstart av en task, og installerer eksterne Python-avhengigheter via en `requirements.txt` fil i ditt repo.
+
+* Quarto operator: Forenkler jobben med å lage datafortellinger
+* Notebook operator: Lar deg kjøre en Jupyter notebook i Airflow
+* Python operator: Lar deg kjøre vilkårlig Python-script
+* Kubernetes operator: Vår base, som er en forenkling av den offisielle [Kubernetes operator](https://airflow.apache.org/docs/apache-airflow-providers-cncf-kubernetes/stable/operators.html).
+
 ## Konfigurasjon av Airflow
 
 I KNADA er Airflow konfigurert til å bruke [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html).
