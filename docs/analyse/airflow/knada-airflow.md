@@ -228,12 +228,7 @@ Vi vil ta opprette en service account for deres Airflow, og lage en ekstern adre
 Et typisk scenario for dette er å la IWS styre jobber i Airflow.
 Akkurat dette scenarioet er også dokumentert i [Confluence/Analytisk Plattform](https://confluence.adeo.no/display/DEP/Airflow+i+knada-gke).
 
-## Airflowmetrikker i Grafana
 
-Man kan nå lage Grafana-dashboard i [grafana.nais.io](https://grafana.nais.io) med metrikker fra Airflow.
-Airflow har egen [dokumentasjon](https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/metrics.html#counters) for hvilke metrikker som blir delt.
-Metrikkene bruker Google sitt [Monitoring Query Language](https://cloud.google.com/monitoring/mql), så det enkleste er nok å bruke nedtrekksmenyene i Grafana når man lager spørringer.
-Vi har lagd et enkelt [eksempel-dashboard](https://grafana.nais.io/d/dPaDzl-4z/knada-airflow) som man kan bruke som inspirasjon på hva man kan følge med på.
 
 ## Bygge eget Airflow worker image
 
