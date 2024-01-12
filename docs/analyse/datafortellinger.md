@@ -2,7 +2,7 @@
 title: Datafortelling
 ---
 Datafortellinger brukes til å dele innsikt i form av statiske dokumenter.
-Datafortellinger kan kan enkelt deles med andre i NAV gjennom Datamarkedsplassen.
+Datafortellinger kan enkelt deles med andre i NAV gjennom Datamarkedsplassen.
 
 ## Installere Quarto
 
@@ -36,18 +36,18 @@ I eksemplene under må følgende byttes ut med reelle verdier:
 - `${ENV}` 
     - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *datamarkedsplassen.intern.dev.nav.no* for dev og *datamarkedsplassen.intern.nav.no* for prod
     - Ellers settes det til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
-- `${QUARTO_ID}` - erstatt med ID på Quarto
+- `${STORY_ID}` - erstatt med ID på datafortellingen
 - `${TEAM_TOKEN}` - erstatt med team-token fra Datamarkedsplassen
 - `${TEAM_ID}` - erstatt med team ID for teamet ditt i [teamkatalogen](https://teamkatalog.intern.nav.no)
 
 ## Registrere Quarto i Datamarkedsplassen
-Når man skal registrere en Quarto i [Datamarkedsplassen](https://data.intern.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
+Når man skal registrere en quarto datafortelling i [Datamarkedsplassen](https://data.intern.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
 
 ### Registrer gjennom brukergrensesnitt
 1. Gå til [data.intern.nav.no](https://data.intern.nav.no) for prod eller [data.intern.dev.nav.no](https://data.intern.dev.nav.no) for dev.
 2. Logg inn
 3. Klikk hamburgermeny og velg `Legg til ny datafortelling`
-4. Fyll inn metadata om Quarto fortellingen
+4. Fyll inn metadata om datafortellingen
 5. Velg fil(er) du ønsker å laste opp
 6. Trykk `Lagre`
 
@@ -58,10 +58,10 @@ Du kan også programmatisk registrere en datafortelling.
 
 Request body parametere:
 
-- `name` (obligatrisk): Navn på quarto fortellingen
-- `description`: Beskrivelse av quarto fortellingen
+- `name` (obligatrisk): Navn på datafortellingen
+- `description`: Beskrivelse av datafortellingen
 - `teamID`: ID i [teamkatalogen](https://teamkatalog.nav.no) for teamet som eier datafortellingen. Nødvendig å spesifisere dersom datafortellingen skal sorteres riktig i produktområdevisningen på [data.intern.nav.no](https://data.intern.nav.no)
-- `id`: Kan spesifiseres dersom du ønsker å spesifisere ID for quarto fortellingen selv. Dersom den utelates genereres det en ny.
+- `id`: Kan spesifiseres dersom du ønsker å spesifisere ID for datafortellingen selv. Dersom den utelates genereres det en ny.
 
 Headers for requesten
 - `bearer token` (obligatorisk): Team tokenet for teamet som skal eie datafortellingen
@@ -71,7 +71,7 @@ Headers for requesten
 #### Med curl
 ```bash
 $ curl -X POST \
-    -d '{"name": "min quarto", "description": "min beskrivelse", "teamID": "<team-id>", "id": "${QUARTO_ID}"}' \
+    -d '{"name": "min datafortelling", "description": "min beskrivelse", "teamID": "<team-id>", "id": "${STORY_ID}"}' \
     -H "Authorization: Bearer ${TEAM_TOKEN}" \
     https://${ENV}/quarto/create
 ```
@@ -84,10 +84,10 @@ res = requests.post(f"https://${ENV}/quarto/create", headers={"Authorization": "
     "name": "min quarto",
     "description": "min beskrivelse",
     "teamID": "<team-id>",
-    "id": "${QUARTO_ID}"
+    "id": "${STORY_ID}"
 }})
 
-quarto_id = res.json()["id"]
+story_id = res.json()["id"]
 ```
 
 ### Oppdater eksisterende Quarto
@@ -145,8 +145,7 @@ for file_path in files_to_upload:
 response = requests.put( f"https://{ENV}/quarto/update/{QUARTO_ID}", 
                         headers={"Authorization": f"Bearer {TEAM_TOKEN}"},
                         files=multipart_form_data)
-    
-print(response.status_code)
+response.raise_for_status()
 ```
 
 ### Oppdatere Quarto med Naisjob
@@ -275,70 +274,3 @@ spec:
 9. Man må også gi Nais-appen som blir opprettet i navikt/nada-quarto-proxy lesetilgang til den samme bucketen.
    Etter at appen har blitt deployet må noen manuelt inn i clustert for å finne ut hvilken service account som har blitt opprettet.
    Denne service accounten må da få rollen `Storage Object Viewer` på bucketen opprettet i (2).
-
-## Datastory
-!!!warning "Datafortellinger laget med datastory-biblioteket vil fases ut. Eksisterende datafortellinger vil leve videre en stund, og vi har stengt muligheten for å lage nye."
-
-### Installer datastory bibliotek
-````bash
-pip install datastory
-````
-
-### API adresser
-For å publisere en datafortelling må man angi api adressen det skal publiseres til.
-
-- for [dev-miljøet](https://data.dev.intern.nav.no)
-    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://datamarkedsplassen.intern.dev.nav.no/api`
-    - ellers er adressen `https://data.ekstern.dev.nav.no/api`
-- for [prod-miljøet](https://data.intern.nav.no) 
-    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://datamarkedsplassen.intern.nav.no/api`
-    - ellers er adressen `https://data.nav.no/api`
-
-I kodeeksemplene som følger brukes dev adressen.
-
-### Lage utkast til datafortelling
-````python
-from datastory import DataStory
-
-ds = DataStory("Min datafortelling")
-
-ds.header("Overskrift")
-ds.markdown("Liten introbeskrivelse til datafortellingen")
-ds.header("Underoverskrift", level=2)
-ds.markdown("Mer fyldig beskrivelse av innholdet")
-ds.header("Figur 1 tittel", level=3)
-ds.plotly(fig_plotly.to_json())
-ds.markdown("Beskrivelse av figur 1")
-ds.header("Figur 2 tittel", level=3)
-ds.vega(fig_vega)
-ds.markdown("Beskrivelse av figur 2")
-
-ds.publish(url="https://data.ekstern.dev.nav.no/api")
-````
-
-Når man kaller `ds.publish()` i eksempelet over vil det bli opprettet en kladd til en datafortelling, se [her](#publisere-datafortelling) 
-for å se hvordan man publiserer en datafortelling fra en kladd.
-
-### Publisere datafortelling
-Publisering av en datafortelling gjøres fra kladd-visningen i Datamarkedsplassen som følger:
-
-1. Logg inn
-2. Trykk lagre
-![kladd](datafortelling-utkast.png)
-3. Velg hvilket av dine team som skal eie datafortellingen
-4. Velg om du skal lage en ny eller overskrive en eksisterende datastory
-
-### Programmatisk oppdatere eksisterende datafortelling
-For å oppdatere en publisert datafortelling programmatisk må man autentisere seg med et token. 
-Dette tokenet blir generert når man publiserer en kladd og kan hentes ut ved å gå til den publiserte datafortellingen og fra [kebab menyen](https://uxplanet.org/choose-correct-menu-icon-for-your-navigation-7ffc22df80ac#160b) velge `vis token`.
-Når du har fått hentet ut oppdateringstokenet kan du erstatte siste kodelinje i eksempelet over (dvs. `ds.publish()`) med en metode som i stedet oppdaterer datafortellingen.
-
-````python
-ds.update(token="mitt-token", url="https://datamarkedsplassen.intern.dev.nav.no/api")
-````
-
-Dersom man ønsker å unngå å sette api adressen til Datamarkedsplassen som input parameter til `ds.publish()` og `ds.update()` metodene kan man i stedet sette det som miljøvariabel, f.eks.
-````python
-import os
-os.environ["DATASTORY_URL"] = "https://datamarkedsplassen.intern.dev.nav.no/api"
-````
