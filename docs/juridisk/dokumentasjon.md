@@ -17,6 +17,9 @@ Du kan også [lese mer om behandlinger i playbook for ansvarlig datascience](htt
 
 ## Det NADA har gjort allerede
 
+!!! note "Kommentar"
+    Hvis du får en feilmelding når du forsøker å lese ROSene, må du først [be om tilgang til TryggNok](https://navno.sharepoint.com/sites/intranett-it/SitePages/Skal-du-bruke-TryggNok-for-første-gang-.aspx).
+
 Vi har gjort en rekke risiko- og sårbarhetsanalyse (ROS) av verktøy som NADA tilbyr, og verktøy vi mener er relevant for å gjøre dataanalyser.
 All ROS er gjort i TryggNok.
 
