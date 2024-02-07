@@ -80,12 +80,12 @@ $ curl -X POST \
 ```python
 import requests
 
-res = requests.post(f"https://${ENV}/quarto/create", headers={"Authorization": "bearer ${TEAM_TOKEN}", json={
+res = requests.post(f"https://${ENV}/quarto/create", headers={"Authorization": "bearer ${TEAM_TOKEN}"}, json={
     "name": "min quarto",
     "description": "min beskrivelse",
     "teamID": "<team-id>",
     "id": "${STORY_ID}"
-}})
+})
 
 story_id = res.json()["id"]
 ```
