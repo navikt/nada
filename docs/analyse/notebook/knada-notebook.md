@@ -20,14 +20,18 @@ Har du behov for å ha globalt installerte pakker anbefaler vi at du bruker ditt
 For å spare ressurser vil en Jupyter notebook automatisk blir skrudd av etter en times inaktivitet.
 Har man behov for lengre levetid kan man spesifisere dette gjennom Knorten i feltet `Cull Timeout`.
 
+Du kan se ressursbruken din i [Grafana/Jupyter notebook utilization](https://grafana.nav.cloud.nais.io/d/f4c9d285-f3a7-47a7-b0db-df4f0073853d/jupyter-notebook-utilization).
+
 ## Python-miljø
 Når man logger inn i Jupyter så får man mulighet til å velge hvilket Python miljø man ønsker i sin notebook.
-Vi følger [Python Release Cycle](https://devguide.python.org/versions/) for imagene våre, det betyr at vi lager et image per Python-versjon som ikke har statusen _end-of-life_, og som også er støttet av Jupyter (se [Docker Hub](https://hub.docker.com/r/jupyter/base-notebook/tags)).
+Vi følger [Python Release Cycle](https://devguide.python.org/versions/) for imagene våre.
+Det betyr at vi lager et image per Python-versjon som ikke har statusen _end-of-life_, og som også er støttet av Jupyter (se [Docker Hub](https://hub.docker.com/r/jupyter/base-notebook/tags)).
 Samtlige av image-ene man kan velge mellom kommer med drivere for oracle, postgres og TDV installert.
 
 ### Eget image for Jupyter notebook
 Har du behov for noe mer enn det vi tilbyr ut av boksen kan du lage ditt eget Jupyter notebook image.
-Ta gjerne utgangspunkt i [vårt image](https://github.com/navikt/knada-images/pkgs/container/knada-images%2Fjupyter) med den Python-versjonen du ønsker. Gjør du det får du drivere for oracle, postgres og TDV, samt de vanligste kommandolinjeverktøyene som er hendige å ha i en notebook allerede installert.
+Ta gjerne utgangspunkt i [vårt image](https://github.com/navikt/knada-images/pkgs/container/knada-images%2Fjupyter) med den Python-versjonen du ønsker.
+Gjør du det får du drivere for oracle, postgres og TDV, samt de vanligste kommandolinjeverktøyene som er hendige å ha i en notebook allerede installert.
 
 Når du har laget et image kan du selv spesifisere at det er dette imaget som skal brukes for teamet ditt i Knorten.
 
@@ -61,7 +65,9 @@ USER $NB_USER
 ```
 
 #### Lagring av image
-Du kan selv velge om du ønsker å lagre imaget ditt i [GAR](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling) eller i [GHCR](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry). I dette [repoet](https://github.com/navikt/knada-image-eksempel) er det eksempler på hvordan å bygge et docker image og pushe til begge to docker repositories. Begge pipelinene bygger image med samme [Dockerfile](https://github.com/navikt/knada-image-eksempel/blob/main/Dockerfile) og [requirements.txt](https://github.com/navikt/knada-image-eksempel/blob/main/requirements.txt).
+Du kan selv velge om du ønsker å lagre imaget ditt i [Google Artifact Registry (GAR)](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling) eller i [Github Container Registry (GHCR)](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+I dette [navikt/knada-image-eksempel](https://github.com/navikt/knada-image-eksempel) er det eksempler på hvordan å bygge et docker image og pushe til begge to docker repositories. 
+Begge pipelinene bygger image med samme [Dockerfile](https://github.com/navikt/knada-image-eksempel/blob/main/Dockerfile) og [requirements.txt](https://github.com/navikt/knada-image-eksempel/blob/main/requirements.txt).
 
 Når du så har bygget image ditt finner du det igjen ved å:
 
