@@ -64,6 +64,7 @@ Request body parametere:
 - `id`: Kan spesifiseres dersom du ønsker å spesifisere ID for datafortellingen selv. Dersom den utelates genereres det en ny.
 
 Headers for requesten
+
 - `bearer token` (obligatorisk): Team tokenet for teamet som skal eie datafortellingen
 
 !!! info "Merk: IDen for datafortellingen blir returnert når man gjør en POST til `/quarto/create`. Denne må så brukes når datafortellingen skal oppdateres etterpå."
