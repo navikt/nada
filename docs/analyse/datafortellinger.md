@@ -96,7 +96,7 @@ res = requests.post(f"https://${ENV}/quarto/create", headers={"Authorization": "
 story_id = res.json()["id"]
 ```
 
-#### Oppdater eksisterende interne datafortelling
+#### Oppdater eksisterende intern datafortelling
 For å oppdatere en eksisterende Quarto fortelling må man først generere ressursfilene på nytt med `quarto render <file>`.
 
 Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-tokenet fra [Datamarkedsplassen](https://data.intern.nav.no).
@@ -206,6 +206,13 @@ For eksempler på datafortellinger publisert eksternt, se:
 - [Veileder for generativ kunstig intelligens](https://data.nav.no/fortelling/ki)
     - repo: [navikt/GKI-veil-bakgrunn](https://github.com/navikt/GKI-veil-bakgrunn)
 
+I eksemplene som følger må følgende byttes ut med reelle verdier:
+
+- `${ENV}` 
+    - *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
+- `${STORY_ID}` - erstatt med ID på datafortellingen
+- `${TEAM_TOKEN}` - erstatt med team-token fra Datamarkedsplassen
+
 #### Registere ekstern datafortelling
 Vi støtter foreløpig kun programmatisk registrering av eksterne datafortellinger.
 
@@ -229,20 +236,72 @@ Headers for requesten
 $ curl -X POST \
     -d '{"title": "Min datafortelling om noe", "slug": "min-datafortelling", "team": "<team-navn>"}' \
     -H "Authorization: Bearer ${TEAM_TOKEN}" \
-    https://${ENV}/quarto/create
+    https://${ENV}/api/v1/story
 ```
 
 ##### Med python
 ```python
 import requests
 
-res = requests.post(f"https://${ENV}/quarto/create", headers={"Authorization": "bearer ${TEAM_TOKEN}"}, json={
+res = requests.post(f"https://${ENV}/api/v1/story", headers={"Authorization": "bearer ${TEAM_TOKEN}"}, json={
     "title": "Min datafortelling om noe",
     "slug": "min-datafortelling",
     "team": "<team-navn>"
 })
 
 story_id = res.json()["id"]
+```
+
+#### Oppdatere en ekstern datafortelling
+
+##### Med curl
+```bash
+curl -X PUT -F index.html=@index.html \
+    "https://${ENV}/api/v1/story/${STORY_ID}" \
+    -H "Authorization:Bearer ${TEAM_TOKEN}"
+```
+
+###### Flere filer
+
+```bash
+#!/bin/bash
+set -e
+
+FILES=""
+for file in <mappe med filene>/*
+do
+  FILES+=" -F $file=@$file"
+done
+
+curl -X PUT $FILES "https://${ENV}/api/v1/story/${STORY_ID}" \
+    -H "Authorization:Bearer ${TEAM_TOKEN}"
+```
+
+##### Med python
+
+```python
+import os
+import requests
+
+# A list of file paths to be uploaded
+files_to_upload = [
+    "PATH/index.html"
+    "PATH/SUB/FOLDER/some.html"
+]
+
+multipart_form_data = {}
+for file_path in files_to_upload:
+    file_name = os.path.basename(file_path)
+    with open(file_path, 'rb') as file:
+        # Read the file contents and store them in the dictionary
+        file_contents = file.read()
+        multipart_form_data[file_name] = (file_name, file_contents)
+
+# Send the request with all files in the dictionary
+response = requests.put( f"https://{ENV}/api/v1/story/{STORY_ID}", 
+                        headers={"Authorization": f"Bearer {TEAM_TOKEN}"},
+                        files=multipart_form_data)
+response.raise_for_status()
 ```
 
 ### Oppdatere datafortelling med GitHub action
@@ -262,11 +321,14 @@ Token for teamet ditt finner du ved å gå til https://data.intern.nav.no/user/t
 ```yaml
 name: Eksempel på opplasting av datafortelling
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
-  story-upload-dev:
-    name: story upload
+  oppdater-datafortelling:
+    name: Oppdater datafortelling
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
