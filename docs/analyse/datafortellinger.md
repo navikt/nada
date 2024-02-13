@@ -227,7 +227,7 @@ Headers for requesten
 ##### Med curl
 ```bash
 $ curl -X POST \
-    -d '{"title": "Min datafortelling om noe", "slug": "min-datafortelling", "team": "<team-navn>", "published": "false"}' \
+    -d '{"title": "Min datafortelling om noe", "slug": "min-datafortelling", "team": "<team-navn>"}' \
     -H "Authorization: Bearer ${TEAM_TOKEN}" \
     https://${ENV}/quarto/create
 ```
@@ -239,8 +239,7 @@ import requests
 res = requests.post(f"https://${ENV}/quarto/create", headers={"Authorization": "bearer ${TEAM_TOKEN}"}, json={
     "title": "Min datafortelling om noe",
     "slug": "min-datafortelling",
-    "team": "<team-navn>",
-    "published": "false"
+    "team": "<team-navn>"
 })
 
 story_id = res.json()["id"]
