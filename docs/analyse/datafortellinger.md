@@ -309,7 +309,7 @@ Vi har laget en egen GitHub action - [navikt/story-upload](https://github.com/na
 Denne actionen vil publisere innholdet til en [gcs bucket](https://cloud.google.com/storage/docs/buckets) som NADA hoster datafortellinger fra. 
 Man kan bruke actionen til å publisere både interne datafortellinger på `data.intern.nav.no` og eksterne datafortellinger på `data.nav.no`.
 
-!!! info"Se [README for github action](https://github.com/navikt/story-upload/blob/main/README.md#example-usage) for beskrivelse av de ulike konfigurerbare input parameterene til actionen"
+!!! info "Se [README for github action](https://github.com/navikt/story-upload/blob/main/README.md#example-usage) for beskrivelse av de ulike konfigurerbare input parameterene til actionen"
 
 Under er et eksempel på hvordan å sette opp en enkel github action workflow som oppdaterer en datafortelling __**internt i dev løsningen til datamarkedsplassen**__ (dvs. `data.intern.dev.nav.no`) ved hver push til `main`.
 For å bruke actionen må det eksistere en datafortelling som man ønsker å oppdatere. Dersom det ikke finnes en datafortelling så må denne registeres først, se [her](#registrere-quarto-i-datamarkedsplassen) for å registrere en intern datafortelling, eller [her](#registere-datafortelling) for å registrere en ekstern. 
