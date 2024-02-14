@@ -340,3 +340,36 @@ jobs:
           env: dev
           public: "false"
 ```
+
+### Knatch
+[Knatch](https://github.com/navikt/knatch) - Knada batch - er et kommandolinjeverktøy tiltenkt å forenkle opplasting av datafortellinger til både den [interne datamarkedsplassen](https://data.intern.nav.no) og eksterne datafortellinger på `data.nav.no`.
+
+Det er særlig nyttig i tilfeller hvor en ønsker å laste opp datafortellinger som består av flere filer da `knatch` tar som inputargument en mappe og vil automatisk dele opp filene i mappen og laste de opp i batcher til datamarkedsplassen. Størrelsen på batchene kan du spesifisere med flagget `--batch-size`, dersom det utelates vil datafortellingen lastes opp i batcher på 10 filer.
+
+#### Installasjon
+```bash
+pip install knatch
+```
+
+#### Eksempler på bruk
+`Knatch` kan brukes til å oppdatere en datafortelling både [internt i NAV](#publisering-til-intern-markedsplass) og [eksternt](#publisering-eksternt).
+
+Begge eksemplene tar utgangspunkt i følgende:
+
+- Du har allerede opprettet en datafortelling du ønsker å oppdatere, se [her](#registrere-quarto-i-datamarkedsplassen) for å registrere en intern datafortelling, eller [her](#registere-datafortelling) for å registrere en ekstern. Erstatt `<id>` i eksemplene under med IDen til den eksisterende datafortellingen.
+- Du har hentet ut team tokenet for teamet som eier datafortellingen. Erstatt `<token>` i eksemplene under med dette tokenet.
+
+##### Publisering til intern markedsplass
+I eksempelet under publiseres det til dev-løsingen til den __**interne**__ datamarkedsplassen (`datamarkedsplassen.intern.dev.nav.no`). Dersom en i stedet ønsker å publisere til prod så må `--host` flagget settes til `datamarkedsplassen.intern.nav.no`.
+
+```bash
+knatch <id> sti/til/mappe/med/filer <token> --host datamarkedsplassen.intern.dev.nav.no
+```
+
+
+##### Publisering eksternt
+I eksempelet under publiseres det til dev-løsingen for ekstern publisering (`data.ekstern.dev.nav.no`). Dersom en i stedet ønsker å publisere til prod så må `--host` flagget settes til `data.nav.no`.
+
+```bash
+knatch <id> sti/til/mappe/med/filer <token> --host data.ekstern.dev.nav.no --path api/v1/story
+```
