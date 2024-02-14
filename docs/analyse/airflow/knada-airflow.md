@@ -202,6 +202,8 @@ Du kan se hva vi tilbyr i vårt image, og hvordan dette er bygd i [navikt/knada-
 Våre Docker imager kommer med drivere for Oracle, og Postgres, men inneholder __**ikke et stort utvalg av Python biblioteker**__. 
 Hvis du kun har behov for andre Python-biblioteker så anbefaler vi på det sterkeste at du bruker [Dataverk Airflow](#dataverk-airflow), i stedet for å bygge ditt eget image.
 
+!!! warn "Dersom du bygger eget image og ønsker å bruke `quarto_operator` fra `dataverk-airflow` så har dette biblioteket en avhengighet til kommandolinjeverktøyet [knatch](../datafortellinger.md#knatch) og må derfor installeres i ditt image også"
+
 Under følger et eksempel på hvordan å overstyre imaget som Airflow worker containeren bruker:
 
 ```python
