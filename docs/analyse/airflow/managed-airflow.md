@@ -60,7 +60,7 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/sync-gcs.yaml'
+      - '.github/workflows/sync-gcs-bucket.yaml'
       - 'dags/**'
 
 jobs:
