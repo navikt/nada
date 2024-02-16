@@ -73,7 +73,7 @@ jobs:
       with:
         credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
     - name: "Set up Cloud SDK"
-    - uses: google-github-actions/setup-gcloud@v1
+      uses: google-github-actions/setup-gcloud@v1
     - name: "Specify GCP project"
       run: "gcloud config set project {{ secrets.PROJECT_ID }}"
     - name: "Sync DAGs to GCS bucket"
