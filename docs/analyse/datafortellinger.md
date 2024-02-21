@@ -28,6 +28,12 @@ RUN cd /app && \
 ENV PATH="${PATH}:/app/quarto/bin"
 ```
 
+## Team tokens
+For å programmatisk lage eller oppdatere datafortellinger trenger man å autentisere seg med et team token. For å finne team token for teamene du er medlem av kan du gå til [Mine team tokens](https://data.intern.nav.no/user/tokens) i Datamarkedsplassen (krever innlogging). Det er forskjellig tokens for dev og prod, så dersom du ønsker å lage eller oppdatere en datafortelling i dev finner du tokens [i dev versjonen](https://data.intern.dev.nav.no/user/tokens) av Datamarkedsplassen. Samme token brukes både for intern og ekstern publisering av datafortellinger.
+
+### Rotere token
+Dersom du har behov for å rotere team tokenet til et av teamene dine (f.eks. dersom du har eksponert tokenet ved et uhell) kan dette gjøres fra [Mine team tokens](https://data.intern.nav.no/user/tokens) i Datamarkedsplassen.
+
 ## Lage Datafortelling
 Man kan publisere datafortellinger enten [internt](#internt) for NAV ansatte eller [eksternt](#eksternt).
 
