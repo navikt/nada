@@ -78,7 +78,7 @@ nav:
     - Kom i gang: dataprodukter/index.md
     - Få tilgang til datakilder: dataprodukter/dele/få-tilgang.md
     - Laste data fra kilde til BigQuery: dataprodukter/dele/dataoverføring.md
-    - Kvalitetssikre data: dataprodukter/kvalitetssikring.md
+    - Kvalitetssikre data (Soda): dataprodukter/kvalitetssikring.md
     - Legge til et dataprodukt: dataprodukter/dele/dataprodukt.md
     - Tilgangsstyring: dataprodukter/tilgangsstyring.md
   - Analysering:
