@@ -200,9 +200,10 @@ Da kan det å bygge sitt eget Docker image være en løsning.
 
 Du kan se hva vi tilbyr i vårt image, og hvordan dette er bygd i [navikt/knada-images](https://github.com/navikt/knada-images/).
 Våre Docker imager kommer med drivere for Oracle, og Postgres, men inneholder __**ikke et stort utvalg av Python biblioteker**__. 
-Hvis du kun har behov for andre Python-biblioteker så anbefaler vi på det sterkeste at du bruker [Dataverk Airflow](#dataverk-airflow), i stedet for å bygge ditt eget image.
+Hvis du kun har behov for andre Python-biblioteker så anbefaler vi på det sterkeste at du bruker [Dataverk Airflow](#dataverk-airflow), i stedet for å bygge ditt eget image. 
+Skal man bygge eget image så er dette imaget nødt til å ha [apache-airflow](https://pypi.org/project/apache-airflow/) installert samt en bruker `airflow` med uid `50000`. Dette vil man få dersom man tar utgangspunkt i enten [vårt base image](https://github.com/navikt/knada-images/pkgs/container/knada-images%2Fairflow) eller det [offisielle airflow imaget](https://hub.docker.com/r/apache/airflow).
 
-!!! warn "Dersom du bygger eget image og ønsker å bruke `quarto_operator` fra `dataverk-airflow` så har dette biblioteket en avhengighet til kommandolinjeverktøyet [knatch](../datafortellinger.md#knatch) og må derfor installeres i ditt image også"
+!!! warn "Dersom du bygger eget image og ønsker å bruke `quarto_operator` fra `dataverk-airflow` så har dette biblioteket en avhengighet til kommandolinjeverktøyet [knatch](../datafortellinger.md#knatch) og må derfor også installeres i ditt image."
 
 Under følger et eksempel på hvordan å overstyre imaget som Airflow worker containeren bruker:
 
