@@ -72,6 +72,9 @@ En kan også aktivere [CodeQL](https://docs.github.com/en/code-security/code-sca
 
 Det finnes flere måter å autentisere seg mot Github, men vi anbefaler å enten bruke SSH-nøkler eller fine-grained personal access tokens (PAT).
 
+Er du usikker på hva du trenger så anbefaler vi at du starter med fine-grained PAT med en varighet på 7 dager.
+Da har du nok tid til å utforske Jupyter, men ingen risiko for at dine tilgangsnøkler blir liggende til evig tid på Jupyter hvis du glemmer å rydde opp.
+
 ## SSH-nøkkel
 
 Ved å bruke SSH-nøkler så lager man et nøkkelpar, hvor Github får din offentlige nøkkel, og man har sin private nøkkel lagret i Jupyter notebooken sin.
@@ -87,9 +90,24 @@ ssh-keygen -t ed25519 -C "din_epost_email@nav.no"
 Etter at du har generet et eget nøkkelpar må du legge den offentlige delen inn hos Github.
 Du kan følge Github sin [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account), eller gå direkte til [SSH and GPG keys](https://github.com/settings/keys), og trykke på `New SSH key`.
 
+Etterpå kan du bruke `git` som vanlig og klone ned med `SSH`-adressen (git@github.com:navikt/ditt-repo.git).
+
+!!! info
+    SSH-nøkler må ligge i katalogen `~/.ssh` og kun lesbar av deg.
+    Sette filrettigheter med `chmod 600 ~/.ssh/id_ed25519`.
+
 ## Fine-grained PAT
 
 Personal access tokens brukes for å lage et token med en bestemt varighet, som gir alle som har ditt token mulighet til å koble seg til Github.
 Med fine-grained tokens kan man spesifisere mer detaljert hva man skal ha tilgang til, for eksempel spesifisere hvilke Github repo man skal ha tilgang til.
 
 Gå til [New fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) for å komme i gang.
+Merk at du vil ikke kunne hente ut en PAT etter den har blitt generert, så hvis du mister den så er det bare å rotere tokenet.
+
+For å bruke PAT i Jupyter kan du opprette filen `.netrc` i ditt hjemmeområde i Jupyter med følgende innhold:
+
+```
+machine github.com login <PAT>
+```
+
+Etterpå kan du bruke `git` som vanlig og klone ned med `HTTPS`-adressen (https://github.com/navikt/ditt-repo.git)
