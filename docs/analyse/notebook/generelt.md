@@ -66,3 +66,29 @@ Dersom man bygger egne Dockerimages for Jupyter eller Airflow tilbyr Dependabot 
 
 En kan også aktivere [CodeQL](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql) for repoet som analyserer koden din og genererer alerts ved sårbarheter.
 [Se her for informasjon om oppsett av CodeQL](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository#configuring-code-scanning-automatically).
+
+## Autentisering mot Github
+
+Det finnes flere måter å autentisere seg mot Github, men vi anbefaler å enten bruke SSH-nøkler eller fine-grained personal access tokens (PAT).
+
+## SSH-nøkkel
+
+Ved å bruke SSH-nøkler så lager man et nøkkelpar, hvor Github får din offentlige nøkkel, og man har sin private nøkkel lagret i Jupyter notebooken sin.
+Vi anbefaler på det sterkeste å ha en egen nøkkel for Jupyter, da kan man enkelt trekke tilbake tilgangen hvis den blir slettet, eller havner på avveie.
+
+Du kan følge Github sin [Generating a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key), eller kjørende kommandoen nedenfor.
+Vi anbefaler å bruke passord på SSH nøkkelen, dette er påkrevd for SSH-nøkler på lokal maskin.
+
+```
+ssh-keygen -t ed25519 -C "din_epost_email@nav.no"
+```
+
+Etter at du har generet et eget nøkkelpar må du legge den offentlige delen inn hos Github.
+Du kan følge Github sin [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account), eller gå direkte til [SSH and GPG keys](https://github.com/settings/keys), og trykke på `New SSH key`.
+
+## Fine-grained PAT
+
+Personal access tokens brukes for å lage et token med en bestemt varighet, som gir alle som har ditt token mulighet til å koble seg til Github.
+Med fine-grained tokens kan man spesifisere mer detaljert hva man skal ha tilgang til, for eksempel spesifisere hvilke Github repo man skal ha tilgang til.
+
+Gå til [New fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) for å komme i gang.
