@@ -2,7 +2,7 @@
 title: Datafortelling
 ---
 Datafortellinger brukes til å dele innsikt i form av statiske dokumenter.
-Datafortellinger kan kan enkelt deles med andre i NAV gjennom Markedsplassen.
+Datafortellinger kan enkelt deles med andre i NAV gjennom Datamarkedsplassen.
 
 ## Installere Quarto
 
@@ -28,76 +28,88 @@ RUN cd /app && \
 ENV PATH="${PATH}:/app/quarto/bin"
 ```
 
-## Lage Quarto
-Se [Get Started](https://quarto.org/docs/get-started/) på Quarto sine sider.
+## Team tokens
+For å programmatisk lage eller oppdatere datafortellinger trenger man å autentisere seg med et team token. For å finne team token for teamene du er medlem av kan du gå til [Mine team tokens](https://data.intern.nav.no/user/tokens) i Datamarkedsplassen (krever innlogging). Det er forskjellig tokens for dev og prod, så dersom du ønsker å lage eller oppdatere en datafortelling i dev finner du tokens [i dev versjonen](https://data.intern.dev.nav.no/user/tokens) av Datamarkedsplassen. Samme token brukes både for intern og ekstern publisering av datafortellinger.
 
-I eksemplene under må følgende byttes ut med reelle verdier:
+### Rotere token
+Dersom du har behov for å rotere team tokenet til et av teamene dine (f.eks. dersom du har eksponert tokenet ved et uhell) kan dette gjøres fra [Mine team tokens](https://data.intern.nav.no/user/tokens) i Datamarkedsplassen.
+
+## Lage Datafortelling
+Man kan publisere datafortellinger enten [internt](#internt) for NAV ansatte eller [eksternt](#eksternt).
+
+### Internt
+For datafortellinger som kun skal være tilgjengelig for ansatte i NAV kan kan man publisere denne til den interne [datamarkedsplassen](https://data.intern.nav.no).
+
+I eksemplene som følger må følgende byttes ut med reelle verdier:
 
 - `${ENV}` 
     - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *datamarkedsplassen.intern.dev.nav.no* for dev og *datamarkedsplassen.intern.nav.no* for prod
     - Ellers settes det til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
-- `${QUARTO_ID}` - erstatt med ID på Quarto
-- `${TEAM_TOKEN}` - erstatt med team-token fra markedsplassen
+- `${STORY_ID}` - erstatt med ID på datafortellingen
+- `${TEAM_TOKEN}` - erstatt med team-token fra Datamarkedsplassen
 - `${TEAM_ID}` - erstatt med team ID for teamet ditt i [teamkatalogen](https://teamkatalog.intern.nav.no)
 
-## Registrere Quarto i markedsplassen
-Når man skal registrere en Quarto i [markedsplassen](https://data.intern.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
+Se [Get Started](https://quarto.org/docs/get-started/) på Quarto sine sider for å komme i gang med utvikling av datafortellingen.
 
-### Registrer gjennom brukergrensesnitt
+#### Registrere Quarto i Datamarkedsplassen
+Når man skal registrere en quarto datafortelling i [Datamarkedsplassen](https://data.intern.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
+
+##### Registrer gjennom brukergrensesnitt
 1. Gå til [data.intern.nav.no](https://data.intern.nav.no) for prod eller [data.intern.dev.nav.no](https://data.intern.dev.nav.no) for dev.
 2. Logg inn
 3. Klikk hamburgermeny og velg `Legg til ny datafortelling`
-4. Fyll inn metadata om Quarto fortellingen
+4. Fyll inn metadata om datafortellingen
 5. Velg fil(er) du ønsker å laste opp
 6. Trykk `Lagre`
 
 !!! info "Dersom du kun ønsker å registere en tom datafortelling som siden skal oppdateres programmatisk kan man droppe steg (5) over"
 
-### Registrer programmatisk
+##### Registrer programmatisk
 Du kan også programmatisk registrere en datafortelling.
 
 Request body parametere:
 
-- `name` (obligatrisk): Navn på quarto fortellingen
-- `description`: Beskrivelse av quarto fortellingen
+- `name` (obligatrisk): Navn på datafortellingen
+- `description`: Beskrivelse av datafortellingen
 - `teamID`: ID i [teamkatalogen](https://teamkatalog.nav.no) for teamet som eier datafortellingen. Nødvendig å spesifisere dersom datafortellingen skal sorteres riktig i produktområdevisningen på [data.intern.nav.no](https://data.intern.nav.no)
-- `id`: Kan spesifiseres dersom du ønsker å spesifisere ID for quarto fortellingen selv. Dersom den utelates genereres det en ny.
+- `id`: Kan spesifiseres dersom du ønsker å spesifisere ID for datafortellingen selv. Dersom den utelates genereres det en ny.
 
 Headers for requesten
+
 - `bearer token` (obligatorisk): Team tokenet for teamet som skal eie datafortellingen
 
 !!! info "Merk: IDen for datafortellingen blir returnert når man gjør en POST til `/quarto/create`. Denne må så brukes når datafortellingen skal oppdateres etterpå."
 
-#### Med curl
+###### Med curl
 ```bash
 $ curl -X POST \
-    -d '{"name": "min quarto", "description": "min beskrivelse", "teamID": "<team-id>", "id": "${QUARTO_ID}"}' \
+    -d '{"name": "min datafortelling", "description": "min beskrivelse", "teamID": "<team-id>", "id": "${STORY_ID}"}' \
     -H "Authorization: Bearer ${TEAM_TOKEN}" \
     https://${ENV}/quarto/create
 ```
 
-#### Med python
+###### Med python
 ```python
 import requests
 
-res = requests.post(f"https://${ENV}/quarto/create", headers={"Authorization": "bearer ${TEAM_TOKEN}", json={
+res = requests.post(f"https://${ENV}/quarto/create", headers={"Authorization": "bearer ${TEAM_TOKEN}"}, json={
     "name": "min quarto",
     "description": "min beskrivelse",
     "teamID": "<team-id>",
-    "id": "${QUARTO_ID}"
-}})
+    "id": "${STORY_ID}"
+})
 
-quarto_id = res.json()["id"]
+story_id = res.json()["id"]
 ```
 
-### Oppdater eksisterende Quarto
+#### Oppdater eksisterende intern datafortelling
 For å oppdatere en eksisterende Quarto fortelling må man først generere ressursfilene på nytt med `quarto render <file>`.
 
-Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-tokenet fra [markedsplassen](https://data.intern.nav.no).
+Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-tokenet fra [Datamarkedsplassen](https://data.intern.nav.no).
 
 Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.
 
-#### Med curl
+##### Med curl
 
 ```bash
 curl -X PUT -F index.html=@index.html \
@@ -105,7 +117,7 @@ curl -X PUT -F index.html=@index.html \
     -H "Authorization:Bearer ${TEAM_TOKEN}"
 ```
 
-##### Flere filer
+###### Flere filer
 
 ```bash
 #!/bin/bash
@@ -121,7 +133,7 @@ curl -X PUT $FILES "https://${ENV}/quarto/update/${QUARTO_ID}" \
     -H "Authorization:Bearer ${TEAM_TOKEN}"
 ```
 
-#### Med python
+##### Med python
 
 ```python
 import os
@@ -139,21 +151,20 @@ for file_path in files_to_upload:
     with open(file_path, 'rb') as file:
         # Read the file contents and store them in the dictionary
         file_contents = file.read()
-        multipart_form_data[file_path] = (file_name, file_contents)
+        multipart_form_data[file_name] = (file_name, file_contents)
 
 # Send the request with all files in the dictionary
 response = requests.put( f"https://{ENV}/quarto/update/{QUARTO_ID}", 
                         headers={"Authorization": f"Bearer {TEAM_TOKEN}"},
                         files=multipart_form_data)
-    
-print(response.status_code)
+response.raise_for_status()
 ```
 
-### Oppdatere Quarto med Naisjob
+#### Oppdatere Quarto med Naisjob
 
 For å produksjonsette oppdatering av en Quarto Datafortelling med Naisjob er det noe konfigurasjon man må spesifisere i NAIS manifestet og Dockerfilen til jobben.
 
-- `quarto render` resulterer i at det genereres noen filer som må lagres midlertidig i containermiljøet før publisering til Markedsplassen. Man er derfor nødt til å legge til annotasjon i Naisjob manifestet for å tillate skriving til filsystemet i containeren
+- `quarto render` resulterer i at det genereres noen filer som må lagres midlertidig i containermiljøet før publisering til Datamarkedsplassen. Man er derfor nødt til å legge til annotasjon i Naisjob manifestet for å tillate skriving til filsystemet i containeren
 ````yaml
 metadata:
   annotations:
@@ -185,160 +196,186 @@ Repoet [navikt/nada-quarto](https://github.com/navikt/nada-quarto) har et fullst
 
 I eksempelet hentes team-tokenet fra en [kubernetes secret](https://kubernetes.io/docs/concepts/configuration/secret/) i clusteret og settes som miljøvariabelen `NADA_TOKEN`.
 
-#### Andre eksempler med Naisjob
+##### Andre eksempler med Naisjob
+
 - [fia](https://github.com/navikt/fia-datafortelling): Mer avansert eksempel med produksjonssatt datafortelling
 
-## Quarto book
-Vi har en enkel rigg for å publisere [Quarto fortelling](https://quarto.org/docs/books/) internt i NAV på `data.intern.nav.no` og eksternt på `data.nav.no`.
-Dette oppsettet forutsetter at man oppretter et Github repo med en Github Action som laster opp Quarto booken din til en GCP-bucket eid av deg.
-Under følger en oppskrift på hvordan dette kan settes opp:
+### Eksternt
+Følgende beskriver hvordan man kan publisere datafortellinger eksternt på `data.nav.no`.
 
-!!! info "Oppskriften forutsetter at du har tilgang til [navikt organisasjonen](https://github.com/navikt) på Github og tilgang til et GCP prosjekt hvor [storage bucketen](https://cloud.google.com/storage/docs/creating-buckets) skal opprettes. I tillegg kreves kunnskap om hvordan å dytte kode til et Github repo. GCP bruker og tilgang til `navikt` organisasjonen på Github får du gjennom [myapps](https://myapps.microsoft.com). GCP prosjekt blir opprettet dersom du lager et nais-team [her](https://teams.nav.cloud.nais.io/)."
+For eksempler på datafortellinger publisert eksternt, se:
+
+- [NAVs omverdensanalyse 2023–2035](https://data.nav.no/fortelling/omverdensanalyse) 
+    - repo: [navikt/oma_2023](https://github.com/navikt/oma_2023)
+- [Utviklingstrekk i Folketrygden](https://data.nav.no/fortelling/utviklingstrekkfolketrygden)
+    - repo: [navikt/Utviklingstrekk](https://github.com/navikt/Utviklingstrekk)
+- [Veileder for generativ kunstig intelligens](https://data.nav.no/fortelling/ki)
+    - repo: [navikt/GKI-veil-bakgrunn](https://github.com/navikt/GKI-veil-bakgrunn)
+
+I eksemplene som følger må følgende byttes ut med reelle verdier:
+
+- `${ENV}` 
+    - *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
+- `${STORY_ID}` - erstatt med ID på datafortellingen
+- `${TEAM_TOKEN}` - erstatt med team-token fra Datamarkedsplassen
+
+#### Registere ekstern datafortelling
+Vi støtter foreløpig kun programmatisk registrering av eksterne datafortellinger.
+
+Request body parametere:
+
+- `title`: Navn på datafortellingen
+- `slug`: Dersom du selv ønsker å bestemme `slug` i URLen til datafortellingen
+- `team`: Navn på teamet som eier datafortellingen. Dette tilsvarer navnet som gjelder for tokenet du henter fra https://data.intern.nav.no/user/tokens (eventuelt https://data.intern.dev.nav.no/user/tokens for dev)
+- `published`: Dette flagget indikerer om datafortellingen skal listes opp på index siden til `data.nav.no`.
+
+Dersom en ikke oppgir verken `title` eller `slug` når datafortellingen registreres så vil det være den genererte UUIDen til datafortellingen som vil brukes for URLen til datafortellingen.
+
+Headers for requesten
+
+- `bearer token` (obligatorisk): Team tokenet for teamet som skal eie datafortellingen
+
+!!! info "Merk: IDen for den genererte datafortellingen blir returnert når man gjør en POST til `/api/v1/story`. Denne må så brukes når datafortellingen skal oppdateres senere."
+
+##### Med curl
+```bash
+$ curl -X POST \
+    -d '{"title": "Min datafortelling om noe", "slug": "min-datafortelling", "team": "<team-navn>"}' \
+    -H "Authorization: Bearer ${TEAM_TOKEN}" \
+    https://${ENV}/api/v1/story
+```
+
+##### Med python
+```python
+import requests
+
+res = requests.post(f"https://${ENV}/api/v1/story", headers={"Authorization": "bearer ${TEAM_TOKEN}"}, json={
+    "title": "Min datafortelling om noe",
+    "slug": "min-datafortelling",
+    "team": "<team-navn>"
+})
+
+story_id = res.json()["id"]
+```
+
+#### Oppdatere en ekstern datafortelling
+
+##### Med curl
+```bash
+curl -X PUT -F index.html=@index.html \
+    "https://${ENV}/api/v1/story/${STORY_ID}" \
+    -H "Authorization:Bearer ${TEAM_TOKEN}"
+```
+
+###### Flere filer
+
+```bash
+#!/bin/bash
+set -e
+
+FILES=""
+for file in <mappe med filene>/*
+do
+  FILES+=" -F $file=@$file"
+done
+
+curl -X PUT $FILES "https://${ENV}/api/v1/story/${STORY_ID}" \
+    -H "Authorization:Bearer ${TEAM_TOKEN}"
+```
+
+##### Med python
+
+```python
+import os
+import requests
+
+# A list of file paths to be uploaded
+files_to_upload = [
+    "PATH/index.html"
+    "PATH/SUB/FOLDER/some.html"
+]
+
+multipart_form_data = {}
+for file_path in files_to_upload:
+    file_name = os.path.basename(file_path)
+    with open(file_path, 'rb') as file:
+        # Read the file contents and store them in the dictionary
+        file_contents = file.read()
+        multipart_form_data[file_name] = (file_name, file_contents)
+
+# Send the request with all files in the dictionary
+response = requests.put( f"https://{ENV}/api/v1/story/{STORY_ID}", 
+                        headers={"Authorization": f"Bearer {TEAM_TOKEN}"},
+                        files=multipart_form_data)
+response.raise_for_status()
+```
+
+### Oppdatere datafortelling med GitHub action
+Vi har laget en egen GitHub action - [navikt/story-upload](https://github.com/navikt/story-upload) - som kan brukes dersom man ønsker å lagre datafortellingen sin i et GitHub repo. 
+Denne actionen vil publisere innholdet til en [gcs bucket](https://cloud.google.com/storage/docs/buckets) som NADA hoster datafortellinger fra. 
+Man kan bruke actionen til å publisere både interne datafortellinger på `data.intern.nav.no` og eksterne datafortellinger på `data.nav.no`.
+
+!!! info "Se [README for github action](https://github.com/navikt/story-upload/blob/main/README.md#example-usage) for beskrivelse av de ulike konfigurerbare input parameterene til actionen"
+
+Under er et eksempel på hvordan å sette opp en enkel github action workflow som oppdaterer en datafortelling __**internt i dev løsningen til datamarkedsplassen**__ (dvs. `data.intern.dev.nav.no`) ved hver push til `main`.
+For å bruke actionen må det eksistere en datafortelling som man ønsker å oppdatere. Dersom det ikke finnes en datafortelling så må denne registeres først, se [her](#registrere-quarto-i-datamarkedsplassen) for å registrere en intern datafortelling, eller [her](#registere-datafortelling) for å registrere en ekstern. 
 
 
-1. Opprett et repo under [navikt-organisasjonen](https://github.com/organizations/navikt/repositories/new) på Github.
-2. Opprett en [storage bucket](https://cloud.google.com/storage/docs/creating-buckets) i et GCP prosjekt du er medlem av.
-3. Lag Quarto fortellingen din:
-    - Anbefaler å bruke Quarto sin egen [dokumentasjon](https://quarto.org/docs/books/) for dette.
-    - Eksempler på datafortellinger laget med Quarto i NAV:
-        - [Omverdensanalysen](https://github.com/navikt/oma_2023)
-        - [Overgangsindikator](https://github.com/navikt/ovind_docs)
-        - [tada](https://github.com/navikt/tada-playbook)
-4. Opprett en service account i GCP prosjektet:
-    - For å opprette service account, se dokumentasjon i [cloud.google.com](https://cloud.google.com/iam/docs/service-accounts-create).
-    - Gi service accounten rollen `Storage Admin` på bucketen opprettet i (2).
-      Se dokumentasjon i [cloud.google.com](https://cloud.google.com/storage/docs/access-control/using-iam-permissions).
-5. Lag en [JSON nøkkel](https://cloud.google.com/iam/docs/keys-create-delete) for service accounten.
-   Denne lagrer du midlertidig lokalt på maskinen din.
-6. Opprett en en [Github Action secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) i repoet ditt du kaller `GCP_CREDENTIALS`.
-   Innholdet i secreten er JSON nøkkelen fra (5). Etter at secreten er lagt til i repoet bør JSON-nøkkelen fjernes fra maskinen din.
-7. Når du har laget datafortellingen din med Quarto og dyttet denne til repoet opprettet i (1) kan du sette opp en Github Action som laster fortellingen din til bucketen på GCP hver gang du pusher kode til repoet.
-   Opprett filen `.github/workflows/update-quarto.yaml` i repoet med følgende innhold:
-
-!!! info "I eksempelet under må ${BUCKET} erstattes med navnet på bucketen du lagde i (2). ${NAME} må erstattes med et selvvalgt navn som representerer quarto storien."
+Erstatt `${STORY_ID}` i eksempelet med IDen på datafortellingen du ønsker å oppdatere. Eksempelet tar også utgangspunkt i at team tokenet for teamet som eier datafortellingen er lagt inn som [secret på github repoet](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-environment) med nøkkel `TEAM_TOKEN`. 
+Token for teamet ditt finner du ved å gå til https://data.intern.nav.no/user/tokens (eventuelt https://data.intern.dev.nav.no/user/tokens for dev).
 
 ```yaml
-name: update-quarto
+name: Eksempel på opplasting av datafortelling
+
 on: 
   push:
     branches:
-      - 'main'
+      - main
 
 jobs:
-  update-quarto:
-    name: Update quarto story
-    runs-on: latest
+  oppdater-datafortelling:
+    name: Oppdater datafortelling
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - id: 'auth'
-        uses: 'google-github-actions/auth@v1'
+      - uses: navikt/story-upload@v1
         with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-      - name: Upload files
-        working-directory: _site
-        run: gsutil cp -r * gs://${BUCKET}/${NAME}/
+          id: ${STORY_ID}
+          dir: src
+          team_token: ${{ secrets.TEAM_TOKEN }}
+          env: dev
+          public: "false"
 ```
 
-8. Lag en pull request til [navikt/nada-quarto-proxy](https://github.com/navikt/nada-quarto-proxy).
-   Pull requesten må inneholde følgende:
-    - Opprett filen `.nais/${NAME}.yaml` med innholdet nedenfor.
-    - Legg til `,.nais/${NAME}.yaml` på slutten av linjen på felles [workflow](https://github.com/navikt/nada-quarto-proxy/blob/main/.github/workflows/build-and-deploy.yaml#L34).
+### Knatch
+[Knatch](https://github.com/navikt/knatch) - Knada batch - er et kommandolinjeverktøy tiltenkt å forenkle opplasting av datafortellinger til både den [interne datamarkedsplassen](https://data.intern.nav.no) og eksterne datafortellinger på `data.nav.no`.
 
-!!! info "Erstatt ${BUCKET} med navn på bucket fra (2) og ${NAME} med det du valgte i (7)"
+Det er særlig nyttig i tilfeller hvor en ønsker å laste opp datafortellinger som består av flere filer da `knatch` tar som inputargument en mappe og vil automatisk dele opp filene i mappen og laste de opp i batcher til datamarkedsplassen. Størrelsen på batchene kan du spesifisere med flagget `--batch-size`, dersom det utelates vil datafortellingen lastes opp i batcher på 10 filer.
 
-```yaml
-kind: "Application"
-apiVersion: "nais.io/v1alpha1"
-metadata:
-  name: quarto-${NAME}
-  namespace: nada
-  labels:
-    team: nada
-spec:
-  image: {{ image }}
-  env:
-    - name: GCS_QUARTO_BUCKET
-      value: ${BUCKET}
-    - name: QUARTO_UUID
-      value: ${NAME}
-    - name: QUARTO_PATH
-      value: ${NAME}
-  ingresses:
-    - https://data.intern.nav.no/${NAME}
-  replicas:
-    min: 1
-    max: 2
+#### Installasjon
+```bash
+pip install knatch
 ```
 
-9. Man må også gi Nais-appen som blir opprettet i navikt/nada-quarto-proxy lesetilgang til den samme bucketen.
-   Etter at appen har blitt deployet må noen manuelt inn i clustert for å finne ut hvilken service account som har blitt opprettet.
-   Denne service accounten må da få rollen `Storage Object Viewer` på bucketen opprettet i (2).
+#### Eksempler på bruk
+`Knatch` kan brukes til å oppdatere en datafortelling både [internt i NAV](#publisering-til-intern-markedsplass) og [eksternt](#publisering-eksternt).
 
-## Datastory
-!!!warning "Datafortellinger laget med datastory-biblioteket vil fases ut. Eksisterende datafortellinger vil leve videre en stund, og vi har stengt muligheten for å lage nye."
+Begge eksemplene tar utgangspunkt i følgende:
 
-### Installer datastory bibliotek
-````bash
-pip install datastory
-````
+- Du har allerede opprettet en datafortelling du ønsker å oppdatere, se [her](#registrere-quarto-i-datamarkedsplassen) for å registrere en intern datafortelling, eller [her](#registere-datafortelling) for å registrere en ekstern. Erstatt `<id>` i eksemplene under med IDen til den eksisterende datafortellingen.
+- Du har hentet ut team tokenet for teamet som eier datafortellingen. Erstatt `<token>` i eksemplene under med dette tokenet.
 
-### API adresser
-For å publisere en datafortelling må man angi api adressen det skal publiseres til.
+##### Publisering til intern markedsplass
+I eksempelet under publiseres det til dev-løsingen til den __**interne**__ datamarkedsplassen (`datamarkedsplassen.intern.dev.nav.no`). Dersom en i stedet ønsker å publisere til prod så må `--host` flagget settes til `datamarkedsplassen.intern.nav.no`.
 
-- for [dev-miljøet](https://data.dev.intern.nav.no)
-    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://datamarkedsplassen.intern.dev.nav.no/api`
-    - ellers er adressen `https://data.ekstern.dev.nav.no/api`
-- for [prod-miljøet](https://data.intern.nav.no) 
-    - fra `knada` VMer samt jupyter notebooks/airflow i `knada` clusteret er adressen `https://datamarkedsplassen.intern.nav.no/api`
-    - ellers er adressen `https://data.nav.no/api`
+```bash
+knatch <id> sti/til/mappe/med/filer <token> --host datamarkedsplassen.intern.dev.nav.no
+```
 
-I kodeeksemplene som følger brukes dev adressen.
 
-### Lage utkast til datafortelling
-````python
-from datastory import DataStory
+##### Publisering eksternt
+I eksempelet under publiseres det til dev-løsingen for ekstern publisering (`data.ekstern.dev.nav.no`). Dersom en i stedet ønsker å publisere til prod så må `--host` flagget settes til `data.nav.no`.
 
-ds = DataStory("Min datafortelling")
-
-ds.header("Overskrift")
-ds.markdown("Liten introbeskrivelse til datafortellingen")
-ds.header("Underoverskrift", level=2)
-ds.markdown("Mer fyldig beskrivelse av innholdet")
-ds.header("Figur 1 tittel", level=3)
-ds.plotly(fig_plotly.to_json())
-ds.markdown("Beskrivelse av figur 1")
-ds.header("Figur 2 tittel", level=3)
-ds.vega(fig_vega)
-ds.markdown("Beskrivelse av figur 2")
-
-ds.publish(url="https://data.ekstern.dev.nav.no/api")
-````
-
-Når man kaller `ds.publish()` i eksempelet over vil det bli opprettet en kladd til en datafortelling, se [her](#publisere-datafortelling) 
-for å se hvordan man publiserer en datafortelling fra en kladd.
-
-### Publisere datafortelling
-Publisering av en datafortelling gjøres fra kladd-visningen i datamarkedsplassen som følger:
-
-1. Logg inn
-2. Trykk lagre
-![kladd](datafortelling-utkast.png)
-3. Velg hvilket av dine team som skal eie datafortellingen
-4. Velg om du skal lage en ny eller overskrive en eksisterende datastory
-
-### Programmatisk oppdatere eksisterende datafortelling
-For å oppdatere en publisert datafortelling programmatisk må man autentisere seg med et token. 
-Dette tokenet blir generert når man publiserer en kladd og kan hentes ut ved å gå til den publiserte datafortellingen og fra [kebab menyen](https://uxplanet.org/choose-correct-menu-icon-for-your-navigation-7ffc22df80ac#160b) velge `vis token`.
-Når du har fått hentet ut oppdateringstokenet kan du erstatte siste kodelinje i eksempelet over (dvs. `ds.publish()`) med en metode som i stedet oppdaterer datafortellingen.
-
-````python
-ds.update(token="mitt-token", url="https://datamarkedsplassen.intern.dev.nav.no/api")
-````
-
-Dersom man ønsker å unngå å sette api adressen til Markedsplassen som input parameter til `ds.publish()` og `ds.update()` metodene kan man i stedet sette det som miljøvariabel, f.eks.
-````python
-import os
-os.environ["DATASTORY_URL"] = "https://datamarkedsplassen.intern.dev.nav.no/api"
-````
+```bash
+knatch <id> sti/til/mappe/med/filer <token> --host data.ekstern.dev.nav.no --path api/v1/story
+```

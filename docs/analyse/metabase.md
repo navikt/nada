@@ -11,7 +11,7 @@ Innloggingen gjøres med SSO.
 
 ## Hvordan fungerer tilgangsstyring i metabase?
 Datasett er ved registrering kun tilgjengelig for teamet som eier data.
-Dersom teamet legger til datasettet i Metabase (`Legg til i metabase` på markedsplassen), vil det være tilgjengelig for de samme som har tilgang til datasettet på markedsplassen.
+Dersom teamet legger til datasettet i Metabase (`Legg til i metabase` på Datamarkedsplassen), vil det være tilgjengelig for de samme som har tilgang til datasettet på Datamarkedsplassen.
 Når datasettet legges til i metabase, vil det opprettes en database (`I` i figuren under) og en collection (`II` i figuren under) i metabase.
 Begge deler er tilgangsbegrenset.
 Tilgangsstyringen gjelder både for å lese Dashboard og for å lage dem.
@@ -44,7 +44,7 @@ A --Tilganger til Metabase er <br> er de samme som i BigQuery--> F
 B --> E
 F --> D
 D --> C
-G --> H
+G --Personer med tilgang til <br> collectionen har tilgang til <br> *resultatet* fra questionen <br> om den ligger i samme collection. <br> De kan ikke endre questionen <br> eller se data i underliggende tabell--> H
 E --> F
 F --Kan kun bruke data <br> andre steder om personen <br> har tilgang--> G
 ````

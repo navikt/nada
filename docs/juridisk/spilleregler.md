@@ -8,10 +8,10 @@ Dette er ikke en uttømmende liste over regler, men heller en slags FAQ; spørsm
 ## Hva må jeg som **produsent** dokumentere om dataene jeg behandler?
 Produksjon av data dekker innlesing, bearbeiding og lagring av data på `BigQuery` *før* eventuell deling utenfor teamet.
 Denne behandlingen av personopplysninger dokumenteres sammen med eksisterende registrering i [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no/) knyttet til systemet der data oppstår.
-I beskrivelsen av behandlingen må det fremkomme at data registreres på Markedsplassen og til hvilket formål.
+I beskrivelsen av behandlingen må det fremkomme at data registreres på Datamarkedsplassen og til hvilket formål.
 Formålet med delingen av data kan her være tjenesteutvikling og/eller statistikkproduksjon.
 Om behandlingsgrunnlaget er forskjellig fra opprinnelig registrering, må dette oppgis.
-Informasjon om hvilke opplysningstyper som inngår i datasettet oppgis ved registrering på markedsplassen.
+Informasjon om hvilke opplysningstyper som inngår i datasettet oppgis ved registrering på Datamarkedsplassen.
 
 ## Er det begrensninger på hvilke data vi kan flytte til sky?
 Nei.

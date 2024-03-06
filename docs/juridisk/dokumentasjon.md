@@ -17,6 +17,9 @@ Du kan også [lese mer om behandlinger i playbook for ansvarlig datascience](htt
 
 ## Det NADA har gjort allerede
 
+!!! note "Kommentar"
+    Hvis du får en feilmelding når du forsøker å lese ROSene, må du først [be om tilgang til TryggNok](https://navno.sharepoint.com/sites/intranett-it/SitePages/Skal-du-bruke-TryggNok-for-første-gang-.aspx).
+
 Vi har gjort en rekke risiko- og sårbarhetsanalyse (ROS) av verktøy som NADA tilbyr, og verktøy vi mener er relevant for å gjøre dataanalyser.
 All ROS er gjort i TryggNok.
 
@@ -28,3 +31,7 @@ All ROS er gjort i TryggNok.
 * [Quarto (ROS #1347)](https://apps.powerapps.com/play/f8517640-ea01-46e2-9c09-be6b05013566?ID=1357)
 
 Du kan lese om behandlingene NADA gjør i [Behandlingskatalogen](https://behandlingskatalog.nais.adeo.no/process/team/3f85cdce-1257-4862-8ce3-3aec9b576df0/18089de7-829d-47e3-868b-53d4e5f251da).
+
+### Andre relevante ROSer
+
+* [Bruk av Airflow via KNADA-GKE i Datavarehus](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=1252)

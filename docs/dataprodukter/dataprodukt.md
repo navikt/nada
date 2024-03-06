@@ -1,13 +1,13 @@
 Et dataprodukt består av ett eller flere _datasett_, samt en overordnet beskrivelse og et konsept om hvem som eier dataproduktet.
-Dataprodukt opprettes [på Markedsplassen](https://data.intern.nav.no/dataproduct/new) (krever innlogging).
+Dataprodukt opprettes [på Datamarkedsplassen](https://data.intern.nav.no/dataproduct/new) (krever innlogging).
 
 <div style="width:100%;aspect-ratio:155/150;">
-    <object data="/img/flyt-markedsplassen.svg" type="image/svg+xml"></object>
+    <object data="/img/flyt-datamarkedsplassen.svg" type="image/svg+xml"></object>
 </div>
 
 ## Hva er et datasett?
 
-_Datasett_ er et konsept i markedsplassen som beskriver en ekstern ressurs (data), pluss ekstra metadata.
+_Datasett_ er et konsept i Datamarkedsplassen som beskriver en ekstern ressurs (data), pluss ekstra metadata.
 I dag kan en ekstern ressurs kun være en tabell eller et view i BigQuery.
 
 ### Metadata i et datasett

@@ -4,7 +4,7 @@ Vi tilbyr private [virtuelle maskiner](https://cloud.google.com/compute/docs/ins
 Denne maskinen vil ha tilgang til on-premise kilder på lik linje som [Notebooks](./notebook/knada-notebook.md) og [Airflow](./airflow/knada-airflow.md) som kjører _i_ KNADA.
 
 Siden dette er en privat maskin stiller vi høyere krav til bruk av maskinene.
-Blant annet er du selv ansvarlig for å holde maskinen oppdatert!
+Blant annet er du medansvarlig for å holde maskinen oppdatert!
 Dette betyr at du må sette deg inn i hvordan man [vedlikeholder](#vedlikehold) en Debian GNU/Linux maskin.
 
 Det samme gjelder for pakker og applikasjoner du installerer.
@@ -24,12 +24,14 @@ Hvis man bruker `bash` kan man legge til `history -c` i `.bash_logout`.
 For Debian (selve maskinen/OSet) så kan man lese [Keeping your Debian system up-to-date](https://www.debian.org/doc/manuals/debian-faq/uptodate.en.html), men i korte trekk handler det om å kjøre `aptitude update` etterfulgt av `aptitude full-upgrade`.
 Dette vil holde OSet oppdatert, og oppdatere pakker installert via `aptitude` (aka `apt install`).
 
+For å sikre oss at dette faktisk skjer, så går det en jobb natt til mandag som oppdatere alle maskiner som er _skrudd på_!
+Er du en av de som er flink og skrur av maskinen din når du ikke bruker den, så må du dessverre selv påse at den blir oppdatert.
+
 For Python bør man regelmessig kjøre `pip list --outdated` for å se hva slags pakker man trenger å oppgradere.
 Enda bedre er å ha en `requirements.txt` (eller tilsvarende for Poetry eller lignende verktøy) sjekket inn i Github, og la [Dependabot](https://docs.github.com/en/code-security/dependabot) gjøre jobben.
 Husk også å holde følge med på nye Python-versjoner!
 Det finnes en god oversikt hos [Python developers guide](https://devguide.python.org/versions/).
 Per dags dato bør *ingen* være på noe lavere enn 3.8, og man bør jobbe med å komme seg vekk fra 3.8 da den har EOL (end of life) oktober 2024.
-
 
 ## Koble til VM med SSH
 

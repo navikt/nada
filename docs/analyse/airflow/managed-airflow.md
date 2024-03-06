@@ -45,9 +45,8 @@ og trykk på `CREATE SERVICE ACCOUNT`
 
 #### Lag et Github repo
 1. Opprett github repo under navikt-organisasjonen (eller bruk et du har fra før)
-2. Opprett følgende to secrets i Github repoet:
+2. Opprett følgende secret i Github repoet:
     - `Name` satt til _GCP_CREDENTIALS_ og `Value` til innholdet i JSON-nøkkelen lastet ned i [Last ned service account nøkkel](cloud-composer#last-ned-service-account-nøkkel)
-    - `Name` satt til _PROJECT_ID_ og `Value` til ID-en GCP team-prosjektet (finnes [her](https://console.cloud.google.com/home/dashboard))
 
 #### Oppsett av Github repo
 1. Lag en katalog med navn `dags` i repoet
@@ -61,26 +60,26 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/sync-gcs.yaml'
+      - '.github/workflows/sync-gcs-bucket.yaml'
       - 'dags/**'
 
 jobs:
   sync-gcs-bucket:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: "google-github-actions/auth@v1"
+    - uses: actions/checkout@v4
+    - uses: google-github-actions/auth@v2
       with:
         credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
     - name: "Set up Cloud SDK"
-    - uses: google-github-actions/setup-gcloud@v1
+      uses: google-github-actions/setup-gcloud@v2
     - name: "Specify GCP project"
-      run: "gcloud config set project {{ secrets.PROJECT_ID }}"
+      run: "gcloud config set project PROJECT"
     - name: "Sync DAGs to GCS bucket"
       run: gsutil cp -r dags gs://BUCKET
 ````
 
-!!! info "Erstatt BUCKET i workflowen over med navnet på bucketen som ble opprettet i [Opprett ny composer instans](cloud-composer#opprett-ny-composer-instans)"
+!!! info "Erstatt BUCKET i workflowen over med navnet på bucketen som ble opprettet i [Opprett ny composer instans](cloud-composer#opprett-ny-composer-instans) og PROJECT med gcp prosjektet bucketen ligger i (finnes [her](https://console.cloud.google.com/home/dashboard))"
 
 
 Ved push til main branch vil denne workflowen laste opp innholdet i `dags` katalogen i repoet til GCS bucketen 
