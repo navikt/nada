@@ -10,7 +10,7 @@ Når du bestiller tabellene skjer følgende:
 1. Et nytt `BigQuery-dataset` opprettes i et eget Markedsplassen-prosjekt i GCP. Du får tilgang til dette.
 2. Markedsplassen generer en verdi som brukes i pseudonymiseringen
 3. De opprinnelige tabellene som de pseudonymiserte tabellene er basert på leses av Markedsplassen
-4. Konsistente id-er lages ved at vi kobler inn mapping-tabell (optional)
+4. Konsistente id-er lages ved at vi kobler inn mapping-tabell (ikke påkrevd)
 5. Markedsplassen pseudonymiserer kolonner som *produsentene* har merket som pseudonymiserte. SHA256 og den samme verdien for alle tabellene brukes i pseudonymiseringen.
 6. View opprettes i `BigQuery-dataset`
 
