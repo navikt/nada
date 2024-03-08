@@ -194,12 +194,12 @@ with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
 
 
 ### Egne Docker images for Airflow
+Hvis du kun har behov for andre Python-biblioteker så anbefaler vi på det sterkeste at du bruker [Dataverk Airflow](#dataverk-airflow) og sender med en `requirements.txt` fil i stedet for å bygge ditt eget image.
+
 I noen tilfeller har du kanskje flere avhengigheter enn det vi tilbyr i standard Airflow-oppsett.
 Da kan det å bygge sitt eget Docker image være en løsning.
-
 Du kan se hva vi tilbyr i våre images, og hvordan disse er bygget i [navikt/knada-images](https://github.com/navikt/knada-images/).
 Våre Docker imager kommer med drivere for Oracle og Postgres, men inneholder __**ikke et stort utvalg av Python biblioteker**__.
-Hvis du kun har behov for andre Python-biblioteker så anbefaler vi på det sterkeste at du bruker [Dataverk Airflow](#dataverk-airflow) og sender med en `requirements.txt` fil i stedet for å bygge ditt eget image.
 
 Se [her](#overstyring-av-default-worker-image) for å spesifisere eget image som brukes av standard Airflow workere.
 Se [her](#overstyring-av-dataverk-airflow-image) for å spesifisere eget image som brukes av dataverk-airflow workere.
