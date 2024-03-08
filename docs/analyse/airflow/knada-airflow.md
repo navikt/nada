@@ -193,20 +193,31 @@ with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
 ```
 
 
-### Eget Docker image for Airflow
-
+### Egne Docker images for Airflow
 I noen tilfeller har du kanskje flere avhengigheter enn det vi tilbyr i standard Airflow-oppsett.
 Da kan det å bygge sitt eget Docker image være en løsning.
 
-Du kan se hva vi tilbyr i vårt image, og hvordan dette er bygd i [navikt/knada-images](https://github.com/navikt/knada-images/).
-Våre Docker imager kommer med drivere for Oracle, og Postgres, men inneholder __**ikke et stort utvalg av Python biblioteker**__. 
-Hvis du kun har behov for andre Python-biblioteker så anbefaler vi på det sterkeste at du bruker [Dataverk Airflow](#dataverk-airflow), i stedet for å bygge ditt eget image. 
-Skal man bygge eget image så er dette imaget nødt til å ha [apache-airflow](https://pypi.org/project/apache-airflow/) installert samt en bruker `airflow` med uid `50000`. 
+Du kan se hva vi tilbyr i våre images, og hvordan disse er bygget i [navikt/knada-images](https://github.com/navikt/knada-images/).
+Våre Docker imager kommer med drivere for Oracle og Postgres, men inneholder __**ikke et stort utvalg av Python biblioteker**__.
+Hvis du kun har behov for andre Python-biblioteker så anbefaler vi på det sterkeste at du bruker [Dataverk Airflow](#dataverk-airflow) og sender med en `requirements.txt` fil i stedet for å bygge ditt eget image.
+
+Se [her](#overstyring-av-default-worker-image) for å spesifisere eget image som brukes av standard Airflow workere.
+Se [her](#overstyring-av-dataverk-airflow-image) for å spesifisere eget image som brukes av dataverk-airflow workere.
+
+Har du behov for at hele Airflow instansen skal bruke ditt Docker image så spesifiseres det i Knorten.
+
+NB: Hvis du bygger image *lokalt på en nyere Mac* så er det viktig at du bygger imaget for riktig plattform.
+Legg til `--platform linux/amd64` i `docker build` kommandoen.
+
+!!! warning "Vi tillater ikke at Airflow worker containere kjører med root privilegier. Dersom du bygger ditt eget image må dette imaget ha en bruker `airflow` med uid `50000`."
+
+#### Overstyring av default worker image
+Skal man bygge eget image som skal overstyre standard worker imaget er man nødt til å ha [apache-airflow](https://pypi.org/project/apache-airflow/) installert.
 Dette vil man få dersom man tar utgangspunkt i enten [vårt base image](https://github.com/navikt/knada-images/pkgs/container/knada-images%2Fairflow) eller det [offisielle airflow imaget](https://hub.docker.com/r/apache/airflow).
+I tillegg vil også nødvendig `airflow` bruker med uid `50000` være opprettet i miljøet.
+Dersom man ikke tar utgangspunkt i et av disse imagene må man selv installere Apache Airflow i imaget samt opprette `airflow`-brukeren.
 
-!!! warn "Dersom du bygger eget image og ønsker å bruke `quarto_operator` fra `dataverk-airflow` så har dette biblioteket en avhengighet til kommandolinjeverktøyet [knatch](../datafortellinger.md#knatch) og må derfor også installeres i ditt image."
-
-Under følger et eksempel på hvordan å overstyre imaget som Airflow worker containeren bruker:
+Under følger et eksempel på hvordan å overstyre imaget som Airflow worker containeren bruker med imaget du selv har bygget:
 
 ```python
 from airflow import DAG
@@ -237,8 +248,14 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
     )
 ```
 
-For Dataverk Airflow trenger du kun å spesifisere `image`:
 
+#### Overstyring av dataverk-airflow image
+Skal man bygge eget image for å overstyre `dataverk-airflow` sitt standard image anbefaler vi å ta utgangspunkt i et av [våre dataverk-airflow imager](https://github.com/orgs/navikt/packages?tab=packages&q=knada-images%2Fdataverk-airflow-python) for den ønskede python versjonen.
+Dette imaget vil bygge på det [offisielle python imaget](https://hub.docker.com/_/python) samt inneholde drivere for oracle, postgres, i tillegg til quarto.
+
+!!! warn "Dersom du bygger eget image og ønsker å bruke `quarto_operator` fra `dataverk-airflow` så har dette biblioteket en avhengighet til kommandolinjeverktøyet [knatch](../datafortellinger.md#knatch) og må derfor også installeres i ditt image."
+
+Under følger et eksempel på hvordan å overstyre imaget som `dataverk-airflow` containeren bruker med imaget du selv har bygget:
 
 ```python
 from airflow import DAG
@@ -252,11 +269,6 @@ with DAG('dag', start_date=days_ago(1), schedule_interval=None) as dag:
                              nb_path="notebooks/mynb.ipynb",
                              image="ghcr.io/navikt/mitt-airflow-image:v1")
 ```
-
-Har du behov for at hele Airflow instansen skal bruke ditt Docker image så spesifiseres det i Knorten.
-
-NB: Hvis du bygger image *lokalt på en nyere Mac* så er det viktig at du bygger imaget for riktig plattform.
-Legg til `--platform linux/amd64` i `docker build` kommandoen.
 
 ## API-tilgang til Airflow
 
