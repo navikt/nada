@@ -95,7 +95,7 @@ nav:
     - Datafortellinger: analyse/datafortellinger.md
     - KNADA VM: analyse/knada-vm.md
     - Koble sammen pseudonymisert tabeller: analyse/koble-pseudonymiserte.md
-    - Allowlisting av trafikk: analyse/allowlisting.md
+    - Allow listing av trafikk: analyse/allowlisting.md
     - Google Secret Manager: analyse/google-secret-manager.md
     - Kodeeksempler: analyse/eksempler.md
     - TDV driver: analyse/tdv.md

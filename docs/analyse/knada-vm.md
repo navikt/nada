@@ -118,6 +118,13 @@ Host *
 
 Se SSH sin egen [dokumentasjon](https://man.openbsd.org/ssh_config.5) for mer informasjon om de forskjellige variablene.
 
+## Trafikk ut av VM
+
+Vi har tatt i bruk brannmurer for å hindre uønsket trafikk ut av VMene.
+Dette er konfigurert via Terraform i [knada-gcp](https://github.com/navikt/knada-gcp), og vi tilbyr ikke en individuell løsning.
+Derfor er vi litt mer restriktiv med hva vi åpner for.
+
+Se [allowlisting#knadavm](allowlisting) for en oversikt over åpningene vi tilbyr for Knada VM.
 
 ## Oppsett av VM
 
