@@ -16,8 +16,8 @@ Utformingen av spilleregler gjøres av et forum satt sammen av ulike perspektive
 I tillegg er det avgjørende med innspill fra folk utenfor dette forumet.
 
 ## Prosess
-1. Brukere på plattformen sender innspill i [#nada_spilleregler på Slack](https://nav-it.slack.com/archives/C03C4T14SNS) eller direkte til medlemmer av forumet.
-2. Innspill diskuteres i forumet, og det utarbeides en architectural decision record. Du kan [lese publiserte ADR-dokumenter på GitHub](https://github.com/navikt/nada/tree/main/adr)
+1. Brukere på plattformen sender innspill i [Slack#nada-spilleregler](https://nav-it.slack.com/archives/C03C4T14SNS) eller direkte til medlemmer av forumet.
+2. Innspill diskuteres i forumet, og det utarbeides en architectural decision record. Du kan lese publiserte [ADR-dokumenter på GitHub](https://github.com/navikt/nada-internal/tree/main/adr).
 3. Brukere på plattformen gir innspill til ADR
 4. Beslutning tas i forumet
 5. Policy implementeres, fortrinnsvis støttet i plattformen
