@@ -20,7 +20,7 @@ Følgende må spesifiseres
 !!! info "Når man setter opp Cloud Composer så opprettes det automatisk en [bucket](https://cloud.google.com/storage/docs/introduction) som er knyttet til Composer instansen. Før neste steg er det viktig å notere seg navnet på bucketen som blir opprettet. Det gjøres ved å gå til [Cloud Storage](https://console.cloud.google.com/storage) i konsollen og finne bucketen som har `goog-composer-environment` labels."
 
 ## Github repo for DAGS
-I bucketen som opprettes når man setter opp Cloud Composer i [Opprett ny composer instans](cloud-composer#opprett-ny-composer-instans) blir det automatisk laget en katalog som heter `dags`.
+I bucketen som opprettes når man setter opp Cloud Composer i [Opprett ny composer instans](#opprett-ny-composer-instans) blir det automatisk laget en katalog som heter `dags`.
 Denne katalogen inneholder beskrivelsene av datapipelinene (DAGs) som man kan orkestrere med Cloud Composer og dette synkroniseres kontinuerlig med instansen.
 
 ### Github synk mot Composer bucket
@@ -30,7 +30,7 @@ For å ha revisjonskontroll på disse pipelinebeskrivelsene lønner det seg å s
 1. Gå til [Google IAM](https://console.cloud.google.com/iam-admin/serviceaccounts)
 og trykk på `CREATE SERVICE ACCOUNT`
 2. Fyll in `Service account name` og en `Service account description`
-4. Gi service accounten følgende rettigheter til bucketen opprettet i [Opprett ny composer instans](cloud-composer#opprett-ny-composer-instans):
+4. Gi service accounten følgende rettigheter til bucketen opprettet i [Opprett ny composer instans](#opprett-ny-composer-instans):
     - `Storage Legacy Bucket Writer`
     - `Storage Object Admin`
 
@@ -38,7 +38,7 @@ og trykk på `CREATE SERVICE ACCOUNT`
 
 #### Last ned service account nøkkel
 1. Gå til [Google IAM](https://console.cloud.google.com/iam-admin/serviceaccounts)
-2. Trykk på service accounten opprettet i [Lag service account](cloud-composer#lag-service-account)
+2. Trykk på service accounten opprettet i [Lag service account](#lag-service-account)
 3. Trykk på `KEYS`
 4. Trykk `ADD KEY` -> `Create new key` -> `JSON`
 5. Ta vare på nøkkelen som blir lastet ned
@@ -46,7 +46,7 @@ og trykk på `CREATE SERVICE ACCOUNT`
 #### Lag et Github repo
 1. Opprett github repo under navikt-organisasjonen (eller bruk et du har fra før)
 2. Opprett følgende secret i Github repoet:
-    - `Name` satt til _GCP_CREDENTIALS_ og `Value` til innholdet i JSON-nøkkelen lastet ned i [Last ned service account nøkkel](cloud-composer#last-ned-service-account-nøkkel)
+    - `Name` satt til _GCP_CREDENTIALS_ og `Value` til innholdet i JSON-nøkkelen lastet ned i [Last ned service account nøkkel](#last-ned-service-account-nøkkel)
 
 #### Oppsett av Github repo
 1. Lag en katalog med navn `dags` i repoet
@@ -79,7 +79,7 @@ jobs:
       run: gsutil cp -r dags gs://BUCKET
 ````
 
-!!! info "Erstatt BUCKET i workflowen over med navnet på bucketen som ble opprettet i [Opprett ny composer instans](cloud-composer#opprett-ny-composer-instans) og PROJECT med gcp prosjektet bucketen ligger i (finnes [her](https://console.cloud.google.com/home/dashboard))"
+!!! info "Erstatt BUCKET i workflowen over med navnet på bucketen som ble opprettet i [Opprett ny composer instans](#opprett-ny-composer-instans) og PROJECT med gcp prosjektet bucketen ligger i (finnes [her](https://console.cloud.google.com/home/dashboard))"
 
 
 Ved push til main branch vil denne workflowen laste opp innholdet i `dags` katalogen i repoet til GCS bucketen 
