@@ -1,0 +1,1789 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.knada.io/analyse/knada-vm/">
+      
+      
+        <link rel="prev" href="../datafortellinger/">
+      
+      
+        <link rel="next" href="../koble-pseudonymiserte/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>KNADA VM - NADA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#knada-vm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="NADA" class="md-header__button md-logo" aria-label="NADA" data-md-component="logo">
+      
+  <img src="../../img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NADA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              KNADA VM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/navikt/nada" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="NADA" class="md-nav__button md-logo" aria-label="NADA" data-md-component="logo">
+      
+  <img src="../../img/logo.svg" alt="logo">
+
+    </a>
+    NADA
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/navikt/nada" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Om NADA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ordliste/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ordliste
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Juridisk
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Juridisk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../juridisk/dokumentasjon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hva trenger jeg av dokumentasjon?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../juridisk/spilleregler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spilleregler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../juridisk/hvem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hvem lager spilleregler?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../juridisk/pvk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hvordan fyller jeg ut PVK?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Dataprodukter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Dataprodukter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataprodukter/dataprodukt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hva er et dataprodukt?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataprodukter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kom i gang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataprodukter/dele/f%C3%A5-tilgang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Få tilgang til datakilder
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataprodukter/dele/dataoverf%C3%B8ring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laste data fra kilde til BigQuery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataprodukter/kvalitetssikring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kvalitetssikre data (Soda)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataprodukter/dele/dataprodukt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Legge til et dataprodukt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataprodukter/tilgangsstyring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tilgangsstyring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Analysering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Analysering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kom-i-gang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kom i gang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Jupyter notebooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Jupyter notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hva er Jupyter notebooks?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook/knada-notebook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KNADA notebooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook/managed-notebook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google managed notebooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook/generelt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generelle råd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airflow
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/knada-airflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KNADA Airflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/managed-airflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google managed Airflow (Cloud Composer)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metabase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metabase
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datafortellinger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Datafortellinger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    KNADA VM
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    KNADA VM
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vedlikehold" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vedlikehold
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#koble-til-vm-med-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Koble til VM med SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Koble til VM med SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fra-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fra VS Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fra-intellijpycharm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fra IntelliJ/Pycharm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-multiplexing-aka-gjenbruk-av-koblinger" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH multiplexing aka gjenbruk av koblinger
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trafikk-ut-av-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trafikk ut av VM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oppsett-av-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oppsett av VM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Oppsett av VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r" class="md-nav__link">
+    <span class="md-ellipsis">
+      R
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="R">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nyttige-r-biblioteker-for-interaksjon-med-google-apier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nyttige R biblioteker for interaksjon med google APIer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installasjon-av-databasedrivere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installasjon av databasedrivere
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installasjon av databasedrivere">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Postgres
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oracle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oracle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lese-fra-tdv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lese fra TDV
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../koble-pseudonymiserte/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Koble sammen pseudonymisert tabeller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../allowlisting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allow listing av trafikk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../google-secret-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Secret Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eksempler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kodeeksempler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tdv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TDV driver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Vår visjon
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vår visjon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visjon/brukerforventninger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Brukerforventinger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visjon/data_mesh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data mesh
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vedlikehold" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vedlikehold
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#koble-til-vm-med-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Koble til VM med SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Koble til VM med SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fra-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fra VS Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fra-intellijpycharm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fra IntelliJ/Pycharm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-multiplexing-aka-gjenbruk-av-koblinger" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH multiplexing aka gjenbruk av koblinger
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trafikk-ut-av-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trafikk ut av VM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oppsett-av-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oppsett av VM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Oppsett av VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r" class="md-nav__link">
+    <span class="md-ellipsis">
+      R
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="R">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nyttige-r-biblioteker-for-interaksjon-med-google-apier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nyttige R biblioteker for interaksjon med google APIer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installasjon-av-databasedrivere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installasjon av databasedrivere
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installasjon av databasedrivere">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Postgres
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oracle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oracle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lese-fra-tdv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lese fra TDV
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="knada-vm">KNADA VM<a class="headerlink" href="#knada-vm" title="Permanent link">&para;</a></h1>
+<p>Vi tilbyr private <a href="https://cloud.google.com/compute/docs/instances">virtuelle maskiner</a> gjennom <a href="https://knorten.knada.io">Knorten</a>, disse kjører i GCP prosjektet <code>knada-gcp</code>.
+Denne maskinen vil ha tilgang til on-premise kilder på lik linje som <a href="../notebook/knada-notebook/">Notebooks</a> og <a href="../airflow/knada-airflow/">Airflow</a> som kjører <em>i</em> KNADA.</p>
+<p>Siden dette er en privat maskin stiller vi høyere krav til bruk av maskinene.
+Blant annet er du medansvarlig for å holde maskinen oppdatert!
+Dette betyr at du må sette deg inn i hvordan man <a href="#vedlikehold">vedlikeholder</a> en Debian GNU/Linux maskin.</p>
+<p>Det samme gjelder for pakker og applikasjoner du installerer.
+Du må selv aktivt holde disse oppdatert!</p>
+<p>Hvis du syns dette blir for mye ansvar så anbefaler vi heller <a href="../notebook/knada-notebook">Jupyter notebooks</a>.</p>
+<p>Som med Jupyter notebook har man muligheter til å laste ned data til lokal maskin, derfor må man være ekstra obs på at man ikke gjør noe utenfor det behandlingsgrunnlaget man har.</p>
+<p>Man bør være bevist på hva man skriver <em>inn</em> i terminalen (det man skriver <em>ut</em> i terminalen forsvinner så fort man avslutter shellet).
+For eksempel bør man ikke skrive brukernavn og passord direkte i terminalen, men heller bruke konfigurasjons-filer. Enda bedre er det å hente hemmeligheter fra <a href="https://cloud.google.com/secret-manager/docs">Google Secret Manager</a>.
+Det kan også være fornuftig å konfigurere shellet til å slette historikken når man logger ut.
+Hvis man bruker <code>bash</code> kan man legge til <code>history -c</code> i <code>.bash_logout</code>.</p>
+<h2 id="vedlikehold">Vedlikehold<a class="headerlink" href="#vedlikehold" title="Permanent link">&para;</a></h2>
+<p>For Debian (selve maskinen/OSet) så kan man lese <a href="https://www.debian.org/doc/manuals/debian-faq/uptodate.en.html">Keeping your Debian system up-to-date</a>, men i korte trekk handler det om å kjøre <code>aptitude update</code> etterfulgt av <code>aptitude full-upgrade</code>.
+Dette vil holde OSet oppdatert, og oppdatere pakker installert via <code>aptitude</code> (aka <code>apt install</code>).</p>
+<p>For å sikre oss at dette faktisk skjer, så går det en jobb natt til mandag som oppdatere alle maskiner som er <em>skrudd på</em>!
+Er du en av de som er flink og skrur av maskinen din når du ikke bruker den, så må du dessverre selv påse at den blir oppdatert.</p>
+<p>For Python bør man regelmessig kjøre <code>pip list --outdated</code> for å se hva slags pakker man trenger å oppgradere.
+Enda bedre er å ha en <code>requirements.txt</code> (eller tilsvarende for Poetry eller lignende verktøy) sjekket inn i Github, og la <a href="https://docs.github.com/en/code-security/dependabot">Dependabot</a> gjøre jobben.
+Husk også å holde følge med på nye Python-versjoner!
+Det finnes en god oversikt hos <a href="https://devguide.python.org/versions/">Python developers guide</a>.
+Per dags dato bør <em>ingen</em> være på noe lavere enn 3.8, og man bør jobbe med å komme seg vekk fra 3.8 da den har EOL (end of life) oktober 2024.</p>
+<h2 id="koble-til-vm-med-ssh">Koble til VM med SSH<a class="headerlink" href="#koble-til-vm-med-ssh" title="Permanent link">&para;</a></h2>
+<p>For å koble deg til en VM i <code>knada-gcp</code> trenger du å opprette et SSH nøkkelpar og hente ut noe informasjon om instansen som må fylles inn i SSH-configen lokalt (<code>~/.ssh</code>).</p>
+<ol>
+<li>Logg inn med <code>gcloud auth login</code> (trengs kun å kjøres en gang om dagen).
+For å gjøre dette må gcloud være installer (se dokumentasjon hos <a href="https://cloud.google.com/sdk/docs/install">cloud.google.com</a>).</li>
+<li>Kjør kommandoen <code>gcloud compute ssh --project knada-gcp --zone europe-north1-b &lt;instance&gt;</code>.
+Erstatt <code>&lt;instance&gt;</code> med navnet på VM instansen din, denne finner du etter du har logget inn i <a href="https://knorten.knada.io/oversikt">Knorten</a> under <code>Compute</code>.
+Denne kommandoen vil også generere SSH-nøkler.</li>
+<li>Lukk terminalen fra (2) og kjør så kommandoen <code>gcloud compute ssh --project knada-gcp --zone europe-north1-b &lt;instance&gt; --dry-run</code> <strong><strong>lokalt på maskinen din</strong></strong>.
+Erstatt <code>&lt;instance&gt;</code> med navnet på VM instansen din slik som i punkt (2).</li>
+<li>Outputen fra kommandoen i (3) inneholder en del ting du trenger fylle inn i SSH-configen din.
+Under er et eksempel på hvordan en slik SSH-config skal se ut.</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">MAC</label><label for="__tabbed_1_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>Host knada-vm
+    HostName {HOSTNAME}
+    IdentityFile ~/.ssh/google_compute_engine
+    CheckHostIP no
+    HostKeyAlias {HOSTNAME}
+    IdentitiesOnly yes
+    UserKnownHostsFile ~/.ssh/google_compute_known_hosts
+    ProxyCommand {PROXYCOMMAND}
+    ProxyUseFdpass no
+    User {USERNAME}
+</code></pre></div>
+<p>Erstatt {HOSTNAME}, {PROXYCOMMAND} og {USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under <code>~/.ssh/config</code>.
+Merk: {USERNAME} skal kun være det før <code>@</code> i output fra kommandoen over, {HOSTNAME} er det som begynner med <code>compute.</code> og {PROXYCOMMAND} er alt etter ProxyCommand til og med <code>--verbosity=warning</code>.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>Host knada-vm
+    HostName {HOSTNAME}
+    IdentityFile C:\\Users\\{USERNAME}\\.ssh\\google_compute_engine
+    CheckHostIP no
+    HostKeyAlias {HOSTNAME}
+    IdentitiesOnly yes
+    UserKnownHostsFile C:\\Users\\{USERNAME}\\.ssh\\google_compute_known_hosts
+    ProxyCommand &quot;C:\\Users\\{USERNAME}\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\..\\platform\\bundledpython\\python.exe&quot; &quot;-S&quot; &quot;C:\\Users\\{USERNAME}\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\lib\\gcloud.py&quot; compute start-iap-tunnel {INSTANS} %p --listen-on-stdin --project=knada-gcp --zone=europe-north1-b --verbosity=warning
+    ProxyUseFdpass no
+    User {USERNAME}
+</code></pre></div>
+<p>Erstatt {HOSTNAME}, {PROXYCOMMAND} og {USERNAME} med verdiene du får ut av dry-run kommandoen over og lagre filen under <code>~/.ssh/config</code>.
+Merk: {USERNAME} skal kun være det før <code>@</code> i output fra kommandoen over, {HOSTNAME} er det som begynner med <code>compute.</code> og {INSTANS} som du finner i <a href="https://knorten.knada.io/oversikt">Knorten</a> under <code>Compute</code>.</p>
+</div>
+</div>
+</div>
+<h3 id="fra-vs-code">Fra VS Code<a class="headerlink" href="#fra-vs-code" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Installer extension <code>Remote - SSH</code> i VS Code.</li>
+<li>I VS Code trykk cmnd+shift+P (mac) eller cntrl+shift+P (windows) og skriv inn og velg <code>Remote - SSH: Connect to host...</code> og velg så hosten <code>knada-vm</code>.</li>
+</ol>
+<h3 id="fra-intellijpycharm">Fra IntelliJ/Pycharm<a class="headerlink" href="#fra-intellijpycharm" title="Permanent link">&para;</a></h3>
+<ol>
+<li>I oppstartsvinduet velg <code>SSH</code> under <code>Remote Development</code></li>
+<li>Klikk <code>New Connection</code></li>
+<li>Åpne <code>SSH Configurations</code> ved å trykke på tannhjulet til høyre for <code>Connection</code> feltet</li>
+<li>I <code>SSH Configurations</code> vinduet trykk <code>+</code> for å legge til en ny konfigurasjon.</li>
+<li>Spesifiser så følgende og klikk <code>OK</code><ul>
+<li><code>Host</code> settes til <code>knada-vm</code></li>
+<li><code>User name</code> settes til brukernavnet på maskinen din lokalt</li>
+<li><code>Authentication type</code> settes til <code>OpenSSH config and authentication agent</code></li>
+</ul>
+</li>
+<li>Trykk på <code>Check Connection and Continue</code> (dette tar fort litt tid første gangen)</li>
+<li>Når vinduet <code>Choose IDE and Project</code> dukker opp sett <code>Project directory</code>.
+Dette skal settes til ditt hjemmeområde på serveren <code>/home/&lt;brukernavn&gt;</code>, trykk på browse ikonet til høyre for boksen for å lete det opp</li>
+<li>Klikk så <code>Download and Start IDE</code></li>
+</ol>
+<h3 id="ssh-multiplexing-aka-gjenbruk-av-koblinger">SSH multiplexing aka gjenbruk av koblinger<a class="headerlink" href="#ssh-multiplexing-aka-gjenbruk-av-koblinger" title="Permanent link">&para;</a></h3>
+<p>For å optimalisere tilkobling mot VMen kan man bruke SSH multiplexing.
+Dette er kjekt mot KNADA VM for da man slipper å autentisere seg for hver tilkobling.
+Med bruk av <code>ControlPersists</code> kan man si hvor lenge forbindelsen skal leve etter at man kobler fra siste gang.
+Så hvis du SSH-er inn, skrur av tilkoblingen så vil du kunne starte VSCode innen 5 minutter og den vil kunne gjennbruke samme tilkobling.
+Hvis man ikke ønsker at alle SSH tilkoblinger skal bruke multiplexing kan du bruke legge linjene (minus <code>Host *</code>) under <code>Host knada-vm</code>.</p>
+<div class="highlight"><pre><span></span><code>Host *
+  ControlMaster auto
+  ControlPersist 5m
+</code></pre></div>
+<p>Se SSH sin egen <a href="https://man.openbsd.org/ssh_config.5">dokumentasjon</a> for mer informasjon om de forskjellige variablene.</p>
+<h2 id="trafikk-ut-av-vm">Trafikk ut av VM<a class="headerlink" href="#trafikk-ut-av-vm" title="Permanent link">&para;</a></h2>
+<p>Vi har tatt i bruk brannmurer for å hindre uønsket trafikk ut av VMene.
+Dette er konfigurert via Terraform i <a href="https://github.com/navikt/knada-gcp">knada-gcp</a>, og vi tilbyr ikke en individuell løsning.
+Derfor er vi litt mer restriktiv med hva vi åpner for.</p>
+<p>Se <a href="allowlisting">allowlisting#knadavm</a> for en oversikt over åpningene vi tilbyr for Knada VM.</p>
+<h2 id="oppsett-av-vm">Oppsett av VM<a class="headerlink" href="#oppsett-av-vm" title="Permanent link">&para;</a></h2>
+<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<p>Den virtuelle maskinen kommer med python 3.9 installert, men mangler installasjon av <a href="">pip</a>.
+Installasjon av <code>pip</code> på VMen kan gjøres med</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-pip
+</code></pre></div>
+<h3 id="r">R<a class="headerlink" href="#r" title="Permanent link">&para;</a></h3>
+<p>R kan installeres som følger</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>r-base
+</code></pre></div>
+<h4 id="nyttige-r-biblioteker-for-interaksjon-med-google-apier">Nyttige R biblioteker for interaksjon med google APIer<a class="headerlink" href="#nyttige-r-biblioteker-for-interaksjon-med-google-apier" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://gargle.r-lib.org/">gargle</a>: Bibliotek for enklere håndtering av autentisering mot google APIer</li>
+<li><a href="https://cran.r-project.org/web/packages/googleCloudStorageR/vignettes/googleCloudStorageR.html">googleCloudStorageR</a>: Bibliotek for å lese/skrive filer til <code>Google Cloud Storage</code>.
+Se <a href="../eksempler/#lese-fra-google-cloud-storage-bucket">eksempel</a></li>
+<li><a href="https://github.com/r-dbi/bigrquery">bigrquery</a>: Bibliotek for å lese skrive data til <code>BigQuery</code></li>
+</ul>
+<p>Alle disse kan lastes ned og installeres av deg.</p>
+<h3 id="installasjon-av-databasedrivere">Installasjon av databasedrivere<a class="headerlink" href="#installasjon-av-databasedrivere" title="Permanent link">&para;</a></h3>
+<p>For å bruke python biblioteker til å lese fra postgres og oracle kreves det at drivere for det er installert på den virtuelle maskinen.
+For å gjøre det enkelt for dere å komme i gang har vi lagd to scripts som begge må kjøres med root privilegier.</p>
+<p>Kjør derfor først kommandoen:</p>
+<div class="highlight"><pre><span></span><code>sudo -i
+</code></pre></div>
+<h4 id="postgres">Postgres<a class="headerlink" href="#postgres" title="Permanent link">&para;</a></h4>
+<p>Trenger du Postgres, lim inn følgende i terminalen din:</p>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-yq<span class="w"> </span>--no-install-recommends<span class="w"> </span>libpq-dev
+</code></pre></div>
+<h4 id="oracle">Oracle<a class="headerlink" href="#oracle" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Lag en tom fil og kall den setup_nb.sh</li>
+<li>Lim inn følgene kodesnutt:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-yq<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>build-essential<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>alien<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>libaio1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>libaio-dev<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+
+curl<span class="w"> </span>https://download.oracle.com/otn_software/linux/instantclient/219000/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm<span class="w"> </span>&gt;<span class="w"> </span>/tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm
+
+alien<span class="w"> </span>-i<span class="w"> </span>/tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/cache/yum<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span>/tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/usr/lib/oracle/21.9/client64/lib&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/ld.so.conf.d/oracle-instantclient21.9.conf<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/usr/sbin/ldconfig
+
+<span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/lib/oracle/21.9/client64/bin
+</code></pre></div>
+3. Gjør scriptet/kodesnutten kjørbar:
+<div class="highlight"><pre><span></span><code>chmod +x setup_nb.sh
+sudo ./setup_nb.sh
+</code></pre></div></p>
+<div class="admonition info">
+<p class="admonition-title">Nå vil skriptet installere versjon 21.9 av oracle klienten. Dersom du i stedet ønsker en annen versjon kan editere skriptet over med den versjonen du ønsker. Du finner en liste over tilgjengelige versjoner av oracle klienten <a href="https://www.oracle.com/cis/database/technologies/instant-client/linux-x86-64-downloads.html">her</a>.</p>
+</div>
+<h3 id="lese-fra-tdv">Lese fra TDV<a class="headerlink" href="#lese-fra-tdv" title="Permanent link">&para;</a></h3>
+<p>Hvis du skal lese TDV data fra VM i <code>knada-gcp</code> må du selv installere drivere og biblioteker som er nødvendig.
+Dette kan gjøres som følger:</p>
+<ol>
+<li>Last opp TDV driveren til VMen: Denne finner du via utviklerimage på stien <code>F:\DVH\TIBCO\drivers\TIB_tdv_drivers_x.x.x_all\apps\odbc\linux64</code> (erstatt x med ønsket versjon)</li>
+<li>Installer <code>unixodbc-dev</code>: <code>sudo apt-get install unixodbc-dev</code></li>
+<li>Installer python biblioteket <code>pyodbc</code>: <code>pip install pyodbc</code></li>
+<li>Følg eksempelet i <a href="https://dataseksjonen.intern.nav.no/kompetanse/guider/hente_data_fra_tdv.html">dataseksjonens guide</a> for å lese fra TDV.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Fikk du svar på det du lurte på?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="Nei" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="Ja" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Takk! Kontakt oss gjerne på <a href="https://nav-it.slack.com/archives/CGRMQHT50">#nada på Slack</a> med tilbakemeldinger eller spørsmål.
+            </div>
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Takk for tilbakemeldingen!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.sections", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../amplitude_javascript/events.js"></script>
+      
+    
+  </body>
+</html>
