@@ -7,7 +7,7 @@ Oppretting av egen bruker for dette behovet er anbefalt. Det fins to metoder for
 
 #### nais-cli
 Man kan benytte [`nais-cli`](https://doc.nais.io/cli/install/) som har en egen kommando for tilgang til postgres-databaser i sky.
-For å opprette en bruker med `select` privilegier, [se dokumentasjon for `users add`](https://docs.nais.io/cli/commands/postgres/#users-add)
+For å opprette en bruker med `select` privilegier, [se dokumentasjon for `users add`](https://docs.nais.io/operate/cli/reference/postgres/#users-add)
 
 #### Manuelt
 For manuell opprettelse av bruker må du først opprette personlig tilgang til databasen.
