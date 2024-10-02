@@ -117,7 +117,7 @@ Alle eksemplene forutsetter at en på forhånd har laget datasettet BigQuery tab
 Opprettelsen av datasettet og tilgangene ordnes automatisk når appen deployes til GCP-clusterne til nais med [nais.yaml](https://doc.nais.io/nais-application/application/#kafka). 
 
 ### Kodeeksempler
-Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan lese fra kafka topicet anonymt. For mer informasjon om oppsett av app og autentisering for Kafka i NAV, se [nais docs](https://doc.nais.io/persistence/kafka/application/).
+Eksemplene tar ikke hensyn til autentisering mot Kafka så det antas at man kan lese fra kafka topicet anonymt. For mer informasjon om oppsett av app og autentisering for Kafka i NAV, se [nais docs](https://doc.nais.io/persistence/kafka/how-to/access/).
 
 !!!info "Topicet det leses fra i eksemplene har JSON schema og inneholder fire felter: et tekstfelt, et boolean felt, et numerisk felt og et timestamp."
 
