@@ -96,6 +96,11 @@ Etterpå kan du bruke `git` som vanlig og klone ned med `SSH`-adressen (git@gith
     SSH-nøkler må ligge i katalogen `~/.ssh` og kun lesbar av deg.
     Sette filrettigheter med `chmod 600 ~/.ssh/id_ed25519`.
 
+### Whitelisting av port 22 mot Github
+
+Som default så har vi kun lagt til brannmuråpning mot Github på port 443. Du kan enten legge til en åpning mot 
+Github på port 22, eller følge denne guiden: https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
+
 ## Fine-grained PAT
 
 Personal access tokens brukes for å lage et token med en bestemt varighet, som gir alle som har ditt token mulighet til å koble seg til Github.
