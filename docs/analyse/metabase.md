@@ -6,7 +6,7 @@ title: Metabase
 
 ## Kom igang
 
-Metabase for interne data i NAV er tilgjengelig på [metabase.intern.nav.no](https://metabase.intern.nav.no/).
+Metabase for interne data i NAV er tilgjengelig på [metabase.ansatt.nav.no](https://metabase.ansatt.nav.no/).
 Innloggingen gjøres med SSO.
 
 ## Hvordan fungerer tilgangsstyring i metabase?

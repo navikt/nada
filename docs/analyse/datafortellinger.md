@@ -29,16 +29,16 @@ ENV PATH="${PATH}:/app/quarto/bin"
 ```
 
 ## Team tokens
-For å programmatisk lage eller oppdatere datafortellinger trenger man å autentisere seg med et team token. For å finne team token for teamene du er medlem av kan du gå til [Mine team tokens](https://data.intern.nav.no/user/tokens) i Datamarkedsplassen (krever innlogging). Det er forskjellig tokens for dev og prod, så dersom du ønsker å lage eller oppdatere en datafortelling i dev finner du tokens [i dev versjonen](https://data.intern.dev.nav.no/user/tokens) av Datamarkedsplassen. Samme token brukes både for intern og ekstern publisering av datafortellinger.
+For å programmatisk lage eller oppdatere datafortellinger trenger man å autentisere seg med et team token. For å finne team token for teamene du er medlem av kan du gå til [Mine team tokens](https://data.ansatt.nav.no/user/tokens) i Datamarkedsplassen (krever innlogging). Det er forskjellig tokens for dev og prod, så dersom du ønsker å lage eller oppdatere en datafortelling i dev finner du tokens [i dev versjonen](https://data.intern.dev.nav.no/user/tokens) av Datamarkedsplassen. Samme token brukes både for intern og ekstern publisering av datafortellinger.
 
 ### Rotere token
-Dersom du har behov for å rotere team tokenet til et av teamene dine (f.eks. dersom du har eksponert tokenet ved et uhell) kan dette gjøres fra [Mine team tokens](https://data.intern.nav.no/user/tokens) i Datamarkedsplassen.
+Dersom du har behov for å rotere team tokenet til et av teamene dine (f.eks. dersom du har eksponert tokenet ved et uhell) kan dette gjøres fra [Mine team tokens](https://data.ansatt.nav.no/user/tokens) i Datamarkedsplassen.
 
 ## Lage Datafortelling
 Man kan publisere datafortellinger enten [internt](#internt) for NAV ansatte eller [eksternt](#eksternt).
 
 ### Internt
-For datafortellinger som kun skal være tilgjengelig for ansatte i NAV kan kan man publisere denne til den interne [datamarkedsplassen](https://data.intern.nav.no).
+For datafortellinger som kun skal være tilgjengelig for ansatte i NAV kan kan man publisere denne til den interne [datamarkedsplassen](https://data.ansatt.nav.no).
 
 I eksemplene som følger må følgende byttes ut med reelle verdier:
 
@@ -52,10 +52,10 @@ I eksemplene som følger må følgende byttes ut med reelle verdier:
 Se [Get Started](https://quarto.org/docs/get-started/) på Quarto sine sider for å komme i gang med utvikling av datafortellingen.
 
 #### Registrere Quarto i Datamarkedsplassen
-Når man skal registrere en quarto datafortelling i [Datamarkedsplassen](https://data.intern.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
+Når man skal registrere en quarto datafortelling i [Datamarkedsplassen](https://data.ansatt.nav.no) kan man enten gjøre dette gjennom [brukergrensesnittet](#registrer-gjennom-brukergrensesnitt) eller [programmatisk](#registrer-programmatisk).
 
 ##### Registrer gjennom brukergrensesnitt
-1. Gå til [data.intern.nav.no](https://data.intern.nav.no) for prod eller [data.intern.dev.nav.no](https://data.intern.dev.nav.no) for dev.
+1. Gå til [data.ansatt.nav.no](https://data.ansatt.nav.no) for prod eller [data.intern.dev.nav.no](https://data.intern.dev.nav.no) for dev.
 2. Logg inn
 3. Klikk hamburgermeny og velg `Legg til ny datafortelling`
 4. Fyll inn metadata om datafortellingen
@@ -71,7 +71,7 @@ Request body parametere:
 
 - `name` (obligatrisk): Navn på datafortellingen
 - `description`: Beskrivelse av datafortellingen
-- `teamID`: ID i [teamkatalogen](https://teamkatalog.nav.no) for teamet som eier datafortellingen. Nødvendig å spesifisere dersom datafortellingen skal sorteres riktig i produktområdevisningen på [data.intern.nav.no](https://data.intern.nav.no)
+- `teamID`: ID i [teamkatalogen](https://teamkatalog.nav.no) for teamet som eier datafortellingen. Nødvendig å spesifisere dersom datafortellingen skal sorteres riktig i produktområdevisningen på [data.ansatt.nav.no](https://data.ansatt.nav.no)
 - `id`: Kan spesifiseres dersom du ønsker å spesifisere ID for datafortellingen selv. Dersom den utelates genereres det en ny.
 
 Headers for requesten
@@ -105,7 +105,7 @@ story_id = res.json()["id"]
 #### Oppdater eksisterende intern datafortelling
 For å oppdatere en eksisterende Quarto fortelling må man først generere ressursfilene på nytt med `quarto render <file>`.
 
-Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-tokenet fra [Datamarkedsplassen](https://data.intern.nav.no).
+Deretter må man hente ut ID for Quartoen man ønsker å oppdatere og team-tokenet fra [Datamarkedsplassen](https://data.ansatt.nav.no).
 
 Eksemplene tar utgangspunkt i at det er filen `index.html` som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.
 
@@ -226,7 +226,7 @@ Request body parametere:
 
 - `title`: Navn på datafortellingen
 - `slug`: Dersom du selv ønsker å bestemme `slug` i URLen til datafortellingen
-- `team`: Navn på teamet som eier datafortellingen. Dette tilsvarer navnet som gjelder for tokenet du henter fra https://data.intern.nav.no/user/tokens (eventuelt https://data.intern.dev.nav.no/user/tokens for dev)
+- `team`: Navn på teamet som eier datafortellingen. Dette tilsvarer navnet som gjelder for tokenet du henter fra https://data.ansatt.nav.no/user/tokens (eventuelt https://data.intern.dev.nav.no/user/tokens for dev)
 - `published`: Dette flagget indikerer om datafortellingen skal listes opp på index siden til `data.nav.no`.
 
 Dersom en ikke oppgir verken `title` eller `slug` når datafortellingen registreres så vil det være den genererte UUIDen til datafortellingen som vil brukes for URLen til datafortellingen.
@@ -313,7 +313,7 @@ response.raise_for_status()
 ### Oppdatere datafortelling med GitHub action
 Vi har laget en egen GitHub action - [navikt/story-upload](https://github.com/navikt/story-upload) - som kan brukes dersom man ønsker å lagre datafortellingen sin i et GitHub repo. 
 Denne actionen vil publisere innholdet til en [gcs bucket](https://cloud.google.com/storage/docs/buckets) som NADA hoster datafortellinger fra. 
-Man kan bruke actionen til å publisere både interne datafortellinger på `data.intern.nav.no` og eksterne datafortellinger på `data.nav.no`.
+Man kan bruke actionen til å publisere både interne datafortellinger på `data.ansatt.nav.no` og eksterne datafortellinger på `data.nav.no`.
 
 !!! info "Se [README for github action](https://github.com/navikt/story-upload/blob/main/README.md#example-usage) for beskrivelse av de ulike konfigurerbare input parameterene til actionen"
 
@@ -322,7 +322,7 @@ For å bruke actionen må det eksistere en datafortelling som man ønsker å opp
 
 
 Erstatt `${STORY_ID}` i eksempelet med IDen på datafortellingen du ønsker å oppdatere. Eksempelet tar også utgangspunkt i at team tokenet for teamet som eier datafortellingen er lagt inn som [secret på github repoet](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-environment) med nøkkel `TEAM_TOKEN`. 
-Token for teamet ditt finner du ved å gå til https://data.intern.nav.no/user/tokens (eventuelt https://data.intern.dev.nav.no/user/tokens for dev).
+Token for teamet ditt finner du ved å gå til https://data.ansatt.nav.no/user/tokens (eventuelt https://data.intern.dev.nav.no/user/tokens for dev).
 
 ```yaml
 name: Eksempel på opplasting av datafortelling
@@ -348,7 +348,7 @@ jobs:
 ```
 
 ### Knatch
-[Knatch](https://github.com/navikt/knatch) - Knada batch - er et kommandolinjeverktøy tiltenkt å forenkle opplasting av datafortellinger til både den [interne datamarkedsplassen](https://data.intern.nav.no) og eksterne datafortellinger på `data.nav.no`.
+[Knatch](https://github.com/navikt/knatch) - Knada batch - er et kommandolinjeverktøy tiltenkt å forenkle opplasting av datafortellinger til både den [interne datamarkedsplassen](https://data.ansatt.nav.no) og eksterne datafortellinger på `data.nav.no`.
 
 Det er særlig nyttig i tilfeller hvor en ønsker å laste opp datafortellinger som består av flere filer da `knatch` tar som inputargument en mappe og vil automatisk dele opp filene i mappen og laste de opp i batcher til datamarkedsplassen. Størrelsen på batchene kan du spesifisere med flagget `--batch-size`, dersom det utelates vil datafortellingen lastes opp i batcher på 10 filer.
 
