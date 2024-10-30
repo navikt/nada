@@ -1,5 +1,5 @@
 Et dataprodukt består av ett eller flere _datasett_, samt en overordnet beskrivelse og et konsept om hvem som eier dataproduktet.
-Dataprodukt opprettes [på Datamarkedsplassen](https://data.intern.nav.no/dataproduct/new) (krever innlogging).
+Dataprodukt opprettes [på Datamarkedsplassen](https://data.ansatt.nav.no/dataproduct/new) (krever innlogging).
 
 <div style="width:100%;aspect-ratio:155/150;">
     <object data="/img/flyt-datamarkedsplassen.svg" type="image/svg+xml"></object>

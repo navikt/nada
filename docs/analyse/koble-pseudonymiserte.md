@@ -1,6 +1,6 @@
 # Koble sammen pseudonymiserte views
-I [Markedsplassen](https://data.intern.nav.no) er det mulig å tilrettelegge [pseudonymiserte tabeller](/dataprodukter/dele/dataprodukt/#pseudonymisering-av-datasett) for sammenkobling.
-Du trenger tilgang til minst to pseudonymiserte tabeller registrert på [Markedsplassen](https://data.intern.nav.no).
+I [Markedsplassen](https://data.ansatt.nav.no) er det mulig å tilrettelegge [pseudonymiserte tabeller](/dataprodukter/dele/dataprodukt/#pseudonymisering-av-datasett) for sammenkobling.
+Du trenger tilgang til minst to pseudonymiserte tabeller registrert på [Markedsplassen](https://data.ansatt.nav.no).
 Du spesifiserer hvilke tabeller du ønsker å koble sammen.
 Du kan også velge å lage konsistente id-er for personer som har byttet fødselsnummer.
 For de tabellene som inneholder fødselsnummer må du oppgi hvilken kolonne disse finnes i.
@@ -14,4 +14,4 @@ Når du bestiller tabellene skjer følgende:
 5. Markedsplassen pseudonymiserer kolonner som *produsentene* har merket som pseudonymiserte. SHA256 og den samme verdien for alle tabellene brukes i pseudonymiseringen.
 6. View opprettes i `BigQuery-dataset`
 
-Tilganger til vises under ["mine tilganger" på Markedsplassen](https://data.intern.nav.no/user/access).
+Tilganger til vises under ["mine tilganger" på Markedsplassen](https://data.ansatt.nav.no/user/access).
