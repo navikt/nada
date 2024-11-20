@@ -91,6 +91,8 @@ nav:
     - Airflow: 
       - KNADA Airflow: analyse/airflow/knada-airflow.md
       - Google managed Airflow (Cloud Composer): analyse/airflow/managed-airflow.md
+    - Knast:
+      - Oppsett av virtuelt miljø med uv: analyse/knast/uv-oppsett.md
     - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
     - KNADA VM: analyse/knada-vm.md
