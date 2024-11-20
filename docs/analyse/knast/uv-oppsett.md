@@ -36,4 +36,4 @@ For å kunne velge det nylig opprettede virtuelle miljøet må du enten restarte
 3. Under `Select Interpreter` velg `Enter interpreter path` og så `Find`
 4. Skriv så inn absoulutt sti til det virtuelle miljøets python binær fil. I eksempelet over vil dette være `/home/user/myvenv/bin/python`
 
-Etter dette vil du kunne velge det virtuelle miljøet som kernel i en notebook ved å velge `Select another kernel` -> `Python environments` -> `myvenv`.
+Etter dette vil du kunne velge det virtuelle miljøet for notebooken ved å velge `Select another kernel` -> `Python environments` -> `myvenv`.
