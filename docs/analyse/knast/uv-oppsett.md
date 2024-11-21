@@ -28,12 +28,4 @@ uv pip sync requirements.txt
 
 ### Bruke det virtuelle miljøet i en notebook kontekst
 
-Når du har opprettet et virtuelt miljø med `uv` over vil ikke dette umiddelbart kunne velges som kernel i en notebook. 
-For å kunne velge det nylig opprettede virtuelle miljøet må du enten restarte Knast maskinen fra [datamarkedsplassen](https://data.ansatt.nav.no/user/workstation) eller følge stegene under:
-
-1. Åpne opp command pallette i VSCode med `Cmd+Shift+P` for Mac eller `Ctrl+Shift+P` for Windows
-2. Skriv inn `Python: Select Interpreter`
-3. Under `Select Interpreter` velg `Enter interpreter path` og så `Find`
-4. Skriv så inn absoulutt sti til det virtuelle miljøets python binær fil. I eksempelet over vil dette være `/home/user/myvenv/bin/python`
-
-Etter dette vil du kunne velge det virtuelle miljøet for notebooken ved å velge `Select another kernel` -> `Python environments` -> `myvenv`.
+For å bruke det virtuelle miljøet for notebooken konteksten din velger du `Select another kernel` -> `Python environments` -> `myvenv`.
