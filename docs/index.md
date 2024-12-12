@@ -12,6 +12,6 @@ Metabase-dashboard kan også deles direkte på Datamarkedsplassen.
 * [Slack (#nada)](https://nav-it.slack.com/archives/CGRMQHT50)
 * Brukerforum: Annonseres på slack
 * Kurs: Annonseres på [Delta](https://delta.nav.no)
-* E-post (for eksterne): nada@nav.no
+* E-post (for eksterne): post.nada@nav.no
 
 [Tilgjengelighetserklæringen.](https://uustatus.no/nn/erklaringer/publisert/addb8af8-303d-459a-bf27-bda68cfedd38)
