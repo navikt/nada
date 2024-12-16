@@ -43,7 +43,7 @@ For datafortellinger som kun skal være tilgjengelig for ansatte i NAV kan kan m
 I eksemplene som følger må følgende byttes ut med reelle verdier:
 
 - `${ENV}` 
-    - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *datamarkedsplassen.intern.dev.nav.no* for dev og *datamarkedsplassen.intern.nav.no* for prod
+    - For `knada` VMer og jupyter notebooks/airflow i `knada-clusteret` settes dette til *datamarkedsplassen.intern.dev.nav.no* for dev og *data.ansatt.nav.no* for prod
     - Ellers settes det til *data.ekstern.dev.nav.no* for dev og *data.nav.no* for prod
 - `${STORY_ID}` - erstatt med ID på datafortellingen
 - `${TEAM_TOKEN}` - erstatt med team-token fra Datamarkedsplassen
