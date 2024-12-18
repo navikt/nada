@@ -57,10 +57,30 @@ pip install --upgrade jupyterlab jupyterlab-git --user
 
 ## Bruk av Github Advanced Security og Dependabot for notebook servere
 
-!!! warning "Dependabot støtter per i dag _ikke_ R, denne oppskriften funker kun for de som bruker kun språkene Ruby, JavaScript, Python, PHP, Dart, Elixir, Elm, Go, Rust, Java og .NET.
+!!!warning "Dependabot støtter per i dag _ikke_ R, denne oppskriften funker kun for de som bruker kun språkene Ruby, JavaScript, Python, PHP, Dart, Elixir, Elm, Go, Rust, Java og .NET."
 
 Vi oppfordrer Jupyter notebook brukere til å ha en `requirements.txt` fil med Python-bibliotekene som dere selv bruker i et Github-repo.
 Alle repoer i `navikt` har automatisk aktivert [Github Advanced Security inkludert Dependabot](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security).
+For å enable security scan av en requirements.txt fil, må man lage en `dependabot.yml` fil i repoet under mappen `.github`, altså:
+```
+.github
+└── dependabot.yml
+requirement.txt
+```
+
+Under er et eksempel på en slik fil som vil scanne en requirements.txt fil på rotnivå i repo ukentlig:
+```yaml
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      pip:
+        patterns:
+        - '*'
+```
 Bruker man dette vil man få varsler om sårbarheter i bibliotekene som er i bruk, samt at det automatisk blir generert pull requests i repoet med versjon av biblioteket hvor sårbarheten er fikset.
 
 Dersom man bygger egne Dockerimages for Jupyter eller Airflow tilbyr Dependabot også automatisk scanning etter sårbarheter for disse.
