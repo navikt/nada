@@ -9,6 +9,8 @@ Disse notebookene kjører i et managed Kubernetes cluster i GCP som driftes av N
 For KNADA notebooks vil det kun være de Python-pakkene som blir lagret under `user`-stien som blir persistert når Notebook-en slås av.
 Derfor er det nødvendig å bruke `--user` flagget når du installere Python-pakker.
 
+!!!info "Pakkeinstallasjon går gjennom en proxy så du er avhengig av å autentisere deg mot GCP med `gcloud auth login --update-adc` for å kunne installere pakker."
+
 ```bash
 pip install google-cloud-bigquery --user
 ```
