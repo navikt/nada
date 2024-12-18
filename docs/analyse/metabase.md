@@ -10,7 +10,9 @@ Metabase for interne data i NAV er tilgjengelig på [metabase.ansatt.nav.no](htt
 Innloggingen gjøres med SSO.
 
 ## Hvordan fungerer tilgangsstyring i metabase?
-Datasett er ved registrering kun tilgjengelig for teamet som eier data.
+
+!!!warning "Med unntak av `all-users@nav.no` så støtter vi ikke at gruppetilganger gitt gjennom Datamarkedsplassen synkroniseres til Metabase. For å få tilgang i Metabase må derfor hver enkelt bruker gis individuell tilgang til datasettet i Datamarkedsplassen. Dette inkluderer også eiere av datasettet."
+
 Dersom teamet legger til datasettet i Metabase (`Legg til i metabase` på Datamarkedsplassen), vil det være tilgjengelig for de samme som har tilgang til datasettet på Datamarkedsplassen.
 Når datasettet legges til i metabase, vil det opprettes en database (`I` i figuren under) og en collection (`II` i figuren under) i metabase.
 Begge deler er tilgangsbegrenset.
@@ -98,3 +100,7 @@ A: Du kan det! Men du må gjøre det med `SQL query`. Et alternativ er å joine 
 Q: Kan jeg koble sammen datasett som er tilgangsbegrenset?  
 A: Slik Metabase er satt opp, er det en unik service-bruker per tilgangsbegrensede datasett. 
 Det er mulig å gjøre dette i metabase ved å be datasetteier om å gi tilgang til service-account, men vi anbefaler å lage et view i BigQuery. 
+
+Q: Jeg har tilgang til et datasett i Datamarkedsplassen gjennom å være medlem av en AD-gruppe og får lest data direkte fra BigQuery, hvorfor har jeg da ikke tilgang til samme datasett i Metabase?
+A: I metabase leses data fra kilden med en service-bruker og ikke din personlige bruker.
+Vi har ikke synkronisering av AD-grupper til Metabase, så for å få samme tilgang i Metabase må hver enkelt person legges til manuelt for å inkluderes i tilgangsgruppen i Metabase.
