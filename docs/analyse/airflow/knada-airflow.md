@@ -351,4 +351,4 @@ secret_data = secret.payload.data.decode('UTF-8')
 print(secret_data)
 ```
 
-Fordelen med denne tilnærmingen er at man enkelt kan bryte alle tilgangene som Airflow workeren har fått delegert ved å kun fjerne `Service Account Token Creator` rollen for knada service accounten.
+Fordelen med denne tilnærmingen er at man enkelt kan bryte alle tilgangene som Airflow workeren har fått delegert ved å kun fjerne `Service Account Token Creator` rollebindingen for team service accounten som du ga knada service accounten over.
