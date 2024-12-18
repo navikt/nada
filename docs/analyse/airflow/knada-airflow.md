@@ -291,3 +291,46 @@ Eksempel på hva vi logger:
 ```
 
 Hvis det er en manuell kjøring så vil `triggered_by` være satt til NAV-ident for den innlogget Airflow-bruker.
+
+## Airflow service account impersonation
+
+Hver enkelt Airflow-instans i KNADA har en egen IAM service account i `knada-gcp`-prosjektet som impersonates av teamets kubernetes service account i clusteret.
+Service accounten finner du under teamoversikten i [Knorten](https://knorten.knada.io/oversikt).
+Dersom tilganger gis til denne IAM service accounten vil det delegeres til teamets kubernetes service account som igjen gjør at Airflow workeren i clusteret får samme tilganger mot google APIer som IAM service accounten.
+
+Dersom man ikke ønsker å gi masse tilganger til `knada-gcp` service accounten direkte, men i stedet ønsker å gi tilgangene til en service account i sitt eget teamprosjekt kan man sette opp [enda et ledd i impersonation chainen](#eksempel-på-impersonation-chain-med-service-account-i-team-prosjekt).
+
+### Eksempel på impersonation chain med service account i team prosjekt
+Du har en IAM service account i team prosjektet ditt `min-sa@<prosjekt-id>.iam.gserviceaccount.com` som har diverse tilganger til google APIer (BigQuery, Storage buckets, etc.) og ønsker å kunne delegere disse tilgangene til Airflow workerne dine, altså:
+
+`k8s service account -> knada-gcp service account -> min-sa@<prosjekt-id>.iam.gserviceaccount.com -> Google APIer`
+
+Det eneste du trenger å gjøre er å gi `Service Account Token Creator` rollen til `knada-gcp` service accounten under IAM for team service accounten, altså:
+
+1. Gå til [IAM & Admin](https://console.cloud.google.com/projectselector2/iam-admin) i team prosjektet ditt.
+2. Velg `Service Accounts` i menyen til venstre.
+3. Trykk på _*team service accounten*_ du ønsker at knada service accounten skal impersonate.
+4. Trykk på `Permissions` og deretter `GRANT ACCESS`.
+5. Legg til `knada-gcp` service accounten med rollen `Service Account Token Creator`.
+
+Under er et eksempel på hvordan man kan autentisere seg mot BigQuery med dette oppsettet i en Airflow task (tilsvarende vil også gjelde dersom man ønsker å autentisere seg mot e.g. Storage buckets, Google secret manager, etc.):
+
+```python
+from google.cloud.bigquery import Client
+from google.auth import impersonated_credentials, default
+
+default_creds, _ = default()
+
+target_credentials = impersonated_credentials.Credentials(
+  source_credentials=default_creds,
+  target_principal='min-sa@<prosjekt-id>.iam.gserviceaccount.com',
+  target_scopes=['https://www.googleapis.com/auth/cloud-platform'])
+
+c = Client(project="<prosjekt-id>", credentials=target_credentials)
+
+job = c.query("SELECT * FROM <prosjekt-id>.<dataset>.<tabell>")
+df = job.to_dataframe()
+df.head()
+```
+
+Fordelen med denne tilnærmingen er at man enkelt kan bryte alle tilgangene som Airflow workeren har fått delegert ved å kun fjerne `Service Account Token Creator` rollen for knada service accounten.
