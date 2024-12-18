@@ -101,6 +101,6 @@ Q: Kan jeg koble sammen datasett som er tilgangsbegrenset?
 A: Slik Metabase er satt opp, er det en unik service-bruker per tilgangsbegrensede datasett. 
 Det er mulig å gjøre dette i metabase ved å be datasetteier om å gi tilgang til service-account, men vi anbefaler å lage et view i BigQuery. 
 
-Q: Jeg har tilgang til et datasett i Datamarkedsplassen gjennom å være medlem av en AD-gruppe og får lest data direkte fra BigQuery, hvorfor har jeg da ikke tilgang til samme datasett i Metabase?
+Q: Jeg har tilgang til et datasett i Datamarkedsplassen gjennom å være medlem av en AD-gruppe og får lest data direkte fra BigQuery, hvorfor har jeg da ikke tilgang til samme datasett i Metabase?  
 A: I metabase leses data fra kilden med en service-bruker og ikke din personlige bruker.
-Vi har ikke synkronisering av AD-grupper til Metabase, så for å få samme tilgang i Metabase må hver enkelt person legges til manuelt for å inkluderes i tilgangsgruppen i Metabase.
+Vi har ikke synkronisering av AD-grupper til Metabase, så for å få samme tilgang i Metabase må hver enkelt person legges til manuelt for å inkluderes i korrekt tilgangsgruppe i Metabase.
