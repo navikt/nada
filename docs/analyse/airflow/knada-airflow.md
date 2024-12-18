@@ -313,10 +313,9 @@ Det eneste du trenger å gjøre er å gi `Service Account Token Creator` rollen 
 4. Trykk på `Permissions` og deretter `GRANT ACCESS`.
 5. Legg til `knada-gcp` service accounten med rollen `Service Account Token Creator`.
 
-Under er et eksempel på hvordan man kan autentisere seg mot BigQuery med dette oppsettet i en Airflow task (tilsvarende vil også gjelde dersom man ønsker å autentisere seg mot e.g. Storage buckets, Google secret manager, etc.):
+Under er et eksempel på hvordan man kan autentisere seg mot Google med dette oppsettet i en Airflow task for å lese fra BigQuery, Google Storage og Google Secret Manager:
 
 ```python
-from google.cloud.bigquery import Client
 from google.auth import impersonated_credentials, default
 
 default_creds, _ = default()
@@ -326,11 +325,30 @@ target_credentials = impersonated_credentials.Credentials(
   target_principal='min-sa@<prosjekt-id>.iam.gserviceaccount.com',
   target_scopes=['https://www.googleapis.com/auth/cloud-platform'])
 
-c = Client(project="<prosjekt-id>", credentials=target_credentials)
+# Les BigQuery
+from google.cloud.bigquery import Client as BQClient
 
+c = BQClient(project="<prosjekt-id>", credentials=target_credentials)
 job = c.query("SELECT * FROM <prosjekt-id>.<dataset>.<tabell>")
 df = job.to_dataframe()
 df.head()
+
+# Les Storage bucket
+from google.cloud.storage import Client as GCSClient
+
+gcs_client = GCSClient(credentials=target_credentials)
+bucket = gcs_client.bucket("<navn-på-bucket>")
+blob = bucket.blob("<navn-på-fil>")
+with blob.open("r") as f:
+    print(f.read())
+
+# Les Secret Manager secret
+from google.cloud.secretmanager import SecretManagerServiceClient
+
+secrets = SecretManagerServiceClient(credentials=target_credentials)
+secret = secrets.access_secret_version(name="projects/<prosjekt-id>/secrets/<navn-på-secret>/versions/latest")
+secret_data = secret.payload.data.decode('UTF-8')
+print(secret_data)
 ```
 
 Fordelen med denne tilnærmingen er at man enkelt kan bryte alle tilgangene som Airflow workeren har fått delegert ved å kun fjerne `Service Account Token Creator` rollen for knada service accounten.
