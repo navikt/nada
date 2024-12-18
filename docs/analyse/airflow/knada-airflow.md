@@ -116,8 +116,7 @@ with DAG('min-dag', start_date=days_ago(1), schedule_interval=None) as dag:
 
 ### Trafikk ut fra Airflow (aka allow list)
 
-For å skallsikre Airflow har man muligheten til å skru på allow list for teamets tjenester.
-Dette innebærer for Airflow at man i hvert task må spesifisere hvilke eksterne tjenester (les: tjenester utenfor Airflow) man skal snakke med.
+For skallsikring av Airflow må man i hver task spesifisere hvilke eksterne tjenester (les: tjenester utenfor Airflow) man skal få lov til å snakke med.
 Vi har stengt av muligheten for eksterne tjenester å snakke *inn* til Airflow.
 
 I podene hvor Airflow tasken kjører blokkeres i utgangspunktet all trafikk *ut*, med følgende unntak:
