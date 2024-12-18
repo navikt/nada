@@ -17,9 +17,7 @@ For å konfigurere allowlist for Airflow se [Trafikk ut fra Airflow](./airflow/k
 
 - `*.googleapis.com`(for Secret manager, Storage buckets, BigQuery etc.)
 - `github.com` (for lesing av repo med kode)
-- `pypi.org` (installasjon av pakker)
-- `files.pythonhosted.org` (installasjon av pakker)
-- `pypi.python.org` (installasjon av pakker)
+- `europe-north1-python.pkg.dev` (pypi proxy for installasjon av pakker)
 
 ## Standardåpninger for Airflow
 
