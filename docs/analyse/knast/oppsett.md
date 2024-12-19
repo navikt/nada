@@ -19,7 +19,7 @@ Nada vedlikeholder en liste med åpninger mot internett som vi anbefaler alle å
 Når du har trykket på "Start opprettelse av Knast" og ventet i noen minutter får du muligheten til å starte Knasten din. Det tar et par minutter å starte Knasten. Når den er klar får du en lenke som du kan åpne for å jobbe i browseren din.
 
 ### Python
-For å kjøre pythonkode bør du installere en egen pythonversjon. Det gjøres best med uv: [link til eksisterende doc om uv].
+For å kjøre pythonkode bør du installere en egen pythonversjon. [Les hvordan det gjøres best med uv](./uv-oppsett.md).
 
 ### Extensions
 For at VSCode skal fungere godt må du installere noen extensions. Om du bruker VSCode i browser kjører du egentlig [open source versjonen](https://cloud.google.com/workstations/docs/base-editor-overview) som kalles Code - OSS. Den største forskjellen mellom disse to er at Code - OSS ikke støtter alle extensions som VSCode gjør. Om du derimot kobler til remote fra din lokale VSCode vil du kunne bruke alle extensions. Merk at mange extensions trenger å snakke med internett. Så hvis du opplever problemer med noen av dem bør du følge med på "blokkerte URLer" på [Min Knast](https://data.ansatt.nav.no/user/workstation). [Les mer om nettverk her](./nettverk.md).
