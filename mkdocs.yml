@@ -81,7 +81,7 @@ nav:
     - Kvalitetssikre data (Soda): dataprodukter/kvalitetssikring.md
     - Legge til et dataprodukt: dataprodukter/dele/dataprodukt.md
     - Tilgangsstyring: dataprodukter/tilgangsstyring.md
-  - Analysering:
+  - Analyse:
     - Kom i gang: analyse/kom-i-gang.md
     - Jupyter notebooks:
       - Hva er Jupyter notebooks?: analyse/notebook/index.md
@@ -92,12 +92,15 @@ nav:
       - KNADA Airflow: analyse/airflow/knada-airflow.md
       - Google managed Airflow (Cloud Composer): analyse/airflow/managed-airflow.md
     - Knast:
+      - Hva er Knast?: analyse/knast/generelt.md
+      - Komme i gang: analyse/knast/oppsett.md
       - Oppsett av virtuelt miljø med uv: analyse/knast/uv-oppsett.md
+      - Nettverk: analyse/knast/nettverk.md
     - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
     - KNADA VM: analyse/knada-vm.md
-    - Koble sammen pseudonymisert tabeller: analyse/koble-pseudonymiserte.md
-    - Allow listing av trafikk: analyse/allowlisting.md
+    - Koble sammen pseudonymiserte tabeller: analyse/koble-pseudonymiserte.md
+    - Allowlisting av trafikk: analyse/allowlisting.md
     - Google Secret Manager: analyse/google-secret-manager.md
     - Kodeeksempler: analyse/eksempler.md
     - TDV driver: analyse/tdv.md
