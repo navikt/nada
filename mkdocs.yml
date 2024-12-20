@@ -30,8 +30,6 @@ extra:
               data: 1
               note: >-
                 Takk for tilbakemeldingen!
-extra_javascript:
-  - amplitude_javascript/events.js
 plugins:
   - search
   - build_plantuml:
