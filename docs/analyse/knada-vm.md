@@ -29,7 +29,7 @@ Er du en av de som er flink og skrur av maskinen din når du ikke bruker den, s�
 
 For Python bør man regelmessig kjøre `pip list --outdated` for å se hva slags pakker man trenger å oppgradere.
 Enda bedre er å ha en `requirements.txt` (eller tilsvarende for Poetry eller lignende verktøy) sjekket inn i Github, og la [Dependabot](https://docs.github.com/en/code-security/dependabot) gjøre jobben.
-Husk også å holde følge med på nye Python-versjoner!
+Husk også å følge med på nye Python-versjoner!
 Det finnes en god oversikt hos [Python developers guide](https://devguide.python.org/versions/).
 Per dags dato bør *ingen* være på noe lavere enn 3.8, og man bør jobbe med å komme seg vekk fra 3.8 da den har EOL (end of life) oktober 2024.
 
@@ -156,7 +156,7 @@ Alle disse kan lastes ned og installeres av deg.
 
 ### Installasjon av databasedrivere
 
-For å bruke python biblioteker til å lese fra postgres og oracle kreves det at drivere for det er installert på den virtuelle maskinen.
+For å bruke python biblioteker til å lese fra postgres kreves det at drivere for det er installert på den virtuelle maskinen.
 For å gjøre det enkelt for dere å komme i gang har vi lagd to scripts som begge må kjøres med root privilegier.
 
 Kjør derfor først kommandoen:
@@ -172,46 +172,3 @@ Trenger du Postgres, lim inn følgende i terminalen din:
 ```bash
 apt-get update && apt-get install -yq --no-install-recommends libpq-dev
 ```
-
-#### Oracle
-
-1. Lag en tom fil og kall den setup_nb.sh
-2. Lim inn følgene kodesnutt:
-
-```bash
-apt-get update && apt-get install -yq --no-install-recommends \
-    build-essential \
-    curl \
-    alien \
-    libaio1 \
-    libaio-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-curl https://download.oracle.com/otn_software/linux/instantclient/219000/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm > /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm
-
-alien -i /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm && \
-    rm -rf /var/cache/yum && \
-    rm -f /tmp/oracle-instantclient-basic-21.9.0.0.0-1.x86_64.rpm && \
-    echo "/usr/lib/oracle/21.9/client64/lib" > /etc/ld.so.conf.d/oracle-instantclient21.9.conf && \
-    /usr/sbin/ldconfig
-
-PATH=$PATH:/usr/lib/oracle/21.9/client64/bin
-```
-3. Gjør scriptet/kodesnutten kjørbar:
-```
-chmod +x setup_nb.sh
-sudo ./setup_nb.sh
-```
-
-!!! info "Nå vil skriptet installere versjon 21.9 av oracle klienten. Dersom du i stedet ønsker en annen versjon kan editere skriptet over med den versjonen du ønsker. Du finner en liste over tilgjengelige versjoner av oracle klienten [her](https://www.oracle.com/cis/database/technologies/instant-client/linux-x86-64-downloads.html)."
-
-### Lese fra TDV
-
-Hvis du skal lese TDV data fra VM i `knada-gcp` må du selv installere drivere og biblioteker som er nødvendig.
-Dette kan gjøres som følger:
-
-1. Last opp TDV driveren til VMen: Denne finner du via utviklerimage på stien `F:\DVH\TIBCO\drivers\TIB_tdv_drivers_x.x.x_all\apps\odbc\linux64` (erstatt x med ønsket versjon)
-2. Installer `unixodbc-dev`: `sudo apt-get install unixodbc-dev`
-3. Installer python biblioteket `pyodbc`: `pip install pyodbc`
-4. Følg eksempelet i [dataseksjonens guide](https://dataseksjonen.intern.nav.no/kompetanse/guider/hente_data_fra_tdv.html) for å lese fra TDV.
