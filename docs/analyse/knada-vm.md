@@ -157,7 +157,7 @@ Alle disse kan lastes ned og installeres av deg.
 ### Installasjon av databasedrivere
 
 For å bruke python biblioteker til å lese fra postgres kreves det at drivere for det er installert på den virtuelle maskinen.
-For å gjøre det enkelt for dere å komme i gang har vi lagd to scripts som begge må kjøres med root privilegier.
+For å gjøre det enkelt for dere å komme i gang har vi lagd et script som må kjøres med root privilegier.
 
 Kjør derfor først kommandoen:
 
