@@ -1,3 +1,6 @@
+
+## Python med uv
+
 Vi oppfordrer brukere av Knast maskiner å bruke [uv](https://github.com/astral-sh/uv) for oppsett av virtuelle python miljøer og installasjon av pakker. 
 Under følger en oppskrift for å sette opp et slikt virtuelt miljø for å kunne kjøre python kode i en isolert kontekst.
 For mer informasjon om `uv`, se [deres dokumentasjon](https://docs.astral.sh/uv/).
@@ -26,6 +29,10 @@ uv pip compile requirements.in -o requirements.txt
 uv pip sync requirements.txt
 ```
 
-### Bruke det virtuelle miljøet i en notebook kontekst
+### Bruke det virtuelle miljøet i en notebook-kontekst
 
 For å bruke det virtuelle miljøet for notebooken konteksten din velger du `Select another kernel` -> `Python environments` -> `myvenv`.
+
+### Vedlikehold av Python-pakker og versjoner
+
+Man bør regelmessig kjøre `uv pip list --outdated` for å se hva slags pakker man trenger å oppgradere. Enda bedre er å ha en `requirements.txt` (eller tilsvarende for Poetry eller lignende verktøy) sjekket inn i Github, og la Dependabot gjøre jobben. Husk også å følge med på nye Python-versjoner! Det finnes en god oversikt hos [Python developers guide](https://devguide.python.org/). Per dags dato bør ingen være på noe lavere enn 3.9, og man bør jobbe med å komme seg vekk fra 3.9 da den har EOL (end of life) oktober 2025.
