@@ -16,7 +16,34 @@ Nada vedlikeholder en liste med åpninger mot internett som vi anbefaler alle å
 
 ## Første gang du bruker din Knast
 ### Start Knast
-Når du har trykket på "Start opprettelse av Knast" og ventet i noen minutter får du muligheten til å starte Knasten din. Det tar et par minutter å starte Knasten. Når den er klar får du en lenke som du kan åpne for å jobbe i browseren din.
+Når du har trykket på "Start opprettelse av Knast" og ventet i noen minutter får du muligheten til å starte Knasten din. Det tar et par minutter å starte Knasten. Når den er klar får du en lenke som du kan åpne for å jobbe i browseren din. Du kan også koble til remote fra lokal VS Code ved å trykke på "Bruk Knast via VS Code lokalt" og følge oppskriften der.
+
+### Følgende må gjøres på lokal maskin for å koble VS Code til Knast:
+
+*Hopp over steg 4-6 hvis du har gjort disse tidligere.*
+
+1. **Installere extension Remote - SSH i VS Code**
+2. **Logg inn i Google Cloud** (kjøres lokalt) <br> 
+`gcloud auth login`
+3. **Opprette SSH-tunnel** (kjøres lokalt) <br>
+```gcloud workstations start-tcp-tunnel --cluster=knada --config=DIN_NAV_IDENT --region=europe-north1 --project knada-gcp --local-host-port=:33649 DIN_NAV_IDENT 22``` <br>
+Husk å sette inn Nav-identen din der det står `DIN_NAV_IDENT`. Porten 33649 er tilfeldig valgt og kan byttes med en annen port om du ønsker det.
+4. **Opprette SSH-nøkkel** (kjøres lokalt, hopp over om du allerede har gjort dette) <br>
+Sett et passord på SSH-nøkkelen. Du vil aldri bli bedt om å bytte dette. <br>
+`ssh-keygen -t ed25519 -C "din_epost_email@nav.no"`
+5. **Få Knast til å stole på din SSH-nøkkel** (kjøres på Knast, hopp over om du allerede har gjort dette)
+    - Opprette directory **~/.ssh/** hvis det ikke allerede finnes
+    - Opprett filen authorized_keys i **~/.ssh/**
+    - Lime inn innholdet fra public-delen av SSH-nøkkelen fra **.ssh/id_ed25519.pub** eller tilsvarende på lokal maskin inn i **authorized_keys** på Knast
+6. **Legg til knast i ssh-configen** (kjøres lokalt, hopp over om du allerede har gjort dette) <br> `echo -e "\nHost knast\n\tHostName localhost\n\tPort 33649\n\tUser user">>~/.ssh/config` <br>
+Hvis valgte en annen port i steg 3 må du velge den her også.
+7. **Koble til knast**
+    - Åpne Command Palette i VS Code (⇧⌘P / Ctrl+Shift+P)
+    - Velg/Skriv inn: Remote - SSH: Connect to host...
+    - Skriv inn: knast
+
+Dette er også beskrevet med skjermbilder i [dokumentasjonen til Google Workstations](https://cloud.google.com/workstations/docs/develop-code-using-local-vscode-editor).
+
 
 ### Python
 For å kjøre pythonkode bør du installere en egen pythonversjon. [Les hvordan det gjøres best med uv](./uv-oppsett.md).
