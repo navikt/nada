@@ -40,6 +40,6 @@ Da vil hemmelighetene dine lastes inn som filer som du kan lese fra din kode.
 
 ### Hvordan få tilgang til BigQuery fra en Naisjob i on-prem?
 For å kunne snakke med BigQuery trenger dere et token for en service account som har tilgang til å lese BigQuery.
-Følg guiden [Createing a service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-console) hos Google, og så følger dere guiden [Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
+Følg guiden [Creating a service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-console) hos Google, og så følger dere guiden [Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
 
 Når dette er gjort så ender dere opp med en JSON-fil som er hemmeligheten dere trenger å legge inn i Vault, som igjen da blir eksponert i jobben deres. For at Pandas eller andre rammeverk skal plukke denne opp automatisk så må den være eksponert som en miljøvariabel som heter `GOOGLE_APPLICATION_CREDENTIALS`.
