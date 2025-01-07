@@ -41,9 +41,9 @@ Gjør det enkelt å kjøre mindre bolker av kode og visualisere resultater i net
 ### KNADA VM
 Vi tilbyr private virtuelle maskiner gjennom Knorten, disse kjører i GCP prosjektet knada-gcp.
 Denne maskinen vil ha tilgang til on-premise kilder på lik linje som Notebooks og Airflow som kjører i
-Les mer om å komme i gang under [Analyse/KNADA VM](analyse/knada-vm/).
+Les mer om å komme i gang under [Analyse/KNADA VM](/analyse/knada-vm/).
 
 ### Knorten
 Knorten er portalen for å administrere team som bruker KNADA.
 Her er det self-service av blant annet  Airflow og Jupyter.
-Les mer om å komme i gang under [Analyse/Kom i gang](analyse/kom-i-gang/).
+Les mer om å komme i gang under [Analyse/Kom i gang](/analyse/kom-i-gang/).
