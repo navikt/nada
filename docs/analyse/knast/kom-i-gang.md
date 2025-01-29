@@ -46,7 +46,7 @@ Dette er også beskrevet med skjermbilder i [dokumentasjonen til Google Workstat
 
 
 ### Python
-For å kjøre pythonkode bør du installere en egen pythonversjon. [Les hvordan det gjøres best med uv](./oppsett.md#python-med-uv).
+For å kjøre pythonkode bør du installere en egen pythonversjon. [Les hvordan det gjøres best med uv](./miljo.md#python-med-uv).
 
 ### Extensions
 For at VSCode skal fungere godt må du installere noen extensions. Om du bruker VSCode i browser kjører du egentlig [open source versjonen](https://cloud.google.com/workstations/docs/base-editor-overview) som kalles Code - OSS. Den største forskjellen mellom disse to er at Code - OSS ikke støtter alle extensions som VSCode gjør. Om du derimot kobler til remote fra din lokale VSCode vil du kunne bruke alle extensions. Merk at mange extensions trenger å snakke med internett. Så hvis du opplever problemer med noen av dem bør du følge med på "blokkerte URLer" på [Min Knast](https://data.ansatt.nav.no/user/workstation). [Les mer om nettverk her](./nettverk.md).
