@@ -7,7 +7,7 @@ For mer informasjon om `uv`, se [deres dokumentasjon](https://docs.astral.sh/uv/
 
 ### Opprettelse et nytt virtuelt miljø med spesifisert python versjon 
 
-!!!info "Merk for å installere en annen python versjon må `github.com/indygreg/python-build-standalone/releases/download/*` allowlistes for Knast maskinen i [datamarkedsplassen](https://data.ansatt.nav.no/user/workstation)"
+!!!info "Merk for å installere en annen python versjon kan det være at du må tillate utgående trafikk for å hente ressursene du trenger. Denne allowlistingen gjør du selv for [Knast maskinen din i datamarkedsplassen](https://data.ansatt.nav.no/user/workstation) under `Åpninger mot internett` fanen. Hvis det ikke kommer tydelig frem av feilmeldingen hvilke hoster du ikke når vil du i denne fanen også kunne se alle blokkerte nettverkskall gjort fra maskinen din mot internett."
 
 ```bash
 # Setter opp et nytt venv og installerer python 3.11
