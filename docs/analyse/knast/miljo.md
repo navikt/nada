@@ -42,3 +42,9 @@ ipython kernel install --name myvenv --user
 ### Vedlikehold av Python-pakker og versjoner
 
 Man bør regelmessig kjøre `uv pip list --outdated` for å se hva slags pakker man trenger å oppgradere. Enda bedre er å ha en `requirements.txt` (eller tilsvarende for Poetry eller lignende verktøy) sjekket inn i Github, og la Dependabot gjøre jobben. Husk også å følge med på nye Python-versjoner! Det finnes en god oversikt hos [Python developers guide](https://devguide.python.org/). Per dags dato bør ingen være på noe lavere enn 3.9, og man bør jobbe med å komme seg vekk fra 3.9 da den har EOL (end of life) oktober 2025.
+
+## Autentisering mot GitHub
+
+Vi anbefaler å bruke [gh cli](https://cli.github.com/manual/) for å autentisere seg mot GitHub. 
+Dette kommandolinjeverktøyet kommer preinstallert i Knast-miljøet ditt. 
+For å autentisere deg mot GitHub kjører du `gh auth login` fra en terminal på Knast-maskinen din og følger instruksjonene som kommer opp.
