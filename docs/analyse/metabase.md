@@ -88,7 +88,7 @@ Dersom du gjør endringer på skjemaet til en tabell i BigQuery vil det ta innti
 
 
 ## FAQ
-Q: Jeg får ikke logget inn. Hva kan jeg gjøre?
+Q: Jeg får ikke logget inn. Hva kan jeg gjøre?  
 A: Dersom du ikke har vært logget inn i Metabase på lang tid kan brukeren din bli deaktivert. Da må du ta kontakt med #nada på Slack.
 
 Q: Jeg har nettopp lagt til en ny kolonne i BigQuery-tabellen min. Hvorfor dukker den ikke opp i Metabase?  
