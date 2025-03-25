@@ -10,8 +10,11 @@ Datafortellinger kan enkelt deles med andre i NAV gjennom Datamarkedsplassen.
 Følge installasjonsoppskriften på [quarto.org/docs](https://quarto.org/docs/get-started/).
 Husk å hold Quarto oppdatert.
 
-### KNADA VM
-Vi anbefaler å følge guiden [Tarball Installation On Linux](https://quarto.org/docs/download/tarball.html).
+### Knast
+Vi anbefaler å følge guiden [Tarball Installation On Linux](https://quarto.org/docs/download/tarball.html). For å laste ned binæren trenger du følgende åpninger:
+- github.com/quarto-dev/quarto-cli/releases/download/*
+- objects.githubusercontent.com/*
+
 Igjen må man selv huske å holde Quarto oppdatert.
 
 ### Docker image
