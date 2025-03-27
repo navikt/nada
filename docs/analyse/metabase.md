@@ -57,12 +57,14 @@ Tilgangsbegrensede elementer i åpent tilgjengelige dashboards vil fortsatt vær
 Det betyr at om du inkluderer data som kun er tilgjengelig for ditt team inn i et åpent dashboards, vil folk utenfor teamet få beskjed om at de ikke har tilgang til akkurat det dataene.
 
 ## Hvor skal spørsmål og dashboards lagres?
+Det er fra versjon 1.53 mulig å lagre spørsmål direkte i dashboardet. Dette er praktisk med tanke på orden, men spørsmålene vil da ikke være tilgjengelig for bruk i andre dashboards.
+
 Tilgangen knyttet til mappen elementene er lagret i bestemmer hvem som kan se dem. Metabase har to toppnivå:
 
 - Personal collections: Her kan du lagre alt som ikke skal være synlig for andre enn deg selv.
-- Our analytics: Alt som skal være synlig for andre lagres her. Helst i mapper relatert til det aktuelle dataproduktet.
+- Our analytics: Alt som skal være synlig for andre lagres her. Fortrinnvis nede i ditt teams undermappe(r).
 
-Det er mulig å flytte elementer mellom mapper etter behov, men husk at det er tilgangen til mappen som bestemmer hvem som kan se spørsmål og dashboard.
+Det er mulig å flytte elementer mellom mapper og dashboards etter behov, men husk at det er tilgangen til mappen som bestemmer hvem som kan se spørsmål og dashboard.
 
 ## Administere datamodell
 Når et datasett legges til i Metabase vil appen gi hvert felt en semantisk type som den tror passer. Hvis Metabase gjetter feil kan det føre til problemer som at du ikke kan summere tall, filtrere på en kategori eller bruke tidsfunksjoner. Dette kan endres i adminmenyen:
