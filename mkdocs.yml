@@ -96,7 +96,6 @@ nav:
       - Nettverk: analyse/knast/nettverk.md
     - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
-    - KNADA VM: analyse/knada-vm.md
     - Koble sammen pseudonymiserte tabeller: analyse/koble-pseudonymiserte.md
     - Allowlisting av trafikk: analyse/allowlisting.md
     - Google Secret Manager: analyse/google-secret-manager.md
