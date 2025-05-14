@@ -80,8 +80,10 @@ Er du usikker på hvilken type som passer kan du prøve deg fram eller velge en 
 - Tall: `Quantity`
 
 
-## Synkronisering av skjemaendringer
-Dersom du gjør endringer på skjemaet til en tabell i BigQuery vil det ta inntil en time før Metabase oppdager endringen av seg selv. Du kan trigge denne synken selv via adminmenyen:
+## Sync og scan og av tabeller
+Dersom du gjør endringer på skjemaet til en tabell i BigQuery vil det ta inntil en time før Metabase oppdager endringen. Synkronisering av skjema gjøres altså en gang i timen.
+
+En gang i døgnet gjøres det også en full table scan. Metabase sjekker da hvilke mulige verdier hver kolonne kan ha for å populere nedtrekksmenyer og lignende. Har du behov for å trigge en scan kan du gjøre følgende.
 
 1. Trykk på tannhjulet oppe til høyre og gå inn i `Admin settings`. Her finner du alle datasett du har tilgang til via Datamarkedsplassen.
 2. Velg tabellen du ønsker å synkronisere og trykk på det nye tannhjulet som dukker opp i høyre hjørne.
@@ -94,10 +96,10 @@ Q: Jeg får ikke logget inn. Hva kan jeg gjøre?
 A: Dersom du ikke har vært logget inn i Metabase på lang tid kan brukeren din bli deaktivert. Da må du ta kontakt med #nada på Slack.
 
 Q: Jeg har nettopp lagt til en ny kolonne i BigQuery-tabellen min. Hvorfor dukker den ikke opp i Metabase?  
-A: Metabase kjører en synk hver time for å sjekke om skjemaet har endret seg. Det vil derfor ta litt tid før det dukker opp i Metabase automatisk. Dersom du trenger det i Metabase med en gang, følg oppskriften for  synkronisering av skjemaendringer over.
+A: Metabase kjører en synk hver time for å sjekke om skjemaet har endret seg. Det vil derfor ta litt tid før det dukker opp i Metabase automatisk.
 
 Q: Filter-verdier i Metabase er ikke oppdatert?  
-A: Metabase kjører en daglig sync mot hele tabellen i BigQuery for å finne ut av hvilke verdier som finnes. Dette brukes bl.a. til å generere `options` i filter. Disse vil også oppdateres med `Re-scan this table` som forklart over.
+A: Metabase kjører en daglig scan av hele tabellen i BigQuery for å finne ut av hvilke verdier som finnes. Dette brukes bl.a. til å generere `options` i filter. Disse vil også oppdateres med `Re-scan this table` som forklart over.
 
 Q: Hvorfor får jeg ikke joinet datasett som er åpent tilgjengelig?  
 A: Du kan det! Men du må gjøre det med `SQL query`. Et alternativ er å joine tabeller i BigQuery, lage et nytt datasett og legge dette til i Metabase.
