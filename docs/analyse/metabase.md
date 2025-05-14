@@ -80,7 +80,7 @@ Er du usikker på hvilken type som passer kan du prøve deg fram eller velge en 
 - Tall: `Quantity`
 
 
-## Sync og scan og av tabeller
+## Sync og scan av tabeller
 Dersom du gjør endringer på skjemaet til en tabell i BigQuery vil det ta inntil en time før Metabase oppdager endringen. Synkronisering av skjema gjøres altså en gang i timen.
 
 En gang i døgnet gjøres det også en full table scan. Metabase sjekker da hvilke mulige verdier hver kolonne kan ha for å populere nedtrekksmenyer og lignende. Har du behov for å trigge en scan kan du gjøre følgende.
