@@ -11,3 +11,7 @@ checks for vedtak:
 ```
 
 [Dokumentasjonen til Soda](https://docs.soda.io/soda-cl/soda-cl-overview.html) beskriver godt hvilke sjekker som kommer ut av boksen og hvordan dere kan lage egendefinerte.
+ 
+Vi har satt opp dependabot som vil sørge for at soda-imaget vi tilbyr holdes oppdatert mtp. sårbarheter i avhengigheter.
+Men vi forutsetter at brukerne av dette imaget selv konfigurerer dependabot i sine repositorier for å få med seg oppdateringer av imaget.
+Dette kan gjøres tilsvarende som beskrevet i [denne slack-tråden](https://nav-it.slack.com/archives/CK37WRHU6/p1742300621926849?thread_ts=1742299234.667189&cid=CK37WRHU6)                                                                                           
