@@ -22,7 +22,7 @@ Overskrifter korresponderer til overskrifter i malen, og vi tar kun for oss seks
     Teamet må gjøre en vurdering av involvering av egne databehandlere.
 
 Nada-plattformen bygger på GCP som har egen databehandleravtale.
-[Dokumentert etterlevelse på NADA (B532, krever innlogging)](https://etterlevelse.intern.nav.no/behandling/18089de7-829d-47e3-868b-53d4e5f251da/PERSONVERN/RELEVANTE_KRAV/krav/190/2/).
+[Dokumentert etterlevelse på NADA (B532, krever innlogging)](https://etterlevelse.ansatt.nav.no/dokumentasjon/2fb132f9-4b28-481e-a385-963e69a351d1/PERSONVERN/RELEVANTE_KRAV/krav/190/2).
 
 
 ## Beskrivelse av behandlingen
@@ -34,7 +34,7 @@ Nada-plattformen bygger på GCP som har egen databehandleravtale.
 
 {==fyll inn aktuelle behandlinger==}
 
-[Dokumentert behandling for NADA-plattformen](https://behandlingskatalog.nais.adeo.no/process/team/3f85cdce-1257-4862-8ce3-3aec9b576df0/18089de7-829d-47e3-868b-53d4e5f251da).
+[Dokumentert behandling for NADA-plattformen](https://behandlingskatalog.ansatt.nav.no/process/team/3f85cdce-1257-4862-8ce3-3aec9b576df0/18089de7-829d-47e3-868b-53d4e5f251da).
 
 ### Støtte til etterlevelse
 
@@ -42,7 +42,7 @@ Nada-plattformen bygger på GCP som har egen databehandleravtale.
 
 {==fyll inn aktuell etterlevelsesdokumentasjon==}
 
-[Dokumentert etterlevelse for NADA](https://etterlevelse.intern.nav.no/behandling/18089de7-829d-47e3-868b-53d4e5f251da).
+[Dokumentert etterlevelse for NADA](https://etterlevelse.ansatt.nav.no/dokumentasjon/2fb132f9-4b28-481e-a385-963e69a351d1).
 
 ### Risikovurdering av informasjonssikkerhet (personopplysningssikkerhet)
 
