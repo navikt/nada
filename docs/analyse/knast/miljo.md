@@ -1,11 +1,10 @@
-
 ## Python med uv
 
-Vi oppfordrer brukere av Knast maskiner å bruke [uv](https://github.com/astral-sh/uv) for oppsett av virtuelle python miljøer og installasjon av pakker. 
+Vi oppfordrer brukere av Knast maskiner å bruke [uv](https://github.com/astral-sh/uv) for oppsett av virtuelle python miljøer og installasjon av pakker.
 Under følger en oppskrift for å sette opp et slikt virtuelt miljø for å kunne kjøre python kode i en isolert kontekst.
 For mer informasjon om `uv`, se [deres dokumentasjon](https://docs.astral.sh/uv/).
 
-### Opprettelse et nytt virtuelt miljø med spesifisert python versjon 
+### Opprettelse et nytt virtuelt miljø med spesifisert python versjon
 
 !!!info "Merk for å installere en annen python versjon kan det være at du må tillate utgående trafikk for å hente ressursene du trenger. Denne allowlistingen gjør du selv for [Knast maskinen din i datamarkedsplassen](https://data.ansatt.nav.no/user/workstation) under `Åpninger mot internett` fanen. Hvis det ikke kommer tydelig frem av feilmeldingen hvilke hoster du ikke når vil du i denne fanen også kunne se alle blokkerte nettverkskall gjort fra maskinen din mot internett."
 
@@ -45,6 +44,16 @@ Man bør regelmessig kjøre `uv pip list --outdated` for å se hva slags pakker 
 
 ## Autentisering mot GitHub
 
-Vi anbefaler å bruke [gh cli](https://cli.github.com/manual/) for å autentisere seg mot GitHub. 
-Dette kommandolinjeverktøyet kommer preinstallert i Knast-miljøet ditt. 
+Vi anbefaler å bruke [gh cli](https://cli.github.com/manual/) for å autentisere seg mot GitHub.
+Dette kommandolinjeverktøyet kommer preinstallert i Knast-miljøet ditt.
 For å autentisere deg mot GitHub kjører du `gh auth login` fra en terminal på Knast-maskinen din og følger instruksjonene som kommer opp.
+
+## GitHub Copilot
+
+!!!info "GitHub Copilot fungerer, men GitHub Copilot Chat støttes foreløpig ikke."
+
+Brannmuråpninger er allerede inkludert i de sentralt administrerte åpningene, så om du bruker disse, så skal det være OK.
+
+I tillegg må du sørge for at extensions bruker proxy. Gå til `File->Preferences->Settings` og søk etter `http.proxySupport`. Denne må du sette til `on`.
+
+Høyreklikk på tannhjulet nederst til venstre og huk av for `Accounts`. Nå skal du kunne trykke på ikonet som dukker opp over tannhjulet og velge `Sign in to GitHub to use GitHub Copilot ` og deretter følge anvisningene nederst i høyre hjørne. Når du er innlogget i GitHub, så skal Copilot fungere.
