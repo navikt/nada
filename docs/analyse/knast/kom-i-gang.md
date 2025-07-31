@@ -16,7 +16,9 @@ Nada vedlikeholder en liste med åpninger mot internett som vi anbefaler alle å
 
 ## Første gang du bruker din Knast
 ### Start Knast
-Når du har trykket på "Start opprettelse av Knast" og ventet i noen minutter får du muligheten til å starte Knasten din. Det tar et par minutter å starte Knasten. Når den er klar får du en lenke som du kan åpne for å jobbe i browseren din. Du kan også koble til remote fra lokal VS Code ved å trykke på "Bruk Knast via VS Code lokalt" og følge oppskriften der.
+Når du har trykket på "Start opprettelse av Knast" og ventet i noen minutter får du muligheten til å starte Knasten din. Det tar et par minutter å starte Knasten. Når den er klar får du en lenke som du kan åpne for å jobbe i nettleseren din. Du kan også koble til remote fra lokal VS Code ved å trykke på "Bruk Knast via VS Code lokalt" og følge oppskriften der.
+
+!!! info "Knast i nettleser nytes best hvis man installerer den som en [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/What_is_a_progressive_web_app). Da vil den i større grad oppføre seg som en vanlig applikasjon og blant annet keybindings vil fungere bedre. [Kjør Knast som en PWA](./kom-i-gang.md#kjr-knast-som-en-pwa)"
 
 ### Følgende må gjøres på lokal maskin for å koble VS Code til Knast:
 
@@ -44,12 +46,22 @@ Hvis valgte en annen port i steg 3 må du velge den her også.
 
 Dette er også beskrevet med skjermbilder i [dokumentasjonen til Google Workstations](https://cloud.google.com/workstations/docs/develop-code-using-local-vscode-editor).
 
+### Kjør Knast som en PWA
+
+Når man installerer Knast som en PWA vil Knast oppleves mer som en vanlig applikajson, og kan gi en mye bedre brukeropplevelse. Her er guider til hvordan man kan installere en PWA for noen av de mest brukte nettleserne.
+
+- [Generell guide](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Installing)
+- [Chrome](https://support.google.com/chrome/answer/9658361?hl=en-GY&ref_topic=7439636&co=GENIE.Platform%3DDesktop)
+- [Safari](https://support.apple.com/no-no/guide/safari/ibrw9e991864/18.0/mac/15.0)
+- [Vivaldi](https://help.vivaldi.com/desktop/miscellaneous/progressive-web-apps/)
+- [Edge](https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/ux)
+- [Firefox støtter installasjon av PWA bare gjennom extension](https://github.com/filips123/PWAsForFirefox)
 
 ### Python
 For å kjøre pythonkode bør du installere en egen pythonversjon. [Les hvordan det gjøres best med uv](./miljo.md#python-med-uv).
 
 ### Extensions
-For at VSCode skal fungere godt må du installere noen extensions. Om du bruker VSCode i browser kjører du egentlig [open source versjonen](https://cloud.google.com/workstations/docs/base-editor-overview) som kalles Code - OSS. Den største forskjellen mellom disse to er at Code - OSS ikke støtter alle extensions som VSCode gjør. Om du derimot kobler til remote fra din lokale VSCode vil du kunne bruke alle extensions. Merk at mange extensions trenger å snakke med internett. Så hvis du opplever problemer med noen av dem bør du følge med på "blokkerte URLer" på [Min Knast](https://data.ansatt.nav.no/user/workstation). [Les mer om nettverk her](./nettverk.md).
 
+For at VSCode skal fungere godt må du installere noen extensions. Om du bruker VSCode i nettleser kjører du egentlig [open source versjonen](https://cloud.google.com/workstations/docs/base-editor-overview) som kalles Code - OSS. Den største forskjellen mellom disse to er at Code - OSS ikke støtter alle extensions som VSCode gjør. Om du derimot kobler til remote fra din lokale VSCode vil du kunne bruke alle extensions. Merk at mange extensions trenger å snakke med internett. Så hvis du opplever problemer med noen av dem bør du følge med på "blokkerte URLer" på [Min Knast](https://data.ansatt.nav.no/user/workstation). [Les mer om nettverk her](./nettverk.md).
 ### Generelle råd
 Andre ting verdt å tenke på er nbstripout, dependabot og autentisering mot github og gcp. Her gjelder det samme som i [Generelle råd for Jupyterhub](../notebook/generelt.md).
