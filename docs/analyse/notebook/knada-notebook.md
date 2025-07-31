@@ -80,6 +80,12 @@ Når du så har bygget image ditt finner du det igjen ved å:
 
 Du kan lese mer om hemmeligheter under [Google Secret Manager](../google-secret-manager.md).
 
+## Lagring av data
+
+Data lagres i et område som opprettes per team og teammedlem. Områdene blir ikke slettet når en Jupyter-instans fjernes eller når teammedlemmer forlater teamet, men kun når hele teamet slettes. Når man installerer Jupyter-instansen på nytt, får man også tilgang til dataene igjen.
+
+!!! info "Vær forsiktig med data som er lagret i .ipynb-filer når du bruker git. Se våre [generelle råd](generelt.md)."
+
 ## Restarte server
 For manuelt å restarte en Jupyter notebook går man til kontrollpanelet ved å velge `File` -> `Hub Control Panel` -> `Stop My Server`. Etter at serveren er stoppet vil man så kunne trykke `Start My Server`.
 
