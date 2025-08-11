@@ -63,5 +63,8 @@ For å kjøre pythonkode bør du installere en egen pythonversjon. [Les hvordan 
 ### Extensions
 
 For at VSCode skal fungere godt må du installere noen extensions. Om du bruker VSCode i nettleser kjører du egentlig [open source versjonen](https://cloud.google.com/workstations/docs/base-editor-overview) som kalles Code - OSS. Den største forskjellen mellom disse to er at Code - OSS ikke støtter alle extensions som VSCode gjør. Om du derimot kobler til remote fra din lokale VSCode vil du kunne bruke alle extensions. Merk at mange extensions trenger å snakke med internett. Så hvis du opplever problemer med noen av dem bør du følge med på "blokkerte URLer" på [Min Knast](https://data.ansatt.nav.no/user/workstation). [Les mer om nettverk her](./nettverk.md).
+### Sudo-rettigheter
+
+Det er begrenset hvilke kommandoer man har lov til å kjøre som sudo. Du kan se hvilke du har lov til å kjøre ved å kjøre `sudo -l`. Hver gang man kjører sudo vil man bli bedt om å skrive inn en bekreftelseskode. Dette bekreftelseskoden er 'husk ROS' og brukes utelukkende for å bekrefte at man ønsker å kjøre sudo. Dette gjøres for å unngå at script kjører sudo uten at man vet om det.
 ### Generelle råd
 Andre ting verdt å tenke på er nbstripout, dependabot og autentisering mot github og gcp. Her gjelder det samme som i [Generelle råd for Jupyterhub](../notebook/generelt.md).
