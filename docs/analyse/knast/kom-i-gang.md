@@ -57,6 +57,15 @@ Når man installerer Knast som en PWA vil Knast oppleves mer som en vanlig appli
 - [Edge](https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/ux)
 - [Firefox støtter installasjon av PWA bare gjennom extension](https://github.com/filips123/PWAsForFirefox)
 
+### Bytte shell i terminal
+
+I Knast kan man bytte standard shell i terminalen ved å åpne Command Palette (⇧⌘P / Ctrl+Shift+P) og skrive `Terminal: Select Default Profile`.
+
+Man kan også gjøre dette fra dropdown ved siden av ny terminal-knappen:
+![Bytte terminal fra dropdown ved siden av ny-terminal-knapp](../..//img/knast-default-shell.png)
+
+Les mer om [Terminal Profiles](https://code.visualstudio.com/docs/terminal/profiles) i Visual Studio Code sin dokumentasjon.
+
 ### Python
 For å kjøre pythonkode bør du installere en egen pythonversjon. [Les hvordan det gjøres best med uv](./miljo.md#python-med-uv).
 
