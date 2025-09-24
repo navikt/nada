@@ -57,12 +57,24 @@ Når man installerer Knast som en PWA vil Knast oppleves mer som en vanlig appli
 - [Edge](https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/ux)
 - [Firefox støtter installasjon av PWA bare gjennom extension](https://github.com/filips123/PWAsForFirefox)
 
+### Bytte shell i terminal
+
+I Knast kan man bytte standard shell i terminalen ved å åpne Command Palette (⇧⌘P / Ctrl+Shift+P) og skrive `Terminal: Select Default Profile`.
+
+Man kan også gjøre dette fra dropdown ved siden av ny terminal-knappen:
+![Bytte terminal fra dropdown ved siden av ny-terminal-knapp](../..//img/knast-default-shell.png)
+
+Les mer om [Terminal Profiles](https://code.visualstudio.com/docs/terminal/profiles) i Visual Studio Code sin dokumentasjon.
+
 ### Python
 For å kjøre pythonkode bør du installere en egen pythonversjon. [Les hvordan det gjøres best med uv](./miljo.md#python-med-uv).
 
 ### Extensions
 
 For at VSCode skal fungere godt må du installere noen extensions. Om du bruker VSCode i nettleser kjører du egentlig [open source versjonen](https://cloud.google.com/workstations/docs/base-editor-overview) som kalles Code - OSS. Den største forskjellen mellom disse to er at Code - OSS ikke støtter alle extensions som VSCode gjør. Om du derimot kobler til remote fra din lokale VSCode vil du kunne bruke alle extensions. Merk at mange extensions trenger å snakke med internett. Så hvis du opplever problemer med noen av dem bør du følge med på "blokkerte URLer" på [Min Knast](https://data.ansatt.nav.no/user/workstation). [Les mer om nettverk her](./nettverk.md).
+### Sudo-rettigheter
+
+Det er begrenset hvilke kommandoer man har lov til å kjøre som sudo. Du kan se hvilke du har lov til å kjøre ved å kjøre `sudo -l`. Hver gang man kjører sudo vil man bli bedt om å skrive inn en bekreftelseskode. Dette bekreftelseskoden er `husk ROS` og brukes utelukkende for å bekrefte at man ønsker å kjøre sudo. Dette gjøres for å unngå at script kjører sudo uten at man vet om det.
 ### Generelle råd
 Andre ting verdt å tenke på er nbstripout, dependabot og autentisering mot github og gcp. Her gjelder det samme som i [Generelle råd for Jupyterhub](../notebook/generelt.md).
 
@@ -71,7 +83,7 @@ Andre ting verdt å tenke på er nbstripout, dependabot og autentisering mot git
 Union configen blir automatisk satt opp for Knas miljøet
 
 ## Krav til allowlistede hoster for Knast
-Følgende standardåpningene er by default allowlistet for Knast maskiner. Disse er nødvendig for å snakke med Union kontrollplanet.
+Følgende standardåpninger er by default allowlistet for Knast maskiner. Disse er nødvendig for å snakke med Union kontrollplanet.
 
 ```bash
 nav.eu-central-1.unionai.cloud/*
