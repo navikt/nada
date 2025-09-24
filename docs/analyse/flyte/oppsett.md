@@ -2,35 +2,8 @@
 title: Flyte
 ---
 
-# Union autentisering fra Knast
-
-Opprett en fil `~/.union/config.yaml` med følgende innhold:
-
-```yaml
-union:
-  connection:
-    host: dns:///nav.eu-central-1.unionai.cloud
-    insecure: false
-  auth:
-    type: DeviceFlow
-admin:
-  endpoint: dns:///nav.eu-central-1.unionai.cloud
-  insecure: false
-  authType: DeviceFlow
-```
-
-
-## Krav til allowlistede hoster for Knast
-
-```bash
-nav.eu-central-1.unionai.cloud/*
-raw.githubusercontent.com/unionai/*
-github.com/unionai/uctl/releases/*
-release-assets.githubusercontent.com/github-production-release-asset/*
-```
-
 # Union autentisering fra lokal maskin
-Opprett en fil `~/.union/config.yaml` med følgende innhold:
+Opprett en fil `~/.flyte/config.yaml` (MAC, Linux) eller `C:\Users\<nav_ident>\.flyte\config.yaml` (Windows) med følgende innhold:
 
 ```yaml
 union:

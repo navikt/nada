@@ -94,6 +94,8 @@ nav:
       - Komme i gang: analyse/knast/kom-i-gang.md
       - Oppsett av miljø: analyse/knast/miljo.md
       - Nettverk: analyse/knast/nettverk.md
+    - Union: 
+      - Oppsett: analyse/flyte/oppsett.md
     - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
     - Koble sammen pseudonymiserte tabeller: analyse/koble-pseudonymiserte.md

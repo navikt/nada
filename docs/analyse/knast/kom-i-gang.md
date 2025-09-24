@@ -65,3 +65,24 @@ For å kjøre pythonkode bør du installere en egen pythonversjon. [Les hvordan 
 For at VSCode skal fungere godt må du installere noen extensions. Om du bruker VSCode i nettleser kjører du egentlig [open source versjonen](https://cloud.google.com/workstations/docs/base-editor-overview) som kalles Code - OSS. Den største forskjellen mellom disse to er at Code - OSS ikke støtter alle extensions som VSCode gjør. Om du derimot kobler til remote fra din lokale VSCode vil du kunne bruke alle extensions. Merk at mange extensions trenger å snakke med internett. Så hvis du opplever problemer med noen av dem bør du følge med på "blokkerte URLer" på [Min Knast](https://data.ansatt.nav.no/user/workstation). [Les mer om nettverk her](./nettverk.md).
 ### Generelle råd
 Andre ting verdt å tenke på er nbstripout, dependabot og autentisering mot github og gcp. Her gjelder det samme som i [Generelle råd for Jupyterhub](../notebook/generelt.md).
+
+### Oppsett av union
+
+Union configen blir automatisk satt opp for Knas miljøet
+
+## Krav til allowlistede hoster for Knast
+Følgende standardåpningene er by default allowlistet for Knast maskiner. Disse er nødvendig for å snakke med Union kontrollplanet.
+
+```bash
+nav.eu-central-1.unionai.cloud/*
+signin.hosted.unionai.cloud/*
+storage.googleapis.com/opta-gcp-union-europe-north1-nav-fast-registration/*
+```
+
+For å kunne bygge docker imager når nye workflows og tasks skal lastes opp må man også åpne for følgende:
+
+```bash
+registry-1.docker.io/*
+europe-north1-docker.pkg.dev/*
+auth.docker.io/*
+```
