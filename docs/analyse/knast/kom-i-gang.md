@@ -80,7 +80,7 @@ Andre ting verdt å tenke på er nbstripout, dependabot og autentisering mot git
 
 ### Oppsett av union
 
-Union configen blir automatisk satt opp for Knas miljøet
+Union configen blir automatisk satt opp for Knast miljøet. Knast miljøet vil også komme preinstalleret med seneste versjon av kommandolinjeverktøyet `uctl` for å snakke med Union kontrollplanet.
 
 ## Krav til allowlistede hoster for Knast
 Følgende standardåpninger er by default allowlistet for Knast maskiner. Disse er nødvendig for å snakke med Union kontrollplanet.
