@@ -51,3 +51,6 @@ curl -sL https://raw.githubusercontent.com/unionai/uctl/main/install.sh | bash
 ```bash
 export PATH="${PATH}:${HOME}/bin"
 ```
+
+### Eksempler
+Se [navikt/union-demo](https://github.com/navikt/union-demo) for eksempler på workflows og tasks med både [v1](https://www.union.ai/docs/v1/flyte/user-guide/introduction/) og [v2](https://www.union.ai/docs/v2/flyte/user-guide/flyte-2/) versjonene av Flyte.
