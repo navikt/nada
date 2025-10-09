@@ -22,5 +22,6 @@ Når du jobber med skarpe data, så er det viktig å tenke sikkerhet hele veien.
 * **Git**: API-nøkler, passord og personopplysninger må aldri pushes til GitHub.
 * **Lagring**: Ikke last ned skarpe data til din PC, ikke lagre dem permanent i Knast, eller på uautoriserte flater utenfor Navs kontroll.
 * **Arbeidsform**:
-    * Unngå [mob programmering](https://en.wikipedia.org/wiki/Team_programming#Mob_programming) med skarpe data, særlig i åpne landskap der mange kan se skjermen.
-    * Bare de som har tjenestelig behov skal ha tilgang, og visning av data må skje på en måte som hindrer innsyn fra uvedkommende.
+    * Unngå å jobbe med skarpe data i åpne landskap eller offentlige områder.
+    * Vær bevisst på omgivelsene dine, det skal ikke være mulig for andre å se eller høre sensitiv informasjon.
+    * Ved parprogrammering eller annet samarbeid: sjekk at alle involverte har tjenstelig behov.
