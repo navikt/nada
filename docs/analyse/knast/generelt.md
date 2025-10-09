@@ -23,5 +23,5 @@ Når du jobber med skarpe data, så er det viktig å tenke sikkerhet hele veien.
 * **Lagring**: Ikke last ned skarpe data til din PC, ikke lagre dem permanent i Knast, eller på uautoriserte flater utenfor Navs kontroll.
 * **Arbeidsform**:
     * Unngå å jobbe med skarpe data i åpne landskap eller offentlige områder.
-    * Vær bevisst på omgivelsene dine, det skal ikke være mulig for andre å se eller høre sensitiv informasjon.
+    * Vær bevisst på omgivelsene dine, det skal ikke være mulig for uvedkommende å se eller høre sensitiv informasjon.
     * Ved parprogrammering eller annet samarbeid: sjekk at alle involverte har tjenstelig behov.
