@@ -50,10 +50,6 @@ For å autentisere deg mot GitHub kjører du `gh auth login` fra en terminal på
 
 ## GitHub Copilot
 
-!!!info "GitHub Copilot fungerer, men GitHub Copilot Chat støttes foreløpig ikke."
+!!!info "GitHub Copilot er ikke tilgjengelig, og skal ikke brukes på Knast."
 
-Brannmuråpninger er allerede inkludert i de sentralt administrerte åpningene, så om du bruker disse, så skal det være OK.
-
-I tillegg må du sørge for at extensions bruker proxy. Gå til `File->Preferences->Settings` og søk etter `http.proxySupport`. Denne må du sette til `on`.
-
-Høyreklikk på tannhjulet nederst til venstre og huk av for `Accounts`. Nå skal du kunne trykke på ikonet som dukker opp over tannhjulet og velge `Sign in to GitHub to use GitHub Copilot ` og deretter følge anvisningene nederst i høyre hjørne. Når du er innlogget i GitHub, så skal Copilot fungere.
+Fordi vi ikke har god nok kontroll på hvilke data som sendes til GitHub Copilot, så har vi valgt å sperre for GitHub Copilot i de globale brannmurreglene for Knast.
