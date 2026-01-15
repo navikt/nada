@@ -69,7 +69,7 @@ Det er mulig å flytte elementer mellom mapper og dashboards etter behov, men hu
 ## Administere datamodell
 Når et datasett legges til i Metabase vil appen gi hvert felt en semantisk type som den tror passer. Hvis Metabase gjetter feil kan det føre til problemer som at du ikke kan summere tall, filtrere på en kategori eller bruke tidsfunksjoner. Dette kan endres i adminmenyen:
 
-1. Trykk på tannhjulet oppe til høyre og gå inn i `Admin settings`. Her finner du alle datasett du har tilgang til via Datamarkedsplassen.
+1. Trykk på tannhjulet oppe til høyre og gå inn i "Admin settings". Her finner du alle datasett du har tilgang til via Datamarkedsplassen.
 2. Velg tabellen du ønsker å administrere. 
 3. Her kan du for hvert felt gjøre endringer som å velge semantisk type og filtertype utifra hva du selv ønsker. Merk at disse endringene vil gjelde for alle som bruker dette datasettet til å lage spørsmål. 
 
@@ -81,28 +81,28 @@ Er du usikker på hvilken type som passer kan du prøve deg fram eller velge en 
 
 
 ## Sync og scan av tabeller
-Dersom du gjør endringer på skjemaet til en tabell i BigQuery vil det ta inntil en time før Metabase oppdager endringen. Synkronisering av skjema gjøres altså en gang i timen.
+Dersom du gjør endringer på skjemaet til en tabell i BigQuery vil ikke Metabase oppdage dette av seg selv. Det må trigges en sync manuelt. Dette kan du gjøre selv ved å gå inn i "Admin settings", velge tabellen du ønsker å synce og trykke på "Sync options". Der har du to valg, "Sync table schema" og "Re-scan table". I dette tilfellet er det en sync som må til, men det kan ofte være nyttig å trykke på begge. Når syncen er trigget vil Metabase bruke det nye skjemaet innen få minutter. Det kan være nødvendig å refreshe nettleseren for å at nye felter skal dukke opp.
 
-En gang i døgnet gjøres det også en full table scan. Metabase sjekker da hvilke mulige verdier hver kolonne kan ha for å populere nedtrekksmenyer og lignende. Har du behov for å trigge en scan kan du gjøre følgende.
+En gang i døgnet gjøres det en full table scan. Metabase sjekker da hvilke mulige verdier hver kolonne kan ha for å populere nedtrekksmenyer og lignende. Scans kan trigges ved å trykke "Re-scan table" som beskrevet over.
 
-1. Trykk på tannhjulet oppe til høyre og gå inn i `Admin settings`. Her finner du alle datasett du har tilgang til via Datamarkedsplassen.
-2. Velg tabellen du ønsker å synkronisere og trykk på det nye tannhjulet som dukker opp i høyre hjørne.
-3. Trykk på `Re-scan this table`.
-4. Det kan være nødvendig å åpne nettleser på nytt for at den skal få med seg endringen.
-
+## Public dashboards
+Fra menyen på datamarkedsplassen kan man gjøre dashbord "public". Et public dashbord kan være nyttig i følgende situasjoner:
+- Teamet vil vise fram dashbordet til kolleger som ikke har metabasebruker.
+- Teamet ønsker en "view only"-lenke til dashbordet.
+- Dashbordet skal vises på en infoskjerm.
 
 ## FAQ
 Q: Jeg får ikke logget inn. Hva kan jeg gjøre?  
-A: Dersom du ikke har vært logget inn i Metabase på lang tid kan brukeren din bli deaktivert. Da må du ta kontakt med #nada på Slack.
+A: Dersom du ikke har vært logget inn i Metabase på lang tid kan brukeren din bli deaktivert. Da må du ta kontakt med #nada på Slack for å reaktiveres.
 
 Q: Jeg har nettopp lagt til en ny kolonne i BigQuery-tabellen min. Hvorfor dukker den ikke opp i Metabase?  
-A: Metabase kjører en synk hver time for å sjekke om skjemaet har endret seg. Det vil derfor ta litt tid før det dukker opp i Metabase automatisk.
+A: Du må trigge en sync. Se avsnittet om sync og scan av tabeller.
 
 Q: Filter-verdier i Metabase er ikke oppdatert?  
-A: Metabase kjører en daglig scan av hele tabellen i BigQuery for å finne ut av hvilke verdier som finnes. Dette brukes bl.a. til å generere `options` i filter. Disse vil også oppdateres med `Re-scan this table` som forklart over.
+A: Metabase kjører en daglig scan av hele tabellen i BigQuery for å finne ut av hvilke verdier som finnes. Dette brukes bl.a. til å generere "options" i filter. Disse vil også oppdateres med "Re-scan table" som forklart over.
 
 Q: Hvorfor får jeg ikke joinet datasett som er åpent tilgjengelig?  
-A: Du kan det! Men du må gjøre det med `SQL query`. Et alternativ er å joine tabeller i BigQuery, lage et nytt datasett og legge dette til i Metabase.
+A: Du kan det! Men du må gjøre det med "SQL query". Et alternativ er å joine tabeller i BigQuery, lage et nytt datasett og legge dette til i Metabase.
 
 Q: Kan jeg koble sammen datasett som er tilgangsbegrenset?  
 A: Slik Metabase er satt opp, er det en unik service-bruker per tilgangsbegrensede datasett. 
