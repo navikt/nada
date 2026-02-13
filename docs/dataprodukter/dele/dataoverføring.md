@@ -56,7 +56,7 @@ nais postgres users add <appnavn> <brukernavn> <passord>
 ```
 2. [Følg Google sin guide for å sette opp Cloud SQL databasetilkobling](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries#setting-up-cloud-sql-database-connections)
 3. Gi generert service account roller for å kunne utføre external queries
-    * Når man i (1) aktiverer `BigQuery Connection API` blir det automatisk generert en service account på formatet `service-<projectNumber>@gcp-sa-bigqueryconnection.iam.gserviceaccount.com`. Denne må gis følgende roller i prosjektet:
+    * Når man i (2) aktiverer `BigQuery Connection API` blir det automatisk generert en service account på formatet `service-<projectNumber>@gcp-sa-bigqueryconnection.iam.gserviceaccount.com`. Denne må gis følgende roller i prosjektet:
         - `Bigquery Connection Admin`
         - `Cloud SQL Client`
     !!! info "`projectNumber` over er prosjektnummeret, ikke prosjekt ID. Du finner prosjektnummer [her](https://console.cloud.google.com/welcome)."
