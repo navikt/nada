@@ -43,10 +43,22 @@ ipython kernel install --name myvenv --user
 Man bør regelmessig kjøre `uv pip list --outdated` for å se hva slags pakker man trenger å oppgradere. Enda bedre er å ha en `requirements.txt` (eller tilsvarende for Poetry eller lignende verktøy) sjekket inn i Github, og la Dependabot gjøre jobben. Husk også å følge med på nye Python-versjoner! Det finnes en god oversikt hos [Python developers guide](https://devguide.python.org/). Per dags dato bør ingen være på noe lavere enn 3.9, og man bør jobbe med å komme seg vekk fra 3.9 da den har EOL (end of life) oktober 2025.
 
 ## Autentisering mot GitHub
+Før du kan klone, pushe eller på annen måte samhandle med private repos på GitHub, må du autentisere deg. Dette gjør du ved å konfigurere Git med ditt navn og e-postadresse, og deretter bruke en av de tilgjengelige metodene for autentisering.
 
-Vi anbefaler å bruke [gh cli](https://cli.github.com/manual/) for å autentisere seg mot GitHub.
-Dette kommandolinjeverktøyet kommer preinstallert i Knast-miljøet ditt.
-For å autentisere deg mot GitHub kjører du `gh auth login` fra en terminal på Knast-maskinen din og følger instruksjonene som kommer opp.
+
+Kjør følgende i terminalen for å sette opp ditt navn og e-postadresse globalt for Git:
+```bash
+git config --global user.name "Ditt Navn"
+git config --global user.email "din.email@nav.com"
+```
+
+Det finnes flere måter å autentisere seg mot GitHub på.
+
+### [gh CLI](https://cli.github.com/manual/)
+Dette verktøyet er forhåndsinstallert på Knast. For å autentisere deg, åpne en terminal og kjør `gh auth login`. Følg deretter instruksjonene som vises.
+
+### Innebygd autentisering i VS Code
+Når du forsøker å klone et privat repo via terminalen med `git clone`, eller bruker kommandoen Ctrl+Shift+P og velger "Git: Clone", vil du få opp en dialog for innlogging til GitHub. Følg denne. Denne dialogen vises ikke når du kloner et offentlig repo, men dersom du prøver å pushe til et repo uten å være innlogget, vil dialogen dukke opp slik at du kan autentisere deg.
 
 ## GitHub Copilot
 
