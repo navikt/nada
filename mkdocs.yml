@@ -57,7 +57,10 @@ markdown_extensions:
   - pymdownx.smartsymbols
   - pymdownx.inlinehilite
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - def_list
@@ -84,11 +87,9 @@ nav:
     - Jupyter notebooks:
       - Hva er Jupyter notebooks?: analyse/notebook/index.md
       - KNADA notebooks: analyse/notebook/knada-notebook.md
-      - Google managed notebooks: analyse/notebook/managed-notebook.md
       - Generelle råd: analyse/notebook/generelt.md
     - Airflow: 
       - KNADA Airflow: analyse/airflow/knada-airflow.md
-      - Google managed Airflow (Cloud Composer): analyse/airflow/managed-airflow.md
     - Knast:
       - Hva er Knast?: analyse/knast/generelt.md
       - Komme i gang: analyse/knast/kom-i-gang.md
