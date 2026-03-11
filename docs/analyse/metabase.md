@@ -92,8 +92,11 @@ Fra menyen på datamarkedsplassen kan man gjøre dashbord "public". Et public da
 - Dashbordet skal vises på en infoskjerm.
 
 ## FAQ
-Q: Jeg får ikke logget inn. Hva kan jeg gjøre?  
-A: Dersom du ikke har vært logget inn i Metabase på lang tid kan brukeren din bli deaktivert. Da må du ta kontakt med #nada på Slack for å reaktiveres.
+Q: Jeg får ikke lov å gjøre endringer på et spørsmål. Hva kan jeg gjøre?  
+A: Dette betyr at du ikke har tilgang til datasettet spørsmålet er knyttet til. Gå til Datamarkedsplassen og sjekk at din e-post har tilgang til datasettet.
+
+Q: Datamarkedsplassen viser at jeg har tilgang, men jeg har ikke tilgang i Metabase.  
+A: Det kan noen ganger skje feil hvor tilgangen din ikke blir riktig syncet til Metabase. Dette kan vanligvis løses ved å slette tilgangen og legge den til på nytt. Merk at gruppetilganger ikke synces til Metabase.
 
 Q: Jeg har nettopp lagt til en ny kolonne i BigQuery-tabellen min. Hvorfor dukker den ikke opp i Metabase?  
 A: Du må trigge en sync. Se avsnittet om sync og scan av tabeller.
@@ -105,8 +108,7 @@ Q: Hvorfor får jeg ikke joinet datasett som er åpent tilgjengelig?
 A: Du kan det! Men du må gjøre det med "SQL query". Et alternativ er å joine tabeller i BigQuery, lage et nytt datasett og legge dette til i Metabase.
 
 Q: Kan jeg koble sammen datasett som er tilgangsbegrenset?  
-A: Slik Metabase er satt opp, er det en unik service-bruker per tilgangsbegrensede datasett. 
-Det er mulig å gjøre dette i Metabase ved å be datasetteier om å gi tilgang til service-account, men vi anbefaler å lage et view i BigQuery. 
+A: Slik Metabase er satt opp, er det en unik service-bruker per tilgangsbegrensede datasett. Generelt anbefaler vi å gjøre joins i et BigQuery-view og registrere dette som et nytt datasett.
 
 Q: Jeg har tilgang til et datasett i Datamarkedsplassen gjennom å være medlem av en AD-gruppe og får lest data direkte fra BigQuery, hvorfor har jeg da ikke tilgang til samme datasett i Metabase?  
 A: I Metabase leses data fra kilden med en service-bruker og ikke din personlige bruker.
