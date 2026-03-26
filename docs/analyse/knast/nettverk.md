@@ -1,7 +1,7 @@
 Siden Knast kjører i knada-gcp er det mulig å nå det meste av tjenester i Nav og alt som ligger på internett. For å få til dette må du selv oppgi hva du ønsker å snakke med.
 
 ## Åpninger mot on-prem
-Det er ønskelig å begrense åpninger mot on-prem så mye som mulig. Derfor har du kun tilgang til de adressene du oppgir i din [Knast-konfigurasjon](https://data.ansatt.nav.no/user/workstation). Her velger du fra en dropdown-liste med mulige kilder. Du også velge nais-ingresser som "intern.nav.no", hvis du skal åpne mot f.eks https://teamkatalogen.intern.nav.no. Dersom du ikke finner kilden du trenger ta kontakt med #nada på slack.
+Det er ønskelig å begrense åpninger mot on-prem så mye som mulig. Derfor har du kun tilgang til de adressene du oppgir i din [Knast-konfigurasjon](https://data.ansatt.nav.no/user/workstation). Her velger du fra en dropdown-liste med mulige kilder. Du også velge nais-ingresser som "intern.nav.no", hvis du skal åpne mot f.eks https://teamkatalogen.intern.nav.no. Dersom du ikke finner kilden du trenger ta kontakt med #dataplattform på slack.
 
 ## Åpninger mot internett
 Det er også stengt av mot internett som default. Nada tilbyr en liste med åpninger som de aller fleste har behov for. Utover den må du legge til URLer du vil snakke med selv under fanen "URL-håndtering". URLene må oppgis med [syntax beskrevet her](https://cloud.google.com/secure-web-proxy/docs/url-list-syntax-reference). Det er god praksis å åpne for minst mulig, for eksempel er `github.com/navikt/*`  bedre enn `github.com/*`.

@@ -20,4 +20,4 @@ Teamadministreringen skjer igjennom Knorten.
 
 Hvis du eller noen i teamet ditt ikke tilhører Utvikling og data (U&D) må de manuelt bli lagt til Azure AD-gruppen [`knada-gw-access`](https://myaccount.microsoft.com/groups/8166af3f-25e5-473a-98f4-86030aa7ba27).
 Dette er en gruppe alle kan bli medlem av, og vi ønsker bare å ha en god oversikt over hvem som ikke tilhører U&D.
-Ta kontakt i [Slack#nada](https://nav-it.slack.com/archives/CGRMQHT50) for bistand.
+Ta kontakt i [Slack#dataplattform](https://nav-it.slack.com/archives/CGRMQHT50) for bistand.
