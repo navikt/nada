@@ -81,12 +81,13 @@ Er du usikker på hvilken type som passer kan du prøve deg fram eller velge en 
 
 
 ## Sync og scan av tabeller
-Dersom du gjør endringer på skjemaet til en tabell i BigQuery vil ikke Metabase oppdage dette av seg selv. Det må trigges en sync manuelt. Dette kan du gjøre selv ved å gå inn i "Admin settings", velge tabellen du ønsker å synce og trykke på "Sync options". Der har du to valg, "Sync table schema" og "Re-scan table". I dette tilfellet er det en sync som må til, men det kan ofte være nyttig å trykke på begge. Når syncen er trigget vil Metabase bruke det nye skjemaet innen få minutter. Det kan være nødvendig å refreshe nettleseren for å at nye felter skal dukke opp.
+Dersom du gjør endringer på skjemaet til en tabell i BigQuery vil ikke Metabase oppdage dette av seg selv. Det må trigges en sync manuelt. Dette kan du gjøre selv ved å gå inn i "Admin settings", velge tabellen du ønsker å synce og trykke på "Sync options". Der har du to valg, "Sync table schema" og "Re-scan table". I dette tilfellet er det en sync som må til, men det kan ofte være nyttig å trykke på begge. Når syncen er trigget vil Metabase bruke det nye skjemaet innen få minutter. Det kan være nødvendig å refreshe nettleseren for at nye felter skal dukke opp.
 
 En gang i døgnet gjøres det en full table scan. Metabase sjekker da hvilke mulige verdier hver kolonne kan ha for å populere nedtrekksmenyer og lignende. Scans kan trigges ved å trykke "Re-scan table" som beskrevet over.
 
 ## Public dashboards
 Fra menyen på datamarkedsplassen kan man gjøre dashbord "public". Et public dashbord kan være nyttig i følgende situasjoner:
+
 - Teamet vil vise fram dashbordet til kolleger som ikke har metabasebruker.
 - Teamet ønsker en "view only"-lenke til dashbordet.
 - Dashbordet skal vises på en infoskjerm.
