@@ -98,3 +98,20 @@ registry-1.docker.io/*
 europe-north1-docker.pkg.dev/*
 auth.docker.io/*
 ```
+
+### Kom igang med Jupyter Notebooks i VSCode
+I dette eksempelet skal vi lage et plot av åpne data fra SSB som et eksempel på hvordan man kan bruke Jupyter Notebooks i VSCode i Knast.
+Vi ønsker å bruke https://www.ssb.no/statbank/table/05984 som kilde.
+
+Før man begynner så må man man åpne mot følgende URL. https://data.ssb.no/api/pxwebapi/v2/tables/05984/data?lang=no&outputFormat=csv&valuecodes[ContentsCode]=*&valuecodes[Tid]=2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025&valuecodes[Husdyr]=*&heading=ContentsCode,Tid&stub=Husdyr
+Legg inn "data.ssb.no/api/pxwebapi/v2/tables/05984/data" husk å aktivere åpningen etterpå.
+
+Lag først et git repo med et virtualenv og åpne denne folderen.
+```bash
+mkdir -p ~/git/ssb/
+cd ~/git/ssb/
+uv venv
+code .
+```
+
+
