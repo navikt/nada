@@ -125,12 +125,3 @@ Se [Union dokumentasjon](https://www.union.ai/docs/v2/union/user-guide/) for mer
 ### Eksempler
 Se [navikt/union-demo](https://github.com/navikt/union-demo) for eksempler på workflows og tasks med både [v1](https://www.union.ai/docs/v1/flyte/user-guide/introduction/) og [v2](https://www.union.ai/docs/v2/flyte/user-guide/flyte-2/) versjonene av Flyte.
 
-### Trigge Union workflows fra IWS
-Som med Airflow vil det være mulig å trigge Union workflows fra IWS.
-For at dette skal være mulig er teamet nødt til å melde fra om dette i #dataplattform da det er et manuelt steg å gi service principalen IWS bruker lov til å trigge workflows for et team.
-
-For å sette opp en schedulert kjøring må følgende informasjon sendes til LinWin-teamet:
-- Union prosjekt
-- Union domain/miljø
-- Navn på task
-- Tidspunkt/frekvens som tasken skal kjøre

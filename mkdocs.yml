@@ -98,7 +98,7 @@ nav:
     - Union: 
       - Oppsett: analyse/union/oppsett.md
       - Bruk: analyse/union/bruk.md
-      - Admin: analyse/union/admin.md
+      - IWS-skedulering: analyse/union/iws-skedulering.md
     - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
     - Koble sammen pseudonymiserte tabeller: analyse/koble-pseudonymiserte.md
