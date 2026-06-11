@@ -1,41 +1,10 @@
-# Kom-i-gang guide Union
-For å koble deg til Union må du opprette en konfigurasjonsfil. Denne filen kan enten opprettes globalt i hjemmeområdet ditt eller miljøspesifikt for prosjektet du jobber med. 
 
-## Global konfigurasjonsfil
-Ta utgangspunkt i config-filen under og erstatt `<prosjekt-navn>` med navnet på Union prosjektet til teamet ditt. Skriver du ikke inn et prosjekt her må du spesifisere prosjekt og domene eksplisitt når du laster opp eller starter jobber som beskrevet i [Opplasting og kjøring av Union tasks](#opplasting-og-kjøring-av-union-tasks).
-
-```yaml
-admin:
-  endpoint: dns:///union.data.nav.no
-  insecure: false
-  authType: Pkce
-task:
-  project: <prosjekt-navn>
-  org: union-nav
-```
-
-Denne filen oppretter du på hjemmeområdet ditt på stien `~/.union/config.yaml` for de med linux/mac (og `C:\Users\<brukernavn>\.union\config.yaml` for de med windows ?). Denne konfigurasjonsfilen vil være gyldig for alle Union prosjekter du har tilgang til.
-
-## Miljøspesifikk konfigurasjonsfil
-For å opprette en miljøspesifikk konfigurasjonsfil kjør følgende kommando fra det lokale arbeidsområdet du jobber fra:
-
-```bash
-flyte create config --endpoint union.data.nav.no --org union-nav --project flytesnacks --domain development
-```
-
-Dette vil opprette en config fil i arbeidsområdet ditt under stien `./.flyte/config.yaml`.
-Denne vil overstyre en eventuell global konfigurasjonsfil.
-Brukerne kan på den måten ha en fil per miljø og spesifisere prosjekt/domene slik at ikke dette trenger å spesifiseres eksplisitt i kommandoene når tasker skal lastes opp eller trigges som beskrevet i [Opplasting og kjøring av Union tasks](#opplasting-og-kjøring-av-union-tasks).
-
-## Krav til lokal maskin for å bruke Union
-- Nav compliant device
-- Docker installert på maskin
 
 ## Union i Nav
-Et prosjekt i Union får automatisk opprettet tre domener: `development`, `staging` og `production`.
+Et prosjekt i Union får automatisk opprettet tre miljøer (domains i Union): `development`, `staging` og `production`.
 Dette oversettes til separate namespacer i Kubernetes clusteret som Union tasks kjører, slik at arbeidslaster ment for testing/utvikling kan isoleres totalt fra f.eks. arbeidslaster ment for produksjon.
 
-Vi har lagt til rette for at brukerne selv kan provisjonere så mange service accounts de vil for hvert enkelt domene innad i et prosjekt samt hvordan arbeidslaster som bruker disse service accountene kan knyttes til regler som gir de lov til å nå bestemte kilder.
+Vi har lagt til rette for at brukerne selv kan provisjonere så mange service accounts de vil for hvert enkelt miljø innad i et prosjekt samt hvordan arbeidslaster som bruker disse service accountene kan knyttes til regler som gir de lov til å nå bestemte kilder.
 Dette beskrives mer detaljert i [Team spesifikk konfigurasjon](#team-spesifikk-konfigurasjon) under.
 
 Addressen til kontrollplanet (brukergrensesnittet) til Union er `https://union.data.nav.no`.
@@ -57,10 +26,10 @@ Nå er du klar for å ta i bruk Union!
 
 ## Team spesifikk konfigurasjon 
 Vi ønsker at mest mulig i Union skal være selvbetjent for brukerne våre samtidig som at vi legger opp til at sikkerhet ivaretas i best mulig grad.
-Derfor har vi lagt til rette for brukerne selv kan provisjonere så mange service accounts de vil for hvert domene i prosjektene sine samt at disse service accountene kan knyttes til regler som gir arbeidslaster i Kubernetes (Union tasks) som bruker de lov til å nå bestemte kilder.
+Derfor har vi lagt til rette for brukerne selv kan provisjonere så mange service accounts de vil for hvert miljø i prosjektene sine samt at disse service accountene kan knyttes til regler som gir arbeidslaster i Kubernetes (Union tasks) som bruker de lov til å nå bestemte kilder.
 
-Team spesifikk konfigurasjon settes opp med å deploye en `UnionTeamServiceAccounts` ressurs per domene i teamets Union prosjekt til dataplan-clusteret til Union.
-Under er et eksempel på et slikt manifest for Union prosjektet `test-team` i deres `development` domene:
+Team spesifikk konfigurasjon settes opp med å deploye en `UnionTeamServiceAccounts` ressurs per miljø i teamets Union prosjekt til dataplan-clusteret til Union.
+Under er et eksempel på et slikt manifest for Union prosjektet `test-team` i deres `development` miljø:
 
 ```yaml
 apiVersion: data.nav.no/v1alpha1
@@ -82,7 +51,7 @@ spec:
         - host: dmv09-scan.adeo.no
 ```
 
-Dette manifestet vil opprette to service accounts for Union prosjektet `test-team` i `development` domenet deres.
+Dette manifestet vil opprette to service accounts for Union prosjektet `test-team` i `development` miljøt deres.
 Hver av disse service accountene i Kubernetes vil få opprettet en tilhørende google service account.
 Disse google service accounten kan igjen gis tilganger til google APIer (BigQuery, storage buckets etc.).
 Når man så knytter en av disse service accountene til en task i Union vil prosesser i denne tasken kunne benytte seg av tilgangene gitt, dvs. både tilgang til google APIer samt også åpninger listet for service accounten under `externalAllowlist` og `internalAllowlist`.
@@ -96,7 +65,7 @@ Under er et enkelt eksempel på Union workflow, den kjører en task som kaller e
 Dette eksempelet er mest ment for å illustrere hvordan man kan sy sammen Union tasks (dvs. python funksjoner) til en fullstendig workflow bestående av mange steg.
 Hver av Union taskene vil kjøres i separate, isolerte [pods](https://kubernetes.io/docs/concepts/workloads/pods/) i dataplan-clusteret.
 Det eneste som må gjøres for at en python funksjon skal kjøres som en Union task er å legge på annotasjonen `@env.task`.
-Utover det er det standard python syntax som beskriver flyten i en Union workflow, dvs det er ikke noe domene spesifikt språk man må sette seg inn i for å bygge opp en workflow bestående av mange ledd.
+Utover det er det standard python syntax som beskriver flyten i en Union workflow, dvs det er ikke noe domenespesifikt språk man må sette seg inn i for å bygge opp en workflow bestående av mange ledd.
 
 ```python
 import flyte
@@ -153,12 +122,15 @@ flyte deploy --domain development --all workflow.py
 
 Se [Union dokumentasjon](https://www.union.ai/docs/v2/union/user-guide/) for mer informasjon om oppsett, samt opplasting og administrasjon, av Union tasks.
 
+### Eksempler
+Se [navikt/union-demo](https://github.com/navikt/union-demo) for eksempler på workflows og tasks med både [v1](https://www.union.ai/docs/v1/flyte/user-guide/introduction/) og [v2](https://www.union.ai/docs/v2/flyte/user-guide/flyte-2/) versjonene av Flyte.
+
 ### Trigge Union workflows fra IWS
 Som med Airflow vil det være mulig å trigge Union workflows fra IWS.
 For at dette skal være mulig er teamet nødt til å melde fra om dette i #dataplattform da det er et manuelt steg å gi service principalen IWS bruker lov til å trigge workflows for et team.
 
 For å sette opp en schedulert kjøring må følgende informasjon sendes til LinWin-teamet:
 - Union prosjekt
-- Union domene
+- Union domain/miljø
 - Navn på task
 - Tidspunkt/frekvens som tasken skal kjøre

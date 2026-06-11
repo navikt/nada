@@ -2,55 +2,37 @@
 title: Flyte
 ---
 
-# Union autentisering fra lokal maskin
-Opprett en fil `~/.flyte/config.yaml` (MAC, Linux) eller `C:\Users\<nav_ident>\.flyte\config.yaml` (Windows) med følgende innhold:
+# Oppsett av Union
+
+# Kom-i-gang guide Union
+For å koble deg til Union må du opprette en konfigurasjonsfil. Denne filen kan enten opprettes globalt i hjemmeområdet ditt eller miljøspesifikt for prosjektet du jobber med. 
+
+## Global konfigurasjonsfil
+Ta utgangspunkt i config-filen under og erstatt `<prosjekt-navn>` med navnet på Union prosjektet til teamet ditt. Skriver du ikke inn et prosjekt her må du spesifisere prosjekt eksplisitt når du laster opp eller starter jobber som beskrevet i [Opplasting og kjøring av Union tasks](#opplasting-og-kjøring-av-union-tasks).
 
 ```yaml
-union:
-  connection:
-    host: dns:///nav.eu-central-1.unionai.cloud
-    insecure: false
-  auth:
-    type: Pkce
 admin:
-  endpoint: dns:///nav.eu-central-1.unionai.cloud
+  endpoint: dns:///union.data.nav.no
   insecure: false
   authType: Pkce
+task:
+  project: <prosjekt-navn>
+  org: union-nav
 ```
 
-# Nødvendige verktøy
+Denne filen oppretter du på hjemmeområdet ditt på stien `~/.union/config.yaml` for de med linux/mac (og `C:\Users\<brukernavn>\.union\config.yaml` for de med windows ?). Denne konfigurasjonsfilen vil være gyldig for alle Union prosjekter du har tilgang til.
 
-## Union CLI
-Union CLIet kan installeres som en vanlig python pakke, men Union [oppfordrer brukere](https://www.union.ai/docs/v1/byoc/user-guide/getting-started/local-setup/) til å installere [uv](https://docs.astral.sh/uv/) og deretter union CLI som et uv verktøy. For å installere uv se [følgende doc](https://docs.astral.sh/uv/). Med uv installert kan union CLI installeres som følger:
+## Miljøspesifikk konfigurasjonsfil
+For å opprette en miljøspesifikk konfigurasjonsfil kjør følgende kommando fra det lokale arbeidsområdet du jobber fra:
 
 ```bash
-uv tool install union
+flyte create config --endpoint union.data.nav.no --org union-nav --project flytesnacks --domain development
 ```
 
-For enkelhets skyld bør du da også utvide path variablen til inkludere binærmappen til uv verktøy
+Dette vil opprette en config fil i arbeidsområdet ditt under stien `./.flyte/config.yaml`.
+Denne vil overstyre en eventuell global konfigurasjonsfil.
+Brukerne kan på den måten ha en fil per miljø og spesifisere prosjekt/domene slik at ikke dette trenger å spesifiseres eksplisitt i kommandoene når tasker skal lastes opp eller trigges som beskrevet i [Opplasting og kjøring av Union tasks](#opplasting-og-kjøring-av-union-tasks).
 
-```bash
-export PATH="${PATH}:${HOME}/.local/share/uv/tools/union/bin"
-```
-
-## uctl
-
-### MAC
-
-```bash
-brew tap unionai/homebrew-tap
-brew install uctl
-```
-
-### Linux
-
-```bash
-curl -sL https://raw.githubusercontent.com/unionai/uctl/main/install.sh | bash
-```
-
-```bash
-export PATH="${PATH}:${HOME}/bin"
-```
-
-### Eksempler
-Se [navikt/union-demo](https://github.com/navikt/union-demo) for eksempler på workflows og tasks med både [v1](https://www.union.ai/docs/v1/flyte/user-guide/introduction/) og [v2](https://www.union.ai/docs/v2/flyte/user-guide/flyte-2/) versjonene av Flyte.
+## Krav til lokal maskin for å bruke Union
+- Nav compliant device
+- Docker installert på maskin
