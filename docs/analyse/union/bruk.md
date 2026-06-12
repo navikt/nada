@@ -1,22 +1,16 @@
 
 
 ## Union i Nav
-Et prosjekt i Union får automatisk opprettet tre miljøer (domains i Union): `development`, `staging` og `production`.
-Dette er separate Kubernetes namespaces som sørger for isolasjon mellom miljøene.
+Et prosjekt i Union får automatisk opprettet tre domains i Union: `development`, `staging` og `production`.
+Dette er separate Kubernetes namespaces som sørger for isolasjon.
 
-Addressen til Union (kontrollplanet) er
+For å komme igang be #dataplattform i Slack for å få opprettet og tilgang til det aktuelle prosjektet i Union
 
-| Domain | URL | Beskrivelse |
-| :--- | :--- | :--- |
-| development | `https://union-dev.data.nav.no/` | Utviklingsmiljø |
-| staging | `https://...` | Stagingmiljø |
-| production | `https://union.data.nav.no/` | Produksjonsmiljø |
-
-Her kan du administrere Union prosjektene dine, som trigge tasks og sjekke status på kjøringer og logger.
+Addressen til Union (kontrollplanet) er `https://union.data.nav.no/`. Her kan du administrere Union prosjektene dine, som trigge tasks og sjekke status på kjøringer og logger.
 
 Innad i et prosjekt er det mulig å sett opp bestemte roller, dvs. hva hver enkelt teammedlem har lov til å gjøre.
 Dette kan være nyttig for å skille mellom ulike profiler innad i et team, eksempelvis kan man ha noen med en administrator rolle, andre som skal ha lov til å opprette og trigge Union tasks, mens andre igjen kun skal ha lov til å sjekke status på kjøringer/logger.
-Dett er øsnker vi å se litt an basert på erfaringer fra bruk, før vi eventuelt lager føringer for dette. 
+Dette er noe vi ønsker å se litt an basert på erfaringer fra bruk, før vi eventuelt lager føringer for dette. 
 
 ## Python
 Jobb helst i virtuelle python miljøer. Slik oppretter du et uv-miljø for bruk med Union:
@@ -24,7 +18,9 @@ Jobb helst i virtuelle python miljøer. Slik oppretter du et uv-miljø for bruk 
 1. [Installer uv](https://docs.astral.sh/uv/getting-started/installation/)
 2. Opprett virtuelt miljø med `uv venv`
 3. Kjør kommandoen `source .venv/bin/activate` for å aktivere det virtuelle miljøet for den aktive terminalsesjonen (dette må gjøre hver gang du åpner en ny terminal)
-4. Installer flyte med `uv pip install flyte`
+4. Installer flyte med `uv pip install flyte==2.2.4` (versjon 2.2.4 er den som er installert i vårt base image per nå)
+5. Kjør kommandoen `gcloud auth login --update-adc` for å autentisere med Google Cloud.
+6. Kjør kommandoen `gcloud auth configure-docker europe-west1-docker.pkg.dev` for å kunne pushe docker images til vårt registry.
 
 Nå er du klar for å ta i bruk Union!
 
@@ -125,7 +121,7 @@ Konfigurasjonen av TaskEnvironment definerer containermiljøet som tasken kjøre
 
 ### Task environment
 
-Et `TaskEnvironment` beskriver kjøremiljøet som en task kjører i, altså containeren som koden din faktisk kjøres inni.
+Et `TaskEnvironment` beskriver kjøremiljøet som en task kjører i, altså containeren som koden din faktisk kjøres i.
 
 Her spesifiserer du hvilke avhengigheter som må være tilgjengelige, for eksempel Python-biblioteker eller filer som skal inkluderes i imaget som brukes av containeren. Avhengigheter kan legges til med `with_pip_packages()` slik som vist i eksempelet over.
 
