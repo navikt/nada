@@ -83,7 +83,7 @@ Manifestet kan deployes ved hjelp av vår felles github action [navikt/union-con
 Se [her](https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782d32da7a76e8cd23eddda/.github/workflows/test-apply-utsa.yaml) for et eksempel på en slik github action.
 
 ## Skrive Union tasks
-Under er et enkelt eksempel på en Union workflow. Den består av én task (hello) som returnerer en streng, og en hovedtask task (main) som kaller denne. Slik kans man koble flere tasks sammen til en workflow.
+Under er et enkelt eksempel på en Union workflow. Den består av én task (hello) som returnerer en streng, og en hovedtask task (main) som kaller denne. Slik kan man koble flere tasks sammen til en workflow.
 
 Hver task kjører i sin egen isolerte container ([pod](https://kubernetes.io/docs/concepts/workloads/pods/)) i Kubernetes. Det eneste som skal til for å gjøre en Python-funksjon om til en Union task, er å dekorere den med `@env.task`.
 
