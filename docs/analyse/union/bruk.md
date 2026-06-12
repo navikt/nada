@@ -24,12 +24,23 @@ Vi anbefaler brukerne å jobbe i virtuelle python miljøer. Følg oppskriften un
 
 Nå er du klar for å ta i bruk Union!
 
-## Team spesifikk konfigurasjon 
-Vi ønsker at mest mulig i Union skal være selvbetjent for brukerne våre samtidig som at vi legger opp til at sikkerhet ivaretas i best mulig grad.
-Derfor har vi lagt til rette for brukerne selv kan provisjonere så mange service accounts de vil for hvert miljø i prosjektene sine samt at disse service accountene kan knyttes til regler som gir arbeidslaster i Kubernetes (Union tasks) som bruker de lov til å nå bestemte kilder.
+## Team-spesifikk konfigurasjon 
+Når du kjører en task i Union (kubernetes pod i Union clusteret) så er den i utgangspunktet isolert fra alle andre systemer og kilder. Tilganger styres av **service accounts**. Tasken har oftest behov for å nå feks:
 
-Team spesifikk konfigurasjon settes opp med å deploye en `UnionTeamServiceAccounts` ressurs per miljø i teamets Union prosjekt til dataplan-clusteret til Union.
-Under er et eksempel på et slikt manifest for Union prosjektet `test-team` i deres `development` miljø:
+- Google APIer (BigQuery, storage buckets etc.)
+- Interne kilder i NAV (datavarehus, Oracle-baser, interne APIer etc.)
+- Eksterne APIer (github, eksterne datakilder etc.)
+
+Union skal være mest mulig selvbetjent, samtidig som sikkerheten ivaretas.
+Du kan derfor:
+
+- Opprette så mange service accounts du vil per miljø (dev, prod osv.)
+- Bestemme hva disse får lov til å snakke med (både internt og eksternt)
+- Bruke dem i tasks i Union (Kubernetes)
+
+For hvert miljø i prosjektet ditt lager du et manifest (fil) av type `UnionTeamServiceAccounts` slik som beskrevet under. Dette oppretter og gir tilgang til service accountene:
+
+### Eksempel på manifest
 
 ```yaml
 apiVersion: data.nav.no/v1alpha1
@@ -51,12 +62,20 @@ spec:
         - host: dmv09-scan.adeo.no
 ```
 
-Dette manifestet vil opprette to service accounts for Union prosjektet `test-team` i `development` miljøt deres.
-Hver av disse service accountene i Kubernetes vil få opprettet en tilhørende google service account.
-Disse google service accounten kan igjen gis tilganger til google APIer (BigQuery, storage buckets etc.).
-Når man så knytter en av disse service accountene til en task i Union vil prosesser i denne tasken kunne benytte seg av tilgangene gitt, dvs. både tilgang til google APIer samt også åpninger listet for service accounten under `externalAllowlist` og `internalAllowlist`.
+Når dette deployes vil dette skje:
 
-Manifestet kan deployes av teamene selv ved hjelp av vår github action [navikt/union-config](https://github.com/navikt/union-config) som tar som input manifest filen over med input parameteren `manifest`.
+- Det opprettes 2 service accounts i Kubernetes (sa1 og sa2)
+- For hver av disse opprettes det også en Google service account
+- Disse kan få tilgang til Google-tjenester som BigQuery og Storage buckets. Dette må foreløpig settes opp manuelt av plattformteamet
+    - Ta kontakt på #dataplattform for dette.
+- Du kan koble service account til en Union task.
+
+Når en task bruker en service account, får den:
+
+- tilgang til Google-tjenester den har fått tildelt
+- tilgang til hostene definert i `internalAllowlist` og `externalAllowlist`.
+
+Manifestet kan deployes ved hjelp av vår felles github action [navikt/union-config](https://github.com/navikt/union-config) som tar som input manifest filen over med input parameteren `manifest`.
 Se [her](https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782d32da7a76e8cd23eddda/.github/workflows/test-apply-utsa.yaml) for et eksempel på en slik github action.
 
 ## Oppsett av Union tasks
