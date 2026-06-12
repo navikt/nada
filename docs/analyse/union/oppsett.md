@@ -1,10 +1,18 @@
 ---
 title: Flyte
 ---
-
-# Oppsett av Union
-
 # Kom-i-gang guide Union
+
+## Introduksjon
+
+Union (basert på Union.ai / Flyte) er på vei til å erstatte Airflow som standard verktøy for orkestrering av datapipelines i Nav.
+
+Denne dokumentasjonen er ment som en enkel guide for å komme i gang med Union, og viser hvordan du kan definere og kjøre workflows (tasks) på plattformen.
+
+Hvis du har erfaring med Airflow fra før, vil mange av konseptene være kjente, men implementert på en litt annen måte – blant annet ved at workflows defineres direkte i Python og at hver task kjører i et isolert miljø.
+
+## Oppsett
+
 For å koble deg til Union må du opprette en konfigurasjonsfil. Denne filen kan enten opprettes globalt i hjemmeområdet ditt eller miljøspesifikt for prosjektet du jobber med. 
 
 ## Global konfigurasjonsfil
