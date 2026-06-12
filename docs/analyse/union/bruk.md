@@ -2,23 +2,27 @@
 
 ## Union i Nav
 Et prosjekt i Union får automatisk opprettet tre miljøer (domains i Union): `development`, `staging` og `production`.
-Dette oversettes til separate namespacer i Kubernetes clusteret som Union tasks kjører, slik at arbeidslaster ment for testing/utvikling kan isoleres totalt fra f.eks. arbeidslaster ment for produksjon.
+Dette er separate Kubernetes namespaces som sørger for isolasjon mellom miljøene.
 
-Vi har lagt til rette for at brukerne selv kan provisjonere så mange service accounts de vil for hvert enkelt miljø innad i et prosjekt samt hvordan arbeidslaster som bruker disse service accountene kan knyttes til regler som gir de lov til å nå bestemte kilder.
-Dette beskrives mer detaljert i [Team spesifikk konfigurasjon](#team-spesifikk-konfigurasjon) under.
+Addressen til Union (kontrollplanet) er
 
-Addressen til kontrollplanet (brukergrensesnittet) til Union er `https://union.data.nav.no`.
-Her kan brukerne administere Union prosjekter de har tilgang til samt trigge runs av tasks og sjekke status på kjøringer og logger.
+| Domain | URL | Beskrivelse |
+| :--- | :--- | :--- |
+| development | `https://union-dev.data.nav.no/` | Utviklingsmiljø |
+| staging | `https://...` | Stagingmiljø |
+| production | `https://union.data.nav.no/` | Produksjonsmiljø |
 
-Innad i et prosjekt kan man konfigurere bestemte roller, dvs. hva hver enkelt teammedlem har lov til å gjøre.
+Her kan du administrere Union prosjektene dine, som trigge tasks og sjekke status på kjøringer og logger.
+
+Innad i et prosjekt er det mulig å sett opp bestemte roller, dvs. hva hver enkelt teammedlem har lov til å gjøre.
 Dette kan være nyttig for å skille mellom ulike profiler innad i et team, eksempelvis kan man ha noen med en administrator rolle, andre som skal ha lov til å opprette og trigge Union tasks, mens andre igjen kun skal ha lov til å sjekke status på kjøringer/logger.
-Hvordan teamene ønsker å konfigurere dette er noe vi tenker å se litt an basert på erfaringer fra bruk. 
+Dett er øsnker vi å se litt an basert på erfaringer fra bruk, før vi eventuelt lager føringer for dette. 
 
-## Python virtuelt miljø
-Vi anbefaler brukerne å jobbe i virtuelle python miljøer. Følg oppskriften under for å installere og konfigurere et uv-miljø for bruk med Union.
+## Python
+Jobb helst i virtuelle python miljøer. Slik oppretter du et uv-miljø for bruk med Union:
 
-1. Installer uv for ditt miljø ved å følge [deres dokumentasjon](https://docs.astral.sh/uv/getting-started/installation/)
-2. Sett opp virtuelt miljø med `uv venv`
+1. [Installer uv](https://docs.astral.sh/uv/getting-started/installation/)
+2. Opprett virtuelt miljø med `uv venv`
 3. Kjør kommandoen `source .venv/bin/activate` for å aktivere det virtuelle miljøet for den aktive terminalsesjonen (dette må gjøre hver gang du åpner en ny terminal)
 4. Installer flyte med `uv pip install flyte`
 
@@ -78,13 +82,12 @@ Når en task bruker en service account, får den:
 Manifestet kan deployes ved hjelp av vår felles github action [navikt/union-config](https://github.com/navikt/union-config) som tar som input manifest filen over med input parameteren `manifest`.
 Se [her](https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782d32da7a76e8cd23eddda/.github/workflows/test-apply-utsa.yaml) for et eksempel på en slik github action.
 
-## Oppsett av Union tasks
-Under er et enkelt eksempel på Union workflow, den kjører en task som kaller en underliggende task som kun returnerer en "ok" streng som output.
+## Skrive Union tasks
+Under er et enkelt eksempel på en Union workflow. Den består av én task (hello) som returnerer en streng, og en hovedtask task (main) som kaller denne. Slik kans man koble flere tasks sammen til en workflow.
 
-Dette eksempelet er mest ment for å illustrere hvordan man kan sy sammen Union tasks (dvs. python funksjoner) til en fullstendig workflow bestående av mange steg.
-Hver av Union taskene vil kjøres i separate, isolerte [pods](https://kubernetes.io/docs/concepts/workloads/pods/) i dataplan-clusteret.
-Det eneste som må gjøres for at en python funksjon skal kjøres som en Union task er å legge på annotasjonen `@env.task`.
-Utover det er det standard python syntax som beskriver flyten i en Union workflow, dvs det er ikke noe domenespesifikt språk man må sette seg inn i for å bygge opp en workflow bestående av mange ledd.
+Hver task kjører i sin egen isolerte container ([pod](https://kubernetes.io/docs/concepts/workloads/pods/)) i Kubernetes. Det eneste som skal til for å gjøre en Python-funksjon om til en Union task, er å dekorere den med `@env.task`.
+
+I Union definerer du altså workflows direkte i Python, uten behov for et eget "orkestreringsspråk" (slik man ofte har i andre orkestreringsverktøy). Flyten styres med vanlig funksjonskall, som gjør det lett å lese og strukturere logikken.
 
 ```python
 import flyte
@@ -116,15 +119,20 @@ async def main():
     hello()
 ```
 
-Det som er verdt å merke seg er konfigurasjonen av TaskEnvironment da dette er en abstraksjon for å konfigurere containermiljøet som Task koden kjører i. Dette er nærmere beskrevet i [Task environment](#task-environment) under.
+Det som skiller Union litt fra for eksempel Airflow, er at én workflow faktisk består av flere isolerte kjøringer (pods), og ikke én prosess som styrer alt. Hver task får sitt eget miljø og kjører uavhengig. Dette gjør det enklere å skalere og isolere feil, men det betyr også at man må tenke litt annerledes rundt hvordan man deler data mellom tasks, og hvordan man håndterer logging og feilsøking.
+
+Konfigurasjonen av TaskEnvironment definerer containermiljøet som tasken kjører i. Dette er nærmere beskrevet i [Task environment](#task-environment) under.
 
 ### Task environment
-Et `TaskEnvironment` beskriver containermiljøet som en bestemt tasks kode kjører i, dvs. her må brukerne spesifisere f.eks. hvilke biblioteker som må være tilgjengelig eller filer skal kopieres inn i imaget som brukes av containeren.
-Dette kan gjøres som i eksempelet over ved å legge til avhengigheter med `with_pip_packages()` som over.
-Brukerne kan spesifisere så mange `TaskEnvironment` de vil og dermed sørge for at hver tasks kjøremiljø er skreddersydd for det formålet tasken har.
 
-Vi oppfordrer også brukerne til å benytte dataplattform sitt base image for tasks slik som vist i eksempelet over.
-Dette baseimaget baserer seg på et [python chainguard image](https://images.chainguard.dev/directory/image/python/overview) og utvides for å kunne brukes som flyte image samt rebygges daglig av oss i [navikt/union-images](https://github.com/navikt/union-images).
+Et `TaskEnvironment` beskriver kjøremiljøet som en task kjører i, altså containeren som koden din faktisk kjøres inni.
+
+Her spesifiserer du hvilke avhengigheter som må være tilgjengelige, for eksempel Python-biblioteker eller filer som skal inkluderes i imaget som brukes av containeren. Avhengigheter kan legges til med `with_pip_packages()` slik som vist i eksempelet over.
+
+Du kan definere flere `TaskEnvironment` i samme workflow. Dette gjør det mulig å skreddersy kjøremiljøet per task, i stedet for å måtte samle alle avhengigheter i ett felles miljø.
+
+Ta helst utgangspunkt i Dataplattforms base image for tasks. Dette imaget er basert på et [python chainguard image](https://images.chainguard.dev/directory/image/python/overview), er tilpasset for bruk med Flyte, og bygges daglig av Dataplattform i [navikt/union-images](https://github.com/navikt/union-images).
+
 
 ### Opplasting og kjøring av Union tasks
 Kommandoene under tar utgangspunkt i at workflowen beskrevet over i [Oppsett av Union tasks](#oppsett-av-union-tasks) er lagret som filen `workflow.py` lokalt.
