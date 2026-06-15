@@ -141,51 +141,26 @@ Du skal nå se et linjediagram som viser utviklingen i antall hester i Norge fra
 
 Knast har R forhåndsinstallert, men alle pakker er ikke installert på forhånd. Derfor må man åpne mot CRAN
 
-### Åpne i brannmur mot datasett og mot CRAN
+### Åpne i brannmur mot datasett og mot [Posit sit pakkerepo](https://packagemanager.posit.co/client/)
 
 ```
 data.ssb.no/api/pxwebapi/v2/tables/05984/data
-cloud.r-project.org/src/*
-
+packagemanager.posit.co/cran/latest/bin/linux/*
+rspm-sync.rstudio.com/bin/*
 ```
 
 Legg inn adressen i brannmuren og aktiver åpningen.
 
 ### Sett opp R-kernel i Jupyter Notebooks
-IRkernel krever at `jupyter_client` er tilgjengelig i samme miljø. Opprett et eget virtuelt miljø for R-notebooken:
 
 ```bash
 mkdir -p ~/git/ssb-r/
 cd ~/git/ssb-r
-uv venv
-source .venv/bin/activate
-uv pip install jupyter_client
-```
-
-Deretter installerer og registrerer du R-kernel:
-
-```bash
-R
-```
-
-I R-konsollen:
-
-```r
-install.packages("IRkernel")
-IRkernel::installspec()
-q()
-```
-
-Dette registrerer R som tilgjengelig kernel i Jupyter.
-
-### Lag en Jupyter Notebook med R-kernel
-
-```bash
 touch ~/git/ssb-r/ssb-r.ipynb
 code ~/git/ssb-r/
 ```
 
-Åpne `ssb-r.ipynb`, klikk på **Select Kernel** øverst til høyre, og velg **R**.
+Åpne `ssb-r.ipynb`, klikk på **Select Kernel** øverst til høyre, velg **Jupyter Kernel** og velg **R**.
 
 ### Installer pakker
 Lag en ny celle og kjør følgende (kun nødvendig første gang):
