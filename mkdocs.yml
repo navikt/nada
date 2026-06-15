@@ -83,27 +83,29 @@ nav:
       - Legge til et dataprodukt: dataprodukter/dele/dataprodukt.md
       - Tilgangsstyring: dataprodukter/tilgangsstyring.md
   - Analyse:
-      - Kom i gang: analyse/kom-i-gang.md
-      - Jupyter notebooks:
-          - Hva er Jupyter notebooks?: analyse/notebook/index.md
-          - KNADA notebooks: analyse/notebook/knada-notebook.md
-          - Generelle råd: analyse/notebook/generelt.md
-      - Airflow:
-          - KNADA Airflow: analyse/airflow/knada-airflow.md
-      - Knast:
-          - Hva er Knast?: analyse/knast/generelt.md
-          - Komme i gang: analyse/knast/kom-i-gang.md
-          - Komme i gang med Jupyter Notebooks: analyse/knast/kom-i-gang-notebooks.md
-          - Oppsett av miljø: analyse/knast/miljo.md
-          - Nettverk: analyse/knast/nettverk.md
-      - Union:
-          - Oppsett: analyse/flyte/oppsett.md
-      - Metabase: analyse/metabase.md
-      - Datafortellinger: analyse/datafortellinger.md
-      - Koble sammen pseudonymiserte tabeller: analyse/koble-pseudonymiserte.md
-      - Allowlisting av trafikk: analyse/allowlisting.md
-      - Google Secret Manager: analyse/google-secret-manager.md
-      - Kodeeksempler: analyse/eksempler.md
+    - Kom i gang: analyse/kom-i-gang.md
+    - Jupyter notebooks:
+      - Hva er Jupyter notebooks?: analyse/notebook/index.md
+      - KNADA notebooks: analyse/notebook/knada-notebook.md
+      - Generelle råd: analyse/notebook/generelt.md
+    - Airflow: 
+      - KNADA Airflow: analyse/airflow/knada-airflow.md
+    - Knast:
+      - Hva er Knast?: analyse/knast/generelt.md
+      - Komme i gang: analyse/knast/kom-i-gang.md
+      - Komme i gang med Jupyter Notebooks: analyse/knast/kom-i-gang-notebooks.md
+      - Oppsett av miljø: analyse/knast/miljo.md
+      - Nettverk: analyse/knast/nettverk.md
+    - Union: 
+      - Oppsett: analyse/union/oppsett.md
+      - Bruk: analyse/union/bruk.md
+      - IWS-skedulering: analyse/union/iws-skedulering.md
+    - Metabase: analyse/metabase.md
+    - Datafortellinger: analyse/datafortellinger.md
+    - Koble sammen pseudonymiserte tabeller: analyse/koble-pseudonymiserte.md
+    - Allowlisting av trafikk: analyse/allowlisting.md
+    - Google Secret Manager: analyse/google-secret-manager.md
+    - Kodeeksempler: analyse/eksempler.md
   - Vår visjon:
       - Brukerforventinger: visjon/brukerforventninger.md
       - Data mesh: visjon/data_mesh.md
