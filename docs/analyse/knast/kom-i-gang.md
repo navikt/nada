@@ -98,4 +98,3 @@ registry-1.docker.io/*
 europe-north1-docker.pkg.dev/*
 auth.docker.io/*
 ```
-
