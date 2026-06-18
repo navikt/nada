@@ -148,3 +148,49 @@ Se [Union dokumentasjon](https://www.union.ai/docs/v2/union/user-guide/) for mer
 ### Eksempler
 Se [navikt/union-demo](https://github.com/navikt/union-demo) for eksempler på workflows og tasks med både [v1](https://www.union.ai/docs/v1/flyte/user-guide/introduction/) og [v2](https://www.union.ai/docs/v2/flyte/user-guide/flyte-2/) versjonene av Flyte.
 
+
+### Oppsett Windows og Union
+
+#### Installer python
+1. Åpne `ledetekst`
+  - Skriv `python` og trykk enter, dersom python ikke er installert sendes du da til `Microsoft store`
+  - Trykk `få` for å installere Python
+
+#### Installer uv
+1. Åpne `ledetekst`
+2. Du gi brukeren din tillatelse til å installere uv
+```bash
+powershell -c "Set-ExecutionPolicy RemoteSigned -scope CurrentUser"
+```
+3. Installer uv
+```bash
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+#### Sett opp virtuelt python miljø med uv
+
+_*NB! Viktig at du restarter ledetekst sesjonen etter at du har installert uv i steget [Installer uv](#installer-uv) før du fortsetter*_
+
+1. Lag det virtuelle miljøet
+```bash
+uv venv
+```
+2. Aktiver det virtuelle miljøet (_*dette må gjøres hver gang du åpner en ny ledetekst sesjon*_)
+```bash
+.venv\Scripts\activate
+```
+
+#### Installer flyte
+1. Installer python biblioteket
+```bash
+uv pip install flyte
+```
+2. Opprett flyte config
+```bash
+flyte create config --endpoint union.data.nav.no --org union-nav --project dataplattform --domain 
+development
+```
+3. Test at du får autentisert deg mot flyte
+```bash
+flyte get project
+```
