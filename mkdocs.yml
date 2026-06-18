@@ -10,26 +10,26 @@ theme:
     - navigation.instant
     - navigation.sections
     - content.tabs.link
-  logo: 'img/logo.svg'
+  logo: "img/logo.svg"
   custom_dir: custom_theme_overrides
   favicon: img/favicon.ico
 extra:
   search:
-    language: 'no'
+    language: "no"
   analytics:
     feedback:
-        title: Fikk du svar på det du lurte på?
-        ratings:
-            - icon: material/thumb-down-outline
-              name: Nei
-              data: 0
-              note: >-
-                Takk! Kontakt oss gjerne på <a href="https://nav-it.slack.com/archives/CGRMQHT50">#dataplattform på Slack</a> med tilbakemeldinger eller spørsmål.
-            - icon: material/thumb-up-outline
-              name: Ja
-              data: 1
-              note: >-
-                Takk for tilbakemeldingen!
+      title: Fikk du svar på det du lurte på?
+      ratings:
+        - icon: material/thumb-down-outline
+          name: Nei
+          data: 0
+          note: >-
+            Takk! Kontakt oss gjerne på <a href="https://nav-it.slack.com/archives/CGRMQHT50">#dataplattform på Slack</a> med tilbakemeldinger eller spørsmål.
+        - icon: material/thumb-up-outline
+          name: Ja
+          data: 1
+          note: >-
+            Takk for tilbakemeldingen!
 plugins:
   - search
   - build_plantuml:
@@ -70,18 +70,18 @@ nav:
   - Om NADA: index.md
   - Ordliste: ordliste.md
   - Juridisk:
-    - Hva trenger jeg av dokumentasjon?: juridisk/dokumentasjon.md
-    - Spilleregler: juridisk/spilleregler.md
-    - Hvem lager spilleregler?: juridisk/hvem.md
-    - Hvordan fyller jeg ut PVK?: juridisk/pvk.md
+      - Hva trenger jeg av dokumentasjon?: juridisk/dokumentasjon.md
+      - Spilleregler: juridisk/spilleregler.md
+      - Hvem lager spilleregler?: juridisk/hvem.md
+      - Hvordan fyller jeg ut PVK?: juridisk/pvk.md
   - Dataprodukter:
-    - Hva er et dataprodukt?: dataprodukter/dataprodukt.md
-    - Kom i gang: dataprodukter/index.md
-    - Få tilgang til datakilder: dataprodukter/dele/få-tilgang.md
-    - Laste data fra kilde til BigQuery: dataprodukter/dele/dataoverføring.md
-    - Kvalitetssikre data (Soda): dataprodukter/kvalitetssikring.md
-    - Legge til et dataprodukt: dataprodukter/dele/dataprodukt.md
-    - Tilgangsstyring: dataprodukter/tilgangsstyring.md
+      - Hva er et dataprodukt?: dataprodukter/dataprodukt.md
+      - Kom i gang: dataprodukter/index.md
+      - Få tilgang til datakilder: dataprodukter/dele/få-tilgang.md
+      - Laste data fra kilde til BigQuery: dataprodukter/dele/dataoverføring.md
+      - Kvalitetssikre data (Soda): dataprodukter/kvalitetssikring.md
+      - Legge til et dataprodukt: dataprodukter/dele/dataprodukt.md
+      - Tilgangsstyring: dataprodukter/tilgangsstyring.md
   - Analyse:
     - Kom i gang: analyse/kom-i-gang.md
     - Jupyter notebooks:
@@ -93,6 +93,7 @@ nav:
     - Knast:
       - Hva er Knast?: analyse/knast/generelt.md
       - Komme i gang: analyse/knast/kom-i-gang.md
+      - Komme i gang med Jupyter Notebooks: analyse/knast/kom-i-gang-notebooks.md
       - Oppsett av miljø: analyse/knast/miljo.md
       - Nettverk: analyse/knast/nettverk.md
     - Union: 
@@ -106,5 +107,5 @@ nav:
     - Google Secret Manager: analyse/google-secret-manager.md
     - Kodeeksempler: analyse/eksempler.md
   - Vår visjon:
-    - Brukerforventinger: visjon/brukerforventninger.md
-    - Data mesh: visjon/data_mesh.md
+      - Brukerforventinger: visjon/brukerforventninger.md
+      - Data mesh: visjon/data_mesh.md
