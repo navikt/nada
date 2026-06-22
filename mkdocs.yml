@@ -75,7 +75,7 @@ nav:
     - Hvem lager spilleregler?: juridisk/hvem.md
     - Hvordan fyller jeg ut PVK?: juridisk/pvk.md
   - Dataprodukter:
-    - Hva er et dataprodukt?: dataprodukter/dataprodukt.md
+    - Hva er et dataprodukt på Datamarkedsplassen?: dataprodukter/dataprodukt.md
     - Kom i gang: dataprodukter/index.md
     - Få tilgang til datakilder: dataprodukter/dele/få-tilgang.md
     - Laste data fra kilde til BigQuery: dataprodukter/dele/dataoverføring.md
