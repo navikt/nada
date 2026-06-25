@@ -47,7 +47,6 @@ apiVersion: data.nav.no/v1alpha1
 kind: UnionTeamServiceAccounts
 metadata:
   name: test-team-development
-  namespace: test-team-development
 spec:
   project: test-team
   domain: development
