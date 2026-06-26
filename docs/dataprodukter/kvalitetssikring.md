@@ -1,27 +1,67 @@
 Vi kan overvåke om BigQuery-tabellene står til forventningene våre gjennom [Soda (ekstern lenke)](https://www.soda.io).
-Sjekker evalueres, Slack-varslinger sendes og resultater tilgjengeliggjøres når dere endrer bittelitt config i [navikt/dp-nada-soda](https://github.com/navikt/dp-nada-soda) og deployer Naisjoben.
+Sjekker evalueres, Slack-varslinger sendes og resultater tilgjengeliggjøres når dere setter opp en Naisjobb basert på [navikt/dp-nada-soda](https://github.com/navikt/dp-nada-soda).
 
-Sjekkene defineres i Yaml.
+Det finnes to image-varianter — velg basert på hvilken versjon av Soda dere bruker:
 
-Se for eksempel sjekken vi gjør for å se om tabellen `vedtak` er oppdatert siste døgn ved å se på observasjonene i kolonnen `innsamlet`:
+| GAR-image (bruk i naisjob) | Soda-versjon |
+|----------------------------|-------------|
+| `europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda:<tag>` | v3 (SodaCL) |
+| `europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda-contracts:<tag>` | v4 (Contracts) |
 
-```
+Se [navikt/nada-soda](https://github.com/navikt/nada-soda) for tilgjengelige tags og migrasjonsinfo fra v3 til v4.
+
+## Soda v3 (SodaCL)
+
+Sjekkene defineres i YAML med én fil per BigQuery-datasett. Filnavnet (uten `.yaml`) må matche datasource-navnet i config-filen.
+
+Se for eksempel sjekken vi gjør for å se om tabellen `vedtak` er oppdatert siste døgn:
+
+```yaml
 checks for vedtak:
   - freshness(innsamlet) < 1d
 ```
 
-[Dokumentasjonen til Soda](https://docs.soda.io/soda-cl/soda-cl-overview.html) beskriver godt hvilke sjekker som kommer ut av boksen og hvordan dere kan lage egendefinerte.
+[Dokumentasjonen til Soda SodaCL](https://docs.soda.io/soda-cl/soda-cl-overview.html) beskriver hvilke sjekker som kommer ut av boksen og hvordan dere kan lage egendefinerte.
+
+Se konkrete eksempler på config og sjekk-filer i [navikt/dp-nada-soda/.nais/dev/soda/](https://github.com/navikt/dp-nada-soda/tree/main/.nais/dev/soda).
+
+## Soda v4 (Contracts)
+
+v4 bruker et nytt format kalt [Data Contracts](https://docs.soda.io/reference/contract-language-reference). De viktigste endringene fra v3:
+
+- **Én fil per tabell** (v3 hadde én fil per datasett med flere tabeller)
+- **Nytt config-format** for data source — `dataset` flyttes fra config til kontrakt-filen
+- **Nytt image**: `nada-soda-contracts` i stedet for `nada-soda`
+
+Eksempel på en enkel kontrakt:
+
+```yaml
+dataset: <datasource_name>/<gcp-project-id>/<bq-dataset>/<table>
+
+checks:
+  - row_count:
+      threshold:
+        must_be_greater_than_or_equal_to: 1
+
+columns:
+  - name: id
+    checks:
+      - missing:
+```
+
+Se konkrete eksempler på config og kontrakt-filer i [navikt/dp-nada-soda/.nais/dev/soda-contracts/](https://github.com/navikt/dp-nada-soda/tree/main/.nais/dev/soda-contracts).
 
 ## Oppsett av Dependabot for å automatisk holde Soda-imaget oppdatert
-Dersom dependabot ikke kan konfigureres for docker imager som ligger i google artifact registry pusher vi Soda-imaget vårt både til GAR og GHCR med samme tag.
-Men ettersom vi kun kan deploye på nais-platformen med imager lagret i GAR kan følgende fremgangsmåte benyttes for automatisk å holde Soda-imaget oppdatert.
 
-1. Opprett en dummy Dockerfil på rot i repoet ditt, for eksempel `Dockerfile.dummy` med følgende innhold:
+Siden Dependabot ikke støtter GAR direkte, publiserer vi Soda-imagene til både GAR og GHCR med samme tag. Følgende fremgangsmåte holder GAR-taggen i naisjob-manifestet oppdatert automatisk.
+
+1. Opprett en dummy Dockerfil `Dockerfile.dummy` på rot i repoet:
 
 ```dockerfile
-FROM ghcr.io/navikt/nada-soda/soda:2025.06.03-10.46-b16fa04
+FROM ghcr.io/navikt/nada-soda/soda-contracts:<tag>
 ```
-2. Opprett eller editer eksisterende `dependabot.yaml` i `.github`-mappen i repoet med følgende innhold:
+
+2. Opprett eller editer `.github/dependabot.yaml`:
 
 ```yaml
 version: 2
@@ -41,11 +81,12 @@ updates:
     schedule:
       interval: "daily"
 ```
-3. Opprett så en github action `.github/workflows/bump_soda_image.yaml` med følgende innhold:
+
+3. Opprett `.github/workflows/bump_soda_image.yaml` som oppdaterer GAR-taggen i naisjob-manifestet når dummy-filen endres:
 
 ```yaml
 name: Update Soda Image Tag
-on: 
+on:
   push:
     branches:
       - 'main'
@@ -54,35 +95,24 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
-  deploy:
+  update-soda:
     name: Update Soda Image Tag
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Commit tag changes
         run: |
-          newtag=$(awk -F "FROM ghcr.io/navikt/nada-soda/soda:" '{print $2}' Dockerfile.dummy)
-          sed -i "s|image: .*|image: europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda:${newtag}|g" .nais/naisjob.yaml
+          newtag=$(awk -F "FROM ghcr.io/navikt/nada-soda/soda-contracts:" '{print $2}' Dockerfile.dummy)
+          sed -i "s|image: .*nada-soda-contracts:.*|image: europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda-contracts:${newtag}|g" .nais/naisjob.yaml
+
           git config --global user.email ${{ github.actor }}@users.noreply.github.com
           git config --global user.name ${{ github.actor }}
           git add .nais/naisjob.yaml
-          git commit -m "Updated Soda image tag to ${newtag}"
+          git diff --staged --quiet || git commit -m "Updated Soda image tag to ${newtag}"
           git push
 ```
 
-(forutsetter at manifestet til naisjobben ligger i `.nais/naisjob.yaml`, endre dette om nødvendig)
-4. Legg til en `workflow_run` trigger for github actionen som deployer naisjobben:
-
-```yaml
-...
-on:
-...
-  workflow_run:
-    workflows:
-      - Update Soda Image Tag
-    types:
-      - completed
----
-```
+(Tilpass stien til naisjob-manifestet etter deres oppsett.)
