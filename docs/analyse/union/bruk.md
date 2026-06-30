@@ -38,6 +38,8 @@ Du kan derfor:
 - Bestemme hva disse får lov til å snakke med (både internt og eksternt)
 - Bruke dem i tasks i Union (Kubernetes)
 
+Service accounter du eller teamet ditt har opprettet kan finnes på: [union-console.data.nav.no](https://union-console.data.nav.no).
+
 For hvert miljø i prosjektet ditt lager du et manifest (fil) av type `UnionTeamServiceAccounts` slik som beskrevet under. Dette oppretter og gir tilgang til service accountene:
 
 ### Eksempel på manifest
@@ -64,9 +66,9 @@ spec:
 Når dette deployes vil dette skje:
 
 - Det opprettes 2 service accounts i Kubernetes (sa1 og sa2)
-- For hver av disse opprettes det også en Google service account
-- Disse kan få tilgang til Google-tjenester som BigQuery og Storage buckets. Dette må foreløpig settes opp manuelt av plattformteamet
-    - Ta kontakt på #dataplattform for dette.
+- For hver av disse opprettes det også en Google service account. Navnet på denne vil få et tilfeldig suffiks, f.eks `sa1-development-ca4ec@nav-data-union-restricted-prod.iam.gserviceaccount.com`. Derfor må du gå til [union-console.data.nav.no](https://union-console.data.nav.no), der vil du finne Google service accounten tilhørende `sa1`.
+- Disse kan få tilgang til Google-tjenester som BigQuery og Storage buckets. 
+    - Dere kan selv styre disse tilgangene i deres egne Google prosjekter, men det er noen manuelle steg som må gjøres av plattformteamet. Ta kontakt på #airflow-til-union eller #dataplattform for dette.
 - Du kan koble service account til en Union task.
 
 Når en task bruker en service account, får den:
