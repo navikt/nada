@@ -23,6 +23,8 @@ admin:
   endpoint: dns:///union.data.nav.no
   insecure: false
   authType: Pkce
+image:
+  builder: remote
 task:
   project: <prosjekt-navn>
   org: union-nav
@@ -34,7 +36,7 @@ Denne filen oppretter du på hjemmeområdet ditt på stien `~/.union/config.yaml
 For å opprette en miljøspesifikk konfigurasjonsfil kjør følgende kommando fra det lokale arbeidsområdet du jobber fra:
 
 ```bash
-flyte create config --endpoint union.data.nav.no --org union-nav --project flytesnacks --domain development
+flyte create config --endpoint union.data.nav.no --builder remote --org union-nav --project flytesnacks --domain development
 ```
 
 Dette vil opprette en config fil i arbeidsområdet ditt under stien `./.flyte/config.yaml`.
