@@ -43,6 +43,41 @@ Dette vil opprette en config fil i arbeidsområdet ditt under stien `./.flyte/co
 Denne vil overstyre en eventuell global konfigurasjonsfil.
 Brukerne kan på den måten ha en fil per miljø og spesifisere prosjekt/domene slik at ikke dette trenger å spesifiseres eksplisitt i kommandoene når tasker skal lastes opp eller trigges som beskrevet i [Opplasting og kjøring av Union tasks](#opplasting-og-kjøring-av-union-tasks).
 
+## Oppsett av Union TaskEnvironment for å bruke remote builder
+Det er to ting å merke seg for å kunne bruke remote build av Union tasks:
+1. Vi krever at vårt [chainguard baserte base image](https://github.com/navikt/union-images/tree/main/images/v2/base) brukes som utgangspunkt når Union tasks skal bygges remote.
+2. Man er nødt til å sette `index_url` til en proxy som installasjon av pakker fra `pypi` går igjennom. I tillegg må miljøvariabelen `UV_KEYRING_PROVIDER` settes til `subprocess`.
+
+Dette er satt opp korrekt i eksempelet under, så vi oppfordrer brukere til å bruke dette som utgangspunkt:
+
+```python
+import flyte
+
+env = flyte.TaskEnvironment(
+    name="my_environment",
+    image=flyte.Image.from_base(
+      image_uri="europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base"
+    )
+    .clone(
+        registry="europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images",
+        name="flyte",
+        extendable=True,
+    )
+    .with_env_vars({
+      "UV_KEYRING_PROVIDER": "subprocess", 
+    })
+    .with_pip_packages(
+        "pandas",
+        "numpy",
+        "oracledb",
+        "sqlalchemy",
+        index_url=(
+            "https://oauth2accesstoken@"
+            "europe-west1-python.pkg.dev/nav-data-images-prod/pypi/simple/"
+        ),
+    ),
+)
+```
+
 ## Krav til lokal maskin for å bruke Union
 - Nav compliant device
-- Docker installert på maskin
