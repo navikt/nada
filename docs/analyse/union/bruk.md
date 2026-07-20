@@ -139,6 +139,54 @@ Du kan definere flere `TaskEnvironment` i samme workflow. Dette gjør det mulig 
 Ta helst utgangspunkt i Dataplattforms base image for tasks. Dette imaget er basert på et [python chainguard image](https://images.chainguard.dev/directory/image/python/overview), er tilpasset for bruk med Flyte, og bygges daglig av Dataplattform i [navikt/union-images](https://github.com/navikt/union-images).
 
 
+### HTTPS-egress
+
+For å gi en service account tilgang til å nå en ekstern eller intern host, legg den til i `externalAllowlist` eller `internalAllowlist` i din `UnionTeamServiceAccounts`:
+
+```yaml
+apiVersion: data.nav.no/v1alpha1
+kind: UnionTeamServiceAccounts
+metadata:
+  name: test-team-development
+spec:
+  project: test-team
+  domain: development
+  serviceAccounts:
+    - name: sa1
+      externalAllowlist:
+        - host: github.com
+```
+
+**Koden din skal koble til via `http://`, ikke `https://`.** Plattformen håndterer kryptering for deg — trafikken er kryptert internt i plattformen og sikres når den forlater til omverdenen. Du trenger ikke å forholde deg til sertifikater eller TLS-konfigurasjon.
+
+```python
+requests.get("http://github.com", allow_redirects=False)
+```
+
+**Skru av automatisk redirect-følging.** Noen hosts redirecter forespørsler til en annen URL, for eksempel et kanonisk domene eller en bestemt sti. Plattformen kan ikke følge disse redirectene automatisk på dine vegne, så bruk `allow_redirects=False` og kall den endelige destinasjons-URLen direkte for å sikre pålitelig oppførsel.
+
+
+### TCP-egress
+
+For TCP-tilkoblinger, for eksempel mot databaser, brukes `internalAllowlist` på samme måte. TCP-egress krever ingen spesiell håndtering i koden utover å bruke riktig host og port.
+
+Merk at TCP-egress foreløpig ikke støttes i `externalAllowlist` — det er kun tilgjengelig for interne hosts via `internalAllowlist`.
+
+```yaml
+apiVersion: data.nav.no/v1alpha1
+kind: UnionTeamServiceAccounts
+metadata:
+  name: test-team-development
+spec:
+  project: test-team
+  domain: development
+  serviceAccounts:
+    - name: sa1
+      internalAllowlist:
+        - host: dmv04-scan.adeo.no
+```
+
+
 ### Opplasting og kjøring av Union tasks
 Kommandoene under tar utgangspunkt i at workflowen beskrevet over i [Oppsett av Union tasks](#oppsett-av-union-tasks) er lagret som filen `workflow.py` lokalt.
 
