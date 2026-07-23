@@ -18,7 +18,7 @@ Jobb helst i virtuelle python miljøer. Slik oppretter du et uv-miljø for bruk 
 1. [Installer uv](https://docs.astral.sh/uv/getting-started/installation/)
 2. Opprett virtuelt miljø med `uv venv`
 3. Kjør kommandoen `source .venv/bin/activate` for å aktivere det virtuelle miljøet for den aktive terminalsesjonen (dette må gjøre hver gang du åpner en ny terminal)
-4. Installer flyte med `uv pip install flyte==2.2.4` (versjon 2.2.4 er den som er installert i vårt base image per nå)
+4. Installer flyte med `uv pip install flyte`
 5. Kjør kommandoen `gcloud auth login --update-adc` for å autentisere med Google Cloud.
 6. Kjør kommandoen `gcloud auth configure-docker europe-west1-docker.pkg.dev` for å kunne pushe docker images til vårt registry.
 
