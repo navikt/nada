@@ -25,7 +25,7 @@ Data er i dag tilgjengelig i form av views/tabeller på BigQuery.
 [Metabase](analyse/metabase.md) er et dashboard-verktøy integrert med datasettene på Datamarkedsplassen.
 
 ## KNADA
-KNADA er en kodebasert analyseplattform bygd på Kubernetes i GCP der vi tilbyr Jupyter notebook, Airflow, og KnadaVM.
+KNADA er en kodebasert analyseplattform bygd på Kubernetes i GCP der vi tilbyr Jupyter notebook, Airflow.
 KNADA tilbyr åpning mot on-prem FSS, som gjør det mulig å kombinere med data i sky.
 
 ### Airflow
@@ -37,11 +37,6 @@ Brukes både av data scientister og data engineers i datavarehus.
 [Jupyter notebook](analyse/notebook/knada-notebook.md) er et webbasert utviklerverktøy for å drive med kodebasert utforsking av data i on-prem eller sky.
 Støtter Python.
 Gjør det enkelt å kjøre mindre bolker av kode og visualisere resultater i nettleseren.
-
-### KNADA VM
-Vi tilbyr private virtuelle maskiner gjennom Knorten, disse kjører i GCP prosjektet knada-gcp.
-Denne maskinen vil ha tilgang til on-premise kilder på lik linje som Notebooks og Airflow som kjører i
-Les mer om å komme i gang under [Analyse/KNADA VM](/analyse/knada-vm/).
 
 ### Knorten
 Knorten er portalen for å administrere team som bruker KNADA.
