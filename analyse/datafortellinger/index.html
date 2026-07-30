@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="zensical-0.0.51">
     
     
       
@@ -29,10 +29,15 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -46,12 +51,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
   
@@ -64,6 +69,8 @@
   
     
     
+      
+    
     
     
     
@@ -72,7 +79,7 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
     <div data-md-component="skip">
       
         
@@ -94,12 +101,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="NADA" class="md-header__button md-logo" aria-label="NADA" data-md-component="logo">
       
-  <img src="../../img/logo.svg" alt="logo">
+  <img src="../../img/logo.svg" alt="NADA">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -119,63 +126,48 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
 </div>
       
     
-    
-      <div class="md-header__source">
+    <div class="md-header__source">
+      
         <a href="https://github.com/navikt/nada" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
   </div>
 </a>
-      </div>
-    
+      
+    </div>
   </nav>
   
 </header>
@@ -203,7 +195,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="NADA" class="md-nav__button md-logo" aria-label="NADA" data-md-component="logo">
       
-  <img src="../../img/logo.svg" alt="logo">
+  <img src="../../img/logo.svg" alt="NADA">
 
     </a>
     NADA
@@ -213,7 +205,7 @@
       <a href="https://github.com/navikt/nada" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -237,8 +229,7 @@
   <span class="md-ellipsis">
     
   
-    Om NADA
-  
+  Om NADA
 
     
   </span>
@@ -264,8 +255,7 @@
   <span class="md-ellipsis">
     
   
-    Ordliste
-  
+  Ordliste
 
     
   </span>
@@ -307,8 +297,7 @@
   <span class="md-ellipsis">
     
   
-    Juridisk
-  
+  Juridisk
 
     
   </span>
@@ -323,8 +312,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Juridisk
-  
+  Juridisk
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -343,8 +331,7 @@
   <span class="md-ellipsis">
     
   
-    Hva trenger jeg av dokumentasjon?
-  
+  Hva trenger jeg av dokumentasjon?
 
     
   </span>
@@ -371,8 +358,7 @@
   <span class="md-ellipsis">
     
   
-    Spilleregler
-  
+  Spilleregler
 
     
   </span>
@@ -399,8 +385,7 @@
   <span class="md-ellipsis">
     
   
-    Hvem lager spilleregler?
-  
+  Hvem lager spilleregler?
 
     
   </span>
@@ -427,8 +412,7 @@
   <span class="md-ellipsis">
     
   
-    Hvordan fyller jeg ut PVK?
-  
+  Hvordan fyller jeg ut PVK?
 
     
   </span>
@@ -478,8 +462,7 @@
   <span class="md-ellipsis">
     
   
-    Dataprodukter
-  
+  Dataprodukter
 
     
   </span>
@@ -494,8 +477,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Dataprodukter
-  
+  Dataprodukter
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -514,8 +496,7 @@
   <span class="md-ellipsis">
     
   
-    Hva er et dataprodukt på Datamarkedsplassen?
-  
+  Hva er et dataprodukt på Datamarkedsplassen?
 
     
   </span>
@@ -542,8 +523,7 @@
   <span class="md-ellipsis">
     
   
-    Kom i gang
-  
+  Kom i gang
 
     
   </span>
@@ -570,8 +550,7 @@
   <span class="md-ellipsis">
     
   
-    Få tilgang til datakilder
-  
+  Få tilgang til datakilder
 
     
   </span>
@@ -598,8 +577,7 @@
   <span class="md-ellipsis">
     
   
-    Laste data fra kilde til BigQuery
-  
+  Laste data fra kilde til BigQuery
 
     
   </span>
@@ -626,8 +604,7 @@
   <span class="md-ellipsis">
     
   
-    Kvalitetssikre data (Soda)
-  
+  Kvalitetssikre data (Soda)
 
     
   </span>
@@ -654,8 +631,7 @@
   <span class="md-ellipsis">
     
   
-    Legge til et dataprodukt
-  
+  Legge til et dataprodukt
 
     
   </span>
@@ -682,8 +658,7 @@
   <span class="md-ellipsis">
     
   
-    Tilgangsstyring
-  
+  Tilgangsstyring
 
     
   </span>
@@ -735,8 +710,7 @@
   <span class="md-ellipsis">
     
   
-    Analyse
-  
+  Analyse
 
     
   </span>
@@ -751,8 +725,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Analyse
-  
+  Analyse
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -771,8 +744,7 @@
   <span class="md-ellipsis">
     
   
-    Kom i gang
-  
+  Kom i gang
 
     
   </span>
@@ -812,8 +784,7 @@
   <span class="md-ellipsis">
     
   
-    Jupyter notebooks
-  
+  Jupyter notebooks
 
     
   </span>
@@ -828,8 +799,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Jupyter notebooks
-  
+  Jupyter notebooks
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -848,8 +818,7 @@
   <span class="md-ellipsis">
     
   
-    Hva er Jupyter notebooks?
-  
+  Hva er Jupyter notebooks?
 
     
   </span>
@@ -876,8 +845,7 @@
   <span class="md-ellipsis">
     
   
-    KNADA notebooks
-  
+  KNADA notebooks
 
     
   </span>
@@ -904,8 +872,7 @@
   <span class="md-ellipsis">
     
   
-    Generelle råd
-  
+  Generelle råd
 
     
   </span>
@@ -953,8 +920,7 @@
   <span class="md-ellipsis">
     
   
-    Airflow
-  
+  Airflow
 
     
   </span>
@@ -969,8 +935,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Airflow
-  
+  Airflow
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -989,8 +954,7 @@
   <span class="md-ellipsis">
     
   
-    KNADA Airflow
-  
+  KNADA Airflow
 
     
   </span>
@@ -1038,8 +1002,7 @@
   <span class="md-ellipsis">
     
   
-    Knast
-  
+  Knast
 
     
   </span>
@@ -1054,8 +1017,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Knast
-  
+  Knast
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1074,8 +1036,7 @@
   <span class="md-ellipsis">
     
   
-    Hva er Knast?
-  
+  Hva er Knast?
 
     
   </span>
@@ -1102,8 +1063,7 @@
   <span class="md-ellipsis">
     
   
-    Komme i gang
-  
+  Komme i gang
 
     
   </span>
@@ -1130,8 +1090,7 @@
   <span class="md-ellipsis">
     
   
-    Oppsett av miljø
-  
+  Oppsett av miljø
 
     
   </span>
@@ -1158,8 +1117,7 @@
   <span class="md-ellipsis">
     
   
-    Nettverk
-  
+  Nettverk
 
     
   </span>
@@ -1207,8 +1165,7 @@
   <span class="md-ellipsis">
     
   
-    Union
-  
+  Union
 
     
   </span>
@@ -1223,8 +1180,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Union
-  
+  Union
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1243,8 +1199,7 @@
   <span class="md-ellipsis">
     
   
-    Oppsett
-  
+  Oppsett
 
     
   </span>
@@ -1271,8 +1226,7 @@
   <span class="md-ellipsis">
     
   
-    Bruk
-  
+  Bruk
 
     
   </span>
@@ -1299,8 +1253,7 @@
   <span class="md-ellipsis">
     
   
-    IWS-skedulering
-  
+  IWS-skedulering
 
     
   </span>
@@ -1335,8 +1288,7 @@
   <span class="md-ellipsis">
     
   
-    Metabase
-  
+  Metabase
 
     
   </span>
@@ -1359,7 +1311,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
       
@@ -1370,8 +1322,7 @@
   <span class="md-ellipsis">
     
   
-    Datafortellinger
-  
+  Datafortellinger
 
     
   </span>
@@ -1381,15 +1332,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Datafortellinger
-  
+  Datafortellinger
 
     
   </span>
@@ -1400,23 +1350,24 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#installere-quarto" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Installere Quarto
-      
+      </span>
     </span>
   </a>
   
@@ -1426,9 +1377,9 @@
           <li class="md-nav__item">
   <a href="#lokal-maskin" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Lokal maskin
-      
+      </span>
     </span>
   </a>
   
@@ -1437,9 +1388,9 @@
           <li class="md-nav__item">
   <a href="#knast" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Knast
-      
+      </span>
     </span>
   </a>
   
@@ -1448,9 +1399,9 @@
           <li class="md-nav__item">
   <a href="#docker-image" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Docker image
-      
+      </span>
     </span>
   </a>
   
@@ -1464,9 +1415,9 @@
         <li class="md-nav__item">
   <a href="#team-tokens" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Team tokens
-      
+      </span>
     </span>
   </a>
   
@@ -1476,9 +1427,9 @@
           <li class="md-nav__item">
   <a href="#rotere-token" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Rotere token
-      
+      </span>
     </span>
   </a>
   
@@ -1492,9 +1443,9 @@
         <li class="md-nav__item">
   <a href="#lage-datafortelling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Lage Datafortelling
-      
+      </span>
     </span>
   </a>
   
@@ -1504,9 +1455,9 @@
           <li class="md-nav__item">
   <a href="#internt" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Internt
-      
+      </span>
     </span>
   </a>
   
@@ -1516,9 +1467,9 @@
           <li class="md-nav__item">
   <a href="#registrere-quarto-i-datamarkedsplassen" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Registrere Quarto i Datamarkedsplassen
-      
+      </span>
     </span>
   </a>
   
@@ -1528,9 +1479,9 @@
           <li class="md-nav__item">
   <a href="#registrer-gjennom-brukergrensesnitt" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Registrer gjennom brukergrensesnitt
-      
+      </span>
     </span>
   </a>
   
@@ -1539,9 +1490,9 @@
           <li class="md-nav__item">
   <a href="#registrer-programmatisk" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Registrer programmatisk
-      
+      </span>
     </span>
   </a>
   
@@ -1551,9 +1502,9 @@
           <li class="md-nav__item">
   <a href="#med-curl" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med curl
-      
+      </span>
     </span>
   </a>
   
@@ -1562,9 +1513,9 @@
           <li class="md-nav__item">
   <a href="#med-python" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med python
-      
+      </span>
     </span>
   </a>
   
@@ -1583,9 +1534,9 @@
           <li class="md-nav__item">
   <a href="#oppdater-eksisterende-intern-datafortelling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Oppdater eksisterende intern datafortelling
-      
+      </span>
     </span>
   </a>
   
@@ -1595,9 +1546,9 @@
           <li class="md-nav__item">
   <a href="#med-curl_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med curl
-      
+      </span>
     </span>
   </a>
   
@@ -1607,9 +1558,9 @@
           <li class="md-nav__item">
   <a href="#flere-filer" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Flere filer
-      
+      </span>
     </span>
   </a>
   
@@ -1623,9 +1574,9 @@
           <li class="md-nav__item">
   <a href="#med-python_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med python
-      
+      </span>
     </span>
   </a>
   
@@ -1639,9 +1590,9 @@
           <li class="md-nav__item">
   <a href="#oppdatere-quarto-med-naisjob" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Oppdatere Quarto med Naisjob
-      
+      </span>
     </span>
   </a>
   
@@ -1651,9 +1602,9 @@
           <li class="md-nav__item">
   <a href="#andre-eksempler-med-naisjob" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Andre eksempler med Naisjob
-      
+      </span>
     </span>
   </a>
   
@@ -1672,9 +1623,9 @@
           <li class="md-nav__item">
   <a href="#eksternt" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Eksternt
-      
+      </span>
     </span>
   </a>
   
@@ -1684,9 +1635,9 @@
           <li class="md-nav__item">
   <a href="#registere-ekstern-datafortelling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Registere ekstern datafortelling
-      
+      </span>
     </span>
   </a>
   
@@ -1696,9 +1647,9 @@
           <li class="md-nav__item">
   <a href="#med-curl_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med curl
-      
+      </span>
     </span>
   </a>
   
@@ -1707,9 +1658,9 @@
           <li class="md-nav__item">
   <a href="#med-python_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med python
-      
+      </span>
     </span>
   </a>
   
@@ -1723,9 +1674,9 @@
           <li class="md-nav__item">
   <a href="#oppdatere-en-ekstern-datafortelling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Oppdatere en ekstern datafortelling
-      
+      </span>
     </span>
   </a>
   
@@ -1735,9 +1686,9 @@
           <li class="md-nav__item">
   <a href="#med-curl_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med curl
-      
+      </span>
     </span>
   </a>
   
@@ -1747,9 +1698,9 @@
           <li class="md-nav__item">
   <a href="#flere-filer_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Flere filer
-      
+      </span>
     </span>
   </a>
   
@@ -1763,9 +1714,9 @@
           <li class="md-nav__item">
   <a href="#med-python_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med python
-      
+      </span>
     </span>
   </a>
   
@@ -1784,9 +1735,9 @@
           <li class="md-nav__item">
   <a href="#oppdatere-datafortelling-med-github-action" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Oppdatere datafortelling med GitHub action
-      
+      </span>
     </span>
   </a>
   
@@ -1795,9 +1746,9 @@
           <li class="md-nav__item">
   <a href="#knatch" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Knatch
-      
+      </span>
     </span>
   </a>
   
@@ -1807,9 +1758,9 @@
           <li class="md-nav__item">
   <a href="#installasjon" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Installasjon
-      
+      </span>
     </span>
   </a>
   
@@ -1818,9 +1769,9 @@
           <li class="md-nav__item">
   <a href="#eksempler-pa-bruk" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Eksempler på bruk
-      
+      </span>
     </span>
   </a>
   
@@ -1830,9 +1781,9 @@
           <li class="md-nav__item">
   <a href="#publisering-til-intern-markedsplass" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Publisering til intern markedsplass
-      
+      </span>
     </span>
   </a>
   
@@ -1841,9 +1792,9 @@
           <li class="md-nav__item">
   <a href="#publisering-eksternt" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Publisering eksternt
-      
+      </span>
     </span>
   </a>
   
@@ -1887,8 +1838,7 @@
   <span class="md-ellipsis">
     
   
-    Koble sammen pseudonymiserte tabeller
-  
+  Koble sammen pseudonymiserte tabeller
 
     
   </span>
@@ -1915,8 +1865,7 @@
   <span class="md-ellipsis">
     
   
-    Allowlisting av trafikk
-  
+  Allowlisting av trafikk
 
     
   </span>
@@ -1943,8 +1892,7 @@
   <span class="md-ellipsis">
     
   
-    Google Secret Manager
-  
+  Google Secret Manager
 
     
   </span>
@@ -1971,8 +1919,7 @@
   <span class="md-ellipsis">
     
   
-    Kodeeksempler
-  
+  Kodeeksempler
 
     
   </span>
@@ -2022,8 +1969,7 @@
   <span class="md-ellipsis">
     
   
-    Vår visjon
-  
+  Vår visjon
 
     
   </span>
@@ -2038,8 +1984,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Vår visjon
-  
+  Vår visjon
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -2058,8 +2003,7 @@
   <span class="md-ellipsis">
     
   
-    Brukerforventinger
-  
+  Brukerforventinger
 
     
   </span>
@@ -2086,8 +2030,7 @@
   <span class="md-ellipsis">
     
   
-    Data mesh
-  
+  Data mesh
 
     
   </span>
@@ -2117,26 +2060,38 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#installere-quarto" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Installere Quarto
-      
+      </span>
     </span>
   </a>
   
@@ -2146,9 +2101,9 @@
           <li class="md-nav__item">
   <a href="#lokal-maskin" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Lokal maskin
-      
+      </span>
     </span>
   </a>
   
@@ -2157,9 +2112,9 @@
           <li class="md-nav__item">
   <a href="#knast" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Knast
-      
+      </span>
     </span>
   </a>
   
@@ -2168,9 +2123,9 @@
           <li class="md-nav__item">
   <a href="#docker-image" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Docker image
-      
+      </span>
     </span>
   </a>
   
@@ -2184,9 +2139,9 @@
         <li class="md-nav__item">
   <a href="#team-tokens" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Team tokens
-      
+      </span>
     </span>
   </a>
   
@@ -2196,9 +2151,9 @@
           <li class="md-nav__item">
   <a href="#rotere-token" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Rotere token
-      
+      </span>
     </span>
   </a>
   
@@ -2212,9 +2167,9 @@
         <li class="md-nav__item">
   <a href="#lage-datafortelling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Lage Datafortelling
-      
+      </span>
     </span>
   </a>
   
@@ -2224,9 +2179,9 @@
           <li class="md-nav__item">
   <a href="#internt" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Internt
-      
+      </span>
     </span>
   </a>
   
@@ -2236,9 +2191,9 @@
           <li class="md-nav__item">
   <a href="#registrere-quarto-i-datamarkedsplassen" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Registrere Quarto i Datamarkedsplassen
-      
+      </span>
     </span>
   </a>
   
@@ -2248,9 +2203,9 @@
           <li class="md-nav__item">
   <a href="#registrer-gjennom-brukergrensesnitt" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Registrer gjennom brukergrensesnitt
-      
+      </span>
     </span>
   </a>
   
@@ -2259,9 +2214,9 @@
           <li class="md-nav__item">
   <a href="#registrer-programmatisk" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Registrer programmatisk
-      
+      </span>
     </span>
   </a>
   
@@ -2271,9 +2226,9 @@
           <li class="md-nav__item">
   <a href="#med-curl" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med curl
-      
+      </span>
     </span>
   </a>
   
@@ -2282,9 +2237,9 @@
           <li class="md-nav__item">
   <a href="#med-python" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med python
-      
+      </span>
     </span>
   </a>
   
@@ -2303,9 +2258,9 @@
           <li class="md-nav__item">
   <a href="#oppdater-eksisterende-intern-datafortelling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Oppdater eksisterende intern datafortelling
-      
+      </span>
     </span>
   </a>
   
@@ -2315,9 +2270,9 @@
           <li class="md-nav__item">
   <a href="#med-curl_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med curl
-      
+      </span>
     </span>
   </a>
   
@@ -2327,9 +2282,9 @@
           <li class="md-nav__item">
   <a href="#flere-filer" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Flere filer
-      
+      </span>
     </span>
   </a>
   
@@ -2343,9 +2298,9 @@
           <li class="md-nav__item">
   <a href="#med-python_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med python
-      
+      </span>
     </span>
   </a>
   
@@ -2359,9 +2314,9 @@
           <li class="md-nav__item">
   <a href="#oppdatere-quarto-med-naisjob" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Oppdatere Quarto med Naisjob
-      
+      </span>
     </span>
   </a>
   
@@ -2371,9 +2326,9 @@
           <li class="md-nav__item">
   <a href="#andre-eksempler-med-naisjob" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Andre eksempler med Naisjob
-      
+      </span>
     </span>
   </a>
   
@@ -2392,9 +2347,9 @@
           <li class="md-nav__item">
   <a href="#eksternt" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Eksternt
-      
+      </span>
     </span>
   </a>
   
@@ -2404,9 +2359,9 @@
           <li class="md-nav__item">
   <a href="#registere-ekstern-datafortelling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Registere ekstern datafortelling
-      
+      </span>
     </span>
   </a>
   
@@ -2416,9 +2371,9 @@
           <li class="md-nav__item">
   <a href="#med-curl_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med curl
-      
+      </span>
     </span>
   </a>
   
@@ -2427,9 +2382,9 @@
           <li class="md-nav__item">
   <a href="#med-python_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med python
-      
+      </span>
     </span>
   </a>
   
@@ -2443,9 +2398,9 @@
           <li class="md-nav__item">
   <a href="#oppdatere-en-ekstern-datafortelling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Oppdatere en ekstern datafortelling
-      
+      </span>
     </span>
   </a>
   
@@ -2455,9 +2410,9 @@
           <li class="md-nav__item">
   <a href="#med-curl_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med curl
-      
+      </span>
     </span>
   </a>
   
@@ -2467,9 +2422,9 @@
           <li class="md-nav__item">
   <a href="#flere-filer_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Flere filer
-      
+      </span>
     </span>
   </a>
   
@@ -2483,9 +2438,9 @@
           <li class="md-nav__item">
   <a href="#med-python_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Med python
-      
+      </span>
     </span>
   </a>
   
@@ -2504,9 +2459,9 @@
           <li class="md-nav__item">
   <a href="#oppdatere-datafortelling-med-github-action" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Oppdatere datafortelling med GitHub action
-      
+      </span>
     </span>
   </a>
   
@@ -2515,9 +2470,9 @@
           <li class="md-nav__item">
   <a href="#knatch" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Knatch
-      
+      </span>
     </span>
   </a>
   
@@ -2527,9 +2482,9 @@
           <li class="md-nav__item">
   <a href="#installasjon" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Installasjon
-      
+      </span>
     </span>
   </a>
   
@@ -2538,9 +2493,9 @@
           <li class="md-nav__item">
   <a href="#eksempler-pa-bruk" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Eksempler på bruk
-      
+      </span>
     </span>
   </a>
   
@@ -2550,9 +2505,9 @@
           <li class="md-nav__item">
   <a href="#publisering-til-intern-markedsplass" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Publisering til intern markedsplass
-      
+      </span>
     </span>
   </a>
   
@@ -2561,9 +2516,9 @@
           <li class="md-nav__item">
   <a href="#publisering-eksternt" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Publisering eksternt
-      
+      </span>
     </span>
   </a>
   
@@ -2598,13 +2553,11 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
-
   
   
 
 
-  <h1>Datafortellinger</h1>
+  <h1 id="__skip">Datafortelling</h1>
 
 <p>Datafortellinger brukes til å dele innsikt i form av statiske dokumenter.
 Datafortellinger kan enkelt deles med andre i NAV gjennom Datamarkedsplassen.</p>
@@ -2685,7 +2638,7 @@ ENV PATH=&quot;${PATH}:/app/quarto/bin&quot;
 <span class="w">    </span>https://<span class="si">${</span><span class="nv">ENV</span><span class="si">}</span>/quarto/create
 </code></pre></div>
 <h6 id="med-python">Med python<a class="headerlink" href="#med-python" title="Permanent link">&para;</a></h6>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://$</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/quarto/create&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer $</span><span class="si">{TEAM_TOKEN}</span><span class="s2">&quot;</span><span class="p">},</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;min quarto&quot;</span><span class="p">,</span>
@@ -2719,8 +2672,8 @@ curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <h5 id="med-python_1">Med python<a class="headerlink" href="#med-python_1" title="Permanent link">&para;</a></h5>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="c1"># A list of file paths to be uploaded</span>
 <span class="n">files_to_upload</span> <span class="o">=</span> <span class="p">[</span>
@@ -2827,7 +2780,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span
 <span class="w">    </span>https://<span class="si">${</span><span class="nv">ENV</span><span class="si">}</span>/api/v1/story
 </code></pre></div>
 <h5 id="med-python_2">Med python<a class="headerlink" href="#med-python_2" title="Permanent link">&para;</a></h5>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://$</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/api/v1/story&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer $</span><span class="si">{TEAM_TOKEN}</span><span class="s2">&quot;</span><span class="p">},</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
     <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Min datafortelling om noe&quot;</span><span class="p">,</span>
@@ -2857,8 +2810,8 @@ curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <h5 id="med-python_3">Med python<a class="headerlink" href="#med-python_3" title="Permanent link">&para;</a></h5>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="c1"># A list of file paths to be uploaded</span>
 <span class="n">files_to_upload</span> <span class="o">=</span> <span class="p">[</span>
@@ -2933,6 +2886,8 @@ Token for teamet ditt finner du ved å gå til https://data.ansatt.nav.no/user/t
 <p>I eksempelet under publiseres det til dev-løsingen for ekstern publisering (<code>data.ekstern.dev.nav.no</code>). Dersom en i stedet ønsker å publisere til prod så må <code>--host</code> flagget settes til <code>data.nav.no</code>.</p>
 <div class="highlight"><pre><span></span><code>knatch<span class="w"> </span>&lt;id&gt;<span class="w"> </span>sti/til/mappe/med/filer<span class="w"> </span>&lt;token&gt;<span class="w"> </span>--host<span class="w"> </span>data.ekstern.dev.nav.no<span class="w"> </span>--path<span class="w"> </span>api/v1/story
 </code></pre></div>
+
+
 
 
 
@@ -3020,8 +2975,8 @@ Token for teamet ditt finner du ved å gå til https://data.ansatt.nav.no/user/t
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
     </a>
   
 </div>
@@ -3039,10 +2994,10 @@ Token for teamet ditt finner du ved å gå til https://data.ansatt.nav.no/user/t
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.sections", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.instant","navigation.sections","content.tabs.link"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7f30b55.min.js"></script>
       
     
   </body>
