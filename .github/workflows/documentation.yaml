@@ -1,24 +1,29 @@
-name: documentation
-
-on: 
+name: Documentation
+on:
   push:
     branches:
+      - master
       - main
-
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
-  gh-release:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v2
-      - name: Install mkdocs
-        run: pip install mkdocs mkdocs-pymdownx-material-extras mkdocs-build-plantuml-plugin
-      - name: Release to GitHub Pages
-        env:
-          GIT_USER: "x-actor"
-          GIT_PASS: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          mkdocs gh-deploy --force
+      - uses: actions/configure-pages@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: 3.x
+      - run: pip install zensical
+      - run: zensical build --clean
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - uses: actions/deploy-pages@v5
+        id: deployment
