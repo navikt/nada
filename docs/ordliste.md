@@ -41,4 +41,4 @@ Gjør det enkelt å kjøre mindre bolker av kode og visualisere resultater i net
 ### Knorten
 Knorten er portalen for å administrere team som bruker KNADA.
 Her er det self-service av blant annet  Airflow og Jupyter.
-Les mer om å komme i gang under [Analyse/Kom i gang](/analyse/kom-i-gang/).
+Les mer om å komme i gang under [Analyse/Kom i gang](analyse/kom-i-gang.md).

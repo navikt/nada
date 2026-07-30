@@ -1,5 +1,5 @@
 # Koble sammen pseudonymiserte views
-I [Markedsplassen](https://data.ansatt.nav.no) er det mulig å tilrettelegge [pseudonymiserte tabeller](/dataprodukter/dele/dataprodukt/#pseudonymisering-av-datasett) for sammenkobling.
+I [Markedsplassen](https://data.ansatt.nav.no) er det mulig å tilrettelegge [pseudonymiserte tabeller](../dataprodukter/dele/dataprodukt.md#pseudonymisering-av-tabeller) for sammenkobling.
 Du trenger tilgang til minst to pseudonymiserte tabeller registrert på [Markedsplassen](https://data.ansatt.nav.no).
 Du spesifiserer hvilke tabeller du ønsker å koble sammen.
 Du kan også velge å lage konsistente id-er for personer som har byttet fødselsnummer.

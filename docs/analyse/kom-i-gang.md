@@ -2,7 +2,7 @@
 title: Kom i gang
 ---
 
-For å komme i gang med analysering tilbyr NADA dokumentasjon på hvordan man kan ta i bruk Jupyter Notebooks og Airflow i teamprosjektene på GCP, se [managed Jupyter notebook](./notebook/managed-notebook.md#team-prosjekt-notebook) og [managed Airflow](./airflow/managed-airflow.md) for mer informasjon.
+For å komme i gang med analysering tilbyr NADA dokumentasjon på hvordan man kan ta i bruk Jupyter Notebooks og Airflow i teamprosjektene på GCP, se [Jupyter notebook](./notebook/index.md) og [Airflow](./airflow/knada-airflow.md) for mer informasjon.
 
 Dersom man har behov for å nå onprem kilder tilbyr vi også analyseverktøy for dette i KNADA.
 

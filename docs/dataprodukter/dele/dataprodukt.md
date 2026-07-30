@@ -31,4 +31,4 @@ Kolonnene pseudonymiseres med SHA256-algoritmen og en tilfeldig verdi som er for
 Metadata som vises på Markedsplassen inneholder adressen til det pseudonymiserte viewet.
 
 
-Til tross for at tabellene pseudonymiseres med forskjellige verdier, kan de likevel kobles sammen gjennom en [tjenesten vi tilbyr for å koble sammen pseudonymiserte tabeller](/analyse/koble-pseudonymiserte).
+Til tross for at tabellene pseudonymiseres med forskjellige verdier, kan de likevel kobles sammen gjennom en [tjenesten vi tilbyr for å koble sammen pseudonymiserte tabeller](../../analyse/koble-pseudonymiserte.md).

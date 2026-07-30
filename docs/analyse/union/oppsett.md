@@ -16,7 +16,7 @@ Hvis du har erfaring med Airflow fra før, vil mange av konseptene være kjente,
 For å koble deg til Union må du opprette en konfigurasjonsfil. Denne filen kan enten opprettes globalt i hjemmeområdet ditt eller miljøspesifikt for prosjektet du jobber med. 
 
 ## Global konfigurasjonsfil
-Ta utgangspunkt i config-filen under og erstatt `<prosjekt-navn>` med navnet på Union prosjektet til teamet ditt. Skriver du ikke inn et prosjekt her må du spesifisere prosjekt eksplisitt når du laster opp eller starter jobber som beskrevet i [Opplasting og kjøring av Union tasks](#opplasting-og-kjøring-av-union-tasks).
+Ta utgangspunkt i config-filen under og erstatt `<prosjekt-navn>` med navnet på Union prosjektet til teamet ditt. Skriver du ikke inn et prosjekt her må du spesifisere prosjekt eksplisitt når du laster opp eller starter jobber som beskrevet i [Opplasting og kjøring av Union tasks](bruk.md#opplasting-og-kjring-av-union-tasks).
 
 ```yaml
 admin:
@@ -41,7 +41,7 @@ flyte create config --endpoint union.data.nav.no --builder remote --org union-na
 
 Dette vil opprette en config fil i arbeidsområdet ditt under stien `./.flyte/config.yaml`.
 Denne vil overstyre en eventuell global konfigurasjonsfil.
-Brukerne kan på den måten ha en fil per miljø og spesifisere prosjekt/domene slik at ikke dette trenger å spesifiseres eksplisitt i kommandoene når tasker skal lastes opp eller trigges som beskrevet i [Opplasting og kjøring av Union tasks](#opplasting-og-kjøring-av-union-tasks).
+Brukerne kan på den måten ha en fil per miljø og spesifisere prosjekt/domene slik at ikke dette trenger å spesifiseres eksplisitt i kommandoene når tasker skal lastes opp eller trigges som beskrevet i [Opplasting og kjøring av Union tasks](bruk.md#opplasting-og-kjring-av-union-tasks).
 
 ## Oppsett av Union TaskEnvironment for å bruke remote builder
 Det er to ting å merke seg for å kunne bruke remote build av Union tasks:

@@ -188,7 +188,7 @@ spec:
 
 
 ### Opplasting og kjøring av Union tasks
-Kommandoene under tar utgangspunkt i at workflowen beskrevet over i [Oppsett av Union tasks](#oppsett-av-union-tasks) er lagret som filen `workflow.py` lokalt.
+Kommandoene under tar utgangspunkt i at workflowen beskrevet over i [Skrive Union tasks](#skrive-union-tasks) er lagret som filen `workflow.py` lokalt.
 
 For å trigge en workflow, kjør:
 ```bash
