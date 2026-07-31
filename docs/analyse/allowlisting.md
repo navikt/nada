@@ -26,18 +26,6 @@ For å konfigurere allowlist for Airflow se [Trafikk ut fra Airflow](./airflow/k
 
 Dersom man bruker [dataverk-airflow](https://pypi.org/project/dataverk-airflow) vil det avhengig av hvilken operator og opsjoner man bruker også bli lagt på nødvendige åpninger. Se [repo](https://github.com/navikt/dataverk-airflow#allow-list) for dokumentasjon på hva som settes for ulike operatorer.
 
-## Standardåpninger for KnadaVM
-
-- `private.googleapis.com` (for Secret manager, Storage buckets, BigQuery etc.)
-- Cloudflare (for Quarto)
-- Fastly CDN (for Pypi)
-- SSH mot Github.com
-- Knada CoreDNS
-- Alle onprem kilder som er tilgjengelig fra Knada
-
-Komplett oversikt finner man i [navikt/knada-gcp](https://github.com/navikt/knada-gcp/blob/main/knada-vm.tf).
-
-
 ## GCP CloudSQL Postgres
 
 For å få tilgang til en CloudSQL Postgres database på GCP kreves det åpning mot den offentlige IP adressen til databaseinstansen.

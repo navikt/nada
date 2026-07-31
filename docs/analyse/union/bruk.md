@@ -18,7 +18,7 @@ Jobb helst i virtuelle python miljøer. Slik oppretter du et uv-miljø for bruk 
 1. [Installer uv](https://docs.astral.sh/uv/getting-started/installation/)
 2. Opprett virtuelt miljø med `uv venv`
 3. Kjør kommandoen `source .venv/bin/activate` for å aktivere det virtuelle miljøet for den aktive terminalsesjonen (dette må gjøre hver gang du åpner en ny terminal)
-4. Installer flyte med `uv pip install flyte==2.2.4` (versjon 2.2.4 er den som er installert i vårt base image per nå)
+4. Installer flyte med `uv pip install flyte`
 5. Kjør kommandoen `gcloud auth login --update-adc` for å autentisere med Google Cloud.
 6. Kjør kommandoen `gcloud auth configure-docker europe-west1-docker.pkg.dev` for å kunne pushe docker images til vårt registry.
 
@@ -38,6 +38,8 @@ Du kan derfor:
 - Bestemme hva disse får lov til å snakke med (både internt og eksternt)
 - Bruke dem i tasks i Union (Kubernetes)
 
+Service accounter du eller teamet ditt har opprettet kan finnes på: [union-console.data.nav.no](https://union-console.data.nav.no).
+
 For hvert miljø i prosjektet ditt lager du et manifest (fil) av type `UnionTeamServiceAccounts` slik som beskrevet under. Dette oppretter og gir tilgang til service accountene:
 
 ### Eksempel på manifest
@@ -47,7 +49,6 @@ apiVersion: data.nav.no/v1alpha1
 kind: UnionTeamServiceAccounts
 metadata:
   name: test-team-development
-  namespace: test-team-development
 spec:
   project: test-team
   domain: development
@@ -65,9 +66,9 @@ spec:
 Når dette deployes vil dette skje:
 
 - Det opprettes 2 service accounts i Kubernetes (sa1 og sa2)
-- For hver av disse opprettes det også en Google service account
-- Disse kan få tilgang til Google-tjenester som BigQuery og Storage buckets. Dette må foreløpig settes opp manuelt av plattformteamet
-    - Ta kontakt på #dataplattform for dette.
+- For hver av disse opprettes det også en Google service account. Navnet på denne vil få et tilfeldig suffiks, f.eks `sa1-development-ca4ec@nav-data-union-restricted-prod.iam.gserviceaccount.com`. Derfor må du gå til [union-console.data.nav.no](https://union-console.data.nav.no), der vil du finne Google service accounten tilhørende `sa1`.
+- Disse kan få tilgang til Google-tjenester som BigQuery og Storage buckets. 
+    - Dere kan selv styre disse tilgangene i deres egne Google prosjekter, men det er noen manuelle steg som må gjøres av plattformteamet. Ta kontakt på #airflow-til-union eller #dataplattform for dette.
 - Du kan koble service account til en Union task.
 
 Når en task bruker en service account, får den:
@@ -89,21 +90,29 @@ I Union definerer du altså workflows direkte i Python, uten behov for et eget "
 import flyte
 
 env = flyte.TaskEnvironment(
-    name="env",
+    name="my_environment",
     image=flyte.Image.from_base(
-      image_uri="europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.12-base"
+      image_uri="europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base"
     )
     .clone(
         registry="europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images",
         name="flyte",
         extendable=True,
-    ).with_pip_packages(
-        "google-cloud-secret-manager",
-        "google-cloud-storage",
+    )
+    .with_env_vars({
+      "UV_KEYRING_PROVIDER": "subprocess", 
+    })
+    .with_pip_packages(
+        "pandas",
+        "numpy",
         "oracledb",
+        "sqlalchemy",
+        index_url=(
+            "https://oauth2accesstoken@"
+            "europe-west1-python.pkg.dev/nav-data-images-prod/pypi/simple/"
+        ),
     ),
 )
-
 
 @env.task
 def hello() -> str:
@@ -130,8 +139,56 @@ Du kan definere flere `TaskEnvironment` i samme workflow. Dette gjør det mulig 
 Ta helst utgangspunkt i Dataplattforms base image for tasks. Dette imaget er basert på et [python chainguard image](https://images.chainguard.dev/directory/image/python/overview), er tilpasset for bruk med Flyte, og bygges daglig av Dataplattform i [navikt/union-images](https://github.com/navikt/union-images).
 
 
+### HTTPS-egress
+
+For å gi en service account tilgang til å nå en ekstern eller intern host, legg den til i `externalAllowlist` eller `internalAllowlist` i din `UnionTeamServiceAccounts`:
+
+```yaml
+apiVersion: data.nav.no/v1alpha1
+kind: UnionTeamServiceAccounts
+metadata:
+  name: test-team-development
+spec:
+  project: test-team
+  domain: development
+  serviceAccounts:
+    - name: sa1
+      externalAllowlist:
+        - host: github.com
+```
+
+**Koden din skal koble til via `http://`, ikke `https://`.** Plattformen håndterer kryptering for deg — trafikken er kryptert internt i plattformen og sikres når den forlater til omverdenen. Du trenger ikke å forholde deg til sertifikater eller TLS-konfigurasjon.
+
+```python
+requests.get("http://github.com", allow_redirects=False)
+```
+
+**Skru av automatisk redirect-følging.** Noen hosts redirecter forespørsler til en annen URL, for eksempel et kanonisk domene eller en bestemt sti. Plattformen kan ikke følge disse redirectene automatisk på dine vegne, så bruk `allow_redirects=False` og kall den endelige destinasjons-URLen direkte for å sikre pålitelig oppførsel.
+
+
+### TCP-egress
+
+For TCP-tilkoblinger, for eksempel mot databaser, brukes `internalAllowlist` på samme måte. TCP-egress krever ingen spesiell håndtering i koden utover å bruke riktig host og port.
+
+Merk at TCP-egress foreløpig ikke støttes i `externalAllowlist` — det er kun tilgjengelig for interne hosts via `internalAllowlist`.
+
+```yaml
+apiVersion: data.nav.no/v1alpha1
+kind: UnionTeamServiceAccounts
+metadata:
+  name: test-team-development
+spec:
+  project: test-team
+  domain: development
+  serviceAccounts:
+    - name: sa1
+      internalAllowlist:
+        - host: dmv04-scan.adeo.no
+```
+
+
 ### Opplasting og kjøring av Union tasks
-Kommandoene under tar utgangspunkt i at workflowen beskrevet over i [Oppsett av Union tasks](#oppsett-av-union-tasks) er lagret som filen `workflow.py` lokalt.
+Kommandoene under tar utgangspunkt i at workflowen beskrevet over i [Skrive Union tasks](#skrive-union-tasks) er lagret som filen `workflow.py` lokalt.
 
 For å trigge en workflow, kjør:
 ```bash
@@ -148,3 +205,49 @@ Se [Union dokumentasjon](https://www.union.ai/docs/v2/union/user-guide/) for mer
 ### Eksempler
 Se [navikt/union-demo](https://github.com/navikt/union-demo) for eksempler på workflows og tasks med både [v1](https://www.union.ai/docs/v1/flyte/user-guide/introduction/) og [v2](https://www.union.ai/docs/v2/flyte/user-guide/flyte-2/) versjonene av Flyte.
 
+
+### Oppsett Windows og Union
+
+#### Installer python
+1. Åpne `ledetekst`
+  - Skriv `python` og trykk enter, dersom python ikke er installert sendes du da til `Microsoft store`
+  - Trykk `få` for å installere Python
+
+#### Installer uv
+1. Åpne `ledetekst`
+2. Du gi brukeren din tillatelse til å installere uv
+```bash
+powershell -c "Set-ExecutionPolicy RemoteSigned -scope CurrentUser"
+```
+3. Installer uv
+```bash
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+#### Sett opp virtuelt python miljø med uv
+
+_*NB! Viktig at du restarter ledetekst sesjonen etter at du har installert uv i steget [Installer uv](#installer-uv) før du fortsetter*_
+
+1. Lag det virtuelle miljøet
+```bash
+uv venv
+```
+2. Aktiver det virtuelle miljøet (_*dette må gjøres hver gang du åpner en ny ledetekst sesjon*_)
+```bash
+.venv\Scripts\activate
+```
+
+#### Installer flyte
+1. Installer python biblioteket
+```bash
+uv pip install flyte
+```
+2. Opprett flyte config
+```bash
+flyte create config --endpoint union.data.nav.no --org union-nav --project dataplattform --domain 
+development
+```
+3. Test at du får autentisert deg mot flyte
+```bash
+flyte get project
+```

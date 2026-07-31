@@ -120,7 +120,7 @@ Klikk "Schedule" og "Create new schedule"
     
 ## Flytte data fra Kafka til BigQuery
 For å ta data fra en Kafka-strøm til BigQuery, trenger du å sette opp en applikasjon.
-[Under](#kode-eksempler) følger enkle eksempler på hvordan å lese fra Kafka og skrive til BigQuery i forskjellige programmeringsspråk. 
+[Under](#kodeeksempler) følger enkle eksempler på hvordan å lese fra Kafka og skrive til BigQuery i forskjellige programmeringsspråk.
 Alle eksemplene forutsetter at en på forhånd har laget datasettet BigQuery tabellen skal opprettes i og at man har tilgang til å skrive til/opprette tabeller i datasettet.
 Opprettelsen av datasettet og tilgangene ordnes automatisk når appen deployes til GCP-clusterne til nais med [nais.yaml](https://doc.nais.io/nais-application/application/#kafka). 
 

@@ -298,7 +298,7 @@ Hver enkelt Airflow-instans i KNADA har en egen IAM service account i `knada-gcp
 Service accounten finner du under teamoversikten i [Knorten](https://knorten.knada.io/oversikt).
 Dersom tilganger gis til denne IAM service accounten vil det delegeres til teamets kubernetes service account som igjen gjør at Airflow workeren i clusteret får samme tilganger mot google APIer som IAM service accounten.
 
-Dersom man ikke ønsker å gi masse tilganger til `knada-gcp` service accounten direkte, men i stedet ønsker å gi tilgangene til en service account i sitt eget teamprosjekt kan man sette opp [enda et ledd i impersonation chainen](#eksempel-på-impersonation-chain-med-service-account-i-team-prosjekt).
+Dersom man ikke ønsker å gi masse tilganger til `knada-gcp` service accounten direkte, men i stedet ønsker å gi tilgangene til en service account i sitt eget teamprosjekt kan man sette opp [enda et ledd i impersonation chainen](#eksempel-pa-impersonation-chain-med-service-account-i-team-prosjekt).
 
 ### Eksempel på impersonation chain med service account i team prosjekt
 Du har en IAM service account i team prosjektet ditt `min-sa@<prosjekt-id>.iam.gserviceaccount.com` som har diverse tilganger til google APIer (BigQuery, Storage buckets, etc.) og ønsker å kunne delegere disse tilgangene til Airflow workerne dine, altså:

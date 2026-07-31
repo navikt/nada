@@ -321,7 +321,7 @@ Man kan bruke actionen til å publisere både interne datafortellinger på `data
 !!! info "Se [README for github action](https://github.com/navikt/story-upload/blob/main/README.md#example-usage) for beskrivelse av de ulike konfigurerbare input parameterene til actionen"
 
 Under er et eksempel på hvordan å sette opp en enkel github action workflow som oppdaterer en datafortelling __**internt i dev løsningen til datamarkedsplassen**__ (dvs. `data.intern.dev.nav.no`) ved hver push til `main`.
-For å bruke actionen må det eksistere en datafortelling som man ønsker å oppdatere. Dersom det ikke finnes en datafortelling så må denne registeres først, se [her](#registrere-quarto-i-datamarkedsplassen) for å registrere en intern datafortelling, eller [her](#registere-datafortelling) for å registrere en ekstern. 
+For å bruke actionen må det eksistere en datafortelling som man ønsker å oppdatere. Dersom det ikke finnes en datafortelling så må denne registeres først, se [her](#registrere-quarto-i-datamarkedsplassen) for å registrere en intern datafortelling, eller [her](#registere-ekstern-datafortelling) for å registrere en ekstern. 
 
 
 Erstatt `${STORY_ID}` i eksempelet med IDen på datafortellingen du ønsker å oppdatere. Eksempelet tar også utgangspunkt i at team tokenet for teamet som eier datafortellingen er lagt inn som [secret på github repoet](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-environment) med nøkkel `TEAM_TOKEN`. 
@@ -365,7 +365,7 @@ pip install knatch
 
 Begge eksemplene tar utgangspunkt i følgende:
 
-- Du har allerede opprettet en datafortelling du ønsker å oppdatere, se [her](#registrere-quarto-i-datamarkedsplassen) for å registrere en intern datafortelling, eller [her](#registere-datafortelling) for å registrere en ekstern. Erstatt `<id>` i eksemplene under med IDen til den eksisterende datafortellingen.
+- Du har allerede opprettet en datafortelling du ønsker å oppdatere, se [her](#registrere-quarto-i-datamarkedsplassen) for å registrere en intern datafortelling, eller [her](#registere-ekstern-datafortelling) for å registrere en ekstern. Erstatt `<id>` i eksemplene under med IDen til den eksisterende datafortellingen.
 - Du har hentet ut team tokenet for teamet som eier datafortellingen. Erstatt `<token>` i eksemplene under med dette tokenet.
 
 ##### Publisering til intern markedsplass

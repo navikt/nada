@@ -26,10 +26,10 @@ Denne tilgangen er kun midlertidig, og man må gjøre dette hver dag.
 ### Service account
 
 !!! warning
-    Dette gjelder kun for [managed notebooks](./managed-notebook.md).
+    Dette gjelder kun for [managed notebooks](./index.md).
     Bruker du [KNADA notebook](./knada-notebook.md), se autentisering med [personlig bruker](#personlig-bruker).
 
-En fersk [managed notebook](./managed-notebook.md) vil automatisk autentisere seg mot GCP-tjenester med service accountens credentials.
+En fersk [managed notebook](./index.md) vil automatisk autentisere seg mot GCP-tjenester med service accountens credentials.
 Det betyr at man er tilkoblet GCP med en service accounten ut av boksen når man starter opp en notebook.
 Bruker du denne service accounten, så er det denne brukeren som må få tilgang til kildene du skal snakke med.
 

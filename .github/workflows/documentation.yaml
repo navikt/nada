@@ -1,24 +1,22 @@
-name: documentation
-
-on: 
+name: Documentation
+on:
   push:
     branches:
+      - master
       - main
-
+permissions:
+  contents: write
 jobs:
-  gh-release:
+  deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v2
-      - name: Install mkdocs
-        run: pip install mkdocs mkdocs-pymdownx-material-extras mkdocs-build-plantuml-plugin
-      - name: Release to GitHub Pages
-        env:
-          GIT_USER: "x-actor"
-          GIT_PASS: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          mkdocs gh-deploy --force
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: 3.x
+      - run: pip install zensical
+      - run: zensical build --clean
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site

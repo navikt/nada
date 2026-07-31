@@ -6,7 +6,7 @@ Tilgjengelig på [docs.knada.io](https://docs.knada.io).
 
 ## Development
 
-This website is built using [MkDocs](https://www.mkdocs.org/).
+This website is built using [Zensical](https://zensical.org/).
 
 ### Install
 
@@ -15,17 +15,17 @@ $ poetry install
 ```
 or
 ```
-$ pip install mkdocs mkdocs-pymdownx-material-extras mkdocs-build-plantuml-plugin
+$ pip install zensical
 ```
 
 ### Local Development
 
 ```
-$ poetry run mkdocs serve
+$ poetry run zensical serve
 ```
 
 ```
-$ mkdocs serve
+$ zensical serve
 ```
 
 This command starts a local development server on localhost:8000. Most changes are reflected live without having to restart the server.
@@ -33,12 +33,12 @@ This command starts a local development server on localhost:8000. Most changes a
 ### Build
 
 ```
-$ poetry run mkdocs build
+$ poetry run zensical build
 ```
 or
 
 ```
-$ mkdocs build
+$ zensical build
 ```
 
 This command generates static content into the `site` directory and can be served using any static contents hosting service.

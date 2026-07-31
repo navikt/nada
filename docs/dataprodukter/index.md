@@ -95,13 +95,13 @@ Z_1 --> I_1
         - [Team Flex sitt oppsett](https://github.com/navikt/flex-bigquery-terraform)
             - Satt opp med Terraform
         - [Digihot sitt oppsett](https://github.com/navikt/hm-statistikk)
-            - Kommandolinjeverktøy for å enkelt opprette [BigQuery dataset, connection](dele/dataoverføring.md#federated-query), og [scheduled query](dele/dataoverføring.md#kjøre-spørring-på-tidsintervall)
+            - Kommandolinjeverktøy for å enkelt opprette [BigQuery dataset, connection](dele/dataoverføring.md#federated-query), og [scheduled query](dele/dataoverføring.md#kjre-sprring-pa-tidsintervall)
         - [Team Sykmelding sitt oppsett](https://github.com/navikt/teamsykmelding-gcp-infra)
             - Satt opp Datastream med Terraform. Laster over alle endringer for aktuelle kolonner i Postgres (change data capture)
         - [Team Risks sitt oppsett](https://github.com/navikt/helse-risk-flytte-data)
             - Benytter [Naisjob](dele/dataoverføring.md#naisjob) for å flytte data
 === "Kafka"
-    Kodeeksempler på hvordan du kan flytte data fra Kafka til BigQuery på NAIS finner du ved å følge [denne lenken](dele/dataoverføring.md#kafka-til-bigquery).
+    Kodeeksempler på hvordan du kan flytte data fra Kafka til BigQuery på NAIS finner du ved å følge [denne lenken](dele/dataoverføring.md#kodeeksempler).
 
     !!! question "Hvordan har andre team løst dette?"
         - [Dagpenger sitt oppsett med Kafka Connect](https://github.com/navikt/dp-kafka-connect/)
@@ -115,7 +115,7 @@ Z_1 --> I_1
     1. [Naisjobs](dele/dataoverføring.md#naisjob)
     2. [Knorten](../analyse/kom-i-gang.md#knada)
 
-    For å lese fra databaser onprem og for å få tilgang til å skrive til BigQuery fra onprem kan du [følge dokumentasjonen](dele/få-tilgang.md#f-tilgang-til-data-on-prem).
+    For å lese fra databaser onprem og for å få tilgang til å skrive til BigQuery fra onprem kan du [følge dokumentasjonen](dele/få-tilgang.md#fa-tilgang-til-data-on-prem).
 
     !!! question "Hvordan har andre team løst dette?"
         - [ereg dataprodukt](https://github.com/navikt/dataprodukt-register-ereg)
