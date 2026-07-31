@@ -8,37 +8,38 @@ Tilgjengelig på [docs.knada.io](https://docs.knada.io).
 
 This website is built using [Zensical](https://zensical.org/).
 
+### Prerequisites
+
+Install [uv](https://astral.sh/uv/).
+
+```bash
+curl -LsSL https://astral.sh/uv/install.sh | sh
+```
+
 ### Install
 
-```
-$ poetry install
-```
-or
-```
-$ pip install zensical
+```bash
+uv sync
 ```
 
 ### Local Development
 
-```
-$ poetry run zensical serve
-```
-
-```
-$ zensical serve
+```bash
+uv run zensical serve
 ```
 
 This command starts a local development server on localhost:8000. Most changes are reflected live without having to restart the server.
 
 ### Build
 
-```
-$ poetry run zensical build
+```bash
+uv run zensical build
 ```
 or
 
-```
-$ zensical build
+```bash
+source .venv/bin/activate
+zensical build
 ```
 
 This command generates static content into the `site` directory and can be served using any static contents hosting service.
