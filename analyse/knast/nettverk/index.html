@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="zensical-0.0.52">
+      <meta name="generator" content="zensical-0.0.53">
     
     
       
@@ -32,7 +32,7 @@
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.8b3b5a67.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.20815dad.min.css">
       
         
           
@@ -496,7 +496,7 @@
   <span class="md-ellipsis">
     
   
-  Hva er et dataprodukt på Datamarkedsplassen?
+  Hva er et dataprodukt?
 
     
   </span>
@@ -1066,6 +1066,33 @@
     
   
   Komme i gang
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kom-i-gang-notebooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Komme i gang med Jupyter Notebooks
 
     
   </span>
@@ -1781,8 +1808,8 @@
 <h2 id="apninger-mot-on-prem">Åpninger mot on-prem<a class="headerlink" href="#apninger-mot-on-prem" title="Permanent link">&para;</a></h2>
 <p>Det er ønskelig å begrense åpninger mot on-prem så mye som mulig. Derfor har du kun tilgang til de adressene du oppgir i din <a href="https://data.ansatt.nav.no/user/workstation">Knast-konfigurasjon</a>. Her velger du fra en dropdown-liste med mulige kilder. Du også velge nais-ingresser som "intern.nav.no", hvis du skal åpne mot f.eks https://teamkatalogen.intern.nav.no. Dersom du ikke finner kilden du trenger ta kontakt med #dataplattform på slack.</p>
 <h2 id="apninger-mot-internett">Åpninger mot internett<a class="headerlink" href="#apninger-mot-internett" title="Permanent link">&para;</a></h2>
-<p>Det er også stengt av mot internett som default. Nada tilbyr en liste med åpninger som de aller fleste har behov for. Utover den må du legge til URLer du vil snakke med selv under fanen "URL-håndtering". URLene må oppgis med <a href="https://cloud.google.com/secure-web-proxy/docs/url-list-syntax-reference">syntax beskrevet her</a>. Det er god praksis å åpne for minst mulig, for eksempel er <code>github.com/navikt/*</code>  bedre enn <code>github.com/*</code>.
-Det er ikke alltid åpenbart hvilke URLer forskjellige klienter og extensions prøver å snakke med. Hvis du opplever at noe ikke fungerer som forventet, sjekk ut "Blokkerte URLer" under "URL-håndtering". Der vil du se URLer som har blitt blokkert og kanskje må legges til i allowlisten din for full virk. Husk å ha et bevisst forhold til hva du åpner for. </p>
+<p>Det er også stengt av mot internett som default. Nada tilbyr en liste med åpninger som de aller fleste har behov for. Utover den må du legge til URL-er du vil snakke med selv ved å trykke på "konfigurer" ved siden av "Tidsbegrensede internettåpninger" på hovedsiden, eller under "Instillinger-&gt;Tidsbegrensede åpninger". URLene må oppgis med <a href="https://cloud.google.com/secure-web-proxy/docs/url-list-syntax-reference">syntax beskrevet her</a>. Det er god praksis å åpne for minst mulig, for eksempel er <code>github.com/navikt/*</code>  bedre enn <code>github.com/*</code>.
+Det er ikke alltid åpenbart hvilke URLer forskjellige klienter og extensions prøver å snakke med. Hvis du opplever at noe ikke fungerer som forventet, sjekk ut "Blokkerte URLer" under "URL-håndtering". Der vil du se URLer som har blitt blokkert og kanskje må legges til i allowlisten din. Husk å ha et bevisst forhold til hva du åpner for. </p>
 <h2 id="pypi-proxy">PyPI proxy<a class="headerlink" href="#pypi-proxy" title="Permanent link">&para;</a></h2>
 <p>Vi har laget en global deny regel mot pypi.org. For å kunne laste ned Python pakker ønsker vi at dere går via vår pypi-proxy.
 Vi har konfigurert en global pip config /etc/pip.conf, som ikke tar stilling til hvilken package manager (uv, pip, poetry) du bruker, så lenge den er kompatibel med pip.
@@ -1899,10 +1926,10 @@ $ pypi-auth
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.sections","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.sections","content.tabs.link","content.code.copy"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ed145cee.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.69c251d7.min.js"></script>
       
     
   </body>
