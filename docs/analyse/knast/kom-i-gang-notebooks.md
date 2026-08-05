@@ -188,7 +188,7 @@ Man må typisk gjennom følgende steg:
 
     Trykk **Shift-Enter** for å kjøre cellen — Markdown-teksten vil bli rendret.
 
-    ## Installer pakker
+    ## Installer pakker (R)
 
     Lag en ny celle og kjør følgende (kun nødvendig første gang, kan ta noen sekunder):
 
@@ -237,7 +237,7 @@ Man må typisk gjennom følgende steg:
     Kjør cellen med **Ctrl-Enter** eller Kjør-knappen ved siden av cellen. Du skal få ut de første radene av datasettet og se at
     datasettet er på såkalt *wide format*: én rad per husdyrslag, og én kolonne per år (f.eks. `"Husdyr2 2013"`, `"Husdyr2 2014"`, osv.). Den første kolonnen `"Husdyr"` inneholder koder, ikke klartekstnavn.
 
-    ## Finn riktig kode for hester
+    ## Finn riktig kode for hester (R)
 
     Lag en ny celle og slå opp i metadata-APIet til SSB for å finne hvilken kode som tilsvarer hester:
 
@@ -262,7 +262,7 @@ Man må typisk gjennom følgende steg:
 
     Koden for hester er `"11"`.
 
-    ## Filtrer og transformer data
+    ## Filtrer og transformer data (R)
 
     Lag en ny celle:
 
@@ -284,7 +284,7 @@ Man må typisk gjennom følgende steg:
     head(hest)
     ```
 
-    ## Lag et plot
+    ## Lag et plot (R)
 
     Lag en ny celle:
 
