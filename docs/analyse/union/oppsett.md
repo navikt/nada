@@ -81,3 +81,21 @@ env = flyte.TaskEnvironment(
 
 ## Krav til lokal maskin for å bruke Union
 - Nav compliant device
+
+## Tilgang fra Knast
+Fra Knast må `authType` eksplisitt settes til `DeviceFlow` i Union configen.
+
+Opprett filen selv og lagre enten globalt på hjemmeområdet ~/.flyte/config.yaml, eller lokalt for gjeldende arbeidsområde .flyte/config.yaml.
+```yaml
+admin:
+  endpoint: dns:///union.data.nav.no
+  authType: DeviceFlow
+image:
+  builder: remote
+task:
+  project: <prosjekt-navn>
+  domain: <domene> # development, staging eller production
+  org: union-nav
+```
+
+`flyte create config --auth-type device-flow --endpoint union.dev.data.nav.no --org union-nav --project <prosjekt> --domain <domene> --builder remote`
