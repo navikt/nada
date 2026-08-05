@@ -1345,6 +1345,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tilgang-fra-knast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tilgang fra Knast
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1802,6 +1813,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tilgang-fra-knast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tilgang fra Knast
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1883,6 +1905,20 @@ Brukerne kan på den måten ha en fil per miljø og spesifisere prosjekt/domene 
 <ul>
 <li>Nav compliant device</li>
 </ul>
+<h2 id="tilgang-fra-knast">Tilgang fra Knast<a class="headerlink" href="#tilgang-fra-knast" title="Permanent link">&para;</a></h2>
+<p>Fra Knast må <code>authType</code> eksplisitt settes til <code>DeviceFlow</code> i Union configen.</p>
+<p>Opprett filen selv og lagre enten globalt på hjemmeområdet ~/.flyte/config.yaml, eller lokalt for gjeldende arbeidsområde .flyte/config.yaml.
+<div class="highlight"><pre><span></span><code><span class="nt">admin</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns:///union.data.nav.no</span>
+<span class="w">  </span><span class="nt">authType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeviceFlow</span>
+<span class="nt">image</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">builder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remote</span>
+<span class="nt">task</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;prosjekt-navn&gt;</span>
+<span class="w">  </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;domene&gt;</span><span class="w"> </span><span class="c1"># development, staging eller production</span>
+<span class="w">  </span><span class="nt">org</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">union-nav</span>
+</code></pre></div></p>
+<p><code>flyte create config --auth-type device-flow --endpoint union.dev.data.nav.no --org union-nav --project &lt;prosjekt&gt; --domain &lt;domene&gt; --builder remote</code></p>
 
 
 
