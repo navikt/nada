@@ -10,6 +10,7 @@ theme:
     - navigation.instant
     - navigation.sections
     - content.tabs.link
+    - content.code.copy
   logo: 'img/logo.svg'
   custom_dir: custom_theme_overrides
   favicon: img/favicon.ico
@@ -75,7 +76,7 @@ nav:
     - Hvem lager spilleregler?: juridisk/hvem.md
     - Hvordan fyller jeg ut PVK?: juridisk/pvk.md
   - Dataprodukter:
-    - Hva er et dataprodukt på Datamarkedsplassen?: dataprodukter/dataprodukt.md
+    - Hva er et dataprodukt?: dataprodukter/dataprodukt.md
     - Kom i gang: dataprodukter/index.md
     - Få tilgang til datakilder: dataprodukter/dele/få-tilgang.md
     - Laste data fra kilde til BigQuery: dataprodukter/dele/dataoverføring.md
@@ -93,6 +94,7 @@ nav:
     - Knast:
       - Hva er Knast?: analyse/knast/generelt.md
       - Komme i gang: analyse/knast/kom-i-gang.md
+      - Komme i gang med Jupyter Notebooks: analyse/knast/kom-i-gang-notebooks.md
       - Oppsett av miljø: analyse/knast/miljo.md
       - Nettverk: analyse/knast/nettverk.md
     - Union: 
