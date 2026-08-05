@@ -1232,15 +1232,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installer-pakker" class="md-nav__link">
+  <a href="#installer-pakker-r" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Installer pakker
+        Installer pakker (R)
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installer pakker">
+    <nav class="md-nav" aria-label="Installer pakker (R)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1271,10 +1271,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#finn-riktig-kode-for-hester_1" class="md-nav__link">
+  <a href="#finn-riktig-kode-for-hester-r" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Finn riktig kode for hester
+        Finn riktig kode for hester (R)
       </span>
     </span>
   </a>
@@ -1282,10 +1282,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#filtrer-og-transformer-data_1" class="md-nav__link">
+  <a href="#filtrer-og-transformer-data-r" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Filtrer og transformer data
+        Filtrer og transformer data (R)
       </span>
     </span>
   </a>
@@ -1293,10 +1293,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lag-et-plot_1" class="md-nav__link">
+  <a href="#lag-et-plot-r" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Lag et plot
+        Lag et plot (R)
       </span>
     </span>
   </a>
@@ -1919,15 +1919,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installer-pakker" class="md-nav__link">
+  <a href="#installer-pakker-r" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Installer pakker
+        Installer pakker (R)
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installer pakker">
+    <nav class="md-nav" aria-label="Installer pakker (R)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1958,10 +1958,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#finn-riktig-kode-for-hester_1" class="md-nav__link">
+  <a href="#finn-riktig-kode-for-hester-r" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Finn riktig kode for hester
+        Finn riktig kode for hester (R)
       </span>
     </span>
   </a>
@@ -1969,10 +1969,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#filtrer-og-transformer-data_1" class="md-nav__link">
+  <a href="#filtrer-og-transformer-data-r" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Filtrer og transformer data
+        Filtrer og transformer data (R)
       </span>
     </span>
   </a>
@@ -1980,10 +1980,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lag-et-plot_1" class="md-nav__link">
+  <a href="#lag-et-plot-r" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Lag et plot
+        Lag et plot (R)
       </span>
     </span>
   </a>
@@ -2155,7 +2155,7 @@ code<span class="w"> </span>~/git/ssb-r/
 Denne notebooken viser fødselstallene til hester de siste 10 årene i Norge.
 </code></pre></div>
 <p>Trykk <strong>Shift-Enter</strong> for å kjøre cellen — Markdown-teksten vil bli rendret.</p>
-<h2 id="installer-pakker">Installer pakker<a class="headerlink" href="#installer-pakker" title="Permanent link">&para;</a></h2>
+<h2 id="installer-pakker-r">Installer pakker (R)<a class="headerlink" href="#installer-pakker-r" title="Permanent link">&para;</a></h2>
 <p>Lag en ny celle og kjør følgende (kun nødvendig første gang, kan ta noen sekunder):</p>
 <div class="highlight"><span class="filename">Installer pakker</span><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;httr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;readr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;jsonlite&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dplyr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tidyr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;stringr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ggplot2&quot;</span><span class="p">))</span>
 </code></pre></div>
@@ -2191,7 +2191,7 @@ eller tilsvarende feil kan løses ved å opprette katalogen og prøve på nytt. 
 </code></pre></div>
 <p>Kjør cellen med <strong>Ctrl-Enter</strong> eller Kjør-knappen ved siden av cellen. Du skal få ut de første radene av datasettet og se at
 datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én kolonne per år (f.eks. <code>"Husdyr2 2013"</code>, <code>"Husdyr2 2014"</code>, osv.). Den første kolonnen <code>"Husdyr"</code> inneholder koder, ikke klartekstnavn.</p>
-<h2 id="finn-riktig-kode-for-hester_1">Finn riktig kode for hester<a class="headerlink" href="#finn-riktig-kode-for-hester_1" title="Permanent link">&para;</a></h2>
+<h2 id="finn-riktig-kode-for-hester-r">Finn riktig kode for hester (R)<a class="headerlink" href="#finn-riktig-kode-for-hester-r" title="Permanent link">&para;</a></h2>
 <p>Lag en ny celle og slå opp i metadata-APIet til SSB for å finne hvilken kode som tilsvarer hester:</p>
 <div class="highlight"><span class="filename">Hent metadata</span><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span>
 
@@ -2209,7 +2209,7 @@ datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én k
 ...
 </code></pre></div>
 <p>Koden for hester er <code>"11"</code>.</p>
-<h2 id="filtrer-og-transformer-data_1">Filtrer og transformer data<a class="headerlink" href="#filtrer-og-transformer-data_1" title="Permanent link">&para;</a></h2>
+<h2 id="filtrer-og-transformer-data-r">Filtrer og transformer data (R)<a class="headerlink" href="#filtrer-og-transformer-data-r" title="Permanent link">&para;</a></h2>
 <p>Lag en ny celle:</p>
 <div class="highlight"><span class="filename">Transformer til long format</span><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
@@ -2227,7 +2227,7 @@ datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én k
 
 <span class="nf">head</span><span class="p">(</span><span class="n">hest</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="lag-et-plot_1">Lag et plot<a class="headerlink" href="#lag-et-plot_1" title="Permanent link">&para;</a></h2>
+<h2 id="lag-et-plot-r">Lag et plot (R)<a class="headerlink" href="#lag-et-plot-r" title="Permanent link">&para;</a></h2>
 <p>Lag en ny celle:</p>
 <div class="highlight"><span class="filename">Plot</span><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 
