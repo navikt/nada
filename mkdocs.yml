@@ -10,6 +10,7 @@ theme:
     - navigation.instant
     - navigation.sections
     - content.tabs.link
+    - content.code.copy
   logo: 'img/logo.svg'
   custom_dir: custom_theme_overrides
   favicon: img/favicon.ico
