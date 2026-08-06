@@ -58,6 +58,8 @@ spec:
         - host: github.com 
       internalAllowlist:
         - host: dmv04-scan.adeo.no
+      cloudSQL:
+        - ip: 34.33.34.33
     - name: sa2
       internalAllowlist:
         - host: dmv09-scan.adeo.no
@@ -74,7 +76,7 @@ Når dette deployes vil dette skje:
 Når en task bruker en service account, får den:
 
 - tilgang til Google-tjenester den har fått tildelt
-- tilgang til hostene definert i `internalAllowlist` og `externalAllowlist`.
+- tilgang til hostene definert i `internalAllowlist`, `externalAllowlist` og `cloudSQL`.
 
 Manifestet kan deployes ved hjelp av vår felles github action [navikt/union-config](https://github.com/navikt/union-config) som tar som input manifest filen over med input parameteren `manifest`.
 Se [her](https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782d32da7a76e8cd23eddda/.github/workflows/test-apply-utsa.yaml) for et eksempel på en slik github action.

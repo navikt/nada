@@ -85,7 +85,7 @@ env = flyte.TaskEnvironment(
 ## Tilgang fra Knast
 Fra Knast må `authType` eksplisitt settes til `DeviceFlow` i Union configen.
 
-Opprett filen selv og lagre enten globalt på hjemmeområdet ~/.flyte/config.yaml, eller lokalt for gjeldende arbeidsområde .flyte/config.yaml.
+Opprett filen selv og lagre enten globalt på hjemmeområdet `~/flyte/config.yaml`, eller lokalt for gjeldende arbeidsområde `.flyte/config.yaml`.
 ```yaml
 admin:
   endpoint: dns:///union.data.nav.no
