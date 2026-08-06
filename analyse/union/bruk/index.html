@@ -2097,6 +2097,8 @@ Du kan derfor:</p>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.com</span><span class="w"> </span>
 <span class="w">      </span><span class="nt">internalAllowlist</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dmv04-scan.adeo.no</span>
+<span class="w">      </span><span class="nt">cloudSQL</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">34.33.34.33</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sa2</span>
 <span class="w">      </span><span class="nt">internalAllowlist</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dmv09-scan.adeo.no</span>
@@ -2114,7 +2116,7 @@ Du kan derfor:</p>
 <p>Når en task bruker en service account, får den:</p>
 <ul>
 <li>tilgang til Google-tjenester den har fått tildelt</li>
-<li>tilgang til hostene definert i <code>internalAllowlist</code> og <code>externalAllowlist</code>.</li>
+<li>tilgang til hostene definert i <code>internalAllowlist</code>, <code>externalAllowlist</code> og <code>cloudSQL</code>.</li>
 </ul>
 <p>Manifestet kan deployes ved hjelp av vår felles github action <a href="https://github.com/navikt/union-config">navikt/union-config</a> som tar som input manifest filen over med input parameteren <code>manifest</code>.
 Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782d32da7a76e8cd23eddda/.github/workflows/test-apply-utsa.yaml">her</a> for et eksempel på en slik github action.</p>
