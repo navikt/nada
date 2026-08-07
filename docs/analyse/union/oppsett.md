@@ -122,8 +122,8 @@ Dette forslaget dekker
 
 - [Oppsett av team-spesifikk konfigurasjon](#team-spesifikk-konfigurasjon-unionutsayaml)
 - [Opplasting av team-spesifikk konfigurasjon](#github-action-for-opplasting-av-union-config-githubworkflowsunion-configyaml)
-- [Eksempel på en task]()
-- [Oppsett av sårbarhetsmonitorering for avhengigheter til Union tasks]().
+- [Eksempel på en task](#eksempel-task)
+- [Oppsett av sårbarhetsmonitorering for avhengigheter til Union tasks](#oppsett-av-dependabot-for-sårbarhetsmonitorering-av-union-task-avhengigheter).
 
 #### Team-spesifikk konfigurasjon (`.union/utsa.yaml`)
 Når du kjører en task i Union (kubernetes pod i Union clusteret) så er den i utgangspunktet isolert fra alle andre systemer og kilder. Tilganger styres av **service accounts**. Tasken har oftest behov for å nå feks:
