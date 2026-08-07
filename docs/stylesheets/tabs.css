@@ -1,0 +1,9 @@
+.md-typeset .tabbed-content .tabbed-block {
+  background-color: #f5f5f5; /* Light grey hex code */
+  padding: 16px;             /* Adds a comfortable spacing around your text */
+  border-radius: 4px;        /* Smooths the corners */
+}
+
+.md-typeset .tabbed-content .tabbed-block pre code {
+  background-color: #ffffff !important; /* Elegant dark grey/black code background */
+}

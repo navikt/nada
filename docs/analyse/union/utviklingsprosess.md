@@ -155,4 +155,4 @@ Bruk denne sjekklisten for å finne feil raskere:
 | Tester feiler i staging | Sjekk hvilke tester som feiler og om de bruker riktig testdata/base | Rett testdata/datakontrakt eller kode, og kjør ny staging-kjøring |
 | Runtime-feil i Union-task | Åpne task-logger i Union control plane og finn eksakt task og input som feilet | Reproduser med samme input i development, fiks kode, og valider i staging |
 
-Se også [Bruk](bruk.md) og [Oppsett](oppsett.md) for detaljer om konfigurasjon, service accounts og task-oppsett.
+Se [Oppsett](oppsett.md) for detaljer om konfigurasjon, service accounts og task-oppsett.
