@@ -301,6 +301,7 @@ I Union definerer du altså workflows direkte i Python, uten behov for et eget "
 
 ```python
 import flyte
+from pathlib import Path
 
 env = flyte.TaskEnvironment(
     name="my_environment",
@@ -321,11 +322,8 @@ env = flyte.TaskEnvironment(
     .with_env_vars({
       "UV_KEYRING_PROVIDER": "subprocess", 
     })
-    .with_pip_packages(
-        "pandas",
-        "numpy",
-        "oracledb",
-        "sqlalchemy",
+    .with_requirements(
+        Path("requirements.txt"),
         index_url=(
             "https://oauth2accesstoken@"
             "europe-west1-python.pkg.dev/nav-data-images-prod/pypi/simple/"
@@ -373,6 +371,32 @@ flyte deploy --domain development --all workflow.py
 ```
 
 Se [Union dokumentasjon](https://www.union.ai/docs/v2/union/user-guide/) for mer informasjon om oppsett, samt opplasting og administrasjon, av Union tasks.
+
+### Hemmeligheter
+Union tilbyr en egen hemmelighetshåndtering som bruker Google Secret Manager som backend.
+
+Hemmeligheter kan opprettes enten for
+
+- _*Organisasjon*_ - Tilgjengelig for alle prosjekter og domener i Union
+- _*Per prosjekt*_ - Tilgjengelig i alle domenene til et bestemt prosjekt
+- _*Per domene*_ - Tilgjengelig i et enkelt domene i et prosjekt
+
+Opprettelse av Union secrets gjøres som følger:
+
+```bash
+flyte create secret --domain development --project <prosjekt> min-hemmelighet
+```
+
+Denne hemmeligeten kan så enten mountes inn som en fil eller settes som en miljøvariabel for `TaskEnvironmentet` som følger:
+
+```python
+env = flyte.TaskEnvironment(
+    name="my_environment",
+    ...
+    secrets=flyte.Secret(key="min-hemmelighet", as_env_var="MIN_MIJØVARIABEL"),
+    ...
+)
+```
 
 ### Eksempler
 Se [navikt/union-dataplattform](https://github.com/navikt/union-dataplattform) for eksempler på tasks.
