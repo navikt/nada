@@ -351,7 +351,7 @@ Under `pod_template` i eksempelet over setter `service_account_name` til service
 
 Et `TaskEnvironment` beskriver kjøremiljøet som en task kjører i, altså containeren som koden din faktisk kjøres i.
 
-Her spesifiserer du hvilke avhengigheter som må være tilgjengelige, for eksempel Python-biblioteker eller filer som skal inkluderes i imaget som brukes av containeren. Avhengigheter kan legges til med `with_pip_packages()` slik som vist i eksempelet over.
+Her spesifiserer du hvilke avhengigheter som må være tilgjengelige, for eksempel Python-biblioteker eller filer som skal inkluderes i imaget som brukes av containeren. Avhengigheter kan legges til med `with_requirements()` slik som vist i eksempelet over.
 
 Du kan definere flere `TaskEnvironment` i samme workflow. Dette gjør det mulig å skreddersy kjøremiljøet per task, i stedet for å måtte samle alle avhengigheter i ett felles miljø.
 
