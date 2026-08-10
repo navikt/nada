@@ -51,7 +51,7 @@ Du trenger da å oppgi følgende:
       2. Opprett flyte config
       ```bash
       flyte create config --endpoint union.data.nav.no --org union-nav --project <prosjekt-navn> --domain 
-      development
+      development --builder remote
       ```
       _*NB! Viktig at du erstatter `<prosjekt-navn>` med navnet på prosjektet ditt i kommandoen over*_ 
       3. Test at du får autentisert deg mot flyte
@@ -94,7 +94,7 @@ Du trenger da å oppgi følgende:
       2. Opprett flyte config
       ```bash
       flyte create config --endpoint union.data.nav.no --org union-nav --project <prosjekt-navn> --domain 
-      development
+      development --builder remote
       ```
       _*NB! Viktig at du erstatter `<prosjekt-navn>` med navnet på prosjektet ditt i kommandoen over*_ 
       3. Test at du får autentisert deg mot flyte
