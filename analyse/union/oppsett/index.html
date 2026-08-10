@@ -1527,6 +1527,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#hemmeligheter" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Hemmeligheter
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#eksempler" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2152,6 +2163,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#hemmeligheter" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Hemmeligheter
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#eksempler" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2448,6 +2470,7 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
 <p>Hver task kjører i sin egen isolerte container (<a href="https://kubernetes.io/docs/concepts/workloads/pods/">pod</a>) i Kubernetes. Det eneste som skal til for å gjøre en Python-funksjon om til en Union task, er å dekorere den med <code>@env.task</code>.</p>
 <p>I Union definerer du altså workflows direkte i Python, uten behov for et eget "orkestreringsspråk" (slik man ofte har i andre orkestreringsverktøy). Flyten styres med vanlig funksjonskall, som gjør det lett å lese og strukturere logikken.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flyte</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">flyte</span><span class="o">.</span><span class="n">TaskEnvironment</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_environment&quot;</span><span class="p">,</span>
@@ -2468,11 +2491,8 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
     <span class="o">.</span><span class="n">with_env_vars</span><span class="p">({</span>
       <span class="s2">&quot;UV_KEYRING_PROVIDER&quot;</span><span class="p">:</span> <span class="s2">&quot;subprocess&quot;</span><span class="p">,</span> 
     <span class="p">})</span>
-    <span class="o">.</span><span class="n">with_pip_packages</span><span class="p">(</span>
-        <span class="s2">&quot;pandas&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;numpy&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;oracledb&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sqlalchemy&quot;</span><span class="p">,</span>
+    <span class="o">.</span><span class="n">with_requirements</span><span class="p">(</span>
+        <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;requirements.txt&quot;</span><span class="p">),</span>
         <span class="n">index_url</span><span class="o">=</span><span class="p">(</span>
             <span class="s2">&quot;https://oauth2accesstoken@&quot;</span>
             <span class="s2">&quot;europe-west1-python.pkg.dev/nav-data-images-prod/pypi/simple/&quot;</span>
@@ -2506,6 +2526,25 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
 <div class="highlight"><pre><span></span><code>flyte<span class="w"> </span>deploy<span class="w"> </span>--domain<span class="w"> </span>development<span class="w"> </span>--all<span class="w"> </span>workflow.py
 </code></pre></div></p>
 <p>Se <a href="https://www.union.ai/docs/v2/union/user-guide/">Union dokumentasjon</a> for mer informasjon om oppsett, samt opplasting og administrasjon, av Union tasks.</p>
+<h3 id="hemmeligheter">Hemmeligheter<a class="headerlink" href="#hemmeligheter" title="Permanent link">&para;</a></h3>
+<p>Union tilbyr en egen hemmelighetshåndtering som bruker Google Secret Manager som backend.</p>
+<p>Hemmeligheter kan opprettes enten for</p>
+<ul>
+<li><em><em>Organisasjon</em></em> - Tilgjengelig for alle prosjekter og domener i Union</li>
+<li><em><em>Per prosjekt</em></em> - Tilgjengelig i alle domenene til et bestemt prosjekt</li>
+<li><em><em>Per domene</em></em> - Tilgjengelig i et enkelt domene i et prosjekt</li>
+</ul>
+<p>Opprettelse av Union secrets gjøres som følger:</p>
+<div class="highlight"><pre><span></span><code>flyte<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>--domain<span class="w"> </span>development<span class="w"> </span>--project<span class="w"> </span>&lt;prosjekt&gt;<span class="w"> </span>min-hemmelighet
+</code></pre></div>
+<p>Denne hemmeligeten kan så enten mountes inn som en fil eller settes som en miljøvariabel for <code>TaskEnvironmentet</code> som følger:</p>
+<div class="highlight"><pre><span></span><code><span class="n">env</span> <span class="o">=</span> <span class="n">flyte</span><span class="o">.</span><span class="n">TaskEnvironment</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_environment&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="n">secrets</span><span class="o">=</span><span class="n">flyte</span><span class="o">.</span><span class="n">Secret</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;min-hemmelighet&quot;</span><span class="p">,</span> <span class="n">as_env_var</span><span class="o">=</span><span class="s2">&quot;MIN_MIJØVARIABEL&quot;</span><span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</code></pre></div>
 <h3 id="eksempler">Eksempler<a class="headerlink" href="#eksempler" title="Permanent link">&para;</a></h3>
 <p>Se <a href="https://github.com/navikt/union-dataplattform">navikt/union-dataplattform</a> for eksempler på tasks.</p>
 
