@@ -4,15 +4,17 @@ title: Utviklingsprosess
 
 # God praksis for utvikling og deploy i Union
 
-Denne siden beskriver en anbefalt arbeidsflyt for utvikling, test og deploy av workflows i Union.
+Denne siden beskriver en anbefalt arbeidsflyt for utvikling, test og deploy av workflows i Union. Flyten er et utgangspunkt, ikke en fasit — juster stegene etter hvor kritisk workflowen er og hvor mye risiko teamet er komfortable med.
 
 ## Prinsipper
 
-- **Development Domain** brukes til hurtig iterasjon fra lokal kode mot en ufarlig base.
-- **Staging Domain** kjører første build fra reviewet kode.
-- **Production Domain** kjører samme signerte image digest som ble testet i staging.
+- **Development Domain** egner seg til hurtig iterasjon fra lokal kode mot en ufarlig base.
+- **Staging Domain** bør kjøre første build fra reviewet kode.
+- **Production Domain** bør helst kjøre samme signerte image digest som ble testet i staging.
 - Image-byggingen skjer i Union-clusteret, ikke på utviklerens maskin.
-- Den viktige grensen går mellom *utviklingskode* og *reviewet kode*.
+- Den viktigste grensen går mellom *utviklingskode* og *reviewet kode*.
+
+> For enkle eller lite kritiske workflows kan staging-steget hoppes over, og man går rett fra review til production. Jo høyere konsekvens en feil har, jo mer verdt er det å gå via staging.
 
 ```mermaid
 flowchart LR
@@ -64,7 +66,7 @@ I `development` bør workflowen kjøres mot en tom base eller en base med syntet
 
 ## Fra reviewet kode til staging
 
-Når koden er committet og klar til deploy, sendes den til review med en pull request til et medlem av teamet. Review bør starte med KI review i GitHub for å fange opp feil som ikke er så åpenbare, men skal avsluttes med peer review av kollega.
+Når koden er committet og klar til deploy, sendes den til review med en pull request til et medlem av teamet. KI review i GitHub bør brukes for å fange opp åpenbare feil tidlig, men suppleres med peer review av en kollega før den godkjennes.
 
 Etter godkjent review kjører en GitHub Action som bygger image på nytt fra reviewet kode og deployer til `staging`.
 
@@ -85,11 +87,11 @@ flowchart TD
 	end
 ```
 
-Staging er første gang workflowen bygges fra reviewet kode. Her skal workflowen kjøres mot en utviklings- eller testbase og valideres med relevante tester.
+Staging er første gang workflowen bygges fra reviewet kode. Her bør workflowen kjøres mot en utviklings- eller testbase og valideres med relevante tester.
 
 ## Fra staging til production
 
-Når testene i staging kjører grønt, signeres imaget. Produksjon skal deretter deployes med samme image digest som ble testet i staging.
+Når testene i staging kjører grønt, signeres imaget og produksjon deployes med samme image digest som ble testet i staging.
 
 ```mermaid
 flowchart LR
@@ -111,6 +113,8 @@ Dette betyr at produksjon ikke bygger et nytt, uprøvd image. Produksjon kjører
 
 ## Anbefalt progresjon
 
+Dette er en fullstendig, trygg progresjon for kritiske workflows. Se varianten under for enklere endringer.
+
 1. Utvikle og teste lokalt.
 2. Kjør med `flyte run --domain development`.
 3. La Union bygge image og kjøre workflowen i `development`.
@@ -124,16 +128,38 @@ Dette betyr at produksjon ikke bygger et nytt, uprøvd image. Produksjon kjører
 11. Deploy samme image digest til `production`.
 12. Kjør workflowen i produksjon etter definert skedulering.
 
+### Lettere variant for små eller lite risikable endringer
+
+1. Utvikle og teste lokalt, eventuelt med `flyte run --domain development`.
+2. Commit og push kode (åpne evt pull request med peer review).
+3. Deploy til `production`.
+
+Velg variant ut fra konsekvensen av en eventuell feil og sensitiviteten til dataene — ikke ut fra vane.
+
 ## Sjekkliste før produksjon
 
-- Workflowen kjører grønt i `staging`.
+Velg nivå ut fra hvor kritisk workflowen er.
+
+**Minimal** (små, lav-risiko endringer):
+
 - Kode og avhengigheter er versjonert.
-- Pull request er reviewet av både KI og teammedlem.
-- Image digest fra staging er signert og brukes videre til production.
+- Deploy skjer fra en sporbar commit.
 - Nødvendige service accounts og allowlisting er satt opp.
 - Hemmeligheter hentes fra Secret Manager eller annen godkjent løsning.
+
+**Anbefalt** (de fleste workflows):
+
+- Workflowen kjører grønt i `staging`.
+- Pull request er reviewet av både KI og teammedlem.
+
+
 - Feil, retries og logging er håndtert.
-- Deploy skjer fra en sporbar commit og en sporbar image digest.
+
+**Strikt** (kritiske, sensitive eller endringstunge workflows):
+
+- Alt i «Anbefalt», i tillegg til:
+- Image digest fra staging er signert og brukes videre til production.
+- Deploy skjer fra en sporbar image digest, ikke bare en sporbar commit.
 
 ## Feilsøking
 
