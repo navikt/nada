@@ -146,6 +146,13 @@ Bruk denne sjekklisten for å finne feil raskere:
 2. Start alltid med den første feilmeldingen i loggen, ikke den siste.
 3. Verifiser samme commit SHA gjennom hele kjeden: PR, GitHub Action, staging-kjøring.
 
+Nyttige referanser når du feilsøker:
+
+- Run modes (`flyte run` lokalt/devbox/remote): [Union run modes](https://www.union.ai/docs/v2/union/user-guide/run-modes/)
+- Stabil deploy av versjonert kode: [Union user guide](https://www.union.ai/docs/v2/union/user-guide/)
+- Task-oppsett (image, retries, timeout, resources, secrets): [Union task configuration](https://www.union.ai/docs/v2/union/user-guide/task-configuration/)
+- Grunnleggende arbeidsflyt og konsepter: [Union overview](https://www.union.ai/docs/v2/union/user-guide/overview/)
+
 | Symptom | Sjekk konkret | Tiltak |
 | --- | --- | --- |
 | Import- eller Python-feil lokalt | Kjør `pytest` lokalt og bekreft at workflow-filen kan importeres uten Union | Rett importsti, flytt sideeffekter ut av modulnivå, og lag ny commit |
