@@ -1665,6 +1665,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Anbefalt progresjon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lettere-variant-for-sma-eller-lite-risikable-endringer" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lettere variant for små eller lite risikable endringer
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1708,15 +1725,18 @@
 
 
 <h1 id="god-praksis-for-utvikling-og-deploy-i-union">God praksis for utvikling og deploy i Union<a class="headerlink" href="#god-praksis-for-utvikling-og-deploy-i-union" title="Permanent link">&para;</a></h1>
-<p>Denne siden beskriver en anbefalt arbeidsflyt for utvikling, test og deploy av workflows i Union.</p>
+<p>Denne siden beskriver en anbefalt arbeidsflyt for utvikling, test og deploy av workflows i Union. Flyten er et utgangspunkt, ikke en fasit — juster stegene etter hvor kritisk workflowen er og hvor mye risiko teamet er komfortable med.</p>
 <h2 id="prinsipper">Prinsipper<a class="headerlink" href="#prinsipper" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Development Domain</strong> brukes til hurtig iterasjon fra lokal kode mot en ufarlig base.</li>
-<li><strong>Staging Domain</strong> kjører første build fra reviewet kode.</li>
-<li><strong>Production Domain</strong> kjører samme signerte image digest som ble testet i staging.</li>
+<li><strong>Development Domain</strong> egner seg til hurtig iterasjon fra lokal kode mot en ufarlig base.</li>
+<li><strong>Staging Domain</strong> bør kjøre første build fra reviewet kode.</li>
+<li><strong>Production Domain</strong> bør helst kjøre samme signerte image digest som ble testet i staging.</li>
 <li>Image-byggingen skjer i Union-clusteret, ikke på utviklerens maskin.</li>
-<li>Den viktige grensen går mellom <em>utviklingskode</em> og <em>reviewet kode</em>.</li>
+<li>Den viktigste grensen går mellom <em>utviklingskode</em> og <em>reviewet kode</em>.</li>
 </ul>
+<blockquote>
+<p>For enkle eller lite kritiske workflows kan staging-steget hoppes over, og man går rett fra review til production. Jo høyere konsekvens en feil har, jo mer verdt er det å gå via staging.</p>
+</blockquote>
 <pre class="mermaid"><code>flowchart LR
 	A[Utvikle lokalt] --&gt; B[Test iterativt i development]
 	B --&gt; C[Review og bygg image i staging]
@@ -1747,7 +1767,7 @@
 </code></pre></div>
 <p>I <code>development</code> bør workflowen kjøres mot en tom base eller en base med syntetiske data. Det gir raskt iterering uten at GitHub blir en flaskehals samtidig som produksjonsdata holdes utenfor utviklingsloopen.</p>
 <h2 id="fra-reviewet-kode-til-staging">Fra reviewet kode til staging<a class="headerlink" href="#fra-reviewet-kode-til-staging" title="Permanent link">&para;</a></h2>
-<p>Når koden er committet og klar til deploy, sendes den til review med en pull request til et medlem av teamet. Review bør starte med KI review i GitHub for å fange opp feil som ikke er så åpenbare, men skal avsluttes med peer review av kollega.</p>
+<p>Når koden er committet og klar til deploy, sendes den til review med en pull request til et medlem av teamet. KI review i GitHub bør brukes for å fange opp åpenbare feil tidlig, men suppleres med peer review av en kollega før den godkjennes.</p>
 <p>Etter godkjent review kjører en GitHub Action som bygger image på nytt fra reviewet kode og deployer til <code>staging</code>.</p>
 <pre class="mermaid"><code>flowchart TD
 	A[Commit kode] --&gt; B[KI review i GitHub]
@@ -1763,9 +1783,9 @@
 		H --&gt; I[Kjør mot utviklings- eller testbase, for eksempel DVH-U, DVH-Q eller DVH-R]
 		I --&gt; J[Kjør tester]
 	end</code></pre>
-<p>Staging er første gang workflowen bygges fra reviewet kode. Her skal workflowen kjøres mot en utviklings- eller testbase og valideres med relevante tester.</p>
+<p>Staging er første gang workflowen bygges fra reviewet kode. Her bør workflowen kjøres mot en utviklings- eller testbase og valideres med relevante tester.</p>
 <h2 id="fra-staging-til-production">Fra staging til production<a class="headerlink" href="#fra-staging-til-production" title="Permanent link">&para;</a></h2>
-<p>Når testene i staging kjører grønt, signeres imaget. Produksjon skal deretter deployes med samme image digest som ble testet i staging.</p>
+<p>Når testene i staging kjører grønt, signeres imaget og produksjon deployes med samme image digest som ble testet i staging.</p>
 <pre class="mermaid"><code>flowchart LR
 	A[Tester grønne i staging] --&gt; B[Signer image]
 	B --&gt; C[Promoter samme digest]
@@ -1804,6 +1824,7 @@
 </tbody>
 </table>
 <h2 id="anbefalt-progresjon">Anbefalt progresjon<a class="headerlink" href="#anbefalt-progresjon" title="Permanent link">&para;</a></h2>
+<p>Dette er en fullstendig, trygg progresjon for kritiske workflows. Se varianten under for enklere endringer.</p>
 <ol>
 <li>Utvikle og teste lokalt.</li>
 <li>Kjør med <code>flyte run --domain development</code>.</li>
@@ -1818,16 +1839,37 @@
 <li>Deploy samme image digest til <code>production</code>.</li>
 <li>Kjør workflowen i produksjon etter definert skedulering.</li>
 </ol>
+<h3 id="lettere-variant-for-sma-eller-lite-risikable-endringer">Lettere variant for små eller lite risikable endringer<a class="headerlink" href="#lettere-variant-for-sma-eller-lite-risikable-endringer" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Utvikle og teste lokalt, eventuelt med <code>flyte run --domain development</code>.</li>
+<li>Commit og push kode (åpne evt pull request med peer review).</li>
+<li>Deploy til <code>production</code>.</li>
+</ol>
+<p>Velg variant ut fra konsekvensen av en eventuell feil og sensitiviteten til dataene — ikke ut fra vane.</p>
 <h2 id="sjekkliste-fr-produksjon">Sjekkliste før produksjon<a class="headerlink" href="#sjekkliste-fr-produksjon" title="Permanent link">&para;</a></h2>
+<p>Velg nivå ut fra hvor kritisk workflowen er.</p>
+<p><strong>Minimal</strong> (små, lav-risiko endringer):</p>
 <ul>
-<li>Workflowen kjører grønt i <code>staging</code>.</li>
 <li>Kode og avhengigheter er versjonert.</li>
-<li>Pull request er reviewet av både KI og teammedlem.</li>
-<li>Image digest fra staging er signert og brukes videre til production.</li>
+<li>Deploy skjer fra en sporbar commit.</li>
 <li>Nødvendige service accounts og allowlisting er satt opp.</li>
 <li>Hemmeligheter hentes fra Secret Manager eller annen godkjent løsning.</li>
-<li>Feil, retries og logging er håndtert.</li>
-<li>Deploy skjer fra en sporbar commit og en sporbar image digest.</li>
+</ul>
+<p><strong>Anbefalt</strong> (de fleste workflows):</p>
+<ul>
+<li>Workflowen kjører grønt i <code>staging</code>.</li>
+<li>
+<p>Pull request er reviewet av både KI og teammedlem.</p>
+</li>
+<li>
+<p>Feil, retries og logging er håndtert.</p>
+</li>
+</ul>
+<p><strong>Strikt</strong> (kritiske, sensitive eller endringstunge workflows):</p>
+<ul>
+<li>Alt i «Anbefalt», i tillegg til:</li>
+<li>Image digest fra staging er signert og brukes videre til production.</li>
+<li>Deploy skjer fra en sporbar image digest, ikke bare en sporbar commit.</li>
 </ul>
 <h2 id="feilsking">Feilsøking<a class="headerlink" href="#feilsking" title="Permanent link">&para;</a></h2>
 <p>Bruk denne sjekklisten for å finne feil raskere:</p>
@@ -1841,6 +1883,13 @@
 <li>Start alltid med den første feilmeldingen i loggen, ikke den siste.</li>
 <li>Verifiser samme commit SHA gjennom hele kjeden: PR, GitHub Action, staging-kjøring.</li>
 </ol>
+<p>Nyttige referanser når du feilsøker:</p>
+<ul>
+<li>Run modes (<code>flyte run</code> lokalt/devbox/remote): <a href="https://www.union.ai/docs/v2/union/user-guide/run-modes/">Union run modes</a></li>
+<li>Stabil deploy av versjonert kode: <a href="https://www.union.ai/docs/v2/union/user-guide/">Union user guide</a></li>
+<li>Task-oppsett (image, retries, timeout, resources, secrets): <a href="https://www.union.ai/docs/v2/union/user-guide/task-configuration/">Union task configuration</a></li>
+<li>Grunnleggende arbeidsflyt og konsepter: <a href="https://www.union.ai/docs/v2/union/user-guide/overview/">Union overview</a></li>
+</ul>
 <table>
 <thead>
 <tr>
