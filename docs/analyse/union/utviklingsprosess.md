@@ -54,6 +54,11 @@ Opprett et virtuelt miljø og legg inn de nødvendige avhengighetene i pyproject
 
 Før koden kjøres i Union bør den kunne importeres og testes lokalt. Hold selve task-funksjonene små, og flytt gjerne domenelogikk til vanlige Python-funksjoner som kan testes uten Union.
 
+<a id="idempotente-tasks"></a>
+
+!!! warning "<span style='font-size: 1.2em'>Alle tasks må være idempotente</span>"
+	Union må kunne kjøre en task på nytt ved timeout, midlertidige feil eller andre årsaker uten at sluttresultatet endres. Utform derfor skriveoperasjoner slik at de trygt kan gjentas, for eksempel med stabile nøkler og upsert fremfor ukontrollerte inserts. Unngå spesielt kode som kan oppretter duplikater eller sletter data som ikke kan gjenopprettes.
+
 ## Kjøre med `flyte run`
 
 `flyte run` brukes for å kjøre workflowen fra lokal kode mot et Union-miljø. Kommandoen pakker koden, lar Union bygge image i clusteret, laster opp nødvendige artefakter og starter kjøringen i valgt domain.
