@@ -14,7 +14,7 @@
         <link rel="prev" href="../../knast/nettverk/">
       
       
-        <link rel="next" href="../iws-skedulering/">
+        <link rel="next" href="../utviklingsprosess/">
       
       
         
@@ -1569,6 +1569,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../utviklingsprosess/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Utvikling
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../iws-skedulering/" class="md-nav__link">
         
   
@@ -2322,7 +2349,7 @@ Dette forslaget dekker </p>
 <li><a href="#team-spesifikk-konfigurasjon-unionutsayaml">Oppsett av team-spesifikk konfigurasjon</a></li>
 <li><a href="#github-action-for-opplasting-av-union-config-githubworkflowsunion-configyaml">Opplasting av team-spesifikk konfigurasjon</a></li>
 <li><a href="#eksempel-task">Eksempel på en task</a></li>
-<li><a href="#oppsett-av-dependabot-for-sårbarhetsmonitorering-av-union-task-avhengigheter">Oppsett av sårbarhetsmonitorering for avhengigheter til Union tasks</a>.</li>
+<li><a href="#oppsett-av-dependabot-for-sarbarhetsmonitorering-av-union-task-avhengigheter">Oppsett av sårbarhetsmonitorering for avhengigheter til Union tasks</a>.</li>
 </ul>
 <h4 id="team-spesifikk-konfigurasjon-unionutsayaml">Team-spesifikk konfigurasjon (<code>.union/utsa.yaml</code>)<a class="headerlink" href="#team-spesifikk-konfigurasjon-unionutsayaml" title="Permanent link">&para;</a></h4>
 <p>Når du kjører en task i Union (kubernetes pod i Union clusteret) så er den i utgangspunktet isolert fra alle andre systemer og kilder. Tilganger styres av <strong>service accounts</strong>. Tasken har oftest behov for å nå feks:</p>
@@ -2510,6 +2537,7 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
     <span class="n">hello</span><span class="p">()</span>
 </code></pre></div>
 <p>Det som skiller Union litt fra for eksempel Airflow, er at én workflow faktisk består av flere isolerte kjøringer (pods), og ikke én prosess som styrer alt. Hver task får sitt eget miljø og kjører uavhengig. Dette gjør det enklere å skalere og isolere feil, men det betyr også at man må tenke litt annerledes rundt hvordan man deler data mellom tasks, og hvordan man håndterer logging og feilsøking.</p>
+<p><strong>Tasks må være <a href="../utviklingsprosess/#idempotente-tasks">idempotente</a>, slik at de trygt kan kjøres på nytt ved retries uten å endre sluttresultatet.</strong></p>
 <p>Konfigurasjonen av TaskEnvironment definerer containermiljøet som tasken kjører i. Dette er nærmere beskrevet i <a href="#task-environment">Task environment</a> under.</p>
 <p>Under <code>pod_template</code> i eksempelet over setter <code>service_account_name</code> til service accounten man ønsker at dette <code>TaskEnvironment</code>-et skal bruke. Der må man spesifisere en av teamets service accounts som er opprettet i <a href="#team-spesifikk-konfigurasjon-unionutsayaml">teamets union konfigurasjon</a>.</p>
 <h5 id="task-environment">Task environment<a class="headerlink" href="#task-environment" title="Permanent link">&para;</a></h5>
