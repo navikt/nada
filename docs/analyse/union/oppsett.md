@@ -343,6 +343,8 @@ async def main():
 
 Det som skiller Union litt fra for eksempel Airflow, er at én workflow faktisk består av flere isolerte kjøringer (pods), og ikke én prosess som styrer alt. Hver task får sitt eget miljø og kjører uavhengig. Dette gjør det enklere å skalere og isolere feil, men det betyr også at man må tenke litt annerledes rundt hvordan man deler data mellom tasks, og hvordan man håndterer logging og feilsøking.
 
+**Tasks må være [idempotente](utviklingsprosess.md#idempotente-tasks), slik at de trygt kan kjøres på nytt ved retries uten å endre sluttresultatet.**
+
 Konfigurasjonen av TaskEnvironment definerer containermiljøet som tasken kjører i. Dette er nærmere beskrevet i [Task environment](#task-environment) under.
 
 Under `pod_template` i eksempelet over setter `service_account_name` til service accounten man ønsker at dette `TaskEnvironment`-et skal bruke. Der må man spesifisere en av teamets service accounts som er opprettet i [teamets union konfigurasjon](#team-spesifikk-konfigurasjon-unionutsayaml).
