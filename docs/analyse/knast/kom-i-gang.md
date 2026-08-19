@@ -29,7 +29,7 @@ Når du har trykket på "Start opprettelse av Knast" og ventet i noen minutter f
 `gcloud auth login`
 3. **Opprette SSH-tunnel** (kjøres lokalt) <br>
 ```gcloud workstations start-tcp-tunnel --cluster=knada --config=DIN_NAV_IDENT --region=europe-north1 --project knada-gcp --local-host-port=:33649 DIN_NAV_IDENT 22``` <br>
-Husk å sette inn Nav-identen din der det står `DIN_NAV_IDENT`. Porten 33649 er tilfeldig valgt og kan byttes med en annen port om du ønsker det.
+Husk å sette inn Nav-identen(med liten bokstav) din der det står `DIN_NAV_IDENT`. Porten 33649 er tilfeldig valgt og kan byttes med en annen port om du ønsker det.
 4. **Opprette SSH-nøkkel** (kjøres lokalt, hopp over om du allerede har gjort dette) <br>
 Sett et passord på SSH-nøkkelen. Du vil aldri bli bedt om å bytte dette. <br>
 `ssh-keygen -t ed25519 -C "din_epost_email@nav.no"`
