@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.57">
     
     
       
@@ -32,12 +32,12 @@
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.20815dad.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.5da3a30f.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -2297,10 +2297,10 @@ development<span class="w"> </span>--builder<span class="w"> </span>remote
 <ol>
 <li>Åpne <code>ledetekst</code></li>
 <li>Du gi brukeren din tillatelse til å installere uv
-  <div class="highlight"><pre><span></span><code>powershell<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;Set-ExecutionPolicy RemoteSigned -scope CurrentUser&quot;</span>
+  <div class="highlight"><pre><span></span><code>powershell<span class="w"> </span>-c<span class="w"> </span><span class="s2">"Set-ExecutionPolicy RemoteSigned -scope CurrentUser"</span>
 </code></pre></div></li>
 <li>Installer uv
-  <div class="highlight"><pre><span></span><code>powershell<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;irm https://astral.sh/uv/install.ps1 | iex&quot;</span>
+  <div class="highlight"><pre><span></span><code>powershell<span class="w"> </span>-c<span class="w"> </span><span class="s2">"irm https://astral.sh/uv/install.ps1 | iex"</span>
 </code></pre></div></li>
 </ol>
 <p><em><em>NB! Viktig at du restarter ledetekst sesjonen etter at du har installert uv før du fortsetter</em></em></p>
@@ -2419,7 +2419,7 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.com</span>
 </code></pre></div>
 <p><strong>Koden din skal koble til via <code>http://</code>, ikke <code>https://</code>.</strong> Plattformen håndterer kryptering for deg — trafikken er kryptert internt i plattformen og sikres når den forlater til omverdenen. Du trenger ikke å forholde deg til sertifikater eller TLS-konfigurasjon.</p>
-<div class="highlight"><pre><span></span><code><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://github.com&quot;</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"http://github.com"</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Skru av automatisk redirect-følging.</strong> Noen hosts redirecter forespørsler til en annen URL, for eksempel et kanonisk domene eller en bestemt sti. Plattformen kan ikke følge disse redirectene automatisk på dine vegne, så bruk <code>allow_redirects=False</code> og kall den endelige destinasjons-URLen direkte for å sikre pålitelig oppførsel.</p>
 <h5 id="tcp-egress">TCP-egress<a class="headerlink" href="#tcp-egress" title="Permanent link">&para;</a></h5>
@@ -2447,8 +2447,8 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
 <span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;.union/utsa.yaml&#39;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;.github/workflows/union-config.yaml&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'.union/utsa.yaml'</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'.github/workflows/union-config.yaml'</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">apply-union-config</span><span class="p">:</span>
@@ -2473,23 +2473,23 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
 <p>Dette kan enkelt konfigureres ved å opprette filen <code>.github/dependabot.yml</code> med følgende innhold:
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="nt">updates</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;github-actions&quot;</span>
-<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="s">"github-actions"</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">"/"</span>
 <span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;weekly&quot;</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="s">"weekly"</span>
 <span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gh</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">patterns</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;*&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'*'</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pip&quot;</span>
-<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/tasks/example&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="s">"pip"</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">"/tasks/example"</span>
 <span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;weekly&quot;</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="s">"weekly"</span>
 <span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">example-task-pip</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">patterns</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;*&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'*'</span>
 </code></pre></div></p>
 <p>Denne dependabot konfigurasjonen er satt opp til å se etter github actions versjonoppdateringer, samt å monitorere avhengigheter for Union tasken under <code>tasks/eksempel</code> og vil automatisk opprette pull request dersom det er nye versjoner av avhengighetene angitt i <code>tasks/eksempel/requirements.txt</code>.</p>
 <h4 id="eksempel-task">Eksempel task<a class="headerlink" href="#eksempel-task" title="Permanent link">&para;</a></h4>
@@ -2500,36 +2500,36 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">flyte</span><span class="o">.</span><span class="n">TaskEnvironment</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_environment&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"my_environment"</span><span class="p">,</span>
     <span class="n">pod_template</span><span class="o">=</span><span class="n">flyte</span><span class="o">.</span><span class="n">PodTemplate</span><span class="p">(</span>
         <span class="n">pod_spec</span><span class="o">=</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1PodSpec</span><span class="p">(</span>
-            <span class="n">service_account_name</span><span class="o">=</span><span class="s2">&quot;sa1&quot;</span><span class="p">,</span>
-            <span class="n">containers</span><span class="o">=</span><span class="p">[</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1Container</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="p">)]</span>
+            <span class="n">service_account_name</span><span class="o">=</span><span class="s2">"sa1"</span><span class="p">,</span>
+            <span class="n">containers</span><span class="o">=</span><span class="p">[</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1Container</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"primary"</span><span class="p">)]</span>
         <span class="p">)</span>
     <span class="p">),</span>
     <span class="n">image</span><span class="o">=</span><span class="n">flyte</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">from_base</span><span class="p">(</span>
-      <span class="n">image_uri</span><span class="o">=</span><span class="s2">&quot;europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base&quot;</span>
+      <span class="n">image_uri</span><span class="o">=</span><span class="s2">"europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base"</span>
     <span class="p">)</span>
     <span class="o">.</span><span class="n">clone</span><span class="p">(</span>
-        <span class="n">registry</span><span class="o">=</span><span class="s2">&quot;europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images&quot;</span><span class="p">,</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;flyte&quot;</span><span class="p">,</span>
+        <span class="n">registry</span><span class="o">=</span><span class="s2">"europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images"</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"flyte"</span><span class="p">,</span>
         <span class="n">extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="o">.</span><span class="n">with_env_vars</span><span class="p">({</span>
-      <span class="s2">&quot;UV_KEYRING_PROVIDER&quot;</span><span class="p">:</span> <span class="s2">&quot;subprocess&quot;</span><span class="p">,</span> 
+      <span class="s2">"UV_KEYRING_PROVIDER"</span><span class="p">:</span> <span class="s2">"subprocess"</span><span class="p">,</span> 
     <span class="p">})</span>
     <span class="o">.</span><span class="n">with_requirements</span><span class="p">(</span>
-        <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;requirements.txt&quot;</span><span class="p">),</span>
+        <span class="n">Path</span><span class="p">(</span><span class="s2">"requirements.txt"</span><span class="p">),</span>
         <span class="n">index_url</span><span class="o">=</span><span class="p">(</span>
-            <span class="s2">&quot;https://oauth2accesstoken@&quot;</span>
-            <span class="s2">&quot;europe-west1-python.pkg.dev/nav-data-images-prod/pypi/simple/&quot;</span>
+            <span class="s2">"https://oauth2accesstoken@"</span>
+            <span class="s2">"europe-west1-python.pkg.dev/nav-data-images-prod/pypi/simple/"</span>
         <span class="p">),</span>
     <span class="p">),</span>
 <span class="p">)</span>
 
 <span class="nd">@env</span><span class="o">.</span><span class="n">task</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s2">&quot;ok&quot;</span>
+    <span class="k">return</span> <span class="s2">"ok"</span>
 
 
 <span class="nd">@env</span><span class="o">.</span><span class="n">task</span><span class="p">()</span>
@@ -2567,9 +2567,9 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
 </code></pre></div>
 <p>Denne hemmeligeten kan så enten mountes inn som en fil eller settes som en miljøvariabel for <code>TaskEnvironmentet</code> som følger:</p>
 <div class="highlight"><pre><span></span><code><span class="n">env</span> <span class="o">=</span> <span class="n">flyte</span><span class="o">.</span><span class="n">TaskEnvironment</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_environment&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"my_environment"</span><span class="p">,</span>
     <span class="o">...</span>
-    <span class="n">secrets</span><span class="o">=</span><span class="n">flyte</span><span class="o">.</span><span class="n">Secret</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;min-hemmelighet&quot;</span><span class="p">,</span> <span class="n">as_env_var</span><span class="o">=</span><span class="s2">&quot;MIN_MIJØVARIABEL&quot;</span><span class="p">),</span>
+    <span class="n">secrets</span><span class="o">=</span><span class="n">flyte</span><span class="o">.</span><span class="n">Secret</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">"min-hemmelighet"</span><span class="p">,</span> <span class="n">as_env_var</span><span class="o">=</span><span class="s2">"MIN_MIJØVARIABEL"</span><span class="p">),</span>
     <span class="o">...</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2686,7 +2686,7 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
       <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.sections","content.tabs.link","content.code.copy"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.49251538.min.js"></script>
       
     
   </body>

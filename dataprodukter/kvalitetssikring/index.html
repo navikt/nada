@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.57">
     
     
       
@@ -32,12 +32,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.20815dad.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.5da3a30f.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -1819,12 +1819,12 @@ Sjekker evalueres, Slack-varslinger sendes og resultater tilgjengeliggjøres nå
 <span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.READER_TOKEN }}</span>
 
 <span class="nt">updates</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;docker&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="s">"docker"</span>
 <span class="w">    </span><span class="nt">registries</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr</span>
-<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">"/"</span>
 <span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;daily&quot;</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="s">"daily"</span>
 </code></pre></div>
 <ol>
 <li>Opprett <code>.github/workflows/bump_soda_image.yaml</code> som oppdaterer GAR-taggen i naisjob-manifestet når dummy-filen endres:</li>
@@ -1833,9 +1833,9 @@ Sjekker evalueres, Slack-varslinger sendes og resultater tilgjengeliggjøres nå
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;main&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'main'</span>
 <span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;Dockerfile.dummy&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'Dockerfile.dummy'</span>
 
 <span class="nt">permissions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
@@ -1849,13 +1849,13 @@ Sjekker evalueres, Slack-varslinger sendes og resultater tilgjengeliggjøres nå
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Commit tag changes</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">newtag=$(awk -F &quot;FROM ghcr.io/navikt/nada-soda/soda-contracts:&quot; &#39;{print $2}&#39; Dockerfile.dummy)</span>
-<span class="w">          </span><span class="no">sed -i &quot;s|image: .*nada-soda-contracts:.*|image: europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda-contracts:${newtag}|g&quot; .nais/naisjob.yaml</span>
+<span class="w">          </span><span class="no">newtag=$(awk -F "FROM ghcr.io/navikt/nada-soda/soda-contracts:" '{print $2}' Dockerfile.dummy)</span>
+<span class="w">          </span><span class="no">sed -i "s|image: .*nada-soda-contracts:.*|image: europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda-contracts:${newtag}|g" .nais/naisjob.yaml</span>
 
 <span class="w">          </span><span class="no">git config --global user.email ${{ github.actor }}@users.noreply.github.com</span>
 <span class="w">          </span><span class="no">git config --global user.name ${{ github.actor }}</span>
 <span class="w">          </span><span class="no">git add .nais/naisjob.yaml</span>
-<span class="w">          </span><span class="no">git diff --staged --quiet || git commit -m &quot;Updated Soda image tag to ${newtag}&quot;</span>
+<span class="w">          </span><span class="no">git diff --staged --quiet || git commit -m "Updated Soda image tag to ${newtag}"</span>
 <span class="w">          </span><span class="no">git push</span>
 </code></pre></div>
 <p>(Tilpass stien til naisjob-manifestet etter deres oppsett.)</p>
@@ -1967,7 +1967,7 @@ Sjekker evalueres, Slack-varslinger sendes og resultater tilgjengeliggjøres nå
       <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.instant","navigation.sections","content.tabs.link","content.code.copy"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.49251538.min.js"></script>
       
     
   </body>

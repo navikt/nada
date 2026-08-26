@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.57">
     
     
       
@@ -32,12 +32,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.20815dad.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.5da3a30f.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -1827,9 +1827,9 @@ Da kan man lett lese de inn i Python.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">google.cloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">secretmanager</span>
 
 <span class="n">secrets</span> <span class="o">=</span> <span class="n">secretmanager</span><span class="o">.</span><span class="n">SecretManagerServiceClient</span><span class="p">()</span>
-<span class="n">resource_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;KNADA_TEAM_SECRET&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/versions/latest&quot;</span>
+<span class="n">resource_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'KNADA_TEAM_SECRET'</span><span class="p">]</span><span class="si">}</span><span class="s2">/versions/latest"</span>
 <span class="n">secret</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">access_secret_version</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">resource_name</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'UTF-8'</span><span class="p">)</span>
 </code></pre></div>
 
 
@@ -1939,7 +1939,7 @@ Da kan man lett lese de inn i Python.</p>
       <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.instant","navigation.sections","content.tabs.link","content.code.copy"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.49251538.min.js"></script>
       
     
   </body>

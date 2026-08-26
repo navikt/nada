@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.57">
     
     
       
@@ -32,12 +32,12 @@
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.20815dad.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.5da3a30f.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -2021,8 +2021,8 @@ BQ_query --Tabell skrives til BigQuery--&gt; BigQuery[(BigQuery-tabell)]</code><
 <p>Gjennom <a href="https://console.cloud.google.com">Google Cloud Console</a> kan man velge prosjektet som datasettet tilhører, gå inn på BigQuery og klikke "Compose New Query" til høyre.</p>
 <p>Eksempelvis:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">EXTERNAL_QUERY</span><span class="p">(</span>
-<span class="s1">&#39;europe-north1.&lt;connection_name&gt;&#39;</span><span class="p">,</span>
-<span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">'europe-north1.&lt;connection_name&gt;'</span><span class="p">,</span>
+<span class="s1">'''</span>
 
 <span class="s1">-- Lag en variabel for versjonering </span>
 <span class="s1">WITH constants (version) as (</span>
@@ -2033,14 +2033,14 @@ BQ_query --Tabell skrives til BigQuery--&gt; BigQuery[(BigQuery-tabell)]</code><
 <span class="s1">SELECT </span>
 <span class="s1">    id::text, </span>
 <span class="s1">    name, </span>
-<span class="s1">    &quot;group&quot;, </span>
+<span class="s1">    "group", </span>
 <span class="s1">    pii, </span>
 <span class="s1">    created, </span>
 <span class="s1">    last_modified, </span>
-<span class="s1">    &quot;type&quot;::text, </span>
+<span class="s1">    "type"::text, </span>
 <span class="s1">    version</span>
 <span class="s1">FROM dataproducts, constants</span>
-<span class="s1">&#39;&#39;&#39;</span><span class="p">);</span>
+<span class="s1">'''</span><span class="p">);</span>
 </code></pre></div></p>
 <h4 id="kjre-sprring-pa-tidsintervall">Kjøre spørring på tidsintervall<a class="headerlink" href="#kjre-sprring-pa-tidsintervall" title="Permanent link">&para;</a></h4>
 <p>For å kjøre en spørring på intervall, så kan du i Query Explorer i Cloud Console velge å definere en "Schedule".</p>
@@ -2083,35 +2083,35 @@ Kode:
         <span class="n">topic</span><span class="p">,</span>
         <span class="n">bootstrap_servers</span><span class="o">=</span><span class="n">kafka_brokers</span><span class="p">,</span>
         <span class="n">api_version</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-        <span class="n">auto_offset_reset</span><span class="o">=</span><span class="s1">&#39;earliest&#39;</span><span class="p">,</span>
+        <span class="n">auto_offset_reset</span><span class="o">=</span><span class="s1">'earliest'</span><span class="p">,</span>
         <span class="n">enable_auto_commit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">value_deserializer</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+        <span class="n">value_deserializer</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">))</span>
     <span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">create_bq_table_if_not_exists</span><span class="p">(</span><span class="n">bq_client</span><span class="p">:</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">,</span> <span class="n">project_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Table</span><span class="p">:</span>
-    <span class="n">table_uri</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">project_id</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">dataset_id</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">table_uri</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">project_id</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">dataset_id</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2">"</span>
 
     <span class="n">schema</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;stringValue&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;REQUIRED&quot;</span><span class="p">),</span>
-        <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;booleanValue&quot;</span><span class="p">,</span> <span class="s2">&quot;BOOLEAN&quot;</span><span class="p">),</span>
-        <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;numericValue&quot;</span><span class="p">,</span> <span class="s2">&quot;INTEGER&quot;</span><span class="p">),</span>
-        <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;timestampValue&quot;</span><span class="p">,</span> <span class="s2">&quot;TIMESTAMP&quot;</span><span class="p">),</span>
+        <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">"stringValue"</span><span class="p">,</span> <span class="s2">"STRING"</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"REQUIRED"</span><span class="p">),</span>
+        <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">"booleanValue"</span><span class="p">,</span> <span class="s2">"BOOLEAN"</span><span class="p">),</span>
+        <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">"numericValue"</span><span class="p">,</span> <span class="s2">"INTEGER"</span><span class="p">),</span>
+        <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">"timestampValue"</span><span class="p">,</span> <span class="s2">"TIMESTAMP"</span><span class="p">),</span>
     <span class="p">]</span>
 
     <span class="n">table</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">table_uri</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">bq_client</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">exists_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">project_id</span> <span class="o">=</span> <span class="s2">&quot;PROJECT&quot;</span> <span class="c1"># erstatt med prosjekt id</span>
-    <span class="n">dataset_id</span> <span class="o">=</span> <span class="s2">&quot;DATASET&quot;</span> <span class="c1"># erstatt med dataset id</span>
-    <span class="n">table_name</span> <span class="o">=</span> <span class="s2">&quot;TABLE&quot;</span> <span class="c1"># erstatt med tabellnavn</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">project_id</span> <span class="o">=</span> <span class="s2">"PROJECT"</span> <span class="c1"># erstatt med prosjekt id</span>
+    <span class="n">dataset_id</span> <span class="o">=</span> <span class="s2">"DATASET"</span> <span class="c1"># erstatt med dataset id</span>
+    <span class="n">table_name</span> <span class="o">=</span> <span class="s2">"TABLE"</span> <span class="c1"># erstatt med tabellnavn</span>
     <span class="n">bq_client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project_id</span><span class="p">)</span>
     <span class="n">table_id</span> <span class="o">=</span> <span class="n">create_bq_table_if_not_exists</span><span class="p">(</span><span class="n">bq_client</span><span class="p">,</span> <span class="n">project_id</span><span class="p">,</span> <span class="n">dataset_id</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span>
 
-    <span class="n">topic_name</span> <span class="o">=</span> <span class="s2">&quot;TOPIC&quot;</span> <span class="c1"># erstatt med topic navn</span>
-    <span class="n">kafka_brokers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BROKER1&quot;</span><span class="p">]</span> <span class="c1"># erstatt med liste av brokere</span>
+    <span class="n">topic_name</span> <span class="o">=</span> <span class="s2">"TOPIC"</span> <span class="c1"># erstatt med topic navn</span>
+    <span class="n">kafka_brokers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"BROKER1"</span><span class="p">]</span> <span class="c1"># erstatt med liste av brokere</span>
     <span class="n">consumer</span> <span class="o">=</span> <span class="n">create_kafka_consumer</span><span class="p">(</span><span class="n">topic_name</span><span class="p">,</span> <span class="n">kafka_brokers</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">mesg</span> <span class="ow">in</span> <span class="n">consumer</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">mesg</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
@@ -2122,8 +2122,8 @@ Kode:
 </div>
 <div class="tabbed-block">
 <p>Avhengigheter:
-<div class="highlight"><pre><span></span><code>implementation(&quot;com.google.cloud:google-cloud-bigquery:2.22.0&quot;)
-implementation(&quot;org.apache.kafka:kafka-clients:3.4.0&quot;)
+<div class="highlight"><pre><span></span><code>implementation("com.google.cloud:google-cloud-bigquery:2.22.0")
+implementation("org.apache.kafka:kafka-clients:3.4.0")
 </code></pre></div></p>
 <p>Kode:
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">com.fasterxml.jackson.databind.JsonNode</span>
@@ -2140,7 +2140,7 @@ implementation(&quot;org.apache.kafka:kafka-clients:3.4.0&quot;)
 
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">bigQueryClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BigQueryClient</span><span class="p">()</span>
 
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">tableId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bigQueryClient</span><span class="p">.</span><span class="na">getOrCreateBigQueryTable</span><span class="p">(</span><span class="s">&quot;TABLE&quot;</span><span class="w"> </span><span class="cm">/* erstatt med tabellnavn */</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">tableId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bigQueryClient</span><span class="p">.</span><span class="na">getOrCreateBigQueryTable</span><span class="p">(</span><span class="s">"TABLE"</span><span class="w"> </span><span class="cm">/* erstatt med tabellnavn */</span><span class="p">)</span>
 
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">kafkaConsumer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createKafkaConsumer</span><span class="p">()</span>
 
@@ -2158,14 +2158,14 @@ implementation(&quot;org.apache.kafka:kafka-clients:3.4.0&quot;)
 <span class="p">}</span>
 
 <span class="kd">fun</span><span class="w"> </span><span class="nf">createKafkaConsumer</span><span class="p">():</span><span class="w"> </span><span class="n">KafkaConsumer</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">topicName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TOPIC&quot;</span><span class="w"> </span><span class="c1">// erstatt med navn på Kafka topic</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">kafkaBrokers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BROKERS&quot;</span><span class="w"> </span><span class="c1">// erstatt med navn på brokers</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">topicName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"TOPIC"</span><span class="w"> </span><span class="c1">// erstatt med navn på Kafka topic</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">kafkaBrokers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"BROKERS"</span><span class="w"> </span><span class="c1">// erstatt med navn på brokers</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Properties</span><span class="p">()</span>
-<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">&quot;bootstrap.servers&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">kafkaBrokers</span><span class="p">)</span>
-<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">&quot;group.id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mygroup&quot;</span><span class="p">)</span>
-<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">&quot;auto.offset.reset&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;earliest&quot;</span><span class="p">)</span>
-<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">&quot;key.deserializer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;org.apache.kafka.common.serialization.StringDeserializer&quot;</span><span class="p">)</span>
-<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">&quot;value.deserializer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;org.apache.kafka.common.serialization.StringDeserializer&quot;</span><span class="p">)</span>
+<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">"bootstrap.servers"</span><span class="p">,</span><span class="w"> </span><span class="n">kafkaBrokers</span><span class="p">)</span>
+<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">"group.id"</span><span class="p">,</span><span class="w"> </span><span class="s">"mygroup"</span><span class="p">)</span>
+<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">"auto.offset.reset"</span><span class="p">,</span><span class="w"> </span><span class="s">"earliest"</span><span class="p">)</span>
+<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">"key.deserializer"</span><span class="p">,</span><span class="w"> </span><span class="s">"org.apache.kafka.common.serialization.StringDeserializer"</span><span class="p">)</span>
+<span class="n">props</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">"value.deserializer"</span><span class="p">,</span><span class="w"> </span><span class="s">"org.apache.kafka.common.serialization.StringDeserializer"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">consumer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KafkaConsumer</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
 <span class="w">    </span><span class="n">consumer</span><span class="p">.</span><span class="na">subscribe</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">topicName</span><span class="p">))</span>
@@ -2175,7 +2175,7 @@ implementation(&quot;org.apache.kafka:kafka-clients:3.4.0&quot;)
 
 <span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">storeRecordInBigQuery</span><span class="p">(</span><span class="n">record</span><span class="p">:</span><span class="w"> </span><span class="n">ConsumerRecord</span><span class="o">&lt;</span><span class="kt">String?</span><span class="w"> </span><span class="kt">String?</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">bigQueryClient</span><span class="p">:</span><span class="w"> </span><span class="n">BigQueryClient</span><span class="p">,</span><span class="w"> </span><span class="n">tableId</span><span class="p">:</span><span class="w"> </span><span class="kt">Unit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span>
-<span class="s">&quot;offset = %d, key = %s, value = %s%n&quot;</span><span class="p">,</span>
+<span class="s">"offset = %d, key = %s, value = %s%n"</span><span class="p">,</span>
 <span class="n">record</span><span class="p">.</span><span class="na">offset</span><span class="p">(),</span>
 <span class="n">record</span><span class="p">.</span><span class="na">key</span><span class="p">(),</span>
 <span class="n">record</span><span class="p">.</span><span class="na">value</span><span class="p">()</span>
@@ -2185,8 +2185,8 @@ implementation(&quot;org.apache.kafka:kafka-clients:3.4.0&quot;)
 <span class="p">}</span>
 
 <span class="kd">class</span><span class="w"> </span><span class="nc">BigQueryClient</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">projectId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PROJECT&quot;</span><span class="w"> </span><span class="c1">// erstatt med prosjektets id</span>
-<span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">datasetId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DATASET&quot;</span><span class="w"> </span><span class="c1">// erstatt med datasett id</span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">projectId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"PROJECT"</span><span class="w"> </span><span class="c1">// erstatt med prosjektets id</span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">datasetId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"DATASET"</span><span class="w"> </span><span class="c1">// erstatt med datasett id</span>
 <span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">bigQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BigQueryOptions</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="p">.</span><span class="na">setProjectId</span><span class="p">(</span><span class="n">projectId</span><span class="p">)</span>
 <span class="p">.</span><span class="na">build</span><span class="p">()</span>
@@ -2205,10 +2205,10 @@ implementation(&quot;org.apache.kafka:kafka-clients:3.4.0&quot;)
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">createTable</span><span class="p">(</span><span class="n">tableName</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">TableId</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Schema</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
-<span class="w">            </span><span class="n">Field</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">(</span><span class="s">&quot;stringValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">StandardSQLTypeName</span><span class="p">.</span><span class="na">STRING</span><span class="p">).</span><span class="na">setMode</span><span class="p">(</span><span class="n">Field</span><span class="p">.</span><span class="na">Mode</span><span class="p">.</span><span class="na">REQUIRED</span><span class="p">).</span><span class="na">build</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">Field</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;booleanValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">StandardSQLTypeName</span><span class="p">.</span><span class="na">BOOL</span><span class="p">),</span>
-<span class="w">            </span><span class="n">Field</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;numericValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">StandardSQLTypeName</span><span class="p">.</span><span class="na">INT64</span><span class="p">),</span>
-<span class="w">            </span><span class="n">Field</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;timestampValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">StandardSQLTypeName</span><span class="p">.</span><span class="na">TIMESTAMP</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Field</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">(</span><span class="s">"stringValue"</span><span class="p">,</span><span class="w"> </span><span class="n">StandardSQLTypeName</span><span class="p">.</span><span class="na">STRING</span><span class="p">).</span><span class="na">setMode</span><span class="p">(</span><span class="n">Field</span><span class="p">.</span><span class="na">Mode</span><span class="p">.</span><span class="na">REQUIRED</span><span class="p">).</span><span class="na">build</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">Field</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"booleanValue"</span><span class="p">,</span><span class="w"> </span><span class="n">StandardSQLTypeName</span><span class="p">.</span><span class="na">BOOL</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Field</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"numericValue"</span><span class="p">,</span><span class="w"> </span><span class="n">StandardSQLTypeName</span><span class="p">.</span><span class="na">INT64</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Field</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"timestampValue"</span><span class="p">,</span><span class="w"> </span><span class="n">StandardSQLTypeName</span><span class="p">.</span><span class="na">TIMESTAMP</span><span class="p">),</span>
 <span class="w">        </span><span class="p">)</span>
 
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">tableId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TableId</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">datasetId</span><span class="p">,</span><span class="w"> </span><span class="n">tableName</span><span class="p">)</span>
@@ -2220,10 +2220,10 @@ implementation(&quot;org.apache.kafka:kafka-clients:3.4.0&quot;)
 
 <span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">tableId</span><span class="p">:</span><span class="w"> </span><span class="n">TableId</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="n">JsonNode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InsertAllRequest</span><span class="p">.</span><span class="na">RowToInsert</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">mapOf</span><span class="p">(</span>
-<span class="w">            </span><span class="n">value</span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="s">&quot;stringValue&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">textValue</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
-<span class="w">            </span><span class="n">value</span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="s">&quot;booleanValue&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">booleanValue</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
-<span class="w">            </span><span class="n">value</span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="s">&quot;numericValue&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intValue</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
-<span class="w">            </span><span class="n">value</span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="s">&quot;timestampValue&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">asText</span><span class="p">()).</span><span class="na">truncatedTo</span><span class="p">(</span><span class="n">ChronoUnit</span><span class="p">.</span><span class="na">MICROS</span><span class="p">).</span><span class="na">toString</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="n">value</span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="s">"stringValue"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">textValue</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="n">value</span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="s">"booleanValue"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">booleanValue</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="n">value</span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="s">"numericValue"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intValue</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="n">value</span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="s">"timestampValue"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">asText</span><span class="p">()).</span><span class="na">truncatedTo</span><span class="p">(</span><span class="n">ChronoUnit</span><span class="p">.</span><span class="na">MICROS</span><span class="p">).</span><span class="na">toString</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
 <span class="w">        </span><span class="p">))</span>
 
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bigQuery</span><span class="p">.</span><span class="na">getTable</span><span class="p">(</span><span class="n">tableId</span><span class="p">)</span>
@@ -2231,52 +2231,52 @@ implementation(&quot;org.apache.kafka:kafka-clients:3.4.0&quot;)
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
 <span class="w">        </span><span class="k">when</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">response</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
-<span class="w">                </span><span class="s">&quot;Lagring i BigQuery feilet: &#39;</span><span class="si">${</span><span class="n">response</span><span class="p">.</span><span class="na">insertErrors</span><span class="si">}</span><span class="s">&#39;&quot;</span>
+<span class="w">                </span><span class="s">"Lagring i BigQuery feilet: '</span><span class="si">${</span><span class="n">response</span><span class="p">.</span><span class="na">insertErrors</span><span class="si">}</span><span class="s">'"</span>
 <span class="w">            </span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">JsonNode</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">:</span><span class="w"> </span><span class="n">JsonNode</span><span class="p">.()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">):</span><span class="w"> </span><span class="n">Pair</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">T?&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">JsonNode</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">:</span><span class="w"> </span><span class="n">JsonNode</span><span class="p">.()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">):</span><span class="w"> </span><span class="n">Pair</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">T?</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span>
 <span class="n">transform</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></p>
 </div>
 <div class="tabbed-block">
 <p>Avhengigheter:
-<div class="highlight"><pre><span></span><code>go get &quot;cloud.google.com/go/bigquery&quot;
-go get &quot;github.com/confluentinc/confluent-kafka-go/kafka&quot;
-go get &quot;google.golang.org/api/googleapi&quot;
+<div class="highlight"><pre><span></span><code>go get "cloud.google.com/go/bigquery"
+go get "github.com/confluentinc/confluent-kafka-go/kafka"
+go get "google.golang.org/api/googleapi"
 </code></pre></div></p>
 <p>Kode:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"encoding/json"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"os"</span>
 
-<span class="w">    </span><span class="s">&quot;cloud.google.com/go/bigquery&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/confluentinc/confluent-kafka-go/kafka&quot;</span>
-<span class="w">    </span><span class="s">&quot;golang.org/x/xerrors&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/api/googleapi&quot;</span>
+<span class="w">    </span><span class="s">"cloud.google.com/go/bigquery"</span>
+<span class="w">    </span><span class="s">"github.com/confluentinc/confluent-kafka-go/kafka"</span>
+<span class="w">    </span><span class="s">"golang.org/x/xerrors"</span>
+<span class="w">    </span><span class="s">"google.golang.org/api/googleapi"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">mesg</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">StringValue</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;stringValue&quot;`</span>
-<span class="w">    </span><span class="nx">BooleanValue</span><span class="w">   </span><span class="kt">bool</span><span class="w">   </span><span class="s">`json:&quot;booleanValue&quot;`</span>
-<span class="w">    </span><span class="nx">NumericValue</span><span class="w">   </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:&quot;numericValue&quot;`</span>
-<span class="w">    </span><span class="nx">TimestampValue</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;timestampValue&quot;`</span>
+<span class="w">    </span><span class="nx">StringValue</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"stringValue"`</span>
+<span class="w">    </span><span class="nx">BooleanValue</span><span class="w">   </span><span class="kt">bool</span><span class="w">   </span><span class="s">`json:"booleanValue"`</span>
+<span class="w">    </span><span class="nx">NumericValue</span><span class="w">   </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:"numericValue"`</span>
+<span class="w">    </span><span class="nx">TimestampValue</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"timestampValue"`</span>
 <span class="p">}</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">kafkaBroker</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BROKER&quot;</span><span class="w"> </span><span class="c1">// erstatt med kafka broker</span>
-<span class="w">    </span><span class="nx">topicName</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;TOPIC&quot;</span><span class="w"> </span><span class="c1">// erstatt med navn på topic</span>
+<span class="w">    </span><span class="nx">kafkaBroker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"BROKER"</span><span class="w"> </span><span class="c1">// erstatt med kafka broker</span>
+<span class="w">    </span><span class="nx">topicName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">"TOPIC"</span><span class="w"> </span><span class="c1">// erstatt med navn på topic</span>
 
-<span class="w">    </span><span class="nx">projectID</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;PROJECT&quot;</span><span class="w"> </span><span class="c1">// erstatt med prosjekt id</span>
-<span class="w">    </span><span class="nx">datasetID</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;DATASET&quot;</span><span class="w"> </span><span class="c1">// erstatt med dataset id</span>
-<span class="w">    </span><span class="nx">tableName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;TABLE&quot;</span><span class="w"> </span><span class="c1">// erstatt med navn på tabell</span>
+<span class="w">    </span><span class="nx">projectID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"PROJECT"</span><span class="w"> </span><span class="c1">// erstatt med prosjekt id</span>
+<span class="w">    </span><span class="nx">datasetID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"DATASET"</span><span class="w"> </span><span class="c1">// erstatt med dataset id</span>
+<span class="w">    </span><span class="nx">tableName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"TABLE"</span><span class="w"> </span><span class="c1">// erstatt med navn på tabell</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -2312,7 +2312,7 @@ go get &quot;google.golang.org/api/googleapi&quot;
 <span class="w">                </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">kafka</span><span class="p">.</span><span class="nx">Error</span><span class="p">:</span>
-<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%% Error: %v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"%% Error: %v\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">)</span>
 <span class="w">        </span><span class="k">default</span><span class="p">:</span>
 <span class="w">            </span><span class="k">continue</span>
 <span class="w">        </span><span class="p">}</span>
@@ -2321,15 +2321,15 @@ go get &quot;google.golang.org/api/googleapi&quot;
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">createKafkaConsumer</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">kafka</span><span class="p">.</span><span class="nx">Consumer</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">consumer</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">kafka</span><span class="p">.</span><span class="nx">NewConsumer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">kafka</span><span class="p">.</span><span class="nx">ConfigMap</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;bootstrap.servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">kafkaBroker</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;group.id&quot;</span><span class="p">:</span><span class="w">          </span><span class="s">&quot;mygroup&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;auto.offset.reset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;earliest&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"bootstrap.servers"</span><span class="p">:</span><span class="w"> </span><span class="nx">kafkaBroker</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"group.id"</span><span class="p">:</span><span class="w">          </span><span class="s">"mygroup"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"auto.offset.reset"</span><span class="p">:</span><span class="w"> </span><span class="s">"earliest"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">consumer</span><span class="p">.</span><span class="nx">SubscribeTopics</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="nx">topicName</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">consumer</span><span class="p">.</span><span class="nx">SubscribeTopics</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="nx">topicName</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
@@ -2339,10 +2339,10 @@ go get &quot;google.golang.org/api/googleapi&quot;
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">createTableIfNotExists</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">bqClient</span><span class="w"> </span><span class="o">*</span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">Client</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">Table</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">schema</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">Schema</span><span class="p">{</span>
-<span class="w">        </span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stringValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">StringFieldType</span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;booleanValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">BooleanFieldType</span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;numericValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">IntegerFieldType</span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;timestampValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">TimestampFieldType</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"stringValue"</span><span class="p">,</span><span class="w"> </span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">StringFieldType</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"booleanValue"</span><span class="p">,</span><span class="w"> </span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">BooleanFieldType</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"numericValue"</span><span class="p">,</span><span class="w"> </span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">IntegerFieldType</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"timestampValue"</span><span class="p">,</span><span class="w"> </span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">TimestampFieldType</span><span class="p">},</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">metadata</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">bigquery</span><span class="p">.</span><span class="nx">TableMetadata</span><span class="p">{</span>
@@ -2480,7 +2480,7 @@ go get &quot;google.golang.org/api/googleapi&quot;
       <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.sections","content.tabs.link","content.code.copy"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.49251538.min.js"></script>
       
     
   </body>

@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.57">
     
     
       
@@ -32,12 +32,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.20815dad.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.5da3a30f.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -2595,20 +2595,17 @@ Datafortellinger kan enkelt deles med andre i NAV gjennom Datamarkedsplassen.</p
 <p>Følge installasjonsoppskriften på <a href="https://quarto.org/docs/get-started/">quarto.org/docs</a>.
 Husk å hold Quarto oppdatert.</p>
 <h3 id="knast">Knast<a class="headerlink" href="#knast" title="Permanent link">&para;</a></h3>
-<p>Vi anbefaler å følge guiden <a href="https://quarto.org/docs/download/tarball.html">Tarball Installation On Linux</a>. For å laste ned binæren trenger du følgende åpninger:
-- github.com/quarto-dev/quarto-cli/releases/download/<em>
-- objects.githubusercontent.com/</em></p>
-<p>Igjen må man selv huske å holde Quarto oppdatert.</p>
+<p>På Knast er Quarto allerede installert og skal være i PATH. </p>
 <h3 id="docker-image">Docker image<a class="headerlink" href="#docker-image" title="Permanent link">&para;</a></h3>
 <p>Vi anbefaler å bruke kommandoen nedenfor i din <code>Dockerfile</code> for å installere Quarto.
 Denne vil hente ned siste versjon av Quarto hver gang Docker-imaget blir bygd.</p>
 <div class="highlight"><pre><span></span><code># jq, wget, og tar må være installert for at kommandoen nedenfor skal fungere
 RUN cd /app &amp;&amp; \
-    QUARTO_VERSION=$(curl https://api.github.com/repos/quarto-dev/quarto-cli/releases/latest | jq &#39;.tag_name&#39; | sed -e &#39;s/[\&quot;v]//g&#39;) &amp;&amp; \
+    QUARTO_VERSION=$(curl https://api.github.com/repos/quarto-dev/quarto-cli/releases/latest | jq '.tag_name' | sed -e 's/[\"v]//g') &amp;&amp; \
     wget https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.tar.gz &amp;&amp; \
     tar -zxvf quarto-${QUARTO_VERSION}-linux-amd64.tar.gz &amp;&amp; \
     mv /app/quarto-${QUARTO_VERSION} /app/quarto
-ENV PATH=&quot;${PATH}:/app/quarto/bin&quot;
+ENV PATH="${PATH}:/app/quarto/bin"
 </code></pre></div>
 <h2 id="team-tokens">Team tokens<a class="headerlink" href="#team-tokens" title="Permanent link">&para;</a></h2>
 <p>For å programmatisk lage eller oppdatere datafortellinger trenger man å autentisere seg med et team token. For å finne team token for teamene du er medlem av kan du gå til <a href="https://data.ansatt.nav.no/user/tokens">Mine team tokens</a> i Datamarkedsplassen (krever innlogging). Det er forskjellig tokens for dev og prod, så dersom du ønsker å lage eller oppdatere en datafortelling i dev finner du tokens <a href="https://data.intern.dev.nav.no/user/tokens">i dev versjonen</a> av Datamarkedsplassen. Samme token brukes både for intern og ekstern publisering av datafortellinger.</p>
@@ -2662,21 +2659,21 @@ ENV PATH=&quot;${PATH}:/app/quarto/bin&quot;
 </div>
 <h6 id="med-curl">Med curl<a class="headerlink" href="#med-curl" title="Permanent link">&para;</a></h6>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;: &quot;min datafortelling&quot;, &quot;description&quot;: &quot;min beskrivelse&quot;, &quot;teamID&quot;: &quot;&lt;team-id&gt;&quot;, &quot;id&quot;: &quot;${STORY_ID}&quot;}&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{"name": "min datafortelling", "description": "min beskrivelse", "teamID": "&lt;team-id&gt;", "id": "${STORY_ID}"}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>https://<span class="si">${</span><span class="nv">ENV</span><span class="si">}</span>/quarto/create
 </code></pre></div>
 <h6 id="med-python">Med python<a class="headerlink" href="#med-python" title="Permanent link">&para;</a></h6>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://$</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/quarto/create&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer $</span><span class="si">{TEAM_TOKEN}</span><span class="s2">&quot;</span><span class="p">},</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;min quarto&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;min beskrivelse&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;teamID&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;team-id&gt;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{STORY_ID}</span><span class="s2">&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"https://$</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/quarto/create"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"bearer $</span><span class="si">{TEAM_TOKEN}</span><span class="s2">"</span><span class="p">},</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"min quarto"</span><span class="p">,</span>
+    <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"min beskrivelse"</span><span class="p">,</span>
+    <span class="s2">"teamID"</span><span class="p">:</span> <span class="s2">"&lt;team-id&gt;"</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"$</span><span class="si">{STORY_ID}</span><span class="s2">"</span>
 <span class="p">})</span>
 
-<span class="n">story_id</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+<span class="n">story_id</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"id"</span><span class="p">]</span>
 </code></pre></div>
 <h4 id="oppdater-eksisterende-intern-datafortelling">Oppdater eksisterende intern datafortelling<a class="headerlink" href="#oppdater-eksisterende-intern-datafortelling" title="Permanent link">&para;</a></h4>
 <p>For å oppdatere en eksisterende Quarto fortelling må man først generere ressursfilene på nytt med <code>quarto render &lt;file&gt;</code>.</p>
@@ -2684,21 +2681,21 @@ ENV PATH=&quot;${PATH}:/app/quarto/bin&quot;
 <p>Eksemplene tar utgangspunkt i at det er filen <code>index.html</code> som skal lastes opp og at man kjører kommandoene fra samme mappe som filen ligger.</p>
 <h5 id="med-curl_1">Med curl<a class="headerlink" href="#med-curl_1" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-F<span class="w"> </span>index.html<span class="o">=</span>@index.html<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">/quarto/update/</span><span class="si">${</span><span class="nv">QUARTO_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">/quarto/update/</span><span class="si">${</span><span class="nv">QUARTO_ID</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <h6 id="flere-filer">Flere filer<a class="headerlink" href="#flere-filer" title="Permanent link">&para;</a></h6>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">set</span><span class="w"> </span>-e
 
-<span class="nv">FILES</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="nv">FILES</span><span class="o">=</span><span class="s2">""</span>
 <span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;mappe<span class="w"> </span>med<span class="w"> </span>filene&gt;/*
 <span class="k">do</span>
-<span class="w">  </span><span class="nv">FILES</span><span class="o">+=</span><span class="s2">&quot; -F </span><span class="nv">$file</span><span class="s2">=@</span><span class="nv">$file</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nv">FILES</span><span class="o">+=</span><span class="s2">" -F </span><span class="nv">$file</span><span class="s2">=@</span><span class="nv">$file</span><span class="s2">"</span>
 <span class="k">done</span>
 
-curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="nv">$FILES</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">/quarto/update/</span><span class="si">${</span><span class="nv">QUARTO_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span>
+curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="nv">$FILES</span><span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">/quarto/update/</span><span class="si">${</span><span class="nv">QUARTO_ID</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <h5 id="med-python_1">Med python<a class="headerlink" href="#med-python_1" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -2706,21 +2703,21 @@ curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span
 
 <span class="c1"># A list of file paths to be uploaded</span>
 <span class="n">files_to_upload</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;PATH/index.html&quot;</span>
-    <span class="s2">&quot;PATH/SUB/FOLDER/some.html&quot;</span>
+    <span class="s2">"PATH/index.html"</span>
+    <span class="s2">"PATH/SUB/FOLDER/some.html"</span>
 <span class="p">]</span>
 
 <span class="n">multipart_form_data</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">files_to_upload</span><span class="p">:</span>
     <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
         <span class="c1"># Read the file contents and store them in the dictionary</span>
         <span class="n">file_contents</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="n">multipart_form_data</span><span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_contents</span><span class="p">)</span>
 
 <span class="c1"># Send the request with all files in the dictionary</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/quarto/update/</span><span class="si">{</span><span class="n">QUARTO_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
-                        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/quarto/update/</span><span class="si">{</span><span class="n">QUARTO_ID</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> 
+                        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">TEAM_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span>
                         <span class="n">files</span><span class="o">=</span><span class="n">multipart_form_data</span><span class="p">)</span>
 <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 </code></pre></div>
@@ -2730,7 +2727,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span
 <li><code>quarto render</code> resulterer i at det genereres noen filer som må lagres midlertidig i containermiljøet før publisering til Datamarkedsplassen. Man er derfor nødt til å legge til annotasjon i Naisjob manifestet for å tillate skriving til filsystemet i containeren
 <div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">nais.io/read-only-file-system</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="nt">nais.io/read-only-file-system</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div></li>
 <li>All utgående trafikk fra Naisjobben vil by default stoppes, så man må legge til en outbound access policy til Markedsplass hosten man skal publisere til (dev/prod)
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
@@ -2804,39 +2801,39 @@ curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span
 </div>
 <h5 id="med-curl_2">Med curl<a class="headerlink" href="#med-curl_2" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;title&quot;: &quot;Min datafortelling om noe&quot;, &quot;slug&quot;: &quot;min-datafortelling&quot;, &quot;team&quot;: &quot;&lt;team-navn&gt;&quot;}&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{"title": "Min datafortelling om noe", "slug": "min-datafortelling", "team": "&lt;team-navn&gt;"}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>https://<span class="si">${</span><span class="nv">ENV</span><span class="si">}</span>/api/v1/story
 </code></pre></div>
 <h5 id="med-python_2">Med python<a class="headerlink" href="#med-python_2" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://$</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/api/v1/story&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;bearer $</span><span class="si">{TEAM_TOKEN}</span><span class="s2">&quot;</span><span class="p">},</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Min datafortelling om noe&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;slug&quot;</span><span class="p">:</span> <span class="s2">&quot;min-datafortelling&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;team&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;team-navn&gt;&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"https://$</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/api/v1/story"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"bearer $</span><span class="si">{TEAM_TOKEN}</span><span class="s2">"</span><span class="p">},</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Min datafortelling om noe"</span><span class="p">,</span>
+    <span class="s2">"slug"</span><span class="p">:</span> <span class="s2">"min-datafortelling"</span><span class="p">,</span>
+    <span class="s2">"team"</span><span class="p">:</span> <span class="s2">"&lt;team-navn&gt;"</span>
 <span class="p">})</span>
 
-<span class="n">story_id</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+<span class="n">story_id</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"id"</span><span class="p">]</span>
 </code></pre></div>
 <h4 id="oppdatere-en-ekstern-datafortelling">Oppdatere en ekstern datafortelling<a class="headerlink" href="#oppdatere-en-ekstern-datafortelling" title="Permanent link">&para;</a></h4>
 <h5 id="med-curl_3">Med curl<a class="headerlink" href="#med-curl_3" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-F<span class="w"> </span>index.html<span class="o">=</span>@index.html<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">/api/v1/story/</span><span class="si">${</span><span class="nv">STORY_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">/api/v1/story/</span><span class="si">${</span><span class="nv">STORY_ID</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <h6 id="flere-filer_1">Flere filer<a class="headerlink" href="#flere-filer_1" title="Permanent link">&para;</a></h6>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">set</span><span class="w"> </span>-e
 
-<span class="nv">FILES</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="nv">FILES</span><span class="o">=</span><span class="s2">""</span>
 <span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;mappe<span class="w"> </span>med<span class="w"> </span>filene&gt;/*
 <span class="k">do</span>
-<span class="w">  </span><span class="nv">FILES</span><span class="o">+=</span><span class="s2">&quot; -F </span><span class="nv">$file</span><span class="s2">=@</span><span class="nv">$file</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nv">FILES</span><span class="o">+=</span><span class="s2">" -F </span><span class="nv">$file</span><span class="s2">=@</span><span class="nv">$file</span><span class="s2">"</span>
 <span class="k">done</span>
 
-curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="nv">$FILES</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">/api/v1/story/</span><span class="si">${</span><span class="nv">STORY_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span>
+curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="nv">$FILES</span><span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">/api/v1/story/</span><span class="si">${</span><span class="nv">STORY_ID</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization:Bearer </span><span class="si">${</span><span class="nv">TEAM_TOKEN</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <h5 id="med-python_3">Med python<a class="headerlink" href="#med-python_3" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -2844,21 +2841,21 @@ curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span
 
 <span class="c1"># A list of file paths to be uploaded</span>
 <span class="n">files_to_upload</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;PATH/index.html&quot;</span>
-    <span class="s2">&quot;PATH/SUB/FOLDER/some.html&quot;</span>
+    <span class="s2">"PATH/index.html"</span>
+    <span class="s2">"PATH/SUB/FOLDER/some.html"</span>
 <span class="p">]</span>
 
 <span class="n">multipart_form_data</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">files_to_upload</span><span class="p">:</span>
     <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
         <span class="c1"># Read the file contents and store them in the dictionary</span>
         <span class="n">file_contents</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="n">multipart_form_data</span><span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file_contents</span><span class="p">)</span>
 
 <span class="c1"># Send the request with all files in the dictionary</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/api/v1/story/</span><span class="si">{</span><span class="n">STORY_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
-                        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">TEAM_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">ENV</span><span class="si">}</span><span class="s2">/api/v1/story/</span><span class="si">{</span><span class="n">STORY_ID</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> 
+                        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">TEAM_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span>
                         <span class="n">files</span><span class="o">=</span><span class="n">multipart_form_data</span><span class="p">)</span>
 <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 </code></pre></div>
@@ -2892,7 +2889,7 @@ Token for teamet ditt finner du ved å gå til https://data.ansatt.nav.no/user/t
 <span class="w">          </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src</span>
 <span class="w">          </span><span class="nt">team_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.TEAM_TOKEN }}</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">          </span><span class="nt">public</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">          </span><span class="nt">public</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <h3 id="knatch">Knatch<a class="headerlink" href="#knatch" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/navikt/knatch">Knatch</a> - Knada batch - er et kommandolinjeverktøy tiltenkt å forenkle opplasting av datafortellinger til både den <a href="https://data.ansatt.nav.no">interne datamarkedsplassen</a> og eksterne datafortellinger på <code>data.nav.no</code>.</p>
@@ -3026,7 +3023,7 @@ Token for teamet ditt finner du ved å gå til https://data.ansatt.nav.no/user/t
       <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.instant","navigation.sections","content.tabs.link","content.code.copy"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.49251538.min.js"></script>
       
     
   </body>

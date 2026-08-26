@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.57">
     
     
       
@@ -32,12 +32,12 @@
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.20815dad.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.5da3a30f.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -2152,23 +2152,23 @@ Under følger et eksempel på hvordan ressursbehov for en task endres til <code>
 <span class="kn">from</span><span class="w"> </span><span class="nn">kubernetes</span><span class="w"> </span><span class="kn">import</span> <span class="n">client</span> <span class="k">as</span> <span class="n">k8s</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;kjør task&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"kjør task"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">&#39;min-dag&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">'min-dag'</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
     <span class="n">run_this</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
-        <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s1">'test'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">myfunc</span><span class="p">,</span>
         <span class="n">executor_config</span><span class="o">=</span><span class="p">{</span>
-           <span class="s2">&quot;pod_override&quot;</span><span class="p">:</span> <span class="n">k8s</span><span class="o">.</span><span class="n">V1Pod</span><span class="p">(</span>
+           <span class="s2">"pod_override"</span><span class="p">:</span> <span class="n">k8s</span><span class="o">.</span><span class="n">V1Pod</span><span class="p">(</span>
                <span class="n">spec</span><span class="o">=</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1PodSpec</span><span class="p">(</span>
                    <span class="n">containers</span><span class="o">=</span><span class="p">[</span>
                       <span class="n">k8s</span><span class="o">.</span><span class="n">V1Container</span><span class="p">(</span>
-                         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;base&quot;</span><span class="p">,</span>
+                         <span class="n">name</span><span class="o">=</span><span class="s2">"base"</span><span class="p">,</span>
                          <span class="n">resources</span><span class="o">=</span><span class="p">{</span>
-                           <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="p">{</span>
-                               <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-                               <span class="s2">&quot;memory&quot;</span><span class="p">:</span> <span class="s2">&quot;2Gi&quot;</span><span class="p">,</span>
-                               <span class="s2">&quot;ephemeral-storage&quot;</span><span class="p">:</span> <span class="s2">&quot;5Gi&quot;</span>
+                           <span class="s2">"requests"</span><span class="p">:</span> <span class="p">{</span>
+                               <span class="s2">"cpu"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+                               <span class="s2">"memory"</span><span class="p">:</span> <span class="s2">"2Gi"</span><span class="p">,</span>
+                               <span class="s2">"ephemeral-storage"</span><span class="p">:</span> <span class="s2">"5Gi"</span>
                            <span class="p">}</span>
                          <span class="p">}</span>
                       <span class="p">)</span>
@@ -2200,30 +2200,30 @@ Dette gjør man ved å legge på en <code>allowlist</code> annotasjon på pod re
 
 <span class="k">def</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">():</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://ssb.no/api&quot;</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://ssb.no/api"</span><span class="p">)</span>
     <span class="n">res</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 
-<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">&#39;min-dag&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">'min-dag'</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
     <span class="n">slack</span> <span class="o">=</span> <span class="n">SlackWebhookOperator</span><span class="p">(</span>
         <span class="n">http_conn_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;slack-message&quot;</span><span class="p">,</span>
-        <span class="n">webhook_token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SLACK_TOKEN&quot;</span><span class="p">],</span>
-        <span class="n">message</span><span class="o">=</span><span class="s2">&quot;start min-dag&quot;</span><span class="p">,</span>
-        <span class="n">channel</span><span class="o">=</span><span class="s2">&quot;#minkanal&quot;</span><span class="p">,</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s2">"slack-message"</span><span class="p">,</span>
+        <span class="n">webhook_token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"SLACK_TOKEN"</span><span class="p">],</span>
+        <span class="n">message</span><span class="o">=</span><span class="s2">"start min-dag"</span><span class="p">,</span>
+        <span class="n">channel</span><span class="o">=</span><span class="s2">"#minkanal"</span><span class="p">,</span>
         <span class="n">link_names</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">executor_config</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;pod_override&quot;</span><span class="p">:</span> <span class="n">k8s</span><span class="o">.</span><span class="n">V1Pod</span><span class="p">(</span>
-                <span class="n">metadata</span><span class="o">=</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1ObjectMeta</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;allowlist&quot;</span><span class="p">:</span> <span class="s2">&quot;hooks.slack.com&quot;</span><span class="p">})</span>
+            <span class="s2">"pod_override"</span><span class="p">:</span> <span class="n">k8s</span><span class="o">.</span><span class="n">V1Pod</span><span class="p">(</span>
+                <span class="n">metadata</span><span class="o">=</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1ObjectMeta</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="p">{</span><span class="s2">"allowlist"</span><span class="p">:</span> <span class="s2">"hooks.slack.com"</span><span class="p">})</span>
             <span class="p">)</span>
         <span class="p">}</span>
     <span class="p">)</span>
 
     <span class="n">run_this</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
-        <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s1">'test'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">myfunc</span><span class="p">,</span>
         <span class="n">executor_config</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;pod_override&quot;</span><span class="p">:</span> <span class="n">k8s</span><span class="o">.</span><span class="n">V1Pod</span><span class="p">(</span>
-                <span class="n">metadata</span><span class="o">=</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1ObjectMeta</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;allowlist&quot;</span><span class="p">:</span> <span class="s2">&quot;ssb.no,db.adeo.no:1521&quot;</span><span class="p">})</span>
+            <span class="s2">"pod_override"</span><span class="p">:</span> <span class="n">k8s</span><span class="o">.</span><span class="n">V1Pod</span><span class="p">(</span>
+                <span class="n">metadata</span><span class="o">=</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1ObjectMeta</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="p">{</span><span class="s2">"allowlist"</span><span class="p">:</span> <span class="s2">"ssb.no,db.adeo.no:1521"</span><span class="p">})</span>
             <span class="p">)</span>
         <span class="p">},</span>
     <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
@@ -2239,12 +2239,12 @@ Når jobben er ferdig vil tilgangene bli fjernet.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">airflow.utils.dates</span><span class="w"> </span><span class="kn">import</span> <span class="n">days_ago</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataverk_airflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">notebook_operator</span>
 
-<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">&#39;dag&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">'dag'</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
     <span class="n">task</span> <span class="o">=</span> <span class="n">notebook_operator</span><span class="p">(</span><span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">,</span>
-                             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;knada-pod-operator&quot;</span><span class="p">,</span>
-                             <span class="n">repo</span><span class="o">=</span><span class="s2">&quot;navikt/repo&quot;</span><span class="p">,</span>
-                             <span class="n">nb_path</span><span class="o">=</span><span class="s2">&quot;notebooks/mynb.ipynb&quot;</span><span class="p">,</span>
-                             <span class="n">allowlist</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ssb.no&quot;</span><span class="p">,</span> <span class="s2">&quot;db.adeo.no:1521&quot;</span><span class="p">])</span>
+                             <span class="n">name</span><span class="o">=</span><span class="s2">"knada-pod-operator"</span><span class="p">,</span>
+                             <span class="n">repo</span><span class="o">=</span><span class="s2">"navikt/repo"</span><span class="p">,</span>
+                             <span class="n">nb_path</span><span class="o">=</span><span class="s2">"notebooks/mynb.ipynb"</span><span class="p">,</span>
+                             <span class="n">allowlist</span><span class="o">=</span><span class="p">[</span><span class="s2">"ssb.no"</span><span class="p">,</span> <span class="s2">"db.adeo.no:1521"</span><span class="p">])</span>
 </code></pre></div>
 <h3 id="egne-docker-images-for-airflow">Egne Docker images for Airflow<a class="headerlink" href="#egne-docker-images-for-airflow" title="Permanent link">&para;</a></h3>
 <p>Hvis du kun har behov for andre Python-biblioteker så anbefaler vi på det sterkeste at du bruker <a href="#dataverk-airflow">Dataverk Airflow</a> og sender med en <code>requirements.txt</code> fil i stedet for å bygge ditt eget image.</p>
@@ -2272,19 +2272,19 @@ Dersom man ikke tar utgangspunkt i et av disse imagene må man selv installere A
 <span class="kn">from</span><span class="w"> </span><span class="nn">kubernetes</span><span class="w"> </span><span class="kn">import</span> <span class="n">client</span> <span class="k">as</span> <span class="n">k8s</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;kjør task&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"kjør task"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">&#39;min-dag&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">'min-dag'</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
     <span class="n">run_this</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
-        <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s1">'test'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">myfunc</span><span class="p">,</span>
         <span class="n">executor_config</span><span class="o">=</span><span class="p">{</span>
-           <span class="s2">&quot;pod_override&quot;</span><span class="p">:</span> <span class="n">k8s</span><span class="o">.</span><span class="n">V1Pod</span><span class="p">(</span>
+           <span class="s2">"pod_override"</span><span class="p">:</span> <span class="n">k8s</span><span class="o">.</span><span class="n">V1Pod</span><span class="p">(</span>
                <span class="n">spec</span><span class="o">=</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1PodSpec</span><span class="p">(</span>
                    <span class="n">containers</span><span class="o">=</span><span class="p">[</span>
                       <span class="n">k8s</span><span class="o">.</span><span class="n">V1Container</span><span class="p">(</span>
-                         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;base&quot;</span><span class="p">,</span>
-                         <span class="n">image</span><span class="o">=</span><span class="s2">&quot;ghcr.io/navikt/mitt-airflow-image:v1&quot;</span>
+                         <span class="n">name</span><span class="o">=</span><span class="s2">"base"</span><span class="p">,</span>
+                         <span class="n">image</span><span class="o">=</span><span class="s2">"ghcr.io/navikt/mitt-airflow-image:v1"</span>
                       <span class="p">)</span>
                    <span class="p">]</span>
                <span class="p">)</span>
@@ -2304,12 +2304,12 @@ Dette imaget vil bygge på det <a href="https://hub.docker.com/_/python">offisie
 <span class="kn">from</span><span class="w"> </span><span class="nn">airflow.utils.dates</span><span class="w"> </span><span class="kn">import</span> <span class="n">days_ago</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataverk_airflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">notebook_operator</span>
 
-<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">&#39;dag&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">'dag'</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">days_ago</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
     <span class="n">task</span> <span class="o">=</span> <span class="n">notebook_operator</span><span class="p">(</span><span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">,</span>
-                             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;knada-pod-operator&quot;</span><span class="p">,</span>
-                             <span class="n">repo</span><span class="o">=</span><span class="s2">&quot;navikt/repo&quot;</span><span class="p">,</span>
-                             <span class="n">nb_path</span><span class="o">=</span><span class="s2">&quot;notebooks/mynb.ipynb&quot;</span><span class="p">,</span>
-                             <span class="n">image</span><span class="o">=</span><span class="s2">&quot;ghcr.io/navikt/mitt-airflow-image:v1&quot;</span><span class="p">)</span>
+                             <span class="n">name</span><span class="o">=</span><span class="s2">"knada-pod-operator"</span><span class="p">,</span>
+                             <span class="n">repo</span><span class="o">=</span><span class="s2">"navikt/repo"</span><span class="p">,</span>
+                             <span class="n">nb_path</span><span class="o">=</span><span class="s2">"notebooks/mynb.ipynb"</span><span class="p">,</span>
+                             <span class="n">image</span><span class="o">=</span><span class="s2">"ghcr.io/navikt/mitt-airflow-image:v1"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="api-tilgang-til-airflow">API-tilgang til Airflow<a class="headerlink" href="#api-tilgang-til-airflow" title="Permanent link">&para;</a></h2>
 <p>Har man behov for at en ekstern tjeneste skal snakke med API-et til Airflow trenger Nada å konfigurere noe på "baksiden" og lage en service bruker for dere.
@@ -2322,7 +2322,7 @@ Akkurat dette scenarioet er også dokumentert i <a href="https://confluence.adeo
 dette er for at Datavarehus skal ha bedre kontroll på hvem som snakker med de.
 Selve tjenesten heter <a href="https://github.com/nais/knaudit#knaudit">knaudit</a>, og det er kun Datavarehus og NADA som har tilgang til disse loggene.</p>
 <p>Eksempel på hva vi logger:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;commit_sha1&quot;</span><span class="p">:[</span><span class="s2">&quot;d19dcf695f043c6eff6b0cc2478b58d45299ca97&quot;</span><span class="p">],</span><span class="nt">&quot;hostname&quot;</span><span class="p">:[</span><span class="s2">&quot;mycsvdag-starting-fc8dfe28afae414da33a5d2a57db85d1&quot;</span><span class="p">],</span><span class="nt">&quot;run_id&quot;</span><span class="p">:[</span><span class="s2">&quot;scheduled__2023-05-03T05:30:00+00:00&quot;</span><span class="p">],</span><span class="nt">&quot;timestamp&quot;</span><span class="p">:[</span><span class="s2">&quot;2023-05-03T05:35:11.000Z&quot;</span><span class="p">],</span><span class="nt">&quot;git_repo&quot;</span><span class="p">:[</span><span class="s2">&quot;github.com/navikt/test-team-dag&quot;</span><span class="p">],</span><span class="nt">&quot;ip&quot;</span><span class="p">:[</span><span class="s2">&quot;321.312.312.321&quot;</span><span class="p">],</span><span class="nt">&quot;namespace&quot;</span><span class="p">:[</span><span class="s2">&quot;team-test-ncnv&quot;</span><span class="p">],</span><span class="nt">&quot;task_id&quot;</span><span class="p">:[</span><span class="s2">&quot;starting&quot;</span><span class="p">],</span><span class="nt">&quot;git_branch&quot;</span><span class="p">:[</span><span class="s2">&quot;main&quot;</span><span class="p">],</span><span class="nt">&quot;dag_id&quot;</span><span class="p">:[</span><span class="s2">&quot;MyCSVDAG&quot;</span><span class="p">],</span><span class="nt">&quot;triggered_by&quot;</span><span class="p">:[</span><span class="s2">&quot;airflow&quot;</span><span class="p">]}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"commit_sha1"</span><span class="p">:[</span><span class="s2">"d19dcf695f043c6eff6b0cc2478b58d45299ca97"</span><span class="p">],</span><span class="nt">"hostname"</span><span class="p">:[</span><span class="s2">"mycsvdag-starting-fc8dfe28afae414da33a5d2a57db85d1"</span><span class="p">],</span><span class="nt">"run_id"</span><span class="p">:[</span><span class="s2">"scheduled__2023-05-03T05:30:00+00:00"</span><span class="p">],</span><span class="nt">"timestamp"</span><span class="p">:[</span><span class="s2">"2023-05-03T05:35:11.000Z"</span><span class="p">],</span><span class="nt">"git_repo"</span><span class="p">:[</span><span class="s2">"github.com/navikt/test-team-dag"</span><span class="p">],</span><span class="nt">"ip"</span><span class="p">:[</span><span class="s2">"321.312.312.321"</span><span class="p">],</span><span class="nt">"namespace"</span><span class="p">:[</span><span class="s2">"team-test-ncnv"</span><span class="p">],</span><span class="nt">"task_id"</span><span class="p">:[</span><span class="s2">"starting"</span><span class="p">],</span><span class="nt">"git_branch"</span><span class="p">:[</span><span class="s2">"main"</span><span class="p">],</span><span class="nt">"dag_id"</span><span class="p">:[</span><span class="s2">"MyCSVDAG"</span><span class="p">],</span><span class="nt">"triggered_by"</span><span class="p">:[</span><span class="s2">"airflow"</span><span class="p">]}</span>
 </code></pre></div>
 <p>Hvis det er en manuell kjøring så vil <code>triggered_by</code> være satt til NAV-ident for den innlogget Airflow-bruker.</p>
 <h2 id="airflow-service-account-impersonation">Airflow service account impersonation<a class="headerlink" href="#airflow-service-account-impersonation" title="Permanent link">&para;</a></h2>
@@ -2348,14 +2348,14 @@ Dersom tilganger gis til denne IAM service accounten vil det delegeres til teame
 
 <span class="n">target_credentials</span> <span class="o">=</span> <span class="n">impersonated_credentials</span><span class="o">.</span><span class="n">Credentials</span><span class="p">(</span>
   <span class="n">source_credentials</span><span class="o">=</span><span class="n">default_creds</span><span class="p">,</span>
-  <span class="n">target_principal</span><span class="o">=</span><span class="s1">&#39;min-sa@&lt;prosjekt-id&gt;.iam.gserviceaccount.com&#39;</span><span class="p">,</span>
-  <span class="n">target_scopes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;https://www.googleapis.com/auth/cloud-platform&#39;</span><span class="p">])</span>
+  <span class="n">target_principal</span><span class="o">=</span><span class="s1">'min-sa@&lt;prosjekt-id&gt;.iam.gserviceaccount.com'</span><span class="p">,</span>
+  <span class="n">target_scopes</span><span class="o">=</span><span class="p">[</span><span class="s1">'https://www.googleapis.com/auth/cloud-platform'</span><span class="p">])</span>
 
 <span class="c1"># Les BigQuery</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">google.cloud.bigquery</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span> <span class="k">as</span> <span class="n">BQClient</span>
 
-<span class="n">c</span> <span class="o">=</span> <span class="n">BQClient</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;&lt;prosjekt-id&gt;&quot;</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">target_credentials</span><span class="p">)</span>
-<span class="n">job</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM &lt;prosjekt-id&gt;.&lt;dataset&gt;.&lt;tabell&gt;&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">BQClient</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"&lt;prosjekt-id&gt;"</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">target_credentials</span><span class="p">)</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT * FROM &lt;prosjekt-id&gt;.&lt;dataset&gt;.&lt;tabell&gt;"</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
@@ -2363,17 +2363,17 @@ Dersom tilganger gis til denne IAM service accounten vil det delegeres til teame
 <span class="kn">from</span><span class="w"> </span><span class="nn">google.cloud.storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span> <span class="k">as</span> <span class="n">GCSClient</span>
 
 <span class="n">gcs_client</span> <span class="o">=</span> <span class="n">GCSClient</span><span class="p">(</span><span class="n">credentials</span><span class="o">=</span><span class="n">target_credentials</span><span class="p">)</span>
-<span class="n">bucket</span> <span class="o">=</span> <span class="n">gcs_client</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s2">&quot;&lt;navn-på-bucket&gt;&quot;</span><span class="p">)</span>
-<span class="n">blob</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">blob</span><span class="p">(</span><span class="s2">&quot;&lt;navn-på-fil&gt;&quot;</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">blob</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="n">bucket</span> <span class="o">=</span> <span class="n">gcs_client</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s2">"&lt;navn-på-bucket&gt;"</span><span class="p">)</span>
+<span class="n">blob</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">blob</span><span class="p">(</span><span class="s2">"&lt;navn-på-fil&gt;"</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">blob</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
 <span class="c1"># Les Secret Manager secret</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">google.cloud.secretmanager</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecretManagerServiceClient</span>
 
 <span class="n">secrets</span> <span class="o">=</span> <span class="n">SecretManagerServiceClient</span><span class="p">(</span><span class="n">credentials</span><span class="o">=</span><span class="n">target_credentials</span><span class="p">)</span>
-<span class="n">secret</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">access_secret_version</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;projects/&lt;prosjekt-id&gt;/secrets/&lt;navn-på-secret&gt;/versions/latest&quot;</span><span class="p">)</span>
-<span class="n">secret_data</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span>
+<span class="n">secret</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">access_secret_version</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"projects/&lt;prosjekt-id&gt;/secrets/&lt;navn-på-secret&gt;/versions/latest"</span><span class="p">)</span>
+<span class="n">secret_data</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'UTF-8'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">secret_data</span><span class="p">)</span>
 </code></pre></div>
 <p>Fordelen med denne tilnærmingen er at man enkelt kan bryte alle tilgangene som Airflow workeren har fått delegert ved å kun fjerne <code>Service Account Token Creator</code> rollebindingen for team service accounten som du ga knada service accounten over.</p>
@@ -2488,7 +2488,7 @@ Dersom tilganger gis til denne IAM service accounten vil det delegeres til teame
       <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.sections","content.tabs.link","content.code.copy"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.49251538.min.js"></script>
       
     
   </body>

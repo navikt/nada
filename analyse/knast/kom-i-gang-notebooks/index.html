@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.57">
     
     
       
@@ -32,12 +32,12 @@
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.20815dad.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.5da3a30f.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -2067,14 +2067,14 @@ Denne notebooken viser fødselstallene til hester de siste 10 årene i Norge.
 <span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 
 <span class="c1"># URL til SSB API</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.ssb.no/api/pxwebapi/v2/tables/05984/data?lang=no&amp;outputFormat=csv&amp;valuecodes[ContentsCode]=*&amp;valuecodes[Tid]=2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025&amp;valuecodes[Husdyr]=*&amp;heading=ContentsCode,Tid&amp;stub=Husdyr&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/pxwebapi/v2/tables/05984/data?lang=no&amp;outputFormat=csv&amp;valuecodes[ContentsCode]=*&amp;valuecodes[Tid]=2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025&amp;valuecodes[Husdyr]=*&amp;heading=ContentsCode,Tid&amp;stub=Husdyr"</span>
 
 <span class="c1"># Hent data</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 
 <span class="c1"># Les CSV til DataFrame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
@@ -2082,12 +2082,12 @@ Denne notebooken viser fødselstallene til hester de siste 10 årene i Norge.
 datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én kolonne per år (f.eks. <code>"Husdyr2 2013"</code>, <code>"Husdyr2 2014"</code>, osv.). Den første kolonnen <code>"Husdyr"</code> inneholder koder, ikke klartekstnavn.</p>
 <h2 id="finn-riktig-kode-for-hester">Finn riktig kode for hester<a class="headerlink" href="#finn-riktig-kode-for-hester" title="Permanent link">&para;</a></h2>
 <p>Lag en ny celle og slå opp i metadata-APIet til SSB for å finne hvilken kode som tilsvarer hester:</p>
-<div class="highlight"><span class="filename">Hent metadata</span><pre><span></span><code><span class="n">meta_url</span> <span class="o">=</span> <span class="s2">&quot;https://data.ssb.no/api/pxwebapi/v2/tables/05984/metadata?lang=no&quot;</span>
+<div class="highlight"><span class="filename">Hent metadata</span><pre><span></span><code><span class="n">meta_url</span> <span class="o">=</span> <span class="s2">"https://data.ssb.no/api/pxwebapi/v2/tables/05984/metadata?lang=no"</span>
 <span class="n">meta</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">meta_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-<span class="n">husdyr_koder</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;dimension&quot;</span><span class="p">][</span><span class="s2">&quot;Husdyr&quot;</span><span class="p">][</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
+<span class="n">husdyr_koder</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[</span><span class="s2">"dimension"</span><span class="p">][</span><span class="s2">"Husdyr"</span><span class="p">][</span><span class="s2">"category"</span><span class="p">][</span><span class="s2">"label"</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">kode</span><span class="p">,</span> <span class="n">navn</span> <span class="ow">in</span> <span class="n">husdyr_koder</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">kode</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">navn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">kode</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">navn</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">Output</span><pre><span></span><code>11: Hestar
 01a: Storfe i alt
@@ -2098,15 +2098,15 @@ datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én k
 <p>Vi ser at koden for hester er <code>"11"</code>. Dette bruker vi til å filtrere riktig rad i neste steg.</p>
 <h2 id="filtrer-og-transformer-data">Filtrer og transformer data<a class="headerlink" href="#filtrer-og-transformer-data" title="Permanent link">&para;</a></h2>
 <p>SSB-dataen er på wide format (ett år per kolonne). For å plotte trenger vi long format (én rad per år). Lag en ny celle:</p>
-<div class="highlight"><span class="filename">Transformer til long format</span><pre><span></span><code><span class="c1"># Filtrer på hester (kode &quot;11&quot;)</span>
-<span class="n">hest</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Husdyr&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;11&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight"><span class="filename">Transformer til long format</span><pre><span></span><code><span class="c1"># Filtrer på hester (kode "11")</span>
+<span class="n">hest</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"Husdyr"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"11"</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="c1"># Konverter fra wide til long format</span>
-<span class="n">hest_long</span> <span class="o">=</span> <span class="n">hest</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s2">&quot;Husdyr&quot;</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;kolonne&quot;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;antall&quot;</span><span class="p">)</span>
+<span class="n">hest_long</span> <span class="o">=</span> <span class="n">hest</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s2">"Husdyr"</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">"kolonne"</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">"antall"</span><span class="p">)</span>
 
-<span class="c1"># Trekk ut årstall fra kolonnenavn på formen &quot;Husdyr2 2013&quot; -&gt; 2013</span>
-<span class="n">hest_long</span><span class="p">[</span><span class="s2">&quot;år&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hest_long</span><span class="p">[</span><span class="s2">&quot;kolonne&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{4}</span><span class="s2">)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">hest_long</span> <span class="o">=</span> <span class="n">hest_long</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;år&quot;</span><span class="p">)</span>
+<span class="c1"># Trekk ut årstall fra kolonnenavn på formen "Husdyr2 2013" -&gt; 2013</span>
+<span class="n">hest_long</span><span class="p">[</span><span class="s2">"år"</span><span class="p">]</span> <span class="o">=</span> <span class="n">hest_long</span><span class="p">[</span><span class="s2">"kolonne"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\d</span><span class="si">{4}</span><span class="s2">)"</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">hest_long</span> <span class="o">=</span> <span class="n">hest_long</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"år"</span><span class="p">)</span>
 
 <span class="n">hest_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
@@ -2115,10 +2115,10 @@ datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én k
 <div class="highlight"><span class="filename">Plot</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hest_long</span><span class="p">[</span><span class="s2">&quot;år&quot;</span><span class="p">],</span> <span class="n">hest_long</span><span class="p">[</span><span class="s2">&quot;antall&quot;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Antall hester i Norge per år&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;År&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Antall hester&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hest_long</span><span class="p">[</span><span class="s2">"år"</span><span class="p">],</span> <span class="n">hest_long</span><span class="p">[</span><span class="s2">"antall"</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"steelblue"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Antall hester i Norge per år"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"År"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Antall hester"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -2159,36 +2159,36 @@ Denne notebooken viser fødselstallene til hester de siste 10 årene i Norge.
 <p>Trykk <strong>Shift-Enter</strong> for å kjøre cellen — Markdown-teksten vil bli rendret.</p>
 <h2 id="installer-pakker-r">Installer pakker (R)<a class="headerlink" href="#installer-pakker-r" title="Permanent link">&para;</a></h2>
 <p>Lag en ny celle og kjør følgende (kun nødvendig første gang, kan ta noen sekunder):</p>
-<div class="highlight"><span class="filename">Installer pakker</span><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;httr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;readr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;jsonlite&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dplyr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tidyr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;stringr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ggplot2&quot;</span><span class="p">))</span>
+<div class="highlight"><span class="filename">Installer pakker</span><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">"httr"</span><span class="p">,</span><span class="w"> </span><span class="s">"readr"</span><span class="p">,</span><span class="w"> </span><span class="s">"jsonlite"</span><span class="p">,</span><span class="w"> </span><span class="s">"dplyr"</span><span class="p">,</span><span class="w"> </span><span class="s">"tidyr"</span><span class="p">,</span><span class="w"> </span><span class="s">"stringr"</span><span class="p">,</span><span class="w"> </span><span class="s">"ggplot2"</span><span class="p">))</span>
 </code></pre></div>
 <h3 id="opprette-katalog-for-pakker">Opprette katalog for pakker<a class="headerlink" href="#opprette-katalog-for-pakker" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>Warning message in install.packages(c(&quot;httr&quot;, &quot;readr&quot;, &quot;jsonlite&quot;, &quot;dplyr&quot;, &quot;tidyr&quot;, :
-&quot;&#39;lib = &quot;/home/user/R/x86_64-pc-linux-gnu-library/4.6&quot;&#39; is not writable&quot;
+<p><div class="highlight"><pre><span></span><code>Warning message in install.packages(c("httr", "readr", "jsonlite", "dplyr", "tidyr", :
+"'lib = "/home/user/R/x86_64-pc-linux-gnu-library/4.6"' is not writable"
 </code></pre></div>
 eller tilsvarende feil kan løses ved å opprette katalogen og prøve på nytt. Katalogen kan opprettes med kommandoen 
 <div class="highlight"><span class="filename">Terminal</span><pre><span></span><code><span class="w">  </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.6
 </code></pre></div></p>
 <h2 id="hent-data-fra-ssb">Hent data fra SSB<a class="headerlink" href="#hent-data-fra-ssb" title="Permanent link">&para;</a></h2>
 <p>Lag en ny celle:</p>
-<div class="highlight"><span class="filename">Hent data</span><pre><span></span><code><span class="nf">Sys.setlocale</span><span class="p">(</span><span class="s">&quot;LC_ALL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;en_US.UTF-8&quot;</span><span class="p">)</span>
+<div class="highlight"><span class="filename">Hent data</span><pre><span></span><code><span class="nf">Sys.setlocale</span><span class="p">(</span><span class="s">"LC_ALL"</span><span class="p">,</span><span class="w"> </span><span class="s">"en_US.UTF-8"</span><span class="p">)</span>
 
 <span class="nf">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
 
 <span class="n">url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span>
-<span class="w">  </span><span class="s">&quot;https://data.ssb.no/api/pxwebapi/v2/tables/05984/data&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s">&quot;?lang=no&amp;outputFormat=csv&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s">&quot;&amp;valuecodes[ContentsCode]=*&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s">&quot;&amp;valuecodes[Tid]=2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s">&quot;&amp;valuecodes[Husdyr]=*&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s">&quot;&amp;heading=ContentsCode,Tid&amp;stub=Husdyr&quot;</span>
+<span class="w">  </span><span class="s">"https://data.ssb.no/api/pxwebapi/v2/tables/05984/data"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"?lang=no&amp;outputFormat=csv"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"&amp;valuecodes[ContentsCode]=*"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"&amp;valuecodes[Tid]=2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"&amp;valuecodes[Husdyr]=*"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"&amp;heading=ContentsCode,Tid&amp;stub=Husdyr"</span>
 <span class="p">)</span>
 
 <span class="n">response</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">GET</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="nf">stop_for_status</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 
-<span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_delim</span><span class="p">(</span><span class="nf">I</span><span class="p">(</span><span class="nf">content</span><span class="p">(</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">encoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;UTF-8&quot;</span><span class="p">)),</span><span class="w"> </span><span class="n">delim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_delim</span><span class="p">(</span><span class="nf">I</span><span class="p">(</span><span class="nf">content</span><span class="p">(</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"text"</span><span class="p">,</span><span class="w"> </span><span class="n">encoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"UTF-8"</span><span class="p">)),</span><span class="w"> </span><span class="n">delim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">","</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
 <p>Kjør cellen med <strong>Ctrl-Enter</strong> eller Kjør-knappen ved siden av cellen. Du skal få ut de første radene av datasettet og se at
@@ -2197,12 +2197,12 @@ datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én k
 <p>Lag en ny celle og slå opp i metadata-APIet til SSB for å finne hvilken kode som tilsvarer hester:</p>
 <div class="highlight"><span class="filename">Hent metadata</span><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span>
 
-<span class="n">meta_url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;https://data.ssb.no/api/pxwebapi/v2/tables/05984/metadata?lang=no&quot;</span>
+<span class="n">meta_url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"https://data.ssb.no/api/pxwebapi/v2/tables/05984/metadata?lang=no"</span>
 <span class="n">meta</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fromJSON</span><span class="p">(</span><span class="n">meta_url</span><span class="p">)</span>
 
 <span class="n">husdyr_koder</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">meta</span><span class="o">$</span><span class="n">dimension</span><span class="o">$</span><span class="n">Husdyr</span><span class="o">$</span><span class="n">category</span><span class="o">$</span><span class="n">label</span>
 <span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">kode</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">husdyr_koder</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">cat</span><span class="p">(</span><span class="n">kode</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">husdyr_koder</span><span class="p">[[</span><span class="n">kode</span><span class="p">]],</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">cat</span><span class="p">(</span><span class="n">kode</span><span class="p">,</span><span class="w"> </span><span class="s">":"</span><span class="p">,</span><span class="w"> </span><span class="n">husdyr_koder</span><span class="p">[[</span><span class="n">kode</span><span class="p">]],</span><span class="w"> </span><span class="s">"\n"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">Output</span><pre><span></span><code>11 : Hestar
@@ -2217,14 +2217,14 @@ datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én k
 <span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
 
 <span class="n">hest</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">|&gt;</span>
-<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">Husdyr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;11&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">Husdyr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"11"</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
 <span class="w">  </span><span class="nf">pivot_longer</span><span class="p">(</span>
 <span class="w">    </span><span class="n">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">Husdyr</span><span class="p">,</span>
-<span class="w">    </span><span class="n">names_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;kolonne&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">values_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;antall&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">names_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"kolonne"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">values_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"antall"</span><span class="p">,</span>
 <span class="w">    </span><span class="n">values_transform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">antall</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.double</span><span class="p">)</span>
 <span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
-<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">aar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">(</span><span class="nf">str_extract</span><span class="p">(</span><span class="n">kolonne</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\\d{4}&quot;</span><span class="p">)))</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">aar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">(</span><span class="nf">str_extract</span><span class="p">(</span><span class="n">kolonne</span><span class="p">,</span><span class="w"> </span><span class="s">"\\d{4}"</span><span class="p">)))</span><span class="w"> </span><span class="o">|&gt;</span>
 <span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">aar</span><span class="p">)</span>
 
 <span class="nf">head</span><span class="p">(</span><span class="n">hest</span><span class="p">)</span>
@@ -2234,12 +2234,12 @@ datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én k
 <div class="highlight"><span class="filename">Plot</span><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">hest</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aar</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">antall</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
-<span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"steelblue"</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"steelblue"</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
-<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Antall hester i Norge per år&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;År&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Antall hester&quot;</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Antall hester i Norge per år"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"År"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Antall hester"</span>
 <span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
 </code></pre></div>
@@ -2355,7 +2355,7 @@ datasettet er på såkalt <em>wide format</em>: én rad per husdyrslag, og én k
       <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.sections","content.tabs.link","content.code.copy"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.49251538.min.js"></script>
       
     
   </body>
