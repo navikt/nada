@@ -11,11 +11,7 @@ Følge installasjonsoppskriften på [quarto.org/docs](https://quarto.org/docs/ge
 Husk å hold Quarto oppdatert.
 
 ### Knast
-Vi anbefaler å følge guiden [Tarball Installation On Linux](https://quarto.org/docs/download/tarball.html). For å laste ned binæren trenger du følgende åpninger:
-- github.com/quarto-dev/quarto-cli/releases/download/*
-- objects.githubusercontent.com/*
-
-Igjen må man selv huske å holde Quarto oppdatert.
+På Knast er Quarto allerede installert og skal være i PATH. 
 
 ### Docker image
 Vi anbefaler å bruke kommandoen nedenfor i din `Dockerfile` for å installere Quarto.
