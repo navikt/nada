@@ -2496,17 +2496,13 @@ Se <a href="https://github.com/navikt/dataplattform-ci/blob/e959d9d61553a4bcc782
 <p>Under er et enkelt eksempel på en Union workflow. Den består av én task (hello) som returnerer en streng, og en hovedtask task (main) som kaller denne. Slik kan man koble flere tasks sammen til en workflow.</p>
 <p>Hver task kjører i sin egen isolerte container (<a href="https://kubernetes.io/docs/concepts/workloads/pods/">pod</a>) i Kubernetes. Det eneste som skal til for å gjøre en Python-funksjon om til en Union task, er å dekorere den med <code>@env.task</code>.</p>
 <p>I Union definerer du altså workflows direkte i Python, uten behov for et eget "orkestreringsspråk" (slik man ofte har i andre orkestreringsverktøy). Flyten styres med vanlig funksjonskall, som gjør det lett å lese og strukturere logikken.</p>
+<p><em><em>NB! Eksempel under krever flyte&gt;=2.6.12 installert</em></em></p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flyte</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">flyte</span><span class="o">.</span><span class="n">TaskEnvironment</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">"my_environment"</span><span class="p">,</span>
-    <span class="n">pod_template</span><span class="o">=</span><span class="n">flyte</span><span class="o">.</span><span class="n">PodTemplate</span><span class="p">(</span>
-        <span class="n">pod_spec</span><span class="o">=</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1PodSpec</span><span class="p">(</span>
-            <span class="n">service_account_name</span><span class="o">=</span><span class="s2">"sa1"</span><span class="p">,</span>
-            <span class="n">containers</span><span class="o">=</span><span class="p">[</span><span class="n">k8s</span><span class="o">.</span><span class="n">V1Container</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"primary"</span><span class="p">)]</span>
-        <span class="p">)</span>
-    <span class="p">),</span>
+    <span class="n">service_account</span><span class="o">=</span><span class="s2">"sa1"</span><span class="p">,</span>
     <span class="n">image</span><span class="o">=</span><span class="n">flyte</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">from_base</span><span class="p">(</span>
       <span class="n">image_uri</span><span class="o">=</span><span class="s2">"europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base"</span>
     <span class="p">)</span>
