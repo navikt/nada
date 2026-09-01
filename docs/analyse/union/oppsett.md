@@ -299,18 +299,15 @@ Hver task kjører i sin egen isolerte container ([pod](https://kubernetes.io/doc
 
 I Union definerer du altså workflows direkte i Python, uten behov for et eget "orkestreringsspråk" (slik man ofte har i andre orkestreringsverktøy). Flyten styres med vanlig funksjonskall, som gjør det lett å lese og strukturere logikken.
 
+_*NB! Eksempel under krever flyte>=2.6.12 installert*_
+
 ```python
 import flyte
 from pathlib import Path
 
 env = flyte.TaskEnvironment(
     name="my_environment",
-    pod_template=flyte.PodTemplate(
-        pod_spec=k8s.V1PodSpec(
-            service_account_name="sa1",
-            containers=[k8s.V1Container(name="primary")]
-        )
-    ),
+    service_account="sa1",
     image=flyte.Image.from_base(
       image_uri="europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base"
     )
