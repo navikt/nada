@@ -103,6 +103,7 @@ nav:
       - Oppsett: analyse/union/oppsett.md
       - Utvikling: analyse/union/utviklingsprosess.md
       - IWS-skedulering: analyse/union/iws-skedulering.md
+      - Deploy tasks fra Github (CI): analyse/union/deploy.md
     - Metabase: analyse/metabase.md
     - Datafortellinger: analyse/datafortellinger.md
     - Koble sammen pseudonymiserte tabeller: analyse/koble-pseudonymiserte.md
