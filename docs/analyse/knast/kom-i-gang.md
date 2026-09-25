@@ -77,24 +77,3 @@ For at VSCode skal fungere godt må du installere noen extensions. Om du bruker 
 Det er begrenset hvilke kommandoer man har lov til å kjøre som sudo. Du kan se hvilke du har lov til å kjøre ved å kjøre `sudo -l`. Hver gang man kjører sudo vil man bli bedt om å skrive inn en bekreftelseskode. Dette bekreftelseskoden er `husk ROS` og brukes utelukkende for å bekrefte at man ønsker å kjøre sudo. Dette gjøres for å unngå at script kjører sudo uten at man vet om det.
 ### Generelle råd
 Andre ting verdt å tenke på er nbstripout, dependabot og autentisering mot github og gcp. Her gjelder det samme som i [Generelle råd for Jupyterhub](../notebook/generelt.md).
-
-### Oppsett av union
-
-Union configen blir automatisk satt opp for Knast miljøet. Knast miljøet vil også komme preinstalleret med seneste versjon av kommandolinjeverktøyet `uctl` for å snakke med Union kontrollplanet.
-
-## Krav til allowlistede hoster for Knast
-Følgende standardåpninger er by default allowlistet for Knast maskiner. Disse er nødvendig for å snakke med Union kontrollplanet.
-
-```bash
-nav.eu-central-1.unionai.cloud/*
-signin.hosted.unionai.cloud/*
-storage.googleapis.com/opta-gcp-union-europe-north1-nav-fast-registration/*
-```
-
-For å kunne bygge docker imager når nye workflows og tasks skal lastes opp må man også åpne for følgende:
-
-```bash
-registry-1.docker.io/*
-europe-north1-docker.pkg.dev/*
-auth.docker.io/*
-```
