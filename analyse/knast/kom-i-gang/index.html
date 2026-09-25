@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="zensical-0.0.64">
+      <meta name="generator" content="zensical-0.0.65">
     
     
       
@@ -1296,30 +1296,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#oppsett-av-union" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Oppsett av union
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#krav-til-allowlistede-hoster-for-knast" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Krav til allowlistede hoster for Knast
-      </span>
-    </span>
-  </a>
   
 </li>
       
@@ -2078,30 +2056,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#oppsett-av-union" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Oppsett av union
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#krav-til-allowlistede-hoster-for-knast" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Krav til allowlistede hoster for Knast
-      </span>
-    </span>
-  </a>
   
 </li>
       
@@ -2197,19 +2153,6 @@ Hvis valgte en annen port i steg 3 må du velge den her også.</li>
 <p>Det er begrenset hvilke kommandoer man har lov til å kjøre som sudo. Du kan se hvilke du har lov til å kjøre ved å kjøre <code>sudo -l</code>. Hver gang man kjører sudo vil man bli bedt om å skrive inn en bekreftelseskode. Dette bekreftelseskoden er <code>husk ROS</code> og brukes utelukkende for å bekrefte at man ønsker å kjøre sudo. Dette gjøres for å unngå at script kjører sudo uten at man vet om det.</p>
 <h3 id="generelle-rad">Generelle råd<a class="headerlink" href="#generelle-rad" title="Permanent link">&para;</a></h3>
 <p>Andre ting verdt å tenke på er nbstripout, dependabot og autentisering mot github og gcp. Her gjelder det samme som i <a href="../../notebook/generelt/">Generelle råd for Jupyterhub</a>.</p>
-<h3 id="oppsett-av-union">Oppsett av union<a class="headerlink" href="#oppsett-av-union" title="Permanent link">&para;</a></h3>
-<p>Union configen blir automatisk satt opp for Knast miljøet. Knast miljøet vil også komme preinstalleret med seneste versjon av kommandolinjeverktøyet <code>uctl</code> for å snakke med Union kontrollplanet.</p>
-<h2 id="krav-til-allowlistede-hoster-for-knast">Krav til allowlistede hoster for Knast<a class="headerlink" href="#krav-til-allowlistede-hoster-for-knast" title="Permanent link">&para;</a></h2>
-<p>Følgende standardåpninger er by default allowlistet for Knast maskiner. Disse er nødvendig for å snakke med Union kontrollplanet.</p>
-<div class="highlight"><pre><span></span><code>nav.eu-central-1.unionai.cloud/*
-signin.hosted.unionai.cloud/*
-storage.googleapis.com/opta-gcp-union-europe-north1-nav-fast-registration/*
-</code></pre></div>
-<p>For å kunne bygge docker imager når nye workflows og tasks skal lastes opp må man også åpne for følgende:</p>
-<div class="highlight"><pre><span></span><code>registry-1.docker.io/*
-europe-north1-docker.pkg.dev/*
-auth.docker.io/*
-</code></pre></div>
 
 
 
